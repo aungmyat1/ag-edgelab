@@ -22,7 +22,8 @@ def load_month(year_month):
         text=io.TextIOWrapper(fh)
         for row in csv.reader(text):
             ts=int(row[0])
-            out.append(dict(time=datetime.fromtimestamp(ts/1000,tz=timezone.utc),open=float(row[1]),high=float(row[2]),low=float(row[3]),close=float(row[4]),volume=float(row[5])))
+            seconds = ts / 1_000_000 if ts > 100_000_000_000_000 else ts / 1000
+            out.append(dict(time=datetime.fromtimestamp(seconds,tz=timezone.utc),open=float(row[1]),high=float(row[2]),low=float(row[3]),close=float(row[4]),volume=float(row[5])))
     return out
 
 def ema(vals,p):
