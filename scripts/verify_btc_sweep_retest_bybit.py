@@ -9,6 +9,13 @@ from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 
 import requests
+import types
+
+# The donor strategy imports mt5.symbol_resolver for the SymbolMeta dataclass.
+# This verification never calls MT5; provide a module shell so the Windows-only
+# package is not required on the Linux research runner.
+if "MetaTrader5" not in sys.modules:
+    sys.modules["MetaTrader5"] = types.ModuleType("MetaTrader5")
 
 ROOT = Path(__file__).resolve().parents[1]
 DONOR = Path(os.environ.get("AG_DONOR_REPO", ROOT.parent / "AG-profit-trading-assit")).resolve()
