@@ -21,6 +21,7 @@ class Target(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
     price: float
     allocation: float = Field(gt=0, le=1)
+    move_stop_to_entry: bool = False
 
 
 class OrderIntent(BaseModel):
