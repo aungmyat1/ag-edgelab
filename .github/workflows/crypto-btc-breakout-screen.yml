@@ -1,0 +1,21 @@
+name: BTC H4-H1 breakout development screen
+on:
+  push:
+    branches: ["feat/crypto-btc-breakout-candidate"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install -e ".[dev]" requests
+      - run: python scripts/screen_crypto_btc_breakout.py --months 2026-05 2026-06 2026-07 2026-08 --out artifacts/crypto_btc_breakout_dev.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: crypto-btc-breakout-development
+          path: artifacts/crypto_btc_breakout_dev.json
+          if-no-files-found: error
