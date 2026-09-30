@@ -1,0 +1,59 @@
+name: BTC economic verification
+
+on:
+  push:
+    branches:
+      - "feat/crypto-btc-economic-verification"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-btc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout EdgeLab
+        uses: actions/checkout@v4
+        with:
+          path: edgelab
+
+      - name: Checkout frozen donor strategy code
+        uses: actions/checkout@v4
+        with:
+          repository: aungmyat1/AG-profit-trading-assit
+          ref: main
+          path: donor
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install research dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e "./edgelab[dev]"
+          python -m pip install PyYAML==6.0.3 requests==2.34.2 smartmoneyconcepts==0.0.27 python-dotenv==1.1.1 pandas==2.3.3
+
+      - name: Run frozen BTCUSDT post-registration verification
+        env:
+          AG_DONOR_REPO: ${{ github.workspace }}/donor
+        working-directory: edgelab
+        run: |
+          python scripts/verify_btc_sweep_retest_bybit.py \
+            --start 2026-09-01 \
+            --end 2026-09-25 \
+            --data-end 2026-10-01 \
+            --out artifacts/crypto_btc_verification.json
+
+      - name: Test EdgeLab
+        working-directory: edgelab
+        run: pytest
+
+      - name: Upload verification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: btc-economic-verification
+          path: edgelab/artifacts/crypto_btc_verification.json
+          if-no-files-found: error
