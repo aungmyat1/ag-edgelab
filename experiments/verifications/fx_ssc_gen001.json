@@ -20,7 +20,7 @@
     {
       "source_repository": "aungmyat1/AG-profit-trading-assit",
       "source_path": "artifacts/research/EXP_EDGE_ATTRIBUTION_V1/GEN_001/EDGE_ATTRIBUTION_REPORT.json",
-      "source_git_blob_sha": null,
+      "source_git_blob_sha": "d3e2abf6f2c6307f3ee15b0f836c9427efd17591",
       "evidence_class": "ECONOMIC",
       "description": "Canonical/control parity report: 31 trades, exact population and dataset hash match, net expectancy negative after friction."
     }
