@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import gzip
+import io
 import json
 import os
 import sys
@@ -58,59 +61,184 @@ def ms(dt: datetime) -> int:
     return int(dt.timestamp() * 1000)
 
 
+def _parse_archive_timestamp(value: str) -> datetime:
+    raw = value.strip()
+    try:
+        numeric = float(raw)
+    except ValueError:
+        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
+    if numeric > 1e14:
+        numeric /= 1_000_000.0
+    elif numeric > 1e11:
+        numeric /= 1000.0
+    return datetime.fromtimestamp(numeric, tz=timezone.utc)
+
+
+def _aggregate_1m(rows: list[Candle], minutes: int) -> list[Candle]:
+    buckets: dict[datetime, list[Candle]] = {}
+    for candle in rows:
+        minute = (candle.time.minute // minutes) * minutes if minutes < 60 else 0
+        bucket = candle.time.replace(minute=minute, second=0, microsecond=0)
+        buckets.setdefault(bucket, []).append(candle)
+    out = []
+    for ts in sorted(buckets):
+        group = sorted(buckets[ts], key=lambda x: x.time)
+        out.append(Candle(
+            time=ts,
+            open=group[0].open,
+            high=max(x.high for x in group),
+            low=min(x.low for x in group),
+            close=group[-1].close,
+            volume=sum((x.volume or 0.0) for x in group),
+        ))
+    return out
+
+
+def _archive_1m_for_day(day: date) -> list[Candle]:
+    day_s = day.isoformat()
+    urls = [
+        f"https://public.bybit.com/kline/{SYMBOL}/{day_s}/1min.csv.gz",
+        f"https://public.bybit.com/kline/{SYMBOL}/{day_s}/1.csv.gz",
+    ]
+    last_error = None
+    for url in urls:
+        try:
+            resp = requests.get(url, timeout=30)
+            if resp.status_code == 404:
+                continue
+            resp.raise_for_status()
+            text = gzip.decompress(resp.content).decode("utf-8-sig")
+            raw_rows = list(csv.reader(io.StringIO(text)))
+            if not raw_rows:
+                continue
+
+            header = [x.strip().lower() for x in raw_rows[0]]
+            has_header = any(name in header for name in ("start_at", "timestamp", "time", "datetime", "open"))
+            data_rows = raw_rows[1:] if has_header else raw_rows
+            index = {name: i for i, name in enumerate(header)} if has_header else {}
+
+            def idx(names, fallback):
+                for name in names:
+                    if name in index:
+                        return index[name]
+                return fallback
+
+            ti = idx(("start_at", "timestamp", "time", "datetime", "open_time"), 0)
+            oi = idx(("open",), 1)
+            hi = idx(("high",), 2)
+            li = idx(("low",), 3)
+            ci = idx(("close",), 4)
+            vi = idx(("volume",), 5)
+
+            candles = []
+            for row in data_rows:
+                if len(row) <= max(ti, oi, hi, li, ci):
+                    continue
+                candles.append(Candle(
+                    time=_parse_archive_timestamp(row[ti]),
+                    open=float(row[oi]),
+                    high=float(row[hi]),
+                    low=float(row[li]),
+                    close=float(row[ci]),
+                    volume=float(row[vi]) if len(row) > vi and row[vi] not in ("", None) else None,
+                ))
+            if candles:
+                return sorted(candles, key=lambda x: x.time)
+        except Exception as exc:
+            last_error = exc
+    raise RuntimeError(f"Bybit public kline archive unavailable for {day_s}: {last_error}")
+
+
+def fetch_archive_klines(interval: str, start: datetime, end: datetime) -> list[Candle]:
+    rows: list[Candle] = []
+    day = start.date()
+    while day <= end.date():
+        rows.extend(_archive_1m_for_day(day))
+        day += timedelta(days=1)
+    rows = [c for c in rows if start <= c.time <= end]
+    minutes = 5 if interval == "5" else 60 if interval == "60" else None
+    if minutes is None:
+        raise ValueError(f"unsupported archive aggregation interval {interval}")
+    return _aggregate_1m(rows, minutes)
+
+
 def fetch_klines(interval: str, start: datetime, end: datetime) -> list[Candle]:
     out: dict[int, Candle] = {}
     cursor_end = ms(end)
     start_ms = ms(start)
-    while cursor_end >= start_ms:
+    try:
+        while cursor_end >= start_ms:
+            resp = requests.get(
+                f"{API}/v5/market/kline",
+                params={"category": CATEGORY, "symbol": SYMBOL, "interval": interval,
+                        "start": start_ms, "end": cursor_end, "limit": 1000},
+                timeout=20,
+            )
+            resp.raise_for_status()
+            payload = resp.json()
+            if payload.get("retCode") != 0:
+                raise RuntimeError(f"Bybit kline error: {payload}")
+            rows = payload.get("result", {}).get("list", [])
+            if not rows:
+                break
+            oldest = None
+            for row in rows:
+                ts = int(row[0])
+                if ts < start_ms or ts > ms(end):
+                    continue
+                out[ts] = Candle(
+                    time=datetime.fromtimestamp(ts / 1000, tz=timezone.utc),
+                    open=float(row[1]), high=float(row[2]), low=float(row[3]), close=float(row[4]),
+                    volume=float(row[5]),
+                )
+                oldest = ts if oldest is None else min(oldest, ts)
+            if oldest is None or oldest <= start_ms:
+                break
+            cursor_end = oldest - 1
+        if out:
+            return [out[k] for k in sorted(out)]
+    except requests.HTTPError as exc:
+        if exc.response is None or exc.response.status_code != 403:
+            raise
+    return fetch_archive_klines(interval, start, end)
+
+
+def fetch_funding(start: datetime, end: datetime) -> tuple[list[tuple[datetime, float]], str]:
+    try:
         resp = requests.get(
-            f"{API}/v5/market/kline",
-            params={"category": CATEGORY, "symbol": SYMBOL, "interval": interval,
-                    "start": start_ms, "end": cursor_end, "limit": 1000},
+            f"{API}/v5/market/funding/history",
+            params={"category": CATEGORY, "symbol": SYMBOL, "startTime": ms(start),
+                    "endTime": ms(end), "limit": 200},
             timeout=20,
         )
         resp.raise_for_status()
         payload = resp.json()
         if payload.get("retCode") != 0:
-            raise RuntimeError(f"Bybit kline error: {payload}")
-        rows = payload.get("result", {}).get("list", [])
-        if not rows:
-            break
-        oldest = None
-        for row in rows:
-            ts = int(row[0])
-            if ts < start_ms or ts > ms(end):
-                continue
-            out[ts] = Candle(
-                time=datetime.fromtimestamp(ts / 1000, tz=timezone.utc),
-                open=float(row[1]), high=float(row[2]), low=float(row[3]), close=float(row[4]),
-                volume=float(row[5]),
-            )
-            oldest = ts if oldest is None else min(oldest, ts)
-        if oldest is None or oldest <= start_ms:
-            break
-        cursor_end = oldest - 1
-    return [out[k] for k in sorted(out)]
+            raise RuntimeError(f"Bybit funding error: {payload}")
+        rows = []
+        for item in payload.get("result", {}).get("list", []):
+            rows.append((
+                datetime.fromtimestamp(int(item["fundingRateTimestamp"]) / 1000, tz=timezone.utc),
+                abs(float(item["fundingRate"])),
+            ))
+        return sorted(rows), "BYBIT_PUBLIC_HISTORY_ABSOLUTE_COST"
+    except requests.HTTPError as exc:
+        if exc.response is None or exc.response.status_code != 403:
+            raise
 
-
-def fetch_funding(start: datetime, end: datetime) -> list[tuple[datetime, float]]:
-    resp = requests.get(
-        f"{API}/v5/market/funding/history",
-        params={"category": CATEGORY, "symbol": SYMBOL, "startTime": ms(start),
-                "endTime": ms(end), "limit": 200},
-        timeout=20,
-    )
-    resp.raise_for_status()
-    payload = resp.json()
-    if payload.get("retCode") != 0:
-        raise RuntimeError(f"Bybit funding error: {payload}")
+    # Fail-conservative fallback for geo-blocked runners: charge 5 bps at every
+    # standard 8-hour settlement crossing. This is a stress assumption, not a
+    # historical funding observation, and can only reduce measured edge.
     rows = []
-    for item in payload.get("result", {}).get("list", []):
-        rows.append((
-            datetime.fromtimestamp(int(item["fundingRateTimestamp"]) / 1000, tz=timezone.utc),
-            float(item["fundingRate"]),
-        ))
-    return sorted(rows)
+    cursor = start.replace(hour=0, minute=0, second=0, microsecond=0)
+    while cursor <= end:
+        for hour in (0, 8, 16):
+            ts = cursor.replace(hour=hour)
+            if start <= ts <= end:
+                rows.append((ts, 0.0005))
+        cursor += timedelta(days=1)
+    return rows, "FUNDING_STRESS_5BP_PER_8H_CROSSING"
 
 
 class HistoricalFeed:
@@ -186,7 +314,7 @@ def main() -> None:
 
     h1 = fetch_klines("60", acquisition_start, acquisition_end)
     m5 = fetch_klines("5", acquisition_start, acquisition_end)
-    funding = fetch_funding(acquisition_start, acquisition_end)
+    funding, funding_source = fetch_funding(acquisition_start, acquisition_end)
     if not h1 or not m5:
         raise RuntimeError("empty Bybit historical dataset")
 
@@ -280,7 +408,7 @@ def main() -> None:
         "cost_model": {
             "taker_fee_rate": TAKER_FEE_RATE,
             "slippage_ticks_per_leg": SLIPPAGE_TICKS_PER_LEG,
-            "funding": "historical Bybit public rates; absolute magnitude charged conservatively",
+            "funding": funding_source,
         },
         "closed_trades": len(closed),
         "unresolved_or_invalid": len(unresolved),
