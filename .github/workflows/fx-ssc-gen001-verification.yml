@@ -1,0 +1,39 @@
+name: FX SSC GEN001 verification
+
+on:
+  push:
+    branches:
+      - "feat/strategy-verification"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-fx:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: edgelab
+      - uses: actions/checkout@v4
+        with:
+          repository: aungmyat1/AG-profit-trading-assit
+          ref: main
+          path: donor
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -e "./edgelab[dev]"
+      - name: Recompute GEN001 economics
+        working-directory: edgelab
+        run: |
+          python scripts/verify_fx_ssc_gen001.py \
+            --ledger ../donor/artifacts/research/EXP_EXPOSURE_EFFICIENCY_V1/GEN_001/per_trade_results.csv \
+            --expected-report ../donor/artifacts/research/EXP_EDGE_ATTRIBUTION_V1/GEN_001/EDGE_ATTRIBUTION_REPORT.json \
+            --out artifacts/fx_ssc_gen001_verification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fx-ssc-gen001-verification
+          path: edgelab/artifacts/fx_ssc_gen001_verification.json
+          if-no-files-found: error
