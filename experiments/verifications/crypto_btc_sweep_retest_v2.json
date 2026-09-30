@@ -1,0 +1,36 @@
+{
+  "verification_id": "CRYPTO_BTC_SWEEP_RETEST_V2_CURRENT_EVIDENCE_V1",
+  "asset_class": "CRYPTO",
+  "strategy_id": "ST_LIQUIDITY_SWEEP_RETEST_V1",
+  "strategy_version": "2.0.0",
+  "instrument": "BTCUSDT",
+  "verdict": "INSUFFICIENT_EVIDENCE",
+  "deterministic": true,
+  "economic": null,
+  "evidence": [
+    {
+      "source_repository": "aungmyat1/AG-profit-trading-assit",
+      "source_path": "artifacts/validation_evidence/determinism/ST_LIQUIDITY_SWEEP_RETEST_V1_2.0.0_20260907T061258.198631+0000.json",
+      "source_git_blob_sha": null,
+      "evidence_class": "DETERMINISM",
+      "description": "Three cached-fixture runs produced identical full-payload digests."
+    },
+    {
+      "source_repository": "aungmyat1/AG-profit-trading-assit",
+      "source_path": "docs/status/AG_V1_0_3_BTC_OBSERVATION_CAMPAIGN_AUTHORIZATION_STATUS.md",
+      "source_git_blob_sha": null,
+      "evidence_class": "FORWARD",
+      "description": "BTC 30-valid-observation campaign was authorized but recorded as not started, 0/30 observations."
+    }
+  ],
+  "blockers": [
+    "No qualifying historical economic population is committed for BTCUSDT v2.0.0.",
+    "Forward observation evidence is 0/30 in the authoritative status record.",
+    "Cached deterministic fixture is implementation evidence, not edge evidence."
+  ],
+  "notes": {
+    "interpretation": "Strategy mechanics are deterministic, but economic edge is not yet verified.",
+    "next_required_evidence": "Frozen BTCUSDT historical discovery/holdout dataset or completed forward population with friction-aware outcomes.",
+    "authority": "Research evidence only; no Demo or Live authorization."
+  }
+}
