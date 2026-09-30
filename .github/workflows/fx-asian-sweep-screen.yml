@@ -1,0 +1,29 @@
+name: FX Asian sweep development screen
+on:
+  push:
+    branches: ["feat/fx-asian-sweep-candidate"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {path: edgelab}
+      - uses: actions/checkout@v4
+        with:
+          repository: aungmyat1/AG-profit-trading-assit
+          ref: main
+          path: donor
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install -e "./edgelab[dev]"
+      - name: Run preregistered development-only screen
+        working-directory: edgelab
+        run: python scripts/screen_fx_asian_sweep.py --m15 ../donor/data/research/ssc_fresh_dev/SSC_FRESH_DEV_GEN_002_MT5_20260801_20260914/raw/EURUSD_M15.csv --out artifacts/fx_asian_sweep_dev.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fx-asian-sweep-development
+          path: edgelab/artifacts/fx_asian_sweep_dev.json
+          if-no-files-found: error
