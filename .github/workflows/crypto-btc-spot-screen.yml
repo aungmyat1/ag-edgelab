@@ -1,0 +1,21 @@
+name: BTC spot development edge screen
+on:
+  push:
+    branches: ["feat/crypto-btc-spot-candidate"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install -e ".[dev]" requests
+      - run: python scripts/screen_crypto_btc_spot.py --month 2026-08 --out artifacts/crypto_btc_spot_dev.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: crypto-btc-spot-development
+          path: artifacts/crypto_btc_spot_dev.json
+          if-no-files-found: error
