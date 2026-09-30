@@ -1,0 +1,30 @@
+name: FX LNY development edge screen
+on:
+  push:
+    branches: ["feat/fx-lny-candidate"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {path: edgelab}
+      - uses: actions/checkout@v4
+        with:
+          repository: aungmyat1/AG-profit-trading-assit
+          ref: main
+          path: donor
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install -e "./edgelab[dev]"
+      - name: Run final preregistered FX development hypothesis
+        working-directory: edgelab
+        run: |
+          python scripts/screen_fx_lny_trend_pullback.py             --h1 ../donor/data/research/ssc_fresh_dev/SSC_FRESH_DEV_GEN_002_MT5_20260801_20260914/raw/EURUSD_H1.csv             --m15 ../donor/data/research/ssc_fresh_dev/SSC_FRESH_DEV_GEN_002_MT5_20260801_20260914/raw/EURUSD_M15.csv             --out artifacts/fx_lny_dev_screen.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fx-lny-development-screen
+          path: edgelab/artifacts/fx_lny_dev_screen.json
+          if-no-files-found: error
