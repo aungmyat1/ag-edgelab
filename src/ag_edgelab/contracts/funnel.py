@@ -25,6 +25,7 @@ class RuleResult(BaseModel):
     evaluated_at: datetime
     features: Mapping[str, Any] = Field(default_factory=dict)
     failure_reason: str | None = None
+    rejection_code: str | None = None
 
 
 class FunnelStageResult(BaseModel):
@@ -36,3 +37,4 @@ class FunnelStageResult(BaseModel):
     as_of: datetime
     rule_results: tuple[RuleResult, ...]
     failure_reason: str | None = None
+    rejection_codes: tuple[str, ...] = ()
