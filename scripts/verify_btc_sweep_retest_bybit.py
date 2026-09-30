@@ -15,7 +15,20 @@ import types
 # This verification never calls MT5; provide a module shell so the Windows-only
 # package is not required on the Linux research runner.
 if "MetaTrader5" not in sys.modules:
-    sys.modules["MetaTrader5"] = types.ModuleType("MetaTrader5")
+    mt5_stub = types.ModuleType("MetaTrader5")
+    # Import-time constants only. The verifier never calls any MT5 function.
+    for _name, _value in {
+        "TIMEFRAME_M1": 1,
+        "TIMEFRAME_M5": 5,
+        "TIMEFRAME_M15": 15,
+        "TIMEFRAME_M30": 30,
+        "TIMEFRAME_H1": 60,
+        "TIMEFRAME_H4": 240,
+        "TIMEFRAME_D1": 1440,
+        "TIMEFRAME_W1": 10080,
+    }.items():
+        setattr(mt5_stub, _name, _value)
+    sys.modules["MetaTrader5"] = mt5_stub
 
 ROOT = Path(__file__).resolve().parents[1]
 DONOR = Path(os.environ.get("AG_DONOR_REPO", ROOT.parent / "AG-profit-trading-assit")).resolve()
@@ -160,6 +173,10 @@ def main() -> None:
     ap.add_argument("--data-end", default="2026-10-01")
     ap.add_argument("--out", default="artifacts/crypto_btc_verification.json")
     args = ap.parse_args()
+    out_path = Path(args.out).resolve()
+
+    # Donor strategy/config loaders intentionally use repository-relative paths.
+    os.chdir(DONOR)
 
     start_day = date.fromisoformat(args.start)
     end_day = date.fromisoformat(args.end)
@@ -277,7 +294,7 @@ def main() -> None:
             "No strategy parameters are changed after observing this run.",
         ],
     }
-    out = Path(args.out)
+    out = out_path
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({k: payload[k] for k in ("closed_trades", "unresolved_or_invalid", "verdict")}, indent=2))
