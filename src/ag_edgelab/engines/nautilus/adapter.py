@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from importlib import import_module
-from packaging.version import Version
 
 
 class NautilusCompatibilityError(RuntimeError):
@@ -19,7 +19,6 @@ class NautilusAdapter:
     """
 
     required_major: int = 2
-
     name: str = "NAUTILUS_TRADER"
 
     def installed_version(self) -> str:
@@ -31,10 +30,13 @@ class NautilusAdapter:
 
     def assert_compatible(self) -> str:
         version = self.installed_version()
-        parsed = Version(version)
-        if parsed.major != self.required_major:
+        match = re.match(r"^(\d+)\.", version)
+        if match is None:
+            raise NautilusCompatibilityError(f"unrecognized NautilusTrader version: {version}")
+        major = int(match.group(1))
+        if major != self.required_major:
             raise NautilusCompatibilityError(
-                f"NautilusTrader major version {parsed.major} is unsupported; expected {self.required_major}.x"
+                f"NautilusTrader major version {major} is unsupported; expected {self.required_major}.x"
             )
         return version
 
