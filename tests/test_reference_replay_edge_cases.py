@@ -13,8 +13,8 @@ def bar(ts, o, h, l, c):
 def test_short_stop_order_activates_then_hits_target():
     t = datetime(2026, 1, 1, tzinfo=timezone.utc)
     rows = (
-        bar(t, 1.1000, 1.1010, 1.0990, 1.1000),
-        bar(t + timedelta(minutes=1), 1.1000, 1.1005, 1.0975, 1.0980),
+        bar(t, 1.1000, 1.1005, 1.0985, 1.0995),
+        bar(t + timedelta(minutes=1), 1.0995, 1.1005, 1.0965, 1.0970),
     )
     engine = ReferenceReplayEngine({"EURUSD": rows})
     intent = OrderIntent(
