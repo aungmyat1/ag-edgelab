@@ -5,6 +5,7 @@ import csv
 import gzip
 import io
 import json
+import re
 import os
 import sys
 from dataclasses import asdict
@@ -150,7 +151,55 @@ def _archive_1m_for_day(day: date) -> list[Candle]:
     raise RuntimeError(f"Bybit public kline archive unavailable for {day_s}: {last_error}")
 
 
+def _parse_mt4_archive_datetime(raw: str) -> datetime:
+    text = raw.strip()
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%Y.%m.%d %H:%M", "%Y.%m.%d %H:%M:%S"):
+        try:
+            return datetime.strptime(text, fmt).replace(tzinfo=timezone.utc)
+        except ValueError:
+            pass
+    return _parse_archive_timestamp(text)
+
+
+def fetch_mt4_klines(interval: str, start: datetime, end: datetime) -> list[Candle]:
+    interval_code = "5" if interval == "5" else "60" if interval == "60" else None
+    if interval_code is None:
+        raise ValueError(f"unsupported mt4 interval {interval}")
+    headers = {"User-Agent": "Mozilla/5.0"}
+    candles: list[Candle] = []
+    for year in range(start.year, end.year + 1):
+        base = f"https://public.bybit.com/kline_for_metatrader4/{SYMBOL}/{year}/"
+        listing = requests.get(base, headers=headers, timeout=30)
+        listing.raise_for_status()
+        hrefs = re.findall(r'href=["\\\']([^"\\\']+\\.csv\\.gz)["\\\']', listing.text, flags=re.I)
+        files = sorted({href for href in hrefs if f"_{interval_code}_" in href and SYMBOL in href})
+        if not files:
+            continue
+        for name in files:
+            resp = requests.get(base + name, headers=headers, timeout=60)
+            resp.raise_for_status()
+            text = gzip.decompress(resp.content).decode("utf-8-sig")
+            raw_rows = list(csv.reader(io.StringIO(text)))
+            for row in raw_rows:
+                if len(row) < 5:
+                    continue
+                try:
+                    ts = _parse_mt4_archive_datetime(row[0])
+                    open_ = float(row[1]); high = float(row[2]); low = float(row[3]); close = float(row[4])
+                    volume = float(row[5]) if len(row) > 5 and row[5] else None
+                except (ValueError, TypeError):
+                    continue
+                if start <= ts <= end:
+                    candles.append(Candle(time=ts, open=open_, high=high, low=low, close=close, volume=volume))
+    dedup = {candle.time: candle for candle in candles}
+    return [dedup[k] for k in sorted(dedup)]
+
+
 def fetch_archive_klines(interval: str, start: datetime, end: datetime) -> list[Candle]:
+    mt4 = fetch_mt4_klines(interval, start, end)
+    if mt4:
+        return mt4
+
     rows: list[Candle] = []
     day = start.date()
     while day <= end.date():
