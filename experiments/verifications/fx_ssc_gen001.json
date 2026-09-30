@@ -1,0 +1,33 @@
+{
+  "verification_id": "FX_SSC_GEN001_IMPORT_V1",
+  "asset_class": "FX",
+  "strategy_id": "ST_SESSION_SWEEP_CONTINUATION_V1",
+  "strategy_version": "1.0.1",
+  "instrument": "EURUSD",
+  "verdict": "NO_EDGE",
+  "deterministic": true,
+  "economic": {
+    "trades": 31,
+    "gross_r": 0.009297474401486275,
+    "friction_r": 5.886441025855691,
+    "net_r": -5.877143551454205,
+    "expectancy_r": -0.18958527585336146,
+    "profit_factor": 0.6094569223545339,
+    "win_rate": 0.41935483870967744,
+    "max_drawdown_r": 7.206874526534028
+  },
+  "evidence": [
+    {
+      "source_repository": "aungmyat1/AG-profit-trading-assit",
+      "source_path": "artifacts/research/EXP_EDGE_ATTRIBUTION_V1/GEN_001/EDGE_ATTRIBUTION_REPORT.json",
+      "source_git_blob_sha": null,
+      "evidence_class": "ECONOMIC",
+      "description": "Canonical/control parity report: 31 trades, exact population and dataset hash match, net expectancy negative after friction."
+    }
+  ],
+  "blockers": [],
+  "notes": {
+    "interpretation": "Known negative baseline imported to prove EdgeLab can preserve a real no-edge verdict without tuning.",
+    "authority": "Research evidence only; no Demo or Live authorization."
+  }
+}
