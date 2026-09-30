@@ -11,14 +11,14 @@
     {
       "source_repository": "aungmyat1/AG-profit-trading-assit",
       "source_path": "artifacts/validation_evidence/determinism/ST_LIQUIDITY_SWEEP_RETEST_V1_2.0.0_20260907T061258.198631+0000.json",
-      "source_git_blob_sha": null,
+      "source_git_blob_sha": "cfb71cd391a93050b0d6437c63f44713b37f9ca0",
       "evidence_class": "DETERMINISM",
       "description": "Three cached-fixture runs produced identical full-payload digests."
     },
     {
       "source_repository": "aungmyat1/AG-profit-trading-assit",
       "source_path": "docs/status/AG_V1_0_3_BTC_OBSERVATION_CAMPAIGN_AUTHORIZATION_STATUS.md",
-      "source_git_blob_sha": null,
+      "source_git_blob_sha": "3660adb106f9b1e3ba9b69f1f0f6d5081c4ea8fb",
       "evidence_class": "FORWARD",
       "description": "BTC 30-valid-observation campaign was authorized but recorded as not started, 0/30 observations."
     }
