@@ -11,11 +11,12 @@ class ReferenceReplayEngine:
     """Deterministic conservative OHLC reference replay.
 
     If a stop and target are both reachable in the same bar, stop wins because
-    OHLC data does not establish intrabar order. Friction is applied later.
+    OHLC data does not establish intrabar order. Target-triggered stop changes
+    take effect only after the target bar has been resolved.
     """
 
     name = "AG_REFERENCE_REPLAY"
-    version = "1.0.0"
+    version = "1.1.0"
 
     def __init__(self, bars: Mapping[str, tuple[MarketBar, ...]]):
         self._bars = {symbol: tuple(sorted(rows, key=lambda b: b.timestamp)) for symbol, rows in bars.items()}
@@ -29,8 +30,8 @@ class ReferenceReplayEngine:
         return bar.high >= entry if intent.side == Side.LONG else bar.low <= entry
 
     @staticmethod
-    def _stop_hit(intent: OrderIntent, bar: MarketBar) -> bool:
-        return bar.low <= intent.stop_price if intent.side == Side.LONG else bar.high >= intent.stop_price
+    def _stop_hit(side: Side, stop_price: float, bar: MarketBar) -> bool:
+        return bar.low <= stop_price if side == Side.LONG else bar.high >= stop_price
 
     @staticmethod
     def _target_hit(intent: OrderIntent, bar: MarketBar, price: float) -> bool:
@@ -80,19 +81,21 @@ class ReferenceReplayEngine:
         remaining = 1.0
         realized_r = 0.0
         hit_targets: set[int] = set()
+        active_stop = intent.stop_price
         last_bar = post_entry_bars[-1]
 
         for bar in post_entry_bars:
-            if self._stop_hit(intent, bar):
-                realized_r += remaining * self._r(intent, entry_price, intent.stop_price)
+            if self._stop_hit(intent.side, active_stop, bar):
+                realized_r += remaining * self._r(intent, entry_price, active_stop)
                 return ExecutionResult(
                     candidate_id=intent.candidate_id, instrument=intent.instrument, side=intent.side,
                     status=ExecutionStatus.CLOSED, entry_time=entry_time, entry_price=entry_price,
-                    exit_time=bar.timestamp, exit_price=intent.stop_price, exit_reason=ExitReason.STOP,
+                    exit_time=bar.timestamp, exit_price=active_stop, exit_reason=ExitReason.STOP,
                     gross_r=realized_r, remaining_allocation=0.0,
                     engine_name=self.name, engine_version=self.version,
                 )
 
+            move_to_entry = False
             for idx, target in enumerate(intent.targets):
                 if idx in hit_targets:
                     continue
@@ -100,6 +103,10 @@ class ReferenceReplayEngine:
                     realized_r += target.allocation * self._r(intent, entry_price, target.price)
                     remaining -= target.allocation
                     hit_targets.add(idx)
+                    move_to_entry = move_to_entry or target.move_stop_to_entry
+
+            if move_to_entry and remaining > 1e-12:
+                active_stop = entry_price
 
             if remaining <= 1e-12:
                 return ExecutionResult(
