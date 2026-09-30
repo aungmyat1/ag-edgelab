@@ -30,6 +30,10 @@ class CandidateRecord(BaseModel):
         return self.stage_results[-1].stage.value if self.stage_results else None
 
     @property
+    def rejection_codes(self) -> tuple[str, ...]:
+        return tuple(code for stage in self.stage_results for code in stage.rejection_codes)
+
+    @property
     def record_sha256(self) -> str:
         return sha256_json(self.model_dump(mode="json"))
 
