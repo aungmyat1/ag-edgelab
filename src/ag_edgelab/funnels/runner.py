@@ -23,13 +23,7 @@ class StageDefinition:
 
 
 class FunnelRunner:
-    def evaluate_stage(
-        self,
-        *,
-        candidate_id: str,
-        definition: StageDefinition,
-        context: EvaluationContext,
-    ) -> FunnelStageResult:
+    def evaluate_stage(self, *, candidate_id: str, definition: StageDefinition, context: EvaluationContext) -> FunnelStageResult:
         results = []
         for rule in definition.rules:
             result = rule.evaluate(context)
@@ -37,33 +31,26 @@ class FunnelRunner:
             if definition.mode == StageMode.SEQUENCE and not result.passed:
                 break
 
-        frozen_results = tuple(results)
-        if not frozen_results:
+        frozen = tuple(results)
+        if not frozen:
             passed = True
         elif definition.mode in {StageMode.ALL, StageMode.SEQUENCE}:
-            passed = all(r.passed for r in frozen_results) and len(frozen_results) == len(definition.rules)
+            passed = all(r.passed for r in frozen) and len(frozen) == len(definition.rules)
         else:
-            passed = any(r.passed for r in frozen_results)
+            passed = any(r.passed for r in frozen)
 
-        failure = None if passed else ";".join(
-            r.failure_reason or r.rule_id for r in frozen_results if not r.passed
-        )
+        failure = None if passed else ";".join(r.failure_reason or r.rule_id for r in frozen if not r.passed)
         return FunnelStageResult(
             candidate_id=candidate_id,
             stage=definition.stage,
             passed=passed,
             as_of=context.as_of,
-            rule_results=frozen_results,
+            rule_results=frozen,
             failure_reason=failure,
+            rejection_codes=tuple(r.rejection_code for r in frozen if not r.passed and r.rejection_code),
         )
 
-    def run(
-        self,
-        *,
-        candidate_id: str,
-        stages: Iterable[StageDefinition],
-        context: EvaluationContext,
-    ) -> tuple[FunnelStageResult, ...]:
+    def run(self, *, candidate_id: str, stages: Iterable[StageDefinition], context: EvaluationContext) -> tuple[FunnelStageResult, ...]:
         out: list[FunnelStageResult] = []
         for stage in stages:
             result = self.evaluate_stage(candidate_id=candidate_id, definition=stage, context=context)
