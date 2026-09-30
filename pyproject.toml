@@ -19,7 +19,7 @@ dev = [
   "hypothesis>=6.112,<7",
 ]
 nautilus = [
-  "nautilus_trader>=1.220.0",
+  "nautilus_trader>=2.0.0rc1,<3",
 ]
 
 [tool.pytest.ini_options]
