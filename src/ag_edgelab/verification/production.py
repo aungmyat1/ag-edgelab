@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import re
 from enum import StrEnum
 from types import MappingProxyType
 
@@ -83,6 +84,9 @@ def _artifact(evidence_id, verdict, gates, reasons):
     return EdgeValidationArtifact(**payload, seal_sha256=sha256_json(payload))
 
 
+_INVALID_EVIDENCE_ID = sha256_json({"invalid_evidence_id": True})
+
+
 def _resolve(store, sha, typ):
     obj = store.resolve(sha)
     if not isinstance(obj, typ):
@@ -104,9 +108,20 @@ def _trades_within(trades, start, end):
 
 def verify_edge(evidence_id: str) -> EdgeValidationArtifact:
     """Public authority: untrusted callers supply only an evidence ID."""
+    if not isinstance(evidence_id, str) or re.fullmatch(HEX64, evidence_id) is None:
+        return _artifact(
+            _INVALID_EVIDENCE_ID,
+            EdgeVerdict.INSUFFICIENT_EVIDENCE,
+            {"EVIDENCE_ID": False},
+            ("INVALID_EVIDENCE_ID",),
+        )
     if _TRUSTED_AUTHORITY is None:
         return _artifact(evidence_id, EdgeVerdict.INSUFFICIENT_EVIDENCE, {"SERVER_AUTHORITY": False}, ("SERVER_AUTHORITY",))
-    return _verify_edge(evidence_id, _TRUSTED_AUTHORITY)
+    try:
+        return _verify_edge(evidence_id, _TRUSTED_AUTHORITY)
+    except (TypeError, ValueError, OverflowError):
+        # Defensive public boundary for malformed evidence that bypassed model validation.
+        return _artifact(evidence_id, EdgeVerdict.INSUFFICIENT_EVIDENCE, {"TEMPORAL_EVIDENCE": False}, ("INVALID_EVIDENCE",))
 
 
 def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeValidationArtifact:

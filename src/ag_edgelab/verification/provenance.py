@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime
 from types import MappingProxyType
 from typing import Generic, Mapping, TypeVar
 
@@ -10,6 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 from ag_edgelab.data.fingerprint import sha256_json
 from ag_edgelab.optimization.contracts import DatasetExposure
 from ag_edgelab.verification.evidence import DatasetRecord
+from ag_edgelab.verification.time import UTCDateTime
 
 HEX64 = r"^[0-9a-f]{64}$"
 T = TypeVar("T")
@@ -46,7 +46,7 @@ class FrozenVariantRecord(BaseModel):
     parameters_sha256: str = Field(pattern=HEX64)
     claimed_regimes: tuple[str, ...]
     regime_classifier_sha256: str = Field(pattern=HEX64)
-    frozen_at: datetime
+    frozen_at: UTCDateTime
 
     @model_validator(mode="after")
     def valid(self) -> "FrozenVariantRecord":
@@ -64,7 +64,7 @@ class ExposureEvent(BaseModel):
     dataset_sha256: str = Field(pattern=HEX64)
     previous: DatasetExposure
     current: DatasetExposure
-    observed_at: datetime
+    observed_at: UTCDateTime
     previous_event_sha256: str | None = Field(default=None, pattern=HEX64)
 
     @model_validator(mode="after")

@@ -2,8 +2,8 @@ from datetime import datetime, timezone, timedelta
 import pytest
 from pydantic import ValidationError
 from ag_edgelab.optimization.contracts import DatasetExposure
-from ag_edgelab.verification.evidence import TradeOutcome, TradeListRecord, FrictionEvidenceRecord, WalkForwardFoldRecord, WalkForwardEvidenceRecord
-from ag_edgelab.verification.provenance import ContentAddressedStore, EngineRecord, EngineRegistry, ExposureEvent, ExposureLedger
+from ag_edgelab.verification.evidence import DatasetRecord, TradeOutcome, TradeListRecord, FrictionEvidenceRecord, WalkForwardFoldRecord, WalkForwardEvidenceRecord
+from ag_edgelab.verification.provenance import ContentAddressedStore, EngineRecord, EngineRegistry, ExposureEvent, ExposureLedger, FrozenVariantRecord
 
 Z = timezone.utc
 
@@ -14,6 +14,22 @@ def test_nonfinite_raw_outcome_rejected():
         TradeOutcome(trade_id="x", executed_at=now, r=float("nan"), regime="R")
     with pytest.raises(ValidationError):
         TradeOutcome(trade_id="x", executed_at=now, r=float("inf"), regime="R")
+
+
+def test_naive_authoritative_timestamps_are_rejected():
+    naive = datetime(2026, 1, 1)
+    with pytest.raises(ValidationError):
+        TradeOutcome(trade_id="x", executed_at=naive, r=1, regime="R")
+    with pytest.raises(ValidationError):
+        DatasetRecord(dataset_sha256="a" * 64, start=naive, end=naive.replace(day=2))
+    with pytest.raises(ValidationError):
+        ExposureEvent(dataset_sha256="a" * 64, previous=DatasetExposure.UNSEEN, current=DatasetExposure.DEVELOPMENT, observed_at=naive)
+    with pytest.raises(ValidationError):
+        FrozenVariantRecord(
+            strategy_id="s", strategy_version="1", strategy_sha256="a" * 64,
+            funnel_sha256="b" * 64, parameters_sha256="c" * 64,
+            claimed_regimes=("R",), regime_classifier_sha256="d" * 64, frozen_at=naive,
+        )
 
 
 def test_content_address_cannot_lie():

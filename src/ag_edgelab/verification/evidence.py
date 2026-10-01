@@ -1,11 +1,10 @@
 from __future__ import annotations
 
 import math
-from datetime import datetime
-
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from ag_edgelab.data.fingerprint import sha256_json
+from ag_edgelab.verification.time import UTCDateTime
 
 HEX64 = r"^[0-9a-f]{64}$"
 
@@ -13,8 +12,8 @@ HEX64 = r"^[0-9a-f]{64}$"
 class DatasetRecord(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
     dataset_sha256: str = Field(pattern=HEX64)
-    start: datetime
-    end: datetime
+    start: UTCDateTime
+    end: UTCDateTime
 
     @model_validator(mode="after")
     def valid_window(self) -> "DatasetRecord":
@@ -30,7 +29,7 @@ class DatasetRecord(BaseModel):
 class TradeOutcome(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
     trade_id: str = Field(min_length=1)
-    executed_at: datetime
+    executed_at: UTCDateTime
     r: float = Field(allow_inf_nan=False)
     regime: str = Field(min_length=1)
 
@@ -81,10 +80,10 @@ class FrictionEvidenceRecord(BaseModel):
 class WalkForwardFoldRecord(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
     fold_id: str = Field(min_length=1)
-    train_start: datetime
-    train_end: datetime
-    test_start: datetime
-    test_end: datetime
+    train_start: UTCDateTime
+    train_end: UTCDateTime
+    test_start: UTCDateTime
+    test_end: UTCDateTime
     trade_list_sha256: str = Field(pattern=HEX64)
 
     @model_validator(mode="after")

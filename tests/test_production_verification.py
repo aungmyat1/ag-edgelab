@@ -136,6 +136,46 @@ def test_unknown_and_fabricated_strategy_ids_fail_closed():
     assert verify_edge("f" * 64).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
 
 
+@pytest.mark.parametrize("bad_id", ["invalid", "", None, 123, "F" * 64, "a" * 63, "a" * 65, "g" * 64])
+def test_malformed_evidence_ids_fail_closed(bad_id):
+    artifact = verify_edge(bad_id)
+    assert artifact.verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+    assert artifact.verdict not in (EdgeVerdict.EDGE_VERIFIED, EdgeVerdict.NO_EDGE)
+    assert artifact.reasons == ("INVALID_EVIDENCE_ID",)
+
+
+def test_mixed_naive_aware_evidence_fails_closed_without_comparison_error():
+    b, r = fixture()
+    variant = r.variants.resolve(b.variant_sha256).model_copy(update={"frozen_at": datetime(2026, 1, 1)})
+    bad_bundle = b.model_copy(update={"variant_sha256": variant.sha256})
+    records = dict(r.evidence._records)
+    records[bad_bundle.sha256] = bad_bundle
+    rr = VerificationResolvers(
+        ContentAddressedStore.build({variant.sha256: variant}),
+        ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure,
+    )
+    use(rr)
+    assert verify_edge(bad_bundle.sha256).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_aware_non_utc_evidence_normalizes_to_utc():
+    offset = timezone(timedelta(hours=5, minutes=30))
+    dataset = DatasetRecord(
+        dataset_sha256="d" * 64,
+        start=datetime(2026, 2, 1, 5, 30, tzinfo=offset),
+        end=datetime(2026, 3, 1, 5, 30, tzinfo=offset),
+    )
+    assert dataset.start == OOS_START
+    assert dataset.end == OOS_END
+    assert dataset.start.tzinfo is timezone.utc
+
+
+def test_valid_utc_evidence_still_verifies():
+    b, r = fixture()
+    use(r)
+    assert verify_edge(b.sha256).verdict == EdgeVerdict.EDGE_VERIFIED
+
+
 def test_preregistered_regime_cannot_be_omitted():
     b, r = fixture(omit_regime=True)
     use(r)

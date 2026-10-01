@@ -1,21 +1,23 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
 from typing import Callable, Sequence
 
 from ag_edgelab.statistics.performance import compute_performance
+from ag_edgelab.verification.time import UTCDateTime, utc_datetime
 
 
 @dataclass(frozen=True)
 class ChronologicalFold:
     fold_id: str
-    train_start: datetime
-    train_end: datetime
-    test_start: datetime
-    test_end: datetime
+    train_start: UTCDateTime
+    train_end: UTCDateTime
+    test_start: UTCDateTime
+    test_end: UTCDateTime
 
     def __post_init__(self):
+        for name in ("train_start", "train_end", "test_start", "test_end"):
+            object.__setattr__(self, name, utc_datetime(getattr(self, name)))
         if not (self.train_start < self.train_end <= self.test_start < self.test_end):
             raise ValueError("fold must be chronological and non-overlapping")
 
