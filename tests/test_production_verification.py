@@ -3,7 +3,8 @@ import pytest
 from pydantic import ValidationError
 
 from ag_edgelab.optimization.contracts import DatasetExposure
-from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_IMPLEMENTATION_SHA256, REGIME_CLASSIFIER_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, MarketStateRecord, RegimeClassifierRecord, StabilityEvidenceRecord, TradeListRecord, TradeOutcome, ValidationBundleRecord, WalkForwardEvidenceRecord, WalkForwardFoldRecord
+from ag_edgelab.data.fingerprint import canonical_json
+from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_IMPLEMENTATION_SHA256, REGIME_CLASSIFIER_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, MarketStateRecord, ParameterNeighborRecord, ParameterSetRecord, PopulationDefinitionRecord, RegimeClassifierRecord, StabilityEvidenceRecord, TradeListRecord, TradeOutcome, ValidationBundleRecord, WalkForwardEvidenceRecord, WalkForwardFoldRecord
 from ag_edgelab.verification.production import CANONICAL_POLICY_V1, CANONICAL_POLICY_V1_SHA256, EdgeVerdict, POLICY_REGISTRY, _install_trusted_authority, validate_artifact, verify_edge
 from ag_edgelab.verification.provenance import ContentAddressedStore, EngineRecord, EngineRegistry, ExposureEvent, ExposureLedger, FrozenVariantRecord, VerificationResolvers
 
@@ -49,19 +50,30 @@ def trades(delta=0.0, n=80, start=OOS_START + timedelta(hours=1), cost_r=0.02, d
     return tuple(outcomes)
 
 
-def tl(engine, code, delta=0.0, n=80, dataset="d" * 64, start=OOS_START + timedelta(hours=1), cost_r=0.02, market_states=None, regime_failure=False):
+def tl(engine, code, delta=0.0, n=80, dataset="d" * 64, start=OOS_START + timedelta(hours=1), cost_r=0.02, market_states=None, regime_failure=False, parameter_set_sha256=None, population_definition_sha256=None):
     return TradeListRecord(
         dataset_sha256=dataset,
         strategy_sha256=STRAT,
         engine_id=engine,
         engine_code_sha256=code,
+        parameter_set_sha256=parameter_set_sha256,
+        population_definition_sha256=population_definition_sha256,
         trades=trades(delta, n, start, cost_r, dataset if market_states is not None else None, market_states, regime_failure),
     )
 
 
 def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=False):
-    dataset = DatasetRecord(dataset_sha256="d" * 64, start=OOS_START, end=OOS_END)
+    dataset = DatasetRecord(dataset_sha256="d" * 64, start=OOS_START, end=OOS_END, role="OOS")
     data_ref = dataset.sha256
+    development_start = datetime(2025, 12, 1, tzinfo=Z)
+    development_end = datetime(2026, 1, 20, tzinfo=Z)
+    development_dataset = DatasetRecord(
+        dataset_sha256="c" * 64, start=development_start, end=development_end, role="DEVELOPMENT"
+    )
+    development_ref = development_dataset.sha256
+    population = PopulationDefinitionRecord(
+        dataset_sha256=development_ref, start=development_start, end=development_end
+    )
     re = EngineRecord(engine_id="ref", code_sha256="1" * 64, independence_group="A")
     ie = EngineRecord(engine_id="ind", code_sha256="2" * 64, independence_group="B")
     engines = EngineRegistry.owner_approved_pair((re, ie))
@@ -70,13 +82,14 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=Fa
         classifier_id="ohlc-direction", version="1",
         implementation_sha256=REGIME_CLASSIFIER_IMPLEMENTATION_SHA256,
     )
+    center_parameters = ParameterSetRecord.create("S", "synthetic-v1", {"sensitivity": 1.2})
     variant = FrozenVariantRecord(
         strategy_id="S",
         strategy_version="1",
         strategy_sha256=STRAT,
         friction_model_sha256=friction_model.sha256,
         funnel_sha256="b" * 64,
-        parameters_sha256="c" * 64,
+        parameters_sha256=center_parameters.sha256,
         claimed_regimes=("TREND",) if omit_regime else ("TREND", "RANGE"),
         regime_classifier_sha256=classifier.sha256,
         frozen_at=datetime(2026, 1, 1, tzinfo=Z),
@@ -110,15 +123,45 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=Fa
         )
     wf = WalkForwardEvidenceRecord(folds=tuple(folds))
 
-    s_lists = []
-    neighborhoods = []
-    for i, (v, h) in enumerate(zip((1.0, 1.2, 1.4), ("9", "a", "b"))):
-        x = tl("ref", "1" * 64, d + (0, .02, .01)[i], n=40, dataset=h * 64)
-        s_lists.append(x)
-        neighborhoods.append((v, x.sha256))
-    stability = StabilityEvidenceRecord(center=1.2, neighborhoods=tuple(neighborhoods))
+    center_trade_list = tl(
+        "ref", "1" * 64, d + .02, n=40, dataset=development_ref,
+        start=development_start + timedelta(hours=1),
+        parameter_set_sha256=center_parameters.sha256,
+        population_definition_sha256=population.sha256,
+    )
+    neighbor_records = []
+    stability_parameters = []
+    stability_runs = [center_trade_list]
+    neighbor_deltas = ((1.0, d), (1.4, d + .01))
+    for i, (value, delta) in enumerate(neighbor_deltas):
+        params = ParameterSetRecord.create("S", "synthetic-v1", {"sensitivity": value})
+        stability_parameters.append(params)
+        run = tl(
+            "ref", "1" * 64, delta, n=40, dataset=development_ref,
+            start=development_start + timedelta(hours=1),
+            parameter_set_sha256=params.sha256,
+            population_definition_sha256=population.sha256,
+        )
+        stability_runs.append(run)
+        neighbor_records.append(ParameterNeighborRecord(
+            mutation_id=f"sensitivity-{i}", parameter_set_sha256=params.sha256,
+            changed_parameter="sensitivity", old_value_json="1.2",
+            new_value_json=str(value), trade_list_sha256=run.sha256,
+        ))
+    stability = StabilityEvidenceRecord(
+        base_variant_sha256=variant.sha256,
+        base_parameter_set_sha256=center_parameters.sha256,
+        development_dataset_sha256=development_ref,
+        population_definition_sha256=population.sha256,
+        engine_id="ref", engine_code_sha256="1" * 64,
+        created_at=datetime(2026, 1, 15, tzinfo=Z),
+        center_parameter_set_sha256=center_parameters.sha256,
+        center_trade_list_sha256=center_trade_list.sha256,
+        parameter_name="sensitivity", neighbors=tuple(neighbor_records),
+    )
 
-    records = [oos, ind, friction_model, classifier, *market_states, *fold_lists, *s_lists, friction, wf, stability]
+    records = [oos, ind, friction_model, classifier, *market_states, *fold_lists,
+               center_parameters, *stability_parameters, population, *stability_runs, friction, wf, stability]
     store = ContentAddressedStore.build({x.sha256: x for x in records})
     bundle = ValidationBundleRecord(
         variant_sha256=variant.sha256,
@@ -130,6 +173,12 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=Fa
         parity_independent_trade_list_sha256=ind.sha256,
     )
     store = ContentAddressedStore.build({**dict(store._records), bundle.sha256: bundle})
+    development_exposure = ExposureEvent(
+        dataset_sha256=development_ref,
+        previous=DatasetExposure.UNSEEN,
+        current=DatasetExposure.DEVELOPMENT,
+        observed_at=development_start,
+    )
     opened = ExposureEvent(
         dataset_sha256=data_ref,
         previous=DatasetExposure.UNSEEN,
@@ -139,9 +188,9 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=Fa
     resolvers = VerificationResolvers(
         ContentAddressedStore.build({variant.sha256: variant}),
         store,
-        ContentAddressedStore.build({dataset.sha256: dataset}),
+        ContentAddressedStore.build({dataset.sha256: dataset, development_dataset.sha256: development_dataset}),
         engines,
-        ExposureLedger((opened,)),
+        ExposureLedger((development_exposure, opened)),
     )
     return bundle, resolvers
 
@@ -150,11 +199,27 @@ def use(resolvers):
     _install_trusted_authority(resolvers)
 
 
+def verify_with_stability(bundle, resolvers, experiment, extra_records=(), datasets=None):
+    records = dict(resolvers.evidence._records)
+    records.update({record.sha256: record for record in extra_records})
+    records[experiment.sha256] = experiment
+    changed_bundle = bundle.model_copy(update={"stability_sha256": experiment.sha256})
+    records[changed_bundle.sha256] = changed_bundle
+    authority = VerificationResolvers(
+        resolvers.variants, ContentAddressedStore.build(records),
+        datasets or resolvers.datasets, resolvers.engines, resolvers.exposure,
+    )
+    use(authority)
+    return verify_edge(changed_bundle.sha256)
+
+
 def test_positive_raw_evidence_can_verify():
     b, r = fixture()
     use(r)
     a = verify_edge(b.sha256)
     assert a.verdict == EdgeVerdict.EDGE_VERIFIED
+    assert dict(a.gate_results)["STABILITY_COHERENCE"]
+    assert dict(a.gate_results)["PARAMETER_STABILITY"]
     assert validate_artifact(a)
 
 
@@ -478,14 +543,134 @@ def test_parity_must_cover_same_oos_population():
 def test_stability_cannot_borrow_other_strategy():
     b, r = fixture()
     stability = r.evidence.resolve(b.stability_sha256)
-    value, sha = stability.neighborhoods[0]
+    neighbor = stability.neighbors[0]
+    sha = neighbor.trade_list_sha256
     borrowed = r.evidence.resolve(sha).model_copy(update={"strategy_sha256": "f" * 64})
     records = dict(r.evidence._records)
     records[borrowed.sha256] = borrowed
-    altered = stability.model_copy(update={"neighborhoods": ((value, borrowed.sha256),) + stability.neighborhoods[1:]})
+    altered_neighbor = neighbor.model_copy(update={"trade_list_sha256": borrowed.sha256})
+    altered = stability.model_copy(update={"neighbors": (altered_neighbor,) + stability.neighbors[1:]})
     records[altered.sha256] = altered
     bad = b.model_copy(update={"stability_sha256": altered.sha256})
     records[bad.sha256] = bad
     rr = VerificationResolvers(r.variants, ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure)
     use(rr)
     assert verify_edge(bad.sha256).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_unrelated_profitable_trade_list_cannot_be_borrowed_as_neighbor():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    neighbor = experiment.neighbors[0].model_copy(update={"trade_list_sha256": b.oos_trade_list_sha256})
+    altered = experiment.model_copy(update={"neighbors": (neighbor,) + experiment.neighbors[1:]})
+    assert verify_with_stability(b, r, altered).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_stability_center_must_match_frozen_parameters():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    altered = experiment.model_copy(update={"center_parameter_set_sha256": experiment.neighbors[0].parameter_set_sha256})
+    assert verify_with_stability(b, r, altered).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_fake_mutation_with_undeclared_parameter_difference_fails_closed():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    neighbor = experiment.neighbors[0]
+    original_params = r.evidence.resolve(neighbor.parameter_set_sha256)
+    fake_params = ParameterSetRecord.create(
+        "S", "synthetic-v1", {"sensitivity": 1.0, "undeclared": 7}
+    )
+    original_run = r.evidence.resolve(neighbor.trade_list_sha256)
+    fake_run = original_run.model_copy(update={"parameter_set_sha256": fake_params.sha256})
+    fake_neighbor = neighbor.model_copy(update={
+        "parameter_set_sha256": fake_params.sha256,
+        "trade_list_sha256": fake_run.sha256,
+    })
+    altered = experiment.model_copy(update={"neighbors": (fake_neighbor,) + experiment.neighbors[1:]})
+    result = verify_with_stability(b, r, altered, (fake_params, fake_run))
+    assert original_params.parameters == {"sensitivity": 1.0}
+    assert result.verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_neighbor_from_wrong_strategy_family_fails_closed():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    neighbor = experiment.neighbors[0]
+    params = ParameterSetRecord.create("OTHER", "synthetic-v1", {"sensitivity": 1.0})
+    run = r.evidence.resolve(neighbor.trade_list_sha256).model_copy(update={"parameter_set_sha256": params.sha256})
+    altered_neighbor = neighbor.model_copy(update={"parameter_set_sha256": params.sha256, "trade_list_sha256": run.sha256})
+    altered = experiment.model_copy(update={"neighbors": (altered_neighbor,) + experiment.neighbors[1:]})
+    assert verify_with_stability(b, r, altered, (params, run)).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_population_substitution_fails_closed():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    population = r.evidence.resolve(experiment.population_definition_sha256)
+    altered_population = PopulationDefinitionRecord(
+        dataset_sha256=population.dataset_sha256,
+        start=population.start + timedelta(days=1), end=population.end,
+    )
+    altered = experiment.model_copy(update={"population_definition_sha256": altered_population.sha256})
+    assert verify_with_stability(b, r, altered, (altered_population,)).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_non_development_dataset_fails_closed():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    original = r.datasets.resolve(experiment.development_dataset_sha256)
+    validation = DatasetRecord(
+        dataset_sha256=original.dataset_sha256, start=original.start,
+        end=original.end, role="VALIDATION",
+    )
+    altered = experiment.model_copy(update={"development_dataset_sha256": validation.sha256})
+    datasets = ContentAddressedStore.build({**dict(r.datasets._records), validation.sha256: validation})
+    exposure_event = ExposureEvent(
+        dataset_sha256=validation.sha256, previous=DatasetExposure.UNSEEN,
+        current=DatasetExposure.OBSERVED_VALIDATION, observed_at=original.start,
+    )
+    rr = VerificationResolvers(r.variants, r.evidence, datasets, r.engines, ExposureLedger(r.exposure.events + (exposure_event,)))
+    assert verify_with_stability(b, rr, altered).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_approved_alternate_engine_cannot_be_substituted_for_stability_runs():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    altered = experiment.model_copy(update={"engine_id": "ind", "engine_code_sha256": "2" * 64})
+    assert verify_with_stability(b, r, altered).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_stability_experiment_after_holdout_open_fails_closed():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    altered = experiment.model_copy(update={"created_at": OOS_START + timedelta(days=1)})
+    assert verify_with_stability(b, r, altered).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_authoritative_but_unstable_parameter_neighborhood_returns_no_edge():
+    b, r = fixture()
+    experiment = r.evidence.resolve(b.stability_sha256)
+    center_params = r.evidence.resolve(experiment.center_parameter_set_sha256)
+    dev_start = r.datasets.resolve(experiment.development_dataset_sha256).start
+    center = tl(
+        "ref", "1" * 64, .99, n=40, dataset=experiment.development_dataset_sha256,
+        start=dev_start + timedelta(hours=1), parameter_set_sha256=center_params.sha256,
+        population_definition_sha256=experiment.population_definition_sha256,
+    )
+    neighbors = []
+    runs = [center]
+    for record, delta in zip(experiment.neighbors, (-.75, .01)):
+        run = tl(
+            "ref", "1" * 64, delta, n=40, dataset=experiment.development_dataset_sha256,
+            start=dev_start + timedelta(hours=1), parameter_set_sha256=record.parameter_set_sha256,
+            population_definition_sha256=experiment.population_definition_sha256,
+        )
+        runs.append(run)
+        neighbors.append(record.model_copy(update={"trade_list_sha256": run.sha256}))
+    altered = experiment.model_copy(update={"center_trade_list_sha256": center.sha256, "neighbors": tuple(neighbors)})
+    result = verify_with_stability(b, r, altered, tuple(runs))
+    gates = dict(result.gate_results)
+    assert gates["STABILITY_COHERENCE"] is True
+    assert gates["PARAMETER_STABILITY"] is False
+    assert result.verdict == EdgeVerdict.NO_EDGE

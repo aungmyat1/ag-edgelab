@@ -7,12 +7,14 @@ from types import MappingProxyType
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from ag_edgelab.data.fingerprint import sha256_json
+from ag_edgelab.contracts.dataset import DatasetRole
+from ag_edgelab.data.fingerprint import canonical_json, sha256_json
 from ag_edgelab.friction.model import apply_normalized_r_stress
+from ag_edgelab.optimization.contracts import DatasetExposure
 from ag_edgelab.optimization.stability import assess_parameter_stability
 from ag_edgelab.statistics.bootstrap import bootstrap_expectancy_ci
 from ag_edgelab.statistics.performance import compute_performance
-from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_FORMULA, FRICTION_IMPLEMENTATION_SHA256, REGIME_CLASSIFIER_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, MarketStateRecord, RegimeClassifierRecord, StabilityEvidenceRecord, TradeListRecord, ValidationBundleRecord, WalkForwardEvidenceRecord
+from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_FORMULA, FRICTION_IMPLEMENTATION_SHA256, REGIME_CLASSIFIER_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, MarketStateRecord, ParameterSetRecord, PopulationDefinitionRecord, RegimeClassifierRecord, StabilityEvidenceRecord, TradeListRecord, ValidationBundleRecord, WalkForwardEvidenceRecord
 from ag_edgelab.verification.provenance import FrozenVariantRecord, UnknownProvenanceError, VerificationResolvers
 from ag_edgelab.verification.regimes import classify_market_state
 
@@ -106,6 +108,103 @@ def _same_population(a: TradeListRecord, b: TradeListRecord):
 
 def _trades_within(trades, start, end):
     return all(start <= t.executed_at < end for t in trades)
+
+
+def _stability_provenance(resolvers, bundle, variant, experiment, holdout_open):
+    """Resolve and validate every center/neighbor run before computing stability."""
+    try:
+        center_params = _resolve(resolvers.evidence, variant.parameters_sha256, ParameterSetRecord)
+        base_params = _resolve(resolvers.evidence, experiment.base_parameter_set_sha256, ParameterSetRecord)
+        center_param_record = _resolve(resolvers.evidence, experiment.center_parameter_set_sha256, ParameterSetRecord)
+        population = _resolve(resolvers.evidence, experiment.population_definition_sha256, PopulationDefinitionRecord)
+        dataset = _resolve(resolvers.datasets, experiment.development_dataset_sha256, DatasetRecord)
+        center_trades = _resolve(resolvers.evidence, experiment.center_trade_list_sha256, TradeListRecord)
+        engine = resolvers.engines.resolve(experiment.engine_id)
+        exposure = resolvers.exposure.state(experiment.development_dataset_sha256)
+    except (UnknownProvenanceError, ValueError, TypeError):
+        return False, None
+
+    coherent = (
+        experiment.base_variant_sha256 == bundle.variant_sha256
+        and experiment.base_parameter_set_sha256 == variant.parameters_sha256
+        and experiment.center_parameter_set_sha256 == variant.parameters_sha256
+        and center_params.sha256 == base_params.sha256 == center_param_record.sha256
+        and center_params.strategy_family_id == variant.strategy_id
+        and center_params.parameter_schema_version == base_params.parameter_schema_version == center_param_record.parameter_schema_version
+        and center_params.parameters == base_params.parameters == center_param_record.parameters
+        and population.dataset_sha256 == experiment.development_dataset_sha256
+        and population.start == dataset.start and population.end == dataset.end
+        and dataset.role == DatasetRole.DEVELOPMENT
+        and exposure == DatasetExposure.DEVELOPMENT
+        and variant.frozen_at <= experiment.created_at < holdout_open.observed_at
+        and engine.owner_approved
+        and engine.code_sha256 == experiment.engine_code_sha256
+        and center_trades.dataset_sha256 == experiment.development_dataset_sha256
+        and center_trades.parameter_set_sha256 == variant.parameters_sha256
+        and center_trades.population_definition_sha256 == experiment.population_definition_sha256
+        and center_trades.strategy_sha256 == variant.strategy_sha256
+        and center_trades.engine_id == experiment.engine_id
+        and center_trades.engine_code_sha256 == experiment.engine_code_sha256
+        and _trades_within(center_trades.trades, population.start, population.end)
+    )
+    if not coherent:
+        return False, None
+
+    center_values = center_params.parameters
+    if experiment.parameter_name not in center_values:
+        return False, None
+    center_value = center_values[experiment.parameter_name]
+    if isinstance(center_value, bool) or not isinstance(center_value, (int, float)) or not math.isfinite(center_value):
+        return False, None
+    neighborhood = {float(center_value): compute_performance(center_trades.rs).expectancy_r}
+    used_param_sets = {center_params.sha256}
+    used_trade_lists = {center_trades.sha256}
+
+    for neighbor in experiment.neighbors:
+        try:
+            params = _resolve(resolvers.evidence, neighbor.parameter_set_sha256, ParameterSetRecord)
+            trade_list = _resolve(resolvers.evidence, neighbor.trade_list_sha256, TradeListRecord)
+        except (UnknownProvenanceError, ValueError, TypeError):
+            return False, None
+        if params.sha256 in used_param_sets or trade_list.sha256 in used_trade_lists:
+            return False, None
+        used_param_sets.add(params.sha256)
+        used_trade_lists.add(trade_list.sha256)
+        values = params.parameters
+        changed = [key for key in set(center_values) | set(values)
+                   if key not in center_values or key not in values
+                   or canonical_json(center_values[key]) != canonical_json(values[key])]
+        if (
+            len(changed) != 1 or changed[0] != experiment.parameter_name
+            or neighbor.changed_parameter != changed[0]
+            or params.strategy_family_id != center_params.strategy_family_id
+            or params.parameter_schema_version != center_params.parameter_schema_version
+            or neighbor.old_value_json != canonical_json(center_values[changed[0]])
+            or neighbor.new_value_json != canonical_json(values[changed[0]])
+            or neighbor.old_value_json == neighbor.new_value_json
+            or trade_list.dataset_sha256 != experiment.development_dataset_sha256
+            or trade_list.parameter_set_sha256 != params.sha256
+            or trade_list.population_definition_sha256 != experiment.population_definition_sha256
+            or trade_list.strategy_sha256 != variant.strategy_sha256
+            or trade_list.engine_id != experiment.engine_id
+            or trade_list.engine_code_sha256 != experiment.engine_code_sha256
+            or not _trades_within(trade_list.trades, population.start, population.end)
+            or not _same_population(center_trades, trade_list)
+        ):
+            return False, None
+        value = values[experiment.parameter_name]
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+            return False, None
+        numeric_value = float(value)
+        if numeric_value in neighborhood:
+            return False, None
+        neighborhood[numeric_value] = compute_performance(trade_list.rs).expectancy_r
+
+    try:
+        result = assess_parameter_stability(neighborhood, float(center_value))
+    except (ValueError, TypeError):
+        return False, None
+    return True, result
 
 
 def verify_edge(evidence_id: str) -> EdgeValidationArtifact:
@@ -246,21 +345,9 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeVali
         wf_metrics.append(compute_performance(tl.rs))
     gates["WALK_FORWARD_COHERENCE"] = bool(wf_coherent)
 
-    neighborhood = {}
-    stability_coherent = True
-    for value, sha in stability.neighborhoods:
-        try:
-            tl = _resolve(resolvers.evidence, sha, TradeListRecord)
-        except UnknownProvenanceError:
-            stability_coherent = False
-            continue
-        stability_coherent &= tl.strategy_sha256 == variant.strategy_sha256
-        neighborhood[value] = compute_performance(tl.rs).expectancy_r
-    try:
-        stability_result = assess_parameter_stability(neighborhood, stability.center)
-    except (ValueError, TypeError):
-        stability_coherent = False
-        stability_result = None
+    stability_coherent, stability_result = _stability_provenance(
+        resolvers, bundle, variant, stability, open_event
+    )
     gates["STABILITY_COHERENCE"] = bool(stability_coherent)
 
     parity_coherent = (

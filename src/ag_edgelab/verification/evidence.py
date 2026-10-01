@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import json
 import math
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from ag_edgelab.data.fingerprint import sha256_json
+from ag_edgelab.contracts.dataset import DatasetRole
+from ag_edgelab.data.fingerprint import canonical_json, sha256_json
 from ag_edgelab.friction.model import normalized_r_stress_implementation_sha256
 from ag_edgelab.verification.regimes import regime_classifier_implementation_sha256
 from ag_edgelab.verification.time import UTCDateTime
@@ -16,6 +18,7 @@ class DatasetRecord(BaseModel):
     dataset_sha256: str = Field(pattern=HEX64)
     start: UTCDateTime
     end: UTCDateTime
+    role: DatasetRole | None = None
 
     @model_validator(mode="after")
     def valid_window(self) -> "DatasetRecord":
@@ -57,6 +60,8 @@ class TradeListRecord(BaseModel):
     strategy_sha256: str = Field(pattern=HEX64)
     engine_id: str = Field(min_length=1)
     engine_code_sha256: str = Field(pattern=HEX64)
+    parameter_set_sha256: str | None = Field(default=None, pattern=HEX64)
+    population_definition_sha256: str | None = Field(default=None, pattern=HEX64)
     trades: tuple[TradeOutcome, ...]
 
     @model_validator(mode="after")
@@ -189,21 +194,86 @@ class WalkForwardEvidenceRecord(BaseModel):
 
 class StabilityEvidenceRecord(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
-    center: float = Field(allow_inf_nan=False)
-    neighborhoods: tuple[tuple[float, str], ...]
+    base_variant_sha256: str = Field(pattern=HEX64)
+    base_parameter_set_sha256: str = Field(pattern=HEX64)
+    development_dataset_sha256: str = Field(pattern=HEX64)
+    population_definition_sha256: str = Field(pattern=HEX64)
+    engine_id: str = Field(min_length=1)
+    engine_code_sha256: str = Field(pattern=HEX64)
+    created_at: UTCDateTime
+    center_parameter_set_sha256: str = Field(pattern=HEX64)
+    center_trade_list_sha256: str = Field(pattern=HEX64)
+    parameter_name: str = Field(min_length=1)
+    neighbors: tuple["ParameterNeighborRecord", ...]
+
+    @property
+    def sha256(self) -> str:
+        return sha256_json(self.model_dump(mode="python"))
+
+
+class ParameterSetRecord(BaseModel):
+    """Immutable canonical JSON parameter map for one strategy family/schema."""
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    strategy_family_id: str = Field(min_length=1)
+    parameter_schema_version: str = Field(min_length=1)
+    parameters_json: str = Field(min_length=2)
 
     @model_validator(mode="after")
-    def valid(self) -> "StabilityEvidenceRecord":
-        values = [v for v, _ in self.neighborhoods]
-        if any(not math.isfinite(v) for v in values) or len(values) != len(set(values)):
-            raise ValueError("invalid stability neighborhood")
-        if self.center not in values:
-            raise ValueError("stability center must be present")
+    def canonical_parameter_object(self) -> "ParameterSetRecord":
+        value = json.loads(self.parameters_json)
+        if not isinstance(value, dict) or not value or canonical_json(value) != self.parameters_json:
+            raise ValueError("parameters_json must be a non-empty canonical JSON object")
+        return self
+
+    @classmethod
+    def create(cls, strategy_family_id: str, parameter_schema_version: str, parameters: dict) -> "ParameterSetRecord":
+        return cls(
+            strategy_family_id=strategy_family_id,
+            parameter_schema_version=parameter_schema_version,
+            parameters_json=canonical_json(parameters),
+        )
+
+    @property
+    def parameters(self) -> dict:
+        return json.loads(self.parameters_json)
+
+    @property
+    def sha256(self) -> str:
+        return sha256_json(self.model_dump(mode="python"))
+
+
+class PopulationDefinitionRecord(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    dataset_sha256: str = Field(pattern=HEX64)
+    start: UTCDateTime
+    end: UTCDateTime
+
+    @model_validator(mode="after")
+    def valid_window(self) -> "PopulationDefinitionRecord":
+        if not self.start < self.end:
+            raise ValueError("population window must be increasing")
         return self
 
     @property
     def sha256(self) -> str:
         return sha256_json(self.model_dump(mode="python"))
+
+
+class ParameterNeighborRecord(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    mutation_id: str = Field(min_length=1)
+    parameter_set_sha256: str = Field(pattern=HEX64)
+    changed_parameter: str = Field(min_length=1)
+    old_value_json: str
+    new_value_json: str
+    trade_list_sha256: str = Field(pattern=HEX64)
+
+    @property
+    def sha256(self) -> str:
+        return sha256_json(self.model_dump(mode="python"))
+
+
+StabilityEvidenceRecord.model_rebuild()
 
 
 class ValidationBundleRecord(BaseModel):
