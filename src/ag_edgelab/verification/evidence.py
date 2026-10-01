@@ -4,6 +4,7 @@ import math
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from ag_edgelab.data.fingerprint import sha256_json
+from ag_edgelab.friction.model import normalized_r_stress_implementation_sha256
 from ag_edgelab.verification.time import UTCDateTime
 
 HEX64 = r"^[0-9a-f]{64}$"
@@ -32,6 +33,19 @@ class TradeOutcome(BaseModel):
     executed_at: UTCDateTime
     r: float = Field(allow_inf_nan=False)
     regime: str = Field(min_length=1)
+    gross_r: float | None = Field(default=None, allow_inf_nan=False)
+    spread_cost_r: float | None = Field(default=None, allow_inf_nan=False, ge=0)
+    commission_cost_r: float | None = Field(default=None, allow_inf_nan=False, ge=0)
+    slippage_cost_r: float | None = Field(default=None, allow_inf_nan=False, ge=0)
+    funding_cost_r: float | None = Field(default=None, allow_inf_nan=False, ge=0)
+
+    @model_validator(mode="after")
+    def baseline_cost_consistent(self) -> "TradeOutcome":
+        costs = (self.spread_cost_r, self.commission_cost_r, self.slippage_cost_r, self.funding_cost_r)
+        if self.gross_r is not None and all(cost is not None for cost in costs):
+            if not math.isclose(self.gross_r - sum(costs), self.r, rel_tol=0.0, abs_tol=1e-12):
+                raise ValueError("net R must equal gross R less baseline friction costs")
+        return self
 
 
 class TradeListRecord(BaseModel):
@@ -61,13 +75,35 @@ class TradeListRecord(BaseModel):
         return tuple(t.r for t in self.trades)
 
 
+FRICTION_FORMULA = "baseline_net_r - (multiplier - 1) * sum(normalized_cost_components_r)"
+FRICTION_IMPLEMENTATION_SHA256 = normalized_r_stress_implementation_sha256()
+
+
+class FrictionModelRecord(BaseModel):
+    """Frozen normalized-R cost semantics used to derive stressed net outcomes."""
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    model_id: str = Field(min_length=1)
+    version: str = Field(min_length=1)
+    implementation_sha256: str = Field(pattern=HEX64)
+    cost_unit: str = "R"
+    cost_components: tuple[str, ...] = ("spread", "commission", "slippage", "funding")
+    baseline_semantics: str = "r_is_gross_less_all_baseline_costs"
+    stress_formula: str = FRICTION_FORMULA
+
+    @property
+    def sha256(self) -> str:
+        return sha256_json(self.model_dump(mode="python"))
+
+
 class FrictionEvidenceRecord(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
-    points: tuple[tuple[float, str], ...]
+    baseline_trade_list_sha256: str = Field(pattern=HEX64)
+    model_sha256: str = Field(pattern=HEX64)
+    multipliers: tuple[float, ...]
 
     @model_validator(mode="after")
     def valid(self) -> "FrictionEvidenceRecord":
-        ms = [m for m, _ in self.points]
+        ms = list(self.multipliers)
         if any(not math.isfinite(m) or m < 1.0 for m in ms) or len(ms) != len(set(ms)):
             raise ValueError("invalid friction grid")
         return self

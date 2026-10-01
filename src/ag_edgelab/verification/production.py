@@ -8,10 +8,11 @@ from types import MappingProxyType
 from pydantic import BaseModel, ConfigDict, Field
 
 from ag_edgelab.data.fingerprint import sha256_json
+from ag_edgelab.friction.model import apply_normalized_r_stress
 from ag_edgelab.optimization.stability import assess_parameter_stability
 from ag_edgelab.statistics.bootstrap import bootstrap_expectancy_ci
 from ag_edgelab.statistics.performance import compute_performance
-from ag_edgelab.verification.evidence import DatasetRecord, FrictionEvidenceRecord, StabilityEvidenceRecord, TradeListRecord, ValidationBundleRecord, WalkForwardEvidenceRecord
+from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_FORMULA, FRICTION_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, StabilityEvidenceRecord, TradeListRecord, ValidationBundleRecord, WalkForwardEvidenceRecord
 from ag_edgelab.verification.provenance import FrozenVariantRecord, UnknownProvenanceError, VerificationResolvers
 
 HEX64 = r"^[0-9a-f]{64}$"
@@ -134,6 +135,7 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeVali
         oos = _resolve(resolvers.evidence, bundle.oos_trade_list_sha256, TradeListRecord)
         dataset = _resolve(resolvers.datasets, oos.dataset_sha256, DatasetRecord)
         friction = _resolve(resolvers.evidence, bundle.friction_sha256, FrictionEvidenceRecord)
+        friction_model = _resolve(resolvers.evidence, variant.friction_model_sha256, FrictionModelRecord)
         wf = _resolve(resolvers.evidence, bundle.walk_forward_sha256, WalkForwardEvidenceRecord)
         stability = _resolve(resolvers.evidence, bundle.stability_sha256, StabilityEvidenceRecord)
         pref = _resolve(resolvers.evidence, bundle.parity_reference_trade_list_sha256, TradeListRecord)
@@ -166,25 +168,39 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeVali
         m.trades >= CANONICAL_POLICY_V1.min_regime_sample for m in regime_metrics.values()
     )
 
-    fpoints = {}
-    friction_coherent = tuple(m for m, _ in friction.points) == CANONICAL_POLICY_V1.required_friction_multipliers
-    for mult, sha in friction.points:
-        try:
-            tl = _resolve(resolvers.evidence, sha, TradeListRecord)
-        except UnknownProvenanceError:
-            friction_coherent = False
-            continue
-        friction_coherent &= (
-            _same_identity(oos, tl)
-            and _same_population(oos, tl)
-            and tl.engine_id == oos.engine_id
-            and tl.engine_code_sha256 == oos.engine_code_sha256
-        )
-        fpoints[mult] = compute_performance(tl.rs)
-    friction_coherent &= (
-        1.0 in fpoints
-        and tuple(_resolve(resolvers.evidence, dict(friction.points)[1.0], TradeListRecord).rs) == tuple(oos.rs)
+    friction_coherent = (
+        friction.baseline_trade_list_sha256 == oos.sha256
+        and friction.model_sha256 == variant.friction_model_sha256
+        and friction.multipliers == CANONICAL_POLICY_V1.required_friction_multipliers
+        and friction_model.model_id == "normalized-r"
+        and friction_model.version == "1"
+        and friction_model.implementation_sha256 == FRICTION_IMPLEMENTATION_SHA256
+        and friction_model.cost_unit == "R"
+        and friction_model.cost_components == ("spread", "commission", "slippage", "funding")
+        and friction_model.baseline_semantics == "r_is_gross_less_all_baseline_costs"
+        and friction_model.stress_formula == FRICTION_FORMULA
     )
+    friction_costs = []
+    for trade in oos.trades:
+        costs = (trade.spread_cost_r, trade.commission_cost_r, trade.slippage_cost_r, trade.funding_cost_r)
+        if trade.gross_r is None or any(c is None or not math.isfinite(c) or c < 0 for c in costs):
+            friction_coherent = False
+            friction_costs.append(None)
+            continue
+        total_cost = sum(costs)
+        if not math.isfinite(trade.gross_r) or not math.isfinite(total_cost) or not math.isclose(
+            trade.gross_r - total_cost, trade.r, rel_tol=0.0, abs_tol=1e-12
+        ):
+            friction_coherent = False
+        friction_costs.append(total_cost)
+    fpoints = {}
+    if all(cost is not None for cost in friction_costs):
+        for mult in friction.multipliers:
+            stressed_rs = tuple(apply_normalized_r_stress(t.r, cost, mult) for t, cost in zip(oos.trades, friction_costs))
+            if any(not math.isfinite(value) for value in stressed_rs):
+                friction_coherent = False
+            else:
+                fpoints[mult] = compute_performance(stressed_rs)
     gates["FRICTION_COHERENCE"] = bool(friction_coherent)
 
     wf_metrics = []

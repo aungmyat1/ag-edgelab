@@ -2,7 +2,7 @@ from datetime import datetime, timezone, timedelta
 import pytest
 from pydantic import ValidationError
 from ag_edgelab.optimization.contracts import DatasetExposure
-from ag_edgelab.verification.evidence import DatasetRecord, TradeOutcome, TradeListRecord, FrictionEvidenceRecord, WalkForwardFoldRecord, WalkForwardEvidenceRecord
+from ag_edgelab.verification.evidence import DatasetRecord, FrictionModelRecord, FRICTION_IMPLEMENTATION_SHA256, TradeOutcome, TradeListRecord, FrictionEvidenceRecord, WalkForwardFoldRecord, WalkForwardEvidenceRecord
 from ag_edgelab.verification.provenance import ContentAddressedStore, EngineRecord, EngineRegistry, ExposureEvent, ExposureLedger, FrozenVariantRecord
 
 Z = timezone.utc
@@ -27,6 +27,7 @@ def test_naive_authoritative_timestamps_are_rejected():
     with pytest.raises(ValidationError):
         FrozenVariantRecord(
             strategy_id="s", strategy_version="1", strategy_sha256="a" * 64,
+            friction_model_sha256=FrictionModelRecord(model_id="normalized-r", version="1", implementation_sha256=FRICTION_IMPLEMENTATION_SHA256).sha256,
             funnel_sha256="b" * 64, parameters_sha256="c" * 64,
             claimed_regimes=("R",), regime_classifier_sha256="d" * 64, frozen_at=naive,
         )
@@ -55,9 +56,9 @@ def test_duplicate_trade_ids_rejected():
 
 def test_duplicate_or_invalid_friction_grid_rejected():
     with pytest.raises(ValidationError):
-        FrictionEvidenceRecord(points=((1.0, "a" * 64), (1.0, "b" * 64)))
+        FrictionEvidenceRecord(baseline_trade_list_sha256="a" * 64, model_sha256="b" * 64, multipliers=(1.0, 1.0))
     with pytest.raises(ValidationError):
-        FrictionEvidenceRecord(points=((float("inf"), "a" * 64),))
+        FrictionEvidenceRecord(baseline_trade_list_sha256="a" * 64, model_sha256="b" * 64, multipliers=(float("inf"),))
 
 
 def test_walk_forward_overlap_and_reverse_rejected():

@@ -42,6 +42,7 @@ class FrozenVariantRecord(BaseModel):
     strategy_id: str = Field(min_length=1)
     strategy_version: str = Field(min_length=1)
     strategy_sha256: str = Field(pattern=HEX64)
+    friction_model_sha256: str = Field(pattern=HEX64)
     funnel_sha256: str = Field(pattern=HEX64)
     parameters_sha256: str = Field(pattern=HEX64)
     claimed_regimes: tuple[str, ...]

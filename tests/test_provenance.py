@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 import pytest
 
 from ag_edgelab.optimization.contracts import DatasetExposure
+from ag_edgelab.verification.evidence import FrictionModelRecord, FRICTION_IMPLEMENTATION_SHA256
 from ag_edgelab.verification.provenance import (
     ContentAddressedStore, EngineRecord, ExposureEvent, ExposureLedger,
     FrozenVariantRecord, UnknownProvenanceError,
@@ -16,8 +17,10 @@ def test_unknown_content_hash_fails_closed():
 
 
 def test_frozen_variant_binds_preregistered_regimes():
+    friction_model = FrictionModelRecord(model_id="normalized-r", version="1", implementation_sha256=FRICTION_IMPLEMENTATION_SHA256)
     record = FrozenVariantRecord(
         strategy_id="S", strategy_version="1", strategy_sha256="a"*64,
+        friction_model_sha256=friction_model.sha256,
         funnel_sha256="b"*64, parameters_sha256="c"*64,
         claimed_regimes=("TREND", "RANGE"), regime_classifier_sha256="d"*64,
         frozen_at=datetime(2026, 1, 1, tzinfo=timezone.utc),

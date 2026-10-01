@@ -1,8 +1,9 @@
 from datetime import datetime, timezone, timedelta
 import pytest
+from pydantic import ValidationError
 
 from ag_edgelab.optimization.contracts import DatasetExposure
-from ag_edgelab.verification.evidence import DatasetRecord, FrictionEvidenceRecord, StabilityEvidenceRecord, TradeListRecord, TradeOutcome, ValidationBundleRecord, WalkForwardEvidenceRecord, WalkForwardFoldRecord
+from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, StabilityEvidenceRecord, TradeListRecord, TradeOutcome, ValidationBundleRecord, WalkForwardEvidenceRecord, WalkForwardFoldRecord
 from ag_edgelab.verification.production import CANONICAL_POLICY_V1, CANONICAL_POLICY_V1_SHA256, EdgeVerdict, POLICY_REGISTRY, _install_trusted_authority, validate_artifact, verify_edge
 from ag_edgelab.verification.provenance import ContentAddressedStore, EngineRecord, EngineRegistry, ExposureEvent, ExposureLedger, FrozenVariantRecord, VerificationResolvers
 
@@ -12,38 +13,45 @@ OOS_START = datetime(2026, 2, 1, tzinfo=Z)
 OOS_END = datetime(2026, 3, 1, tzinfo=Z)
 
 
-def trades(delta=0.0, n=80, start=OOS_START + timedelta(hours=1)):
+def trades(delta=0.0, n=80, start=OOS_START + timedelta(hours=1), cost_r=0.02):
     return tuple(
         TradeOutcome(
             trade_id=f"t{i}",
             executed_at=start + timedelta(minutes=i),
             r=(.5 if i % 4 else -.5) + delta,
             regime="TREND" if i < n // 2 else "RANGE",
+            gross_r=((.5 if i % 4 else -.5) + delta) + cost_r,
+            spread_cost_r=cost_r,
+            commission_cost_r=0.0,
+            slippage_cost_r=0.0,
+            funding_cost_r=0.0,
         )
         for i in range(n)
     )
 
 
-def tl(engine, code, delta=0.0, n=80, dataset="d" * 64, start=OOS_START + timedelta(hours=1)):
+def tl(engine, code, delta=0.0, n=80, dataset="d" * 64, start=OOS_START + timedelta(hours=1), cost_r=0.02):
     return TradeListRecord(
         dataset_sha256=dataset,
         strategy_sha256=STRAT,
         engine_id=engine,
         engine_code_sha256=code,
-        trades=trades(delta, n, start),
+        trades=trades(delta, n, start, cost_r),
     )
 
 
-def fixture(*, negative=False, omit_regime=False):
+def fixture(*, negative=False, omit_regime=False, cost_r=0.02):
     dataset = DatasetRecord(dataset_sha256="d" * 64, start=OOS_START, end=OOS_END)
     data_ref = dataset.sha256
     re = EngineRecord(engine_id="ref", code_sha256="1" * 64, independence_group="A")
     ie = EngineRecord(engine_id="ind", code_sha256="2" * 64, independence_group="B")
     engines = EngineRegistry.owner_approved_pair((re, ie))
+    friction_model = FrictionModelRecord(model_id="normalized-r", version="1", implementation_sha256=FRICTION_IMPLEMENTATION_SHA256)
     variant = FrozenVariantRecord(
         strategy_id="S",
         strategy_version="1",
         strategy_sha256=STRAT,
+        friction_model_sha256=friction_model.sha256,
         funnel_sha256="b" * 64,
         parameters_sha256="c" * 64,
         claimed_regimes=("TREND",) if omit_regime else ("TREND", "RANGE"),
@@ -51,11 +59,13 @@ def fixture(*, negative=False, omit_regime=False):
         frozen_at=datetime(2026, 1, 1, tzinfo=Z),
     )
     d = -.5 if negative else 0.0
-    oos = tl("ref", "1" * 64, d, dataset=data_ref)
+    oos = tl("ref", "1" * 64, d, dataset=data_ref, cost_r=cost_r)
     ind = tl("ind", "2" * 64, d - .005, dataset=data_ref)
-    f125 = tl("ref", "1" * 64, d - .05, dataset=data_ref)
-    f15 = tl("ref", "1" * 64, d - .10, dataset=data_ref)
-    friction = FrictionEvidenceRecord(points=((1.0, oos.sha256), (1.25, f125.sha256), (1.5, f15.sha256)))
+    friction = FrictionEvidenceRecord(
+        baseline_trade_list_sha256=oos.sha256,
+        model_sha256=friction_model.sha256,
+        multipliers=CANONICAL_POLICY_V1.required_friction_multipliers,
+    )
 
     fold_lists = []
     folds = []
@@ -84,7 +94,7 @@ def fixture(*, negative=False, omit_regime=False):
         neighborhoods.append((v, x.sha256))
     stability = StabilityEvidenceRecord(center=1.2, neighborhoods=tuple(neighborhoods))
 
-    records = [oos, ind, f125, f15, *fold_lists, *s_lists, friction, wf, stability]
+    records = [oos, ind, friction_model, *fold_lists, *s_lists, friction, wf, stability]
     store = ContentAddressedStore.build({x.sha256: x for x in records})
     bundle = ValidationBundleRecord(
         variant_sha256=variant.sha256,
@@ -210,11 +220,90 @@ def test_unapproved_engine_fails_closed():
 def test_missing_friction_trade_list_fails_closed():
     b, r = fixture()
     f = r.evidence.resolve(b.friction_sha256)
-    broken = f.model_copy(update={"points": ((1.0, b.oos_trade_list_sha256), (1.25, "9" * 64), (1.5, dict(f.points)[1.5]))})
+    broken = f.model_copy(update={"multipliers": (1.0, 1.25)})
     records = dict(r.evidence._records)
     records[broken.sha256] = broken
     bad = b.model_copy(update={"friction_sha256": broken.sha256})
     records[bad.sha256] = bad
+    rr = VerificationResolvers(r.variants, ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure)
+    use(rr)
+    assert verify_edge(bad.sha256).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def _verify_with_friction(b, r, changed):
+    records = dict(r.evidence._records)
+    records[changed.sha256] = changed
+    bad = b.model_copy(update={"friction_sha256": changed.sha256})
+    records[bad.sha256] = bad
+    rr = VerificationResolvers(r.variants, ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure)
+    use(rr)
+    return verify_edge(bad.sha256)
+
+
+def test_arbitrary_stressed_trade_lists_are_rejected():
+    b, r = fixture()
+    friction = r.evidence.resolve(b.friction_sha256)
+    with pytest.raises(ValidationError):
+        FrictionEvidenceRecord.model_validate({
+            **friction.model_dump(mode="python"),
+            "points": ((1.0, b.oos_trade_list_sha256), (1.25, "9" * 64), (1.5, "8" * 64)),
+        })
+    use(r)
+    assert verify_edge(b.sha256).verdict == EdgeVerdict.EDGE_VERIFIED
+
+
+def test_tampered_friction_model_cannot_replace_frozen_model():
+    b, r = fixture()
+    variant = r.variants.resolve(b.variant_sha256)
+    model = r.evidence.resolve(variant.friction_model_sha256)
+    tampered = model.model_copy(update={"model_id": "tampered"})
+    with pytest.raises(ValueError):
+        ContentAddressedStore.build({model.sha256: tampered})
+    friction = r.evidence.resolve(b.friction_sha256).model_copy(update={"model_sha256": tampered.sha256})
+    records = dict(r.evidence._records)
+    records[tampered.sha256] = tampered
+    records[friction.sha256] = friction
+    result = _verify_with_friction(b, VerificationResolvers(r.variants, ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure), friction)
+    assert result.verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_friction_population_substitution_fails_closed():
+    b, r = fixture()
+    friction = r.evidence.resolve(b.friction_sha256).model_copy(
+        update={"baseline_trade_list_sha256": b.parity_independent_trade_list_sha256}
+    )
+    assert _verify_with_friction(b, r, friction).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_deterministically_unprofitable_friction_stress_returns_no_edge():
+    b, r = fixture(cost_r=0.8)
+    use(r)
+    result = verify_edge(b.sha256)
+    gates = dict(result.gate_results)
+    assert gates["FRICTION_COHERENCE"] is True
+    assert gates["FRICTION_STRESS"] is False
+    assert result.verdict == EdgeVerdict.NO_EDGE
+
+
+def test_missing_baseline_cost_primitives_fail_closed():
+    b, r = fixture()
+    oos = r.evidence.resolve(b.oos_trade_list_sha256)
+    trade = oos.trades[0].model_copy(update={
+        "gross_r": None,
+        "spread_cost_r": None,
+        "commission_cost_r": None,
+        "slippage_cost_r": None,
+        "funding_cost_r": None,
+    })
+    altered_oos = oos.model_copy(update={"trades": (trade,) + oos.trades[1:]})
+    friction = r.evidence.resolve(b.friction_sha256).model_copy(update={"baseline_trade_list_sha256": altered_oos.sha256})
+    bad = b.model_copy(update={
+        "oos_trade_list_sha256": altered_oos.sha256,
+        "friction_sha256": friction.sha256,
+        "parity_reference_trade_list_sha256": altered_oos.sha256,
+    })
+    records = dict(r.evidence._records)
+    records.update({altered_oos.sha256: altered_oos, friction.sha256: friction, bad.sha256: bad})
     rr = VerificationResolvers(r.variants, ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure)
     use(rr)
     assert verify_edge(bad.sha256).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
