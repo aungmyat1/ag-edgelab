@@ -1,26 +1,40 @@
-# Codex Adversarial Audit R8 — PR #6
+# Codex Adversarial Re-audit R8 — PR #6
 
 ## AUDIT_VERDICT = BLOCKED
 
-Precondition failed: `git rev-parse HEAD` returned
-`8b0df55fd2731541d19f746860c4f981f6c5955e`, not expected
-`24d9c23117e073a180c5633d7fd40d81a8ec20bd`. Per audit instructions, review stopped
-before tree verification, source inspection, execution, or adversarial testing.
+The requested re-audit target `7f0b061` is not present in this checkout. The selected
+branch is `work` at `9ccbe5fa75ff12a708d27edc89a3f50f34962354`, so the nominated artifact
+cannot be inspected or authenticated.
 
-## `git show-ref` output
+## Repository evidence
 
 ```text
-8b0df55fd2731541d19f746860c4f981f6c5955e refs/heads/work
+$ git rev-parse HEAD
+9ccbe5fa75ff12a708d27edc89a3f50f34962354
+
+$ git status --short --branch
+## work
+
+$ git show-ref
+9ccbe5fa75ff12a708d27edc89a3f50f34962354 refs/heads/work
+
+$ git cat-file -t 7f0b061
+fatal: Not a valid object name 7f0b061
+
+$ git show -s --format='%H %T %D %s' 7f0b061
+fatal: ambiguous argument '7f0b061': unknown revision or path not in the working tree.
 ```
 
-## Findings by severity
+## Finding
 
-### BLOCKER — target revision is not checked out or referenced
+### BLOCKER — R8-B01: nominated re-audit revision unavailable
 
-- **Location:** repository identity precondition; no target source line is available.
-- **Reproduction:** `git rev-parse HEAD`; then `git show-ref`.
-- **Impact:** the full PR #6 checklist and R8 attacks 1–8 cannot be evaluated for the
-  nominated artifact. No audit property is considered passed.
+- **Location:** Git object database; no target file or line is available.
+- **Reproduction:** run the commands recorded above.
+- **Impact:** authority, fail-closed cases A–X, policy/hash binding, sealed-OOS
+  governance, optimization, ablation, stability, walk-forward, regime, friction,
+  parity, artifact integrity, look-ahead, execution-boundary, and R8 attacks 1–8
+  remain unverified. None is considered passed.
 
 ## Final status
 
@@ -28,8 +42,7 @@ before tree verification, source inspection, execution, or adversarial testing.
 - **INDEPENDENT_PARITY_PROVEN:** NO
 - **BTC_SEPTEMBER_2026_HOLDOUT_ACCESSED:** NO
 - **PRODUCTION_RELEASE_READY:** NO
-- **NEXT_ALLOWED_ACTION:** furnish a checkout whose `HEAD` is exactly
-  `24d9c23117e073a180c5633d7fd40d81a8ec20bd` and whose tree is exactly
-  `6b3bab802aabdf0693c39d40d9c0a17ca38b6943`, without opening or copying the
-  sealed holdout; then restart the audit.
+- **NEXT_ALLOWED_ACTION:** provide a checkout whose selected PR #6 branch resolves
+  to `7f0b061` (preferably the full commit ID), without exposing the sealed holdout,
+  then restart the audit.
 
