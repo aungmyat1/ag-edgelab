@@ -4,91 +4,84 @@ Status: architecture / implementation plan
 
 ## 1. Objective
 
-AG EdgeLab is split into two authority domains:
+AG EdgeLab has two separate authority domains:
 
-1. **Funnel Development Engine (Funnel Lab)** — market data flows through versioned strategy rules; stage results reveal where flow and economic quality improve or deteriorate; researchers change rules on DEVELOPMENT data until a promising candidate exists.
-2. **Edge Verification Engine** — receives an immutable frozen candidate and attempts to falsify it on evidence that was not used to develop the strategy. It alone may issue `EDGE_VERIFIED` under the production policy.
+1. **Funnel Development Engine (Funnel Lab)** — market data flows through versioned strategy-rule funnels. The first MVP has one narrow job: describe the flow and identify **weak funnel candidates** whose PASS population shows deterioration in downstream/final win rate. Researchers then modify the identified strategy rule on DEVELOPMENT data and compare the new funnel version.
+2. **Edge Verification Engine** — receives an immutable frozen candidate and attempts to falsify it using evidence not used to develop the strategy. Only the production verification policy may issue `EDGE_VERIFIED`.
 
-The live AG trading runtime remains out of scope. EdgeLab must not connect to brokers, place orders, create executable trade tickets, or authorize Demo/Live execution.
-
-Core lifecycle:
+No broker/Demo/Live execution is in scope.
 
 ```text
-DEVELOPMENT DATA
-      |
-      v
-VERSIONED FUNNEL
-      |
-      v
-STAGE / BRANCH METRICS
-      |
-      v
-WEAK OR REDUNDANT RULE?
-      | yes
-      v
-CONTROLLED RULE MUTATION ----+
-      |                       |
-      +-----------------------+
-      |
-      v
-PROMISING DEVELOPMENT RESULT
-      |
-      v
-FREEZE FUNNEL + DATA + ENGINE IDENTITY
-      |
-      v
-UNSEEN VALIDATION EVIDENCE
-      |
-      v
-EDGE VALIDATOR
-      |
-      +--> EDGE_VERIFIED
-      +--> NO_EDGE
-      +--> INSUFFICIENT_EVIDENCE
+DEVELOPMENT MARKET DATA
+        -> FUNNEL V1
+        -> RULE-BY-RULE FLOW
+        -> INPUT/PASS/FAIL/PASS%
+        -> PASS FINAL WR vs FAIL FINAL WR
+        -> DELTA WIN RATE
+        -> WEAK FUNNEL CANDIDATE?
+        -> MODIFY THAT RULE
+        -> CHILD FUNNEL VERSION
+        -> repeat on DEVELOPMENT data
+        -> PROMISING STRATEGY
+        -> FREEZE
+        -> EDGE VERIFICATION ENGINE
+        -> EDGE_VERIFIED | NO_EDGE | INSUFFICIENT_EVIDENCE
 ```
 
-A good development backtest is **not** `EDGE_VERIFIED`. Any behavior-changing strategy modification after freeze creates a new candidate and a new validation campaign.
+A good development result is not `EDGE_VERIFIED`. Any behavior-changing strategy modification after freeze creates a new candidate and validation campaign.
 
----
+## 2. MVP V0.1 — Weak Funnel Diagnostic
 
-## 2. Reuse-first infrastructure policy
+Goal: answer reliably: **Which strategy-rule funnel appears to reduce candidate quality toward the final trade outcome, measured first by downstream/final win rate, and by how much?**
 
-EdgeLab should be an orchestrator and evidence authority, not another full trading platform.
+Example strategy:
 
-### Build in AG EdgeLab
+```text
+MARKET DATA
+ -> SESSION_V1
+ -> BIAS_V1
+ -> SWEEP_V1
+ -> DISPLACEMENT_V1
+ -> RETEST_V1
+ -> ENTRY_V1
+ -> EXIT_V1
+```
 
-- `FunnelDefinition`
-- versioned `RuleDefinition`
-- `NodeDefinition` and `EdgeDefinition`
-- deterministic funnel/decision-graph runner
-- per-node and per-branch candidate ledger
-- stage-flow metrics
-- rule/funnel lineage
-- canonical result/trade interchange contracts
-- frozen-strategy manifest and content hash
-- dataset identity and role controls
-- evidence stores and exposure ledger
-- production verification policy and verdict authority
+Primary report fields:
 
-### Reuse from open source
+```text
+stage
+input_n
+pass_n
+fail_n
+pass_rate
+pass_final_trade_n
+fail_final_trade_n
+pass_final_win_rate
+fail_final_win_rate
+parent_final_win_rate
+delta_win_rate_vs_parent
+diagnostic_label
+```
 
-- **pandas / NumPy**: tabular and numerical processing
-- **Backtesting.py**: initial lightweight trade simulation adapter
-- **vectorbt**: later fast parameter/rule-neighborhood experiments
-- **Freqtrade**: later crypto adapter plus lookahead and recursive-analysis diagnostics
-- **QuantConnect LEAN**: later independent event-driven parity engine
+Diagnostic labels:
 
-External engines are evidence producers, never verification authorities. EdgeLab must recompute authoritative metrics from canonical stored observations/trades rather than trusting caller-supplied expectancy, PF, drawdown, win rate, or other summaries.
+- `IMPROVING`
+- `NEUTRAL`
+- `WEAK_FUNNEL_CANDIDATE`
+- `INSUFFICIENT_SAMPLE`
 
----
+A stage may be labelled `WEAK_FUNNEL_CANDIDATE` only when its downstream/final win-rate delta breaches an explicit development threshold and its sample-size floor is satisfied. This is a research diagnostic, not a causal claim or verification verdict.
 
-## 3. Canonical data boundary
+The ledger must retain rejected candidates so PASS and FAIL populations can both be inspected. No candidate may silently disappear.
 
-All sources first map into an AG-owned canonical structure.
+### Interpretation rule
 
-### `MarketFrame`
+V0.1 intentionally begins with win rate because it is simple and directly matches the first product objective. Lower win rate does **not** necessarily mean lower economic edge. A rule may reduce win rate while increasing payoff/expectancy. V0.2 therefore adds expectancy before stronger economic-quality diagnostics are allowed.
 
-Minimum fields:
+## 3. Minimal V0.1 infrastructure
+
+### MarketFrame
 
 ```text
 timestamp_utc
@@ -98,7 +91,7 @@ open
 high
 low
 close
-volume? 
+volume?
 bid?
 ask?
 spread?
@@ -106,77 +99,9 @@ source_id
 dataset_id
 ```
 
-Requirements:
+UTC-aware, deterministic, DEVELOPMENT-role data with stable identity and anti-lookahead controls.
 
-- UTC-aware timestamps only.
-- Deterministic ordering.
-- No duplicate canonical keys unless explicitly supported.
-- Dataset role is explicit: `DEVELOPMENT`, `OOS`, or sealed holdout role.
-- Dataset content receives a stable identity/fingerprint.
-- Funnel Lab may consume DEVELOPMENT data only unless a campaign explicitly authorizes another non-sealed role.
-- Sealed holdout data is never exposed to strategy optimization.
-
-Adapters may ingest existing MT5/local FX data and existing crypto data, but downstream funnel logic sees only canonical `MarketFrame` records.
-
----
-
-## 4. Funnel model
-
-A funnel is the strategy ruleset. It may be linear or branching.
-
-Example linear strategy:
-
-```text
-SESSION_V1
-  -> BIAS_V1
-  -> SWEEP_V1
-  -> DISPLACEMENT_V1
-  -> RETEST_V1
-  -> ENTRY_V1
-  -> EXIT_V1
-```
-
-Example branching strategy:
-
-```text
-MARKET_STATE_V1
-  |-- TREND
-  |    |-- BULLISH -> TREND_LONG_V1
-  |    `-- BEARISH -> TREND_SHORT_V1
-  `-- RANGE
-       |-- NORMAL_RANGE -> RANGE_SETUP_V1
-       `-- SWEEP -> SWEEP_SETUP_V1
-```
-
-A behavior-changing rule modification creates a new rule version and therefore a new funnel identity.
-
-Example:
-
-```text
-FUNNEL_V1
-  SWEEP_V1
-
-FUNNEL_V1_1
-  SWEEP_V2   # only behavior change
-```
-
-Documentation, logging, naming, or performance-only changes that preserve deterministic outputs do not create a new strategy version.
-
----
-
-## 5. MVP V0.1 — minimum Funnel Development Engine
-
-### Goal
-
-Prove the simplest loop:
-
-```text
-MarketFrame -> FunnelDefinition -> FunnelRunner -> FunnelMetrics -> compare versions -> freeze candidate
-```
-
-### Required contracts
-
-#### `RuleDefinition`
+### RuleDefinition
 
 ```text
 rule_id
@@ -188,29 +113,9 @@ input_contract
 output_contract
 ```
 
-MVP rule types:
+Initial types: classifier, filter/decision, trade/action.
 
-1. classifier
-2. filter/decision
-3. trade/action rule
-
-#### `NodeDefinition`
-
-```text
-node_id
-rule_ref
-terminal
-```
-
-#### `EdgeDefinition`
-
-```text
-from_node
-to_node
-outcome
-```
-
-#### `FunnelDefinition`
+### FunnelDefinition
 
 ```text
 funnel_id
@@ -223,9 +128,9 @@ changed_rules
 funnel_sha256
 ```
 
-#### `FunnelEvent`
+A funnel is the strategy ruleset. A behavior-changing rule modification creates a new rule and funnel identity.
 
-For every candidate/event at every evaluated node:
+### FunnelEvent
 
 ```text
 event_id
@@ -238,7 +143,7 @@ pass_fail_or_route
 reason_code
 ```
 
-#### `FunnelRunResult`
+### FunnelRunResult
 
 ```text
 funnel_sha256
@@ -249,170 +154,86 @@ trade_list_hash
 stage_metrics
 ```
 
-### MVP metrics
-
-Every stage/branch must expose at least:
-
-```text
-INPUT_N
-PASS_N
-FAIL_N
-PASS_RATE
-FINAL_TRADE_N
-FINAL_WIN_RATE
-FINAL_EXPECTANCY_R
-```
-
-Recommended immediately if available from canonical trades:
-
-```text
-PROFIT_FACTOR
-MAX_DRAWDOWN_R
-AVG_WIN_R
-AVG_LOSS_R
-DELTA_EXPECTANCY_VS_PARENT
-```
-
-No opaque composite score is required in V0.1.
-
-### MVP workflow
+## 4. V0.1 execution loop
 
 1. Load DEVELOPMENT `MarketFrame`.
 2. Load immutable `FunnelDefinition`.
-3. Evaluate each candidate through the graph chronologically.
-4. Record every node decision, including rejects.
-5. Produce canonical trade intents/results through a simulation adapter.
-6. Recompute stage metrics from canonical records.
-7. Identify stages with poor attrition/economic contribution.
-8. Researcher proposes exactly identified rule changes.
-9. Create a child funnel version; never mutate the parent.
-10. Re-run on DEVELOPMENT data.
-11. Compare child with parent.
-12. Keep/reject the child as a development decision.
-13. Repeat until a promising candidate is selected.
-14. Freeze it; development stops for that candidate identity.
+3. Evaluate candidates chronologically.
+4. Record every PASS, FAIL, route and rejection.
+5. Produce canonical final trade outcomes through a simulation adapter.
+6. Join final outcomes back to stage histories.
+7. Compute PASS and FAIL final win rates per stage.
+8. Compute downstream/parent win-rate deltas.
+9. Apply explicit sample floor and diagnostic thresholds.
+10. Emit weak-funnel report.
+11. Modify an identified strategy rule.
+12. Create a child funnel; never mutate parent.
+13. Re-run on the same DEVELOPMENT population.
+14. Compare parent/child and keep or reject the experiment.
 
-### V0.1 acceptance criteria
+Acceptance: deterministic results/hashes; no future access; complete candidate ledger; reconciled stage populations; traceable outcomes; versioned thresholds; insufficient samples fail diagnostic classification; behavior change changes funnel identity; no execution capability; tests green.
 
-- deterministic repeat: same data + same funnel + same engine -> same hashes/results
-- no future candle access
-- all timestamps timezone-aware
-- every candidate is represented, including rejects
-- a one-rule change changes the funnel identity
-- unchanged rules retain identities
-- stage counts reconcile parent-to-child
-- metrics are recomputed from canonical observations/trades
-- no broker/execution capability
-- unit and property tests green
+## 5. V0.2 — Economic Weak-Funnel Diagnostic
 
----
-
-## 6. MVP simulation adapter
-
-Use a small adapter boundary instead of embedding a third-party engine into validation authority.
+Add:
 
 ```text
-FunnelRunner
-    |
-    v
-Canonical OrderIntent / Signal
-    |
-    v
-SimulationAdapter
-    |
-    v
-Canonical TradeList
+pass_expectancy_r
+fail_expectancy_r
+parent_expectancy_r
+delta_expectancy_vs_parent
+profit_factor
+max_drawdown_r
+avg_win_r
+avg_loss_r
 ```
 
-### First adapter
+A win-rate drop with improved expectancy must not be classified as economically weak solely from win rate.
 
-Prefer Backtesting.py for the first implementation when its semantics fit the strategy. The adapter owns translation only. AG owns canonical inputs and outputs.
+Example:
 
-### Fallback reference simulator
+```text
+Stage          Delta WR     Delta Expectancy
+BIAS_V1         +3.6pp          +0.08R
+SWEEP_V1        -8.0pp          -0.14R  <- stronger weak-rule evidence
+RETEST_V1       +6.9pp          +0.13R
+```
 
-Keep or implement only the smallest deterministic AG simulator necessary for strategies that cannot be represented safely by the first adapter. Do not build brokerage/live execution features.
+## 6. V0.3 — Rule Mutation and Parent/Child Comparison
 
----
+```text
+FUNNEL_V1
+ SESSION_V1
+ BIAS_V1
+ SWEEP_V1
+ ENTRY_V1
+ EXIT_V1
 
-## 7. Funnel Development V0.2 — branching funnels
+FUNNEL_V1_1
+ SESSION_V1
+ BIAS_V1
+ SWEEP_V2   <- changed
+ ENTRY_V1
+ EXIT_V1
+```
 
-Add arbitrary acyclic decision branches and branch-level reports.
+Support declared rule replacement, parameter changes, valid rule removal/addition, exact changed-rule lineage, and same-population DEVELOPMENT comparison.
 
-Acceptance:
+## 7. V0.4 — Branching Funnels
 
-- branch routes are explicit outcomes
-- branch populations reconcile
-- branch metrics are independent
-- no candidate silently disappears
-- terminal no-trade outcomes remain auditable
+Support acyclic decision graphs such as Trend/Range/Sweep and E1/E2/E3 strategies. Routes and populations must reconcile, branch metrics remain auditable, and no-trade terminals remain recorded.
 
-This supports Trend/Range/Sweep and E1/E2/E3-style strategies without strategy-specific engine code.
+## 8. V0.5 — Fast Experiments
 
----
+Reuse vectorbt for DEVELOPMENT-only parameter/rule neighborhoods where appropriate. Add deterministic diagnostics such as `POSSIBLE_HARMFUL_RULE`, `POSSIBLE_REDUNDANT_RULE`, `POSSIBLE_OVER_FILTER`, `LOW_SAMPLE_STAGE`, and `UNSTABLE_PARAMETER_NEIGHBORHOOD`. Prefer stable neighborhoods over isolated maxima.
 
-## 8. Funnel Development V0.3 — controlled rule/parameter experiments
+## 9. V0.6 — AI Experiment Assistant
 
-Add an experiment planner that generates declared child funnels.
+AI may explain stage deterioration and propose explicit child-funnel experiments. It may not use sealed holdouts to design rules, mutate frozen candidates in place, change verification policy, or declare `EDGE_VERIFIED`.
 
-Allowed mutation operations:
+## 10. Funnel Development V1.0 — Freeze
 
-- replace one rule version
-- change one or more preregistered parameters
-- remove a rule/edge where the graph remains valid
-- add a preregistered rule/edge
-
-Use vectorbt where appropriate for fast DEVELOPMENT-only parameter sweeps/neighborhood calculations.
-
-Do not select a candidate from sealed/unseen validation performance.
-
-Report parameter neighborhoods, not only the single maximum result, to discourage isolated optimum chasing.
-
----
-
-## 9. Funnel Development V0.4 — diagnostics
-
-Add deterministic diagnostics such as:
-
-- `POSSIBLE_HARMFUL_RULE`
-- `POSSIBLE_REDUNDANT_RULE`
-- `POSSIBLE_OVER_FILTER`
-- `LOW_SAMPLE_STAGE`
-- `UNSTABLE_PARAMETER_NEIGHBORHOOD`
-
-Diagnostics are research hints, not verification verdicts.
-
-A rule that reduces raw win rate is not automatically harmful. Economic contribution must consider expectancy and the trade distribution; a lower-win-rate filter can still improve expectancy.
-
----
-
-## 10. Funnel Development V0.5 — AI experiment assistant
-
-AI may consume DEVELOPMENT reports and propose explicit experiments.
-
-Allowed:
-
-- explain stage attrition
-- propose a rule removal/replacement
-- propose a bounded parameter neighborhood
-- generate a child `FunnelDefinition` proposal
-- summarize parent/child differences
-
-Not allowed as authority:
-
-- reading sealed holdout data to design rules
-- rewriting a frozen candidate in place
-- declaring `EDGE_VERIFIED`
-- changing verification policy
-
-Every AI-generated experiment must become an explicit versioned child funnel before execution.
-
----
-
-## 11. Funnel Development V1.0 — production freeze contract
-
-`FrozenStrategyManifest` is the handoff boundary.
-
-Minimum commitments:
+Freeze at least:
 
 ```text
 strategy_id
@@ -429,391 +250,108 @@ development_trade_list_hash
 freeze_timestamp_utc
 ```
 
-Freeze rules:
+Any behavior change after freeze starts a new candidate/campaign.
 
-- manifest is immutable/content-addressed
-- frozen strategy cannot consume new DEVELOPMENT changes under the same identity
-- any behavior change creates a new funnel hash and new campaign
-- exposure state is derived from the authoritative exposure ledger
+## 11. Open-source reuse
 
----
+Build only AG-specific authority: funnel definitions/versioning, candidate-flow ledger, PASS/FAIL attribution, weak-funnel diagnostics, parent/child lineage, freeze manifest, evidence/exposure authority, and final verification verdict.
 
-## 12. Edge Verification upgrade roadmap
+Reuse:
 
-The Edge Validator is a separate authority path. Development metrics are context, not proof.
+- pandas / NumPy — data processing
+- Backtesting.py — initial lightweight simulation where semantics fit
+- vectorbt — fast DEVELOPMENT experiments
+- Freqtrade — later crypto backtests and lookahead/recursive diagnostics
+- QuantConnect LEAN — later independent event-driven parity
+
+External engines produce evidence; they never issue AG verification verdicts. Verification metrics are recomputed from canonical evidence.
+
+## 12. Edge Verification Engine upgrade
 
 ### EV V1.0 — unseen OOS economics
+Frozen strategy + authorized unseen OOS evidence. Recompute N, win rate, expectancy, PF, DD and uncertainty from canonical evidence.
 
-Input: frozen strategy identity + authorized unseen OOS evidence IDs.
+### EV V1.1 — friction
+Bind a versioned friction model; verifier derives stressed outcomes.
 
-Verifier recomputes:
+### EV V1.2 — walk-forward
+Bind unique folds to train/test data/windows, strategy/engine identity and canonical test trades; verify chronology, lineage and populations.
 
-- trade count
-- expectancy R
-- profit factor
-- maximum drawdown R
-- uncertainty/bootstrap policy metrics
+### EV V1.3 — stability
+Bind frozen center to real neighboring rule/parameter identities, common DEVELOPMENT population, engine/code identity and preregistration.
 
-Caller-supplied aggregate metrics are non-authoritative.
-
-Output before full production gate may use `CANDIDATE_PASS`, `NO_EDGE`, or `INSUFFICIENT_EVIDENCE`; reserve `EDGE_VERIFIED` for the full production policy.
-
-### EV V1.1 — authoritative friction
-
-- bind a versioned friction model
-- baseline costs are present in canonical evidence
-- verifier derives stressed trades itself
-- test configured stress levels such as 1.0x / 1.25x / 1.5x
-- caller-provided stressed outcome lists are non-authoritative
-
-### EV V1.2 — walk-forward provenance
-
-Each fold commits to:
-
-- unique fold ID
-- train window/data identity
-- test window/data identity
-- strategy identity
-- engine identity
-- canonical test trades
-
-Verifier checks chronological/non-overlapping policy, minimum populations, dataset lineage, and fold-level economics.
-
-### EV V1.3 — parameter/rule stability
-
-Stability evidence must bind:
-
-- frozen center parameter/funnel identity
-- real neighboring parameter/funnel identities
-- common DEVELOPMENT population/dataset identity
-- engine/code identity
-- preregistration before holdout exposure
-
-The verifier recomputes neighborhood results from stored trade lists. Arbitrary profitable lists cannot stand in for real neighboring configurations.
-
-### EV V1.4 — regime robustness
-
-- frozen strategy commits to a classifier identity
-- market-state evidence is content-addressed
-- verifier/classifier authority derives regime labels
-- caller-supplied labels are non-authoritative
-- regime metrics are recomputed from canonical trades
+### EV V1.4 — regimes
+Bind frozen classifier and market-state provenance; caller labels are non-authoritative.
 
 ### EV V1.5 — independent parity
+Resolve canonical trade lists from at least two owner-approved genuinely independent engine identities.
 
-Use an owner-approved engine registry with at least two genuinely independent engine identities.
-
-Suggested later independent engine: QuantConnect LEAN, because it is event-driven, modular, open source, and supports local backtesting with custom data.
-
-Parity must resolve both canonical stored trade lists and compare the required trade identity/outcome fields. An engine's aggregate report is not authoritative evidence.
-
-### EV V2.0 — production `EDGE_VERIFIED`
-
-Full gate requires coherent evidence for all policy-required dimensions:
+### EV V2.0 — production verdict
 
 ```text
 FROZEN STRATEGY
-  -> UNSEEN OOS ECONOMICS
-  -> STATISTICAL / BOOTSTRAP GATE
-  -> FRICTION
-  -> WALK-FORWARD
-  -> STABILITY
-  -> REGIMES
-  -> INDEPENDENT PARITY
-  -> EXPOSURE / PROVENANCE CHECKS
-  -> EDGE_VERIFIED | NO_EDGE | INSUFFICIENT_EVIDENCE
+ -> UNSEEN OOS ECONOMICS
+ -> STATISTICAL/BOOTSTRAP GATE
+ -> FRICTION
+ -> WALK-FORWARD
+ -> STABILITY
+ -> REGIMES
+ -> INDEPENDENT PARITY
+ -> EXPOSURE/PROVENANCE
+ -> EDGE_VERIFIED | NO_EDGE | INSUFFICIENT_EVIDENCE
 ```
 
-`NO_EDGE` is for coherent negative evidence. Missing, malformed, contradictory, unresolved, or provenance-incoherent evidence must fail closed as `INSUFFICIENT_EVIDENCE`.
+`NO_EDGE` requires coherent negative evidence. Missing/malformed/contradictory/unresolved/provenance-incoherent evidence fails closed as `INSUFFICIENT_EVIDENCE`.
 
----
+## 13. Revised delivery work packages
 
-## 13. External-system integration sequence
+- **WP-F0** — lineage/scope gate; protect validator lineage, sealed holdout and no-execution invariant.
+- **WP-F1** — canonical `MarketFrame` and existing-data adapters.
+- **WP-F2** — rule/funnel contracts, serialization and hashing.
+- **WP-F3** — chronological candidate-flow runner and PASS/FAIL/reject ledger.
+- **WP-F4** — **Weak Funnel Diagnostic MVP**: stage flow + PASS/FAIL final WR + delta WR + diagnostic label.
+- **WP-F5** — minimal Backtesting.py simulation adapter producing canonical outcomes.
+- **WP-F6** — V0.2 expectancy/PF/DD economic diagnostics.
+- **WP-F7** — V0.3 immutable parent/child rule-version comparison.
+- **WP-F8** — V0.4 branching funnels.
+- **WP-F9** — frozen-strategy handoff to Edge Validator.
+- **WP-F10** — vectorbt fast DEVELOPMENT experiments.
+- **WP-F11** — Freqtrade crypto diagnostics.
+- **WP-F12** — LEAN independent parity.
 
-### Phase A — MVP
+## 14. First MVP completion definition
 
-Use:
-
-- existing AG datasets
-- pandas / NumPy
-- Backtesting.py adapter where appropriate
-- existing EdgeLab canonical contracts/validator work
-
-Do not add LEAN/Freqtrade/vectorbt simultaneously.
-
-### Phase B — fast research
-
-Add vectorbt adapter for DEVELOPMENT-only batch rule/parameter experiments.
-
-### Phase C — crypto diagnostics
-
-Add Freqtrade integration for crypto datasets/backtests where useful. Run its lookahead-analysis and recursive-analysis as supplementary diagnostics. Their reports do not replace AG provenance or final verification.
-
-### Phase D — independent parity
-
-Add LEAN as an owner-approved independent engine. Keep live deployment disabled/out of scope.
-
----
-
-## 14. Proposed repository layout
+One real strategy and an existing DEVELOPMENT dataset must deterministically produce a traceable report such as:
 
 ```text
-src/ag_edgelab/
-  data/
-    market_frame.py
-    adapters/
-  funnel/
-    definition.py
-    rules.py
-    graph.py
-    runner.py
-    events.py
-    metrics.py
-    lineage.py
-    freeze.py
-  simulation/
-    contracts.py
-    backtesting_py_adapter.py
-    vectorbt_adapter.py        # V0.3+
-    freqtrade_adapter.py       # later
-    lean_adapter.py            # EV V1.5+
-  experiments/
-    compare.py
-    mutations.py
-    diagnostics.py
-  verification/
-    ... existing production validator ...
+FUNNEL V1
 
-tests/
-  funnel/
-  simulation/
-  experiments/
-  verification/
+SESSION_V1
+ input=10000 pass=7000 pass_rate=70.0%
+ pass_final_wr=48.0%
 
-docs/
-  FUNNEL_DEVELOPMENT_AND_EDGE_VERIFICATION_ROADMAP.md
+BIAS_V1
+ input=7000 pass=4100 pass_rate=58.6%
+ pass_final_wr=51.0% delta=+3.0pp
+
+SWEEP_V1
+ input=4100 pass=1500 pass_rate=36.6%
+ pass_final_wr=43.0% delta=-8.0pp
+ diagnostic=WEAK_FUNNEL_CANDIDATE
+
+RETEST_V1
+ input=1500 pass=720 pass_rate=48.0%
+ pass_final_wr=50.0% delta=+7.0pp
 ```
 
----
+Every number must trace to canonical candidate/trade records. The next development action is then explicit: investigate/modify `SWEEP_V1`, create a child funnel, and compare on DEVELOPMENT data. Only after a promising funnel is frozen does verification begin.
 
-## 15. Delivery work packages
+## 15. Invariants
 
-### WP-F0 — lineage and scope gate
-
-- choose authoritative branch/base
-- protect current production-validator lineage
-- confirm sealed holdout remains inaccessible
-- document no-execution invariant
-
-### WP-F1 — canonical `MarketFrame`
-
-- schema
-- timestamp policy
-- dataset identity
-- adapters for already-available data
-- tests
-
-### WP-F2 — Funnel contracts
-
-- rules/nodes/edges/funnel schema
-- canonical serialization/hash
-- validation
-- tests
-
-### WP-F3 — deterministic runner + candidate ledger
-
-- chronological graph execution
-- explicit reject/route records
-- reconciliation invariants
-- anti-lookahead context
-- tests
-
-### WP-F4 — metrics
-
-- stage counts/pass rate
-- final trade conversion
-- win rate
-- expectancy R
-- PF/DD/average R metrics
-- parent-child delta report
-- tests
-
-### WP-F5 — first simulation adapter
-
-- canonical signal/order-intent translation
-- canonical trade-list output
-- no broker/live methods
-- deterministic fixture parity tests
-
-### WP-F6 — versioning and comparison
-
-- immutable parent/child funnel versions
-- changed-rule manifest
-- report diff
-- tests
-
-### WP-F7 — freeze handoff
-
-- `FrozenStrategyManifest`
-- content-addressed storage
-- exposure ledger transition
-- validator-compatible evidence references
-- tests
-
-### WP-F8 — first reference strategy
-
-Encode one simple real strategy as a funnel and prove end-to-end:
-
-```text
-market data
--> funnel
--> stage report
--> controlled child version
--> comparison
--> freeze
-```
-
-Do not use sealed holdout data for this demonstration.
-
-### WP-F9 — research acceleration
-
-- vectorbt experiment adapter
-- bounded mutation batches
-- neighborhood reports
-
-### WP-F10 — crypto diagnostics
-
-- optional Freqtrade adapter
-- lookahead-analysis integration
-- recursive-analysis integration
-
-### WP-F11 — independent parity
-
-- LEAN adapter
-- canonical trade-list conversion
-- EngineRegistry integration
-- parity evidence
-
----
-
-## 16. CI gates
-
-Every PR touching Funnel Lab or verification should run, as applicable:
-
-```text
-compile/type/static checks
-unit tests
-property/invariant tests
-canonical serialization/hash tests
-anti-lookahead tests
-timestamp authority tests
-candidate population reconciliation tests
-trade-list recomputation tests
-malformed evidence fail-closed tests
-no-execution-capability test
-```
-
-Later integration jobs may include external-engine adapter tests, but third-party availability must not weaken core deterministic tests.
-
----
-
-## 17. Security and research-integrity invariants
-
-1. No live or Demo execution capability in EdgeLab.
-2. No sealed holdout access from Funnel Lab.
-3. No caller boolean can assert unseen/frozen authority.
-4. No caller aggregate metric is verification authority.
-5. Every behavior-changing rule has a new identity.
-6. Every frozen funnel is content-addressed.
-7. Failed validation never edits the frozen strategy; research returns to DEVELOPMENT and creates a new version.
-8. External engines provide evidence, never final verdicts.
-9. Missing/incoherent authority fails closed.
-10. Holdout exposure is irreversible according to ExposureLedger policy.
-
----
-
-## 18. Definition of MVP complete
-
-Funnel Development MVP is complete when a developer can:
-
-1. import an existing DEVELOPMENT dataset into `MarketFrame`;
-2. define a versioned linear funnel without editing engine internals;
-3. run all candidates through it deterministically;
-4. inspect input/pass/fail counts and downstream economic metrics at each stage;
-5. create a child funnel changing one rule;
-6. rerun and compare parent vs child;
-7. preserve both results and lineage;
-8. freeze a selected candidate into an immutable manifest;
-9. hand only evidence IDs/identities to the Edge Validator;
-10. do all of the above with no broker/execution capability and no sealed-holdout access.
-
-The MVP does **not** require AI optimization, a UI, LEAN, Freqtrade, automated strategy discovery, or `EDGE_VERIFIED` issuance.
-
----
-
-## 19. Definition of production Edge Validator complete
-
-Production `EDGE_VERIFIED` is available only when the frozen candidate passes the pinned policy's required gates with authoritative evidence and all metrics are recomputed from content-addressed canonical records/trade lists.
-
-At minimum the production policy is expected to cover:
-
-- immutable frozen strategy identity
-- authoritative unseen/exposure state
-- OOS economics and uncertainty
-- deterministic friction stress
-- walk-forward provenance
-- real stability-neighborhood provenance
-- authoritative regime classification
-- owner-approved independent-engine parity
-- fail-closed malformed/missing evidence behavior
-- immutable policy identity
-
-The exact policy thresholds belong in the versioned production policy registry, not in this architecture document.
-
----
-
-## 20. Recommended implementation order
-
-```text
-Finish / independently audit current validator remediation
-                 |
-                 v
-WP-F0 lineage gate
-                 |
-                 v
-WP-F1 MarketFrame
-                 |
-                 v
-WP-F2 FunnelDefinition
-                 |
-                 v
-WP-F3 FunnelRunner + CandidateLedger
-                 |
-                 v
-WP-F4 FunnelMetrics
-                 |
-                 v
-WP-F5 lightweight simulator adapter
-                 |
-                 v
-WP-F6 version comparison
-                 |
-                 v
-WP-F7 freeze handoff
-                 |
-                 v
-WP-F8 first real strategy
-                 |
-                 +--> MVP COMPLETE
-                 |
-                 v
-WP-F9 vectorized experiments
-                 v
-WP-F10 crypto diagnostics
-                 v
-WP-F11 independent LEAN parity
-                 v
-Production Edge Validator V2 campaign
-```
-
-This order keeps the trusted core small, maximizes reuse, and prevents research convenience from weakening evidence authority.
+- research only; no broker credentials/order placement/Demo/Live execution
+- sealed holdouts excluded from Funnel Lab
+- DEVELOPMENT may change strategy; verification may not
+- every behavior change creates a new strategy identity
+- third-party engines never issue verification verdicts
+- verification metrics are recomputed from canonical evidence
+- only the production Edge Validator may issue `EDGE_VERIFIED`
