@@ -12,8 +12,9 @@ from ag_edgelab.friction.model import apply_normalized_r_stress
 from ag_edgelab.optimization.stability import assess_parameter_stability
 from ag_edgelab.statistics.bootstrap import bootstrap_expectancy_ci
 from ag_edgelab.statistics.performance import compute_performance
-from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_FORMULA, FRICTION_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, StabilityEvidenceRecord, TradeListRecord, ValidationBundleRecord, WalkForwardEvidenceRecord
+from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_FORMULA, FRICTION_IMPLEMENTATION_SHA256, REGIME_CLASSIFIER_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, MarketStateRecord, RegimeClassifierRecord, StabilityEvidenceRecord, TradeListRecord, ValidationBundleRecord, WalkForwardEvidenceRecord
 from ag_edgelab.verification.provenance import FrozenVariantRecord, UnknownProvenanceError, VerificationResolvers
+from ag_edgelab.verification.regimes import classify_market_state
 
 HEX64 = r"^[0-9a-f]{64}$"
 REQUIRED_FRICTION_GRID = (1.0, 1.25, 1.5)
@@ -132,6 +133,7 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeVali
         variant = resolvers.variants.resolve(bundle.variant_sha256)
         if not isinstance(variant, FrozenVariantRecord):
             raise UnknownProvenanceError("variant record type mismatch")
+        classifier = _resolve(resolvers.evidence, variant.regime_classifier_sha256, RegimeClassifierRecord)
         oos = _resolve(resolvers.evidence, bundle.oos_trade_list_sha256, TradeListRecord)
         dataset = _resolve(resolvers.datasets, oos.dataset_sha256, DatasetRecord)
         friction = _resolve(resolvers.evidence, bundle.friction_sha256, FrictionEvidenceRecord)
@@ -157,14 +159,43 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeVali
     boot = bootstrap_expectancy_ci(oos.rs, samples=5000, seed=0)
     gates["OOS_POPULATION"] = p.trades >= CANONICAL_POLICY_V1.min_oos_trades
 
-    observed = set(t.regime for t in oos.trades)
-    claimed = set(variant.claimed_regimes)
-    regime_complete = observed == claimed
-    regime_metrics = {
-        name: compute_performance(tuple(t.r for t in oos.trades if t.regime == name))
-        for name in variant.claimed_regimes
-    }
-    gates["REGIME_COHERENCE"] = regime_complete and all(
+    classifier_coherent = (
+        classifier.classifier_id == "ohlc-direction"
+        and classifier.version == "1"
+        and classifier.implementation_sha256 == REGIME_CLASSIFIER_IMPLEMENTATION_SHA256
+        and classifier.required_input_schema == ("dataset_sha256", "trade_id", "observed_at", "open", "close")
+        and classifier.classification_rule == "close > open => TREND; otherwise => RANGE"
+        and classifier.allowed_regimes == ("TREND", "RANGE")
+        and set(variant.claimed_regimes) == set(classifier.allowed_regimes)
+    )
+    regime_groups = {name: [] for name in classifier.allowed_regimes}
+    seen_state_hashes = set()
+    for trade in oos.trades:
+        if trade.market_state_sha256 is None or trade.market_state_sha256 in seen_state_hashes:
+            classifier_coherent = False
+            continue
+        seen_state_hashes.add(trade.market_state_sha256)
+        try:
+            market_state = _resolve(resolvers.evidence, trade.market_state_sha256, MarketStateRecord)
+        except UnknownProvenanceError:
+            classifier_coherent = False
+            continue
+        state_bound = (
+            market_state.dataset_sha256 == oos.dataset_sha256
+            and market_state.trade_id == trade.trade_id
+            and market_state.observed_at == trade.executed_at
+            and dataset.start <= market_state.observed_at < dataset.end
+        )
+        if not state_bound:
+            classifier_coherent = False
+            continue
+        regime = classify_market_state(market_state)
+        if regime not in regime_groups:
+            classifier_coherent = False
+            continue
+        regime_groups[regime].append(trade.r)
+    regime_metrics = {name: compute_performance(tuple(rs)) for name, rs in regime_groups.items()}
+    gates["REGIME_COHERENCE"] = classifier_coherent and all(
         m.trades >= CANONICAL_POLICY_V1.min_regime_sample for m in regime_metrics.values()
     )
 

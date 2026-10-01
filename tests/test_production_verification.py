@@ -3,7 +3,7 @@ import pytest
 from pydantic import ValidationError
 
 from ag_edgelab.optimization.contracts import DatasetExposure
-from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, StabilityEvidenceRecord, TradeListRecord, TradeOutcome, ValidationBundleRecord, WalkForwardEvidenceRecord, WalkForwardFoldRecord
+from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_IMPLEMENTATION_SHA256, REGIME_CLASSIFIER_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, MarketStateRecord, RegimeClassifierRecord, StabilityEvidenceRecord, TradeListRecord, TradeOutcome, ValidationBundleRecord, WalkForwardEvidenceRecord, WalkForwardFoldRecord
 from ag_edgelab.verification.production import CANONICAL_POLICY_V1, CANONICAL_POLICY_V1_SHA256, EdgeVerdict, POLICY_REGISTRY, _install_trusted_authority, validate_artifact, verify_edge
 from ag_edgelab.verification.provenance import ContentAddressedStore, EngineRecord, EngineRegistry, ExposureEvent, ExposureLedger, FrozenVariantRecord, VerificationResolvers
 
@@ -13,40 +13,63 @@ OOS_START = datetime(2026, 2, 1, tzinfo=Z)
 OOS_END = datetime(2026, 3, 1, tzinfo=Z)
 
 
-def trades(delta=0.0, n=80, start=OOS_START + timedelta(hours=1), cost_r=0.02):
-    return tuple(
-        TradeOutcome(
-            trade_id=f"t{i}",
-            executed_at=start + timedelta(minutes=i),
-            r=(.5 if i % 4 else -.5) + delta,
-            regime="TREND" if i < n // 2 else "RANGE",
-            gross_r=((.5 if i % 4 else -.5) + delta) + cost_r,
+def trades(delta=0.0, n=80, start=OOS_START + timedelta(hours=1), cost_r=0.02, dataset=None, market_states=None, regime_failure=False):
+    outcomes = []
+    for i in range(n):
+        executed_at = start + timedelta(minutes=i)
+        trade_id = f"t{i}"
+        is_trend = i < n // 2
+        market_state = None
+        if dataset is not None:
+            market_state = MarketStateRecord(
+                dataset_sha256=dataset,
+                trade_id=trade_id,
+                observed_at=executed_at,
+                open=100.0,
+                high=101.0,
+                low=99.0,
+                close=101.0 if is_trend else 99.0,
+            )
+            market_states.append(market_state)
+        outcome_r = ((.5 if i % 4 else -.5) + delta)
+        if regime_failure and i >= n // 2:
+            outcome_r = (.5 if (i - n // 2) % 2 else -.5) + delta
+        outcomes.append(TradeOutcome(
+            trade_id=trade_id,
+            executed_at=executed_at,
+            r=outcome_r,
+            regime="TREND" if is_trend else "RANGE",
+            market_state_sha256=market_state.sha256 if market_state else None,
+            gross_r=outcome_r + cost_r,
             spread_cost_r=cost_r,
             commission_cost_r=0.0,
             slippage_cost_r=0.0,
             funding_cost_r=0.0,
-        )
-        for i in range(n)
-    )
+        ))
+    return tuple(outcomes)
 
 
-def tl(engine, code, delta=0.0, n=80, dataset="d" * 64, start=OOS_START + timedelta(hours=1), cost_r=0.02):
+def tl(engine, code, delta=0.0, n=80, dataset="d" * 64, start=OOS_START + timedelta(hours=1), cost_r=0.02, market_states=None, regime_failure=False):
     return TradeListRecord(
         dataset_sha256=dataset,
         strategy_sha256=STRAT,
         engine_id=engine,
         engine_code_sha256=code,
-        trades=trades(delta, n, start, cost_r),
+        trades=trades(delta, n, start, cost_r, dataset if market_states is not None else None, market_states, regime_failure),
     )
 
 
-def fixture(*, negative=False, omit_regime=False, cost_r=0.02):
+def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=False):
     dataset = DatasetRecord(dataset_sha256="d" * 64, start=OOS_START, end=OOS_END)
     data_ref = dataset.sha256
     re = EngineRecord(engine_id="ref", code_sha256="1" * 64, independence_group="A")
     ie = EngineRecord(engine_id="ind", code_sha256="2" * 64, independence_group="B")
     engines = EngineRegistry.owner_approved_pair((re, ie))
     friction_model = FrictionModelRecord(model_id="normalized-r", version="1", implementation_sha256=FRICTION_IMPLEMENTATION_SHA256)
+    classifier = RegimeClassifierRecord(
+        classifier_id="ohlc-direction", version="1",
+        implementation_sha256=REGIME_CLASSIFIER_IMPLEMENTATION_SHA256,
+    )
     variant = FrozenVariantRecord(
         strategy_id="S",
         strategy_version="1",
@@ -55,12 +78,13 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02):
         funnel_sha256="b" * 64,
         parameters_sha256="c" * 64,
         claimed_regimes=("TREND",) if omit_regime else ("TREND", "RANGE"),
-        regime_classifier_sha256="e" * 64,
+        regime_classifier_sha256=classifier.sha256,
         frozen_at=datetime(2026, 1, 1, tzinfo=Z),
     )
     d = -.5 if negative else 0.0
-    oos = tl("ref", "1" * 64, d, dataset=data_ref, cost_r=cost_r)
-    ind = tl("ind", "2" * 64, d - .005, dataset=data_ref)
+    market_states = []
+    oos = tl("ref", "1" * 64, d, dataset=data_ref, cost_r=cost_r, market_states=market_states, regime_failure=regime_failure)
+    ind = tl("ind", "2" * 64, d - .005, dataset=data_ref, regime_failure=regime_failure)
     friction = FrictionEvidenceRecord(
         baseline_trade_list_sha256=oos.sha256,
         model_sha256=friction_model.sha256,
@@ -94,7 +118,7 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02):
         neighborhoods.append((v, x.sha256))
     stability = StabilityEvidenceRecord(center=1.2, neighborhoods=tuple(neighborhoods))
 
-    records = [oos, ind, friction_model, *fold_lists, *s_lists, friction, wf, stability]
+    records = [oos, ind, friction_model, classifier, *market_states, *fold_lists, *s_lists, friction, wf, stability]
     store = ContentAddressedStore.build({x.sha256: x for x in records})
     bundle = ValidationBundleRecord(
         variant_sha256=variant.sha256,
@@ -184,6 +208,114 @@ def test_valid_utc_evidence_still_verifies():
     b, r = fixture()
     use(r)
     assert verify_edge(b.sha256).verdict == EdgeVerdict.EDGE_VERIFIED
+
+
+def _verify_with_oos(b, r, altered_oos):
+    old_friction = r.evidence.resolve(b.friction_sha256)
+    friction = old_friction.model_copy(update={"baseline_trade_list_sha256": altered_oos.sha256})
+    records = dict(r.evidence._records)
+    records[altered_oos.sha256] = altered_oos
+    records[friction.sha256] = friction
+    bundle = b.model_copy(update={
+        "oos_trade_list_sha256": altered_oos.sha256,
+        "parity_reference_trade_list_sha256": altered_oos.sha256,
+        "friction_sha256": friction.sha256,
+    })
+    records[bundle.sha256] = bundle
+    rr = VerificationResolvers(r.variants, ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure)
+    use(rr)
+    return verify_edge(bundle.sha256)
+
+
+def _verify_with_variant(b, r, altered_variant, extra_evidence=()):
+    records = dict(r.evidence._records)
+    records.update({item.sha256: item for item in extra_evidence})
+    bundle = b.model_copy(update={"variant_sha256": altered_variant.sha256})
+    records[bundle.sha256] = bundle
+    rr = VerificationResolvers(
+        ContentAddressedStore.build({altered_variant.sha256: altered_variant}),
+        ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure,
+    )
+    use(rr)
+    return verify_edge(bundle.sha256)
+
+
+def test_post_hoc_trade_labels_cannot_change_regime_grouping_or_verdict():
+    b, r = fixture()
+    original = r.evidence.resolve(b.oos_trade_list_sha256)
+    use(r)
+    original_verdict = verify_edge(b.sha256).verdict
+    winner_labeled = original.model_copy(update={
+        "trades": tuple(t.model_copy(update={"regime": "TREND" if t.r > 0 else "RANGE"}) for t in original.trades)
+    })
+    assert original_verdict == EdgeVerdict.EDGE_VERIFIED
+    assert _verify_with_oos(b, r, winner_labeled).verdict == original_verdict
+
+
+def test_frozen_classifier_substitution_fails_closed():
+    b, r = fixture()
+    variant = r.variants.resolve(b.variant_sha256)
+    alternate = RegimeClassifierRecord(
+        classifier_id="outcome-aware", version="1",
+        implementation_sha256=REGIME_CLASSIFIER_IMPLEMENTATION_SHA256,
+    )
+    substituted = variant.model_copy(update={"regime_classifier_sha256": alternate.sha256})
+    assert _verify_with_variant(b, r, substituted, (alternate,)).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_classifier_tampering_and_spoofed_identity_fail_closed():
+    b, r = fixture()
+    variant = r.variants.resolve(b.variant_sha256)
+    classifier = r.evidence.resolve(variant.regime_classifier_sha256)
+    tampered = classifier.model_copy(update={"classification_rule": "close < open => TREND; otherwise => RANGE"})
+    with pytest.raises(ValueError):
+        ContentAddressedStore.build({classifier.sha256: tampered})
+    altered_variant = variant.model_copy(update={"regime_classifier_sha256": tampered.sha256})
+    assert _verify_with_variant(b, r, altered_variant, (tampered,)).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_missing_frozen_classifier_fails_closed():
+    b, r = fixture()
+    variant = r.variants.resolve(b.variant_sha256).model_copy(update={"regime_classifier_sha256": "f" * 64})
+    assert _verify_with_variant(b, r, variant).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_missing_market_state_evidence_fails_closed():
+    b, r = fixture()
+    oos = r.evidence.resolve(b.oos_trade_list_sha256)
+    first = oos.trades[0].model_copy(update={"market_state_sha256": None})
+    altered = oos.model_copy(update={"trades": (first,) + oos.trades[1:]})
+    assert _verify_with_oos(b, r, altered).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+@pytest.mark.parametrize("substitution", ["dataset", "trade", "time"])
+def test_wrong_market_state_population_trade_or_window_fails_closed(substitution):
+    b, r = fixture()
+    oos = r.evidence.resolve(b.oos_trade_list_sha256)
+    original_trade = oos.trades[0]
+    state = r.evidence.resolve(original_trade.market_state_sha256)
+    changes = {
+        "dataset": {"dataset_sha256": "f" * 64},
+        "trade": {"trade_id": oos.trades[1].trade_id},
+        "time": {"observed_at": original_trade.executed_at - timedelta(minutes=1)},
+    }
+    substituted_state = state.model_copy(update=changes[substitution])
+    altered_trade = original_trade.model_copy(update={"market_state_sha256": substituted_state.sha256})
+    altered_oos = oos.model_copy(update={"trades": (altered_trade,) + oos.trades[1:]})
+    records = dict(r.evidence._records)
+    records[substituted_state.sha256] = substituted_state
+    rr = VerificationResolvers(r.variants, ContentAddressedStore.build(records), r.datasets, r.engines, r.exposure)
+    assert _verify_with_oos(b, rr, altered_oos).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_authoritatively_classified_regime_economic_failure_is_no_edge():
+    b, r = fixture(regime_failure=True)
+    use(r)
+    result = verify_edge(b.sha256)
+    gates = dict(result.gate_results)
+    assert gates["REGIME_COHERENCE"] is True
+    assert gates["REGIME_EVIDENCE"] is False
+    assert result.verdict == EdgeVerdict.NO_EDGE
 
 
 def test_preregistered_regime_cannot_be_omitted():

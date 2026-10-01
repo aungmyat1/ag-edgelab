@@ -5,6 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from ag_edgelab.data.fingerprint import sha256_json
 from ag_edgelab.friction.model import normalized_r_stress_implementation_sha256
+from ag_edgelab.verification.regimes import regime_classifier_implementation_sha256
 from ag_edgelab.verification.time import UTCDateTime
 
 HEX64 = r"^[0-9a-f]{64}$"
@@ -32,7 +33,9 @@ class TradeOutcome(BaseModel):
     trade_id: str = Field(min_length=1)
     executed_at: UTCDateTime
     r: float = Field(allow_inf_nan=False)
+    # Diagnostic only. Production classification uses market_state_sha256 below.
     regime: str = Field(min_length=1)
+    market_state_sha256: str | None = Field(default=None, pattern=HEX64)
     gross_r: float | None = Field(default=None, allow_inf_nan=False)
     spread_cost_r: float | None = Field(default=None, allow_inf_nan=False, ge=0)
     commission_cost_r: float | None = Field(default=None, allow_inf_nan=False, ge=0)
@@ -73,6 +76,45 @@ class TradeListRecord(BaseModel):
     @property
     def rs(self) -> tuple[float, ...]:
         return tuple(t.r for t in self.trades)
+
+
+REGIME_CLASSIFIER_IMPLEMENTATION_SHA256 = regime_classifier_implementation_sha256()
+
+
+class RegimeClassifierRecord(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    classifier_id: str = Field(min_length=1)
+    version: str = Field(min_length=1)
+    implementation_sha256: str = Field(pattern=HEX64)
+    required_input_schema: tuple[str, ...] = ("dataset_sha256", "trade_id", "observed_at", "open", "close")
+    classification_rule: str = "close > open => TREND; otherwise => RANGE"
+    allowed_regimes: tuple[str, ...] = ("TREND", "RANGE")
+
+    @property
+    def sha256(self) -> str:
+        return sha256_json(self.model_dump(mode="python"))
+
+
+class MarketStateRecord(BaseModel):
+    """Content-addressed OHLC observation bound to one trade and dataset."""
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    dataset_sha256: str = Field(pattern=HEX64)
+    trade_id: str = Field(min_length=1)
+    observed_at: UTCDateTime
+    open: float = Field(allow_inf_nan=False)
+    high: float = Field(allow_inf_nan=False)
+    low: float = Field(allow_inf_nan=False)
+    close: float = Field(allow_inf_nan=False)
+
+    @model_validator(mode="after")
+    def valid_ohlc(self) -> "MarketStateRecord":
+        if self.high < max(self.open, self.close, self.low) or self.low > min(self.open, self.close, self.high):
+            raise ValueError("invalid market-state OHLC")
+        return self
+
+    @property
+    def sha256(self) -> str:
+        return sha256_json(self.model_dump(mode="python"))
 
 
 FRICTION_FORMULA = "baseline_net_r - (multiplier - 1) * sum(normalized_cost_components_r)"
