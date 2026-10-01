@@ -17,6 +17,7 @@ class NodeAnalytics(BaseModel):
     rejected_n: int
     pass_rate: float
     route_counts: tuple[tuple[str, int], ...]
+    route_future_expectancy_r: tuple[tuple[str, float], ...]
     terminal_trade_n: int
     win_rate: float | None
     avg_win_r: float | None
@@ -118,6 +119,10 @@ def compute_branching_analytics(
         routed = sum(event.outcome != "FAIL" for _, event in entries)
         rejected = len(entries) - routed
         route_counts = Counter(event.output for _, event in entries)
+        route_outcomes: dict[str, list[float]] = defaultdict(list)
+        for result, event in entries:
+            if result.candidate_id in future:
+                route_outcomes[event.output].append(float(future[result.candidate_id]))
         node_trades = [trades_by_id[(result.candidate_id, event.trade_id)] for result, event in entries
                        if event.trade_id is not None and (result.candidate_id, event.trade_id) in trades_by_id]
         rs = [float(trade.result_r) for trade in node_trades]
@@ -129,7 +134,10 @@ def compute_branching_analytics(
         stats.append(NodeAnalytics(
             node_id=node_id, input_n=len(entries), passed_or_routed_n=routed, rejected_n=rejected,
             pass_rate=routed / len(entries) if entries else 0.0,
-            route_counts=tuple(sorted(route_counts.items())), terminal_trade_n=len(node_trades),
+            route_counts=tuple(sorted(route_counts.items())),
+            route_future_expectancy_r=tuple((route, sum(values) / len(values))
+                                             for route, values in sorted(route_outcomes.items())),
+            terminal_trade_n=len(node_trades),
             win_rate=nwr, avg_win_r=avg_win, avg_loss_r=avg_loss, expectancy_r=exp,
             profit_factor=node_pf, max_drawdown_r=_drawdown(rs),
             pass_future_expectancy_r=sum(passed_future) / len(passed_future) if passed_future else None,

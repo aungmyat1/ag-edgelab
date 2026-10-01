@@ -142,6 +142,7 @@ class TradeResult(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
     trade_id: str = Field(min_length=1)
     direction: str
+    management: str = Field(min_length=1)
     entry: float
     stop: float
     target: float

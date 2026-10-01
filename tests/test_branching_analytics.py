@@ -32,7 +32,8 @@ def run(candidate, funnel_sha, *, rejected=False):
     events = [event]
     trades = ()
     if not rejected:
-        trade = TradeResult(trade_id=f"{candidate}-trade", direction="LONG", entry=10, stop=9,
+        trade = TradeResult(trade_id=f"{candidate}-trade", direction="LONG", management="synthetic",
+                            entry=10, stop=9,
                             target=12, exit=12, result_r=2.0)
         events.append(FunnelEvent(event_id=("c" if candidate == "a" else "e") * 64, timestamp=ts,
                                   symbol="SYN", dataset_sha256=dataset, funnel_sha256=funnel_sha,
