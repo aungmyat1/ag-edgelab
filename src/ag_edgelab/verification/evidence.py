@@ -10,9 +10,27 @@ from ag_edgelab.data.fingerprint import sha256_json
 HEX64 = r"^[0-9a-f]{64}$"
 
 
+class DatasetRecord(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    dataset_sha256: str = Field(pattern=HEX64)
+    start: datetime
+    end: datetime
+
+    @model_validator(mode="after")
+    def valid_window(self) -> "DatasetRecord":
+        if not self.start < self.end:
+            raise ValueError("dataset window must be increasing")
+        return self
+
+    @property
+    def sha256(self) -> str:
+        return sha256_json(self.model_dump(mode="python"))
+
+
 class TradeOutcome(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
     trade_id: str = Field(min_length=1)
+    executed_at: datetime
     r: float = Field(allow_inf_nan=False)
     regime: str = Field(min_length=1)
 
@@ -26,10 +44,13 @@ class TradeListRecord(BaseModel):
     trades: tuple[TradeOutcome, ...]
 
     @model_validator(mode="after")
-    def unique(self) -> "TradeListRecord":
+    def unique_and_ordered(self) -> "TradeListRecord":
         ids = [t.trade_id for t in self.trades]
         if len(ids) != len(set(ids)):
             raise ValueError("duplicate trade ids")
+        times = [t.executed_at for t in self.trades]
+        if times != sorted(times):
+            raise ValueError("trade list must be chronological")
         return self
 
     @property
@@ -93,6 +114,15 @@ class StabilityEvidenceRecord(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
     center: float = Field(allow_inf_nan=False)
     neighborhoods: tuple[tuple[float, str], ...]
+
+    @model_validator(mode="after")
+    def valid(self) -> "StabilityEvidenceRecord":
+        values = [v for v, _ in self.neighborhoods]
+        if any(not math.isfinite(v) for v in values) or len(values) != len(set(values)):
+            raise ValueError("invalid stability neighborhood")
+        if self.center not in values:
+            raise ValueError("stability center must be present")
+        return self
 
     @property
     def sha256(self) -> str:
