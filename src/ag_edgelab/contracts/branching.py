@@ -135,6 +135,7 @@ class FunnelEvent(BaseModel):
     output: str
     outcome: str
     measurements_json: str
+    trade_id: str | None = None
 
 
 class TradeResult(BaseModel):

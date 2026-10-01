@@ -115,6 +115,7 @@ class BranchingFunnelEngine:
                 rule_version=f"{node.rule.rule_id}@{node.rule.version}",
                 input_json=canonical_json(inputs), output=evaluation.output, outcome=outcome,
                 measurements_json=canonical_json(measurements),
+                trade_id=evaluation.trade.trade_id if evaluation.trade else None,
             ))
             current = target
         return FunnelRunResult(candidate_id=opportunity.candidate_id, symbol=opportunity.symbol,
