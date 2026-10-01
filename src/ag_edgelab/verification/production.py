@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import math
 import re
+from dataclasses import dataclass
 from enum import StrEnum
 from types import MappingProxyType
 
@@ -37,6 +38,7 @@ class VerificationPolicy(BaseModel):
     max_drawdown_r: float = 20.0
     min_bootstrap_ci_low_r: float = 0.0
     min_walk_forward_folds: int = 3
+    min_walk_forward_trades_per_fold: int = 30
     min_positive_walk_forward_fraction: float = .6
     min_regime_sample: int = 10
     required_friction_multipliers: tuple[float, ...] = REQUIRED_FRICTION_GRID
@@ -49,7 +51,7 @@ class VerificationPolicy(BaseModel):
 
 
 CANONICAL_POLICY_V1 = VerificationPolicy(policy_id="EDGE_VERIFICATION_V1")
-CANONICAL_POLICY_V1_SHA256 = "7eb2b129c6523f90a2fb041c2a6dcbe0287012307d96054bb3acee62c76beef8"
+CANONICAL_POLICY_V1_SHA256 = "7ca7ec59c7868bc93b4c5cf5ee58babd51ab99a18876f2cfef647445532f33b3"
 if CANONICAL_POLICY_V1.sha256 != CANONICAL_POLICY_V1_SHA256:
     raise RuntimeError("canonical policy hash drift")
 POLICY_REGISTRY = MappingProxyType({CANONICAL_POLICY_V1.policy_id: CANONICAL_POLICY_V1})
@@ -66,13 +68,26 @@ class EdgeValidationArtifact(BaseModel):
     seal_sha256: str = Field(pattern=HEX64)
 
 
-_TRUSTED_AUTHORITY: VerificationResolvers | None = None
+@dataclass(frozen=True)
+class VerificationContext:
+    """Immutable, invocation-scoped authority assembled by the server."""
+    resolvers: VerificationResolvers
+    policy: VerificationPolicy = CANONICAL_POLICY_V1
+
+    def __post_init__(self):
+        if self.policy.sha256 != CANONICAL_POLICY_V1_SHA256:
+            raise ValueError("verification policy is not the pinned canonical policy")
 
 
-def _install_trusted_authority(resolvers: VerificationResolvers) -> None:
-    """Composition-root hook. Never expose this through request/agent input."""
-    global _TRUSTED_AUTHORITY
-    _TRUSTED_AUTHORITY = resolvers
+@dataclass(frozen=True)
+class EdgeVerifier:
+    context: VerificationContext
+
+    def verify_edge(self, evidence_id: str) -> EdgeValidationArtifact:
+        return verify_edge(evidence_id, self.context)
+
+    def validate_artifact(self, artifact: EdgeValidationArtifact) -> bool:
+        return validate_artifact(artifact, self.context)
 
 
 def _artifact(evidence_id, verdict, gates, reasons):
@@ -207,8 +222,8 @@ def _stability_provenance(resolvers, bundle, variant, experiment, holdout_open):
     return True, result
 
 
-def verify_edge(evidence_id: str) -> EdgeValidationArtifact:
-    """Public authority: untrusted callers supply only an evidence ID."""
+def verify_edge(evidence_id: str, context: VerificationContext) -> EdgeValidationArtifact:
+    """Verify untrusted evidence using explicit immutable server authority."""
     if not isinstance(evidence_id, str) or re.fullmatch(HEX64, evidence_id) is None:
         return _artifact(
             _INVALID_EVIDENCE_ID,
@@ -216,16 +231,16 @@ def verify_edge(evidence_id: str) -> EdgeValidationArtifact:
             {"EVIDENCE_ID": False},
             ("INVALID_EVIDENCE_ID",),
         )
-    if _TRUSTED_AUTHORITY is None:
+    if not isinstance(context, VerificationContext):
         return _artifact(evidence_id, EdgeVerdict.INSUFFICIENT_EVIDENCE, {"SERVER_AUTHORITY": False}, ("SERVER_AUTHORITY",))
     try:
-        return _verify_edge(evidence_id, _TRUSTED_AUTHORITY)
+        return _verify_edge(evidence_id, context.resolvers, context.policy)
     except (TypeError, ValueError, OverflowError):
         # Defensive public boundary for malformed evidence that bypassed model validation.
         return _artifact(evidence_id, EdgeVerdict.INSUFFICIENT_EVIDENCE, {"TEMPORAL_EVIDENCE": False}, ("INVALID_EVIDENCE",))
 
 
-def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeValidationArtifact:
+def _verify_edge(evidence_id: str, resolvers: VerificationResolvers, policy: VerificationPolicy = CANONICAL_POLICY_V1) -> EdgeValidationArtifact:
     gates = {}
     try:
         bundle = _resolve(resolvers.evidence, evidence_id, ValidationBundleRecord)
@@ -334,14 +349,36 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeVali
     gates["FRICTION_COHERENCE"] = bool(friction_coherent)
 
     wf_metrics = []
-    wf_coherent = len(wf.folds) >= CANONICAL_POLICY_V1.min_walk_forward_folds
+    wf_coherent = len(wf.folds) >= policy.min_walk_forward_folds
     for fold in wf.folds:
         try:
             tl = _resolve(resolvers.evidence, fold.trade_list_sha256, TradeListRecord)
+            train_dataset = _resolve(resolvers.datasets, fold.train_dataset_sha256, DatasetRecord)
+            test_dataset = _resolve(resolvers.datasets, fold.test_dataset_sha256, DatasetRecord)
+            population = _resolve(resolvers.evidence, fold.population_definition_sha256, PopulationDefinitionRecord)
+            engine = resolvers.engines.resolve(fold.engine_id)
+            train_exposure = resolvers.exposure.state(fold.train_dataset_sha256)
+            test_exposure = resolvers.exposure.state(fold.test_dataset_sha256)
         except UnknownProvenanceError:
             wf_coherent = False
             continue
-        wf_coherent &= tl.strategy_sha256 == variant.strategy_sha256 and _trades_within(tl.trades, fold.test_start, fold.test_end)
+        wf_coherent &= (
+            fold.variant_sha256 == variant.sha256
+            and train_dataset.start <= fold.train_start < fold.train_end <= train_dataset.end
+            and test_dataset.start <= fold.test_start < fold.test_end <= test_dataset.end
+            and train_dataset.role == DatasetRole.DEVELOPMENT
+            and test_dataset.role in (DatasetRole.VALIDATION, DatasetRole.OOS)
+            and train_exposure == DatasetExposure.DEVELOPMENT
+            and test_exposure in (DatasetExposure.OBSERVED_VALIDATION, DatasetExposure.BURNED_HOLDOUT)
+            and population.dataset_sha256 == fold.test_dataset_sha256
+            and population.start == fold.test_start and population.end == fold.test_end
+            and engine.owner_approved and engine.code_sha256 == fold.engine_code_sha256
+            and tl.dataset_sha256 == fold.test_dataset_sha256
+            and tl.engine_id == fold.engine_id and tl.engine_code_sha256 == fold.engine_code_sha256
+            and tl.strategy_sha256 == variant.strategy_sha256
+            and _trades_within(tl.trades, fold.test_start, fold.test_end)
+            and len(tl.trades) >= policy.min_walk_forward_trades_per_fold
+        )
         wf_metrics.append(compute_performance(tl.rs))
     gates["WALK_FORWARD_COHERENCE"] = bool(wf_coherent)
 
@@ -403,7 +440,7 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeVali
     )
     gates["REGIME_EVIDENCE"] = all(m.expectancy_r is not None and m.expectancy_r > 0 for m in regime_metrics.values())
     positives = sum(m.expectancy_r is not None and m.expectancy_r > 0 for m in wf_metrics) / len(wf_metrics)
-    gates["WALK_FORWARD"] = positives >= CANONICAL_POLICY_V1.min_positive_walk_forward_fraction
+    gates["WALK_FORWARD"] = positives >= policy.min_positive_walk_forward_fraction
     gates["PARAMETER_STABILITY"] = stability_result is not None and stability_result.stable
     gates["INDEPENDENT_PARITY"] = (
         abs(pr.trades - pi.trades) <= CANONICAL_POLICY_V1.max_parity_trade_count_delta
@@ -416,5 +453,5 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeVali
     return _artifact(evidence_id, EdgeVerdict.EDGE_VERIFIED if not failed else EdgeVerdict.NO_EDGE, gates, failed)
 
 
-def validate_artifact(artifact: EdgeValidationArtifact) -> bool:
-    return verify_edge(artifact.evidence_id).model_dump(mode="python") == artifact.model_dump(mode="python")
+def validate_artifact(artifact: EdgeValidationArtifact, context: VerificationContext) -> bool:
+    return verify_edge(artifact.evidence_id, context).model_dump(mode="python") == artifact.model_dump(mode="python")

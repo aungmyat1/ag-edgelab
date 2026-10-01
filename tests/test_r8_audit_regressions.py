@@ -63,10 +63,13 @@ def test_duplicate_or_invalid_friction_grid_rejected():
 
 def test_walk_forward_overlap_and_reverse_rejected():
     s = datetime(2025, 1, 1, tzinfo=Z)
+    identity = dict(train_dataset_sha256="c" * 64, test_dataset_sha256="d" * 64,
+                    variant_sha256="e" * 64, engine_id="synthetic",
+                    engine_code_sha256="f" * 64, population_definition_sha256="1" * 64)
     with pytest.raises(ValidationError):
-        WalkForwardFoldRecord(fold_id="x", train_start=s, train_end=s + timedelta(days=2), test_start=s + timedelta(days=1), test_end=s + timedelta(days=3), trade_list_sha256="a" * 64)
-    a = WalkForwardFoldRecord(fold_id="a", train_start=s, train_end=s + timedelta(days=1), test_start=s + timedelta(days=1), test_end=s + timedelta(days=3), trade_list_sha256="a" * 64)
-    b = WalkForwardFoldRecord(fold_id="b", train_start=s, train_end=s + timedelta(days=1), test_start=s + timedelta(days=2), test_end=s + timedelta(days=4), trade_list_sha256="b" * 64)
+        WalkForwardFoldRecord(fold_id="x", train_start=s, train_end=s + timedelta(days=2), test_start=s + timedelta(days=1), test_end=s + timedelta(days=3), trade_list_sha256="a" * 64, **identity)
+    a = WalkForwardFoldRecord(fold_id="a", train_start=s, train_end=s + timedelta(days=1), test_start=s + timedelta(days=1), test_end=s + timedelta(days=3), trade_list_sha256="a" * 64, **identity)
+    b = WalkForwardFoldRecord(fold_id="b", train_start=s, train_end=s + timedelta(days=1), test_start=s + timedelta(days=2), test_end=s + timedelta(days=4), trade_list_sha256="b" * 64, **identity)
     with pytest.raises(ValidationError):
         WalkForwardEvidenceRecord(folds=(a, b))
 

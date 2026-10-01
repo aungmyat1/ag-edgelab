@@ -168,6 +168,12 @@ class WalkForwardFoldRecord(BaseModel):
     test_start: UTCDateTime
     test_end: UTCDateTime
     trade_list_sha256: str = Field(pattern=HEX64)
+    train_dataset_sha256: str = Field(pattern=HEX64)
+    test_dataset_sha256: str = Field(pattern=HEX64)
+    variant_sha256: str = Field(pattern=HEX64)
+    engine_id: str = Field(min_length=1)
+    engine_code_sha256: str = Field(pattern=HEX64)
+    population_definition_sha256: str = Field(pattern=HEX64)
 
     @model_validator(mode="after")
     def chronological(self) -> "WalkForwardFoldRecord":
@@ -182,6 +188,8 @@ class WalkForwardEvidenceRecord(BaseModel):
 
     @model_validator(mode="after")
     def nonoverlap(self) -> "WalkForwardEvidenceRecord":
+        if len({fold.fold_id for fold in self.folds}) != len(self.folds):
+            raise ValueError("walk-forward fold ids must be unique")
         for a, b in zip(self.folds, self.folds[1:]):
             if b.test_start < a.test_end:
                 raise ValueError("walk-forward test windows overlap")

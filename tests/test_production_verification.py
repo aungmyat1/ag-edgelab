@@ -5,7 +5,7 @@ from pydantic import ValidationError
 from ag_edgelab.optimization.contracts import DatasetExposure
 from ag_edgelab.data.fingerprint import canonical_json
 from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_IMPLEMENTATION_SHA256, REGIME_CLASSIFIER_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, MarketStateRecord, ParameterNeighborRecord, ParameterSetRecord, PopulationDefinitionRecord, RegimeClassifierRecord, StabilityEvidenceRecord, TradeListRecord, TradeOutcome, ValidationBundleRecord, WalkForwardEvidenceRecord, WalkForwardFoldRecord
-from ag_edgelab.verification.production import CANONICAL_POLICY_V1, CANONICAL_POLICY_V1_SHA256, EdgeVerdict, POLICY_REGISTRY, _install_trusted_authority, validate_artifact, verify_edge
+from ag_edgelab.verification.production import CANONICAL_POLICY_V1, CANONICAL_POLICY_V1_SHA256, EdgeVerifier, EdgeVerdict, POLICY_REGISTRY, VerificationContext
 from ag_edgelab.verification.provenance import ContentAddressedStore, EngineRecord, EngineRegistry, ExposureEvent, ExposureLedger, FrozenVariantRecord, VerificationResolvers
 
 Z = timezone.utc
@@ -106,19 +106,38 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=Fa
 
     fold_lists = []
     folds = []
+    wf_datasets = []
+    wf_populations = []
+    wf_exposure = []
     for i, h in enumerate(("6", "7", "8")):
         start = datetime(2025, 1, 1, tzinfo=Z) + timedelta(days=i * 100)
         test_start = start + timedelta(days=40)
-        x = tl("ref", "1" * 64, d, n=40, dataset=h * 64, start=test_start + timedelta(hours=1))
+        test_end = start + timedelta(days=60)
+        train_dataset = DatasetRecord(dataset_sha256=str(3 + i) * 64, start=start, end=test_start, role="DEVELOPMENT")
+        test_dataset = DatasetRecord(dataset_sha256=h * 64, start=test_start, end=test_end, role="VALIDATION")
+        wf_datasets.extend((train_dataset, test_dataset))
+        population_i = PopulationDefinitionRecord(dataset_sha256=test_dataset.sha256, start=test_start, end=test_end)
+        wf_populations.append(population_i)
+        x = tl("ref", "1" * 64, d, n=40, dataset=test_dataset.sha256, start=test_start + timedelta(hours=1))
         fold_lists.append(x)
+        wf_exposure.extend((
+            ExposureEvent(dataset_sha256=train_dataset.sha256, previous=DatasetExposure.UNSEEN, current=DatasetExposure.DEVELOPMENT, observed_at=start),
+            ExposureEvent(dataset_sha256=test_dataset.sha256, previous=DatasetExposure.UNSEEN, current=DatasetExposure.OBSERVED_VALIDATION, observed_at=test_end),
+        ))
         folds.append(
             WalkForwardFoldRecord(
                 fold_id=f"F{i}",
                 train_start=start,
                 train_end=test_start,
                 test_start=test_start,
-                test_end=start + timedelta(days=60),
+                test_end=test_end,
                 trade_list_sha256=x.sha256,
+                train_dataset_sha256=train_dataset.sha256,
+                test_dataset_sha256=test_dataset.sha256,
+                variant_sha256=variant.sha256,
+                engine_id="ref",
+                engine_code_sha256="1" * 64,
+                population_definition_sha256=population_i.sha256,
             )
         )
     wf = WalkForwardEvidenceRecord(folds=tuple(folds))
@@ -160,7 +179,7 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=Fa
         parameter_name="sensitivity", neighbors=tuple(neighbor_records),
     )
 
-    records = [oos, ind, friction_model, classifier, *market_states, *fold_lists,
+    records = [oos, ind, friction_model, classifier, *market_states, *fold_lists, *wf_populations,
                center_parameters, *stability_parameters, population, *stability_runs, friction, wf, stability]
     store = ContentAddressedStore.build({x.sha256: x for x in records})
     bundle = ValidationBundleRecord(
@@ -188,15 +207,50 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=Fa
     resolvers = VerificationResolvers(
         ContentAddressedStore.build({variant.sha256: variant}),
         store,
-        ContentAddressedStore.build({dataset.sha256: dataset, development_dataset.sha256: development_dataset}),
+        ContentAddressedStore.build({x.sha256: x for x in (dataset, development_dataset, *wf_datasets)}),
         engines,
-        ExposureLedger((development_exposure, opened)),
+        ExposureLedger((development_exposure, opened, *wf_exposure)),
     )
     return bundle, resolvers
 
 
+_active_verifier = None
+
+
 def use(resolvers):
-    _install_trusted_authority(resolvers)
+    global _active_verifier
+    _active_verifier = EdgeVerifier(VerificationContext(resolvers))
+
+
+def verify_edge(evidence_id):
+    return _active_verifier.verify_edge(evidence_id)
+
+
+def validate_artifact(artifact):
+    return _active_verifier.validate_artifact(artifact)
+
+
+def test_verifier_authority_is_invocation_scoped_and_cannot_be_replaced():
+    b_a, r_a = fixture()
+    b_b, r_b = fixture(negative=True)
+    verifier_a = EdgeVerifier(VerificationContext(r_a))
+    verifier_b = EdgeVerifier(VerificationContext(r_b))
+    a_first = verifier_a.verify_edge(b_a.sha256)
+    b_result = verifier_b.verify_edge(b_b.sha256)
+    a_second = verifier_a.verify_edge(b_a.sha256)
+    assert a_first.verdict == EdgeVerdict.EDGE_VERIFIED
+    assert b_result.verdict == EdgeVerdict.NO_EDGE
+    assert a_second == a_first
+
+
+def test_exposure_ledger_rejects_duplicate_or_backward_timestamps():
+    start = ExposureEvent(dataset_sha256="e" * 64, previous=DatasetExposure.UNSEEN,
+                          current=DatasetExposure.DEVELOPMENT, observed_at=OOS_START)
+    duplicate = ExposureEvent(dataset_sha256=start.dataset_sha256, previous=DatasetExposure.DEVELOPMENT,
+                              current=DatasetExposure.OBSERVED_VALIDATION, observed_at=OOS_START,
+                              previous_event_sha256=start.sha256)
+    with pytest.raises(ValueError, match="timestamps"):
+        ExposureLedger((start, duplicate))
 
 
 def verify_with_stability(bundle, resolvers, experiment, extra_records=(), datasets=None):
@@ -233,6 +287,30 @@ def test_unknown_and_fabricated_strategy_ids_fail_closed():
     _, r = fixture()
     use(r)
     assert verify_edge("f" * 64).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_fabricated_positive_strategy_identity_fails_closed():
+    bundle, resolvers = fixture()
+    original = resolvers.variants.resolve(bundle.variant_sha256)
+    fabricated = original.model_copy(update={"strategy_id": "NONEXISTENT", "strategy_sha256": "f" * 64})
+    changed = bundle.model_copy(update={"variant_sha256": fabricated.sha256})
+    variants = ContentAddressedStore.build({fabricated.sha256: fabricated})
+    evidence = ContentAddressedStore.build({**dict(resolvers.evidence._records), changed.sha256: changed})
+    use(VerificationResolvers(variants, evidence, resolvers.datasets, resolvers.engines, resolvers.exposure))
+    assert verify_edge(changed.sha256).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+
+
+def test_walk_forward_unknown_dataset_fails_closed():
+    bundle, resolvers = fixture()
+    wf = resolvers.evidence.resolve(bundle.walk_forward_sha256)
+    first = wf.folds[0].model_copy(update={"test_dataset_sha256": "0" * 64})
+    changed_wf = wf.model_copy(update={"folds": (first, *wf.folds[1:])})
+    changed_bundle = bundle.model_copy(update={"walk_forward_sha256": changed_wf.sha256})
+    records = dict(resolvers.evidence._records)
+    records.update({changed_wf.sha256: changed_wf, changed_bundle.sha256: changed_bundle})
+    use(VerificationResolvers(resolvers.variants, ContentAddressedStore.build(records), resolvers.datasets,
+                              resolvers.engines, resolvers.exposure))
+    assert verify_edge(changed_bundle.sha256).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
 
 
 @pytest.mark.parametrize("bad_id", ["invalid", "", None, 123, "F" * 64, "a" * 63, "a" * 65, "g" * 64])
@@ -390,7 +468,7 @@ def test_preregistered_regime_cannot_be_omitted():
 
 
 def test_policy_hash_is_pinned_and_registry_immutable():
-    assert CANONICAL_POLICY_V1.sha256 == CANONICAL_POLICY_V1_SHA256 == "7eb2b129c6523f90a2fb041c2a6dcbe0287012307d96054bb3acee62c76beef8"
+    assert CANONICAL_POLICY_V1.sha256 == CANONICAL_POLICY_V1_SHA256 == "7ca7ec59c7868bc93b4c5cf5ee58babd51ab99a18876f2cfef647445532f33b3"
     with pytest.raises(TypeError):
         POLICY_REGISTRY["x"] = CANONICAL_POLICY_V1
 

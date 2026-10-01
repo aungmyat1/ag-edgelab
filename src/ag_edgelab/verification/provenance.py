@@ -72,6 +72,14 @@ class ExposureEvent(BaseModel):
     def valid(self) -> "ExposureEvent":
         if self.previous == DatasetExposure.BURNED_HOLDOUT and self.current != DatasetExposure.BURNED_HOLDOUT:
             raise ValueError("BURNED_HOLDOUT is absorbing")
+        allowed = {
+            DatasetExposure.UNSEEN: {DatasetExposure.UNSEEN, DatasetExposure.DEVELOPMENT, DatasetExposure.OBSERVED_VALIDATION, DatasetExposure.BURNED_HOLDOUT},
+            DatasetExposure.DEVELOPMENT: {DatasetExposure.DEVELOPMENT, DatasetExposure.OBSERVED_VALIDATION, DatasetExposure.BURNED_HOLDOUT},
+            DatasetExposure.OBSERVED_VALIDATION: {DatasetExposure.OBSERVED_VALIDATION, DatasetExposure.BURNED_HOLDOUT},
+            DatasetExposure.BURNED_HOLDOUT: {DatasetExposure.BURNED_HOLDOUT},
+        }
+        if self.current not in allowed[self.previous]:
+            raise ValueError("invalid exposure-state transition")
         return self
 
     @property
@@ -91,6 +99,8 @@ class ExposureLedger:
                 raise ValueError("first exposure event cannot reference previous event")
             if p is not None and (e.previous_event_sha256 != p.sha256 or e.previous != p.current):
                 raise ValueError("broken exposure ledger chain")
+            if p is not None and e.observed_at <= p.observed_at:
+                raise ValueError("exposure timestamps must increase strictly")
             last[e.dataset_sha256] = e
 
     def _events(self, dataset_sha256):
