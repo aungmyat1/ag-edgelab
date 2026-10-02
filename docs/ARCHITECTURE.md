@@ -227,3 +227,9 @@ If verification fails and the strategy is changed, return to DEVELOPMENT and cre
 ## 10. Safety boundary
 
 EdgeLab is not an execution service. No component in this repository should require broker credentials or place/modify/cancel real or Demo orders. `OrderIntent`-like research objects must remain neutral simulation/research representations.
+
+## 11. Implementation status at the R0 foundation integration
+
+The implementation line contains the generic versioned funnel contracts and runner, branching graph execution, deterministic funnel/rule hashing, DEVELOPMENT-only mutation and freeze, stage/branch analytics, variant comparison, and the R8.1 production verifier. A development funnel result remains separate from `EDGE_VERIFIED`; only the production verifier can issue that verdict.
+
+This is a reusable foundation, not completion of the real-strategy Funnel MVP. The repository does not yet provide authoritative candidate generation, run identity, `candidate_id` and `sequence_no` on every `FunnelEvent`, canonical multi-exit R accounting, finalized canonical analytics naming, or an authority-backed counterfactual policy for outcomes of rejected candidates. Do not infer or report those capabilities from the generic graph and analytics APIs.

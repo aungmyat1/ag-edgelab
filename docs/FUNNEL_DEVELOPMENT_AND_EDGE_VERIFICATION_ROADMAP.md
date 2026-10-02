@@ -1,6 +1,15 @@
 # AG EdgeLab — Funnel Development MVP and Edge Verification Roadmap
 
-Status: architecture / implementation plan
+Status: architecture / implementation plan. The implementation status below records what exists in the R0 foundation integration candidate; remaining roadmap items are not implied to be implemented.
+
+## Current implementation status
+
+- **Implemented foundation:** R0-R8.1 source and regression suite; generic versioned funnel/rule contracts, deterministic identities, chronological evaluation primitives, candidate records, branching graph execution, DEVELOPMENT-only variant mutation and freeze, stage/branch analytics, parent/child comparison, reference replay, and production Edge Validator authority.
+- **Funnel MVP V0.1:** supporting funnel and analytics components exist, but the end-to-end real-strategy diagnostic is not complete. The code does not yet provide an authoritative candidate generator or a complete, authority-backed PASS/FAIL downstream win-rate diagnostic for rejected populations. Treat V0.1 as in progress.
+- **Arena integration gaps:** authoritative `CandidateGenerator`; `run_id`; `candidate_id` and `sequence_no` on each `FunnelEvent`; deterministic multi-exit R accounting; canonical analytics field naming; and a documented, authority-backed counterfactual policy.
+- **Validator status:** PR #6 carried the implementation branch containing the R8.1 verifier and its security regression tests. This integration candidate brings that verifier onto the documentation `main` lineage; it does not change its research-only boundary.
+
+The work-package sequence below is a roadmap, not a completion checklist. In particular, a generic capability does not establish the corresponding Arena-grade identity, accounting, or authority contract.
 
 ## 1. Objective
 
