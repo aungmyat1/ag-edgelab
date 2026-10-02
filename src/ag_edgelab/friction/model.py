@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
+import inspect
 from typing import Iterable
 
 
@@ -21,6 +23,16 @@ class FrictionScenario:
 
 def apply_friction(gross_r: float, scenario: FrictionScenario) -> float:
     return gross_r - scenario.total_cost_r
+
+
+def apply_normalized_r_stress(baseline_net_r: float, baseline_cost_r: float, multiplier: float) -> float:
+    """Scale baseline costs while preserving the baseline net result at 1.0x."""
+    return baseline_net_r - (multiplier - 1.0) * baseline_cost_r
+
+
+def normalized_r_stress_implementation_sha256() -> str:
+    """Hash the exact deterministic transform frozen by each variant."""
+    return hashlib.sha256(inspect.getsource(apply_normalized_r_stress).encode("utf-8")).hexdigest()
 
 
 def stress_curve(gross_rs: Iterable[float], scenarios: Iterable[FrictionScenario]) -> dict[str, dict[str, float | int | None]]:
