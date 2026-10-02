@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+import re
 from types import MappingProxyType
 from typing import Generic, Mapping, TypeVar
 
@@ -18,23 +19,41 @@ class UnknownProvenanceError(LookupError):
     pass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, init=False)
 class ContentAddressedStore(Generic[T]):
     _records: Mapping[str, T]
 
-    @classmethod
-    def build(cls, records: Mapping[str, T]) -> "ContentAddressedStore[T]":
+    def __init__(self, records: Mapping[str, T]):
         checked = dict(records)
         for key, value in checked.items():
-            if getattr(value, "sha256", None) != key:
+            if not isinstance(key, str) or re.fullmatch(HEX64, key) is None:
+                raise ValueError("content-address key must be canonical SHA-256")
+            try:
+                digest = value.sha256
+            except Exception as exc:
+                raise ValueError("record must expose a deterministic sha256") from exc
+            if not isinstance(digest, str) or re.fullmatch(HEX64, digest) is None or digest != key:
                 raise ValueError("content-address key does not match record hash")
-        return cls(MappingProxyType(checked))
+        object.__setattr__(self, "_records", MappingProxyType(checked))
+
+    @classmethod
+    def build(cls, records: Mapping[str, T]) -> "ContentAddressedStore[T]":
+        return cls(records)
 
     def resolve(self, sha256: str) -> T:
+        if not isinstance(sha256, str) or re.fullmatch(HEX64, sha256) is None:
+            raise UnknownProvenanceError("invalid content-address key")
         try:
-            return self._records[sha256]
+            record = self._records[sha256]
         except KeyError as exc:
             raise UnknownProvenanceError(f"unknown evidence hash: {sha256}") from exc
+        try:
+            digest = record.sha256
+        except Exception as exc:
+            raise UnknownProvenanceError("stored record hash cannot be recomputed") from exc
+        if digest != sha256:
+            raise UnknownProvenanceError("stored record no longer matches its content address")
+        return record
 
 
 class FrozenVariantRecord(BaseModel):

@@ -21,6 +21,7 @@ from ag_edgelab.verification.regimes import classify_market_state
 
 HEX64 = r"^[0-9a-f]{64}$"
 REQUIRED_FRICTION_GRID = (1.0, 1.25, 1.5)
+CANONICAL_ALLOWED_OOS_ROLES = frozenset((DatasetRole.OOS,))
 
 
 class EdgeVerdict(StrEnum):
@@ -72,11 +73,6 @@ class EdgeValidationArtifact(BaseModel):
 class VerificationContext:
     """Immutable, invocation-scoped authority assembled by the server."""
     resolvers: VerificationResolvers
-    policy: VerificationPolicy = CANONICAL_POLICY_V1
-
-    def __post_init__(self):
-        if self.policy.sha256 != CANONICAL_POLICY_V1_SHA256:
-            raise ValueError("verification policy is not the pinned canonical policy")
 
 
 @dataclass(frozen=True)
@@ -234,13 +230,13 @@ def verify_edge(evidence_id: str, context: VerificationContext) -> EdgeValidatio
     if not isinstance(context, VerificationContext):
         return _artifact(evidence_id, EdgeVerdict.INSUFFICIENT_EVIDENCE, {"SERVER_AUTHORITY": False}, ("SERVER_AUTHORITY",))
     try:
-        return _verify_edge(evidence_id, context.resolvers, context.policy)
+        return _verify_edge(evidence_id, context.resolvers)
     except (TypeError, ValueError, OverflowError):
         # Defensive public boundary for malformed evidence that bypassed model validation.
         return _artifact(evidence_id, EdgeVerdict.INSUFFICIENT_EVIDENCE, {"TEMPORAL_EVIDENCE": False}, ("INVALID_EVIDENCE",))
 
 
-def _verify_edge(evidence_id: str, resolvers: VerificationResolvers, policy: VerificationPolicy = CANONICAL_POLICY_V1) -> EdgeValidationArtifact:
+def _verify_edge(evidence_id: str, resolvers: VerificationResolvers) -> EdgeValidationArtifact:
     gates = {}
     try:
         bundle = _resolve(resolvers.evidence, evidence_id, ValidationBundleRecord)
@@ -259,6 +255,14 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers, policy: Ver
         open_event = resolvers.exposure.open_event(oos.dataset_sha256)
     except (UnknownProvenanceError, ValueError, TypeError) as exc:
         return _artifact(evidence_id, EdgeVerdict.INSUFFICIENT_EVIDENCE, {"AUTHORITATIVE_EVIDENCE": False}, (type(exc).__name__,))
+
+    try:
+        exposure_state = resolvers.exposure.state(oos.dataset_sha256)
+    except UnknownProvenanceError:
+        exposure_state = None
+    if dataset.role not in CANONICAL_ALLOWED_OOS_ROLES or exposure_state != DatasetExposure.BURNED_HOLDOUT:
+        return _artifact(evidence_id, EdgeVerdict.INSUFFICIENT_EVIDENCE,
+                         {"OOS_DATASET_ROLE": False}, ("INVALID_OOS_DATASET_ROLE_OR_EXPOSURE",))
 
     identity = (
         oos.strategy_sha256 == variant.strategy_sha256
@@ -349,6 +353,7 @@ def _verify_edge(evidence_id: str, resolvers: VerificationResolvers, policy: Ver
     gates["FRICTION_COHERENCE"] = bool(friction_coherent)
 
     wf_metrics = []
+    policy = CANONICAL_POLICY_V1
     wf_coherent = len(wf.folds) >= policy.min_walk_forward_folds
     for fold in wf.folds:
         try:

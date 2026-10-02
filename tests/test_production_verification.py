@@ -3,6 +3,7 @@ import pytest
 from pydantic import ValidationError
 
 from ag_edgelab.optimization.contracts import DatasetExposure
+from ag_edgelab.contracts.dataset import DatasetRole
 from ag_edgelab.data.fingerprint import canonical_json
 from ag_edgelab.verification.evidence import DatasetRecord, FRICTION_IMPLEMENTATION_SHA256, REGIME_CLASSIFIER_IMPLEMENTATION_SHA256, FrictionEvidenceRecord, FrictionModelRecord, MarketStateRecord, ParameterNeighborRecord, ParameterSetRecord, PopulationDefinitionRecord, RegimeClassifierRecord, StabilityEvidenceRecord, TradeListRecord, TradeOutcome, ValidationBundleRecord, WalkForwardEvidenceRecord, WalkForwardFoldRecord
 from ag_edgelab.verification.production import CANONICAL_POLICY_V1, CANONICAL_POLICY_V1_SHA256, EdgeVerifier, EdgeVerdict, POLICY_REGISTRY, VerificationContext
@@ -214,6 +215,53 @@ def fixture(*, negative=False, omit_regime=False, cost_r=0.02, regime_failure=Fa
     return bundle, resolvers
 
 
+def readdress_oos_dataset_role(bundle, resolvers, role):
+    original_oos = resolvers.evidence.resolve(bundle.oos_trade_list_sha256)
+    dataset = resolvers.datasets.resolve(original_oos.dataset_sha256)
+    changed_dataset = dataset.model_copy(update={"role": role})
+    old_ref, new_ref = dataset.sha256, changed_dataset.sha256
+    old_states = {key: value for key, value in resolvers.evidence._records.items()
+                  if isinstance(value, MarketStateRecord) and value.dataset_sha256 == old_ref}
+    changed_states = {key: value.model_copy(update={"dataset_sha256": new_ref})
+                      for key, value in old_states.items()}
+    state_hashes = {old: updated.sha256 for old, updated in changed_states.items()}
+    old_trade_lists = {key: value for key, value in resolvers.evidence._records.items()
+                       if isinstance(value, TradeListRecord) and value.dataset_sha256 == old_ref}
+    changed_trade_lists = {}
+    for key, trade_list in old_trade_lists.items():
+        changed_trades = tuple(trade.model_copy(update={
+            "market_state_sha256": state_hashes.get(trade.market_state_sha256, trade.market_state_sha256)
+        }) for trade in trade_list.trades)
+        changed_trade_lists[key] = trade_list.model_copy(update={
+            "dataset_sha256": new_ref, "trades": changed_trades
+        })
+    changed_oos = changed_trade_lists[bundle.oos_trade_list_sha256]
+    changed_ind = changed_trade_lists[bundle.parity_independent_trade_list_sha256]
+    friction = resolvers.evidence.resolve(bundle.friction_sha256).model_copy(update={
+        "baseline_trade_list_sha256": changed_oos.sha256
+    })
+    records = {key: value for key, value in resolvers.evidence._records.items()
+               if key not in old_states and key not in old_trade_lists}
+    records.update({item.sha256: item for item in (*changed_states.values(), *changed_trade_lists.values())})
+    records[friction.sha256] = friction
+    changed_bundle = bundle.model_copy(update={
+        "oos_trade_list_sha256": changed_oos.sha256,
+        "friction_sha256": friction.sha256,
+        "parity_reference_trade_list_sha256": changed_oos.sha256,
+        "parity_independent_trade_list_sha256": changed_ind.sha256,
+    })
+    records[changed_bundle.sha256] = changed_bundle
+    datasets = {key: value for key, value in resolvers.datasets._records.items() if key != old_ref}
+    datasets[new_ref] = changed_dataset
+    events = tuple(event.model_copy(update={"dataset_sha256": new_ref})
+                   if event.dataset_sha256 == old_ref else event for event in resolvers.exposure.events)
+    changed_resolvers = VerificationResolvers(
+        resolvers.variants, ContentAddressedStore.build(records), ContentAddressedStore.build(datasets),
+        resolvers.engines, ExposureLedger(events),
+    )
+    return changed_bundle, changed_resolvers
+
+
 _active_verifier = None
 
 
@@ -253,6 +301,32 @@ def test_exposure_ledger_rejects_duplicate_or_backward_timestamps():
         ExposureLedger((start, duplicate))
 
 
+def test_policy_spoof_is_not_an_edge_verifier_input():
+    class FakePolicy:
+        @property
+        def sha256(self):
+            return CANONICAL_POLICY_V1_SHA256
+
+        min_walk_forward_folds = 0
+        min_walk_forward_trades_per_fold = 0
+        min_positive_walk_forward_fraction = 0.0
+
+    bundle, resolvers = fixture()
+    wf = resolvers.evidence.resolve(bundle.walk_forward_sha256)
+    short_wf = wf.model_copy(update={"folds": wf.folds[:2]})
+    short_bundle = bundle.model_copy(update={"walk_forward_sha256": short_wf.sha256})
+    records = dict(resolvers.evidence._records)
+    records.update({short_wf.sha256: short_wf, short_bundle.sha256: short_bundle})
+    authority = VerificationResolvers(resolvers.variants, ContentAddressedStore.build(records),
+                                     resolvers.datasets, resolvers.engines, resolvers.exposure)
+    verifier = EdgeVerifier(VerificationContext(authority))
+    assert verifier.verify_edge(short_bundle.sha256).verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+    with pytest.raises(TypeError):
+        VerificationContext(authority, FakePolicy())
+    with pytest.raises(TypeError):
+        verify_edge(short_bundle.sha256, VerificationContext(authority), policy=FakePolicy())
+
+
 def verify_with_stability(bundle, resolvers, experiment, extra_records=(), datasets=None):
     records = dict(resolvers.evidence._records)
     records.update({record.sha256: record for record in extra_records})
@@ -270,11 +344,24 @@ def verify_with_stability(bundle, resolvers, experiment, extra_records=(), datas
 def test_positive_raw_evidence_can_verify():
     b, r = fixture()
     use(r)
+    oos = r.evidence.resolve(b.oos_trade_list_sha256)
+    assert r.datasets.resolve(oos.dataset_sha256).role == DatasetRole.OOS
     a = verify_edge(b.sha256)
     assert a.verdict == EdgeVerdict.EDGE_VERIFIED
     assert dict(a.gate_results)["STABILITY_COHERENCE"]
     assert dict(a.gate_results)["PARAMETER_STABILITY"]
     assert validate_artifact(a)
+
+
+def test_readdressed_development_dataset_cannot_verify_as_oos():
+    bundle, resolvers = fixture()
+    changed_bundle, changed_resolvers = readdress_oos_dataset_role(
+        bundle, resolvers, DatasetRole.DEVELOPMENT
+    )
+    use(changed_resolvers)
+    result = verify_edge(changed_bundle.sha256)
+    assert result.verdict == EdgeVerdict.INSUFFICIENT_EVIDENCE
+    assert result.reasons == ("INVALID_OOS_DATASET_ROLE_OR_EXPOSURE",)
 
 
 def test_coherent_negative_is_no_edge():
