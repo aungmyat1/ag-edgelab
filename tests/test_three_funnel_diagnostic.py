@@ -10,6 +10,7 @@ from ag_edgelab.contracts.diagnostic import (
     ExcursionObservation,
     ExitPolicyResult,
     FunnelGroup,
+    StageExcursionObservation,
     WeakPointLabel,
 )
 
@@ -42,7 +43,7 @@ def _run(candidate: str, *, confirmation_pass: bool, trade: bool = False):
 
 def _definition():
     return DiagnosticDefinition(
-        diagnostic_id="THREE_FUNNEL_V0_2", version="0.2.0", strategy_sha256=S,
+        diagnostic_id="THREE_FUNNEL_V0_2", version="0.2.1", strategy_sha256=S,
         bindings=(
             DiagnosticRuleBinding(node_id="sweep", funnel_group=FunnelGroup.TRIGGER, sequence=10),
             DiagnosticRuleBinding(node_id="confirm", funnel_group=FunnelGroup.CONFIRMATION, sequence=10),
@@ -94,6 +95,78 @@ def test_tp_reachability_is_separate_from_realized_exit_policy_economics():
     assert economics["EXIT_2R_V1"].expectancy_r == pytest.approx(0.8)
     assert economics["EXIT_5R_V1"].expectancy_r == pytest.approx(-0.4)
     assert WeakPointLabel.TP_TOO_AMBITIOUS_CANDIDATE in {x.label for x in report.weak_points}
+
+
+def test_stage_target_diagnostics_distinguish_trigger_quality_from_confirmation_value_add():
+    results = tuple(_run(f"c{i}", confirmation_pass=i < 20, trade=i < 20) for i in range(40))
+    observations = []
+    for i in range(40):
+        # Only 10% of trigger-passing candidates contain 5R capability.
+        mfe = 5.2 if i in {0, 1, 20, 21} else 2.2
+        observations.append(StageExcursionObservation(
+            candidate_id=f"c{i}", node_id="sweep", mfe_r=mfe, mae_r=0.4,
+            observation_policy_id="STAGE_OBS_V1",
+        ))
+        observations.append(StageExcursionObservation(
+            candidate_id=f"c{i}", node_id="confirm", mfe_r=mfe, mae_r=0.4,
+            observation_policy_id="STAGE_OBS_V1",
+        ))
+
+    report = analyze_three_funnel(_definition(), results, stage_excursions=tuple(observations))
+    trigger = report.groups[0].rules[0]
+    confirmation = report.groups[1].rules[0]
+    trigger_5r = {x.target_r: x for x in trigger.target_boundaries}[5.0]
+    confirm_5r = {x.target_r: x for x in confirmation.target_boundaries}[5.0]
+
+    assert trigger_5r.pass_reach_pct == pytest.approx(10.0)
+    assert confirm_5r.input_reach_pct == pytest.approx(10.0)
+    assert confirm_5r.pass_reach_pct == pytest.approx(10.0)
+    assert confirm_5r.fail_reach_pct == pytest.approx(10.0)
+    assert confirm_5r.pass_uplift_vs_input_pp == pytest.approx(0.0)
+    assert confirm_5r.pass_minus_fail_pp == pytest.approx(0.0)
+
+    labels = {(x.label, x.scope) for x in report.weak_points}
+    assert (WeakPointLabel.POOR_TRIGGER_QUALITY, "sweep") in labels
+    assert (WeakPointLabel.LOW_DISCRIMINATION, "confirm") in labels
+
+
+def test_stage_target_diagnostics_measure_confirmation_information_gain():
+    results = tuple(_run(f"c{i}", confirmation_pass=i < 20, trade=i < 20) for i in range(40))
+    observations = []
+    for i in range(40):
+        # Confirmation selects a population with much higher 2R/5R capability.
+        mfe = 5.2 if i < 16 else (2.2 if i < 20 else 0.5)
+        observations.append(StageExcursionObservation(
+            candidate_id=f"c{i}", node_id="confirm", mfe_r=mfe, mae_r=0.4,
+            observation_policy_id="STAGE_OBS_V1",
+        ))
+    report = analyze_three_funnel(_definition(), results, stage_excursions=tuple(observations))
+    confirmation = report.groups[1].rules[0]
+    boundary_5r = {x.target_r: x for x in confirmation.target_boundaries}[5.0]
+    assert boundary_5r.input_reach_pct == pytest.approx(40.0)
+    assert boundary_5r.pass_reach_pct == pytest.approx(80.0)
+    assert boundary_5r.fail_reach_pct == pytest.approx(0.0)
+    assert boundary_5r.pass_uplift_vs_input_pp == pytest.approx(40.0)
+    assert boundary_5r.pass_minus_fail_pp == pytest.approx(80.0)
+
+
+def test_stage_excursion_evidence_fails_closed_on_unknown_or_unreached_boundary():
+    result = _run("c1", confirmation_pass=False)
+    with pytest.raises(ValueError, match="unknown candidate"):
+        analyze_three_funnel(_definition(), [result], stage_excursions=[
+            StageExcursionObservation(candidate_id="missing", node_id="sweep", mfe_r=1, mae_r=1,
+                                      observation_policy_id="OBS")
+        ])
+    with pytest.raises(ValueError, match="unmapped node"):
+        analyze_three_funnel(_definition(), [result], stage_excursions=[
+            StageExcursionObservation(candidate_id="c1", node_id="other", mfe_r=1, mae_r=1,
+                                      observation_policy_id="OBS")
+        ])
+    with pytest.raises(ValueError, match="never reached"):
+        analyze_three_funnel(_definition(), [result], stage_excursions=[
+            StageExcursionObservation(candidate_id="c1", node_id="entry", mfe_r=1, mae_r=1,
+                                      observation_policy_id="OBS")
+        ])
 
 
 def test_unmapped_nodes_and_non_development_runs_fail_closed():
