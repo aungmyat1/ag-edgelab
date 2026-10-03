@@ -80,3 +80,18 @@ def compute_funnel_stats(records: Sequence[CandidateRecord], outcomes_r: Mapping
             prior_exp = exp
 
     return tuple(output)
+
+
+# Temporal-causality diagnostics are kept in a strategy-agnostic companion
+# module and re-exported here as part of the Universal Funnel Analyzer API.
+from ag_edgelab.analytics.temporal import (
+    DEFAULT_TEMPORAL_STAGE_ORDER,
+    DelayDistribution,
+    StageLifecycleTimestamp,
+    TemporalCandidateAudit,
+    TemporalDiagnostic,
+    TemporalFunnelAnalysis,
+    analyze_temporal_funnel,
+    audit_candidate_temporal_order,
+    compute_temporal_funnel_diagnostics,
+)
