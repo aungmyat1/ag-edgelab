@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -95,6 +96,8 @@ def main() -> int:
     branch = cmd("git", "branch", "--show-current")
     status = cmd("git", "status", "--short")
     generated_at = datetime.now(timezone.utc).isoformat()
+    implementation_sha = os.environ.get("IMPLEMENTATION_SHA", cmd("git", "rev-parse", "HEAD")) or "UNKNOWN"
+    implementation_tree = os.environ.get("IMPLEMENTATION_TREE_SHA", cmd("git", "rev-parse", "HEAD^{tree}")) or "UNKNOWN"
 
     strategy_paths = [
         "src/ag_edgelab/strategies/crypto_mtf_smc.py",
@@ -216,7 +219,8 @@ def main() -> int:
 
     final_report = {
         "schema": "DirectionDailyBiasLabFinalReportV0.1",
-        "IMPLEMENTATION_SHA": "WORKTREE_ARTIFACT_GENERATION_AT_BASELINE_HEAD",
+        "IMPLEMENTATION_SHA": implementation_sha,
+        "TREE_SHA": implementation_tree,
         "BASELINE_HEAD_SHA": baseline_head,
         "BASELINE_TREE_SHA": baseline_tree,
         "TREE_SHA_AT_GENERATION": cmd("git", "rev-parse", "HEAD^{tree}"),
@@ -259,7 +263,7 @@ def main() -> int:
         "git_status_at_generation": status,
     }
     dump("final_report.json", final_report)
-    md = f"""# EdgeLab Direction / Daily-Bias Lab V0.1\n\n## Status\n\n**BLOCKED — CONTRACT_INCOMPLETE / INSUFFICIENT_EVIDENCE**\n\nThe checkout at `{baseline_head}` contains the generic EdgeLab foundation and a non-authoritative synthetic BTC fixture, but it does not contain the authorized Asian V1/V2 strategy identities, MTF Control Shift candidates, owner source documents, or the expected EURUSD/GBPUSD/USDJPY/XAUUSD DEVELOPMENT lineage. The fixture was not substituted, and no OOS or holdout data was opened.\n\n## Scope completed\n\n- Added deterministic closed-bar direction primitives: confirmed HH/HL/LH/LL, BOS, active H4 range, premium/discount, PDH/PDL, H1 phase, MA50/MA200, invalidation, target geometry, and fixed-target capability.\n- Added a separate `FunnelDiagnosticReportV3` schema preserving DIRECTION, CONFIRMATION, TARGET, and ECONOMICS semantics.\n- Added authority, contract, target, causality, and immutable-strategy audit artifacts.\n- No strategy rule, Asian V2 target, existing MTF candidate, execution capability, or economics was changed or run.\n\n## Required return\n\n```text\nIMPLEMENTATION_SHA = WORKTREE_ARTIFACT_GENERATION_AT_BASELINE_HEAD\nTREE_SHA = {baseline_tree}\nBRANCH = {branch}\nBASE_TEST_COUNT = 174\nFINAL_TEST_COUNT = 188\nTESTS = PASS (188 passed; archived HEAD baseline 174 passed)\nREPORT_SCHEMA = FunnelDiagnosticReportV3\nDIRECTION_ENGINE_VERSION = DIRECTION_DAILY_BIAS_ENGINE_V0.1\nSOURCE_FAMILIES = A: not located; B: not located; C: research hypothesis\nDATASET_ROLE = DEVELOPMENT_ONLY\nDATASET_LINEAGE = blocked; no authorized Asian DEV lineage\n\nMD01_RESULT through MD12_RESULT = NOT_RUN_NO_AUTHORIZED_DATASET\nBEST_STRUCTURAL_EVIDENCE = null\nBEST_MA_EVIDENCE = null\nMA_ADDS_VALUE_BEYOND_STRUCTURE = null\nPREMIUM_DISCOUNT_ADDS_VALUE = null\nINTERNAL_FLOW_ADDS_VALUE = null\nLIQUIDITY_CONTEXT_ADDS_VALUE = null\nASIAN_V2_ALIGNED_N = 0\nASIAN_V2_COUNTER_N = 0\nASIAN_V2_NEUTRAL_N = 0\nRANGE_PREEMPTED_SWEEP_N = 0\nRANGE_PREEMPTED_TREND_N = 0\nFIXED_5R_CAPABILITY = null\nNATURAL_TARGET_MEDIAN_R = null\nNATURAL_TARGET_P25_R = null\nNATURAL_TARGET_P75_R = null\nPRIMARY_DIAGNOSIS = CONTRACT_INCOMPLETE\nSECONDARY_DIAGNOSES = INSUFFICIENT_EVIDENCE\nNEXT_FUNNEL_TO_CHANGE = NONE\nSTRATEGY_RULES_CHANGED = NO\nREALIZED_ECONOMICS_RUN = NO\nOOS_OPENED = NO\nHOLDOUT_TOUCHED = NO\nEXECUTION_CAPABILITY_ADDED = NO\nSTATUS = BLOCKED\n```\n\nThe complete machine-readable report is `final_report.json`.\n"""
+    md = f"""# EdgeLab Direction / Daily-Bias Lab V0.1\n\n## Status\n\n**BLOCKED — CONTRACT_INCOMPLETE / INSUFFICIENT_EVIDENCE**\n\nThe checkout at `{baseline_head}` contains the generic EdgeLab foundation and a non-authoritative synthetic BTC fixture, but it does not contain the authorized Asian V1/V2 strategy identities, MTF Control Shift candidates, owner source documents, or the expected EURUSD/GBPUSD/USDJPY/XAUUSD DEVELOPMENT lineage. The fixture was not substituted, and no OOS or holdout data was opened.\n\n## Scope completed\n\n- Added deterministic closed-bar direction primitives: confirmed HH/HL/LH/LL, BOS, active H4 range, premium/discount, PDH/PDL, H1 phase, MA50/MA200, invalidation, target geometry, and fixed-target capability.\n- Added a separate `FunnelDiagnosticReportV3` schema preserving DIRECTION, CONFIRMATION, TARGET, and ECONOMICS semantics.\n- Added authority, contract, target, causality, and immutable-strategy audit artifacts.\n- No strategy rule, Asian V2 target, existing MTF candidate, execution capability, or economics was changed or run.\n\n## Required return\n\n```text\nIMPLEMENTATION_SHA = {implementation_sha}\nTREE_SHA = {implementation_tree}\nBRANCH = {branch}\nBASE_TEST_COUNT = 174\nFINAL_TEST_COUNT = 188\nTESTS = PASS (188 passed; archived HEAD baseline 174 passed)\nREPORT_SCHEMA = FunnelDiagnosticReportV3\nDIRECTION_ENGINE_VERSION = DIRECTION_DAILY_BIAS_ENGINE_V0.1\nSOURCE_FAMILIES = A: not located; B: not located; C: research hypothesis\nDATASET_ROLE = DEVELOPMENT_ONLY\nDATASET_LINEAGE = blocked; no authorized Asian DEV lineage\n\nMD01_RESULT through MD12_RESULT = NOT_RUN_NO_AUTHORIZED_DATASET\nBEST_STRUCTURAL_EVIDENCE = null\nBEST_MA_EVIDENCE = null\nMA_ADDS_VALUE_BEYOND_STRUCTURE = null\nPREMIUM_DISCOUNT_ADDS_VALUE = null\nINTERNAL_FLOW_ADDS_VALUE = null\nLIQUIDITY_CONTEXT_ADDS_VALUE = null\nASIAN_V2_ALIGNED_N = 0\nASIAN_V2_COUNTER_N = 0\nASIAN_V2_NEUTRAL_N = 0\nRANGE_PREEMPTED_SWEEP_N = 0\nRANGE_PREEMPTED_TREND_N = 0\nFIXED_5R_CAPABILITY = null\nNATURAL_TARGET_MEDIAN_R = null\nNATURAL_TARGET_P25_R = null\nNATURAL_TARGET_P75_R = null\nPRIMARY_DIAGNOSIS = CONTRACT_INCOMPLETE\nSECONDARY_DIAGNOSES = INSUFFICIENT_EVIDENCE\nNEXT_FUNNEL_TO_CHANGE = NONE\nSTRATEGY_RULES_CHANGED = NO\nREALIZED_ECONOMICS_RUN = NO\nOOS_OPENED = NO\nHOLDOUT_TOUCHED = NO\nEXECUTION_CAPABILITY_ADDED = NO\nSTATUS = BLOCKED\n```\n\nThe complete machine-readable report is `final_report.json`.\n"""
     (OUT / "final_report.md").write_text(md, encoding="utf-8")
 
     files = sorted(path for path in OUT.iterdir() if path.is_file() and path.name != "artifact_manifest.json")
