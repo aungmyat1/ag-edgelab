@@ -1,0 +1,28 @@
+{
+  "status": "BLOCKED",
+  "reason": "No authoritative EURUSD, GBPUSD, USDJPY, or XAUUSD M1 dataset is present in EdgeLab; synthetic BTCUSDT fixture is not an authorized source for this campaign.",
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "datasets": [],
+  "warmup_range": [
+    "2017-01-01",
+    "2017-03-01"
+  ],
+  "dev_range": [
+    "2017-03-01",
+    "2017-09-01"
+  ],
+  "oos_range": [
+    "2017-09-01",
+    "2017-12-01"
+  ],
+  "sealed_holdout_range": [
+    "2017-12-01",
+    "2018-01-01"
+  ],
+  "holdout_touched": false
+}

@@ -1,0 +1,1 @@
+{"event": "CAMPAIGN_BLOCKED", "reason": "No authoritative EURUSD, GBPUSD, USDJPY, or XAUUSD M1 dataset is present in EdgeLab; synthetic BTCUSDT fixture is not an authorized source for this campaign.", "holdout_touched": false}

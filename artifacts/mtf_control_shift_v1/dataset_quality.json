@@ -1,0 +1,7 @@
+{
+  "status": "DATA_BLOCKED",
+  "authoritative_data_available": false,
+  "checks": {},
+  "synthetic_data_excluded": true,
+  "holdout_touched": false
+}
