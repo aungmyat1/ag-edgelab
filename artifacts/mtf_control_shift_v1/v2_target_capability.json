@@ -1,0 +1,40 @@
+{
+  "status": "NOT_ESTIMABLE",
+  "targets": {
+    "1": {
+      "target_reachability_before_stage": null,
+      "target_reachability_after_pass": null,
+      "target_reachability_after_fail": null,
+      "incremental_target_uplift_pp": null,
+      "reason": "No valid M15 refinement, geometry, or entry population exists; target counterfactuals are unavailable without inventing an entry."
+    },
+    "2": {
+      "target_reachability_before_stage": null,
+      "target_reachability_after_pass": null,
+      "target_reachability_after_fail": null,
+      "incremental_target_uplift_pp": null,
+      "reason": "No valid M15 refinement, geometry, or entry population exists; target counterfactuals are unavailable without inventing an entry."
+    },
+    "3": {
+      "target_reachability_before_stage": null,
+      "target_reachability_after_pass": null,
+      "target_reachability_after_fail": null,
+      "incremental_target_uplift_pp": null,
+      "reason": "No valid M15 refinement, geometry, or entry population exists; target counterfactuals are unavailable without inventing an entry."
+    },
+    "4": {
+      "target_reachability_before_stage": null,
+      "target_reachability_after_pass": null,
+      "target_reachability_after_fail": null,
+      "incremental_target_uplift_pp": null,
+      "reason": "No valid M15 refinement, geometry, or entry population exists; target counterfactuals are unavailable without inventing an entry."
+    },
+    "5": {
+      "target_reachability_before_stage": null,
+      "target_reachability_after_pass": null,
+      "target_reachability_after_fail": null,
+      "incremental_target_uplift_pp": null,
+      "reason": "No valid M15 refinement, geometry, or entry population exists; target counterfactuals are unavailable without inventing an entry."
+    }
+  }
+}

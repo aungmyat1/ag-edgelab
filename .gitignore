@@ -10,3 +10,5 @@ build/
 reports/
 *.parquet
 *.csv
+.deps/
+data/raw/fx_histdata/*.zip

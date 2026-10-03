@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETE",
+  "totals": {
+    "D1_H4_ALIGNED": 2246,
+    "FRESH_H4_POI": 2129,
+    "HTF_POI_NOT_REACHED": 1959,
+    "H4_POI_REACHED": 170
+  }
+}

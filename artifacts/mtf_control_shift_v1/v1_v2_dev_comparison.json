@@ -1,0 +1,21 @@
+{
+  "V1": {
+    "location_pass": 170,
+    "h1_shift_pass": 0,
+    "trigger_pass": 0,
+    "confirmation_pass": 0,
+    "filled": 0,
+    "closed": 0,
+    "status": "INSUFFICIENT_SAMPLE"
+  },
+  "V2": {
+    "location_pass": 170,
+    "h1_shift_pass": 18,
+    "trigger_pass": 18,
+    "confirmation_pass": 0,
+    "filled": 0,
+    "closed": 0,
+    "status": "INSUFFICIENT_SAMPLE"
+  },
+  "interpretation": "V2 created 18 additional structural triggers, but none produced M15 confirmation or a valid geometry/entry. It therefore produced more triggers, not more useful triggers, in this DEV sample. No economic comparison is estimable."
+}

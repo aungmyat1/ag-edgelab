@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE",
+  "counts": {
+    "HTF_BIAS_NOT_ALIGNED": null,
+    "NO_FRESH_H4_POI": null,
+    "HTF_POI_NOT_REACHED": 1959,
+    "FALSE_CHOCH_LIQUIDITY_SWEEP": 1,
+    "FALSE_CHOCH_FVG_REBALANCE": 158,
+    "NO_VALID_H1_CONTROL_SHIFT": null,
+    "NO_M15_ENTRY_REFINEMENT": 0,
+    "NON_POSITIVE_ENTRY_ZONE": 0,
+    "NON_POSITIVE_RISK": 0,
+    "NO_VALID_HTF_FINAL_TARGET": 0
+  },
+  "note": "No valid H1 shifts were produced; no geometry proposals existed."
+}

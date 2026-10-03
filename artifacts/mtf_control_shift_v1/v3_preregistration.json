@@ -1,0 +1,235 @@
+{
+  "preregistration_status": "PREREGISTERED_BEFORE_V3_DEV_REPLAY",
+  "parent_strategy": {
+    "strategy_id": "ST_MTF_CONTROL_SHIFT_V2",
+    "version": "2.0.0",
+    "yaml_sha256": "56b6032fc949564e0ff8d147eb794560088fb0d90eac3bc549de504f01a6cc91"
+  },
+  "new_strategy": {
+    "strategy_id": "ST_MTF_CONTROL_SHIFT_V3",
+    "version": "3.0.0",
+    "yaml_sha256": "65862fa02e6b38d0b1a3f06489c81ff3313384b392fa11df075674ac54f7c918"
+  },
+  "single_changed_rule": {
+    "name": "H1_SHIFT_SESSION_DATE_COUPLING",
+    "old_semantic": "V2 accepts a qualifying H1 shift when shift_age_h1_bars <= 24 closed H1 bars.",
+    "new_semantic": "In addition to V2 freshness, the H1 shift creation timestamp UTC calendar date must equal the active session date."
+  },
+  "timestamp_date_semantics": {
+    "timezone_authority": "UTC after the pinned HistData America/New_York -> UTC normalization; session assignment is UTC.",
+    "active_session_date": "The UTC calendar date of the evaluation M15 candle/session observation. ASIAN_LONDON and LONDON_NEWYORK both use the date of the M15 bucket open; both windows remain same-date windows.",
+    "session_boundaries": "ASIAN_LONDON [06:00,09:00) UTC; LONDON_NEWYORK [11:00,14:00) UTC. Start is inclusive and end is exclusive, unchanged from V2.",
+    "midnight_behavior": "A timestamp exactly at 00:00 UTC belongs to that UTC date. No session crosses midnight, so no rollover exception exists.",
+    "dst_behavior": "DST is resolved only while normalizing raw America/New_York timestamps to UTC. Session-date comparison itself is UTC and has no DST adjustment.",
+    "equality": "shift UTC date == active session UTC date is accepted.",
+    "before_session_start": "A shift before session start is accepted if it is on the same UTC calendar date; the existing in-session M15 creation rule remains unchanged.",
+    "future_date": "A shift UTC date after the active session date is invalid and rejected."
+  },
+  "structural_precheck": {
+    "location_pass": 170,
+    "v2_structural_eligible": 18,
+    "v3_structural_eligible": 0,
+    "same_session_date": 0,
+    "prior_session_date": 18,
+    "future_date_invalid": 0,
+    "cases": [
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T12:00:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T12:15:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T12:30:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T12:45:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T13:00:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T13:15:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T13:30:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T13:45:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-03-29T14:00:00+00:00",
+        "session_date": "2017-03-29",
+        "shift_created_time": "2017-03-28T17:00:00+00:00",
+        "shift_date": "2017-03-28",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T12:00:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T12:15:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T12:30:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T12:45:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T13:00:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T13:15:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T13:30:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T13:45:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      },
+      {
+        "analysis_unit_id": "USDJPY_LONDON_NEWYORK_2017-04-06T14:00:00+00:00",
+        "session_date": "2017-04-06",
+        "shift_created_time": "2017-04-05T19:00:00+00:00",
+        "shift_date": "2017-04-05",
+        "classification": "PRIOR_SESSION_DATE"
+      }
+    ]
+  },
+  "development_window": {
+    "warmup": [
+      "2017-01-01",
+      "2017-03-01"
+    ],
+    "dev": [
+      "2017-03-01",
+      "2017-09-01"
+    ],
+    "oos": [
+      "2017-09-01",
+      "2017-12-01"
+    ],
+    "sealed_holdout": [
+      "2017-12-01",
+      "2018-01-01"
+    ],
+    "holdout_touched": false
+  },
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "sessions": {
+    "ASIAN_LONDON": [
+      "06:00",
+      "09:00"
+    ],
+    "LONDON_NEWYORK": [
+      "11:00",
+      "14:00"
+    ]
+  },
+  "dataset_lineage": "PR_10_HISTDATA_2017; same pinned raw hashes and causal M1->M15/H1/H4/D1 lineage as V2",
+  "friction": "PR_10_APPROVED_FX_FRICTION; unchanged symbol-specific spread/slippage/commission model",
+  "funnel_mapping": {
+    "TRIGGER": [
+      "D1_H4_ALIGNED",
+      "FRESH_H4_POI",
+      "H4_POI_REACHED",
+      "TRUE_H1_CONTROL_SHIFT",
+      "LIQUIDITY_SWEEP"
+    ],
+    "CONFIRMATION": [
+      "FVG_REBALANCE",
+      "M15_REFINEMENT",
+      "VALID_GEOMETRY"
+    ],
+    "OUTCOME": [
+      "LIMIT_FILLED",
+      "LIMIT_EXPIRED",
+      "TP1",
+      "TP2",
+      "RUNNER_BE",
+      "FORCED_FLAT"
+    ]
+  },
+  "gates": {
+    "existing_edge_lab_dev_gates": true,
+    "no_parameter_optimization": true,
+    "earliest_valid_signal_wins": true,
+    "one_entry_per_symbol_session_day": true,
+    "post_signal_m1_limit_fill": true,
+    "force_flat_utc": "21:00",
+    "no_overnight": true
+  },
+  "economic_replay_started": false,
+  "oos_opened": false,
+  "holdout_touched": false
+}
