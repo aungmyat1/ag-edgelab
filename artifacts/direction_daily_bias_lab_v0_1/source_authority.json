@@ -12,7 +12,7 @@
     "USDJPY",
     "XAUUSD"
   ],
-  "generated_at_utc": "2026-10-03T23:43:07.561594+00:00",
+  "generated_at_utc": "2026-10-03T09:47:39+00:00",
   "holdout_touched": false,
   "oos_opened": false,
   "schema": "DirectionDailyBiasSourceAuthorityV0.1",

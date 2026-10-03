@@ -28,9 +28,9 @@
       "sha256": "2cfe3467ce4a8eefd8beedf2870b2c22415c0c7a6d35736fd8588f3dca8ba883"
     },
     {
-      "bytes": 3656,
+      "bytes": 3486,
       "path": "final_report.json",
-      "sha256": "7ce0223bb205cbd315c6e586d430a3b8fc5cb38b065f1266126378d1acf4fac5"
+      "sha256": "de48d59d2d3f0a7a46cdb632f3d93866154675d9dc6f81b1d5f08f994b7c9a3b"
     },
     {
       "bytes": 2451,
@@ -83,9 +83,9 @@
       "sha256": "07161e667748a5553cbaddd514fcaaf97c24c0011b9f6f0b45a713d71035f263"
     },
     {
-      "bytes": 1210,
+      "bytes": 1203,
       "path": "source_authority.json",
-      "sha256": "f3ae6870905e35d72210afce4335f509c542d048a476778992d9bdede7b5b23c"
+      "sha256": "982f8bc16e40612c00f2f86eae315f938c3a26cdc734f02a8ed85e958d591ad5"
     },
     {
       "bytes": 271,
@@ -113,7 +113,7 @@
       "sha256": "00b05a7be166dedd85c741f4c13cea0e41be80d6cfa86c07006751b05a3ded0c"
     }
   ],
-  "generated_at_utc": "2026-10-03T23:43:07.561594+00:00",
+  "generated_at_utc": "2026-10-03T09:47:39+00:00",
   "holdout_touched": false,
   "oos_opened": false,
   "schema": "DirectionDailyBiasArtifactManifestV0.1",

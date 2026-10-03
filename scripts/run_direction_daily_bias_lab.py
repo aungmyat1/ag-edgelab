@@ -91,11 +91,17 @@ def target_specs() -> list[dict[str, Any]]:
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
-    baseline_head = cmd("git", "rev-parse", "HEAD")
-    baseline_tree = cmd("git", "rev-parse", "HEAD^{tree}")
+    baseline_head = os.environ.get("BASELINE_HEAD_SHA", cmd("git", "rev-parse", "HEAD"))
+    baseline_tree = os.environ.get("BASELINE_TREE_SHA", cmd("git", "rev-parse", f"{baseline_head}^{{tree}}"))
     branch = cmd("git", "branch", "--show-current")
-    status = cmd("git", "status", "--short")
-    generated_at = datetime.now(timezone.utc).isoformat()
+    status = os.environ.get("INITIAL_GIT_STATUS", cmd("git", "status", "--short"))
+    # Use the immutable baseline commit time rather than wall-clock time so
+    # rerunning the same report produces the same bytes/hash.
+    commit_time = cmd("git", "show", "-s", "--format=%cI", baseline_head)
+    try:
+        generated_at = datetime.fromisoformat(commit_time).astimezone(timezone.utc).isoformat()
+    except ValueError:
+        generated_at = "UNKNOWN"
     implementation_sha = os.environ.get("IMPLEMENTATION_SHA", cmd("git", "rev-parse", "HEAD")) or "UNKNOWN"
     implementation_tree = os.environ.get("IMPLEMENTATION_TREE_SHA", cmd("git", "rev-parse", "HEAD^{tree}")) or "UNKNOWN"
 

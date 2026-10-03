@@ -55,7 +55,7 @@
   "STRATEGY_RULES_CHANGED": "NO",
   "TESTS": "PASS (188 passed; baseline archived HEAD 174 passed)",
   "TREE_SHA": "3fd71c0fc78ec17f0df29f443be3f44e35d4aaf3",
-  "TREE_SHA_AT_GENERATION": "6de91f9685ea748228f762be2a69f3ff34b4de36",
+  "TREE_SHA_AT_GENERATION": "3e820383ddf2e7296a4e22471dbac2ef487c2393",
   "existing_strategy_hashes": {
     "baseline_strategy_files": {
       "src/ag_edgelab/strategies/crypto_mtf_smc.py": "7903b660214b56b77e89550c714f986a1409b104d5966512296159fe1e579dd8",
@@ -74,6 +74,6 @@
     },
     "unchanged_from_baseline": true
   },
-  "git_status_at_generation": "?? artifacts/\n?? scripts/run_direction_daily_bias_lab.py\n?? src/ag_edgelab/analytics/funnel_v3.py\n?? src/ag_edgelab/diagnostics/\n?? tests/test_direction_daily_bias.py",
+  "git_status_at_generation": "",
   "schema": "DirectionDailyBiasLabFinalReportV0.1"
 }
