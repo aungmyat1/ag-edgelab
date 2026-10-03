@@ -1,0 +1,1399 @@
+{
+  "candidate_id": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc",
+  "classification": "DIAGNOSTIC / NON-CAUSAL",
+  "interpretation_rule": "These are expectancy shifts among surviving/downstream CLOSED-TRADE cohorts under sequential filtering. They are diagnostic associations, NOT causal estimates, and NOT counterfactual expectancies for the observations removed at each stage. No counterfactual methodology is implemented in this mission.",
+  "segments": [
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 171,
+          "closed_trades": 68,
+          "conditional_downstream_net_expectancy_r": -0.36504,
+          "conditional_downstream_gross_expectancy_r": -0.167609,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.161765,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 160,
+          "closed_trades": 68,
+          "conditional_downstream_net_expectancy_r": -0.36504,
+          "conditional_downstream_gross_expectancy_r": -0.167609,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.161765,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 128,
+          "closed_trades": 68,
+          "conditional_downstream_net_expectancy_r": -0.36504,
+          "conditional_downstream_gross_expectancy_r": -0.167609,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.161765,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 68,
+          "closed_trades": 68,
+          "conditional_downstream_net_expectancy_r": -0.36504,
+          "conditional_downstream_gross_expectancy_r": -0.167609,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.161765,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 68,
+          "closed_trades": 68,
+          "conditional_downstream_net_expectancy_r": -0.36504,
+          "conditional_downstream_gross_expectancy_r": -0.167609,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.161765,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 72,
+          "conditional_downstream_net_expectancy_r": 0.086681,
+          "conditional_downstream_gross_expectancy_r": 0.21557,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.25,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 135,
+          "closed_trades": 72,
+          "conditional_downstream_net_expectancy_r": 0.086681,
+          "conditional_downstream_gross_expectancy_r": 0.21557,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.25,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 105,
+          "closed_trades": 72,
+          "conditional_downstream_net_expectancy_r": 0.086681,
+          "conditional_downstream_gross_expectancy_r": 0.21557,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.25,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 72,
+          "closed_trades": 72,
+          "conditional_downstream_net_expectancy_r": 0.086681,
+          "conditional_downstream_gross_expectancy_r": 0.21557,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.25,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 72,
+          "closed_trades": 72,
+          "conditional_downstream_net_expectancy_r": 0.086681,
+          "conditional_downstream_gross_expectancy_r": 0.21557,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.25,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 162,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": -0.395045,
+          "conditional_downstream_gross_expectancy_r": -0.227231,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.16129,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 152,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": -0.395045,
+          "conditional_downstream_gross_expectancy_r": -0.227231,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.16129,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 123,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": -0.395045,
+          "conditional_downstream_gross_expectancy_r": -0.227231,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.16129,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 62,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": -0.395045,
+          "conditional_downstream_gross_expectancy_r": -0.227231,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.16129,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 62,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": -0.395045,
+          "conditional_downstream_gross_expectancy_r": -0.227231,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.16129,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 61,
+          "conditional_downstream_net_expectancy_r": 0.004155,
+          "conditional_downstream_gross_expectancy_r": 0.105743,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.229508,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 118,
+          "closed_trades": 61,
+          "conditional_downstream_net_expectancy_r": 0.004155,
+          "conditional_downstream_gross_expectancy_r": 0.105743,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.229508,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 90,
+          "closed_trades": 61,
+          "conditional_downstream_net_expectancy_r": 0.004155,
+          "conditional_downstream_gross_expectancy_r": 0.105743,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.229508,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 61,
+          "closed_trades": 61,
+          "conditional_downstream_net_expectancy_r": 0.004155,
+          "conditional_downstream_gross_expectancy_r": 0.105743,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.229508,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 61,
+          "closed_trades": 61,
+          "conditional_downstream_net_expectancy_r": 0.004155,
+          "conditional_downstream_gross_expectancy_r": 0.105743,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.229508,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 171,
+          "closed_trades": 80,
+          "conditional_downstream_net_expectancy_r": -0.418833,
+          "conditional_downstream_gross_expectancy_r": -0.276648,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.15,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 128,
+          "closed_trades": 80,
+          "conditional_downstream_net_expectancy_r": -0.418833,
+          "conditional_downstream_gross_expectancy_r": -0.276648,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.15,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 102,
+          "closed_trades": 80,
+          "conditional_downstream_net_expectancy_r": -0.418833,
+          "conditional_downstream_gross_expectancy_r": -0.276648,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.15,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 80,
+          "closed_trades": 80,
+          "conditional_downstream_net_expectancy_r": -0.418833,
+          "conditional_downstream_gross_expectancy_r": -0.276648,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.15,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 80,
+          "closed_trades": 80,
+          "conditional_downstream_net_expectancy_r": -0.418833,
+          "conditional_downstream_gross_expectancy_r": -0.276648,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.15,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 87,
+          "conditional_downstream_net_expectancy_r": 0.108113,
+          "conditional_downstream_gross_expectancy_r": 0.257647,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.252874,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 146,
+          "closed_trades": 87,
+          "conditional_downstream_net_expectancy_r": 0.108113,
+          "conditional_downstream_gross_expectancy_r": 0.257647,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.252874,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 120,
+          "closed_trades": 87,
+          "conditional_downstream_net_expectancy_r": 0.108113,
+          "conditional_downstream_gross_expectancy_r": 0.257647,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.252874,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 87,
+          "closed_trades": 87,
+          "conditional_downstream_net_expectancy_r": 0.108113,
+          "conditional_downstream_gross_expectancy_r": 0.257647,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.252874,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 87,
+          "closed_trades": 87,
+          "conditional_downstream_net_expectancy_r": 0.108113,
+          "conditional_downstream_gross_expectancy_r": 0.257647,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.252874,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 106,
+          "closed_trades": 50,
+          "conditional_downstream_net_expectancy_r": -0.388952,
+          "conditional_downstream_gross_expectancy_r": 0.00437,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.2,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 76,
+          "closed_trades": 50,
+          "conditional_downstream_net_expectancy_r": -0.388952,
+          "conditional_downstream_gross_expectancy_r": 0.00437,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.2,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 62,
+          "closed_trades": 50,
+          "conditional_downstream_net_expectancy_r": -0.388952,
+          "conditional_downstream_gross_expectancy_r": 0.00437,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.2,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 50,
+          "closed_trades": 50,
+          "conditional_downstream_net_expectancy_r": -0.388952,
+          "conditional_downstream_gross_expectancy_r": 0.00437,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.2,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 50,
+          "closed_trades": 50,
+          "conditional_downstream_net_expectancy_r": -0.388952,
+          "conditional_downstream_gross_expectancy_r": 0.00437,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.2,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 172,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": 0.082768,
+          "conditional_downstream_gross_expectancy_r": 0.509727,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.306452,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 152,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": 0.082768,
+          "conditional_downstream_gross_expectancy_r": 0.509727,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.306452,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 116,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": 0.082768,
+          "conditional_downstream_gross_expectancy_r": 0.509727,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.306452,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 62,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": 0.082768,
+          "conditional_downstream_gross_expectancy_r": 0.509727,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.306452,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 62,
+          "closed_trades": 62,
+          "conditional_downstream_net_expectancy_r": 0.082768,
+          "conditional_downstream_gross_expectancy_r": 0.509727,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.306452,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 171,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 160,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 135,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 162,
+          "closed_trades": 2,
+          "conditional_downstream_net_expectancy_r": -1.178074,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 154,
+          "closed_trades": 2,
+          "conditional_downstream_net_expectancy_r": -1.178074,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 4,
+          "closed_trades": 2,
+          "conditional_downstream_net_expectancy_r": -1.178074,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 4,
+          "closed_trades": 2,
+          "conditional_downstream_net_expectancy_r": -1.178074,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 2,
+          "closed_trades": 2,
+          "conditional_downstream_net_expectancy_r": -1.178074,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 118,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 171,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 128,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 146,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 106,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": -1.238882,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 78,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": -1.238882,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 3,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": -1.238882,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 3,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": -1.238882,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 1,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": -1.238882,
+          "conditional_downstream_gross_expectancy_r": -1.0,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 0.0,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 172,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 152,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 171,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 160,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 30,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 30,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 135,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 24,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 24,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 162,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 152,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 23,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 23,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": 4.051527,
+          "conditional_downstream_gross_expectancy_r": 4.25,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": 1.0,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 118,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": 4.051527,
+          "conditional_downstream_gross_expectancy_r": 4.25,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 1.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 27,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": 4.051527,
+          "conditional_downstream_gross_expectancy_r": 4.25,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 1.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 27,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": 4.051527,
+          "conditional_downstream_gross_expectancy_r": 4.25,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 1.0,
+          "win_rate_lift_pp": 0.0
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 1,
+          "closed_trades": 1,
+          "conditional_downstream_net_expectancy_r": 4.051527,
+          "conditional_downstream_gross_expectancy_r": 4.25,
+          "conditional_net_expectancy_shift_r": 0.0,
+          "win_rate": 1.0,
+          "win_rate_lift_pp": 0.0
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 171,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 128,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 25,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 25,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 173,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 146,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 23,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 23,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 106,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 76,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 12,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 12,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "stages": [
+        {
+          "stage": "CONTEXT",
+          "retained": 172,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "LOCATION",
+          "retained": 152,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "TRIGGER",
+          "retained": 32,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "GEOMETRY",
+          "retained": 32,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        },
+        {
+          "stage": "EXECUTION",
+          "retained": 0,
+          "closed_trades": 0,
+          "conditional_downstream_net_expectancy_r": null,
+          "conditional_downstream_gross_expectancy_r": null,
+          "conditional_net_expectancy_shift_r": null,
+          "win_rate": null,
+          "win_rate_lift_pp": null
+        }
+      ]
+    }
+  ]
+}

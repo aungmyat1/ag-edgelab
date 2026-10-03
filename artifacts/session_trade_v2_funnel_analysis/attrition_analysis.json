@@ -1,0 +1,1222 @@
+{
+  "candidate_id": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc",
+  "segments": [
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 171,
+          "retained_count": 160,
+          "attrition_count": 11,
+          "attrition_pct": 6.4327,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 11
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 160,
+          "retained_count": 128,
+          "attrition_count": 32,
+          "attrition_pct": 20.0,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 32
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 128,
+          "retained_count": 68,
+          "attrition_count": 60,
+          "attrition_pct": 46.875,
+          "rejection_reasons": {
+            "SWEEP_STOP_DOES_NOT_PROTECT_EXTREME": 60
+          }
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 68,
+          "retained_count": 68,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 135,
+          "attrition_count": 38,
+          "attrition_pct": 21.9653,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 38
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 135,
+          "retained_count": 105,
+          "attrition_count": 30,
+          "attrition_pct": 22.2222,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 28,
+            "AMBIGUOUS_DUAL_SIDE_SWEEP": 2
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 105,
+          "retained_count": 72,
+          "attrition_count": 33,
+          "attrition_pct": 31.4286,
+          "rejection_reasons": {
+            "SWEEP_STOP_DOES_NOT_PROTECT_EXTREME": 33
+          }
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 72,
+          "retained_count": 72,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 162,
+          "retained_count": 152,
+          "attrition_count": 10,
+          "attrition_pct": 6.1728,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 10
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 152,
+          "retained_count": 123,
+          "attrition_count": 29,
+          "attrition_pct": 19.0789,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 28,
+            "AMBIGUOUS_DUAL_SIDE_SWEEP": 1
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 123,
+          "retained_count": 62,
+          "attrition_count": 61,
+          "attrition_pct": 49.5935,
+          "rejection_reasons": {
+            "SWEEP_STOP_DOES_NOT_PROTECT_EXTREME": 61
+          }
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 62,
+          "retained_count": 62,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 118,
+          "attrition_count": 55,
+          "attrition_pct": 31.7919,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 55
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 118,
+          "retained_count": 90,
+          "attrition_count": 28,
+          "attrition_pct": 23.7288,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 28
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 90,
+          "retained_count": 61,
+          "attrition_count": 29,
+          "attrition_pct": 32.2222,
+          "rejection_reasons": {
+            "SWEEP_STOP_DOES_NOT_PROTECT_EXTREME": 29
+          }
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 61,
+          "retained_count": 61,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 171,
+          "retained_count": 128,
+          "attrition_count": 43,
+          "attrition_pct": 25.1462,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 43
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 128,
+          "retained_count": 102,
+          "attrition_count": 26,
+          "attrition_pct": 20.3125,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 26
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 102,
+          "retained_count": 80,
+          "attrition_count": 22,
+          "attrition_pct": 21.5686,
+          "rejection_reasons": {
+            "SWEEP_STOP_DOES_NOT_PROTECT_EXTREME": 22
+          }
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 80,
+          "retained_count": 80,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 146,
+          "attrition_count": 27,
+          "attrition_pct": 15.6069,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 27
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 146,
+          "retained_count": 120,
+          "attrition_count": 26,
+          "attrition_pct": 17.8082,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 24,
+            "AMBIGUOUS_DUAL_SIDE_SWEEP": 2
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 120,
+          "retained_count": 87,
+          "attrition_count": 33,
+          "attrition_pct": 27.5,
+          "rejection_reasons": {
+            "SWEEP_STOP_DOES_NOT_PROTECT_EXTREME": 33
+          }
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 87,
+          "retained_count": 87,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 106,
+          "retained_count": 76,
+          "attrition_count": 30,
+          "attrition_pct": 28.3019,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 30
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 76,
+          "retained_count": 62,
+          "attrition_count": 14,
+          "attrition_pct": 18.4211,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 14
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 62,
+          "retained_count": 50,
+          "attrition_count": 12,
+          "attrition_pct": 19.3548,
+          "rejection_reasons": {
+            "SWEEP_STOP_DOES_NOT_PROTECT_EXTREME": 12
+          }
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 50,
+          "retained_count": 50,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 172,
+          "retained_count": 152,
+          "attrition_count": 20,
+          "attrition_pct": 11.6279,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 20
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 152,
+          "retained_count": 116,
+          "attrition_count": 36,
+          "attrition_pct": 23.6842,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 35,
+            "AMBIGUOUS_DUAL_SIDE_SWEEP": 1
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 116,
+          "retained_count": 62,
+          "attrition_count": 54,
+          "attrition_pct": 46.5517,
+          "rejection_reasons": {
+            "SWEEP_STOP_DOES_NOT_PROTECT_EXTREME": 54
+          }
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 62,
+          "retained_count": 62,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 171,
+          "retained_count": 160,
+          "attrition_count": 11,
+          "attrition_pct": 6.4327,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 11
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 160,
+          "retained_count": 0,
+          "attrition_count": 160,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 127,
+            "TRIGGER_RULE_NOT_MET": 33
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 135,
+          "attrition_count": 38,
+          "attrition_pct": 21.9653,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 38
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 135,
+          "retained_count": 0,
+          "attrition_count": 135,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 106,
+            "TRIGGER_RULE_NOT_MET": 29
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 162,
+          "retained_count": 154,
+          "attrition_count": 8,
+          "attrition_pct": 4.9383,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 8
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 154,
+          "retained_count": 4,
+          "attrition_count": 150,
+          "attrition_pct": 97.4026,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 124,
+            "TRIGGER_RULE_NOT_MET": 26
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 4,
+          "retained_count": 4,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 4,
+          "retained_count": 2,
+          "attrition_count": 2,
+          "attrition_pct": 50.0,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 2
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 118,
+          "attrition_count": 55,
+          "attrition_pct": 31.7919,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 55
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 118,
+          "retained_count": 0,
+          "attrition_count": 118,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 90,
+            "TRIGGER_RULE_NOT_MET": 28
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 171,
+          "retained_count": 128,
+          "attrition_count": 43,
+          "attrition_pct": 25.1462,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 43
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 128,
+          "retained_count": 0,
+          "attrition_count": 128,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 102,
+            "TRIGGER_RULE_NOT_MET": 26
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 146,
+          "attrition_count": 27,
+          "attrition_pct": 15.6069,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 27
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 146,
+          "retained_count": 0,
+          "attrition_count": 146,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 121,
+            "TRIGGER_RULE_NOT_MET": 25
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 106,
+          "retained_count": 78,
+          "attrition_count": 28,
+          "attrition_pct": 26.4151,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 28
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 78,
+          "retained_count": 3,
+          "attrition_count": 75,
+          "attrition_pct": 96.1538,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 62,
+            "TRIGGER_RULE_NOT_MET": 13
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 3,
+          "retained_count": 3,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 3,
+          "retained_count": 1,
+          "attrition_count": 2,
+          "attrition_pct": 66.6667,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 2
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 172,
+          "retained_count": 152,
+          "attrition_count": 20,
+          "attrition_pct": 11.6279,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 20
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 152,
+          "retained_count": 0,
+          "attrition_count": 152,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 115,
+            "TRIGGER_RULE_NOT_MET": 37
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 0,
+          "retained_count": 0,
+          "attrition_count": 0,
+          "attrition_pct": null,
+          "rejection_reasons": {}
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 171,
+          "retained_count": 160,
+          "attrition_count": 11,
+          "attrition_pct": 6.4327,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 11
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 160,
+          "retained_count": 30,
+          "attrition_count": 130,
+          "attrition_pct": 81.25,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 97,
+            "TRIGGER_RULE_NOT_MET": 33
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 30,
+          "retained_count": 30,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 30,
+          "retained_count": 0,
+          "attrition_count": 30,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 29,
+            "LIMIT_NEVER_WORKABLE_IN_TRADE_WINDOW": 1
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 135,
+          "attrition_count": 38,
+          "attrition_pct": 21.9653,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 38
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 135,
+          "retained_count": 24,
+          "attrition_count": 111,
+          "attrition_pct": 82.2222,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 64,
+            "TRIGGER_RULE_NOT_MET": 47
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 24,
+          "retained_count": 24,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 24,
+          "retained_count": 0,
+          "attrition_count": 24,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 22,
+            "LIMIT_NEVER_WORKABLE_IN_TRADE_WINDOW": 2
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 162,
+          "retained_count": 152,
+          "attrition_count": 10,
+          "attrition_pct": 6.1728,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 10
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 152,
+          "retained_count": 23,
+          "attrition_count": 129,
+          "attrition_pct": 84.8684,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 84,
+            "TRIGGER_RULE_NOT_MET": 43,
+            "TRIGGER_PREEMPTED_BY_B_RANGE_REJECTION": 2
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 23,
+          "retained_count": 23,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 23,
+          "retained_count": 0,
+          "attrition_count": 23,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 22,
+            "LIMIT_NEVER_WORKABLE_IN_TRADE_WINDOW": 1
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 118,
+          "attrition_count": 55,
+          "attrition_pct": 31.7919,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 55
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 118,
+          "retained_count": 27,
+          "attrition_count": 91,
+          "attrition_pct": 77.1186,
+          "rejection_reasons": {
+            "TRIGGER_RULE_NOT_MET": 46,
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 45
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 27,
+          "retained_count": 27,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 27,
+          "retained_count": 1,
+          "attrition_count": 26,
+          "attrition_pct": 96.2963,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 24,
+            "LIMIT_NEVER_WORKABLE_IN_TRADE_WINDOW": 2
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 171,
+          "retained_count": 128,
+          "attrition_count": 43,
+          "attrition_pct": 25.1462,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 43
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 128,
+          "retained_count": 25,
+          "attrition_count": 103,
+          "attrition_pct": 80.4688,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 58,
+            "TRIGGER_RULE_NOT_MET": 45
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 25,
+          "retained_count": 25,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 25,
+          "retained_count": 0,
+          "attrition_count": 25,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 24,
+            "LIMIT_NEVER_WORKABLE_IN_TRADE_WINDOW": 1
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 173,
+          "retained_count": 146,
+          "attrition_count": 27,
+          "attrition_pct": 15.6069,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 27
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 146,
+          "retained_count": 23,
+          "attrition_count": 123,
+          "attrition_pct": 84.2466,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 78,
+            "TRIGGER_RULE_NOT_MET": 45
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 23,
+          "retained_count": 23,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 23,
+          "retained_count": 0,
+          "attrition_count": 23,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 20,
+            "LIMIT_NEVER_WORKABLE_IN_TRADE_WINDOW": 3
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 106,
+          "retained_count": 76,
+          "attrition_count": 30,
+          "attrition_pct": 28.3019,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 30
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 76,
+          "retained_count": 12,
+          "attrition_count": 64,
+          "attrition_pct": 84.2105,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 34,
+            "TRIGGER_RULE_NOT_MET": 29,
+            "TRIGGER_PREEMPTED_BY_B_RANGE_REJECTION": 1
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 12,
+          "retained_count": 12,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 12,
+          "retained_count": 0,
+          "attrition_count": 12,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 12
+          }
+        }
+      ]
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "transitions": [
+        {
+          "from_stage": "CONTEXT",
+          "to_stage": "LOCATION",
+          "input_count": 172,
+          "retained_count": 152,
+          "attrition_count": 20,
+          "attrition_pct": 11.6279,
+          "rejection_reasons": {
+            "LOCATION_STRUCTURAL_AREA_NOT_REACHED": 20
+          }
+        },
+        {
+          "from_stage": "LOCATION",
+          "to_stage": "TRIGGER",
+          "input_count": 152,
+          "retained_count": 32,
+          "attrition_count": 120,
+          "attrition_pct": 78.9474,
+          "rejection_reasons": {
+            "TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY": 74,
+            "TRIGGER_RULE_NOT_MET": 46
+          }
+        },
+        {
+          "from_stage": "TRIGGER",
+          "to_stage": "GEOMETRY",
+          "input_count": 32,
+          "retained_count": 32,
+          "attrition_count": 0,
+          "attrition_pct": 0.0,
+          "rejection_reasons": {}
+        },
+        {
+          "from_stage": "GEOMETRY",
+          "to_stage": "EXECUTION",
+          "input_count": 32,
+          "retained_count": 0,
+          "attrition_count": 32,
+          "attrition_pct": 100.0,
+          "rejection_reasons": {
+            "EXECUTION_LIMIT_EXPIRED": 31,
+            "LIMIT_NEVER_WORKABLE_IN_TRADE_WINDOW": 1
+          }
+        }
+      ]
+    }
+  ]
+}

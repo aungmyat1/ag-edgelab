@@ -1,0 +1,62 @@
+{
+  "reused_frozen_dataset": true,
+  "redownloaded": false,
+  "dev_partition": {
+    "start": "2017-01-01T00:00:00+00:00",
+    "end": "2017-09-01T00:00:00+00:00"
+  },
+  "oos_partition_used": false,
+  "sealed_holdout": {
+    "start": "2017-12-01T00:00:00+00:00",
+    "end": "2018-01-01T00:00:00+00:00",
+    "touched": false
+  },
+  "holdout_touched": false,
+  "preserved_semantics": [
+    "timezone normalization (America/New_York -> UTC)",
+    "M1 -> M15 aggregation (>= 13/15 minutes per bucket, no synthetic fills)",
+    "session completeness rules (exact 32/20 reference bars, exact 12 trade bars)",
+    "same-bar ambiguity policy (stop-first, limit fill-bar target suppression)",
+    "fill model (MARKET next-executable bar open; LIMIT at limit price with expiry)",
+    "friction model (frozen per-symbol spread/commission/slippage authority)",
+    "partition boundaries (no session straddles a partition edge)"
+  ],
+  "symbols": {
+    "EURUSD": {
+      "source": "HISTDATA_COM_ASCII_EURUSD_M1_2017.zip",
+      "source_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+      "m1_rows": 371635,
+      "m15_bars": 24793,
+      "m15_buckets_with_lt13_minutes": 35,
+      "first_bar": "2017-01-02T07:00:00+00:00",
+      "last_bar": "2017-12-29T21:45:00+00:00"
+    },
+    "GBPUSD": {
+      "source": "HISTDATA_COM_ASCII_GBPUSD_M1_2017.zip",
+      "source_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+      "m1_rows": 371204,
+      "m15_bars": 24757,
+      "m15_buckets_with_lt13_minutes": 70,
+      "first_bar": "2017-01-02T07:00:00+00:00",
+      "last_bar": "2017-12-29T21:45:00+00:00"
+    },
+    "USDJPY": {
+      "source": "HISTDATA_COM_ASCII_USDJPY_M1_2017.zip",
+      "source_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+      "m1_rows": 371298,
+      "m15_bars": 24731,
+      "m15_buckets_with_lt13_minutes": 97,
+      "first_bar": "2017-01-02T07:00:00+00:00",
+      "last_bar": "2017-12-29T21:45:00+00:00"
+    },
+    "XAUUSD": {
+      "source": "HISTDATA_COM_ASCII_XAUUSD_M1_2017.zip",
+      "source_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff",
+      "m1_rows": 352360,
+      "m15_bars": 23500,
+      "m15_buckets_with_lt13_minutes": 90,
+      "first_bar": "2017-01-02T23:00:00+00:00",
+      "last_bar": "2017-12-29T21:45:00+00:00"
+    }
+  }
+}
