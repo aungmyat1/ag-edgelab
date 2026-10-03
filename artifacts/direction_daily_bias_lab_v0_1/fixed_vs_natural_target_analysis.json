@@ -1,0 +1,32 @@
+{
+  "fixed_targets": {
+    "1R": {
+      "capability": null,
+      "n": 0
+    },
+    "2R": {
+      "capability": null,
+      "n": 0
+    },
+    "3R": {
+      "capability": null,
+      "n": 0
+    },
+    "4R": {
+      "capability": null,
+      "n": 0
+    },
+    "5R": {
+      "capability": null,
+      "n": 0
+    }
+  },
+  "incompatible_uplift_is_null": true,
+  "natural_target": {
+    "capability": null,
+    "n": 0
+  },
+  "schema": "FixedVsNaturalTargetAnalysisV0.1",
+  "status": "INSUFFICIENT_EVIDENCE",
+  "uplift": null
+}

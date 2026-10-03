@@ -1,0 +1,121 @@
+{
+  "artifact_count": 22,
+  "artifact_directory": "artifacts/direction_daily_bias_lab_v0_1",
+  "files": [
+    {
+      "bytes": 333,
+      "path": "asian_v2_direction_overlay.json",
+      "sha256": "c94c3f017fdf04776e11b5d1c67bbd5b9235e0e3182635b5dcfa8843b90ab54d"
+    },
+    {
+      "bytes": 745,
+      "path": "causality_audit.json",
+      "sha256": "366862372273d4fb0a33fb2b39e71eea9b42cf5015119b65a879942bddc932ee"
+    },
+    {
+      "bytes": 411,
+      "path": "daily_bias_analysis.json",
+      "sha256": "89759a732952e73ea3eff5ab18a4a1ebb9debef9f759a22e82ccb812412101f2"
+    },
+    {
+      "bytes": 0,
+      "path": "direction_decisions.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2863,
+      "path": "direction_hypotheses.json",
+      "sha256": "2cfe3467ce4a8eefd8beedf2870b2c22415c0c7a6d35736fd8588f3dca8ba883"
+    },
+    {
+      "bytes": 3603,
+      "path": "final_report.json",
+      "sha256": "72e5f178f3e537e2b9d95fd333e1ef958e8476c1371252997c59d0156aae766b"
+    },
+    {
+      "bytes": 2456,
+      "path": "final_report.md",
+      "sha256": "745aa980fe87eb4ffb1e5e41c63f30e94d23a5cd103131ceba2a7fa5d8bbad2d"
+    },
+    {
+      "bytes": 522,
+      "path": "fixed_vs_natural_target_analysis.json",
+      "sha256": "759ee2b0e397e87a493774e4bb2416372520af9f38e5eaf09201f3e0e4c3d346"
+    },
+    {
+      "bytes": 2217,
+      "path": "funnel_report_v3.json",
+      "sha256": "0d45cd8f4eceedfef9cd5b16a6792284aa6b7ba71dd155e286c5c7c6744c9b04"
+    },
+    {
+      "bytes": 0,
+      "path": "liquidity_context.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 328,
+      "path": "ma_direction_analysis.json",
+      "sha256": "2f4b81e716933e461fe11966e30bc5b17294fcd9c6aec1b10afee20f0fe84313"
+    },
+    {
+      "bytes": 0,
+      "path": "phase_classification.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 723,
+      "path": "primitive_inventory.json",
+      "sha256": "a3b1c2598bd7709bcc693c71cbfb3543838c9bb23fa7bceb5dfd2f5f23f99137"
+    },
+    {
+      "bytes": 262,
+      "path": "range_preemption_direction_audit.json",
+      "sha256": "920f047d8b84e0e3494bbe4b09572c801dff4473ec2c33a77cdb2700ebbc1f9b"
+    },
+    {
+      "bytes": 341,
+      "path": "root_cause_analysis.json",
+      "sha256": "1eab401bde0dc18c787166f8791c3081d9bf86d9bd2629dbb7ad603e21a30735"
+    },
+    {
+      "bytes": 1872,
+      "path": "rule_authority_matrix.json",
+      "sha256": "07161e667748a5553cbaddd514fcaaf97c24c0011b9f6f0b45a713d71035f263"
+    },
+    {
+      "bytes": 1210,
+      "path": "source_authority.json",
+      "sha256": "f3ae6870905e35d72210afce4335f509c542d048a476778992d9bdede7b5b23c"
+    },
+    {
+      "bytes": 271,
+      "path": "structure_direction_analysis.json",
+      "sha256": "036951ce0afc86bb8c3548cf065809dc9d042390f6f224d2a15ef833fdeb7b9a"
+    },
+    {
+      "bytes": 195,
+      "path": "target_geometry_analysis.json",
+      "sha256": "1e2e4fb3540c6a6edee583d3fc0421a44e03ea796268b4925f098e084bfb4967"
+    },
+    {
+      "bytes": 1634,
+      "path": "target_hypotheses.json",
+      "sha256": "90070625701ef2207a2b583a2e80d64db5ae6f7c4c5338616e786b8fd1197811"
+    },
+    {
+      "bytes": 286,
+      "path": "test_results.txt",
+      "sha256": "0f2f2127f256836ca4b1b6cec797c9a8ae119d6e538ffb4830ef406e10d46139"
+    },
+    {
+      "bytes": 299,
+      "path": "trigger_confirmation_target_matrix.json",
+      "sha256": "00b05a7be166dedd85c741f4c13cea0e41be80d6cfa86c07006751b05a3ded0c"
+    }
+  ],
+  "generated_at_utc": "2026-10-03T23:43:07.561594+00:00",
+  "holdout_touched": false,
+  "oos_opened": false,
+  "schema": "DirectionDailyBiasArtifactManifestV0.1",
+  "strategy_rules_changed": false
+}

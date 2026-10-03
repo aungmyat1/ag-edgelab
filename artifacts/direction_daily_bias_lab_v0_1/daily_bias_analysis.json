@@ -1,0 +1,14 @@
+{
+  "analysis": "DAILY_BIAS_LAYER_VALUE_TEST",
+  "dataset_role": "DEVELOPMENT",
+  "layers": [
+    "structure",
+    "structure_plus_location",
+    "structure_plus_location_plus_internal",
+    "structure_plus_location_plus_internal_plus_liquidity"
+  ],
+  "metrics": {},
+  "note": "No authorized DEV population; no weighted score used.",
+  "population_n": 0,
+  "status": "BLOCKED_NO_AUTHORIZED_DEVELOPMENT_DATA"
+}

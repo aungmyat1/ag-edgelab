@@ -1,0 +1,69 @@
+{
+  "hypotheses": [
+    {
+      "id": "T01",
+      "kind": "FIXED_R",
+      "name": "FIXED_1R",
+      "r": 1,
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "id": "T02",
+      "kind": "FIXED_R",
+      "name": "FIXED_2R",
+      "r": 2,
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "id": "T03",
+      "kind": "FIXED_R",
+      "name": "FIXED_3R",
+      "r": 3,
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "id": "T04",
+      "kind": "FIXED_R",
+      "name": "FIXED_4R",
+      "r": 4,
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "existing_strategy_target_unchanged": true,
+      "id": "T05",
+      "kind": "FIXED_R",
+      "name": "FIXED_5R",
+      "r": 5,
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "id": "T06",
+      "kind": "PDH_OR_PDL",
+      "name": "PRIOR_DAY_LIQUIDITY",
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    {
+      "id": "T07",
+      "kind": "SUPPLY_DEMAND",
+      "name": "OPPOSING_CONFIRMED_SUPPLY_DEMAND_ZONE",
+      "reason": "no deterministic zone contract in repository",
+      "status": "CONTRACT_INCOMPLETE"
+    },
+    {
+      "id": "T08",
+      "kind": "STRUCTURAL_SWING",
+      "name": "NEXT_CONFIRMED_STRUCTURAL_SWING",
+      "reason": "a future next swing cannot be selected causally at entry without an explicit objective rule",
+      "status": "CONTRACT_INCOMPLETE"
+    },
+    {
+      "id": "T09",
+      "kind": "FVG",
+      "name": "NEAREST_AUTHORITATIVE_IMBALANCE_FVG",
+      "reason": "no Asian-strategy FVG target authority in repository",
+      "status": "CONTRACT_INCOMPLETE"
+    }
+  ],
+  "schema": "TargetHypothesesV0.1",
+  "strategy_target_modified": false
+}

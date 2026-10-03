@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "no_future_BOS": "PASS_PRIMITIVE_CONTRACT",
+    "no_future_FVG": "PASS_PRIMITIVE_CONTRACT",
+    "no_future_MA": "PASS_PRIMITIVE_CONTRACT",
+    "no_future_PDH_PDL_knowledge": "PASS_PRIMITIVE_CONTRACT",
+    "no_future_internal_shift": "PASS_PRIMITIVE_CONTRACT",
+    "no_future_liquidity_sweep": "PASS_PRIMITIVE_CONTRACT",
+    "no_future_swing": "PASS_PRIMITIVE_CONTRACT",
+    "no_future_target_selection": "PASS_PRIMITIVE_CONTRACT",
+    "no_future_zone": "PASS_PRIMITIVE_CONTRACT"
+  },
+  "decision_definition": "decision(data <= closed bars at T) == decision(full dataset clipped to closed bars at T)",
+  "schema": "CausalityAuditV0.1",
+  "status": "PRIMITIVE_LEVEL_ONLY_NO_AUTHORIZED_POPULATION",
+  "strategy_level_rows": 0
+}

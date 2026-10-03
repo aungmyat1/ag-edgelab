@@ -1,0 +1,114 @@
+{
+  "comparisons": {},
+  "metadata": {
+    "dataset_role": "DEVELOPMENT",
+    "population_n": 0,
+    "strategy_rules_changed": false
+  },
+  "root_causes": [
+    "CONTRACT_INCOMPLETE",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "schema": "FunnelDiagnosticReportV3",
+  "stages": [
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "no authorized population"
+      ],
+      "pass_n": 0,
+      "stage": "CONTEXT",
+      "status": "INSUFFICIENT_SAMPLE"
+    },
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "no authorized population"
+      ],
+      "pass_n": 0,
+      "stage": "DIRECTION",
+      "status": "INSUFFICIENT_SAMPLE"
+    },
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "no authorized population"
+      ],
+      "pass_n": 0,
+      "stage": "LOCATION",
+      "status": "INSUFFICIENT_SAMPLE"
+    },
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "no authorized population"
+      ],
+      "pass_n": 0,
+      "stage": "LIQUIDITY_CONTEXT",
+      "status": "CONTRACT_INCOMPLETE"
+    },
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "not used by strategy"
+      ],
+      "pass_n": 0,
+      "stage": "SETUP",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "not used by strategy"
+      ],
+      "pass_n": 0,
+      "stage": "CONFIRMATION",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "not used by strategy"
+      ],
+      "pass_n": 0,
+      "stage": "ENTRY",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "no authorized population"
+      ],
+      "pass_n": 0,
+      "stage": "TARGET",
+      "status": "INSUFFICIENT_SAMPLE"
+    },
+    {
+      "evidence": {},
+      "fail_n": 0,
+      "input_n": 0,
+      "notes": [
+        "not used by strategy"
+      ],
+      "pass_n": 0,
+      "stage": "ECONOMICS",
+      "status": "NOT_APPLICABLE"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "analysis": "MA_DIRECTION_VALUE_TEST",
+  "dataset_role": "DEVELOPMENT",
+  "layers": [
+    "structure_only",
+    "ma_only",
+    "structure_plus_ma"
+  ],
+  "metrics": {},
+  "note": "No authorized DEV population; MA periods remain frozen at 50/200.",
+  "population_n": 0,
+  "status": "BLOCKED_NO_AUTHORIZED_DEVELOPMENT_DATA"
+}
