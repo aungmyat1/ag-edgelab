@@ -10,3 +10,4 @@ build/
 reports/
 *.parquet
 *.csv
+.campaign_cache/

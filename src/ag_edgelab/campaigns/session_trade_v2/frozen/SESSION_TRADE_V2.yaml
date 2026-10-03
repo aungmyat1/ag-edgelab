@@ -1,0 +1,49 @@
+strategy_id: SESSION_TRADE_V2
+strategy_name: Unified Session Liquidity / Range / Expansion
+strategy_family: SESSION_TRADE
+version: "2.0.0"
+status: RESEARCH_SHADOW
+registered_utc: "2026-10-03"
+
+# New deterministic authority. It does not replace SESSION_TRADE_V1 or
+# ST_ASIAN_SWEEP_5R_V1 until evidence and owner promotion explicitly do so.
+instruments: [EURUSD, GBPUSD, USDJPY, XAUUSD]
+timeframe: M15
+
+session_pairs:
+  ASIAN_LONDON:
+    reference_window_utc: ["22:00", "06:00"]
+    trade_window_utc: ["06:00", "09:00"]
+  LONDON_NEWYORK:
+    reference_window_utc: ["06:00", "11:00"]
+    trade_window_utc: ["11:00", "14:00"]
+
+setup_priority: [A_SWEEP_REENTRY, B_RANGE_REJECTION, C_TREND_EXPANSION]
+
+risk:
+  reference_r_fraction_of_range: 0.25
+  risk_per_trade_pct: 0.5
+  max_entries_per_symbol_per_cycle: 1
+  max_entries_per_day: 2
+
+management:
+  total_target_r: 5.0
+  partial_r: 4.0
+  partial_volume_pct: 0.75
+  runner_volume_pct: 0.25
+  sweep_range_runner_after_partial: BREAKEVEN_TO_5R
+  trend_runner_after_partial: TRAIL_CONFIRMED_M15_SWINGS_TO_5R_CAP
+
+execution:
+  proposal_generation_authorized: true
+  demo_authorized: false
+  live_authorized: false
+  allow_order_send: false
+
+notes:
+  - A sweep requires a boundary breach and same-candle M15 close back inside.
+  - A candle sweeping both sides is ambiguous and returns NO_TRADE.
+  - Sweep stop must protect the swept extreme; otherwise the setup is rejected.
+  - B range rejection requires a boundary touch/rejection without an outside close.
+  - C trend expansion requires an M15 body close outside the reference range; entry is a retrace limit at equilibrium.
+  - All prices and sizing remain informational until independently validated and promoted.

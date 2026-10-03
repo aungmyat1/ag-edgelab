@@ -1,0 +1,142 @@
+{
+  "walk_forward_rule": "PASS iff pooled forward-test net expectancy > 0 and a majority of folds have net expectancy > 0",
+  "walk_forward_pass": false,
+  "pooled_forward_expectancy_r": -0.039,
+  "positive_folds": "1/4",
+  "folds": [
+    {
+      "fold_id": "WF1",
+      "test_window": "2017-04-01..2017-06-01",
+      "trades": 68,
+      "net_expectancy_r": -0.05193848320737513,
+      "net_profit_factor": 0.9432771375757205,
+      "max_drawdown_r": 16.683048049545395
+    },
+    {
+      "fold_id": "WF2",
+      "test_window": "2017-06-01..2017-08-01",
+      "trades": 66,
+      "net_expectancy_r": 0.14379293580322403,
+      "net_profit_factor": 1.1690137932103741,
+      "max_drawdown_r": 16.060545522044283
+    },
+    {
+      "fold_id": "WF3",
+      "test_window": "2017-08-01..2017-10-01",
+      "trades": 79,
+      "net_expectancy_r": -0.18160587732667732,
+      "net_profit_factor": 0.806328323471914,
+      "max_drawdown_r": 21.381361948773012
+    },
+    {
+      "fold_id": "WF4",
+      "test_window": "2017-10-01..2017-12-01",
+      "trades": 78,
+      "net_expectancy_r": -0.038103746216982474,
+      "net_profit_factor": 0.9599877802449523,
+      "max_drawdown_r": 14.053477812227836
+    }
+  ],
+  "regime_slices": {
+    "by_symbol": {
+      "by_symbol:EURUSD": {
+        "trades": 106,
+        "net_r": -0.6685,
+        "net_expectancy_r": -0.0063,
+        "net_profit_factor": 0.9928,
+        "max_drawdown_r": 21.8805
+      },
+      "by_symbol:GBPUSD": {
+        "trades": 86,
+        "net_r": -6.1953,
+        "net_expectancy_r": -0.072,
+        "net_profit_factor": 0.9171,
+        "max_drawdown_r": 13.1242
+      },
+      "by_symbol:USDJPY": {
+        "trades": 116,
+        "net_r": 21.2985,
+        "net_expectancy_r": 0.1836,
+        "net_profit_factor": 1.2169,
+        "max_drawdown_r": 14.9999
+      },
+      "by_symbol:XAUUSD": {
+        "trades": 95,
+        "net_r": -6.6093,
+        "net_expectancy_r": -0.0696,
+        "net_profit_factor": 0.9329,
+        "max_drawdown_r": 24.0577
+      }
+    },
+    "by_direction": {
+      "by_direction:LONG": {
+        "trades": 203,
+        "net_r": 22.9798,
+        "net_expectancy_r": 0.1132,
+        "net_profit_factor": 1.1288,
+        "max_drawdown_r": 23.5438
+      },
+      "by_direction:SHORT": {
+        "trades": 200,
+        "net_r": -15.1544,
+        "net_expectancy_r": -0.0758,
+        "net_profit_factor": 0.9183,
+        "max_drawdown_r": 29.2085
+      }
+    },
+    "by_reference_volatility_tercile": {
+      "by_reference_volatility_tercile:HIGH": {
+        "trades": 134,
+        "net_r": -4.9495,
+        "net_expectancy_r": -0.0369,
+        "net_profit_factor": 0.9624,
+        "max_drawdown_r": 24.0577
+      },
+      "by_reference_volatility_tercile:LOW": {
+        "trades": 135,
+        "net_r": -1.109,
+        "net_expectancy_r": -0.0082,
+        "net_profit_factor": 0.9906,
+        "max_drawdown_r": 19.6393
+      },
+      "by_reference_volatility_tercile:MID": {
+        "trades": 134,
+        "net_r": 13.8839,
+        "net_expectancy_r": 0.1036,
+        "net_profit_factor": 1.1213,
+        "max_drawdown_r": 25.0201
+      }
+    },
+    "by_quarter": {
+      "by_quarter:Q1": {
+        "trades": 106,
+        "net_r": 12.142,
+        "net_expectancy_r": 0.1145,
+        "net_profit_factor": 1.1303,
+        "max_drawdown_r": 13.3827
+      },
+      "by_quarter:Q2": {
+        "trades": 109,
+        "net_r": 7.2709,
+        "net_expectancy_r": 0.0667,
+        "net_profit_factor": 1.0751,
+        "max_drawdown_r": 16.7706
+      },
+      "by_quarter:Q3": {
+        "trades": 110,
+        "net_r": -8.6154,
+        "net_expectancy_r": -0.0783,
+        "net_profit_factor": 0.9136,
+        "max_drawdown_r": 16.3803
+      },
+      "by_quarter:Q4": {
+        "trades": 78,
+        "net_r": -2.9721,
+        "net_expectancy_r": -0.0381,
+        "net_profit_factor": 0.96,
+        "max_drawdown_r": 14.0535
+      }
+    }
+  },
+  "regime_note": "Descriptive only: EdgeLab's canonical policy defines no regime gate thresholds; slices expose where the pooled survivor edge concentrates. No promotion decision is taken from this table."
+}
