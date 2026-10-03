@@ -1,0 +1,33 @@
+{
+  "source_repo": "aungmyat1/AG-profit-trading-assit",
+  "source_pr": 33,
+  "source_branch": "feat/session-trade-v2-unified",
+  "source_commit": "e1ffe9f1e5ccfb9a336f1b4ae4289d41901ec5d2",
+  "strategy_id": "SESSION_TRADE_V2",
+  "strategy_version": "2.0.0",
+  "candidate_id": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc",
+  "frozen_artifact_sha256": {
+    "engine.py": "d7e0289c75c7cdb7386fb5f2e7e73151455cfed7605fda21841ce359fa2d0acb",
+    "models.py": "db43c06df3da1a67276f63124bca4c8724e15c1b53d192c55ede8ce1da3ecb43",
+    "SESSION_TRADE_V2.yaml": "3c7ea2eb68938172f9a91fcde732f7b4c9c2b0bc54c4b7e01adcc72cd52a861b",
+    "SESSION_TRADE_V2_SPEC.md": "edf74dccc28bdbfc6c2a032b20ffe6b88c9ca086c833fbfcb368db3c04500219"
+  },
+  "execution_authority": {
+    "demo_authorized": false,
+    "live_authorized": false,
+    "allow_order_send": false
+  },
+  "frozen_rules_modified": false,
+  "edgelab_campaign": {
+    "repo": "aungmyat1/ag-edgelab",
+    "pr": 10,
+    "branch": "arena/01a100ce-ag-edgelab",
+    "head_at_handoff": "d6df82edf2d65d0a1feb28ae8500199ddbbede25",
+    "artifacts": "artifacts/session_trade_v2_economic_matrix/"
+  },
+  "analysis_repo": {
+    "repo": "aungmyat1/ag-edgelab",
+    "branch": "arena/01a1015a-ag-edgelab",
+    "head": "599c16b05d823c7c9be0ec1f35dff1b4b6c84670"
+  }
+}
