@@ -1,0 +1,3540 @@
+{
+  "dataset_identity": {
+    "manifest_sha256": "7d0069c1b3636f1db0b01c62f6e3c90807724e0088ab1967b3fca281e7f19670",
+    "raw_identity_reused_from_stv2": true,
+    "source": "PR_10_HISTDATA_2017"
+  },
+  "dataset_role": "DEVELOPMENT",
+  "economics": {
+    "MAE_R": null,
+    "MFE_R": null,
+    "PF": null,
+    "closed": 0,
+    "expectancy_R": null,
+    "fills": 0,
+    "friction_R": 0,
+    "gross_R": null,
+    "max_drawdown_R": null,
+    "net_R": null,
+    "signals": 0,
+    "win_rate": null
+  },
+  "evidence_refs": [
+    "artifacts/mtf_control_shift_v1/trigger_cases.jsonl",
+    "artifacts/mtf_control_shift_v1/v2_m15_refinement_cases.jsonl",
+    "artifacts/mtf_control_shift_v1/v2_m15_refinement_audit.json",
+    "artifacts/mtf_control_shift_v1/v2_temporal_coupling.json"
+  ],
+  "flow": [
+    {
+      "fail_n": 0,
+      "failure_reasons": {},
+      "input_n": 170,
+      "pass_n": 170,
+      "pass_pct": 100.0,
+      "rule": "CONTEXT"
+    },
+    {
+      "fail_n": 0,
+      "failure_reasons": {},
+      "input_n": 170,
+      "pass_n": 170,
+      "pass_pct": 100.0,
+      "rule": "LOCATION"
+    },
+    {
+      "fail_n": 152,
+      "failure_reasons": {
+        "NO_VALID_H1_CONTROL_SHIFT": 152
+      },
+      "input_n": 170,
+      "pass_n": 18,
+      "pass_pct": 10.588235294117647,
+      "rule": "TRIGGER"
+    },
+    {
+      "fail_n": 18,
+      "failure_reasons": {
+        "SESSION_WINDOW_EXPIRED": 18
+      },
+      "input_n": 18,
+      "pass_n": 0,
+      "pass_pct": 0.0,
+      "rule": "CONFIRMATION"
+    },
+    {
+      "fail_n": 0,
+      "failure_reasons": {},
+      "input_n": 0,
+      "pass_n": 0,
+      "pass_pct": null,
+      "rule": "GEOMETRY"
+    },
+    {
+      "fail_n": 0,
+      "failure_reasons": {},
+      "input_n": 0,
+      "pass_n": 0,
+      "pass_pct": null,
+      "rule": "EXECUTION"
+    },
+    {
+      "fail_n": 0,
+      "failure_reasons": {},
+      "input_n": 0,
+      "pass_n": 0,
+      "pass_pct": null,
+      "rule": "OUTCOME"
+    }
+  ],
+  "missing_evidence": [
+    "TARGET_CAPABILITY_ENTRY_GEOMETRY",
+    "REALIZED_ECONOMICS"
+  ],
+  "primary_diagnosis": "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+  "report_hash": "ac5ffbfab1d201ec468de9a47adf710d53122754ea38f68ecdaa9f958da7ffa7",
+  "schema_version": "FunnelDiagnosticReportV2",
+  "secondary_diagnoses": [
+    "STARVED_CONFIRMATION",
+    "LOW_TARGET_CAPABILITY",
+    "INSUFFICIENT_ECONOMIC_SAMPLE"
+  ],
+  "strategy_identity": {
+    "sha256": "56b6032fc949564e0ff8d147eb794560088fb0d90eac3bc549de504f01a6cc91",
+    "strategy_id": "ST_MTF_CONTROL_SHIFT_V2",
+    "version": "2.0.0"
+  },
+  "target_capability": {
+    "1R": {
+      "reach_after_fail": null,
+      "reach_after_pass": null,
+      "reach_before": null,
+      "uplift_pp": null
+    },
+    "2R": {
+      "reach_after_fail": null,
+      "reach_after_pass": null,
+      "reach_before": null,
+      "uplift_pp": null
+    },
+    "3R": {
+      "reach_after_fail": null,
+      "reach_after_pass": null,
+      "reach_before": null,
+      "uplift_pp": null
+    },
+    "4R": {
+      "reach_after_fail": null,
+      "reach_after_pass": null,
+      "reach_before": null,
+      "uplift_pp": null
+    },
+    "5R": {
+      "reach_after_fail": null,
+      "reach_after_pass": null,
+      "reach_before": null,
+      "uplift_pp": null
+    }
+  },
+  "temporal": {
+    "cross_cycle_n": 18,
+    "delay_distributions": [
+      {
+        "count": 170,
+        "maximum": 0.0,
+        "minimum": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p90": 0.0,
+        "transition": "CONTEXT->LOCATION"
+      },
+      {
+        "count": 18,
+        "maximum": -1020.0,
+        "minimum": -1260.0,
+        "p25": -1196.25,
+        "p50": -1140.0,
+        "p75": -1083.75,
+        "p90": -1045.5,
+        "transition": "LOCATION->TRIGGER"
+      }
+    ],
+    "diagnostic_counts": {
+      "CONFIRMATION_PRECEDES_LOCATION": 0,
+      "CROSS_SESSION_TRIGGER": 18,
+      "TEMPORAL_FUNNEL_INCOMPATIBILITY": 18,
+      "TRIGGER_PRECEDES_LOCATION": 18
+    },
+    "invalid_order_n": 18,
+    "lifecycle": [
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-03-17T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-03-17|LONDON_NEWYORK",
+          "LOCATION": "2017-03-17|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-17|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-03-17T13:00:00+00:00",
+          "LOCATION": "2017-03-17T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-03-17T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-03-17|LONDON_NEWYORK",
+          "LOCATION": "2017-03-17|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-17|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-03-17T13:15:00+00:00",
+          "LOCATION": "2017-03-17T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-03-17T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-03-17|LONDON_NEWYORK",
+          "LOCATION": "2017-03-17|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-17|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-03-17T13:30:00+00:00",
+          "LOCATION": "2017-03-17T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-03-17T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-03-17|LONDON_NEWYORK",
+          "LOCATION": "2017-03-17|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-17|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-03-17T13:45:00+00:00",
+          "LOCATION": "2017-03-17T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-03-17T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-03-17|LONDON_NEWYORK",
+          "LOCATION": "2017-03-17|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-17|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-03-17T14:00:00+00:00",
+          "LOCATION": "2017-03-17T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-05-08T06:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-08|ASIAN_LONDON",
+          "LOCATION": "2017-05-08|ASIAN_LONDON",
+          "TRIGGER": "2017-05-08|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-08T06:15:00+00:00",
+          "LOCATION": "2017-05-08T06:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-05-08T06:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-08|ASIAN_LONDON",
+          "LOCATION": "2017-05-08|ASIAN_LONDON",
+          "TRIGGER": "2017-05-08|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-08T06:30:00+00:00",
+          "LOCATION": "2017-05-08T06:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-05-08T06:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-08|ASIAN_LONDON",
+          "LOCATION": "2017-05-08|ASIAN_LONDON",
+          "TRIGGER": "2017-05-08|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-08T06:45:00+00:00",
+          "LOCATION": "2017-05-08T06:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-05-08T07:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-08|ASIAN_LONDON",
+          "LOCATION": "2017-05-08|ASIAN_LONDON",
+          "TRIGGER": "2017-05-08|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-08T07:00:00+00:00",
+          "LOCATION": "2017-05-08T07:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-05-08T07:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-08|ASIAN_LONDON",
+          "LOCATION": "2017-05-08|ASIAN_LONDON",
+          "TRIGGER": "2017-05-08|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-08T07:15:00+00:00",
+          "LOCATION": "2017-05-08T07:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-05-08T07:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-08|ASIAN_LONDON",
+          "LOCATION": "2017-05-08|ASIAN_LONDON",
+          "TRIGGER": "2017-05-08|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-08T07:30:00+00:00",
+          "LOCATION": "2017-05-08T07:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-05-08T07:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-08|ASIAN_LONDON",
+          "LOCATION": "2017-05-08|ASIAN_LONDON",
+          "TRIGGER": "2017-05-08|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-08T07:45:00+00:00",
+          "LOCATION": "2017-05-08T07:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-06-07T08:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|ASIAN_LONDON",
+          "LOCATION": "2017-06-07|ASIAN_LONDON",
+          "TRIGGER": "2017-06-07|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T08:00:00+00:00",
+          "LOCATION": "2017-06-07T08:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-06-07T08:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|ASIAN_LONDON",
+          "LOCATION": "2017-06-07|ASIAN_LONDON",
+          "TRIGGER": "2017-06-07|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T08:15:00+00:00",
+          "LOCATION": "2017-06-07T08:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-06-07T08:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|ASIAN_LONDON",
+          "LOCATION": "2017-06-07|ASIAN_LONDON",
+          "TRIGGER": "2017-06-07|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T08:30:00+00:00",
+          "LOCATION": "2017-06-07T08:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-06-07T08:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|ASIAN_LONDON",
+          "LOCATION": "2017-06-07|ASIAN_LONDON",
+          "TRIGGER": "2017-06-07|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T08:45:00+00:00",
+          "LOCATION": "2017-06-07T08:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-06-07T09:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|ASIAN_LONDON",
+          "LOCATION": "2017-06-07|ASIAN_LONDON",
+          "TRIGGER": "2017-06-07|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T09:00:00+00:00",
+          "LOCATION": "2017-06-07T09:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T11:15:00+00:00",
+          "LOCATION": "2017-06-07T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T11:30:00+00:00",
+          "LOCATION": "2017-06-07T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T11:45:00+00:00",
+          "LOCATION": "2017-06-07T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T12:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T12:00:00+00:00",
+          "LOCATION": "2017-06-07T12:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T12:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T12:15:00+00:00",
+          "LOCATION": "2017-06-07T12:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T12:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T12:30:00+00:00",
+          "LOCATION": "2017-06-07T12:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T12:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T12:45:00+00:00",
+          "LOCATION": "2017-06-07T12:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T13:00:00+00:00",
+          "LOCATION": "2017-06-07T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T13:15:00+00:00",
+          "LOCATION": "2017-06-07T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T13:30:00+00:00",
+          "LOCATION": "2017-06-07T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T13:45:00+00:00",
+          "LOCATION": "2017-06-07T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-06-07T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-07|LONDON_NEWYORK",
+          "LOCATION": "2017-06-07|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-07|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-07T14:00:00+00:00",
+          "LOCATION": "2017-06-07T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T12:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T12:00:00+00:00",
+          "LOCATION": "2017-07-20T12:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T12:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T12:15:00+00:00",
+          "LOCATION": "2017-07-20T12:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T12:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T12:30:00+00:00",
+          "LOCATION": "2017-07-20T12:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T12:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T12:45:00+00:00",
+          "LOCATION": "2017-07-20T12:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T13:00:00+00:00",
+          "LOCATION": "2017-07-20T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T13:15:00+00:00",
+          "LOCATION": "2017-07-20T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T13:30:00+00:00",
+          "LOCATION": "2017-07-20T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T13:45:00+00:00",
+          "LOCATION": "2017-07-20T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-07-20T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-20|LONDON_NEWYORK",
+          "LOCATION": "2017-07-20|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-20|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-20T14:00:00+00:00",
+          "LOCATION": "2017-07-20T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T07:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T07:00:00+00:00",
+          "LOCATION": "2017-08-15T07:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T07:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T07:15:00+00:00",
+          "LOCATION": "2017-08-15T07:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T07:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T07:30:00+00:00",
+          "LOCATION": "2017-08-15T07:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T07:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T07:45:00+00:00",
+          "LOCATION": "2017-08-15T07:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T08:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T08:00:00+00:00",
+          "LOCATION": "2017-08-15T08:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T08:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T08:15:00+00:00",
+          "LOCATION": "2017-08-15T08:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T08:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T08:30:00+00:00",
+          "LOCATION": "2017-08-15T08:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T08:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T08:45:00+00:00",
+          "LOCATION": "2017-08-15T08:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_ASIAN_LONDON_2017-08-15T09:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|ASIAN_LONDON",
+          "LOCATION": "2017-08-15|ASIAN_LONDON",
+          "TRIGGER": "2017-08-15|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T09:00:00+00:00",
+          "LOCATION": "2017-08-15T09:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-08-15T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|LONDON_NEWYORK",
+          "LOCATION": "2017-08-15|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-15|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T11:15:00+00:00",
+          "LOCATION": "2017-08-15T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-08-15T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|LONDON_NEWYORK",
+          "LOCATION": "2017-08-15|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-15|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T11:30:00+00:00",
+          "LOCATION": "2017-08-15T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "EURUSD_LONDON_NEWYORK_2017-08-15T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|LONDON_NEWYORK",
+          "LOCATION": "2017-08-15|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-15|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T11:45:00+00:00",
+          "LOCATION": "2017-08-15T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T07:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T07:00:00+00:00",
+          "LOCATION": "2017-05-04T07:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T07:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T07:15:00+00:00",
+          "LOCATION": "2017-05-04T07:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T07:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T07:30:00+00:00",
+          "LOCATION": "2017-05-04T07:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T07:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T07:45:00+00:00",
+          "LOCATION": "2017-05-04T07:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T08:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T08:00:00+00:00",
+          "LOCATION": "2017-05-04T08:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T08:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T08:15:00+00:00",
+          "LOCATION": "2017-05-04T08:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T08:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T08:30:00+00:00",
+          "LOCATION": "2017-05-04T08:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T08:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T08:45:00+00:00",
+          "LOCATION": "2017-05-04T08:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_ASIAN_LONDON_2017-05-04T09:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|ASIAN_LONDON",
+          "LOCATION": "2017-05-04|ASIAN_LONDON",
+          "TRIGGER": "2017-05-04|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T09:00:00+00:00",
+          "LOCATION": "2017-05-04T09:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-04T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|LONDON_NEWYORK",
+          "LOCATION": "2017-05-04|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-04|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T11:15:00+00:00",
+          "LOCATION": "2017-05-04T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-04T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|LONDON_NEWYORK",
+          "LOCATION": "2017-05-04|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-04|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T11:30:00+00:00",
+          "LOCATION": "2017-05-04T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-04T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-04|LONDON_NEWYORK",
+          "LOCATION": "2017-05-04|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-04|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-04T11:45:00+00:00",
+          "LOCATION": "2017-05-04T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T11:15:00+00:00",
+          "LOCATION": "2017-05-09T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T11:30:00+00:00",
+          "LOCATION": "2017-05-09T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T11:45:00+00:00",
+          "LOCATION": "2017-05-09T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T12:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T12:00:00+00:00",
+          "LOCATION": "2017-05-09T12:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T12:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T12:15:00+00:00",
+          "LOCATION": "2017-05-09T12:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T12:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T12:30:00+00:00",
+          "LOCATION": "2017-05-09T12:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T12:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T12:45:00+00:00",
+          "LOCATION": "2017-05-09T12:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T13:00:00+00:00",
+          "LOCATION": "2017-05-09T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T13:15:00+00:00",
+          "LOCATION": "2017-05-09T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T13:30:00+00:00",
+          "LOCATION": "2017-05-09T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T13:45:00+00:00",
+          "LOCATION": "2017-05-09T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-09T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-09|LONDON_NEWYORK",
+          "LOCATION": "2017-05-09|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-09|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-09T14:00:00+00:00",
+          "LOCATION": "2017-05-09T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T11:15:00+00:00",
+          "LOCATION": "2017-05-16T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T11:30:00+00:00",
+          "LOCATION": "2017-05-16T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T11:45:00+00:00",
+          "LOCATION": "2017-05-16T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T12:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T12:00:00+00:00",
+          "LOCATION": "2017-05-16T12:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T12:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T12:15:00+00:00",
+          "LOCATION": "2017-05-16T12:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T12:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T12:30:00+00:00",
+          "LOCATION": "2017-05-16T12:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T12:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T12:45:00+00:00",
+          "LOCATION": "2017-05-16T12:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T13:00:00+00:00",
+          "LOCATION": "2017-05-16T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T13:15:00+00:00",
+          "LOCATION": "2017-05-16T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T13:30:00+00:00",
+          "LOCATION": "2017-05-16T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T13:45:00+00:00",
+          "LOCATION": "2017-05-16T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-05-16T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-05-16|LONDON_NEWYORK",
+          "LOCATION": "2017-05-16|LONDON_NEWYORK",
+          "TRIGGER": "2017-05-16|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-05-16T14:00:00+00:00",
+          "LOCATION": "2017-05-16T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-08-03T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-03|LONDON_NEWYORK",
+          "LOCATION": "2017-08-03|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-03|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-03T13:00:00+00:00",
+          "LOCATION": "2017-08-03T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-08-03T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-03|LONDON_NEWYORK",
+          "LOCATION": "2017-08-03|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-03|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-03T13:15:00+00:00",
+          "LOCATION": "2017-08-03T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-08-03T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-03|LONDON_NEWYORK",
+          "LOCATION": "2017-08-03|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-03|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-03T13:30:00+00:00",
+          "LOCATION": "2017-08-03T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-08-03T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-03|LONDON_NEWYORK",
+          "LOCATION": "2017-08-03|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-03|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-03T13:45:00+00:00",
+          "LOCATION": "2017-08-03T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-08-03T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-03|LONDON_NEWYORK",
+          "LOCATION": "2017-08-03|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-03|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-03T14:00:00+00:00",
+          "LOCATION": "2017-08-03T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-08-15T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|LONDON_NEWYORK",
+          "LOCATION": "2017-08-15|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-15|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T11:15:00+00:00",
+          "LOCATION": "2017-08-15T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-08-15T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|LONDON_NEWYORK",
+          "LOCATION": "2017-08-15|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-15|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T11:30:00+00:00",
+          "LOCATION": "2017-08-15T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "GBPUSD_LONDON_NEWYORK_2017-08-15T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-15|LONDON_NEWYORK",
+          "LOCATION": "2017-08-15|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-15|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-15T11:45:00+00:00",
+          "LOCATION": "2017-08-15T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T12:00:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1140.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T12:00:00+00:00",
+          "LOCATION": "2017-03-29T12:00:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T12:15:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1155.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T12:15:00+00:00",
+          "LOCATION": "2017-03-29T12:15:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T12:30:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1170.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T12:30:00+00:00",
+          "LOCATION": "2017-03-29T12:30:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T12:45:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1185.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T12:45:00+00:00",
+          "LOCATION": "2017-03-29T12:45:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T13:00:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1200.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T13:00:00+00:00",
+          "LOCATION": "2017-03-29T13:00:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T13:15:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1215.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T13:15:00+00:00",
+          "LOCATION": "2017-03-29T13:15:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T13:30:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1230.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T13:30:00+00:00",
+          "LOCATION": "2017-03-29T13:30:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T13:45:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1245.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T13:45:00+00:00",
+          "LOCATION": "2017-03-29T13:45:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-03-29T14:00:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-03-29|LONDON_NEWYORK",
+          "CONTEXT": "2017-03-29|LONDON_NEWYORK",
+          "LOCATION": "2017-03-29|LONDON_NEWYORK",
+          "TRIGGER": "2017-03-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1260.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-03-29T14:00:00+00:00",
+          "LOCATION": "2017-03-29T14:00:00+00:00",
+          "TRIGGER": "2017-03-28T17:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-05T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-05|LONDON_NEWYORK",
+          "LOCATION": "2017-04-05|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-05T14:00:00+00:00",
+          "LOCATION": "2017-04-05T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T12:00:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1020.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T12:00:00+00:00",
+          "LOCATION": "2017-04-06T12:00:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T12:15:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1035.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T12:15:00+00:00",
+          "LOCATION": "2017-04-06T12:15:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T12:30:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1050.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T12:30:00+00:00",
+          "LOCATION": "2017-04-06T12:30:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T12:45:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1065.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T12:45:00+00:00",
+          "LOCATION": "2017-04-06T12:45:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T13:00:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1080.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T13:00:00+00:00",
+          "LOCATION": "2017-04-06T13:00:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T13:15:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1095.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T13:15:00+00:00",
+          "LOCATION": "2017-04-06T13:15:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T13:30:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1110.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T13:30:00+00:00",
+          "LOCATION": "2017-04-06T13:30:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T13:45:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1125.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T13:45:00+00:00",
+          "LOCATION": "2017-04-06T13:45:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-04-06T14:00:00+00:00",
+        "cycle_ids": {
+          "CONFIRMATION": "2017-04-06|LONDON_NEWYORK",
+          "CONTEXT": "2017-04-06|LONDON_NEWYORK",
+          "LOCATION": "2017-04-06|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-05|LONDON_NEWYORK"
+        },
+        "diagnostics": [
+          "TEMPORAL_FUNNEL_INCOMPATIBILITY",
+          "TRIGGER_PRECEDES_LOCATION",
+          "CROSS_SESSION_TRIGGER"
+        ],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0,
+          "LOCATION->TRIGGER": -1140.0
+        },
+        "same_cycle": false,
+        "stage_order_valid": false,
+        "stage_timestamps": {
+          "CONFIRMATION": null,
+          "CONTEXT": "2017-04-06T14:00:00+00:00",
+          "LOCATION": "2017-04-06T14:00:00+00:00",
+          "TRIGGER": "2017-04-05T19:00:00+00:00"
+        }
+      },
+      {
+        "candidate_id": "USDJPY_ASIAN_LONDON_2017-06-28T09:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-28|ASIAN_LONDON",
+          "LOCATION": "2017-06-28|ASIAN_LONDON",
+          "TRIGGER": "2017-06-28|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-28T09:00:00+00:00",
+          "LOCATION": "2017-06-28T09:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-06-28T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-28|LONDON_NEWYORK",
+          "LOCATION": "2017-06-28|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-28T11:15:00+00:00",
+          "LOCATION": "2017-06-28T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-06-28T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-28|LONDON_NEWYORK",
+          "LOCATION": "2017-06-28|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-28T11:30:00+00:00",
+          "LOCATION": "2017-06-28T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-06-28T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-28|LONDON_NEWYORK",
+          "LOCATION": "2017-06-28|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-28T11:45:00+00:00",
+          "LOCATION": "2017-06-28T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-06-28T12:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-28|LONDON_NEWYORK",
+          "LOCATION": "2017-06-28|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-28T12:00:00+00:00",
+          "LOCATION": "2017-06-28T12:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-06-28T12:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-28|LONDON_NEWYORK",
+          "LOCATION": "2017-06-28|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-28T12:15:00+00:00",
+          "LOCATION": "2017-06-28T12:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-06-28T12:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-28|LONDON_NEWYORK",
+          "LOCATION": "2017-06-28|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-28T12:30:00+00:00",
+          "LOCATION": "2017-06-28T12:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-06-28T12:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-06-28|LONDON_NEWYORK",
+          "LOCATION": "2017-06-28|LONDON_NEWYORK",
+          "TRIGGER": "2017-06-28|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-06-28T12:45:00+00:00",
+          "LOCATION": "2017-06-28T12:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-07-12T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-12|LONDON_NEWYORK",
+          "LOCATION": "2017-07-12|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-12|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-12T13:00:00+00:00",
+          "LOCATION": "2017-07-12T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-07-12T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-12|LONDON_NEWYORK",
+          "LOCATION": "2017-07-12|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-12|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-12T13:15:00+00:00",
+          "LOCATION": "2017-07-12T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-07-12T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-12|LONDON_NEWYORK",
+          "LOCATION": "2017-07-12|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-12|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-12T13:30:00+00:00",
+          "LOCATION": "2017-07-12T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-07-12T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-12|LONDON_NEWYORK",
+          "LOCATION": "2017-07-12|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-12|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-12T13:45:00+00:00",
+          "LOCATION": "2017-07-12T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-07-12T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-07-12|LONDON_NEWYORK",
+          "LOCATION": "2017-07-12|LONDON_NEWYORK",
+          "TRIGGER": "2017-07-12|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-07-12T14:00:00+00:00",
+          "LOCATION": "2017-07-12T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T11:15:00+00:00",
+          "LOCATION": "2017-08-01T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T11:30:00+00:00",
+          "LOCATION": "2017-08-01T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T11:45:00+00:00",
+          "LOCATION": "2017-08-01T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T12:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T12:00:00+00:00",
+          "LOCATION": "2017-08-01T12:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T12:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T12:15:00+00:00",
+          "LOCATION": "2017-08-01T12:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T12:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T12:30:00+00:00",
+          "LOCATION": "2017-08-01T12:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T12:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T12:45:00+00:00",
+          "LOCATION": "2017-08-01T12:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T13:00:00+00:00",
+          "LOCATION": "2017-08-01T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T13:15:00+00:00",
+          "LOCATION": "2017-08-01T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T13:30:00+00:00",
+          "LOCATION": "2017-08-01T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T13:45:00+00:00",
+          "LOCATION": "2017-08-01T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "USDJPY_LONDON_NEWYORK_2017-08-01T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-08-01|LONDON_NEWYORK",
+          "LOCATION": "2017-08-01|LONDON_NEWYORK",
+          "TRIGGER": "2017-08-01|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-08-01T14:00:00+00:00",
+          "LOCATION": "2017-08-01T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-13T08:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|ASIAN_LONDON",
+          "LOCATION": "2017-04-13|ASIAN_LONDON",
+          "TRIGGER": "2017-04-13|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T08:00:00+00:00",
+          "LOCATION": "2017-04-13T08:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-13T08:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|ASIAN_LONDON",
+          "LOCATION": "2017-04-13|ASIAN_LONDON",
+          "TRIGGER": "2017-04-13|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T08:15:00+00:00",
+          "LOCATION": "2017-04-13T08:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-13T08:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|ASIAN_LONDON",
+          "LOCATION": "2017-04-13|ASIAN_LONDON",
+          "TRIGGER": "2017-04-13|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T08:30:00+00:00",
+          "LOCATION": "2017-04-13T08:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-13T08:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|ASIAN_LONDON",
+          "LOCATION": "2017-04-13|ASIAN_LONDON",
+          "TRIGGER": "2017-04-13|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T08:45:00+00:00",
+          "LOCATION": "2017-04-13T08:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-13T09:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|ASIAN_LONDON",
+          "LOCATION": "2017-04-13|ASIAN_LONDON",
+          "TRIGGER": "2017-04-13|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T09:00:00+00:00",
+          "LOCATION": "2017-04-13T09:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T11:15:00+00:00",
+          "LOCATION": "2017-04-13T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T11:30:00+00:00",
+          "LOCATION": "2017-04-13T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T11:45:00+00:00",
+          "LOCATION": "2017-04-13T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T12:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T12:00:00+00:00",
+          "LOCATION": "2017-04-13T12:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T12:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T12:15:00+00:00",
+          "LOCATION": "2017-04-13T12:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T12:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T12:30:00+00:00",
+          "LOCATION": "2017-04-13T12:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T12:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T12:45:00+00:00",
+          "LOCATION": "2017-04-13T12:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T13:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T13:00:00+00:00",
+          "LOCATION": "2017-04-13T13:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T13:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T13:15:00+00:00",
+          "LOCATION": "2017-04-13T13:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T13:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T13:30:00+00:00",
+          "LOCATION": "2017-04-13T13:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T13:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T13:45:00+00:00",
+          "LOCATION": "2017-04-13T13:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-13T14:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-13|LONDON_NEWYORK",
+          "LOCATION": "2017-04-13|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-13|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-13T14:00:00+00:00",
+          "LOCATION": "2017-04-13T14:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T06:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T06:15:00+00:00",
+          "LOCATION": "2017-04-17T06:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T06:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T06:30:00+00:00",
+          "LOCATION": "2017-04-17T06:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T06:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T06:45:00+00:00",
+          "LOCATION": "2017-04-17T06:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T07:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T07:00:00+00:00",
+          "LOCATION": "2017-04-17T07:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T07:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T07:15:00+00:00",
+          "LOCATION": "2017-04-17T07:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T07:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T07:30:00+00:00",
+          "LOCATION": "2017-04-17T07:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T07:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T07:45:00+00:00",
+          "LOCATION": "2017-04-17T07:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T08:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T08:00:00+00:00",
+          "LOCATION": "2017-04-17T08:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T08:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T08:15:00+00:00",
+          "LOCATION": "2017-04-17T08:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T08:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T08:30:00+00:00",
+          "LOCATION": "2017-04-17T08:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T08:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T08:45:00+00:00",
+          "LOCATION": "2017-04-17T08:45:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_ASIAN_LONDON_2017-04-17T09:00:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|ASIAN_LONDON",
+          "LOCATION": "2017-04-17|ASIAN_LONDON",
+          "TRIGGER": "2017-04-17|ASIAN_LONDON"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T09:00:00+00:00",
+          "LOCATION": "2017-04-17T09:00:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-17T11:15:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|LONDON_NEWYORK",
+          "LOCATION": "2017-04-17|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-17|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T11:15:00+00:00",
+          "LOCATION": "2017-04-17T11:15:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-17T11:30:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|LONDON_NEWYORK",
+          "LOCATION": "2017-04-17|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-17|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T11:30:00+00:00",
+          "LOCATION": "2017-04-17T11:30:00+00:00",
+          "TRIGGER": null
+        }
+      },
+      {
+        "candidate_id": "XAUUSD_LONDON_NEWYORK_2017-04-17T11:45:00+00:00",
+        "cycle_ids": {
+          "CONTEXT": "2017-04-17|LONDON_NEWYORK",
+          "LOCATION": "2017-04-17|LONDON_NEWYORK",
+          "TRIGGER": "2017-04-17|LONDON_NEWYORK"
+        },
+        "diagnostics": [],
+        "inter_stage_delays_minutes": {
+          "CONTEXT->LOCATION": 0.0
+        },
+        "same_cycle": true,
+        "stage_order_valid": true,
+        "stage_timestamps": {
+          "CONTEXT": "2017-04-17T11:45:00+00:00",
+          "LOCATION": "2017-04-17T11:45:00+00:00",
+          "TRIGGER": null
+        }
+      }
+    ],
+    "same_cycle_n": 152,
+    "stage_presence": {
+      "CONFIRMATION": 0,
+      "CONTEXT": 170,
+      "EXECUTION": 0,
+      "GEOMETRY": 0,
+      "LOCATION": 170,
+      "OUTCOME": 0,
+      "TRIGGER": 18
+    },
+    "valid_order_n": 152
+  }
+}
