@@ -1,0 +1,36 @@
+name: ST_CRYPTO_MTF_SMC_V1 R0 guard
+
+# Regression guard for the ST_CRYPTO_MTF_SMC_V1 research lane:
+#   - full test suite (includes anti-lookahead truncation invariance)
+#   - synthetic fixture regenerates byte-identically (pinned seed/hash gate)
+#
+# This workflow contains NO optimization, NO data acquisition, and NO live
+# anything. It only proves determinism of what is already committed.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -U pip
+          .venv/bin/pip install -e .[dev] 2>/dev/null || .venv/bin/pip install -e . pytest
+      - name: Regenerate synthetic fixture and check pinned hash
+        run: |
+          PYTHONPATH=src .venv/bin/python scripts/make_synthetic_btcusdt_fixture.py --with-manifest
+          sha256sum data/artifacts/synthetic_btcusdt/BTCUSDT_M5_SYNTHETIC.csv
+          test "$(sha256sum data/artifacts/synthetic_btcusdt/BTCUSDT_M5_SYNTHETIC.csv | cut -d' ' -f1)" = "$(python3 -c "import json;print(json.load(open('data/artifacts/synthetic_btcusdt/BTCUSDT_M5_SYNTHETIC.csv.manifest.json'))['sha256'])")"
+      - name: Run full test suite
+        run: PYTHONPATH=src .venv/bin/python -m pytest tests/ -q
+      - name: Dev run smoke (synthetic, structural only)
+        run: PYTHONPATH=src .venv/bin/python scripts/run_st_crypto_mtf_smc_dev.py
