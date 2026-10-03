@@ -6,8 +6,8 @@
 
 - REPO: aungmyat1/ag-edgelab
 - BRANCH: arena/01a100ce-ag-edgelab
-- HEAD: e62746c35ac5a231e79366eb2d1b495b33ae43e2
-- WORKTREE STATUS: 11 uncommitted paths
+- HEAD: e75c2ac519f0d6d1fe4a38ff3f67da8c8689260d
+- WORKTREE STATUS: clean
 - SOURCE_REPO: aungmyat1/AG-profit-trading-assit (PR #33, branch `feat/session-trade-v2-unified`)
 - SOURCE_STRATEGY_SHA (source_commit): `e1ffe9f1e5ccfb9a336f1b4ae4289d41901ec5d2`
 - SOURCE_ARTIFACT_SHA256 (frozen byte-exact copies):
@@ -243,8 +243,8 @@ N = closed trades; net statistics are over closed trades only (OPEN_AT_END censo
 - TEST_RESULTS: full suite: 220 passed in 9.21s
 STV2 focused suites: 97 passed in 1.01s
 - ARTIFACT_PATHS: ['artifacts/session_trade_v2_economic_matrix/dev_result.json', 'artifacts/session_trade_v2_economic_matrix/oos_result.json', 'artifacts/session_trade_v2_economic_matrix/supplementary.json', 'artifacts/session_trade_v2_economic_matrix/supplementary_detail.json', 'artifacts/session_trade_v2_economic_matrix/ledger.jsonl', 'artifacts/session_trade_v2_economic_matrix/final_report.md', 'artifacts/session_trade_v2_economic_matrix/final_report.json', 'artifacts/session_trade_v2_economic_matrix/dataset_quality_reports.json']
-- COMMIT_SHA: `e62746c35ac5a231e79366eb2d1b495b33ae43e2`
-- PR_NUMBER: —
+- COMMIT_SHA: `e75c2ac`
+- PR_NUMBER: 10
 
 ## Follow-up hypotheses (NEW candidates only — V2 stays frozen)
 
