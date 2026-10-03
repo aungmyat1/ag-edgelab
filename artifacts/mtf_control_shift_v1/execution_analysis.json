@@ -1,0 +1,9 @@
+{
+  "status": "NO_EXECUTION_EVENTS",
+  "signals": 0,
+  "filled": 0,
+  "expired": 0,
+  "forced_flat": 0,
+  "same_bar_ambiguity": 0,
+  "post_signal_m1_only": true
+}

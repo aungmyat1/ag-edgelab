@@ -1,0 +1,45 @@
+{
+  "source_commit": "1d1c75c92a7fda80696a56d4e1ccbe402f3ab71a",
+  "artifacts": [
+    {
+      "source_file": "strategies/ST_MTF_CONTROL_SHIFT_V1.yaml",
+      "source_blob_sha": "688f4c33b66081a9c22489a6cc91c8f427b7e8f7",
+      "source_sha256": "9e94b4354caf81bb596fcf981cb723fbc7755bc0401d51f8eb2c291635ddb80f"
+    },
+    {
+      "source_file": "docs/specs/ST_MTF_CONTROL_SHIFT_V1_SPEC.md",
+      "source_blob_sha": "2e487e5d4f2814b4e3820d2d864195e30999231f",
+      "source_sha256": "cd060ade271e623496e3b2f35417e2c0fa411a9bbc6f78be1c3bc297811835e2"
+    },
+    {
+      "source_file": "src/mtf_control_shift/__init__.py",
+      "source_blob_sha": "14702fd3f4bd73331d5ca92fe75e609b552e09a5",
+      "source_sha256": "46dc5ed9b3094e98258097ce56358301b964ec2781843572a7b38628084f5d82"
+    },
+    {
+      "source_file": "src/mtf_control_shift/models.py",
+      "source_blob_sha": "06d33ae7b8f12dcc10e6a3a4761b8df90e2d0f05",
+      "source_sha256": "b72fba136d997472089ed738ac03853e9ba0b92128f5f8949d0faed566ac4288"
+    },
+    {
+      "source_file": "src/mtf_control_shift/structure.py",
+      "source_blob_sha": "cd632c39e50b211701eda320ecc9159f3cd3361e",
+      "source_sha256": "9c923789e38e9c422334dd2ed1a1d24816091cb77dc3a1c209f2e5c623a79fce"
+    },
+    {
+      "source_file": "src/mtf_control_shift/engine.py",
+      "source_blob_sha": "3bde81764db990c2a368ab535d77d4020ebe10e3",
+      "source_sha256": "679d46aaa3ae0a7f85a8a9f98389d348ca6e5d4c9bc520fcd656dd3b9fe22c59"
+    },
+    {
+      "source_file": "src/mtf_control_shift/ticket.py",
+      "source_blob_sha": "ad833a4e736ba242cb125319732f99c847ae1e4a",
+      "source_sha256": "c5e6c51581ae02d0dbd2e6cffb5eea498843cb4909758d9fd14e137f6bdbfd8f"
+    },
+    {
+      "source_file": "tests/test_mtf_control_shift_v1.py",
+      "source_blob_sha": "f05c04addbaf2b5805bf51004da5bbb3cadf528a",
+      "source_sha256": "3c16fcab14ad420f5477ed31b0eddb53fb1791718f93028173719a800e0e941c"
+    }
+  ]
+}

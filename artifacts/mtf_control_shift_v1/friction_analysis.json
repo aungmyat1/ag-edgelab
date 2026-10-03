@@ -1,0 +1,29 @@
+{
+  "status": "MODEL_AVAILABLE_NO_TRADES",
+  "authority": "PR_10_APPROVED_FX_FRICTION",
+  "symbols": {
+    "EURUSD": {
+      "spread_authority": "VT Markets RAW ECN 0.3 pip",
+      "slippage_rule": "0.1 pip per side",
+      "commission_rule": "$7/lot round turn"
+    },
+    "GBPUSD": {
+      "spread_authority": "VT Markets RAW ECN 0.4 pip",
+      "slippage_rule": "0.1 pip per side",
+      "commission_rule": "$7/lot round turn"
+    },
+    "USDJPY": {
+      "spread_authority": "cross-broker RAW/ECN 0.4 pip baseline",
+      "slippage_rule": "0.1 pip per side",
+      "commission_rule": "$7/lot round turn"
+    },
+    "XAUUSD": {
+      "spread_authority": "Dukascopy M1 measured p95 capped at $0.30/oz",
+      "slippage_rule": "$0.05/oz per side",
+      "commission_rule": "$7/100oz lot round turn"
+    }
+  },
+  "partial_exit_cost_rule": "allocation-weighted fills; full round-turn model",
+  "forced_flat_cost_rule": "same executable-cost model",
+  "net_qualification": "No trade economics to qualify; no zero-cost assumption."
+}

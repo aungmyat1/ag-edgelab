@@ -1,0 +1,61 @@
+{
+  "final_status": "COMPLETE",
+  "data_block_resolved": true,
+  "data_reuse_authority": "PR_10_HISTDATA_2017",
+  "raw_data_identity_reused_from_stv2": true,
+  "strategy_id": "ST_MTF_CONTROL_SHIFT_V1",
+  "strategy_version": "1.0.0",
+  "source_commit": "1d1c75c92a7fda80696a56d4e1ccbe402f3ab71a",
+  "source_tests": "PASS (7)",
+  "focused_tests": "PASS (11)",
+  "full_regression": "PASS (185)",
+  "warmup": [
+    "2017-01-01",
+    "2017-03-01"
+  ],
+  "dev": [
+    "2017-03-01",
+    "2017-09-01"
+  ],
+  "oos": [
+    "2017-09-01",
+    "2017-12-01"
+  ],
+  "holdout_touched": false,
+  "funnel_totals": {
+    "D1_H4_ALIGNED": 2246,
+    "FRESH_H4_POI": 2129,
+    "HTF_POI_NOT_REACHED": 1959,
+    "H4_POI_REACHED": 170
+  },
+  "true_h1_shifts": 0,
+  "liquidity_sweeps": 1,
+  "fvg_rebalances": 158,
+  "failed_shifts": 0,
+  "m15_refinements": 0,
+  "geometry_valid": 0,
+  "filled": 0,
+  "expired": 0,
+  "forced_flat": 0,
+  "closed": 0,
+  "gross_r": null,
+  "net_r": null,
+  "gross_expectancy": null,
+  "net_expectancy": null,
+  "gross_pf": null,
+  "net_pf": null,
+  "max_drawdown_r": null,
+  "total_friction_r": 0,
+  "dev_survivors": [],
+  "oos_result": "NOT_RUN",
+  "walk_forward": "NOT_REACHED",
+  "regime": "NOT_REACHED",
+  "lifecycle_stage_reached": "DEV_SCREEN_COMPLETE_NO_SURVIVORS",
+  "edge_verified": false,
+  "largest_attrition_stage": "H1_CONTROL_SHIFT",
+  "largest_economic_decay": "NOT_MEASURED_NO_TRADES",
+  "false_choch_finding": "158 FVG rebalances and 1 liquidity sweep; no true shifts",
+  "execution_fill_finding": "No valid proposals; no fills or expiries",
+  "friction_finding": "Approved model available; no trades to charge",
+  "next_recommended_action": "Record the candidate as insufficient sample; do not tune V1 or open OOS without DEV survivors."
+}
