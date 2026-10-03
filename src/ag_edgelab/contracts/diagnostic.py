@@ -67,6 +67,23 @@ class ExcursionObservation(BaseModel):
     observation_policy_id: str = Field(min_length=1)
 
 
+class StageExcursionObservation(BaseModel):
+    """Frozen-policy future excursion attached to one reached rule boundary.
+
+    This is diagnostic/counterfactual evidence only.  It does not assert that a
+    trade existed, nor that the rule caused the excursion.  ``mfe_r``/``mae_r``
+    must be computed by an external, preregistered observation policy defining
+    the anchor, risk unit, horizon and stop/termination convention.
+    """
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    candidate_id: str = Field(min_length=1)
+    node_id: str = Field(min_length=1)
+    mfe_r: float = Field(ge=0)
+    mae_r: float = Field(ge=0)
+    observation_policy_id: str = Field(min_length=1)
+
+
 class ExitPolicyResult(BaseModel):
     """Realized result for a preregistered DEVELOPMENT exit policy."""
 
