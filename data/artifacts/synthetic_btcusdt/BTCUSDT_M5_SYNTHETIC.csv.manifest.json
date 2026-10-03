@@ -1,0 +1,18 @@
+{
+  "provider": "SYNTHETIC_FIXTURE",
+  "dataset_is_authoritative": false,
+  "symbol": "BTCUSDT",
+  "instrument_type": "LINEAR_PERPETUAL (declared simulation target; NOT exchange data)",
+  "construction": {
+    "generator": "make_synthetic_btcusdt_fixture.py",
+    "seed": 20261003,
+    "start": "2026-05-01T00:00:00+00:00",
+    "days": 150
+  },
+  "artifact": "BTCUSDT_M5_SYNTHETIC.csv",
+  "timeframe": "M5",
+  "rows": 43200,
+  "sha256": "7570a910c95d8ba4426ff98dd0771376282e0389919d444bbdcd5ffaf415c769",
+  "first": "2026-05-01T00:00:00+00:00",
+  "last": "2026-09-27T23:55:00+00:00"
+}
