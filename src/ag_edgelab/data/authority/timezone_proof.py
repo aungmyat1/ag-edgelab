@@ -146,6 +146,72 @@ def weekly_first_observations(
     return tuple(opens)
 
 
+def _matches(naive: datetime, offset_hours: int, contract: SessionContract) -> bool:
+    local = naive.replace(tzinfo=timezone(timedelta(hours=offset_hours))).astimezone(
+        contract.tz)
+    return local.weekday() == contract.open_weekday and local.hour == contract.open_hour
+
+
+def _best_session_fit(
+    opens: Sequence[datetime], offset_hours: int,
+    contracts: Sequence[SessionContract], min_segment_weeks: int,
+) -> tuple[int, int, int | None, tuple[str, ...]]:
+    """Best explanation of the weekly opens as AT MOST ONE venue change.
+
+    Returns ``(weeks_matched, segment_count, changepoint_index, contract_ids)``.
+
+    The clock and the venue session are separate facts. One provider feeds
+    one clock, but a venue can change its own schedule inside the covered
+    period — this corpus contains exactly that (XAUUSD moves from the New
+    York spot-gold week to the CME Globex metals week between 2011 and
+    2012). Demanding one contract for the whole span would reject the true
+    clock because the SESSION changed.
+
+    Letting the contract float week by week is the opposite failure: a
+    DST-FOLLOWING broker clock (EET/EEST) looks like New York every winter
+    and Chicago every summer, and would masquerade as a fixed offset. The
+    distinguishing property is persistence — a venue change happens once
+    and lasts, a DST artifact alternates twice a year forever.
+
+    So the fit allows at most ONE changepoint, with both sides at least
+    ``min_segment_weeks`` long, and scores by total weeks explained. It
+    maximises matches rather than demanding unbroken runs, so a single odd
+    week (a holiday open, a late-starting week) cannot shatter a segment.
+    """
+    weeks = len(opens)
+    hits = {c.contract_id: [_matches(o, offset_hours, c) for o in opens]
+            for c in contracts}
+    prefix = {
+        cid: [0] * (weeks + 1) for cid in hits
+    }
+    for cid, flags in hits.items():
+        running = prefix[cid]
+        for i, flag in enumerate(flags):
+            running[i + 1] = running[i] + (1 if flag else 0)
+
+    best_total = -1
+    best_ids: tuple[str, ...] = ()
+    for cid, running in prefix.items():
+        if running[weeks] > best_total:
+            best_total, best_ids = running[weeks], (cid,)
+    best_cut: int | None = None
+    best_segments = 1
+
+    if weeks >= 2 * min_segment_weeks:
+        for first, run_a in prefix.items():
+            for second, run_b in prefix.items():
+                if first == second:
+                    continue
+                for cut in range(min_segment_weeks, weeks - min_segment_weeks + 1):
+                    total = run_a[cut] + (run_b[weeks] - run_b[cut])
+                    if total > best_total:
+                        best_total = total
+                        best_ids = (first, second)
+                        best_cut = cut
+                        best_segments = 2
+    return best_total, best_segments, best_cut, best_ids
+
+
 def _score_frame(opens: Sequence[datetime], offset_hours: int,
                  contract: SessionContract) -> int:
     tz = timezone(timedelta(hours=offset_hours))
@@ -167,6 +233,8 @@ def prove_fixed_offset_frame(
     min_weeks: int = 20,
     min_match_fraction: float = 0.90,
     min_margin: float = 0.25,
+    max_session_segments: int = 2,
+    min_segment_weeks: int = 12,
 ) -> TimezoneProof:
     """Jointly identify the source clock offset and the venue session.
 
@@ -198,18 +266,45 @@ def prove_fixed_offset_frame(
         for off in CANDIDATE_OFFSET_HOURS
         for contract in contracts
     )
+    # Clock admissibility is scored against the UNION of declared contracts
+    # (see _score_offset_any_contract): the clock is one fact, the venue
+    # session another, and a venue may change its schedule mid-corpus.
+    segmentation = {
+        off: _best_session_fit(opens, off, contracts, min_segment_weeks)
+        for off in CANDIDATE_OFFSET_HOURS}
+    union_hits = {off: segmentation[off][0] for off in CANDIDATE_OFFSET_HOURS}
+
+    def _persistent(off: int) -> bool:
+        """Explainable by at most ``max_session_segments`` LASTING sessions."""
+        return segmentation[off][1] <= max_session_segments
     ranked = sorted(scores,
                     key=lambda s: (-s.weeks_matching_boundary, abs(s.offset_hours),
                                    s.offset_hours, s.session_contract_id))
     best = ranked[0]
+    # Re-rank on the session-fit score so a mid-corpus venue change cannot
+    # unseat the true clock.
+    union_best = max(CANDIDATE_OFFSET_HOURS,
+                     key=lambda off: (_persistent(off), union_hits[off], -abs(off)))
+    if union_hits[union_best] > best.weeks_matching_boundary:
+        best = max((sc for sc in ranked if sc.offset_hours == union_best),
+                   key=lambda sc: sc.weeks_matching_boundary,
+                   default=best)
+        best = FrameScore(union_best, best.session_contract_id,
+                          union_hits[union_best], weeks)
     # The clock frame is what matters; only a rival OFFSET can make it ambiguous.
-    rival = next((s for s in ranked[1:] if s.offset_hours != best.offset_hours), None)
-    rival_fraction = rival.fraction if rival else 0.0
+    rival_offset = max(
+        (off for off in CANDIDATE_OFFSET_HOURS if off != best.offset_hours),
+        key=lambda off: (_persistent(off), union_hits[off]), default=None)
+    rival_fraction = (union_hits[rival_offset] / weeks
+                      if rival_offset is not None and weeks else 0.0)
+    rival = FrameScore(rival_offset, "ANY", union_hits[rival_offset], weeks) \
+        if rival_offset is not None else None
 
     # A clock that itself followed the venue DST would hold the open hour fixed.
     follows_venue_dst = len(open_hours) == 1
-    admissible = tuple(sorted({
-        sc.offset_hours for sc in scores if sc.fraction >= min_match_fraction}))
+    admissible = tuple(sorted(
+        off for off, hits in union_hits.items()
+        if weeks and hits / weeks >= min_match_fraction and _persistent(off)))
     # Keep every competitive frame so the corpus-level resolver can compare
     # contracts at the winning offset, not just the global top few.
     kept = [sc for sc in ranked if sc.fraction >= min(min_match_fraction, 0.5)]
@@ -223,11 +318,15 @@ def prove_fixed_offset_frame(
             weeks_examined=weeks, match_fraction=best.fraction,
             runner_up_fraction=rival_fraction, admissible_offsets=admissible,
             scores=tuple(ranked),
-            detail="no (whole-hour offset, declared session contract) pair "
-                   "explains the observed weekly opens — the source clock is "
-                   "not a fixed-offset frame, or the instrument's venue session "
-                   "is not among the declared contracts; "
-                   "TIMEZONE_AUTHORITY_AMBIGUOUS")
+            detail=(
+                "no whole-hour offset explains the observed weekly opens under "
+                "at most one lasting venue-session change (best fit "
+                f"UTC{best.offset_hours:+d} at {best.fraction:.3f}). Either the "
+                "source clock is not a fixed offset — a clock that ALTERNATES "
+                "between looking like two venues is the signature of a "
+                "DST-following broker clock — or the instrument's venue session "
+                "is not among the declared contracts; "
+                "TIMEZONE_AUTHORITY_AMBIGUOUS"))
 
     if best.fraction - rival_fraction < min_margin:
         return TimezoneProof(

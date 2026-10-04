@@ -61,9 +61,34 @@
       "window_start_utc": "2017-01-02T07:00:00Z"
     },
     {
-      "reason": "HistData zip or 2017 slice unavailable in this run",
-      "status": "NOT_COMPARED",
-      "symbol": "USDJPY"
+      "action_taken": "NONE \u2014 diagnostic only; neither source was altered",
+      "bars_source_a": 23826,
+      "bars_source_b": 24731,
+      "common_timestamps": 23697,
+      "large_outliers": 0,
+      "max_abs_close_diff_ticks": 71.0,
+      "median_abs_close_diff_ticks": 1.0,
+      "median_abs_high_diff_ticks": 1.0,
+      "median_abs_low_diff_ticks": 1.0,
+      "median_relative_close_diff": 8.99e-06,
+      "notes": [
+        "the two independent sources agree to 8.99e-06 relative (1.0 ticks median). Agreement at this level also independently corroborates the price scale and the UTC timezone frame: a wrong decimal scale or a one-hour clock error could not produce it.",
+        "1163 timestamps exist in exactly one source; different inclusion rules are expected and are NOT errors"
+      ],
+      "outlier_examples": [],
+      "p95_abs_close_diff_ticks": 4.0,
+      "price_precision_a_decimals": 3,
+      "price_precision_b_decimals": 3,
+      "source_a": "DUKASCOPY_TICK_FX31337_MIRROR_V1",
+      "source_b": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "symbol": "USDJPY",
+      "timeframe": "M15",
+      "timestamp_agreement_pct": 95.3218,
+      "timestamps_only_in_a": 129,
+      "timestamps_only_in_b": 1034,
+      "verdict": "AGREEMENT",
+      "window_end_utc": "2017-12-29T21:45:00Z",
+      "window_start_utc": "2017-01-02T07:00:00Z"
     },
     {
       "action_taken": "NONE \u2014 diagnostic only; neither source was altered",

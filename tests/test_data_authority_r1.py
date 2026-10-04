@@ -242,7 +242,7 @@ class TestCanonicalSchema:
 # ---------------------------------------------------------------------------
 
 class TestTimezoneProof:
-    def _utc_opens(self, contract, year=2017, hours=24 * 5):
+    def _utc_opens(self, contract, year=2017):
         """Synthesize a year of observations from a UTC-clock source."""
         out = []
         start = datetime(year, 1, 1, tzinfo=UTC)
@@ -319,6 +319,36 @@ class TestTimezoneProof:
             CME_METALS_CHICAGO.contract_id
         assert corpus.resolved_session_contracts["EURUSD"] == \
             SPOT_FX_NEW_YORK.contract_id
+
+    def test_mid_corpus_venue_change_does_not_refute_the_clock(self):
+        """XAUUSD really does change session convention between 2011 and 2012.
+
+        The clock stayed UTC throughout. A prover that demanded one venue
+        contract for the whole corpus would reject the true clock because
+        the SESSION moved.
+        """
+        early = self._utc_opens(SPOT_FX_NEW_YORK, year=2011)
+        late = [t for y in (2012, 2013, 2014)
+                for t in self._utc_opens(CME_METALS_CHICAGO, year=y)]
+        proof = prove_fixed_offset_frame(early + late)
+        assert 0 in proof.admissible_offsets
+
+    def test_dst_following_clock_cannot_hide_behind_two_contracts(self):
+        """The persistence rule is what stops the union from being a loophole.
+
+        A EET/EEST broker clock looks like New York every winter and like
+        Chicago every summer. Allowing the contract to vary per week would
+        let it pass as a fixed offset; requiring venue sessions to persist
+        exposes it.
+        """
+        from zoneinfo import ZoneInfo
+        helsinki = ZoneInfo("Europe/Helsinki")
+        stamps = [t.replace(tzinfo=UTC).astimezone(helsinki).replace(tzinfo=None)
+                  for y in (2015, 2016, 2017)
+                  for t in self._utc_opens(SPOT_FX_NEW_YORK, year=y)]
+        proof = prove_fixed_offset_frame(stamps)
+        assert proof.status == REFUTED
+        assert proof.admissible_offsets == ()
 
     def test_corpus_refuses_when_instruments_disagree(self):
         fx = prove_fixed_offset_frame(self._utc_opens(SPOT_FX_NEW_YORK))

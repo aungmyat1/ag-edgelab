@@ -45,6 +45,12 @@ CAS_ROOT = ROOT / "data" / "external" / "cas"
 GOV = ROOT / "config" / "governance"
 
 DATASET_ID = "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1"
+#: Coverage common to ALL four symbols. The upstream mirror is partial at
+#: both ends (XAUUSD starts 2011-05-10; GBPUSD stops 2018-06-06), and
+#: every partition is bounded by this window so no role is silently
+#: short of a symbol. Measured, never assumed — see raw_manifest.json.
+COMMON_START_ISO = "2011-06-01T00:00:00Z"
+COMMON_END_ISO = "2018-06-06T00:00:00Z"
 LEGACY_DATASET_ID = "HISTDATA_ASCII_M1_2017_PR10_PINNED"
 BASELINE_FAMILY = "R1_BASELINE_UNASSIGNED"
 LEGACY_FAMILY = "LEGACY_2017_FAMILY"
@@ -54,6 +60,10 @@ TIMEFRAMES = ("M1",) + DERIVED_TIMEFRAMES
 
 def _dt(text: str) -> datetime:
     return datetime.fromisoformat(text.replace("Z", "+00:00"))
+
+
+COMMON_START = _dt(COMMON_START_ISO)
+COMMON_END = _dt(COMMON_END_ISO)
 
 
 def _iso(ts: datetime) -> str:
@@ -133,9 +143,11 @@ def build_partition_registry(coverage_start: datetime,
     reg.add(PartitionRecord(
         dataset_id=DATASET_ID, dataset_hash="see normalized_manifest.corpus_sha256",
         role=PartitionRole.DEVELOPMENT, candidate_family=BASELINE_FAMILY,
-        start=_dt("2011-01-01T00:00:00Z"), end=_dt("2016-01-01T00:00:00Z"),
+        start=COMMON_START, end=_dt("2016-01-01T00:00:00Z"),
         access_status=AccessStatus.AVAILABLE,
-        note="Five years for model development and selection."))
+        note="Development span. Starts at the COMMON coverage start of all four "
+             "symbols (XAUUSD is only mirrored from 2011-05-10), so every "
+             "partition is fully populated for every symbol."))
     reg.add(PartitionRecord(
         dataset_id=DATASET_ID, dataset_hash="see normalized_manifest.corpus_sha256",
         role=PartitionRole.WALK_FORWARD, candidate_family=BASELINE_FAMILY,
@@ -163,17 +175,20 @@ def build_partition_registry(coverage_start: datetime,
     reg.add(PartitionRecord(
         dataset_id=DATASET_ID, dataset_hash="see normalized_manifest.corpus_sha256",
         role=PartitionRole.OOS, candidate_family=BASELINE_FAMILY,
-        start=_dt("2018-01-01T00:00:00Z"), end=_dt("2018-07-01T00:00:00Z"),
+        start=_dt("2018-01-01T00:00:00Z"), end=_dt("2018-04-01T00:00:00Z"),
         access_status=AccessStatus.AVAILABLE,
-        note="FRESH, NEVER OPENED. Six months of genuinely unspent out-of-sample "
+        note="FRESH, NEVER OPENED. Three months of genuinely unspent out-of-sample "
              "data — the first this repository has had since 2017 was consumed. "
-             "Opening it requires a preregistration recorded in the OOS access log."))
+             "Bounded at 2018-04-01 so it stays inside the common coverage of all "
+             "four symbols (the mirror stops at 2018-06-06 for GBPUSD). Opening it "
+             "requires a preregistration recorded in the OOS access log."))
     reg.add(PartitionRecord(
         dataset_id=DATASET_ID, dataset_hash="see normalized_manifest.corpus_sha256",
         role=PartitionRole.SEALED_HOLDOUT, candidate_family=BASELINE_FAMILY,
-        start=_dt("2018-07-01T00:00:00Z"), end=_dt("2019-01-01T00:00:00Z"),
+        start=_dt("2018-04-01T00:00:00Z"), end=COMMON_END,
         access_status=AccessStatus.SEALED, sealed=True,
-        note="Final sealed holdout. Not read in this mission; fails closed."))
+        note="Final sealed holdout, ending at the common coverage end 2018-06-06. "
+             "Not read in this mission; fails closed."))
     return reg
 
 
@@ -206,7 +221,14 @@ def assemble() -> int:                                       # noqa: PLR0915
         "source_id": "DUKASCOPY_TICK_FX31337_MIRROR_V1",
         "object_count": len(raw_objects),
         "total_member_count": sum(o["member_count"] for o in raw_objects),
-        "total_raw_bytes": sum(o["byte_size"] for o in raw_objects),
+        "byte_size_semantics": (
+            "RawObject.byte_size is the sum of UNCOMPRESSED member bytes, which is "
+            "the amount of data actually parsed. The compressed archives on disk "
+            "are far smaller and are reported separately."),
+        "total_uncompressed_member_bytes": sum(o["byte_size"] for o in raw_objects),
+        "total_compressed_archive_bytes": sum(
+            (ROOT / o["local_path"]).stat().st_size
+            for o in raw_objects if (ROOT / o["local_path"]).is_file()),
         "objects": sorted(raw_objects, key=lambda o: o["raw_id"]),
     }
     raw_manifest["manifest_sha256"] = sha256_json(raw_manifest["objects"])
@@ -291,7 +313,12 @@ def assemble() -> int:                                       # noqa: PLR0915
         for timeframe in TIMEFRAMES:
             quality_rows.append(row["quality"][timeframe])
     m1_rows = [q for q in quality_rows if q["timeframe"] == "M1"]
-    worst_coverage = min((q["coverage_pct"] for q in m1_rows), default=0.0)
+    # Readiness is judged on coverage WITHIN the observed span: a year the
+    # upstream mirror only partly published is thin, not defective, and
+    # conflating the two would mislabel good data as unusable.
+    worst_coverage = min((q["observed_span_coverage_pct"] for q in m1_rows),
+                         default=0.0)
+    worst_year_coverage = min((q["coverage_pct"] for q in m1_rows), default=0.0)
     quality = {
         "report_version": "DATA_AUTHORITY_R1_DATA_QUALITY_REPORT_V1",
         "repair_policy": "NONE — suspicious observations are CLASSIFIED, never "
@@ -303,8 +330,13 @@ def assemble() -> int:                                       # noqa: PLR0915
         "aggregate_m1": {
             "slices": len(m1_rows),
             "total_bars": sum(q["bar_count"] for q in m1_rows),
-            "worst_coverage_pct": worst_coverage,
-            "best_coverage_pct": max((q["coverage_pct"] for q in m1_rows), default=0.0),
+            "worst_calendar_year_coverage_pct": worst_year_coverage,
+            "worst_observed_span_coverage_pct": worst_coverage,
+            "best_observed_span_coverage_pct": max(
+                (q["observed_span_coverage_pct"] for q in m1_rows), default=0.0),
+            "partial_upstream_years": sorted(
+                f"{q['symbol']}_{q['year']}" for q in m1_rows
+                if q["coverage_pct"] < 90.0),
             "total_duplicate_timestamps": sum(q["duplicate_timestamps"] for q in m1_rows),
             "total_invalid_ohlc": sum(q["invalid_ohlc"] for q in m1_rows),
             "total_timezone_anomalies": sum(q["timezone_anomalies"] for q in m1_rows),
@@ -397,7 +429,7 @@ def assemble() -> int:                                       # noqa: PLR0915
     _write("dataset_partition_registry.json", reg_doc)
 
     # -- 9/10 readiness ------------------------------------------------------
-    dev_start = _dt("2011-01-01T00:00:00Z")
+    dev_start = COMMON_START
     wf_end = _dt("2017-09-01T00:00:00Z")
     fold_report = {}
     usable_total = []
@@ -444,7 +476,8 @@ def assemble() -> int:                                       # noqa: PLR0915
                       "evaluated.",
         "fold_design": {"train_months": 12, "test_months": 3, "step_months": 3,
                         "min_train_bars": 2000, "min_test_bars": 400,
-                        "span": "[2011-01-01, 2017-09-01) = DEVELOPMENT + WALK_FORWARD"},
+                        "span": f"[{COMMON_START_ISO}, 2017-09-01) = "
+                                "DEVELOPMENT + WALK_FORWARD"},
         "WALK_FORWARD_DATA_READY": verdict.walk_forward,
         "per_symbol": fold_report,
     })
@@ -572,10 +605,12 @@ def assemble() -> int:                                       # noqa: PLR0915
                            f"{row['raw']['sha256'][:12]}.",
         })
         idx = row["raw"]["member_index_sha256"]
+        idx_path = cas.path_for(idx)
         cas_entries.append({
             "artifact_id": f"DUKASCOPY_RAW_MEMBER_INDEX_{tag}",
             "sha256": idx,
-            "byte_size": row["raw"].get("member_index_byte_size", 0),
+            "byte_size": (idx_path.stat().st_size if idx_path.is_file()
+                          else row["raw"].get("member_index_byte_size", 0)),
             "schema_version": "EDGELAB_RAW_MEMBER_INDEX_V1",
             "producer_commit": "DATA_AUTHORITY_R1",
             "candidate_id": "NONE_DATA_AUTHORITY",
@@ -731,17 +766,34 @@ def build_final_report(*, slices, normalized, raw_manifest, quality, comparisons
         "SYMBOLS": symbols,
         "COVERAGE": {
             "years": years,
-            "span": f"{min(years)}-01-01 .. {max(years)}-12-31",
+            "calendar_years_touched": f"{min(years)}..{max(years)}",
             "symbol_years": len(slices),
             "m1_bars_total": sum(q["bar_count"] for q in m1),
             "all_timeframe_rows_total": normalized["total_rows"],
             "ticks_processed": sum(r["normalization"]["ticks_ingested"] for r in slices),
-            "raw_bytes": raw_manifest["total_raw_bytes"],
+            "raw_uncompressed_bytes": raw_manifest["total_uncompressed_member_bytes"],
+            "raw_compressed_archive_bytes": raw_manifest[
+                "total_compressed_archive_bytes"],
             "raw_member_files": raw_manifest["total_member_count"],
+            "common_window": f"[{COMMON_START_ISO}, {COMMON_END_ISO})",
+            "per_symbol_span": {
+                sym: {
+                    "start": min(r["raw"]["coverage_start"] for r in rows),
+                    "end": max(r["raw"]["coverage_end"] for r in rows),
+                    "years": sorted(r["year"] for r in rows),
+                }
+                for sym, rows in sorted(
+                    {s2["symbol"]: [r for r in slices if r["symbol"] == s2["symbol"]]
+                     for s2 in slices}.items())},
+            "upstream_partial_note": (
+                "The mirror does not publish identical spans for every symbol: "
+                "XAUUSD begins 2011-05-10 and GBPUSD/USDJPY/XAUUSD stop in June "
+                "2018. No year was fabricated to even this out; the partitions are "
+                "bounded by the common window instead."),
             "worst_in_session_coverage_pct": quality["aggregate_m1"][
-                "worst_coverage_pct"],
+                "worst_observed_span_coverage_pct"],
             "best_in_session_coverage_pct": quality["aggregate_m1"][
-                "best_coverage_pct"],
+                "best_observed_span_coverage_pct"],
         },
         "RAW_HASHES_VERIFIED": "YES",
         "TIMEZONE_AUTHORITY": {
@@ -788,7 +840,7 @@ def build_final_report(*, slices, normalized, raw_manifest, quality, comparisons
         "PARTITIONS": {
             "count": len(registry.records),
             "overlaps": 0,
-            "fresh_oos_window": "[2018-01-01, 2018-07-01) — AVAILABLE, never opened",
+            "fresh_oos_window": "[2018-01-01, 2018-04-01) — AVAILABLE, never opened",
             "sealed_windows": [
                 r.as_dict()["window_utc"] for r in registry.records if r.sealed],
         },
@@ -821,7 +873,7 @@ def build_final_report(*, slices, normalized, raw_manifest, quality, comparisons
             "prepared FrictionQuote schema; that single input flips "
             "FRICTION_AUTHORITY_COMPLETE and unlocks net economic evaluation.",
             "Preregister any candidate BEFORE touching the fresh "
-            "[2018-01-01, 2018-07-01) OOS window, and record it in "
+            "[2018-01-01, 2018-04-01) OOS window, and record it in "
             "config/governance/oos_access_log.json.",
             "Keep [2017-09-01, 2017-12-01) classified DEVELOPMENT_KNOWN for every "
             "new candidate family.",
@@ -845,11 +897,18 @@ def render_markdown(f: dict) -> str:
         "## What was built",
         "",
         "A multi-year, hash-pinned, timezone-proven FX bar authority covering "
-        f"**{', '.join(f['SYMBOLS'])}** over **{cov['span']}** "
-        f"({cov['symbol_years']} symbol-years).",
+        f"**{', '.join(f['SYMBOLS'])}** across "
+        f"{cov['calendar_years_touched']} ({cov['symbol_years']} symbol-years).",
         "",
-        f"- **{cov['ticks_processed']:,} raw ticks** streamed from "
-        f"{cov['raw_member_files']:,} archive members ({cov['raw_bytes'] / 1e9:.2f} GB)",
+        f"Window common to all four symbols: **{cov['common_window']}**. The "
+        "upstream mirror does not publish identical spans per symbol (XAUUSD "
+        "starts 2011-05-10; GBPUSD stops 2018-06-06). No year was fabricated to "
+        "even this out — every partition is bounded by the common window instead.",
+        "",
+        f"- **{cov['ticks_processed']:,} raw ticks** parsed from "
+        f"{cov['raw_member_files']:,} archive members "
+        f"({cov['raw_uncompressed_bytes'] / 1e9:.1f} GB uncompressed, "
+        f"{cov['raw_compressed_archive_bytes'] / 1e9:.1f} GB on disk)",
         f"- **{cov['m1_bars_total']:,} canonical M1 bars**, "
         f"{cov['all_timeframe_rows_total']:,} rows across all six timeframes",
         f"- In-session coverage {cov['worst_in_session_coverage_pct']:.2f}%"

@@ -7,7 +7,7 @@
   ],
   "datasets": {
     "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1": {
-      "corpus_sha256": "101e1575dcd6bf81b26b658a1347c3f9dd0f055f784ef0878f838d442b253862",
+      "corpus_sha256": "72ee76a148421b24af3e02ee08b1e7b225bbeac18fbc8d9b18d5c13247df3f13",
       "coverage_end_utc": "2018-12-31T22:00:00Z",
       "coverage_start_utc": "2011-01-02T22:00:00Z",
       "symbols": [
@@ -38,11 +38,11 @@
       "dataset_hash": "see normalized_manifest.corpus_sha256",
       "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
       "end": "2016-01-01T00:00:00Z",
-      "note": "Five years for model development and selection.",
+      "note": "Development span. Starts at the COMMON coverage start of all four symbols (XAUUSD is only mirrored from 2011-05-10), so every partition is fully populated for every symbol.",
       "role": "DEVELOPMENT",
       "sealed": false,
-      "start": "2011-01-01T00:00:00Z",
-      "window_utc": "[2011-01-01T00:00:00Z, 2016-01-01T00:00:00Z)"
+      "start": "2011-06-01T00:00:00Z",
+      "window_utc": "[2011-06-01T00:00:00Z, 2016-01-01T00:00:00Z)"
     },
     {
       "access_status": "AVAILABLE",
@@ -93,12 +93,12 @@
       "consumed_by": null,
       "dataset_hash": "see normalized_manifest.corpus_sha256",
       "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
-      "end": "2018-07-01T00:00:00Z",
-      "note": "FRESH, NEVER OPENED. Six months of genuinely unspent out-of-sample data \u2014 the first this repository has had since 2017 was consumed. Opening it requires a preregistration recorded in the OOS access log.",
+      "end": "2018-04-01T00:00:00Z",
+      "note": "FRESH, NEVER OPENED. Three months of genuinely unspent out-of-sample data \u2014 the first this repository has had since 2017 was consumed. Bounded at 2018-04-01 so it stays inside the common coverage of all four symbols (the mirror stops at 2018-06-06 for GBPUSD). Opening it requires a preregistration recorded in the OOS access log.",
       "role": "OOS",
       "sealed": false,
       "start": "2018-01-01T00:00:00Z",
-      "window_utc": "[2018-01-01T00:00:00Z, 2018-07-01T00:00:00Z)"
+      "window_utc": "[2018-01-01T00:00:00Z, 2018-04-01T00:00:00Z)"
     },
     {
       "access_status": "SEALED",
@@ -107,12 +107,12 @@
       "consumed_by": null,
       "dataset_hash": "see normalized_manifest.corpus_sha256",
       "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
-      "end": "2019-01-01T00:00:00Z",
-      "note": "Final sealed holdout. Not read in this mission; fails closed.",
+      "end": "2018-06-06T00:00:00Z",
+      "note": "Final sealed holdout, ending at the common coverage end 2018-06-06. Not read in this mission; fails closed.",
       "role": "SEALED_HOLDOUT",
       "sealed": true,
-      "start": "2018-07-01T00:00:00Z",
-      "window_utc": "[2018-07-01T00:00:00Z, 2019-01-01T00:00:00Z)"
+      "start": "2018-04-01T00:00:00Z",
+      "window_utc": "[2018-04-01T00:00:00Z, 2018-06-06T00:00:00Z)"
     },
     {
       "access_status": "AVAILABLE",

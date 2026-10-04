@@ -5,11 +5,13 @@
 
 ## What was built
 
-A multi-year, hash-pinned, timezone-proven FX bar authority covering **EURUSD, GBPUSD, USDJPY, XAUUSD** over **2011-01-01 .. 2018-12-31** (23 symbol-years).
+A multi-year, hash-pinned, timezone-proven FX bar authority covering **EURUSD, GBPUSD, USDJPY, XAUUSD** across 2011..2018 (32 symbol-years).
 
-- **523,254,646 raw ticks** streamed from 135,745 archive members (26.67 GB)
-- **8,127,988 canonical M1 bars**, 10,477,831 rows across all six timeframes
-- In-session coverage 40.95% – 99.92%
+Window common to all four symbols: **[2011-06-01T00:00:00Z, 2018-06-06T00:00:00Z)**. The upstream mirror does not publish identical spans per symbol (XAUUSD starts 2011-05-10; GBPUSD stops 2018-06-06). No year was fabricated to even this out — every partition is bounded by the common window instead.
+
+- **720,153,242 raw ticks** parsed from 179,703 archive members (37.0 GB uncompressed, 6.2 GB on disk)
+- **10,719,608 canonical M1 bars**, 13,822,002 rows across all six timeframes
+- In-session coverage 92.71% – 99.92%
 
 ## Timezone authority
 
@@ -47,6 +49,7 @@ Comparator: HISTDATA_ASCII_M1_2017_PR10_PINNED (frozen, unmodified).
 | --- | --- | ---: |
 | EURUSD | AGREEMENT | 8.59e-06 |
 | GBPUSD | AGREEMENT | 7.98e-06 |
+| USDJPY | AGREEMENT | 8.99e-06 |
 | XAUUSD | AGREEMENT | 3.91e-05 |
 
 Scale disagreements: **0**. NONE — diagnostic only, neither source altered.
@@ -54,7 +57,7 @@ Scale disagreements: **0**. NONE — diagnostic only, neither source altered.
 ## Readiness (DATA only — not edge claims)
 
 - `MULTIYEAR_FX_DATA_READY` = **YES**
-- `WALK_FORWARD_DATA_READY` = **NO** (0 usable folds on the weakest symbol)
+- `WALK_FORWARD_DATA_READY` = **YES** (21 usable folds on the weakest symbol)
 - `REGIME_DATA_READY` = **YES**
 - `FRICTION_FRAMEWORK_READY` = **YES**
 - `FRICTION_AUTHORITY_COMPLETE` = **NO**
@@ -86,6 +89,6 @@ FRICTION_VALUE_AUTHORITY — commission, swap and contract specifications requir
 ## Next
 
 1. Capture an authoritative VT Markets RAW_ECN friction snapshot into the prepared FrictionQuote schema; that single input flips FRICTION_AUTHORITY_COMPLETE and unlocks net economic evaluation.
-2. Preregister any candidate BEFORE touching the fresh [2018-01-01, 2018-07-01) OOS window, and record it in config/governance/oos_access_log.json.
+2. Preregister any candidate BEFORE touching the fresh [2018-01-01, 2018-04-01) OOS window, and record it in config/governance/oos_access_log.json.
 3. Keep [2017-09-01, 2017-12-01) classified DEVELOPMENT_KNOWN for every new candidate family.
 4. If crypto is wanted, close the exact contracts listed in crypto_data_adapter_review.json rather than merging an adapter.

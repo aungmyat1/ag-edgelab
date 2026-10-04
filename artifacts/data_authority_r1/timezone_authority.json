@@ -18,8 +18,7 @@
         0
       ],
       "XAUUSD": [
-        0,
-        1
+        0
       ]
     },
     "resolved_session_contracts": {
@@ -321,6 +320,118 @@
       "weeks": 52,
       "weeks_on_declared_boundary": 52
     },
+    "USDJPY_2017": {
+      "disjoint_as_required": true,
+      "session_contract": "SPOT_FX_NY_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        21
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        22,
+        23
+      ],
+      "venue_timezone": "America/New_York",
+      "weeks": 52,
+      "weeks_on_declared_boundary": 51
+    },
+    "USDJPY_2018": {
+      "disjoint_as_required": true,
+      "session_contract": "SPOT_FX_NY_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        21
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        22
+      ],
+      "venue_timezone": "America/New_York",
+      "weeks": 25,
+      "weeks_on_declared_boundary": 24
+    },
+    "XAUUSD_2011": {
+      "disjoint_as_required": true,
+      "session_contract": "SPOT_FX_NY_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        9,
+        21
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        22,
+        23
+      ],
+      "venue_timezone": "America/New_York",
+      "weeks": 34,
+      "weeks_on_declared_boundary": 30
+    },
+    "XAUUSD_2012": {
+      "disjoint_as_required": true,
+      "session_contract": "CME_METALS_CHICAGO_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        22
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        23
+      ],
+      "venue_timezone": "America/Chicago",
+      "weeks": 53,
+      "weeks_on_declared_boundary": 52
+    },
+    "XAUUSD_2013": {
+      "disjoint_as_required": false,
+      "session_contract": "CME_METALS_CHICAGO_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        22,
+        23
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        23
+      ],
+      "venue_timezone": "America/Chicago",
+      "weeks": 53,
+      "weeks_on_declared_boundary": 51
+    },
+    "XAUUSD_2014": {
+      "disjoint_as_required": false,
+      "session_contract": "CME_METALS_CHICAGO_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        2,
+        21,
+        22,
+        23
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        23
+      ],
+      "venue_timezone": "America/Chicago",
+      "weeks": 53,
+      "weeks_on_declared_boundary": 46
+    },
+    "XAUUSD_2015": {
+      "disjoint_as_required": false,
+      "session_contract": "CME_METALS_CHICAGO_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        22,
+        23
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        23
+      ],
+      "venue_timezone": "America/Chicago",
+      "weeks": 53,
+      "weeks_on_declared_boundary": 51
+    },
+    "XAUUSD_2016": {
+      "disjoint_as_required": true,
+      "session_contract": "CME_METALS_CHICAGO_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        22
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        23
+      ],
+      "venue_timezone": "America/Chicago",
+      "weeks": 52,
+      "weeks_on_declared_boundary": 51
+    },
     "XAUUSD_2017": {
       "disjoint_as_required": false,
       "session_contract": "CME_METALS_CHICAGO_1700",
@@ -334,6 +445,19 @@
       "venue_timezone": "America/Chicago",
       "weeks": 52,
       "weeks_on_declared_boundary": 49
+    },
+    "XAUUSD_2018": {
+      "disjoint_as_required": true,
+      "session_contract": "CME_METALS_CHICAGO_1700",
+      "source_clock_open_hours_when_venue_dst": [
+        22
+      ],
+      "source_clock_open_hours_when_venue_standard": [
+        23
+      ],
+      "venue_timezone": "America/Chicago",
+      "weeks": 25,
+      "weeks_on_declared_boundary": 24
     }
   },
   "per_slice_status": {
@@ -359,7 +483,16 @@
     "USDJPY_2014": "AMBIGUOUS",
     "USDJPY_2015": "AMBIGUOUS",
     "USDJPY_2016": "AMBIGUOUS",
-    "XAUUSD_2017": "AMBIGUOUS"
+    "USDJPY_2017": "AMBIGUOUS",
+    "USDJPY_2018": "AMBIGUOUS",
+    "XAUUSD_2011": "REFUTED",
+    "XAUUSD_2012": "AMBIGUOUS",
+    "XAUUSD_2013": "AMBIGUOUS",
+    "XAUUSD_2014": "REFUTED",
+    "XAUUSD_2015": "AMBIGUOUS",
+    "XAUUSD_2016": "AMBIGUOUS",
+    "XAUUSD_2017": "AMBIGUOUS",
+    "XAUUSD_2018": "AMBIGUOUS"
   },
   "per_symbol_proofs": {
     "EURUSD": {
@@ -397,28 +530,31 @@
         -1,
         0
       ],
-      "best_match_fraction": 0.996805,
-      "detail": "offset not uniquely identified: UTC+0 (0.997) vs UTC-1 (0.997) \u2014 TIMEZONE_AUTHORITY_AMBIGUOUS",
+      "best_match_fraction": 0.992308,
+      "detail": "offset not uniquely identified: UTC+0 (0.992) vs UTC-1 (0.992) \u2014 TIMEZONE_AUTHORITY_AMBIGUOUS",
       "source_clock_weekly_open_hours": [
         21,
-        22
-      ],
-      "status": "AMBIGUOUS",
-      "weeks_examined": 313
-    },
-    "XAUUSD": {
-      "admissible_offsets": [
-        0,
-        1
-      ],
-      "best_match_fraction": 0.942308,
-      "detail": "offset not uniquely identified: UTC+0 (0.942) vs UTC+1 (0.942) \u2014 TIMEZONE_AUTHORITY_AMBIGUOUS",
-      "source_clock_weekly_open_hours": [
         22,
         23
       ],
       "status": "AMBIGUOUS",
-      "weeks_examined": 52
+      "weeks_examined": 390
+    },
+    "XAUUSD": {
+      "admissible_offsets": [
+        0
+      ],
+      "best_match_fraction": 0.954301,
+      "detail": "offset not uniquely identified: UTC+0 (0.954) vs UTC+1 (0.876) \u2014 TIMEZONE_AUTHORITY_AMBIGUOUS",
+      "source_clock_weekly_open_hours": [
+        2,
+        9,
+        21,
+        22,
+        23
+      ],
+      "status": "AMBIGUOUS",
+      "weeks_examined": 372
     }
   },
   "proof_basis": "Recomputed at assembly time from every M1 bar open time in the corpus. Per-slice proofs are retained below only as a cross-check.",

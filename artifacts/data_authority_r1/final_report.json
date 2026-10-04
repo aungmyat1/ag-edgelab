@@ -1,15 +1,76 @@
 {
-  "CONTENT_ADDRESSED_ENTRIES": 46,
+  "CONTENT_ADDRESSED_ENTRIES": 64,
   "COVERAGE": {
-    "all_timeframe_rows_total": 10477831,
-    "best_in_session_coverage_pct": 99.924194,
-    "m1_bars_total": 8127988,
-    "raw_bytes": 26668384941,
-    "raw_member_files": 135745,
-    "span": "2011-01-01 .. 2018-12-31",
-    "symbol_years": 23,
-    "ticks_processed": 523254646,
-    "worst_in_session_coverage_pct": 40.94801,
+    "all_timeframe_rows_total": 13822002,
+    "best_in_session_coverage_pct": 99.92446,
+    "calendar_years_touched": "2011..2018",
+    "common_window": "[2011-06-01T00:00:00Z, 2018-06-06T00:00:00Z)",
+    "m1_bars_total": 10719608,
+    "per_symbol_span": {
+      "EURUSD": {
+        "end": "2018-12-31T22:00:00Z",
+        "start": "2011-01-02T22:00:00Z",
+        "years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018
+        ]
+      },
+      "GBPUSD": {
+        "end": "2018-06-06T10:59:00Z",
+        "start": "2011-01-02T22:00:00Z",
+        "years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018
+        ]
+      },
+      "USDJPY": {
+        "end": "2018-06-17T22:59:00Z",
+        "start": "2011-01-02T22:00:00Z",
+        "years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018
+        ]
+      },
+      "XAUUSD": {
+        "end": "2018-06-19T10:59:00Z",
+        "start": "2011-05-10T09:00:00Z",
+        "years": [
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018
+        ]
+      }
+    },
+    "raw_compressed_archive_bytes": 6226103210,
+    "raw_member_files": 179703,
+    "raw_uncompressed_bytes": 36999770403,
+    "symbol_years": 32,
+    "ticks_processed": 720153242,
+    "upstream_partial_note": "The mirror does not publish identical spans for every symbol: XAUUSD begins 2011-05-10 and GBPUSD/USDJPY/XAUUSD stop in June 2018. No year was fabricated to even this out; the partitions are bounded by the common window instead.",
+    "worst_in_session_coverage_pct": 92.708539,
     "years": [
       2011,
       2012,
@@ -27,13 +88,15 @@
     "median_relative_close_diff": {
       "EURUSD": 8.59e-06,
       "GBPUSD": 7.98e-06,
+      "USDJPY": 8.99e-06,
       "XAUUSD": 3.909e-05
     },
     "scale_disagreements": 0,
-    "symbols_compared": 3,
+    "symbols_compared": 4,
     "verdicts": {
       "EURUSD": "AGREEMENT",
       "GBPUSD": "AGREEMENT",
+      "USDJPY": "AGREEMENT",
       "XAUUSD": "AGREEMENT"
     }
   },
@@ -72,18 +135,18 @@
   "MULTIYEAR_FX_DATA_READY": "YES",
   "NEXT": [
     "Capture an authoritative VT Markets RAW_ECN friction snapshot into the prepared FrictionQuote schema; that single input flips FRICTION_AUTHORITY_COMPLETE and unlocks net economic evaluation.",
-    "Preregister any candidate BEFORE touching the fresh [2018-01-01, 2018-07-01) OOS window, and record it in config/governance/oos_access_log.json.",
+    "Preregister any candidate BEFORE touching the fresh [2018-01-01, 2018-04-01) OOS window, and record it in config/governance/oos_access_log.json.",
     "Keep [2017-09-01, 2017-12-01) classified DEVELOPMENT_KNOWN for every new candidate family.",
     "If crypto is wanted, close the exact contracts listed in crypto_data_adapter_review.json rather than merging an adapter."
   ],
   "PARTITIONS": {
     "count": 9,
-    "fresh_oos_window": "[2018-01-01, 2018-07-01) \u2014 AVAILABLE, never opened",
+    "fresh_oos_window": "[2018-01-01, 2018-04-01) \u2014 AVAILABLE, never opened",
     "overlaps": 0,
     "sealed_windows": [
       "[2017-12-01T00:00:00Z, 2018-01-01T00:00:00Z)",
       "[2017-12-01T00:00:00Z, 2018-01-01T00:00:00Z)",
-      "[2018-07-01T00:00:00Z, 2019-01-01T00:00:00Z)"
+      "[2018-04-01T00:00:00Z, 2018-06-06T00:00:00Z)"
     ]
   },
   "PRIMARY_BLOCKER": "FRICTION_VALUE_AUTHORITY \u2014 commission, swap and contract specifications require broker access that does not exist in this environment. Net/economic claims remain NOT_ESTIMABLE.",
@@ -120,7 +183,7 @@
     },
     "status": "PROVEN"
   },
-  "WALK_FORWARD_DATA_READY": "NO",
-  "WALK_FORWARD_USABLE_FOLDS_MIN_ACROSS_SYMBOLS": 0,
+  "WALK_FORWARD_DATA_READY": "YES",
+  "WALK_FORWARD_USABLE_FOLDS_MIN_ACROSS_SYMBOLS": 21,
   "report_version": "DATA_AUTHORITY_R1_FINAL_REPORT_V1"
 }

@@ -1,9 +1,9 @@
 {
   "artifacts": [
     {
-      "byte_size": 6562,
+      "byte_size": 7790,
       "name": "cross_source_comparison.json",
-      "sha256": "c2a70efcaf01791994de24c0f3a6e8e67ef0d23137fa00e9fe8848fc87cf6cbe"
+      "sha256": "038bf0ab0323e909012731cd5af40f118d013addfe4dba8dda640b81bc2a7ce4"
     },
     {
       "byte_size": 5560,
@@ -16,19 +16,19 @@
       "sha256": "2d4e4ba3c0f846ae8b4fca0f3a35eebfd78f5ba4ec6488c9d53774488b55353a"
     },
     {
-      "byte_size": 295287,
+      "byte_size": 498426,
       "name": "data_quality_report.json",
-      "sha256": "9b6a2257a776aecbd111a0dcc2351cfb761e3c14c3ebb0556da8bd7a51a147bb"
+      "sha256": "efbbfdf22b66b248a3efbfb9db4ea98acebc54e5ba8b0bbb9aa2995a70efb37b"
     },
     {
-      "byte_size": 6846,
+      "byte_size": 7145,
       "name": "dataset_partition_registry.json",
-      "sha256": "9192a4d3bd1e7f93e996ea382d0922fe2a970f9a830309f9affbe5d03e877f0b"
+      "sha256": "e04ae75a278ebf2142ace264aeaa65caf38dc5fe98211769e99cc6eb61aaeb41"
     },
     {
-      "byte_size": 4806,
+      "byte_size": 6342,
       "name": "final_report.json",
-      "sha256": "28420fc7f37a3fe2a18f32abe26a8e7bc1f70c292d30d1d9bfce525b2d5ade03"
+      "sha256": "a1425854216bfd08b9d463b8007d285ec34e4098fa9a9d7892532a10b97ab76c"
     },
     {
       "byte_size": 5504,
@@ -36,19 +36,19 @@
       "sha256": "e11de2d4f1fa90983ea0d015a966f736fce3b0ada603a5653f229b320daea820"
     },
     {
-      "byte_size": 76350,
+      "byte_size": 105632,
       "name": "normalized_manifest.json",
-      "sha256": "8d22815380e4d06f8bf032a07f0738d40b3429dc3840def53ccf513aa83e91ba"
+      "sha256": "5b8b3962814fcf4d97c8257441f7788495b2e1b782fea71c0b6dd9b56b56147f"
     },
     {
-      "byte_size": 24764,
+      "byte_size": 34522,
       "name": "raw_manifest.json",
-      "sha256": "0d113311d8427d0b17388cec31cfd5da0603476e4f3bb7e5be4577bbb69c407e"
+      "sha256": "96da373aaa43681c91a0f36c16c1351e73b7b371bbd23a7a83c005d12ec3bd3a"
     },
     {
-      "byte_size": 7696,
+      "byte_size": 10150,
       "name": "regime_readiness.json",
-      "sha256": "2b4cb58777ba5883d917fd6406ac74e0f8774579a59da4459a5080f05273f3a5"
+      "sha256": "24ccd54131a9858896a66269b764ea5869ad7182ce132cfc27c260a67526d6ad"
     },
     {
       "byte_size": 3240,
@@ -56,19 +56,19 @@
       "sha256": "b75fdf819902b75fe3805ac0512936279efcdee2f0e2d0cdbfbfecac2556477f"
     },
     {
-      "byte_size": 156223,
+      "byte_size": 217105,
       "name": "timeframe_lineage.json",
-      "sha256": "96a2f051470255b92f80504cf34061f67d266648055c8695c44e7b50b89eff6d"
+      "sha256": "924419a204eaa182aa292707a72571dc460653d053a1181f0f8ba88a9d26f405"
     },
     {
-      "byte_size": 11771,
+      "byte_size": 15423,
       "name": "timezone_authority.json",
-      "sha256": "0ca5409dc283385f7a2fee1498136d25ea6c719584d43e5e72b22e0226386935"
+      "sha256": "5f0e7ddd208c7c4c6751eb066e43ab64a7172103a93f67454d5cc697696ad385"
     },
     {
-      "byte_size": 25655,
+      "byte_size": 24644,
       "name": "walk_forward_readiness.json",
-      "sha256": "0e3bcac963d2f98703d730e554444d06638ddfbfdc33c4f2f452435da1d1d833"
+      "sha256": "dfd1d8a49167687f31cb11ddc6f26a0a44092965f34fadd9e12812961b4ab036"
     }
   ],
   "external_holds": "raw tick archives, canonical bar datasets, raw member indexes \u2014 all content-addressed, none committed",

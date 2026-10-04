@@ -141,7 +141,12 @@ CANDIDATE_SESSION_CONTRACTS: tuple[SessionContract, ...] = (
     CME_METALS_CHICAGO,
 )
 
-#: Declared contract per symbol. Confirmed against the data, never assumed.
+#: Default contract per symbol. This is only a FALLBACK for callers that
+#: have no observations to resolve against — e.g. unit tests. Production
+#: slices resolve the contract from the data via resolve_session_contract,
+#: because a venue can change its schedule: this corpus contains exactly
+#: such a case, XAUUSD moving from the New York spot-gold week in 2011 to
+#: the CME Globex metals week (with its daily halt) from 2012 onward.
 SYMBOL_SESSION_CONTRACT: dict[str, SessionContract] = {
     "EURUSD": SPOT_FX_NEW_YORK,
     "GBPUSD": SPOT_FX_NEW_YORK,
@@ -158,3 +163,69 @@ def contract_for(symbol: str) -> SessionContract:
             f"no declared session contract for {symbol!r}; refusing to assume a "
             "weekly boundary, which would corrupt every coverage statistic"
         ) from None
+
+
+@dataclass(frozen=True)
+class ContractResolution:
+    """Which declared session contract this slice's observations support."""
+
+    contract: SessionContract
+    matched_weeks: int
+    total_weeks: int
+    runner_up_id: str
+    runner_up_matched: int
+    resolved_from_data: bool
+
+    @property
+    def fraction(self) -> float:
+        return self.matched_weeks / self.total_weeks if self.total_weeks else 0.0
+
+    def as_dict(self) -> dict:
+        return {
+            "session_contract": self.contract.contract_id,
+            "resolved_from_data": self.resolved_from_data,
+            "weekly_opens_matched": self.matched_weeks,
+            "weekly_opens_total": self.total_weeks,
+            "match_fraction": round(self.fraction, 6),
+            "runner_up": self.runner_up_id,
+            "runner_up_matched": self.runner_up_matched,
+            **self.contract.as_dict(),
+        }
+
+
+def resolve_session_contract(
+    weekly_opens,
+    *,
+    symbol: str,
+    offset_hours: int = 0,
+    candidates=None,
+    min_fraction: float = 0.75,
+) -> ContractResolution:
+    """Pick the declared contract this slice's weekly opens actually support.
+
+    ``weekly_opens`` are naive provider-clock first-observations of each
+    trading week. Scoring is done at ``offset_hours`` (the corpus clock
+    frame). If no candidate clears ``min_fraction`` the declared default
+    is returned with ``resolved_from_data=False``, so the caller can see
+    that the session was assumed rather than measured.
+    """
+    candidates = tuple(candidates or CANDIDATE_SESSION_CONTRACTS)
+    opens = list(weekly_opens)
+    tz = timezone(timedelta(hours=offset_hours))
+    scored = []
+    for contract in candidates:
+        venue = contract.tz
+        hits = sum(
+            1 for o in opens
+            if (local := o.replace(tzinfo=tz).astimezone(venue)).weekday()
+            == contract.open_weekday and local.hour == contract.open_hour)
+        scored.append((hits, contract))
+    scored.sort(key=lambda pair: -pair[0])
+    best_hits, best = scored[0]
+    runner_hits, runner = (scored[1] if len(scored) > 1 else (0, best))
+    total = len(opens)
+    if total and best_hits / total >= min_fraction and best_hits > runner_hits:
+        return ContractResolution(best, best_hits, total, runner.contract_id,
+                                  runner_hits, True)
+    return ContractResolution(contract_for(symbol), best_hits, total,
+                              runner.contract_id, runner_hits, False)

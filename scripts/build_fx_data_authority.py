@@ -45,9 +45,10 @@ from ag_edgelab.data.authority.schema import (                          # noqa: 
 from ag_edgelab.data.authority.sources.dukascopy_tick import (          # noqa: E402
     SOURCE_ID, TICK_FILE_RE, normalize_archive_to_m1,
 )
-from ag_edgelab.data.authority.session import contract_for              # noqa: E402
+from ag_edgelab.data.authority.session import resolve_session_contract  # noqa: E402
 from ag_edgelab.data.authority.timezone_proof import (                  # noqa: E402
     dst_transition_consistency, prove_fixed_offset_frame,
+    weekly_first_observations,
 )
 
 PINS = ROOT / "config" / "data_authority" / "dukascopy_fx31337_pins.json"
@@ -114,8 +115,14 @@ def build_slice(pin: dict) -> dict:
         member_index_sha256=index_entry.sha256,
     )
 
-    contract = contract_for(symbol)
     proof = prove_fixed_offset_frame(result.naive_source_timestamps)
+    # Resolve the venue session from THIS slice's own observations rather
+    # than a static per-symbol table: venues change schedules, and this
+    # corpus contains exactly that case (XAUUSD moves from the New York
+    # spot-gold week to the CME Globex metals week between 2011 and 2012).
+    resolution = resolve_session_contract(
+        weekly_first_observations(result.naive_source_timestamps), symbol=symbol)
+    contract = resolution.contract
     dst = dst_transition_consistency(result.naive_source_timestamps, 0, contract)
 
     m1_doc = dumps_canonical(m1)
@@ -151,7 +158,8 @@ def build_slice(pin: dict) -> dict:
 
     quality = {
         timeframe: assess_year(
-            frames.get(timeframe, m1), symbol=symbol, year=year, timeframe=timeframe
+            frames.get(timeframe, m1), symbol=symbol, year=year,
+            timeframe=timeframe, contract=contract
         ).as_dict()
         for timeframe in ("M1",) + DERIVED_TIMEFRAMES
     }
@@ -162,7 +170,7 @@ def build_slice(pin: dict) -> dict:
         "raw": raw.as_dict(),
         "raw_member_index": index_entry.as_dict(),
         "normalization": result.as_dict(),
-        "session_contract": contract.as_dict(),
+        "session_contract": resolution.as_dict(),
         "timezone_proof": proof.as_dict(),
         "dst_consistency": dst,
         "datasets": datasets,
@@ -188,6 +196,49 @@ def _worker(pin: dict) -> tuple[str, str]:
             f"tz={payload['timezone_proof']['status']}")
 
 
+def stage_requality(pins: list[dict]) -> int:
+    """Recompute quality + session resolution from the stored datasets.
+
+    The canonical datasets are immutable and content addressed, so the
+    classification layer can be re-derived without re-reading 5.8 GB of raw
+    ticks. Dataset hashes are untouched; only the report changes.
+    """
+    from ag_edgelab.data.authority.schema import loads_canonical
+    from ag_edgelab.data.authority.session import resolve_session_contract
+    from ag_edgelab.data.authority.timezone_proof import weekly_first_observations
+
+    cas = CasStore(CAS_ROOT)
+    updated = 0
+    for pin in pins:
+        symbol, year = pin["symbol"], pin["year"]
+        target = STAGE / f"{symbol}_{year}.json"
+        if not target.is_file():
+            continue
+        record = json.loads(target.read_text(encoding="utf-8"))
+        frames = {
+            tf: loads_canonical(cas.get_text(record["datasets"][tf]["dataset_sha256"]))
+            for tf in ("M1",) + DERIVED_TIMEFRAMES
+        }
+        provider_clock = [b.timestamp_utc.replace(tzinfo=None) for b in frames["M1"]]
+        resolution = resolve_session_contract(
+            weekly_first_observations(provider_clock), symbol=symbol)
+        record["session_contract"] = resolution.as_dict()
+        record["quality"] = {
+            tf: assess_year(frames[tf], symbol=symbol, year=year, timeframe=tf,
+                            contract=resolution.contract).as_dict()
+            for tf in ("M1",) + DERIVED_TIMEFRAMES
+        }
+        target.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n",
+                          encoding="utf-8")
+        updated += 1
+        m1 = record["quality"]["M1"]
+        print(f"[ re ] {symbol} {year}  {resolution.contract.contract_id:24s} "
+              f"year_cov={m1['coverage_pct']:6.2f}% "
+              f"span_cov={m1['observed_span_coverage_pct']:6.2f}%")
+    print(f"requality: {updated} slice(s) updated")
+    return 0
+
+
 def stage_normalize(pins: list[dict], workers: int, force: bool) -> int:
     STAGE.mkdir(parents=True, exist_ok=True)
     todo = [p for p in pins
@@ -211,7 +262,8 @@ def stage_normalize(pins: list[dict], workers: int, force: bool) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--stage", choices=("normalize", "assemble", "all"),
+    parser.add_argument("--stage",
+                        choices=("normalize", "requality", "assemble", "all"),
                         default="all")
     parser.add_argument("--workers", type=int,
                         default=max(1, min(2, (os.cpu_count() or 2))))
@@ -234,6 +286,9 @@ def main() -> int:
             print(f"STATUS=BLOCKED_DATA_AUTHORITY ({failures} slice failures)",
                   file=sys.stderr)
             return 2
+    if args.stage == "requality":
+        return stage_requality(pins)
+
     if args.stage in ("assemble", "all"):
         from assemble_fx_data_authority import assemble   # noqa: PLC0415
         return assemble()

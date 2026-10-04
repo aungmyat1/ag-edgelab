@@ -93,6 +93,8 @@ class YearQuality:
     largest_gap_minutes: int = 0
     largest_gap_start: datetime | None = None
     coverage_pct: float = 0.0
+    observed_span_expected_bars: int = 0
+    observed_span_coverage_pct: float = 0.0
     first_bar: datetime | None = None
     last_bar: datetime | None = None
     gap_class_counts: dict[str, int] = field(default_factory=dict)
@@ -109,6 +111,14 @@ class YearQuality:
             "expected_bars_in_session": self.expected_bars,
             "missing_bars": self.missing_bars,
             "coverage_pct": round(self.coverage_pct, 6),
+            "observed_span_expected_bars": self.observed_span_expected_bars,
+            "observed_span_coverage_pct": round(self.observed_span_coverage_pct, 6),
+            "coverage_note": (
+                "coverage_pct is measured against the FULL calendar year. When the "
+                "upstream mirror only publishes part of a year, that number is low "
+                "by construction and says nothing about data quality — "
+                "observed_span_coverage_pct, measured between the first and last "
+                "observation, is the integrity figure."),
             "duplicate_timestamps": self.duplicate_timestamps,
             "invalid_ohlc": self.invalid_ohlc,
             "weekend_observations": self.weekend_observations,
@@ -229,6 +239,18 @@ def assess_year(
     report.missing_bars = max(report.expected_bars - len(in_session), 0)
     report.coverage_pct = (
         100.0 * len(in_session) / report.expected_bars if report.expected_bars else 0.0)
+
+    # Coverage measured only between the first and last observation, so a
+    # partially published year is not mistaken for a defective one.
+    span_windows = trading_windows(report.first_bar,
+                                   report.last_bar + timedelta(minutes=minutes),
+                                   contract)
+    report.observed_span_expected_bars = expected_minutes(span_windows) // minutes
+    in_span = [t for t in in_session
+               if report.first_bar <= t <= report.last_bar]
+    report.observed_span_coverage_pct = (
+        100.0 * len(in_span) / report.observed_span_expected_bars
+        if report.observed_span_expected_bars else 0.0)
     for gap in gaps:
         report.gap_class_counts[gap.gap_class] = \
             report.gap_class_counts.get(gap.gap_class, 0) + 1
