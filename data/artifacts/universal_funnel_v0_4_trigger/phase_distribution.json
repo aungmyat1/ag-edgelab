@@ -1,0 +1,212 @@
+{
+  "EURUSD": {
+    "counts": {
+      "BEAR_CONTINUATION": 608,
+      "BEAR_PULLBACK": 484,
+      "BULL_CONTINUATION": 620,
+      "BULL_PULLBACK": 696,
+      "NEUTRAL": 1381
+    },
+    "invariant": "location never erases phase; e.g. BULL_PULLBACK rows exist at PREMIUM and DISCOUNT alike",
+    "phase_x_location": {
+      "BEAR_CONTINUATION": {
+        "DISCOUNT": 442,
+        "MIDRANGE": 0,
+        "PREMIUM": 166,
+        "UNAVAILABLE": 0
+      },
+      "BEAR_PULLBACK": {
+        "DISCOUNT": 110,
+        "MIDRANGE": 0,
+        "PREMIUM": 374,
+        "UNAVAILABLE": 0
+      },
+      "BULL_CONTINUATION": {
+        "DISCOUNT": 116,
+        "MIDRANGE": 0,
+        "PREMIUM": 504,
+        "UNAVAILABLE": 0
+      },
+      "BULL_PULLBACK": {
+        "DISCOUNT": 429,
+        "MIDRANGE": 0,
+        "PREMIUM": 267,
+        "UNAVAILABLE": 0
+      },
+      "NEUTRAL": {
+        "DISCOUNT": 590,
+        "MIDRANGE": 0,
+        "PREMIUM": 783,
+        "UNAVAILABLE": 8
+      }
+    }
+  },
+  "GBPUSD": {
+    "counts": {
+      "BEAR_CONTINUATION": 540,
+      "BEAR_PULLBACK": 458,
+      "BULL_CONTINUATION": 679,
+      "BULL_PULLBACK": 652,
+      "NEUTRAL": 1455
+    },
+    "invariant": "location never erases phase; e.g. BULL_PULLBACK rows exist at PREMIUM and DISCOUNT alike",
+    "phase_x_location": {
+      "BEAR_CONTINUATION": {
+        "DISCOUNT": 428,
+        "MIDRANGE": 0,
+        "PREMIUM": 108,
+        "UNAVAILABLE": 4
+      },
+      "BEAR_PULLBACK": {
+        "DISCOUNT": 147,
+        "MIDRANGE": 0,
+        "PREMIUM": 311,
+        "UNAVAILABLE": 0
+      },
+      "BULL_CONTINUATION": {
+        "DISCOUNT": 92,
+        "MIDRANGE": 0,
+        "PREMIUM": 587,
+        "UNAVAILABLE": 0
+      },
+      "BULL_PULLBACK": {
+        "DISCOUNT": 449,
+        "MIDRANGE": 0,
+        "PREMIUM": 203,
+        "UNAVAILABLE": 0
+      },
+      "NEUTRAL": {
+        "DISCOUNT": 640,
+        "MIDRANGE": 1,
+        "PREMIUM": 787,
+        "UNAVAILABLE": 27
+      }
+    }
+  },
+  "POOLED": {
+    "counts": {
+      "BEAR_CONTINUATION": 2431,
+      "BEAR_PULLBACK": 2126,
+      "BULL_CONTINUATION": 2331,
+      "BULL_PULLBACK": 2338,
+      "NEUTRAL": 5700
+    },
+    "invariant": "location never erases phase; e.g. BULL_PULLBACK rows exist at PREMIUM and DISCOUNT alike",
+    "phase_x_location": {
+      "BEAR_CONTINUATION": {
+        "DISCOUNT": 1928,
+        "MIDRANGE": 0,
+        "PREMIUM": 499,
+        "UNAVAILABLE": 4
+      },
+      "BEAR_PULLBACK": {
+        "DISCOUNT": 628,
+        "MIDRANGE": 0,
+        "PREMIUM": 1498,
+        "UNAVAILABLE": 0
+      },
+      "BULL_CONTINUATION": {
+        "DISCOUNT": 400,
+        "MIDRANGE": 0,
+        "PREMIUM": 1931,
+        "UNAVAILABLE": 0
+      },
+      "BULL_PULLBACK": {
+        "DISCOUNT": 1496,
+        "MIDRANGE": 1,
+        "PREMIUM": 841,
+        "UNAVAILABLE": 0
+      },
+      "NEUTRAL": {
+        "DISCOUNT": 2507,
+        "MIDRANGE": 5,
+        "PREMIUM": 3145,
+        "UNAVAILABLE": 43
+      }
+    }
+  },
+  "USDJPY": {
+    "counts": {
+      "BEAR_CONTINUATION": 610,
+      "BEAR_PULLBACK": 757,
+      "BULL_CONTINUATION": 422,
+      "BULL_PULLBACK": 474,
+      "NEUTRAL": 1511
+    },
+    "invariant": "location never erases phase; e.g. BULL_PULLBACK rows exist at PREMIUM and DISCOUNT alike",
+    "phase_x_location": {
+      "BEAR_CONTINUATION": {
+        "DISCOUNT": 483,
+        "MIDRANGE": 0,
+        "PREMIUM": 127,
+        "UNAVAILABLE": 0
+      },
+      "BEAR_PULLBACK": {
+        "DISCOUNT": 230,
+        "MIDRANGE": 0,
+        "PREMIUM": 527,
+        "UNAVAILABLE": 0
+      },
+      "BULL_CONTINUATION": {
+        "DISCOUNT": 108,
+        "MIDRANGE": 0,
+        "PREMIUM": 314,
+        "UNAVAILABLE": 0
+      },
+      "BULL_PULLBACK": {
+        "DISCOUNT": 329,
+        "MIDRANGE": 0,
+        "PREMIUM": 145,
+        "UNAVAILABLE": 0
+      },
+      "NEUTRAL": {
+        "DISCOUNT": 716,
+        "MIDRANGE": 2,
+        "PREMIUM": 785,
+        "UNAVAILABLE": 8
+      }
+    }
+  },
+  "XAUUSD": {
+    "counts": {
+      "BEAR_CONTINUATION": 673,
+      "BEAR_PULLBACK": 427,
+      "BULL_CONTINUATION": 610,
+      "BULL_PULLBACK": 516,
+      "NEUTRAL": 1353
+    },
+    "invariant": "location never erases phase; e.g. BULL_PULLBACK rows exist at PREMIUM and DISCOUNT alike",
+    "phase_x_location": {
+      "BEAR_CONTINUATION": {
+        "DISCOUNT": 575,
+        "MIDRANGE": 0,
+        "PREMIUM": 98,
+        "UNAVAILABLE": 0
+      },
+      "BEAR_PULLBACK": {
+        "DISCOUNT": 141,
+        "MIDRANGE": 0,
+        "PREMIUM": 286,
+        "UNAVAILABLE": 0
+      },
+      "BULL_CONTINUATION": {
+        "DISCOUNT": 84,
+        "MIDRANGE": 0,
+        "PREMIUM": 526,
+        "UNAVAILABLE": 0
+      },
+      "BULL_PULLBACK": {
+        "DISCOUNT": 289,
+        "MIDRANGE": 1,
+        "PREMIUM": 226,
+        "UNAVAILABLE": 0
+      },
+      "NEUTRAL": {
+        "DISCOUNT": 561,
+        "MIDRANGE": 2,
+        "PREMIUM": 790,
+        "UNAVAILABLE": 0
+      }
+    }
+  }
+}

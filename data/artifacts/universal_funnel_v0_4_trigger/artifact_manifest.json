@@ -1,0 +1,29 @@
+{
+  "artifacts": {
+    "asian_v2_identity_comparison.json": "29f2bb7d73a4b67062c0f2cd1e422b847eb73097d30cdddf4c251a4d0e04c4da",
+    "causality_audit.json": "978a869af1aefae6bf3498cdf88727db36014b78d91d2899f1ab90996e0ad092",
+    "confirmation_stability.json": "f7306a91875dea1b6f61ae937fc026bde9b4311e704b55a8c353e35d1e59ead3",
+    "continuation_survival.json": "411d2de236b52f4eb214b01eebf11b300b1e506dd92bd4ba365f6ffcd589ab30",
+    "d01_baseline.json": "0294aa9a3ef24794bdf9f38e88e2715b9155b703b9d9f687aed9c2dbdb5df508",
+    "dataset_authority.json": "438dde5a6faa2f064c1269de99ff92093de6652b66a59d23f90f6140ccd0c6ae",
+    "determinism_audit.json": "e1d69642db0f8910ae8bc8164a051599da2d376280233b6670e51dcef51c064c",
+    "experiment_identity.json": "a7638160b601186872fb6b258d480b1404ed78b1703a02f9e0b1f18332ad2b0d",
+    "final_report.json": "4176e8fa8cb91ddd4d78196eeb73c5d427c4f0bffb94168489ddbcf5fe6fcf28",
+    "final_report.md": "7f802105534294c5b2dafa3e20e283b66e82ee77095f7049b165e57d10133711",
+    "funnel_value_attribution.json": "cee537dbc3353a4380ca09b5ae7763271156d78f2ec9c5e15b1b5255c1b24a31",
+    "location_stability.json": "5d872015b31516aacc8e57e192144f497d006adb7f8728419b4542b4c7799251",
+    "ma_ablation.json": "4a7e810d1dbcc41d6bd356e110eb46dfda7db6848c03b2aa8c2454087a502126",
+    "natural_target_distribution.json": "6ff745217b6f522cfec0381f0d65d13fc9da0939d9e9136c76b5bcf63d7a4010",
+    "phase_distribution.json": "14572d27946086d2d932ce955e9d92bb3ce9e30a68e9be969dfceaa6028cb1e6",
+    "preregistration.json": "b73365f7199dd404ff3b63283aaecacca576d18e857141ea0a7af9badafd4377",
+    "pullback_realignment.json": "342f7819558c1cfc1912b9d3ea91b9d0d7acece30c0c0586d8a5e01b0bcb41a1",
+    "root_cause_analysis.json": "628e1c7fbfdfe6f487eda16c6d4bef22d8835d52db460097d11b5045e646b713",
+    "sample_attrition.json": "e4c90ad22ed07251fc03e3952042691c9e7f62d871bd847e865873d76999690b",
+    "session_stratification.json": "40d2a277893a953408bec2d381932777f033435916637f423661ff809f93018c",
+    "t1_strict.json": "b133a37aec1a87a5c7507507447bc797f95fba858d7a75b3bfee237d927d36e0",
+    "t2_phase_aware.json": "a485e577a4585edba567874672f0c035558904dde747bc7e225cc5d718eae113",
+    "target_capability_comparison.json": "a09c0aedf24feaa469e99418b51108c443d905527722eaca302416d5d7b9ed77",
+    "test_results.txt": "9f626cba1e7c237bd17e8de054a3455d42ca4cce16e6a90ae7fb4904c1360ee5"
+  },
+  "experiment_id": "MTF_DIRECTION_TRIGGER_V1"
+}

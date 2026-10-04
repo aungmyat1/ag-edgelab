@@ -1,0 +1,38 @@
+{
+  "D01": {
+    "confirmation_uplift_pp_same_basis": 14.82,
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.6154336734693877,
+      "P3_GIVEN_2": 0.6601036269430052,
+      "P4_GIVEN_3": 0.6875981161695447,
+      "P5_GIVEN_4": 0.6917808219178082
+    },
+    "direction_separation_pp": 2.04,
+    "entry_rate_from_confirmation": 0.49,
+    "location_uplift_pp": 0.88
+  },
+  "T1": {
+    "confirmation_uplift_pp_same_basis": 20.53,
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.6584158415841584,
+      "P3_GIVEN_2": 0.5864661654135338,
+      "P4_GIVEN_3": 0.6282051282051282,
+      "P5_GIVEN_4": 0.5918367346938775
+    },
+    "direction_separation_pp": 7.55,
+    "entry_rate_from_confirmation": 0.4336,
+    "location_uplift_pp": 0.0
+  },
+  "T2": {
+    "confirmation_uplift_pp_same_basis": 15.81,
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.6323529411764706,
+      "P3_GIVEN_2": 0.6465116279069767,
+      "P4_GIVEN_3": 0.6402877697841727,
+      "P5_GIVEN_4": 0.6966292134831461
+    },
+    "direction_separation_pp": -1.43,
+    "entry_rate_from_confirmation": 0.4879,
+    "location_uplift_pp": 0.96
+  }
+}

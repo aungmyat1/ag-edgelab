@@ -1,0 +1,30 @@
+{
+  "D01_DIRECTIONAL_N": 9226,
+  "T1_ATTRITION_VS_D01_PCT": 90.26,
+  "T1_DIRECTIONAL_N": 899,
+  "T2_ATTRITION_VS_D01_PCT": 48.38,
+  "T2_DIRECTIONAL_N": 4762,
+  "per_symbol": {
+    "EURUSD": {
+      "D01": 2408,
+      "T1": 282,
+      "T2": 1228
+    },
+    "GBPUSD": {
+      "D01": 2329,
+      "T1": 200,
+      "T2": 1219
+    },
+    "USDJPY": {
+      "D01": 2263,
+      "T1": 235,
+      "T2": 1032
+    },
+    "XAUUSD": {
+      "D01": 2226,
+      "T1": 182,
+      "T2": 1283
+    }
+  },
+  "rule": "winner is never chosen on separation alone (mission section 10)"
+}

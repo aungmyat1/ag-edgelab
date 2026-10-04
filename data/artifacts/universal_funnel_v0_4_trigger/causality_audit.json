@@ -1,0 +1,282 @@
+{
+  "all_passed": true,
+  "invariants": [
+    "completed-bar-only: every state at T reads bars with open+span <= T",
+    "truncation invariant: rebuilding all series from frames truncated at T reproduces every trigger state",
+    "future-mutation invariant: scaling every bar strictly after T by 1.1 changes no trigger state (no future swing/flow/range/MA/target leak)"
+  ],
+  "samples": [
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-03-07T11:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "NEUTRAL",
+        "location": "PREMIUM",
+        "ma": "BULL",
+        "pd_state": "PREMIUM",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-04-19T23:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "NEUTRAL",
+        "location": "PREMIUM",
+        "ma": "BULL",
+        "pd_state": "PREMIUM",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-06-02T12:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "BULL",
+        "location": "DISCOUNT",
+        "ma": "BULL",
+        "pd_state": "DISCOUNT",
+        "phase": "BULL_PULLBACK",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-07-18T01:15:00+00:00",
+      "states": {
+        "h1_flow": "BULL",
+        "h4": "BULL",
+        "location": "PREMIUM",
+        "ma": "BULL",
+        "pd_state": "PREMIUM",
+        "phase": "BULL_CONTINUATION",
+        "t1": "NEUTRAL",
+        "t2": "BULL",
+        "t2ma": "BULL"
+      },
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-03-07T12:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "NEUTRAL",
+        "location": "DISCOUNT",
+        "ma": "BEAR",
+        "pd_state": "DISCOUNT",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-04-19T23:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "NEUTRAL",
+        "location": "PREMIUM",
+        "ma": "BULL",
+        "pd_state": "PREMIUM",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-06-02T11:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "NEUTRAL",
+        "location": "DISCOUNT",
+        "ma": "BEAR",
+        "pd_state": "DISCOUNT",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-07-18T00:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "NEUTRAL",
+        "location": "PREMIUM",
+        "ma": "BULL",
+        "pd_state": "PREMIUM",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-03-07T09:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "BEAR",
+        "location": "PREMIUM",
+        "ma": "BULL",
+        "pd_state": "PREMIUM",
+        "phase": "BEAR_CONTINUATION",
+        "t1": "BEAR",
+        "t2": "BEAR",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-04-19T22:15:00+00:00",
+      "states": {
+        "h1_flow": "BULL",
+        "h4": "NEUTRAL",
+        "location": "PREMIUM",
+        "ma": "BEAR",
+        "pd_state": "PREMIUM",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-06-02T11:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "NEUTRAL",
+        "location": "PREMIUM",
+        "ma": "BEAR",
+        "pd_state": "PREMIUM",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-07-18T01:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "NEUTRAL",
+        "location": "DISCOUNT",
+        "ma": "BEAR",
+        "pd_state": "DISCOUNT",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-03-07T06:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "BEAR",
+        "location": "DISCOUNT",
+        "ma": "BEAR",
+        "pd_state": "DISCOUNT",
+        "phase": "BEAR_CONTINUATION",
+        "t1": "NEUTRAL",
+        "t2": "BEAR",
+        "t2ma": "BEAR"
+      },
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-04-20T11:15:00+00:00",
+      "states": {
+        "h1_flow": "BEAR",
+        "h4": "BEAR",
+        "location": "DISCOUNT",
+        "ma": "BULL",
+        "pd_state": "DISCOUNT",
+        "phase": "BEAR_CONTINUATION",
+        "t1": "NEUTRAL",
+        "t2": "BEAR",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-06-04T22:15:00+00:00",
+      "states": {
+        "h1_flow": "BULL",
+        "h4": "BEAR",
+        "location": "PREMIUM",
+        "ma": "BULL",
+        "pd_state": "PREMIUM",
+        "phase": "BEAR_PULLBACK",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "future_mutation_invariant": true,
+      "observed_at": "2017-07-18T09:15:00+00:00",
+      "states": {
+        "h1_flow": "BULL",
+        "h4": "NEUTRAL",
+        "location": "PREMIUM",
+        "ma": "BULL",
+        "pd_state": "PREMIUM",
+        "phase": "NEUTRAL",
+        "t1": "NEUTRAL",
+        "t2": "NEUTRAL",
+        "t2ma": "NEUTRAL"
+      },
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    }
+  ]
+}
