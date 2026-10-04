@@ -1,0 +1,844 @@
+{
+  "generated_by": "scripts/consolidation_r1_inventory.py",
+  "main_at_inventory_time": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+  "canonical_consolidation_branch": "arena/01a1073e-ag-edgelab@9c94c7779aaac6ed84e40be2874d47f296789ce4",
+  "branch_count": 24,
+  "branches": [
+    {
+      "name": "arena/01a1007a-ag-edgelab",
+      "head": "6714ee6cb2703c298c71f365debb0374781de1db",
+      "tree": "6de91f9685ea748228f762be2a69f3ff34b4de36",
+      "fork_point_from_main": "6714ee6cb2703c298c71f365debb0374781de1db",
+      "commits_ahead_of_fork": 0,
+      "main_commits_behind": 1,
+      "tip_ancestor_of_consolidation_branch": true,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [],
+      "changed_files_total": 0,
+      "artifact_volume": {
+        "artifact_files": 2,
+        "artifact_bytes": 1202,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "merged via PR#9 (R0 crypto lane mission)",
+      "classification": "MERGED",
+      "likely_superseded_by": "none"
+    },
+    {
+      "name": "arena/01a100ce-ag-edgelab",
+      "head": "d6df82edf2d65d0a1feb28ae8500199ddbbede25",
+      "tree": "ae47cd2f60d867be19cd38deac8c6c9eeaba07ef",
+      "fork_point_from_main": "e62746c35ac5a231e79366eb2d1b495b33ae43e2",
+      "commits_ahead_of_fork": 2,
+      "main_commits_behind": 3,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/campaigns/__init__.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/__init__.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/adapter.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/campaign.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/dataset.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/friction.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/SESSION_TRADE_V2.yaml",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/SESSION_TRADE_V2_SPEC.md",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/__init__.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/engine.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/models.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/identity.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/metrics.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/replay.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/report.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/windows.py"
+      ],
+      "changed_test_files": [
+        "tests/test_stv2_campaign_matrix.py",
+        "tests/test_stv2_friction_and_dataset.py",
+        "tests/test_stv2_frozen_engine_contract.py",
+        "tests/test_stv2_identity_and_guards.py",
+        "tests/test_stv2_replay.py",
+        "tests/test_stv2_report.py",
+        "tests/test_stv2_windows.py"
+      ],
+      "changed_script_files": [
+        "scripts/freeze_stv2_ledger.py",
+        "scripts/run_stv2_campaign.py",
+        "scripts/run_stv2_supplementary.py"
+      ],
+      "changed_files_total": 36,
+      "artifact_volume": {
+        "artifact_files": 9,
+        "artifact_bytes": 790807,
+        "artifact_mb": 0.75
+      },
+      "candidate_identities": [
+        "SESSION_TRADE_V2",
+        "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc"
+      ],
+      "dataset_identities": [
+        "HISTDATA_COM_ASCII_EURUSD_M1_2017.zip",
+        "HISTDATA_COM_ASCII_GBPUSD_M1_2017.zip",
+        "HISTDATA_COM_ASCII_USDJPY_M1_2017.zip",
+        "HISTDATA_COM_ASCII_XAUUSD_M1_2017.zip"
+      ],
+      "reported_status": "SESSION_TRADE_V2_v2.0.0 economic campaign COMPLETE: FROZEN_FOR_OOS, OOS_PASS=false, EDGE_VERIFIED=false, BRANCH_A REJECT (fails OOS)",
+      "classification": "SUPERSEDED",
+      "likely_superseded_by": "arena/01a1015a-ag-edgelab (merged into it; content also merged to mainline via consolidation)"
+    },
+    {
+      "name": "arena/01a1015a-ag-edgelab",
+      "head": "fd86f861a85631f43c0ce0440042259b7a023148",
+      "tree": "b1341863df11324395d69a189ffc08bfafebe211",
+      "fork_point_from_main": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+      "commits_ahead_of_fork": 4,
+      "main_commits_behind": 0,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/analytics/funnel.py",
+        "src/ag_edgelab/campaigns/__init__.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/__init__.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/adapter.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/campaign.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/dataset.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/friction.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/SESSION_TRADE_V2.yaml",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/SESSION_TRADE_V2_SPEC.md",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/__init__.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/engine.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/frozen/models.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/funnel_analyzer.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/funnel_models.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/funnel_report.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/identity.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/metrics.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/replay.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/report.py",
+        "src/ag_edgelab/campaigns/session_trade_v2/windows.py"
+      ],
+      "changed_test_files": [
+        "tests/stv2_funnel_fixtures.py",
+        "tests/test_stv2_campaign_matrix.py",
+        "tests/test_stv2_friction_and_dataset.py",
+        "tests/test_stv2_frozen_engine_contract.py",
+        "tests/test_stv2_funnel_guards.py",
+        "tests/test_stv2_funnel_identity.py",
+        "tests/test_stv2_funnel_matrix.py",
+        "tests/test_stv2_funnel_stages.py",
+        "tests/test_stv2_funnel_statistics.py",
+        "tests/test_stv2_identity_and_guards.py",
+        "tests/test_stv2_replay.py",
+        "tests/test_stv2_report.py",
+        "tests/test_stv2_windows.py"
+      ],
+      "changed_script_files": [
+        "scripts/freeze_stv2_ledger.py",
+        "scripts/run_stv2_campaign.py",
+        "scripts/run_stv2_funnel_analysis.py",
+        "scripts/run_stv2_supplementary.py"
+      ],
+      "changed_files_total": 64,
+      "artifact_volume": {
+        "artifact_files": 28,
+        "artifact_bytes": 8218384,
+        "artifact_mb": 7.84
+      },
+      "candidate_identities": [
+        "SESSION_TRADE_V2",
+        "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc"
+      ],
+      "dataset_identities": [
+        "HISTDATA_COM_ASCII_EURUSD_M1_2017.zip",
+        "HISTDATA_COM_ASCII_GBPUSD_M1_2017.zip",
+        "HISTDATA_COM_ASCII_USDJPY_M1_2017.zip",
+        "HISTDATA_COM_ASCII_XAUUSD_M1_2017.zip"
+      ],
+      "reported_status": "STV2 strategy funnel analyzer COMPLETE (analysis of SESSION_TRADE_V2 economic matrix)",
+      "classification": "PARTIALLY_REUSED",
+      "likely_superseded_by": "none (merged into consolidation mainline; branch retained as archive)"
+    },
+    {
+      "name": "arena/01a101e6-ag-edgelab",
+      "head": "7e3c13ccc32b83aabaaef22631b00fdd87b7c0e1",
+      "tree": "3d8c982b796b232431bfde15c14a030b6f3db665",
+      "fork_point_from_main": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+      "commits_ahead_of_fork": 11,
+      "main_commits_behind": 0,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/analytics/funnel.py",
+        "src/ag_edgelab/analytics/temporal.py",
+        "src/ag_edgelab/analytics/unified.py",
+        "src/ag_edgelab/contracts/diagnostics.py",
+        "src/ag_edgelab/data/fx_histdata.py",
+        "src/mtf_control_shift/__init__.py",
+        "src/mtf_control_shift/engine.py",
+        "src/mtf_control_shift/models.py",
+        "src/mtf_control_shift/structure.py",
+        "src/mtf_control_shift/ticket.py"
+      ],
+      "changed_test_files": [
+        "tests/test_mtf_control_shift_trigger_audit.py",
+        "tests/test_mtf_control_shift_v1.py",
+        "tests/test_mtf_control_shift_v1_data.py",
+        "tests/test_mtf_control_shift_v2_m15_audit.py",
+        "tests/test_mtf_control_shift_v2_preregistration.py",
+        "tests/test_mtf_control_shift_v2_temporal.py",
+        "tests/test_mtf_control_shift_v3_preregistration.py",
+        "tests/test_temporal_funnel_analytics.py",
+        "tests/test_unified_funnel_report.py"
+      ],
+      "changed_script_files": [
+        "scripts/acquire_mtf_control_shift_v1_data.sh",
+        "scripts/build_universal_funnel_v02_real_report.py",
+        "scripts/measure_mtf_control_shift_v2_freshness.py",
+        "scripts/preregister_mtf_control_shift_v3.py",
+        "scripts/run_mtf_control_shift_v1_campaign.py",
+        "scripts/run_mtf_control_shift_v1_trigger_audit.py",
+        "scripts/run_mtf_control_shift_v2_dev.py",
+        "scripts/run_mtf_control_shift_v2_m15_audit.py",
+        "scripts/run_mtf_control_shift_v2_temporal_coupling.py"
+      ],
+      "changed_files_total": 82,
+      "artifact_volume": {
+        "artifact_files": 51,
+        "artifact_bytes": 507401,
+        "artifact_mb": 0.48
+      },
+      "candidate_identities": [
+        "ST_MTF_CONTROL_SHIFT_V1",
+        "ST_MTF_CONTROL_SHIFT_V2",
+        "ST_MTF_CONTROL_SHIFT_V3"
+      ],
+      "dataset_identities": [],
+      "reported_status": "MTF_CONTROL_SHIFT_V1 (ST_MTF_CONTROL_SHIFT_V1 1.0.0) COMPLETE, no DEV survivor cells, OOS NOT_RUN, holdout untouched",
+      "classification": "PARTIALLY_REUSED",
+      "likely_superseded_by": "none (merged into consolidation mainline; branch retained as archive)"
+    },
+    {
+      "name": "arena/01a1041d-ag-edgelab",
+      "head": "114e6f26ba6eff0996e930540a297fd180191f2c",
+      "tree": "75b02cf6c22eee5012269e1a93658a7dbee68761",
+      "fork_point_from_main": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+      "commits_ahead_of_fork": 3,
+      "main_commits_behind": 0,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/analytics/funnel_v3.py",
+        "src/ag_edgelab/diagnostics/__init__.py",
+        "src/ag_edgelab/diagnostics/direction_daily_bias.py"
+      ],
+      "changed_test_files": [
+        "tests/test_direction_daily_bias.py"
+      ],
+      "changed_script_files": [
+        "scripts/run_direction_daily_bias_lab.py"
+      ],
+      "changed_files_total": 28,
+      "artifact_volume": {
+        "artifact_files": 25,
+        "artifact_bytes": 25456,
+        "artifact_mb": 0.02
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "direction daily bias lab BLOCKED (BLOCKED_NO_AUTHORIZED_ASIAN_DEV_LINEAGE), DEVELOPMENT_ONLY",
+      "classification": "PARTIALLY_REUSED",
+      "likely_superseded_by": "none (merged into consolidation mainline; branch retained as archive)"
+    },
+    {
+      "name": "arena/01a105f9-ag-edgelab",
+      "head": "8d132355c0138068fd79a2fb22c9c0f38f295a80",
+      "tree": "3d35e5f0cbf3b57089de1d99846ce244e2a7bcf1",
+      "fork_point_from_main": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+      "commits_ahead_of_fork": 6,
+      "main_commits_behind": 0,
+      "tip_ancestor_of_consolidation_branch": true,
+      "changed_source_files": [
+        "src/ag_edgelab/data/fx_histdata_2017.py",
+        "src/ag_edgelab/universal/__init__.py",
+        "src/ag_edgelab/universal/asian_overlay.py",
+        "src/ag_edgelab/universal/campaign.py",
+        "src/ag_edgelab/universal/classifier.py",
+        "src/ag_edgelab/universal/confirmation.py",
+        "src/ag_edgelab/universal/direction.py",
+        "src/ag_edgelab/universal/fx_dev_campaign.py",
+        "src/ag_edgelab/universal/fx_direction.py",
+        "src/ag_edgelab/universal/hypotheses.py",
+        "src/ag_edgelab/universal/location.py",
+        "src/ag_edgelab/universal/matrix.py",
+        "src/ag_edgelab/universal/parity.py",
+        "src/ag_edgelab/universal/profile.py",
+        "src/ag_edgelab/universal/report.py",
+        "src/ag_edgelab/universal/root_cause.py",
+        "src/ag_edgelab/universal/sessions.py",
+        "src/ag_edgelab/universal/target_policy_v0_6.py",
+        "src/ag_edgelab/universal/target_v0_5.py",
+        "src/ag_edgelab/universal/targets.py",
+        "src/ag_edgelab/universal/trigger_v0_4.py"
+      ],
+      "changed_test_files": [
+        "tests/test_fx_dev_campaign.py",
+        "tests/test_fx_dev_real_data.py",
+        "tests/test_fx_direction.py",
+        "tests/test_fx_histdata_2017.py",
+        "tests/test_target_policy_v0_6.py",
+        "tests/test_target_v0_5.py",
+        "tests/test_trigger_v0_4.py",
+        "tests/test_upa_classifier_overlay_regression.py",
+        "tests/test_upa_direction_ma.py",
+        "tests/test_upa_location_confirmation.py",
+        "tests/test_upa_sessions_profile_parity.py",
+        "tests/test_upa_targets_matrix_rootcause.py"
+      ],
+      "changed_script_files": [
+        "scripts/acquire_histdata_fx_2017.sh",
+        "scripts/run_target_policy_v0_6.py",
+        "scripts/run_target_v0_5.py",
+        "scripts/run_trigger_v0_4.py",
+        "scripts/run_universal_fx_dev_v0_3.py",
+        "scripts/run_universal_price_action_v0_3.py"
+      ],
+      "changed_files_total": 146,
+      "artifact_volume": {
+        "artifact_files": 108,
+        "artifact_bytes": 26803072,
+        "artifact_mb": 25.56
+      },
+      "candidate_identities": [
+        "CRYPTO_REFERENCE_V0_3",
+        "FX_REFERENCE_V0_3",
+        "SESSION_TRADE_V2",
+        "normal-range",
+        "strong-sweep",
+        "sweep-boundary",
+        "trend-buy",
+        "trend-sell"
+      ],
+      "dataset_identities": [],
+      "reported_status": "V0.6 natural target + runner policy research complete (pre-OOS freeze)",
+      "classification": "SUPERSEDED",
+      "likely_superseded_by": "arena/01a1073e-ag-edgelab (tip 8d13235 is an ancestor of 9c94c77)"
+    },
+    {
+      "name": "arena/01a1073e-ag-edgelab",
+      "head": "9c94c7779aaac6ed84e40be2874d47f296789ce4",
+      "tree": "b3632eaacc0c69b3dc4ae61406b4859a5a319f9b",
+      "fork_point_from_main": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+      "commits_ahead_of_fork": 11,
+      "main_commits_behind": 0,
+      "tip_ancestor_of_consolidation_branch": true,
+      "changed_source_files": [
+        "src/ag_edgelab/data/fx_histdata_2017.py",
+        "src/ag_edgelab/universal/__init__.py",
+        "src/ag_edgelab/universal/asian_overlay.py",
+        "src/ag_edgelab/universal/c3_v1_oos_metrics.py",
+        "src/ag_edgelab/universal/campaign.py",
+        "src/ag_edgelab/universal/candidate_c3_v1.py",
+        "src/ag_edgelab/universal/classifier.py",
+        "src/ag_edgelab/universal/confirmation.py",
+        "src/ag_edgelab/universal/direction.py",
+        "src/ag_edgelab/universal/fx_dev_campaign.py",
+        "src/ag_edgelab/universal/fx_direction.py",
+        "src/ag_edgelab/universal/hypotheses.py",
+        "src/ag_edgelab/universal/location.py",
+        "src/ag_edgelab/universal/matrix.py",
+        "src/ag_edgelab/universal/parity.py",
+        "src/ag_edgelab/universal/profile.py",
+        "src/ag_edgelab/universal/report.py",
+        "src/ag_edgelab/universal/root_cause.py",
+        "src/ag_edgelab/universal/sessions.py",
+        "src/ag_edgelab/universal/target_policy_v0_6.py",
+        "src/ag_edgelab/universal/target_v0_5.py",
+        "src/ag_edgelab/universal/targets.py",
+        "src/ag_edgelab/universal/trigger_v0_4.py",
+        "src/ag_edgelab/verification/c3_v1_adversarial.py",
+        "src/ag_edgelab/verification/c3_v1_oos_verifier.py",
+        "src/ag_edgelab/verification/c3_v1_verifier.py"
+      ],
+      "changed_test_files": [
+        "tests/test_fx_dev_campaign.py",
+        "tests/test_fx_dev_real_data.py",
+        "tests/test_fx_direction.py",
+        "tests/test_fx_histdata_2017.py",
+        "tests/test_oos_c3_v1.py",
+        "tests/test_target_policy_c3_v1.py",
+        "tests/test_target_policy_v0_6.py",
+        "tests/test_target_v0_5.py",
+        "tests/test_trigger_v0_4.py",
+        "tests/test_upa_classifier_overlay_regression.py",
+        "tests/test_upa_direction_ma.py",
+        "tests/test_upa_location_confirmation.py",
+        "tests/test_upa_sessions_profile_parity.py",
+        "tests/test_upa_targets_matrix_rootcause.py"
+      ],
+      "changed_script_files": [
+        "scripts/acquire_histdata_fx_2017.sh",
+        "scripts/freeze_target_policy_c3_v1.py",
+        "scripts/preregister_oos_c3_v1.py",
+        "scripts/run_oos_structural_c3_v1.py",
+        "scripts/run_target_policy_v0_6.py",
+        "scripts/run_target_v0_5.py",
+        "scripts/run_trigger_v0_4.py",
+        "scripts/run_universal_fx_dev_v0_3.py",
+        "scripts/run_universal_price_action_v0_3.py"
+      ],
+      "changed_files_total": 194,
+      "artifact_volume": {
+        "artifact_files": 146,
+        "artifact_bytes": 31314368,
+        "artifact_mb": 29.86
+      },
+      "candidate_identities": [
+        "CRYPTO_REFERENCE_V0_3",
+        "FX_REFERENCE_V0_3",
+        "SESSION_TRADE_V2",
+        "TARGET_POLICY_C3_V1",
+        "normal-range",
+        "strong-sweep",
+        "sweep-boundary",
+        "trend-buy",
+        "trend-sell"
+      ],
+      "dataset_identities": [],
+      "reported_status": "V0.6.2 sealed structural OOS COMPLETE: TARGET_POLICY_C3_V1 verdict C STRUCTURAL_GENERALIZATION_FAILS",
+      "classification": "CANONICAL",
+      "likely_superseded_by": "consolidation PR (canonical universal research line V0.3-V0.6.2)"
+    },
+    {
+      "name": "codex/conduct-adversarial-audit-for-pr-#6",
+      "head": "ba200173f8329097821fee32492195b57ed941e6",
+      "tree": "ffde8431d6fc85cfd7f72d654a01f3461bf6e523",
+      "fork_point_from_main": "0688b222960b175a50c05f6302fbfdbb69f1bd8f",
+      "commits_ahead_of_fork": 3,
+      "main_commits_behind": 102,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [],
+      "changed_files_total": 1,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "AUDIT_VERDICT = BLOCKED (re-audit target 7f0b061 absent from checkout)",
+      "classification": "PARTIALLY_REUSED",
+      "likely_superseded_by": "none (blocked-audit record merged into docs/audits/; no findings)"
+    },
+    {
+      "name": "feat/crypto-btc-breakout-candidate",
+      "head": "cfef28555d882cdab52e415710cfa3a39643fce6",
+      "tree": "e3324755d3c1d3cf37756163feea825298b342f0",
+      "fork_point_from_main": "3892ad1808200f7a3ed4cb257134aea7a44a15fd",
+      "commits_ahead_of_fork": 2,
+      "main_commits_behind": 49,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [
+        "scripts/screen_crypto_btc_breakout.py"
+      ],
+      "changed_files_total": 2,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "preregistered BTC breakout development screen (CI)",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (donor-strategy development screen; archived)"
+    },
+    {
+      "name": "feat/crypto-btc-economic-verification",
+      "head": "6db9f2c31a433b21331a7a4bcc4273e297136724",
+      "tree": "f685b80c1f7cfacb9f668af893ec3036f6cd60fb",
+      "fork_point_from_main": "a3cc6457e7ddddbb75cc040689f9124a146cb8d3",
+      "commits_ahead_of_fork": 8,
+      "main_commits_behind": 51,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/statistics/performance.py"
+      ],
+      "changed_test_files": [
+        "tests/test_reference_replay_edge_cases.py"
+      ],
+      "changed_script_files": [
+        "scripts/verify_btc_sweep_retest_bybit.py"
+      ],
+      "changed_files_total": 4,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "Bybit public-archive BTC economic verifier + funding stress (CI-driven; no committed evidence population)",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (Bybit acquisition code fails the merge contract: no missing-bar validation, no byte-level provenance/checksums)"
+    },
+    {
+      "name": "feat/crypto-btc-h1-candidate",
+      "head": "195c163765880878a3e8515035d6151d0a6e9953",
+      "tree": "e17d2d6834be1d345f5cd83d6cbdc44fa64ebd35",
+      "fork_point_from_main": "3892ad1808200f7a3ed4cb257134aea7a44a15fd",
+      "commits_ahead_of_fork": 2,
+      "main_commits_behind": 49,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [
+        "scripts/screen_crypto_btc_h1.py"
+      ],
+      "changed_files_total": 2,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "preregistered H4-H1 BTC development screen (CI)",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (donor-strategy development screen; archived)"
+    },
+    {
+      "name": "feat/crypto-btc-spot-candidate",
+      "head": "2f3920356194d219c1846acfef1fab481b6589cc",
+      "tree": "ce91b961feaeda8008109b0ed153ea4f76522ecf",
+      "fork_point_from_main": "3892ad1808200f7a3ed4cb257134aea7a44a15fd",
+      "commits_ahead_of_fork": 3,
+      "main_commits_behind": 49,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [
+        "scripts/screen_crypto_btc_spot.py"
+      ],
+      "changed_files_total": 2,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "Binance spot monthly-archive development screen (CI)",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (Binance screen fails the merge contract: no gap validation, no provenance; archived)"
+    },
+    {
+      "name": "feat/fx-asian-sweep-candidate",
+      "head": "e5725c45ceb0009e07a5123835105330050954c6",
+      "tree": "f48a38d6976af75a6530aade196605132928a9be",
+      "fork_point_from_main": "3892ad1808200f7a3ed4cb257134aea7a44a15fd",
+      "commits_ahead_of_fork": 2,
+      "main_commits_behind": 49,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [
+        "scripts/screen_fx_asian_sweep.py"
+      ],
+      "changed_files_total": 2,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "preregistered Asian range sweep development screen (CI)",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (donor-strategy development screen; archived)"
+    },
+    {
+      "name": "feat/fx-cycle2-breakout",
+      "head": "6cd1bbe49ca718190bbd84a05579c8dcc05a8cfa",
+      "tree": "63751312c0c8ace8a42ef82ea84a71f87e44d6dc",
+      "fork_point_from_main": "3892ad1808200f7a3ed4cb257134aea7a44a15fd",
+      "commits_ahead_of_fork": 1,
+      "main_commits_behind": 49,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [
+        "scripts/screen_fx_cycle2_breakout.py"
+      ],
+      "changed_files_total": 1,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "preregistered cycle2 H4-H1 breakout development screen",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (donor-strategy development screen; archived)"
+    },
+    {
+      "name": "feat/fx-edge-candidate",
+      "head": "9208cc96b36d9eaf5dceb3556b262bc9f8f86f4f",
+      "tree": "6794a46af9693b435fbe9ae79ebdf41a4356a5f4",
+      "fork_point_from_main": "3892ad1808200f7a3ed4cb257134aea7a44a15fd",
+      "commits_ahead_of_fork": 2,
+      "main_commits_behind": 49,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [
+        "scripts/screen_fx_trend_pullback.py"
+      ],
+      "changed_files_total": 2,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "bounded development-only funnel screen (SSC GEN001 donor strategy)",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (donor-strategy development screen; SSC GEN001 verdict recorded in candidate ledger)"
+    },
+    {
+      "name": "feat/fx-lny-candidate",
+      "head": "5604674c922ddc499f6e0f40ed0e4544099de55a",
+      "tree": "137146fb6dd66a7846abcbb05e98da4a81e579bb",
+      "fork_point_from_main": "3892ad1808200f7a3ed4cb257134aea7a44a15fd",
+      "commits_ahead_of_fork": 2,
+      "main_commits_behind": 49,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [
+        "scripts/screen_fx_lny_trend_pullback.py"
+      ],
+      "changed_files_total": 2,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "preregistered final LNY development screen (CI)",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (donor-strategy development screen; archived)"
+    },
+    {
+      "name": "feat/r0-foundation",
+      "head": "45fbba70527d04ace59c634d3b0b2c332e4d16e8",
+      "tree": "5ca4ab3cb5754c582be20756501024f1e4a9953c",
+      "fork_point_from_main": "45fbba70527d04ace59c634d3b0b2c332e4d16e8",
+      "commits_ahead_of_fork": 0,
+      "main_commits_behind": 11,
+      "tip_ancestor_of_consolidation_branch": true,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [],
+      "changed_files_total": 0,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "merged via PR#1",
+      "classification": "MERGED",
+      "likely_superseded_by": "none"
+    },
+    {
+      "name": "feat/r1-nautilus-adapter",
+      "head": "63561d1a14292297328e837aa76d2aa7937ae2b7",
+      "tree": "47e56e395bc0d07b8a5777cf86dd51872e27a834",
+      "fork_point_from_main": "085cb1b531f2e3805ccaa6adc177cd9eb7cb2ae6",
+      "commits_ahead_of_fork": 5,
+      "main_commits_behind": 55,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/engines/nautilus/adapter.py"
+      ],
+      "changed_test_files": [
+        "tests/test_nautilus_adapter_contract.py"
+      ],
+      "changed_script_files": [],
+      "changed_files_total": 4,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "NautilusTrader 2.x lazy adapter boundary + CI smoke (unmerged)",
+      "classification": "INDEPENDENT",
+      "likely_superseded_by": "none (execution adapter deliberately excluded: consolidation mandate forbids adding execution capability)"
+    },
+    {
+      "name": "feat/r2-robustness",
+      "head": "5132017b90c1e841941e0f2b112b3eecda3a188c",
+      "tree": "83ad0204206d4d3b5076f92355747cdc5085eccd",
+      "fork_point_from_main": "085cb1b531f2e3805ccaa6adc177cd9eb7cb2ae6",
+      "commits_ahead_of_fork": 4,
+      "main_commits_behind": 55,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/statistics/monte_carlo.py",
+        "src/ag_edgelab/statistics/performance.py"
+      ],
+      "changed_test_files": [
+        "tests/test_monte_carlo.py",
+        "tests/test_performance.py"
+      ],
+      "changed_script_files": [],
+      "changed_files_total": 4,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "deterministic Monte Carlo + R-based performance metrics (tests green on branch)",
+      "classification": "PARTIALLY_REUSED",
+      "likely_superseded_by": "statistics/performance.py superseded by main (crypto-lane evolution of the same R2 module); monte_carlo.py unmerged (no canonical consumer)"
+    },
+    {
+      "name": "feat/r3-r7-funnel-optimization-production",
+      "head": "45a647f1804d3820623a4c9e612bdf75ddfd2201",
+      "tree": "5ca4ab3cb5754c582be20756501024f1e4a9953c",
+      "fork_point_from_main": "45a647f1804d3820623a4c9e612bdf75ddfd2201",
+      "commits_ahead_of_fork": 0,
+      "main_commits_behind": 12,
+      "tip_ancestor_of_consolidation_branch": true,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [],
+      "changed_files_total": 0,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "merged via PR#6 (R3-R7 + R8/R8.1 verification hardening)",
+      "classification": "MERGED",
+      "likely_superseded_by": "none"
+    },
+    {
+      "name": "feat/strategy-verification",
+      "head": "027836baa90817ea697e775b91652394e1cf5e62",
+      "tree": "167109e22e04ae4d1102a49093318bf089f78de7",
+      "fork_point_from_main": "bbf8869946d6fc4c689ea09f3ab2d802c684b5ce",
+      "commits_ahead_of_fork": 10,
+      "main_commits_behind": 54,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/statistics/performance.py",
+        "src/ag_edgelab/validation/evidence.py"
+      ],
+      "changed_test_files": [
+        "tests/test_reference_replay_edge_cases.py",
+        "tests/test_strategy_verification.py"
+      ],
+      "changed_script_files": [
+        "scripts/verify_fx_ssc_gen001.py"
+      ],
+      "changed_files_total": 8,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "FX SSC GEN001 NO_EDGE baseline + crypto sweep retest INSUFFICIENT_EVIDENCE recorded (pre-R8 verification layer)",
+      "classification": "SUPERSEDED",
+      "likely_superseded_by": "main R8/R8.1 verification authority (PR#6, merged 45a647f); SSC GEN001 verdicts recorded in candidate ledger"
+    },
+    {
+      "name": "feat/universal-three-funnel-analyzer-v0-2",
+      "head": "8f2d977b41c89bbd219f88ebf133331abf8e4d54",
+      "tree": "2f1466fced17dae9fc2aab7d0523270cbac689c9",
+      "fork_point_from_main": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+      "commits_ahead_of_fork": 8,
+      "main_commits_behind": 0,
+      "tip_ancestor_of_consolidation_branch": false,
+      "changed_source_files": [
+        "src/ag_edgelab/analytics/diagnostic.py",
+        "src/ag_edgelab/contracts/diagnostic.py"
+      ],
+      "changed_test_files": [
+        "tests/test_three_funnel_diagnostic.py"
+      ],
+      "changed_script_files": [],
+      "changed_files_total": 4,
+      "artifact_volume": {
+        "artifact_files": 2,
+        "artifact_bytes": 1202,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "tool contract complete (no campaign, no edge authority)",
+      "classification": "PARTIALLY_REUSED",
+      "likely_superseded_by": "none (merged into consolidation mainline as the strategy-agnostic funnel diagnostic authority)"
+    },
+    {
+      "name": "integration/r0-foundation-into-main",
+      "head": "a8910dccc4f8405acd1daf1e96511b638ce65017",
+      "tree": "0c475b856ba6158dca813d1ce7a8286f45990fd1",
+      "fork_point_from_main": "a8910dccc4f8405acd1daf1e96511b638ce65017",
+      "commits_ahead_of_fork": 0,
+      "main_commits_behind": 4,
+      "tip_ancestor_of_consolidation_branch": true,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [],
+      "changed_files_total": 0,
+      "artifact_volume": {
+        "artifact_files": 0,
+        "artifact_bytes": 0,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "merged via PR#8",
+      "classification": "MERGED",
+      "likely_superseded_by": "none"
+    },
+    {
+      "name": "main",
+      "head": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+      "tree": "6de91f9685ea748228f762be2a69f3ff34b4de36",
+      "fork_point_from_main": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+      "commits_ahead_of_fork": 0,
+      "main_commits_behind": 0,
+      "tip_ancestor_of_consolidation_branch": true,
+      "changed_source_files": [],
+      "changed_test_files": [],
+      "changed_script_files": [],
+      "changed_files_total": 0,
+      "artifact_volume": {
+        "artifact_files": 2,
+        "artifact_bytes": 1202,
+        "artifact_mb": 0.0
+      },
+      "candidate_identities": [],
+      "dataset_identities": [],
+      "reported_status": "R0-R8.1 foundation + PR#9 crypto synthetic lane (ST_CRYPTO_MTF_SMC_V1, synthetic fixture)",
+      "classification": "CANONICAL",
+      "likely_superseded_by": "none"
+    }
+  ]
+}
