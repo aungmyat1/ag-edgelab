@@ -306,3 +306,65 @@ def test_verdict_json_roundtrip_stability():
     again = om.evaluate_verdict(_oos(), _refs(),
                                 payload["thresholds"])
     assert again["FINAL_VERDICT"] == verdict["FINAL_VERDICT"]
+
+
+# ---------------------------------------------------------------------------
+# Preregistration integrity check (regression: V0.6.2 initial sealed run
+# produced a false FAIL by reading candidate pin / dataset role at the top
+# level instead of their nested locations)
+# ---------------------------------------------------------------------------
+
+def _write_minimal_prereg(tmp_path, pin, role="OOS",
+                          companion_of="self"):
+    prereg = {"frozen_candidate": {"candidate_sha256": pin},
+              "dataset": {"dataset_role": role}}
+    body = json.dumps(prereg, indent=1).encode("utf-8")
+    (tmp_path / "oos_preregistration.json").write_bytes(body)
+    import hashlib
+    sha = hashlib.sha256(body).hexdigest()
+    if companion_of == "self":
+        (tmp_path / "oos_preregistration.sha256").write_text(sha)
+    else:
+        (tmp_path / "oos_preregistration.sha256").write_text(companion_of)
+    return tmp_path
+
+
+def test_prereg_check_reads_nested_pin_and_role(tmp_path):
+    from ag_edgelab.verification import c3_v1_oos_verifier as ov
+    pin = "a" * 64
+    ok, detail = ov.check_preregistration_integrity(
+        _write_minimal_prereg(tmp_path, pin), pin)
+    assert ok, detail
+
+
+def test_prereg_check_rejects_wrong_pin(tmp_path):
+    from ag_edgelab.verification import c3_v1_oos_verifier as ov
+    ok, _ = ov.check_preregistration_integrity(
+        _write_minimal_prereg(tmp_path, "b" * 64), "a" * 64)
+    assert not ok
+
+
+def test_prereg_check_rejects_wrong_role_or_companion(tmp_path):
+    from ag_edgelab.verification import c3_v1_oos_verifier as ov
+    pin = "a" * 64
+    ok, _ = ov.check_preregistration_integrity(
+        _write_minimal_prereg(tmp_path, pin, role="DEVELOPMENT"), pin)
+    assert not ok
+    ok, _ = ov.check_preregistration_integrity(
+        _write_minimal_prereg(tmp_path, pin, companion_of="0" * 64), pin)
+    assert not ok
+
+
+OOS_BUNDLE = Path(__file__).resolve().parents[1] / "data" / "artifacts" / \
+    "target_policy_c3_v1_oos"
+
+
+@pytest.mark.skipif(
+    not (OOS_BUNDLE / "oos_preregistration.json").exists(),
+    reason="sealed OOS bundle not present")
+def test_prereg_check_passes_on_committed_bundle():
+    from ag_edgelab.verification import c3_v1_oos_verifier as ov
+    ok, detail = ov.check_preregistration_integrity(
+        OOS_BUNDLE,
+        "5a485308841d1c5d2096e348665ef3f9b1f689c1ed4ce4b30385eeaf2c828112")
+    assert ok, detail

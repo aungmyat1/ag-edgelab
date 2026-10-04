@@ -503,6 +503,7 @@ def validate_dev(prereg: dict) -> dict:
 def main() -> int:
     argv = sys.argv[1:]
     validate_only = "--validate-dev-only" in argv
+    reverify_only = "--reverify-only" in argv
 
     # ---- gate: preregistration integrity + candidate identity
     prereg_bytes = (OUT_DIR / "oos_preregistration.json").read_bytes()
@@ -531,6 +532,9 @@ def main() -> int:
         validate_dev(prereg)
         print("PRE-OPEN VALIDATION COMPLETE — OOS NOT OPENED")
         return 0
+
+    if reverify_only:
+        return reverify(prereg, prereg_sha)
 
     # ================================================= the sealed OOS open
     print("PHASE 2 — SINGLE OOS DATA OPEN (authorized partition)")
@@ -657,10 +661,24 @@ def main() -> int:
     independent_ok = independent["ok"]
 
     # -------------------------------------------------- E conditions + final
+    return _finalize(
+        prereg=prereg, prereg_sha=prereg_sha, metrics=metrics,
+        comparison=comparison, verdict=verdict, controls=controls,
+        accounting=accounting, causality=causality, determinism=determinism,
+        independent_ok=independent_ok, contamination_ok=True, notes=None)
+
+
+def _finalize(*, prereg: dict, prereg_sha: str, metrics: dict,
+              comparison: dict, verdict: dict, controls: dict,
+              accounting: dict, causality: dict, determinism: dict,
+              independent_ok: bool, contamination_ok: bool,
+              notes: str | None) -> int:
+    pooled = metrics["pooled"]
+    oos_start, oos_end = PARTITIONS[OOS_ROLE]
     e_conditions = {
         "candidate_identity": True,          # gated above (else STOP)
         "preregistration_integrity": True,   # gated above (else STOP)
-        "dataset_role_contamination": True,  # gated above (else STOP)
+        "dataset_role_contamination": contamination_ok,
         "causality": causality["all_passed"],
         "independent_reproduction": independent_ok,
         "determinism": determinism["byte_identical"],
@@ -734,6 +752,8 @@ def main() -> int:
         "STATUS": status,
         "NEXT": next_step,
     }
+    if notes:
+        final_report["VERIFICATION_NOTES"] = notes
     for symbol in SYMBOLS:
         symbol_verdict = verdict["by_symbol"][symbol]["verdict"]
         final_report[f"{symbol}_VERDICT"] = (
@@ -760,6 +780,92 @@ def main() -> int:
     print(f"STATUS={status}")
     print(f"OOS_STRUCTURAL_VERDICT={final_verdict}")
     return 0
+
+
+SEALED_EVIDENCE_FILES = [
+    "oos_ledger.jsonl", "oos_accounting.json", "oos_metrics.json",
+    "dev_oos_comparison.json", "runner_hypothesis.json",
+    "causality_audit.json", "determinism_report.json", "oos_verdict.json",
+    "canonical_contract.json"]
+
+
+def reverify(prereg: dict, prereg_sha: str) -> int:
+    """Re-execute ONLY phase-10 verification against the sealed artifacts.
+
+    Purpose (V0.6.2 incident): the initial sealed run reported E because the
+    verifier's preregistration_integrity check read the candidate pin and
+    dataset role at the wrong JSON nesting level — a tooling bug in the
+    CHECK, not an integrity failure (the runner's startup gate had already
+    verified companion==file==committed prereg and pin==mission pin BEFORE
+    the OOS open). This mode re-runs verification with the fixed check. The
+    evaluation is NOT recomputed: the sealed evidence files must be
+    byte-identical to the sealed-evaluation commit, else STOP.
+    """
+    print("RE-VERIFICATION ONLY — sealed evaluation artifacts NOT recomputed")
+    for name in SEALED_EVIDENCE_FILES:
+        committed = subprocess.run(
+            ["git", "show",
+             f"HEAD:data/artifacts/target_policy_c3_v1_oos/{name}"],
+            cwd=ROOT, check=True, capture_output=True).stdout
+        if committed != (OUT_DIR / name).read_bytes():
+            _stop("SEALED_ARTIFACT_MODIFIED")
+    print(f"  {len(SEALED_EVIDENCE_FILES)} sealed evidence files "
+          f"byte-identical to the sealed-evaluation commit (HEAD)")
+
+    metrics = json.loads(
+        (OUT_DIR / "oos_metrics.json").read_text(encoding="utf-8"))
+    comparison = json.loads(
+        (OUT_DIR / "dev_oos_comparison.json").read_text(encoding="utf-8"))
+    hypothesis = json.loads(
+        (OUT_DIR / "runner_hypothesis.json").read_text(encoding="utf-8"))
+    verdict = json.loads(
+        (OUT_DIR / "oos_verdict.json").read_text(encoding="utf-8"))
+    accounting = json.loads(
+        (OUT_DIR / "oos_accounting.json").read_text(encoding="utf-8"))
+    causality = json.loads(
+        (OUT_DIR / "causality_audit.json").read_text(encoding="utf-8"))
+    determinism = json.loads(
+        (OUT_DIR / "determinism_report.json").read_text(encoding="utf-8"))
+    controls = hypothesis["controls"]
+
+    print("PHASE 10 (re-run) — INDEPENDENT REPRODUCTION "
+          "(raw OOS bars; fixed prereg check)")
+    independent = oosv.verify_oos_bundle(OUT_DIR, ZIP_DIR, MISSION_PIN)
+    (OUT_DIR / "independent_verification.json").write_bytes(
+        vf.canonical_serialize(independent).encode("utf-8") + b"\n")
+    for name, check in sorted(independent["checks"].items()):
+        line = f"  {'PASS' if check['passed'] else 'FAIL'}  {name}"
+        if not check["passed"] and check["detail"]:
+            line += f" — {check['detail']}"
+        print(line)
+    contamination_ok = (
+        independent["checks"]["oos_window_discipline"]["passed"]
+        and independent["checks"]["dataset_identity"]["passed"])
+
+    notes = (
+        "Initial sealed run (sealed-evaluation commit, phase 10 of the same "
+        "single authorized OOS open) reported verdict E because the "
+        "verifier's preregistration_integrity check read the candidate pin "
+        "and dataset role at the wrong JSON nesting level — a tooling bug "
+        "in the check itself, not an integrity failure. The runner's "
+        "startup gate had already verified companion==file==git-committed "
+        "preregistration and embedded pin==mission pin BEFORE the OOS "
+        "partition was opened, and the printed check detail showed "
+        "companion==file. The check was fixed "
+        "(check_preregistration_integrity, unit-tested) and phase-10 "
+        "verification re-executed. The evaluation artifacts (ledger, "
+        "accounting, metrics, comparison, controls, hypothesis, verdict, "
+        "causality, determinism) are byte-identical to the "
+        "sealed-evaluation commit (asserted at reverify startup). No "
+        "evaluation was recomputed, no parameter, rule, or threshold was "
+        "changed, and no second evaluation attempt was made. This is the "
+        "same sealed run's verification step, completed.")
+    return _finalize(
+        prereg=prereg, prereg_sha=prereg_sha, metrics=metrics,
+        comparison=comparison, verdict=verdict, controls=controls,
+        accounting=accounting, causality=causality, determinism=determinism,
+        independent_ok=independent["ok"], contamination_ok=contamination_ok,
+        notes=notes)
 
 
 def _render_markdown(report, metrics, comparison, verdict, controls,

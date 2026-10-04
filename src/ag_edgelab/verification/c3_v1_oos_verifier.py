@@ -231,6 +231,30 @@ def deep_replay(reconstruction: dict, rows: Sequence[dict]) -> list[str]:
 # OOS bundle verification
 # ---------------------------------------------------------------------------
 
+def check_preregistration_integrity(bundle: Path,
+                                    pinned_contract_sha256: str) -> tuple[bool, str]:
+    """Preregistration integrity + pre-open binding (check #2).
+
+    Reads the committed preregistration file and its sha256 companion from
+    the bundle. Regression note (V0.6.2): the original sealed run read
+    ``prereg['candidate_sha256']`` / ``prereg['dataset_role']`` at the top
+    level — those keys do not exist there (actual locations:
+    ``frozen_candidate.candidate_sha256`` / ``dataset.dataset_role``) —
+    producing a false FAIL. Fixed and covered by unit tests.
+    """
+    prereg_bytes = (bundle / PREREG_NAME).read_bytes()
+    prereg = json.loads(prereg_bytes.decode("utf-8"))
+    prereg_sha = vf.sha256_bytes(prereg_bytes)
+    companion = (bundle / "oos_preregistration.sha256").read_text(
+        encoding="utf-8").strip()
+    pin_ok = prereg.get("frozen_candidate", {}).get("candidate_sha256") \
+        == pinned_contract_sha256
+    role_ok = prereg.get("dataset", {}).get("dataset_role") == OOS_ROLE
+    detail = (f"companion {companion[:16]}… vs file {prereg_sha[:16]}…; "
+              f"candidate_pin_ok={pin_ok} dataset_role_ok={role_ok}")
+    return (companion == prereg_sha and pin_ok and role_ok), detail
+
+
 def verify_oos_bundle(bundle_dir: Path | str, zip_dir: Path | str,
                       pinned_contract_sha256: str) -> dict:
     bundle = Path(bundle_dir)
@@ -260,17 +284,12 @@ def verify_oos_bundle(bundle_dir: Path | str, zip_dir: Path | str,
            "canonical re-serialization differs from contract file bytes")
 
     # ---- 2. preregistration integrity + pre-open binding
-    prereg_bytes = (bundle / PREREG_NAME).read_bytes()
-    prereg = json.loads(prereg_bytes.decode("utf-8"))
-    prereg_sha = vf.sha256_bytes(prereg_bytes)
-    companion = (bundle / "oos_preregistration.sha256").read_text(
-        encoding="utf-8").strip()
-    record("preregistration_integrity",
-           companion == prereg_sha
-           and prereg.get("candidate_sha256") == pinned_contract_sha256
-           and prereg.get("dataset_role") == OOS_ROLE,
-           f"companion {companion[:16]}… vs file {prereg_sha[:16]}…; "
-           "candidate pin or dataset role wrong")
+    prereg_passed, prereg_detail = check_preregistration_integrity(
+        bundle, pinned_contract_sha256)
+    prereg = json.loads(
+        (bundle / PREREG_NAME).read_text(encoding="utf-8"))
+    prereg_sha = vf.sha256_bytes((bundle / PREREG_NAME).read_bytes())
+    record("preregistration_integrity", prereg_passed, prereg_detail)
 
     # ---- 3. ledger rows + OOS window discipline
     rows = [json.loads(line) for line in
