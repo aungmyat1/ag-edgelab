@@ -1,0 +1,43 @@
+{
+  "record_version": "CONSOLIDATION_R1_EDGE_STATUS_VOCABULARY_V1",
+  "purpose": "Single repository-wide vocabulary for edge status and verification stage. Ticket systems, candidate ledgers, and reports must expose BOTH fields; failures must never be collapsed into one label.",
+  "edge_status": {
+    "UNVERIFIED": "no verification evidence exists for the candidate identity",
+    "INSUFFICIENT_EVIDENCE": "verification ran but the evidence population cannot support any edge conclusion (sample, data authority, or evidence-class blockers)",
+    "NO_EDGE": "verification evidence supports the conclusion that no edge exists at the tested claim level",
+    "EDGE_VERIFIED": "verification evidence supports the claimed edge under the preregistered claim, dataset authority, and friction authority (requires FRICTION_AUTHORITY_COMPLETE=YES for economic claims)"
+  },
+  "verification_lifecycle": {
+    "RESEARCH_CANDIDATE": "identity defined; no dataset evaluation yet",
+    "DEV_SCREENED": "development-partition screening executed (no OOS)",
+    "DEV_REJECTED": "failed development gates; OOS not opened",
+    "FROZEN_FOR_OOS": "identity + thresholds frozen before an OOS open",
+    "OOS_REJECTED": "opened OOS under preregistration and failed the preregistered gates",
+    "VERIFICATION_FAILED": "the verification process itself was invalid (e.g. E-verdict: contamination, nondeterminism, reproduction failure)",
+    "EDGE_VERIFIED": "passed all preregistered gates including economic verification with friction authority",
+    "ARCHIVED": "lane closed without reaching a verdict (records retained)"
+  },
+  "verification_stage_examples": [
+    "SYNTHETIC_LAB",
+    "DEV_SCREEN",
+    "DEV_REPLAY_AND_TRIGGER_AUTHORITY_AUDIT",
+    "FROZEN_CAMPAIGN_ECONOMIC_VERIFICATION",
+    "SEALED_STRUCTURAL_OOS_V1",
+    "IMPORTED_ECONOMIC_VERIFICATION"
+  ],
+  "mapping_rules": [
+    "edge_status and verification_stage are INDEPENDENT axes: a candidate can be INSUFFICIENT_EVIDENCE at SEALED_STRUCTURAL_OOS_V1 stage, or NO_EDGE at DEV_SCREEN stage.",
+    "ECONOMIC_METRICS=NOT_ESTIMABLE_NO_FRICTION_AUTHORITY pairs with edge_status that is NOT EDGE_VERIFIED; EDGE_VERIFIED for an economic claim is impossible without friction authority.",
+    "VERIFICATION_FAILED is a process verdict, not an edge verdict: it must not be read as NO_EDGE, and it must not be read as the absence of failure either.",
+    "Never reduce DEV_REJECTED, OOS_REJECTED, and VERIFICATION_FAILED to a single 'failed' label: they carry different evidence and different reuse consequences."
+  ],
+  "current_ledger_snapshot": [
+    {"candidate": "TARGET_POLICY_C3_V1", "edge_status": "NO_EDGE", "verification_stage": "SEALED_STRUCTURAL_OOS_V1", "lifecycle": "OOS_REJECTED"},
+    {"candidate": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc", "edge_status": "NO_EDGE", "verification_stage": "FROZEN_CAMPAIGN_ECONOMIC_VERIFICATION", "lifecycle": "OOS_REJECTED"},
+    {"candidate": "ST_MTF_CONTROL_SHIFT_V1@1.0.0", "edge_status": "INSUFFICIENT_EVIDENCE", "verification_stage": "DEV_REPLAY_AND_TRIGGER_AUTHORITY_AUDIT", "lifecycle": "DEV_REJECTED"},
+    {"candidate": "ST_SESSION_SWEEP_CONTINUATION_V1@1.0.1", "edge_status": "NO_EDGE", "verification_stage": "IMPORTED_ECONOMIC_VERIFICATION", "lifecycle": "ARCHIVED"},
+    {"candidate": "ST_LIQUIDITY_SWEEP_RETEST_V1", "edge_status": "INSUFFICIENT_EVIDENCE", "verification_stage": "IMPORTED_EVIDENCE_GAP_VERIFICATION", "lifecycle": "ARCHIVED"},
+    {"candidate": "ST_CRYPTO_MTF_SMC_V1 (synthetic lane)", "edge_status": "INSUFFICIENT_EVIDENCE", "verification_stage": "SYNTHETIC_LAB", "lifecycle": "RESEARCH_CANDIDATE"},
+    {"candidate": "DEV_SCREEN_LANES (7 archived screens)", "edge_status": "UNVERIFIED", "verification_stage": "DEV_SCREEN", "lifecycle": "ARCHIVED"}
+  ]
+}

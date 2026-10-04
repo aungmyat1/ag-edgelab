@@ -1,0 +1,24 @@
+{
+  "contract_version": "CONSOLIDATION_R1_TICKET_INTEGRATION_CONTRACT_V1",
+  "purpose": "Data contract ONLY — no ticket system is connected or enabled by this record. Every future ticket (research task, candidate, or incident) should eventually carry these fields so that work state and edge state stay separate and auditable.",
+  "required_fields": {
+    "strategy_id": "string — canonical strategy/candidate identity, e.g. TARGET_POLICY_C3_V1",
+    "strategy_version": "string — frozen version tag, e.g. 1.0.0-frozen",
+    "strategy_hash": "hex64 — sha256 of the canonical candidate contract (identity anchor)",
+    "edge_status": "one of UNVERIFIED | INSUFFICIENT_EVIDENCE | NO_EDGE | EDGE_VERIFIED (config/governance/edge_status_vocabulary.json)",
+    "verification_stage": "string from the lifecycle/stage vocabulary, e.g. SEALED_STRUCTURAL_OOS_V1",
+    "verification_evidence_id": "pointer to the evidence bundle: repository path + sha256 (or external_artifact_registry artifact_id)",
+    "dataset_authority": "dataset_id from config/governance/oos_access_log.json dataset_registry, or NONE + explanation",
+    "friction_authority": "preregistered friction authority reference, or FRICTION_AUTHORITY_MISSING (never invented)"
+  },
+  "permissions_model": {
+    "rule": "Demo/live execution permissions are governed SEPARATELY from this contract and are NEVER granted by ticket state, research results, or verification verdicts.",
+    "current_state": "EXECUTION_DISABLED repository-wide: no order-sending capability exists in the mainline (the NautilusTrader adapter branch was deliberately excluded from consolidation); demo_authorized=false, live_authorized=false, allow_order_send=false for every candidate on record.",
+    "grant_path": "any future execution authorization requires an explicit governance mission that amends this record and defines venue, risk limits, and kill-switches — nothing in this consolidation grants it."
+  },
+  "prohibited": [
+    "deriving EDGE_VERIFIED from anything other than the preregistered verification chain",
+    "attaching execution permissions to tickets automatically",
+    "creating tickets that mutate candidate ledger verdicts (append-only)"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "record_version": "CONSOLIDATION_R1_FRICTION_AUTHORITY_GAP_V1",
+  "STATUS": "FRICTION_AUTHORITY_MISSING",
+  "scope": "FX lane, HistData 2017 (EURUSD, GBPUSD, USDJPY, XAUUSD), for any future NET/economic claim following the C3 structural rejection",
+  "why_missing": "The V0.6.2 sealed structural OOS verification deliberately reported ECONOMIC_METRICS=NOT_ESTIMABLE_NO_FRICTION_AUTHORITY and EDGE_VERIFIED=FALSE: no friction authority was preregistered for the C3 evaluation, so no net metric may be derived from it. Friction values must never be invented to fill this gap.",
+  "existing_evidence_in_repo": {
+    "note": "Already present (NOT collected during consolidation; recorded for provenance only):",
+    "source": "artifacts/session_trade_v2_economic_matrix/oos_result.json friction_authority block (SESSION_TRADE_V2 campaign, PR#10 lineage)",
+    "values_recorded_there": {
+      "EURUSD": "spread_rt 3e-05, commission_usd_rt 7.0, slippage_rt 2e-05 — evidence: VT Markets RAW ECN published averages (2026, tradersunion/brokerchooser/fxstreet)",
+      "GBPUSD": "spread_rt 4e-05, commission_usd_rt 7.0, slippage_rt 2e-05 — evidence: VT Markets RAW ECN published averages (2026)",
+      "USDJPY": "spread_rt 0.004, commission_usd_rt 7.0, slippage_rt 0.002 — evidence: cross-broker live RAW/ECN average 0.47 pip (compareforexbrokers, 2026) + stress grid",
+      "XAUUSD": "spread_rt 0.30, commission_usd_rt 7.0, slippage_rt 0.1 — evidence: MEASURED Dukascopy bid/ask M1 2017 (Feb/Jun/Oct, weekday 06:00-14:00 UTC, median $0.237, p75 $0.259, p95 $0.284, n=23,040; frozen at $0.30 > p95)"
+    },
+    "status_of_that_evidence": "Campaign-scoped economic verification of SESSION_TRADE_V2 (a rejected candidate). It is NOT a repository-level friction authority for new candidates: it is broker-published/marketplace-sourced for FX majors (2026-era quotes applied to 2017 data) and measured-spread only for XAUUSD. Any future NET claim requires its own preregistered friction authority meeting the contract below."
+  },
+  "required_evidence_contract_per_symbol": {
+    "EURUSD": {
+      "spread": "REQUIRED — time-of-day distribution (median + p75 + p95) from the execution venue or a measured tick/bid-ask archive contemporaneous with the evaluation window; venue name + retrieval date + raw bytes hash",
+      "slippage": "REQUIRED — per-side, measured or conservatively bounded, with method",
+      "commission": "REQUIRED — round-turn USD per notional unit, venue schedule reference",
+      "partial_exit_treatment": "REQUIRED — how fractional exits at the first objective are charged (pro-rata spread/slippage per fill)",
+      "runner_exit_treatment": "REQUIRED — how the runner leg exit (target/stop/horizon close) is charged, including stop-gap risk on M15 close exits",
+      "forced_or_horizon_close_treatment": "REQUIRED — charge model for the 96-bar horizon close (market order at last completed M15 close)",
+      "swap_rollover_applicability": "REQUIRED — position holding times are intraday (max 24h); state whether swap applies and, if so, the schedule"
+    },
+    "GBPUSD": "same contract as EURUSD",
+    "USDJPY": "same contract as EURUSD",
+    "XAUUSD": "same contract as EURUSD, plus: contract size (100 oz) notional handling and any metal-specific financing"
+  },
+  "acceptance_rules": [
+    "Every friction value must carry provenance: source name, URL or dataset, retrieval/measurement date, and a hash of the raw evidence bytes.",
+    "Measured spreads contemporaneous with the evaluation window outrank current broker-published quotes; 2026 quotes applied to 2017 data are ADVISORY ONLY.",
+    "Conservative direction: when in doubt, round costs AGAINST the candidate.",
+    "The authority must be preregistered BEFORE any OOS window is opened for an economic claim (structural claims may proceed without it, reporting ECONOMIC_METRICS=NOT_ESTIMABLE_NO_FRICTION_AUTHORITY).",
+    "No broker data may be collected inside a consolidation mission; this record is the prepared data contract only."
+  ]
+}
