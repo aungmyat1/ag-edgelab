@@ -219,8 +219,11 @@ def assess(
 
     multiyear = "YES" if len(years) >= MIN_YEARS_FOR_MULTIYEAR else "NO"
     reasons.append(
-        f"{len(years)} complete calendar years x {len(symbols)} symbols "
-        f"(threshold {MIN_YEARS_FOR_MULTIYEAR} years) -> MULTIYEAR={multiyear}")
+        f"{len(years)} calendar years touched x {len(symbols)} symbols "
+        f"(threshold {MIN_YEARS_FOR_MULTIYEAR} years) -> MULTIYEAR={multiyear}. "
+        "Not every year is complete for every symbol: the upstream mirror is "
+        "partial at both ends and no data was fabricated to even it out — see "
+        "COVERAGE.per_symbol_span and COVERAGE.common_window.")
 
     if min_coverage_pct < MIN_COVERAGE_PCT_FOR_READY:
         walk_forward = "NO"

@@ -329,7 +329,7 @@
     }
   ],
   "readiness_reasons": [
-    "8 complete calendar years x 4 symbols (threshold 3 years) -> MULTIYEAR=YES",
+    "8 calendar years touched x 4 symbols (threshold 3 years) -> MULTIYEAR=YES. Not every year is complete for every symbol: the upstream mirror is partial at both ends and no data was fabricated to even it out \u2014 see COVERAGE.per_symbol_span and COVERAGE.common_window.",
     "21 usable rolling folds at >= 2000 train / >= 400 test bars, worst coverage 92.71% -> WALK_FORWARD=YES",
     "annual realized-volatility dispersion (max/min) is EURUSD=1.94x, GBPUSD=2.20x, USDJPY=1.70x, XAUUSD=2.40x; all exceed 1.5x -> REGIME=YES"
   ],
