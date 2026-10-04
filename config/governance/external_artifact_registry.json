@@ -1,0 +1,53 @@
+{
+  "registry_version": "CONSOLIDATION_R1_EXTERNAL_ARTIFACT_REGISTRY_V1",
+  "purpose": "Content-addressed pointers for bulky research evidence that is deliberately NOT carried in the mainline tree. Bytes remain retrievable from the immutable git history at the producer commit; every pointer pins the sha256 of the exact bytes. No external artifact may exist without a pinned hash in this registry.",
+  "policy": {
+    "in_git_tree": "source code, tests, contracts, schemas, manifests, preregistrations, final_report.md, small final_report.json, hash pointers, and any evidence required by runtime tests",
+    "externalized": "bulky replay ledgers and large intermediate evidence not required by runtime tests; bytes preserved at the producer commit (git object database) and regenerable deterministically by the producer script",
+    "verification": "scripts/verify_external_artifacts.py recomputes sha256 of the bytes at each storage location and compares against this registry; any mismatch must fail closed"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "UNIVERSAL_FUNNEL_V0_5_TARGET_CANDIDATE_LEDGER",
+      "sha256": "98d002f283f42c4c8341e066f3d4fd5215c5b598b9792525f79a901441668e57",
+      "byte_size": 12370269,
+      "schema_version": "UNIVERSAL_FUNNEL_V0_5_CANDIDATE_LEDGER_ROWS_V1",
+      "producer_commit": "65ba0ed",
+      "producer_script": "scripts/run_target_v0_5.py",
+      "candidate_id": "UNIVERSAL_FUNNEL_V0_5_TARGET_MODEL (research stage; not a tradeable candidate)",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "git:65ba0ed:data/artifacts/universal_funnel_v0_5_target/target_candidate_ledger.jsonl (blob 1cc1706487d0a427f4b13c66e5b3cf0fe7a0c443; reachable on branches arena/01a105f9-ag-edgelab and arena/01a1073e-ag-edgelab)",
+      "externalized_by_commit": "CONSOLIDATION_R1",
+      "reason": "12.4 MB replay ledger; not referenced by any runtime test; regenerable deterministically by the producer script from the pinned HistData 2017 zips"
+    },
+    {
+      "artifact_id": "UNIVERSAL_FUNNEL_V0_5_TARGET_LADDERS",
+      "sha256": "eb56e59aedb8ce660ec354572d699f54e38e39db01c7828004397d7ff87f15c5",
+      "byte_size": 3236708,
+      "schema_version": "UNIVERSAL_FUNNEL_V0_5_TARGET_LADDER_ROWS_V1",
+      "producer_commit": "65ba0ed",
+      "producer_script": "scripts/run_target_v0_5.py",
+      "candidate_id": "UNIVERSAL_FUNNEL_V0_5_TARGET_MODEL (research stage; not a tradeable candidate)",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "git:65ba0ed:data/artifacts/universal_funnel_v0_5_target/target_ladders.jsonl (blob 1eb4f1af94e16f1accb37be9405a033028db7938; reachable on branches arena/01a105f9-ag-edgelab and arena/01a1073e-ag-edgelab)",
+      "externalized_by_commit": "CONSOLIDATION_R1",
+      "reason": "3.2 MB intermediate ladder ledger; not referenced by any runtime test; regenerable deterministically by the producer script"
+    },
+    {
+      "artifact_id": "STV2_FUNNEL_ANALYSIS_UNITS",
+      "sha256": "6100e06adb666b13a2fbf5d08a1a5176c27f3bbe2c0593f701bae90433f35ab4",
+      "byte_size": 6875194,
+      "schema_version": "SESSION_TRADE_V2_FUNNEL_ANALYSIS_UNITS_V1",
+      "producer_commit": "fd86f86",
+      "producer_script": "scripts/run_stv2_funnel_analysis.py",
+      "candidate_id": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "git:fd86f86:artifacts/session_trade_v2_funnel_analysis/analysis_units.json (blob 4bd85e133f1c20718c2c512c1123e9f790f31ba8; reachable on branch arena/01a1015a-ag-edgelab)",
+      "externalized_by_commit": "CONSOLIDATION_R1",
+      "reason": "6.9 MB per-trade analysis-unit evidence; not referenced by any runtime test (the aggregate analyses, funnel matrices, findings and final summaries remain in-tree)"
+    }
+  ]
+}
