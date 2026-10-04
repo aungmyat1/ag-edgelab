@@ -110,14 +110,14 @@ def _objective_identity(obj: Mapping | None) -> tuple | None:
     return (obj["family"], obj["price"], obj["target_r"], obj["created_time"])
 
 
-def compare_population(reconstruction: dict, rows: Sequence[dict]) -> list[str]:
+def compare_population(reconstruction: dict, rows: Sequence[dict],
+                       id_prefix: str = "OOS:") -> list[str]:
     """Every ledger row must match the independent reconstruction exactly
     (population identity + objective identities)."""
     failures: list[str] = []
     by_id: dict[str, Any] = {}
     for pe in reconstruction["policy_entries"]:
-        rec = pe.base
-        by_id[pe.entry_id] = pe
+        by_id[id_prefix + pe.entry_id] = pe
     ledger_ids = {row["entry_id"] for row in rows}
     if ledger_ids != set(by_id):
         missing = sorted(set(by_id) - ledger_ids)[:5]
@@ -168,7 +168,7 @@ def compare_population(reconstruction: dict, rows: Sequence[dict]) -> list[str]:
                                     for _f, _p, r, reached in rec.ladder])
         if row.get("ladder_rungs") != rungs:
             failures.append(f"{rid}: ladder rungs mismatch")
-        if row.get("fixed_reached") != {k: bool(v) for k, v
+        if row.get("fixed_reached") != {str(k): bool(v) for k, v
                                         in rec.fixed_reached.items()}:
             failures.append(f"{rid}: fixed_reached mismatch")
     return failures
@@ -305,7 +305,7 @@ def verify_oos_bundle(bundle_dir: Path | str, zip_dir: Path | str,
            all(v["identity_verified"] and v["all_bars_inside_oos_window"]
                for v in dataset.values()),
            "raw dataset identity or OOS window violation")
-    pop_failures = compare_population(reconstruction, rows)
+    pop_failures = compare_population(reconstruction, rows, id_prefix="OOS:")
     record("population_reconstruction", not pop_failures,
            "; ".join(pop_failures[:5]) if pop_failures else "",
            info=(f"{len(rows)} entries reconstructed from raw bars "
@@ -355,7 +355,7 @@ def verify_oos_bundle(bundle_dir: Path | str, zip_dir: Path | str,
     # ---- 8. metrics + verdict recomputation from the reconstruction
     try:
         evidence = om.evidence_from_pipeline(
-            reconstruction["records_by_symbol"], rows)
+            reconstruction["records_by_symbol"], rows, id_prefix="OOS:")
         metrics = om.compute_metrics(evidence)
         reported = json.loads(
             (bundle / METRICS_NAME).read_text(encoding="utf-8"))

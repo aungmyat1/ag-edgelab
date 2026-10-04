@@ -117,13 +117,16 @@ def _rungs_from_parent_sequence(seq: Sequence) -> list[list]:
 # ---------------------------------------------------------------------------
 
 def evidence_from_pipeline(records_by_symbol: dict, ledger_rows: Sequence[dict],
-                           ) -> list[dict]:
+                           id_prefix: str = "") -> list[dict]:
     """Build evidence dicts from the frozen pipeline records (EntryRecord)
-    joined with the candidate replay ledger rows."""
+    joined with the candidate replay ledger rows.
+
+    id_prefix namespaces entry ids per partition (the OOS ledger uses
+    "OOS:" so DEV and OOS entry ids can never collide across artifacts)."""
     rec_by_id: dict[str, Any] = {}
     for symbol, records in records_by_symbol.items():
         for rec in records:
-            rec_by_id[f"{symbol}:{rec.obs_feed_index}"] = rec
+            rec_by_id[id_prefix + f"{symbol}:{rec.obs_feed_index}"] = rec
     rows_by_id = {row["entry_id"]: row for row in ledger_rows}
     if set(rows_by_id) != set(rec_by_id):
         raise ValueError("ledger rows and pipeline records disagree on the "
@@ -142,7 +145,7 @@ def evidence_from_pipeline(records_by_symbol: dict, ledger_rows: Sequence[dict],
             "entry_price": row["entry_price"],
             "stop_price": row["stop_price"],
             "rungs": rungs,
-            "fixed_reached": {k: bool(v)
+            "fixed_reached": {str(k): bool(v)
                               for k, v in rec.fixed_reached.items()},
             "status": row["status"],
             "first_leg": row.get("first_leg"),
@@ -203,7 +206,7 @@ def evidence_from_dev_frozen(dev_ledger_path: Path,
                 status_first_reached = row["status"] in FIRST_REACHED_STATUSES
                 assert rungs[0][1] == status_first_reached, \
                     f"{eid}: ladder first-reached flag disagrees with status"
-        fixed = {k: parent["policies"][f"C0_{k}R"]["status"] == "FULL_TARGET"
+        fixed = {str(k): parent["policies"][f"C0_{k}R"]["status"] == "FULL_TARGET"
                  for k in (1, 2, 3, 4, 5)}
         evidence.append({
             "entry_id": eid,
@@ -310,19 +313,19 @@ def _metric_block(evidence: Sequence[dict]) -> dict:
             (len(runner_ext_num) / len(first_reached)) if first_reached
             else None,
         "R1_CAPABILITY": (sum(1 for e in evidence
-                              if e["fixed_reached"].get(1)) / entry_n)
+                              if e["fixed_reached"].get("1")) / entry_n)
                          if entry_n else None,
         "R2_CAPABILITY": (sum(1 for e in evidence
-                              if e["fixed_reached"].get(2)) / entry_n)
+                              if e["fixed_reached"].get("2")) / entry_n)
                          if entry_n else None,
         "R3_CAPABILITY": (sum(1 for e in evidence
-                              if e["fixed_reached"].get(3)) / entry_n)
+                              if e["fixed_reached"].get("3")) / entry_n)
                          if entry_n else None,
         "R4_CAPABILITY": (sum(1 for e in evidence
-                              if e["fixed_reached"].get(4)) / entry_n)
+                              if e["fixed_reached"].get("4")) / entry_n)
                          if entry_n else None,
         "R5_CAPABILITY": (sum(1 for e in evidence
-                              if e["fixed_reached"].get(5)) / entry_n)
+                              if e["fixed_reached"].get("5")) / entry_n)
                          if entry_n else None,
         "NATURAL_TARGET_P25_R": _quantile(primary_r, 0.25),
         "NATURAL_TARGET_MEDIAN_R": _quantile(primary_r, 0.50),
