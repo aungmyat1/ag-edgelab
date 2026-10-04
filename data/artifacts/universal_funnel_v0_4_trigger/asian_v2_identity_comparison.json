@@ -1,0 +1,59 @@
+{
+  "ASIAN_V2_IDENTITY_RESULT": "INSUFFICIENT_EVIDENCE",
+  "blocks_trigger_experiment": false,
+  "method": "identity comparison only; no substitution performed",
+  "observable_relations": [
+    "family overlap: Asian-session reference window, sweep/range/trend setup families, 5R total target",
+    "SESSION_TRADE_V2 explicitly self-declares as a DISTINCT new authority, not a rename of any V1/branch lineage",
+    "no artifact anywhere binds the name ST_ASIAN_SESSION_BRANCH_V2 to any rule set, hash, or version"
+  ],
+  "question": "is ST_ASIAN_SESSION_BRANCH_V2 identical to SESSION_TRADE_V2 @2.0.0?",
+  "reason": "one side of the comparison has no retrievable semantics (name only); a semantic identity verdict (IDENTICAL / SEMANTICALLY_EQUIVALENT / RELATED_BUT_DIFFERENT) cannot be established without owner-provided lineage; nothing was substituted automatically",
+  "session_trade_v2": {
+    "instruments": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ],
+    "registered_utc": "2026-10-03",
+    "self_declaration": "New deterministic authority. It does not replace SESSION_TRADE_V1 or ST_ASIAN_SWEEP_5R_V1 until evidence and owner promotion explicitly do so.",
+    "session_pairs": {
+      "ASIAN_LONDON": {
+        "reference_utc": [
+          "22:00",
+          "06:00"
+        ],
+        "trade_utc": [
+          "06:00",
+          "09:00"
+        ]
+      },
+      "LONDON_NEWYORK": {
+        "reference_utc": [
+          "06:00",
+          "11:00"
+        ],
+        "trade_utc": [
+          "11:00",
+          "14:00"
+        ]
+      }
+    },
+    "setup_priority": [
+      "A_SWEEP_REENTRY",
+      "B_RANGE_REJECTION",
+      "C_TREND_EXPANSION"
+    ],
+    "source": "origin/arena/01a100ce-ag-edgelab:src/ag_edgelab/campaigns/session_trade_v2/frozen/SESSION_TRADE_V2.yaml",
+    "status": "RESEARCH_SHADOW",
+    "strategy_id": "SESSION_TRADE_V2",
+    "total_target_r": 5.0,
+    "version": "2.0.0"
+  },
+  "st_asian_session_branch_v2": {
+    "comparable_semantics_available": false,
+    "definition_found": false,
+    "search_scope": "all fetched branches incl. origin/arena/01a100ce (PR #10); the name appears ONLY in V0.3 not-found reports"
+  }
+}

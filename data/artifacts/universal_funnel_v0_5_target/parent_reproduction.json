@@ -1,0 +1,159 @@
+{
+  "all_match": true,
+  "checks": {
+    "D01_1R_frozen": {
+      "computed": 0.4926,
+      "expected": 0.4926,
+      "match": true
+    },
+    "D01_1R_recomputed": {
+      "computed": 0.49261702796104306,
+      "expected": 0.49261702796104306,
+      "match": true
+    },
+    "D01_2R_frozen": {
+      "computed": 0.3032,
+      "expected": 0.3032,
+      "match": true
+    },
+    "D01_2R_recomputed": {
+      "computed": 0.3031731071316368,
+      "expected": 0.3031731071316368,
+      "match": true
+    },
+    "D01_3R_frozen": {
+      "computed": 0.2001,
+      "expected": 0.2001,
+      "match": true
+    },
+    "D01_3R_recomputed": {
+      "computed": 0.20012566760917375,
+      "expected": 0.20012566760917375,
+      "match": true
+    },
+    "D01_4R_frozen": {
+      "computed": 0.1376,
+      "expected": 0.1376,
+      "match": true
+    },
+    "D01_4R_recomputed": {
+      "computed": 0.13760603204524033,
+      "expected": 0.13760603204524033,
+      "match": true
+    },
+    "D01_5R_frozen": {
+      "computed": 0.0952,
+      "expected": 0.0952,
+      "match": true
+    },
+    "D01_5R_recomputed": {
+      "computed": 0.09519321394910461,
+      "expected": 0.09519321394910461,
+      "match": true
+    },
+    "D01_DIRECTIONAL_N": {
+      "computed": 9226,
+      "expected": 9226,
+      "match": true
+    },
+    "D01_ENTERED_N_frozen": {
+      "computed": 3183,
+      "expected": 3183,
+      "match": true
+    },
+    "D01_ENTERED_N_recomputed": {
+      "computed": 3183,
+      "expected": 3183,
+      "match": true
+    },
+    "D01_NATURAL_TARGET_MEDIAN_R": {
+      "computed": 2.34,
+      "expected": 2.34,
+      "match": true
+    },
+    "D01_SEPARATION_PP": {
+      "computed": 2.04,
+      "expected": 2.04,
+      "match": true
+    },
+    "T1_1R_frozen": {
+      "computed": 0.533,
+      "expected": 0.533,
+      "match": true
+    },
+    "T1_1R_recomputed": {
+      "computed": 0.5329815303430079,
+      "expected": 0.5329815303430079,
+      "match": true
+    },
+    "T1_2R_frozen": {
+      "computed": 0.3509,
+      "expected": 0.3509,
+      "match": true
+    },
+    "T1_2R_recomputed": {
+      "computed": 0.35092348284960423,
+      "expected": 0.35092348284960423,
+      "match": true
+    },
+    "T1_3R_frozen": {
+      "computed": 0.2058,
+      "expected": 0.2058,
+      "match": true
+    },
+    "T1_3R_recomputed": {
+      "computed": 0.20580474934036938,
+      "expected": 0.20580474934036938,
+      "match": true
+    },
+    "T1_4R_frozen": {
+      "computed": 0.1293,
+      "expected": 0.1293,
+      "match": true
+    },
+    "T1_4R_recomputed": {
+      "computed": 0.12928759894459102,
+      "expected": 0.12928759894459102,
+      "match": true
+    },
+    "T1_5R_frozen": {
+      "computed": 0.0765,
+      "expected": 0.0765,
+      "match": true
+    },
+    "T1_5R_recomputed": {
+      "computed": 0.07651715039577836,
+      "expected": 0.07651715039577836,
+      "match": true
+    },
+    "T1_DIRECTIONAL_N": {
+      "computed": 899,
+      "expected": 899,
+      "match": true
+    },
+    "T1_ENTERED_N_frozen": {
+      "computed": 379,
+      "expected": 379,
+      "match": true
+    },
+    "T1_ENTERED_N_recomputed": {
+      "computed": 379,
+      "expected": 379,
+      "match": true
+    },
+    "T1_NATURAL_TARGET_MEDIAN_R": {
+      "computed": 2.63,
+      "expected": 2.63,
+      "match": true
+    },
+    "T1_SEPARATION_PP": {
+      "computed": 7.55,
+      "expected": 7.55,
+      "match": true
+    }
+  },
+  "parent_sha": "09ddc4d0f90eb1bf4ffbe00780e959d947177b6a",
+  "parent_tree": "ffa60fd6157c1af78e18f1b0f21cbd147abc4271",
+  "v04_rerun_byte_identical": true,
+  "v04_rerun_method": "scripts/run_trigger_v0_4.py re-executed in-session; diff -r against frozen artifacts: identical"
+}

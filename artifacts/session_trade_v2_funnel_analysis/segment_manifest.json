@@ -1,0 +1,203 @@
+{
+  "candidate_id": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc",
+  "expected_segments": 24,
+  "segments": 24,
+  "segments_match_expected": true,
+  "expected_analysis_units_note": "EXPECTED_ANALYSIS_UNITS != 24. The analysis-unit count is data-driven: it is the number of (trading_date x symbol x session x branch) observations produced by the frozen DEV dataset and stage construction.",
+  "analysis_units": 5808,
+  "identity_collisions": 0,
+  "segment_rows": [
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|A_SWEEP_REENTRY",
+      "branch": "A_SWEEP_REENTRY",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|B_RANGE_REJECTION",
+      "branch": "B_RANGE_REJECTION",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "EURUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "EURUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "GBPUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "GBPUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "USDJPY",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "USDJPY",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "XAUUSD",
+      "session": "ASIAN_LONDON",
+      "analysis_units": 242,
+      "trading_dates": 242
+    },
+    {
+      "segment_id": "SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|C_TREND_EXPANSION",
+      "branch": "C_TREND_EXPANSION",
+      "symbol": "XAUUSD",
+      "session": "LONDON_NEWYORK",
+      "analysis_units": 242,
+      "trading_dates": 242
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "rows": [],
+  "schema": "TriggerConfirmationTargetMatrixV0.1",
+  "semantics": {
+    "CONFIRMATION": "Asian branch plus existing entry condition",
+    "ECONOMICS": "not run",
+    "TARGET": "diagnostic target capability",
+    "TRIGGER": "MDxx direction"
+  },
+  "status": "INSUFFICIENT_EVIDENCE"
+}

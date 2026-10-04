@@ -1,0 +1,253 @@
+{
+  "base_parent_reproduced": true,
+  "causality": "PASS",
+  "dataset": {
+    "authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+    "hashes_verified": true,
+    "role": "DEVELOPMENT"
+  },
+  "determinism": "PASS",
+  "entry_n": {
+    "D01": 3183,
+    "T1": 379
+  },
+  "experiment_id": "TARGET_MODEL_DIAGNOSTICS_V1",
+  "final_report_sha256": "1bcbe3e1fc81f31cb2f0c63bf42ba75226b8db2af05622b674f1cffb5b3d6d62",
+  "first_objective_reach": {
+    "D01": 0.6754716981132075,
+    "T1": 0.6860158311345647
+  },
+  "five_r": {
+    "D01": {
+      "measurable": true,
+      "objective_available_pct": 0.2490566037735849,
+      "reach_when_available": 0.06060606060606061
+    },
+    "T1": {
+      "measurable": true,
+      "objective_available_pct": 0.22955145118733508,
+      "reach_when_available": 0.034482758620689655
+    }
+  },
+  "five_r_questions": {
+    "D01": {
+      "5R_BEYOND_EVERY_CAUSAL_OBJECTIVE_PCT": 0.7352201257861635,
+      "GE_5R_OBJECTIVE_EXISTS_PCT": 0.2490566037735849,
+      "GE_5R_OBJECTIVE_REACHED_WHEN_EXISTS_PCT": 0.06060606060606061,
+      "entry_n": 3183,
+      "ge5_exists_n": 792,
+      "measurable": true,
+      "measurable_n": 3180,
+      "realize_min_n": 20
+    },
+    "T1": {
+      "5R_BEYOND_EVERY_CAUSAL_OBJECTIVE_PCT": 0.741424802110818,
+      "GE_5R_OBJECTIVE_EXISTS_PCT": 0.22955145118733508,
+      "GE_5R_OBJECTIVE_REACHED_WHEN_EXISTS_PCT": 0.034482758620689655,
+      "entry_n": 379,
+      "ge5_exists_n": 87,
+      "measurable": true,
+      "measurable_n": 379,
+      "realize_min_n": 20
+    }
+  },
+  "furthest_target_quantiles": {
+    "D01": {
+      "MAX": 24.22727272727321,
+      "P10": 0.7646611496308955,
+      "P25": 1.447075191054991,
+      "P50": 2.737254901960807,
+      "P75": 4.98982749178534,
+      "P90": 7.67810077519409,
+      "n": 3180
+    },
+    "T1": {
+      "MAX": 24.22727272727321,
+      "P10": 1.1226998491703704,
+      "P25": 1.7849462365589426,
+      "P50": 2.967320261438122,
+      "P75": 4.891891891891635,
+      "P90": 7.948100700133879,
+      "n": 379
+    }
+  },
+  "guards": {
+    "execution_capability_added": false,
+    "holdout_touched": false,
+    "new_strategy_created": false,
+    "oos_opened": false,
+    "parameter_optimization": false,
+    "partial_exits_implemented": false,
+    "realized_economics_run": false,
+    "sl_changed": false,
+    "strategy_rules_changed": false,
+    "tp_changed": false,
+    "v0_6_created": false
+  },
+  "mission": "UNIVERSAL FUNNEL V0.5 \u2014 CAUSAL TARGET MODEL DIAGNOSTICS",
+  "p_second_given_first": {
+    "D01": 0.6353722143195828,
+    "T1": 0.541501976284585
+  },
+  "parent_sha": "09ddc4d0f90eb1bf4ffbe00780e959d947177b6a",
+  "primary_target_quantiles": {
+    "D01": {
+      "MAX": 17.836363636369377,
+      "P10": 0.06431711045992194,
+      "P25": 0.14961943976542044,
+      "P50": 0.40157724788874716,
+      "P75": 0.8905253630642042,
+      "P90": 1.628296836982949,
+      "n": 3180
+    },
+    "T1": {
+      "MAX": 5.704000000000088,
+      "P10": 0.056163332419926305,
+      "P25": 0.13950428396572354,
+      "P50": 0.3768115942029244,
+      "P75": 0.8492462311557907,
+      "P90": 1.8147474747474244,
+      "n": 379
+    }
+  },
+  "risk_distance_target_r_correlation": {
+    "label": "MECHANICALLY_COUPLED_DIAGNOSTIC",
+    "per_symbol": {
+      "EURUSD": {
+        "n": 748,
+        "pearson": -0.22104543708488505,
+        "spearman": -0.259074267571013
+      },
+      "GBPUSD": {
+        "n": 872,
+        "pearson": -0.21371470081384322,
+        "spearman": -0.20470282791874012
+      },
+      "USDJPY": {
+        "n": 733,
+        "pearson": -0.1933117367717744,
+        "spearman": -0.21237275346654022
+      },
+      "XAUUSD": {
+        "n": 827,
+        "pearson": -0.16866085748091428,
+        "spearman": -0.13794664279890448
+      }
+    },
+    "pooled_within_symbol_rank_spearman": -0.2018990591203748
+  },
+  "root_cause": {
+    "NEXT_FUNNEL_TO_TEST": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+    "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+    "SECONDARY_DIAGNOSES": [
+      "B_TARGET_CONTINUATION_WEAKNESS",
+      "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+      "E_SL_TARGET_GEOMETRY_INTERACTION"
+    ],
+    "cases": {
+      "A_TARGET_MODEL_MISMATCH": {
+        "evidence": {
+          "5r_beyond_every_objective_pct": 0.7352201257861635,
+          "first_objective_reached_pct": 0.6754716981132075,
+          "fixed_4r_5r_above_primary_pct": {
+            "4": 0.9814465408805031,
+            "5": 0.989937106918239
+          },
+          "primary_available_pct": 0.9990574929311969
+        },
+        "true": true
+      },
+      "B_TARGET_CONTINUATION_WEAKNESS": {
+        "evidence": {
+          "failing_levels": [
+            "3R",
+            "4R"
+          ]
+        },
+        "true": true
+      },
+      "C_FIXED_5R_SUPPORTED": {
+        "evidence": {
+          "ge5_available_pct": 0.2490566037735849,
+          "ge5_delivery_pct": 0.06060606060606061,
+          "measurable": true
+        },
+        "true": false
+      },
+      "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": {
+        "evidence": {
+          "first_objective_reached_pct": 0.6754716981132075,
+          "p_second_given_first": 0.6353722143195828
+        },
+        "note": "DIAGNOSTIC ONLY \u2014 no partial exits implemented",
+        "true": true
+      },
+      "E_SL_TARGET_GEOMETRY_INTERACTION": {
+        "evidence": {
+          "q1_over_q4_ratio": 2.0822473973521816,
+          "raw_coscaling_rank_spearman": 0.17923624171863037
+        },
+        "true": true
+      }
+    },
+    "next_map": {
+      "A_TARGET_MODEL_MISMATCH": "NATURAL_TARGET_EXPERIMENT",
+      "B_TARGET_CONTINUATION_WEAKNESS": "TARGET_CONTINUATION_RESEARCH",
+      "C_FIXED_5R_SUPPORTED": "FIXED_R_TARGET_EXPERIMENT",
+      "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+      "E_SL_TARGET_GEOMETRY_INTERACTION": "SL_TARGET_GEOMETRY_RESEARCH",
+      "F_TARGET_FAMILY_INSUFFICIENT": "INSUFFICIENT_EVIDENCE"
+    },
+    "no_parameter_search": true,
+    "no_partial_exits_implemented": true,
+    "no_sl_changed": true,
+    "no_tp_changed": true,
+    "precedence": [
+      "C_FIXED_5R_SUPPORTED",
+      "A_TARGET_MODEL_MISMATCH",
+      "B_TARGET_CONTINUATION_WEAKNESS",
+      "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+      "E_SL_TARGET_GEOMETRY_INTERACTION"
+    ]
+  },
+  "root_cause_per_symbol": {
+    "EURUSD": "A_TARGET_MODEL_MISMATCH",
+    "GBPUSD": "A_TARGET_MODEL_MISMATCH",
+    "USDJPY": "A_TARGET_MODEL_MISMATCH",
+    "XAUUSD": "A_TARGET_MODEL_MISMATCH"
+  },
+  "second_objective_reach": {
+    "D01": 0.4333764553686934,
+    "T1": 0.37637362637362637
+  },
+  "sl_target_geometry_interaction": "YES",
+  "status": "TARGET_DIAGNOSTICS_COMPLETE",
+  "t1_effect": {
+    "T1_DEEP_CONTINUATION_EFFECT": "DEGRADED",
+    "T1_TARGET_DELIVERY_EFFECT": "NEUTRAL",
+    "T1_TARGET_GEOMETRY_EFFECT": "NEUTRAL",
+    "deltas": {
+      "first_objective_reach": 0.01054413302135715,
+      "fixed_reach": {
+        "2R": 0.04775037571796742,
+        "3R": 0.005679081731195634,
+        "4R": -0.008318433100649308,
+        "5R": -0.018676063553326253
+      },
+      "furthest_p50_r": 0.2300653594773152,
+      "p_second_given_first": -0.09387023803499783,
+      "primary_p50_r": -0.02476565368582273,
+      "second_objective_reach": -0.057002828995067034
+    },
+    "direction_improvement_authority": "V0.4 parent (frozen): T1 separation +7.55pp vs D01 +2.04pp",
+    "thresholds": {
+      "material_pp": 5.0,
+      "material_r": 0.25,
+      "min_stratum_n": 100
+    },
+    "verdicts": [
+      "D_DAMAGES_DEEP_CONTINUATION"
+    ]
+  },
+  "version": "0.3.0-research"
+}

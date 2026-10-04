@@ -1,0 +1,108 @@
+{
+  "holdout_policy": "SEALED_HOLDOUT fails closed",
+  "partitions": {
+    "DEVELOPMENT": [
+      "2017-01-01T00:00:00+00:00",
+      "2017-09-01T00:00:00+00:00"
+    ],
+    "OOS": [
+      "2017-09-01T00:00:00+00:00",
+      "2017-12-01T00:00:00+00:00"
+    ],
+    "SEALED_HOLDOUT": [
+      "2017-12-01T00:00:00+00:00",
+      "2018-01-01T00:00:00+00:00"
+    ]
+  },
+  "role": "DEVELOPMENT",
+  "symbols": {
+    "EURUSD": {
+      "holdout_touched": false,
+      "identity_verified": true,
+      "m15_bars_development": 16661,
+      "m1_rows_development": 249805,
+      "m1_rows_full_2017": 371635,
+      "oos_opened": false,
+      "partition": {
+        "end": "2017-09-01T00:00:00+00:00",
+        "role": "DEVELOPMENT",
+        "start": "2017-01-01T00:00:00+00:00"
+      },
+      "pinned_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+      "quality": {
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 371635
+      },
+      "source_file": "HISTDATA_COM_ASCII_EURUSD_M1_2017.zip",
+      "source_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+      "timezone_rule": "source wall-clock America/New_York (DST) -> UTC before any logic"
+    },
+    "GBPUSD": {
+      "holdout_touched": false,
+      "identity_verified": true,
+      "m15_bars_development": 16632,
+      "m1_rows_development": 249511,
+      "m1_rows_full_2017": 371204,
+      "oos_opened": false,
+      "partition": {
+        "end": "2017-09-01T00:00:00+00:00",
+        "role": "DEVELOPMENT",
+        "start": "2017-01-01T00:00:00+00:00"
+      },
+      "pinned_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+      "quality": {
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 371204
+      },
+      "source_file": "HISTDATA_COM_ASCII_GBPUSD_M1_2017.zip",
+      "source_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+      "timezone_rule": "source wall-clock America/New_York (DST) -> UTC before any logic"
+    },
+    "USDJPY": {
+      "holdout_touched": false,
+      "identity_verified": true,
+      "m15_bars_development": 16621,
+      "m1_rows_development": 249562,
+      "m1_rows_full_2017": 371298,
+      "oos_opened": false,
+      "partition": {
+        "end": "2017-09-01T00:00:00+00:00",
+        "role": "DEVELOPMENT",
+        "start": "2017-01-01T00:00:00+00:00"
+      },
+      "pinned_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+      "quality": {
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 371298
+      },
+      "source_file": "HISTDATA_COM_ASCII_USDJPY_M1_2017.zip",
+      "source_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+      "timezone_rule": "source wall-clock America/New_York (DST) -> UTC before any logic"
+    },
+    "XAUUSD": {
+      "holdout_touched": false,
+      "identity_verified": true,
+      "m15_bars_development": 15733,
+      "m1_rows_development": 235925,
+      "m1_rows_full_2017": 352360,
+      "oos_opened": false,
+      "partition": {
+        "end": "2017-09-01T00:00:00+00:00",
+        "role": "DEVELOPMENT",
+        "start": "2017-01-01T00:00:00+00:00"
+      },
+      "pinned_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff",
+      "quality": {
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 352360
+      },
+      "source_file": "HISTDATA_COM_ASCII_XAUUSD_M1_2017.zip",
+      "source_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff",
+      "timezone_rule": "source wall-clock America/New_York (DST) -> UTC before any logic"
+    }
+  }
+}

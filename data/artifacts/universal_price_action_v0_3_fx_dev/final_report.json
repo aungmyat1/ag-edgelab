@@ -1,0 +1,114 @@
+{
+  "asian_v2_discovery_note": "No strategy named ST_ASIAN_SESSION_BRANCH_V2 exists in any branch. Closest unconfirmed candidate: SESSION_TRADE_V2 @2.0.0 on PR #10 branch (arena/01a100ce-ag-edgelab), self-declared as a DISTINCT authority (status RESEARCH_SHADOW, unmerged) with DEV ledger artifacts/session_trade_v2_economic_matrix/ledger.jsonl. Owner confirmation required before any overlay.",
+  "asian_v2_status": "NOT_RUN_AUTHORITATIVE_STRATEGY_LINEAGE_UNAVAILABLE",
+  "best_direction_hypothesis": "D08",
+  "best_direction_hypothesis_reason": "highest pooled separation 7.55pp over 899 directional observations (shared diagnostic basis)",
+  "comparisons": {
+    "bull_vs_bear": {
+      "bear_capability": 0.3383938393839384,
+      "bear_n": 4557,
+      "bull_capability": 0.3484425349087003,
+      "bull_n": 4669
+    },
+    "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+    "confirmed_vs_comparable_unconfirmed": {
+      "confirmed_capability_obs_basis": 0.5004715498270984,
+      "confirmed_n": 3183,
+      "population_origin": "location-aligned observations; both measured at observation time under the shared diagnostic geometry",
+      "unconfirmed_capability_obs_basis": 0.336734693877551,
+      "unconfirmed_n": 295
+    },
+    "direction_aligned_vs_counter_confirmation": {
+      "aligned_capability": 0.5004715498270984,
+      "aligned_n": 3183,
+      "counter_capability": 0.21051032806804373,
+      "counter_n": 3313,
+      "note": "counter-direction events recorded, never silently rejected"
+    },
+    "location_aligned_vs_mismatch": {
+      "aligned_capability": 0.35229791635880003,
+      "aligned_n": 6791,
+      "mismatch_capability": 0.3189478010686395,
+      "mismatch_n": 2435,
+      "note": "midrange/opposing-location observations recorded explicitly"
+    }
+  },
+  "confirmation_adds_value_same_basis": "YES",
+  "confirmation_uplift_pp_same_basis": 14.82,
+  "continuation_survival_pooled": {
+    "P2_GIVEN_1": 0.6154336734693877,
+    "P3_GIVEN_2": 0.6601036269430052,
+    "P4_GIVEN_3": 0.6875981161695447,
+    "P5_GIVEN_4": 0.6917808219178082
+  },
+  "dataset": {
+    "authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+    "hashes_verified": true,
+    "role": "DEVELOPMENT",
+    "symbols": {
+      "EURUSD": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+      "GBPUSD": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+      "USDJPY": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+      "XAUUSD": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+    }
+  },
+  "direction_separation": "NO",
+  "direction_separation_pp": 2.04,
+  "engine": {
+    "engines_modified": false,
+    "funnel_engine_sha": "2ae7474bd5dff5a6eea9fdf9cfdcfc7381692789",
+    "fx_direction_registry_sha256": "2f23cfe27a60ee1f66080b5dd7c9e28760b06699a4d71e35c5282e551b86b162"
+  },
+  "entry_conditioned_uplift": null,
+  "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+  "final_report_sha256": "5ff4ac36055240e27f605e4a79dd2889075b19a84806e914498ce6dc608e2fbc",
+  "fixed_reach_pooled": {
+    "1R": 0.49261702796104306,
+    "2R": 0.3031731071316368,
+    "3R": 0.20012566760917375,
+    "4R": 0.13760603204524033,
+    "5R": 0.09519321394910461
+  },
+  "guards": {
+    "execution_capability_added": false,
+    "holdout_touched": false,
+    "oos_opened": false,
+    "realized_economics_run": false,
+    "strategy_rules_changed": false
+  },
+  "location_adds_value": "YES",
+  "mission": "UNIVERSAL FUNNEL V0.3 REAL FX DEV CAMPAIGN",
+  "natural_target_pooled": {
+    "median_r": 2.3402777777776684,
+    "p25_r": 1.0510948905109334,
+    "p75_r": 4.178947368421132
+  },
+  "observations": {
+    "EURUSD_N": 3789,
+    "GBPUSD_N": 3784,
+    "USDJPY_N": 3774,
+    "XAUUSD_N": 3579
+  },
+  "primary_funnel_hypothesis": "D01",
+  "root_cause": {
+    "case": "A",
+    "next_funnel_to_change": "TRIGGER",
+    "primary": "TRIGGER_FUNNEL_WEAKNESS",
+    "rationale": "primary hypothesis separation 2.04pp < 5.0pp \u2014 direction does not usefully separate future favorable movement",
+    "secondary": [],
+    "thresholds": {
+      "confirmation_drop_pp": 10.0,
+      "continuation_reach_3r_min": 0.25,
+      "desired_target_r": 3.0,
+      "location_drop_pp": 5.0,
+      "min_separation_pp": 5.0
+    }
+  },
+  "root_cause_per_symbol": {
+    "EURUSD": "TRIGGER_FUNNEL_WEAKNESS",
+    "GBPUSD": "TARGET_MODEL_MISMATCH",
+    "USDJPY": "TRIGGER_FUNNEL_WEAKNESS",
+    "XAUUSD": "TRIGGER_FUNNEL_WEAKNESS"
+  },
+  "status": "FX_DEV_FUNNEL_COMPLETE"
+}

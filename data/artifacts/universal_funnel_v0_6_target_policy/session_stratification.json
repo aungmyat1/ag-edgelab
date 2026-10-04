@@ -1,0 +1,254 @@
+{
+  "D01": {
+    "crypto_note": "SESSION_GATING = NOT_APPLICABLE for future crypto reuse; engine stays asset-neutral",
+    "rule": "frozen V0.3 session labels; diagnostic strata only",
+    "sessions": {
+      "ASIAN": {
+        "entry_n": 1255,
+        "first_objective_reach_pct": 0.6525896414342629,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": -0.1458939607735491,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 1206,
+            "pct_pairs_positive": 0.29187396351575456,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": -0.06804971025567674,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 1044,
+            "pct_pairs_positive": 0.42911877394636017,
+            "policy": "C1"
+          }
+        }
+      },
+      "LONDON": {
+        "entry_n": 679,
+        "first_objective_reach_pct": 0.700589970501475,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": -0.11480660401462199,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 581,
+            "pct_pairs_positive": 0.31841652323580033,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": 0.03706689252478163,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 453,
+            "pct_pairs_positive": 0.45695364238410596,
+            "policy": "C1"
+          }
+        }
+      },
+      "LONDON_NEWYORK_OVERLAP": {
+        "entry_n": 346,
+        "first_objective_reach_pct": 0.7485549132947977,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": 0.028336409346553855,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 260,
+            "pct_pairs_positive": 0.41923076923076924,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": 0.3149021482197089,
+            "median_delta_r": 1.020833333333285,
+            "meets_pair_floor": true,
+            "pair_n": 202,
+            "pct_pairs_positive": 0.5445544554455446,
+            "policy": "C1"
+          }
+        }
+      },
+      "NEW_YORK": {
+        "entry_n": 596,
+        "first_objective_reach_pct": 0.6705882352941176,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": 0.15477918952888886,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 480,
+            "pct_pairs_positive": 0.39375,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": 0.4162872089688391,
+            "median_delta_r": 1.0183246073298557,
+            "meets_pair_floor": true,
+            "pair_n": 421,
+            "pct_pairs_positive": 0.5249406175771971,
+            "policy": "C1"
+          }
+        }
+      },
+      "OFF_SESSION": {
+        "entry_n": 307,
+        "first_objective_reach_pct": 0.6405228758169934,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": 0.08037209289011696,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 289,
+            "pct_pairs_positive": 0.3806228373702422,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": 0.15511452775729975,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 249,
+            "pct_pairs_positive": 0.46586345381526106,
+            "policy": "C1"
+          }
+        }
+      }
+    }
+  },
+  "T1": {
+    "crypto_note": "SESSION_GATING = NOT_APPLICABLE for future crypto reuse; engine stays asset-neutral",
+    "rule": "frozen V0.3 session labels; diagnostic strata only",
+    "sessions": {
+      "ASIAN": {
+        "entry_n": 152,
+        "first_objective_reach_pct": 0.6973684210526315,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": -0.43340584562745493,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": true,
+            "pair_n": 148,
+            "pct_pairs_positive": 0.25,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": 0.24219620980277198,
+            "median_delta_r": 1.0213903743315327,
+            "meets_pair_floor": true,
+            "pair_n": 123,
+            "pct_pairs_positive": 0.5203252032520326,
+            "policy": "C1"
+          }
+        }
+      },
+      "LONDON": {
+        "entry_n": 65,
+        "first_objective_reach_pct": 0.6307692307692307,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": -0.5080764729348948,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": false,
+            "pair_n": 53,
+            "pct_pairs_positive": 0.1320754716981132,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": -0.3995497547868,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": false,
+            "pair_n": 43,
+            "pct_pairs_positive": 0.3023255813953488,
+            "policy": "C1"
+          }
+        }
+      },
+      "LONDON_NEWYORK_OVERLAP": {
+        "entry_n": 49,
+        "first_objective_reach_pct": 0.7959183673469388,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": -0.21760666072339424,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": false,
+            "pair_n": 42,
+            "pct_pairs_positive": 0.38095238095238093,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": 0.7453240565104996,
+            "median_delta_r": 1.0886496544391366,
+            "meets_pair_floor": false,
+            "pair_n": 28,
+            "pct_pairs_positive": 0.6428571428571429,
+            "policy": "C1"
+          }
+        }
+      },
+      "NEW_YORK": {
+        "entry_n": 62,
+        "first_objective_reach_pct": 0.6935483870967742,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": 0.1945688828369779,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": false,
+            "pair_n": 47,
+            "pct_pairs_positive": 0.40425531914893614,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": 0.41502479623095295,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": false,
+            "pair_n": 39,
+            "pct_pairs_positive": 0.48717948717948717,
+            "policy": "C1"
+          }
+        }
+      },
+      "OFF_SESSION": {
+        "entry_n": 51,
+        "first_objective_reach_pct": 0.6078431372549019,
+        "paired_c1_vs_controls": {
+          "C0_2R": {
+            "control": "C0_2R",
+            "mean_delta_r": 0.408307558163412,
+            "median_delta_r": 0.10457516339882655,
+            "meets_pair_floor": false,
+            "pair_n": 49,
+            "pct_pairs_positive": 0.5102040816326531,
+            "policy": "C1"
+          },
+          "C0_5R": {
+            "control": "C0_5R",
+            "mean_delta_r": 0.39820123722492184,
+            "median_delta_r": 0.0,
+            "meets_pair_floor": false,
+            "pair_n": 47,
+            "pct_pairs_positive": 0.48936170212765956,
+            "policy": "C1"
+          }
+        }
+      }
+    }
+  }
+}

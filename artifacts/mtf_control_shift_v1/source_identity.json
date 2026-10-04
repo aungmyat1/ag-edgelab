@@ -1,0 +1,20 @@
+{
+  "source_repo": "aungmyat1/AG-profit-trading-assit",
+  "source_pr": 34,
+  "source_branch": "feat/mtf-control-shift-v1",
+  "source_commit": "1d1c75c92a7fda80696a56d4e1ccbe402f3ab71a",
+  "strategy_id": "ST_MTF_CONTROL_SHIFT_V1",
+  "strategy_version": "1.0.0",
+  "identity_check": "PASS",
+  "source_materialization": "byte-exact frozen copy",
+  "files": [
+    "strategies/ST_MTF_CONTROL_SHIFT_V1.yaml",
+    "docs/specs/ST_MTF_CONTROL_SHIFT_V1_SPEC.md",
+    "src/mtf_control_shift/__init__.py",
+    "src/mtf_control_shift/models.py",
+    "src/mtf_control_shift/structure.py",
+    "src/mtf_control_shift/engine.py",
+    "src/mtf_control_shift/ticket.py",
+    "tests/test_mtf_control_shift_v1.py"
+  ]
+}

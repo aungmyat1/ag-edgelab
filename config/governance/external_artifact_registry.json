@@ -1,0 +1,106 @@
+{
+  "registry_version": "CONSOLIDATION_R1_EXTERNAL_ARTIFACT_REGISTRY_V2",
+  "purpose": "Content-addressed records for bulky research evidence. Externalized artifacts are deliberately NOT carried in the mainline tree; their bytes remain retrievable from the immutable git history at the producer commit. In-tree evidence that is required by runtime tests is pinned here too so every large evidence file has a content-addressed record. No external artifact may exist without a pinned hash in this registry.",
+  "policy": {
+    "in_git_tree": "source code, tests, contracts, schemas, manifests, preregistrations, final_report.md, small final_report.json, hash pointers, and any evidence required by runtime tests",
+    "externalized": "bulky replay ledgers and large intermediate evidence not required by runtime tests; bytes preserved at the producer commit (git object database) and regenerable deterministically by the producer script",
+    "verification": "scripts/verify_external_artifacts.py recomputes sha256 of the bytes at each storage location (git:<commit>:<path> or tree:<path>) and fails closed on any mismatch"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "UNIVERSAL_FUNNEL_V0_5_TARGET_CANDIDATE_LEDGER",
+      "sha256": "98d002f283f42c4c8341e066f3d4fd5215c5b598b9792525f79a901441668e57",
+      "byte_size": 12370269,
+      "schema_version": "UNIVERSAL_FUNNEL_V0_5_CANDIDATE_LEDGER_ROWS_V1",
+      "producer_commit": "65ba0ed",
+      "producer_script": "scripts/run_target_v0_5.py",
+      "candidate_id": "UNIVERSAL_FUNNEL_V0_5_TARGET_MODEL (research stage; not a tradeable candidate)",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "git:65ba0ed:data/artifacts/universal_funnel_v0_5_target/target_candidate_ledger.jsonl (blob 1cc1706487d0a427f4b13c66e5b3cf0fe7a0c443; reachable on branches arena/01a105f9-ag-edgelab and arena/01a1073e-ag-edgelab)",
+      "externalized_by_commit": "CONSOLIDATION_R1",
+      "reason": "12.4 MB replay ledger; not referenced by any runtime test; regenerable deterministically by the producer script from the pinned HistData 2017 zips"
+    },
+    {
+      "artifact_id": "UNIVERSAL_FUNNEL_V0_5_TARGET_LADDERS",
+      "sha256": "eb56e59aedb8ce660ec354572d699f54e38e39db01c7828004397d7ff87f15c5",
+      "byte_size": 3236708,
+      "schema_version": "UNIVERSAL_FUNNEL_V0_5_TARGET_LADDER_ROWS_V1",
+      "producer_commit": "65ba0ed",
+      "producer_script": "scripts/run_target_v0_5.py",
+      "candidate_id": "UNIVERSAL_FUNNEL_V0_5_TARGET_MODEL (research stage; not a tradeable candidate)",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "git:65ba0ed:data/artifacts/universal_funnel_v0_5_target/target_ladders.jsonl (blob 1eb4f1af94e16f1accb37be9405a033028db7938; reachable on branches arena/01a105f9-ag-edgelab and arena/01a1073e-ag-edgelab)",
+      "externalized_by_commit": "CONSOLIDATION_R1",
+      "reason": "3.2 MB intermediate ladder ledger; not referenced by any runtime test; regenerable deterministically by the producer script"
+    }
+  ],
+  "in_tree_pinned": [
+    {
+      "artifact_id": "STV2_FUNNEL_ANALYSIS_UNITS",
+      "sha256": "6100e06adb666b13a2fbf5d08a1a5176c27f3bbe2c0593f701bae90433f35ab4",
+      "byte_size": 6875194,
+      "schema_version": "SESSION_TRADE_V2_FUNNEL_ANALYSIS_UNITS_V1",
+      "producer_commit": "fd86f86",
+      "producer_script": "scripts/run_stv2_funnel_analysis.py",
+      "candidate_id": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "tree:artifacts/session_trade_v2_funnel_analysis/analysis_units.json",
+      "note": "Required by runtime tests (tests/test_stv2_funnel_matrix.py opens it directly and lists it in the required-artifact contract), therefore retained in the mainline tree per the consolidation policy; initially externalized in R1 then restored for that reason"
+    },
+    {
+      "artifact_id": "TARGET_POLICY_C3_V1_DEV_RESOLUTION_LEDGER",
+      "sha256": "25244838034463aa152342f3d473f4bc8e921ee4d63bb241d1c6df15296df220",
+      "byte_size": 3408432,
+      "schema_version": "TARGET_POLICY_C3_V1_DEV_RESOLUTION_ROWS_V1",
+      "producer_commit": "bf6d4f3",
+      "producer_script": "scripts/freeze_target_policy_c3_v1.py",
+      "candidate_id": "TARGET_POLICY_C3_V1@1.0.0-frozen",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "tree:data/artifacts/target_policy_c3_v1/dev_resolution_ledger.jsonl",
+      "note": "Sealed DEV evidence for the frozen candidate; required by tests/test_target_policy_c3_v1.py and tests/test_oos_c3_v1.py"
+    },
+    {
+      "artifact_id": "UNIVERSAL_FUNNEL_V0_6_ENTRY_POLICY_LEDGER",
+      "sha256": "83ec42db616e247c59a2a21715aa41d99469da163cccd3025d61ee62426c000b",
+      "byte_size": 7036786,
+      "schema_version": "UNIVERSAL_FUNNEL_V0_6_ENTRY_POLICY_ROWS_V1",
+      "producer_commit": "8d13235",
+      "producer_script": "scripts/run_target_policy_v0_6.py",
+      "candidate_id": "TARGET_POLICY_C3_V1@1.0.0-frozen",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "tree:data/artifacts/universal_funnel_v0_6_target_policy/entry_policy_ledger.jsonl",
+      "note": "Required by tests (DEV reference extraction for the sealed OOS verification)"
+    },
+    {
+      "artifact_id": "UNIVERSAL_FUNNEL_V0_6_OBJECTIVE_SEQUENCE_LEDGER",
+      "sha256": "3729a96940886b73314309beb6ffff3b12a8c7d456865770c1a99d27aaf4f9b9",
+      "byte_size": 3457324,
+      "schema_version": "UNIVERSAL_FUNNEL_V0_6_OBJECTIVE_SEQUENCE_ROWS_V1",
+      "producer_commit": "8d13235",
+      "producer_script": "scripts/run_target_policy_v0_6.py",
+      "candidate_id": "TARGET_POLICY_C3_V1@1.0.0-frozen",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "tree:data/artifacts/universal_funnel_v0_6_target_policy/objective_sequence_ledger.jsonl",
+      "note": "Required by tests (DEV reference extraction for the sealed OOS verification)"
+    },
+    {
+      "artifact_id": "TARGET_POLICY_C3_V1_OOS_LEDGER",
+      "sha256": "ba6c8bdf2398317f136b11a10d5c1214b744ddb586e1f6a857c0015ba14d2493",
+      "byte_size": 987418,
+      "schema_version": "TARGET_POLICY_C3_V1_OOS_RESOLUTION_ROWS_V1",
+      "producer_commit": "21b3ebb",
+      "producer_script": "scripts/run_oos_structural_c3_v1.py",
+      "candidate_id": "TARGET_POLICY_C3_V1@1.0.0-frozen",
+      "dataset_role": "OOS",
+      "dataset_window": "[2017-09-01T00:00:00+00:00, 2017-12-01T00:00:00+00:00)",
+      "storage_location": "tree:data/artifacts/target_policy_c3_v1_oos/oos_ledger.jsonl",
+      "note": "Sealed OOS evidence backing the permanent C3 rejection record; retained in-tree for rejection auditability"
+    }
+  ]
+}

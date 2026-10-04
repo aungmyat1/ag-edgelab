@@ -1,0 +1,32 @@
+{
+  "LOCATION_VALUE_STABLE": "YES",
+  "cell_floor_n": 50,
+  "evaluable_policies": [
+    "D01",
+    "T2"
+  ],
+  "note": "no location optimization performed (mission section 15)",
+  "per_policy": {
+    "D01": {
+      "aligned_capability": 0.35229791635880003,
+      "aligned_n": 6791,
+      "directional_capability": 0.34347826086956523,
+      "mismatch_capability": 0.3189478010686395,
+      "mismatch_n": 2435
+    },
+    "T1": {
+      "aligned_capability": 0.3857302118171683,
+      "aligned_n": 899,
+      "directional_capability": 0.3857302118171683,
+      "mismatch_capability": null,
+      "mismatch_n": 0
+    },
+    "T2": {
+      "aligned_capability": 0.3359008707300737,
+      "aligned_n": 2994,
+      "directional_capability": 0.32632021880917317,
+      "mismatch_capability": 0.31013016411997735,
+      "mismatch_n": 1768
+    }
+  }
+}

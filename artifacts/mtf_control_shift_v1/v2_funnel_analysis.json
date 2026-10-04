@@ -1,0 +1,14 @@
+{
+  "strategy_id": "ST_MTF_CONTROL_SHIFT_V2",
+  "totals": {
+    "D1_H4_ALIGNED": 2246,
+    "FRESH_H4_POI": 2129,
+    "HTF_POI_NOT_REACHED": 1959,
+    "H4_POI_REACHED": 170,
+    "TRUE_H1_CONTROL_SHIFT": 18
+  },
+  "false_choch": {
+    "FVG_REBALANCE": 140,
+    "LIQUIDITY_SWEEP": 1
+  }
+}

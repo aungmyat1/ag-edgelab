@@ -1,0 +1,50 @@
+{
+  "CONFIRMATION_VALUE_STABLE": "YES",
+  "comparability": "uplift computed only inside the shared opportunity basis; entry-conditioned capability reported separately with uplift=null (INCOMPARABLE_CAPABILITY_SEMANTICS)",
+  "per_policy_state": {
+    "D01": "IMPROVES",
+    "T1": "IMPROVES",
+    "T2": "IMPROVES"
+  },
+  "per_policy_uplift": {
+    "D01": {
+      "confirmed_n": 3183,
+      "confirmed_subset_capability_same_basis": 0.5004715498270984,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.30442978322337416,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.35229791635880003,
+      "unconfirmed_capability_same_basis": 0.336734693877551,
+      "unconfirmed_n": 295,
+      "uplift_pp_same_basis": 14.82
+    },
+    "T1": {
+      "confirmed_n": 379,
+      "confirmed_subset_capability_same_basis": 0.5910290237467019,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.35092348284960423,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.3857302118171683,
+      "unconfirmed_capability_same_basis": 0.48,
+      "unconfirmed_n": 25,
+      "uplift_pp_same_basis": 20.53
+    },
+    "T2": {
+      "confirmed_n": 1409,
+      "confirmed_subset_capability_same_basis": 0.49396735273243436,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.30731014904187365,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.3359008707300737,
+      "unconfirmed_capability_same_basis": 0.29523809523809524,
+      "unconfirmed_n": 106,
+      "uplift_pp_same_basis": 15.81
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "EURUSD": {
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.5611285266457681,
+      "P3_GIVEN_2": 0.5810055865921788,
+      "P4_GIVEN_3": 0.6923076923076923,
+      "P5_GIVEN_4": 0.7638888888888888
+    },
+    "entered_n": 749,
+    "fixed_reach": {
+      "1R": 0.4259012016021362,
+      "2R": 0.2389853137516689,
+      "3R": 0.13885180240320427,
+      "4R": 0.09612817089452604,
+      "5R": 0.07343124165554073
+    },
+    "fixed_targets_changed": false,
+    "mae_r_median": 1.0833333333333095,
+    "mfe_r_median": 0.7868852459016991,
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.310559006211443,
+    "natural_target_n": 1324,
+    "natural_target_p25_r": 1.1115384615383315,
+    "natural_target_p75_r": 4.604651162790693
+  },
+  "GBPUSD": {
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.652605459057072,
+      "P3_GIVEN_2": 0.6653992395437263,
+      "P4_GIVEN_3": 0.64,
+      "P5_GIVEN_4": 0.6428571428571429
+    },
+    "entered_n": 873,
+    "fixed_reach": {
+      "1R": 0.4616265750286369,
+      "2R": 0.30126002290950743,
+      "3R": 0.2004581901489118,
+      "4R": 0.12829324169530354,
+      "5R": 0.08247422680412371
+    },
+    "fixed_targets_changed": false,
+    "mae_r_median": 1.0827067669173447,
+    "mfe_r_median": 0.8972602739725392,
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.1811023622048786,
+    "natural_target_n": 1454,
+    "natural_target_p25_r": 0.9122137404579509,
+    "natural_target_p75_r": 3.8083067092650595
+  },
+  "POOLED": {
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.6154336734693877,
+      "P3_GIVEN_2": 0.6601036269430052,
+      "P4_GIVEN_3": 0.6875981161695447,
+      "P5_GIVEN_4": 0.6917808219178082
+    },
+    "entered_n": 3183,
+    "fixed_reach": {
+      "1R": 0.49261702796104306,
+      "2R": 0.3031731071316368,
+      "3R": 0.20012566760917375,
+      "4R": 0.13760603204524033,
+      "5R": 0.09519321394910461
+    },
+    "fixed_targets_changed": false,
+    "mae_r_median": 1.0758293838862818,
+    "mfe_r_median": 0.9937888198758732,
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.3402777777776684,
+    "natural_target_n": 5361,
+    "natural_target_p25_r": 1.0510948905109334,
+    "natural_target_p75_r": 4.178947368421132
+  },
+  "USDJPY": {
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.5204081632653061,
+      "P3_GIVEN_2": 0.6274509803921569,
+      "P4_GIVEN_3": 0.6640625,
+      "P5_GIVEN_4": 0.5882352941176471
+    },
+    "entered_n": 733,
+    "fixed_reach": {
+      "1R": 0.5347885402455662,
+      "2R": 0.2783083219645293,
+      "3R": 0.17462482946793997,
+      "4R": 0.11596180081855388,
+      "5R": 0.06821282401091405
+    },
+    "fixed_targets_changed": false,
+    "mae_r_median": 1.0758293838862818,
+    "mfe_r_median": 1.1868131868131395,
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.572687224669574,
+    "natural_target_n": 1236,
+    "natural_target_p25_r": 1.226110017206834,
+    "natural_target_p75_r": 4.4711713642695825
+  },
+  "XAUUSD": {
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.7026431718061674,
+      "P3_GIVEN_2": 0.7210031347962382,
+      "P4_GIVEN_3": 0.7347826086956522,
+      "P5_GIVEN_4": 0.7455621301775148
+    },
+    "entered_n": 828,
+    "fixed_reach": {
+      "1R": 0.5483091787439613,
+      "2R": 0.3852657004830918,
+      "3R": 0.2777777777777778,
+      "4R": 0.2041062801932367,
+      "5R": 0.15217391304347827
+    },
+    "fixed_targets_changed": false,
+    "mae_r_median": 1.0436580367292951,
+    "mfe_r_median": 1.1947831978320027,
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.2033898305085486,
+    "natural_target_n": 1347,
+    "natural_target_p25_r": 0.9965517241379342,
+    "natural_target_p75_r": 4.053956834532407
+  }
+}

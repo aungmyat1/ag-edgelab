@@ -1,0 +1,64 @@
+{
+  "record_version": "CONSOLIDATION_R1_DATA_AUTHORITY_GAP_V1",
+  "FX_STATUS": "SINGLE_YEAR_AUTHORITY_EXISTS",
+  "CRYPTO_STATUS": "REAL_DATA_AUTHORITY_INSUFFICIENT_SYNTHETIC_LANE_IS_NOT_EDGE_EVIDENCE",
+  "fx_coverage": {
+    "authority": "HistData ASCII M1 2017, four symbols (EURUSD, GBPUSD, USDJPY, XAUUSD), sha256-pinned zips via scripts/acquire_histdata_fx_2017.sh",
+    "partitions_utc": {
+      "DEVELOPMENT": "[2017-01-01, 2017-09-01)",
+      "OOS": "[2017-09-01, 2017-12-01) \u2014 CONSUMED by OOS-001 (SESSION_TRADE_V2) and OOS-002 (TARGET_POLICY_C3_V1); see oos_access_log.json",
+      "SEALED_HOLDOUT": "[2017-12-01, 2018-01-01) \u2014 NEVER OPENED; fail-closed guards in the data layer"
+    },
+    "limitations": [
+      "single calendar year (2017) \u2014 regime coverage insufficient for multi-year structural claims",
+      "one data provider; provider-specific artifacts (M15 bucketing >= 13/15 M1 minutes, America/New_York source timezone normalized to UTC) are frozen in the loader contracts",
+      "the OOS partition has been consumed twice (two candidate identities); any future candidate must disclose this reuse in its preregistration",
+      "the sealed holdout is the only untouched 2017 window and must not be spent on anything less than a fully preregistered, governance-approved evaluation"
+    ]
+  },
+  "crypto_coverage": {
+    "synthetic_lane": "data/artifacts/synthetic_btcusdt (ST_CRYPTO_MTF_SMC_V1 research lane) \u2014 CI self-provisioned pinned fixture; NOT edge evidence, never citable as such",
+    "insufficiency_verdict": "No qualifying real-data economic population is committed for any crypto instrument (see candidate ledger: ST_LIQUIDITY_SWEEP_RETEST_V1 INSUFFICIENT_EVIDENCE). A real crypto data authority must be built fresh under the multi-year contract below.",
+    "real_data_efforts_reviewed": {
+      "bybit_public_archives": {
+        "branch": "feat/crypto-btc-economic-verification",
+        "code": "scripts/verify_btc_sweep_retest_bybit.py (public.bybit.com kline archives + /v5/market/kline fallback + funding history with conservative synthetic-schedule fallback)",
+        "contract_review": {
+          "causal_timestamp_semantics": "PASS \u2014 bar open-time ms in UTC, backward cursor pagination",
+          "pagination": "PASS \u2014 cursor-based, limit 1000, oldest-1 continuation, terminates correctly",
+          "duplicate_candles": "PASS \u2014 timestamp-keyed dedup on both API and archive paths",
+          "missing_bars": "FAIL \u2014 no gap/completeness validation (no expected-count or contiguity assertion; silently skips holes)",
+          "checksum_provenance": "FAIL \u2014 no sha256 of downloaded archive bytes, no dataset manifest",
+          "funding_handling": "PASS \u2014 funding history API + stress fallback that can only reduce measured edge"
+        },
+        "merge_decision": "NOT MERGED \u2014 fails the missing-bar and provenance contracts; code preserved on the archived branch as reference"
+      },
+      "binance_public_archives": {
+        "branch": "feat/crypto-btc-spot-candidate",
+        "code": "scripts/screen_crypto_btc_spot.py (data.binance.vision monthly kline zips, ms/us timestamp normalization)",
+        "contract_review": {
+          "causal_timestamp_semantics": "PARTIAL \u2014 open-time normalization present; no explicit convention contract",
+          "pagination": "N/A \u2014 whole-month archive files",
+          "duplicate_candles": "PARTIAL \u2014 dict dedup at aggregation only",
+          "missing_bars": "FAIL \u2014 no gap detection",
+          "checksum_provenance": "FAIL \u2014 no hashes of downloaded zips",
+          "funding_handling": "N/A \u2014 spot"
+        },
+        "merge_decision": "NOT MERGED \u2014 fails the merge contract; branch archived"
+      }
+    }
+  },
+  "multi_year_data_authority_contract": {
+    "required_for": "any future FX or crypto candidate beyond the 2017 single-year lane",
+    "requirements": {
+      "source_provenance": "provider name, instrument list, download method, retrieval dates, and license/redistribution note per source",
+      "raw_hashes": "sha256 of every raw archive file, pinned BEFORE any derivation; raw bytes stored outside git with content-addressed registry pointers (config/governance/external_artifact_registry.json pattern)",
+      "timezone_normalization": "explicit source timezone contract (e.g. America/New_York DST for HistData) with normalization to UTC recorded in the dataset manifest; bar-open vs bar-close convention frozen",
+      "gap_handling": "explicit gap inventory (expected vs actual bar counts per symbol/timeframe); every gap dated and classified (weekend/holiday/provider hole); incomplete-bucket policy frozen (>= 13/15 M1 minutes per M15 bucket in the 2017 authority)",
+      "duplicate_handling": "duplicate-timestamp policy (count must be zero or resolved deterministically with the rule recorded)",
+      "resampling": "causal aggregation only (no lookahead): higher timeframes derived from M1/M15 with frozen bucket rules; derived dataset_sha256 per (symbol, timeframe) recorded in the manifest",
+      "partitioning": "DEVELOPMENT / OOS / SEALED_HOLDOUT windows defined and committed BEFORE any candidate work; holdout fail-closed in the data layer; partitions registered in config/governance/oos_access_log.json dataset_registry"
+    },
+    "selection_rule": "No new partition may be selected during a consolidation mission; this record defines requirements only."
+  }
+}

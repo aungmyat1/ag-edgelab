@@ -1,0 +1,55 @@
+{
+  "acceptance_map": {
+    "A": "TRIGGER_HYPOTHESIS_SUPPORTED_ON_DEV",
+    "B": "TRIGGER_DIRECTION_IMPROVED_TARGET_NOT_IMPROVED",
+    "C": "TRIGGER_HYPOTHESIS_NOT_SUPPORTED",
+    "D": "INSUFFICIENT_EVIDENCE"
+  },
+  "overall": {
+    "best_policy": "T1",
+    "best_result_type": "B",
+    "direction_improvement_propagates_downstream": "NO",
+    "next_funnel_to_test": "TARGET",
+    "note": "winner NOT chosen on separation alone; attrition and target-capability propagation are part of the verdict (mission sections 10-12)",
+    "primary_diagnosis": "TRIGGER_DIRECTION_IMPROVED_TARGET_NOT_IMPROVED"
+  },
+  "parent_primary_diagnosis": "TRIGGER_FUNNEL_WEAKNESS (V0.3, frozen)",
+  "per_policy_result": {
+    "T1": {
+      "attrition_vs_d01_pct": 90.26,
+      "deltas": {
+        "DELTA_1R_vs_D01_pp": 4.04,
+        "DELTA_2R_vs_D01_pp": 4.78,
+        "DELTA_3R_vs_D01_pp": 0.57,
+        "DELTA_4R_vs_D01_pp": -0.83,
+        "DELTA_5R_vs_D01_pp": -1.87,
+        "DELTA_NATURAL_TARGET_MEDIAN_R": 0.2907
+      },
+      "interpretation": "TRIGGER_DIRECTION_IMPROVED_TARGET_NOT_IMPROVED",
+      "policy": "T1",
+      "reason": "separation 7.55pp >= threshold but target capability not materially improved (d2R 4.78pp < 5.0pp or d3R 0.57pp < 3.0pp)",
+      "research_diagnostic_threshold_pp": 5.0,
+      "result_type": "B",
+      "separation_pp": 7.55,
+      "threshold_label": "RESEARCH_DIAGNOSTIC_THRESHOLD (not edge/profit/production/deployment)"
+    },
+    "T2": {
+      "attrition_vs_d01_pct": 48.38,
+      "deltas": {
+        "DELTA_1R_vs_D01_pp": -1.0,
+        "DELTA_2R_vs_D01_pp": 0.2,
+        "DELTA_3R_vs_D01_pp": -0.28,
+        "DELTA_4R_vs_D01_pp": -1.13,
+        "DELTA_5R_vs_D01_pp": -0.72,
+        "DELTA_NATURAL_TARGET_MEDIAN_R": -1.0948
+      },
+      "interpretation": "TRIGGER_HYPOTHESIS_NOT_SUPPORTED",
+      "policy": "T2",
+      "reason": "separation -1.43pp < 5.0pp diagnostic threshold",
+      "research_diagnostic_threshold_pp": 5.0,
+      "result_type": "C",
+      "separation_pp": -1.43,
+      "threshold_label": "RESEARCH_DIAGNOSTIC_THRESHOLD (not edge/profit/production/deployment)"
+    }
+  }
+}

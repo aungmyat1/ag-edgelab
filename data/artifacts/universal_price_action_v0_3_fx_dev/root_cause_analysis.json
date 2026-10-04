@@ -1,0 +1,81 @@
+{
+  "precedence": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "results": {
+    "EURUSD": {
+      "case": "A",
+      "next_funnel_to_change": "TRIGGER",
+      "primary": "TRIGGER_FUNNEL_WEAKNESS",
+      "rationale": "primary hypothesis separation -1.34pp < 5.0pp \u2014 direction does not usefully separate future favorable movement",
+      "secondary": [],
+      "thresholds": {
+        "confirmation_drop_pp": 10.0,
+        "continuation_reach_3r_min": 0.25,
+        "desired_target_r": 3.0,
+        "location_drop_pp": 5.0,
+        "min_separation_pp": 5.0
+      }
+    },
+    "GBPUSD": {
+      "case": "E",
+      "next_funnel_to_change": "TARGET",
+      "primary": "TARGET_MODEL_MISMATCH",
+      "rationale": "median natural target 2.18R < frozen fixed target 3R (fixed targets NOT changed by this diagnosis)",
+      "secondary": [],
+      "thresholds": {
+        "confirmation_drop_pp": 10.0,
+        "continuation_reach_3r_min": 0.25,
+        "desired_target_r": 3.0,
+        "location_drop_pp": 5.0,
+        "min_separation_pp": 5.0
+      }
+    },
+    "POOLED": {
+      "case": "A",
+      "next_funnel_to_change": "TRIGGER",
+      "primary": "TRIGGER_FUNNEL_WEAKNESS",
+      "rationale": "primary hypothesis separation 2.04pp < 5.0pp \u2014 direction does not usefully separate future favorable movement",
+      "secondary": [],
+      "thresholds": {
+        "confirmation_drop_pp": 10.0,
+        "continuation_reach_3r_min": 0.25,
+        "desired_target_r": 3.0,
+        "location_drop_pp": 5.0,
+        "min_separation_pp": 5.0
+      }
+    },
+    "USDJPY": {
+      "case": "A",
+      "next_funnel_to_change": "TRIGGER",
+      "primary": "TRIGGER_FUNNEL_WEAKNESS",
+      "rationale": "primary hypothesis separation 0.16pp < 5.0pp \u2014 direction does not usefully separate future favorable movement",
+      "secondary": [],
+      "thresholds": {
+        "confirmation_drop_pp": 10.0,
+        "continuation_reach_3r_min": 0.25,
+        "desired_target_r": 3.0,
+        "location_drop_pp": 5.0,
+        "min_separation_pp": 5.0
+      }
+    },
+    "XAUUSD": {
+      "case": "A",
+      "next_funnel_to_change": "TRIGGER",
+      "primary": "TRIGGER_FUNNEL_WEAKNESS",
+      "rationale": "primary hypothesis separation 4.41pp < 5.0pp \u2014 direction does not usefully separate future favorable movement",
+      "secondary": [],
+      "thresholds": {
+        "confirmation_drop_pp": 10.0,
+        "continuation_reach_3r_min": 0.25,
+        "desired_target_r": 3.0,
+        "location_drop_pp": 5.0,
+        "min_separation_pp": 5.0
+      }
+    }
+  }
+}

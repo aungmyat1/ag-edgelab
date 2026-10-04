@@ -1,0 +1,357 @@
+{
+  "by_symbol": {
+    "EURUSD": {
+      "bear_n": 608,
+      "bull_n": 620,
+      "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "capability_decided_direction": 0.2857142857142857,
+      "capability_opposite_direction": 0.3352365415986949,
+      "confirmation": {
+        "confirmed_n": 352,
+        "confirmed_subset_capability_same_basis": 0.45454545454545453,
+        "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+        "entry_conditioned_capability": 0.23579545454545456,
+        "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+        "entry_conditioned_uplift_vs_opportunity": null,
+        "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+        "opportunity_capability_location_aligned": 0.2937853107344633,
+        "unconfirmed_capability_same_basis": 0.11764705882352941,
+        "unconfirmed_n": 18,
+        "uplift_pp_same_basis": 16.08
+      },
+      "continuation_survival": {
+        "P2_GIVEN_1": 0.5286624203821656,
+        "P3_GIVEN_2": 0.5542168674698795,
+        "P4_GIVEN_3": 0.4782608695652174,
+        "P5_GIVEN_4": 0.8636363636363636
+      },
+      "definition": "phase-aware: BUY iff phase=BULL_CONTINUATION; SELL iff phase=BEAR_CONTINUATION; pullback phases remain explicit states (measured for causal H1 realignment), never auto-traded; else NEUTRAL",
+      "directional_n": 1228,
+      "entered_n": 352,
+      "fixed_reach": {
+        "1R": 0.4460227272727273,
+        "2R": 0.23579545454545456,
+        "3R": 0.13068181818181818,
+        "4R": 0.0625,
+        "5R": 0.05397727272727273
+      },
+      "funnel": {
+        "CONFIRMATION_AVAILABLE": 692,
+        "DIRECTIONAL": 1228,
+        "ENTERED": 352,
+        "LOCATION_ALIGNED": 710,
+        "LOCATION_AVAILABLE": 1228,
+        "LOCATION_MISMATCH_RECORDED": 518,
+        "R1": 157,
+        "R2": 83,
+        "R3": 46,
+        "R4": 22,
+        "R5": 19
+      },
+      "location": {
+        "aligned_capability": 0.2937853107344633,
+        "aligned_n": 710,
+        "directional_capability": 0.2857142857142857,
+        "mismatch_capability": 0.2746615087040619,
+        "mismatch_n": 518
+      },
+      "mae_r_median": 1.0697674418605772,
+      "mfe_r_median": 0.8197635261545302,
+      "natural_target_n": 546,
+      "natural_target_r": {
+        "P25": 0.611987381703507,
+        "P50": 1.484374999999813,
+        "P75": 3.1048387096775767,
+        "P90": 4.583799156614358
+      },
+      "policy": "T2",
+      "separation_pp": -4.95
+    },
+    "GBPUSD": {
+      "bear_n": 540,
+      "bull_n": 679,
+      "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "capability_decided_direction": 0.3374485596707819,
+      "capability_opposite_direction": 0.3390946502057613,
+      "confirmation": {
+        "confirmed_n": 354,
+        "confirmed_subset_capability_same_basis": 0.4887005649717514,
+        "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+        "entry_conditioned_capability": 0.3022598870056497,
+        "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+        "entry_conditioned_uplift_vs_opportunity": null,
+        "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+        "opportunity_capability_location_aligned": 0.33375474083438683,
+        "unconfirmed_capability_same_basis": 0.3783783783783784,
+        "unconfirmed_n": 37,
+        "uplift_pp_same_basis": 15.49
+      },
+      "continuation_survival": {
+        "P2_GIVEN_1": 0.7181208053691275,
+        "P3_GIVEN_2": 0.6448598130841121,
+        "P4_GIVEN_3": 0.5362318840579711,
+        "P5_GIVEN_4": 0.5945945945945946
+      },
+      "definition": "phase-aware: BUY iff phase=BULL_CONTINUATION; SELL iff phase=BEAR_CONTINUATION; pullback phases remain explicit states (measured for causal H1 realignment), never auto-traded; else NEUTRAL",
+      "directional_n": 1219,
+      "entered_n": 354,
+      "fixed_reach": {
+        "1R": 0.4209039548022599,
+        "2R": 0.3022598870056497,
+        "3R": 0.19491525423728814,
+        "4R": 0.10451977401129943,
+        "5R": 0.062146892655367235
+      },
+      "funnel": {
+        "CONFIRMATION_AVAILABLE": 758,
+        "DIRECTIONAL": 1219,
+        "ENTERED": 354,
+        "LOCATION_ALIGNED": 795,
+        "LOCATION_AVAILABLE": 1219,
+        "LOCATION_MISMATCH_RECORDED": 424,
+        "R1": 149,
+        "R2": 107,
+        "R3": 69,
+        "R4": 37,
+        "R5": 22
+      },
+      "location": {
+        "aligned_capability": 0.33375474083438683,
+        "aligned_n": 795,
+        "directional_capability": 0.3374485596707819,
+        "mismatch_capability": 0.3443396226415094,
+        "mismatch_n": 424
+      },
+      "mae_r_median": 1.0839794834806307,
+      "mfe_r_median": 0.7616210172401036,
+      "natural_target_n": 456,
+      "natural_target_r": {
+        "P25": 0.5156682027649259,
+        "P50": 0.9788359788359579,
+        "P75": 1.9024390243901514,
+        "P90": 3.398373983740332
+      },
+      "policy": "T2",
+      "separation_pp": -0.16
+    },
+    "USDJPY": {
+      "bear_n": 610,
+      "bull_n": 422,
+      "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "capability_decided_direction": 0.29000969932104753,
+      "capability_opposite_direction": 0.36019417475728155,
+      "confirmation": {
+        "confirmed_n": 268,
+        "confirmed_subset_capability_same_basis": 0.45149253731343286,
+        "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+        "entry_conditioned_capability": 0.23507462686567165,
+        "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+        "entry_conditioned_uplift_vs_opportunity": null,
+        "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+        "opportunity_capability_location_aligned": 0.29420505200594355,
+        "unconfirmed_capability_same_basis": 0.2222222222222222,
+        "unconfirmed_n": 18,
+        "uplift_pp_same_basis": 15.73
+      },
+      "continuation_survival": {
+        "P2_GIVEN_1": 0.44776119402985076,
+        "P3_GIVEN_2": 0.5666666666666667,
+        "P4_GIVEN_3": 0.5882352941176471,
+        "P5_GIVEN_4": 0.45
+      },
+      "definition": "phase-aware: BUY iff phase=BULL_CONTINUATION; SELL iff phase=BEAR_CONTINUATION; pullback phases remain explicit states (measured for causal H1 realignment), never auto-traded; else NEUTRAL",
+      "directional_n": 1032,
+      "entered_n": 268,
+      "fixed_reach": {
+        "1R": 0.5,
+        "2R": 0.22388059701492538,
+        "3R": 0.12686567164179105,
+        "4R": 0.07462686567164178,
+        "5R": 0.033582089552238806
+      },
+      "funnel": {
+        "CONFIRMATION_AVAILABLE": 656,
+        "DIRECTIONAL": 1032,
+        "ENTERED": 268,
+        "LOCATION_ALIGNED": 674,
+        "LOCATION_AVAILABLE": 1032,
+        "LOCATION_MISMATCH_RECORDED": 358,
+        "R1": 134,
+        "R2": 60,
+        "R3": 34,
+        "R4": 20,
+        "R5": 9
+      },
+      "location": {
+        "aligned_capability": 0.29420505200594355,
+        "aligned_n": 674,
+        "directional_capability": 0.29000969932104753,
+        "mismatch_capability": 0.28212290502793297,
+        "mismatch_n": 358
+      },
+      "mae_r_median": 1.0765163502109596,
+      "mfe_r_median": 1.0292324376430564,
+      "natural_target_n": 348,
+      "natural_target_r": {
+        "P25": 0.7841191066997468,
+        "P50": 1.3046428982740452,
+        "P75": 2.5749999999998816,
+        "P90": 4.891891891891635
+      },
+      "policy": "T2",
+      "separation_pp": -7.02
+    },
+    "XAUUSD": {
+      "bear_n": 673,
+      "bull_n": 610,
+      "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "capability_decided_direction": 0.3837753510140406,
+      "capability_opposite_direction": 0.3315089913995309,
+      "confirmation": {
+        "confirmed_n": 435,
+        "confirmed_subset_capability_same_basis": 0.5563218390804597,
+        "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+        "entry_conditioned_capability": 0.41379310344827586,
+        "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+        "entry_conditioned_uplift_vs_opportunity": null,
+        "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+        "opportunity_capability_location_aligned": 0.4090909090909091,
+        "unconfirmed_capability_same_basis": 0.3333333333333333,
+        "unconfirmed_n": 33,
+        "uplift_pp_same_basis": 14.72
+      },
+      "continuation_survival": {
+        "P2_GIVEN_1": 0.75,
+        "P3_GIVEN_2": 0.7166666666666667,
+        "P4_GIVEN_3": 0.7674418604651163,
+        "P5_GIVEN_4": 0.7474747474747475
+      },
+      "definition": "phase-aware: BUY iff phase=BULL_CONTINUATION; SELL iff phase=BEAR_CONTINUATION; pullback phases remain explicit states (measured for causal H1 realignment), never auto-traded; else NEUTRAL",
+      "directional_n": 1283,
+      "entered_n": 435,
+      "fixed_reach": {
+        "1R": 0.5517241379310345,
+        "2R": 0.41379310344827586,
+        "3R": 0.296551724137931,
+        "4R": 0.22758620689655173,
+        "5R": 0.17011494252873563
+      },
+      "funnel": {
+        "CONFIRMATION_AVAILABLE": 782,
+        "DIRECTIONAL": 1283,
+        "ENTERED": 435,
+        "LOCATION_ALIGNED": 815,
+        "LOCATION_AVAILABLE": 1283,
+        "LOCATION_MISMATCH_RECORDED": 468,
+        "R1": 240,
+        "R2": 180,
+        "R3": 129,
+        "R4": 99,
+        "R5": 74
+      },
+      "location": {
+        "aligned_capability": 0.4090909090909091,
+        "aligned_n": 815,
+        "directional_capability": 0.3837753510140406,
+        "mismatch_capability": 0.33974358974358976,
+        "mismatch_n": 468
+      },
+      "mae_r_median": 1.014705882352928,
+      "mfe_r_median": 1.1944444444444444,
+      "natural_target_n": 590,
+      "natural_target_r": {
+        "P25": 0.6009852216748983,
+        "P50": 1.2568495707354175,
+        "P75": 2.7353951890035857,
+        "P90": 4.157952142994292
+      },
+      "policy": "T2",
+      "separation_pp": 5.23
+    }
+  },
+  "pooled": {
+    "bear_n": 2431,
+    "bull_n": 2331,
+    "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+    "capability_decided_direction": 0.32632021880917317,
+    "capability_opposite_direction": 0.3406315789473684,
+    "confirmation": {
+      "confirmed_n": 1409,
+      "confirmed_subset_capability_same_basis": 0.49396735273243436,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.30731014904187365,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.3359008707300737,
+      "unconfirmed_capability_same_basis": 0.29523809523809524,
+      "unconfirmed_n": 106,
+      "uplift_pp_same_basis": 15.81
+    },
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.6323529411764706,
+      "P3_GIVEN_2": 0.6465116279069767,
+      "P4_GIVEN_3": 0.6402877697841727,
+      "P5_GIVEN_4": 0.6966292134831461
+    },
+    "definition": "phase-aware: BUY iff phase=BULL_CONTINUATION; SELL iff phase=BEAR_CONTINUATION; pullback phases remain explicit states (measured for causal H1 realignment), never auto-traded; else NEUTRAL",
+    "directional_n": 4762,
+    "entered_n": 1409,
+    "fixed_reach": {
+      "1R": 0.48261178140525196,
+      "2R": 0.30518097941802697,
+      "3R": 0.19730305180979418,
+      "4R": 0.1263307310149042,
+      "5R": 0.0880056777856636
+    },
+    "funnel": {
+      "CONFIRMATION_AVAILABLE": 2888,
+      "DIRECTIONAL": 4762,
+      "ENTERED": 1409,
+      "LOCATION_ALIGNED": 2994,
+      "LOCATION_AVAILABLE": 4762,
+      "LOCATION_MISMATCH_RECORDED": 1768,
+      "R1": 680,
+      "R2": 430,
+      "R3": 278,
+      "R4": 178,
+      "R5": 124
+    },
+    "location": {
+      "aligned_capability": 0.3359008707300737,
+      "aligned_n": 2994,
+      "directional_capability": 0.32632021880917317,
+      "mismatch_capability": 0.31013016411997735,
+      "mismatch_n": 1768
+    },
+    "mae_r_median": 1.0583941605839198,
+    "mfe_r_median": 0.9512195121951631,
+    "natural_target_n": 1940,
+    "natural_target_r": {
+      "P25": 0.6014658176139087,
+      "P50": 1.245454545454541,
+      "P75": 2.601696001366786,
+      "P90": 4.268518518518641
+    },
+    "policy": "T2",
+    "separation_pp": -1.43
+  },
+  "verdict": {
+    "attrition_vs_d01_pct": 48.38,
+    "deltas": {
+      "DELTA_1R_vs_D01_pp": -1.0,
+      "DELTA_2R_vs_D01_pp": 0.2,
+      "DELTA_3R_vs_D01_pp": -0.28,
+      "DELTA_4R_vs_D01_pp": -1.13,
+      "DELTA_5R_vs_D01_pp": -0.72,
+      "DELTA_NATURAL_TARGET_MEDIAN_R": -1.0948
+    },
+    "interpretation": "TRIGGER_HYPOTHESIS_NOT_SUPPORTED",
+    "policy": "T2",
+    "reason": "separation -1.43pp < 5.0pp diagnostic threshold",
+    "research_diagnostic_threshold_pp": 5.0,
+    "result_type": "C",
+    "separation_pp": -1.43,
+    "threshold_label": "RESEARCH_DIAGNOSTIC_THRESHOLD (not edge/profit/production/deployment)"
+  }
+}

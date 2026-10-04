@@ -1,0 +1,162 @@
+{
+  "strategy_id": "ST_MTF_CONTROL_SHIFT_V2",
+  "observation_population": 12648,
+  "rules": [
+    {
+      "funnel": "TRIGGER",
+      "rule": "D1_H4_ALIGNED",
+      "input_n": 12648,
+      "pass_n": 2246,
+      "fail_n": 10402,
+      "pass_pct": 17.75774826059456,
+      "reason_counts": {
+        "HTF_BIAS_NOT_ALIGNED": 10402
+      }
+    },
+    {
+      "funnel": "TRIGGER",
+      "rule": "FRESH_H4_POI",
+      "input_n": 2246,
+      "pass_n": 2129,
+      "fail_n": 117,
+      "pass_pct": 94.7907390917186,
+      "reason_counts": {
+        "NO_FRESH_H4_POI": 117
+      }
+    },
+    {
+      "funnel": "TRIGGER",
+      "rule": "H4_POI_REACHED",
+      "input_n": 2129,
+      "pass_n": 170,
+      "fail_n": 1959,
+      "pass_pct": 7.9849694692343824,
+      "reason_counts": {
+        "HTF_POI_NOT_REACHED": 1959
+      }
+    },
+    {
+      "funnel": "TRIGGER",
+      "rule": "TRUE_H1_CONTROL_SHIFT",
+      "input_n": 170,
+      "pass_n": 18,
+      "fail_n": 152,
+      "pass_pct": 10.588235294117647,
+      "reason_counts": {
+        "SHIFT_TOO_OLD": 152,
+        "TRUE_H1_CONTROL_SHIFT": 18
+      }
+    },
+    {
+      "funnel": "TRIGGER",
+      "rule": "LIQUIDITY_SWEEP",
+      "input_n": 170,
+      "pass_n": 1,
+      "fail_n": 169,
+      "pass_pct": 0.5882352941176471,
+      "reason_counts": {
+        "LIQUIDITY_SWEEP": 1
+      }
+    },
+    {
+      "funnel": "CONFIRMATION",
+      "rule": "FVG_REBALANCE",
+      "input_n": 170,
+      "pass_n": 140,
+      "fail_n": 30,
+      "pass_pct": 82.35294117647058,
+      "reason_counts": {
+        "FVG_REBALANCE": 140
+      }
+    },
+    {
+      "funnel": "CONFIRMATION",
+      "rule": "M15_REFINEMENT",
+      "input_n": 18,
+      "pass_n": 0,
+      "fail_n": 18,
+      "pass_pct": 0.0,
+      "reason_counts": {
+        "NO_M15_ENTRY_REFINEMENT": 18
+      }
+    },
+    {
+      "funnel": "CONFIRMATION",
+      "rule": "VALID_GEOMETRY",
+      "input_n": 0,
+      "pass_n": 0,
+      "fail_n": 0,
+      "pass_pct": null,
+      "reason_counts": {
+        "NO_VALID_GEOMETRY_POPULATION": 0
+      }
+    },
+    {
+      "funnel": "OUTCOME",
+      "rule": "LIMIT_FILLED",
+      "input_n": 0,
+      "pass_n": 0,
+      "fail_n": 0,
+      "pass_pct": null,
+      "reason_counts": {
+        "NO_VALID_PROPOSALS": 0
+      }
+    },
+    {
+      "funnel": "OUTCOME",
+      "rule": "LIMIT_EXPIRED",
+      "input_n": 0,
+      "pass_n": 0,
+      "fail_n": 0,
+      "pass_pct": null,
+      "reason_counts": {
+        "NO_LIMIT_ORDERS": 0
+      }
+    },
+    {
+      "funnel": "OUTCOME",
+      "rule": "TP1",
+      "input_n": 0,
+      "pass_n": 0,
+      "fail_n": 0,
+      "pass_pct": null,
+      "reason_counts": {
+        "NO_FILLED_TRADES": 0
+      }
+    },
+    {
+      "funnel": "OUTCOME",
+      "rule": "TP2",
+      "input_n": 0,
+      "pass_n": 0,
+      "fail_n": 0,
+      "pass_pct": null,
+      "reason_counts": {
+        "NO_FILLED_TRADES": 0
+      }
+    },
+    {
+      "funnel": "OUTCOME",
+      "rule": "RUNNER_BE",
+      "input_n": 0,
+      "pass_n": 0,
+      "fail_n": 0,
+      "pass_pct": null,
+      "reason_counts": {
+        "NO_FILLED_TRADES": 0
+      }
+    },
+    {
+      "funnel": "OUTCOME",
+      "rule": "FORCED_FLAT",
+      "input_n": 0,
+      "pass_n": 0,
+      "fail_n": 0,
+      "pass_pct": null,
+      "reason_counts": {
+        "NO_FILLED_TRADES": 0
+      }
+    }
+  ],
+  "note": "Diagnostic funnel counts; FVG_REBALANCE and LIQUIDITY_SWEEP are diagnostic classifications, not entry authorization."
+}

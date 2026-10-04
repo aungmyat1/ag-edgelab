@@ -1,0 +1,128 @@
+# V0.6.2 — SEALED STRUCTURAL OOS VERIFICATION — TARGET_POLICY_C3_V1
+
+STRUCTURAL OOS ONLY · NO ECONOMIC CLAIM · NO RETUNING · NO SECOND OOS ATTEMPT
+
+## REQUIRED RETURN
+
+IMPLEMENTATION_SHA = f1f1d06e761b75212ad113fc81a8fc88463371eb1da9344f0e46cc3b0fe71e49
+TREE_SHA = git tree of the OOS results commit (reported in the mission return; a file cannot contain its own tree hash)
+CANDIDATE_ID = TARGET_POLICY_C3_V1
+CANDIDATE_SHA256 = 5a485308841d1c5d2096e348665ef3f9b1f689c1ed4ce4b30385eeaf2c828112
+CANDIDATE_IDENTITY_VERIFIED = YES
+OOS_PREREGISTRATION_SHA256 = ff49d6fa2e61131c7dd90539f51ca0700052bf7320a7f19bf41285edcf19cae7
+OOS_DATASET_ID = HISTDATA_ASCII_M1_2017_PR10_PINNED_OOS_PARTITION
+OOS_DATASET_SHA256 = {'EURUSD': '0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57', 'GBPUSD': 'e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b', 'USDJPY': '477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f', 'XAUUSD': 'a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff'}
+OOS_WINDOW = [2017-09-01T00:00:00+00:00, 2017-12-01T00:00:00+00:00)
+DEV_OOS_OVERLAP = NONE
+ENTRY_N = 875
+FIRST_OBJECTIVE_REACH = 0.5871121718377088
+P_SECOND_GIVEN_FIRST = 0.5284552845528455
+RUNNER_EXTENDED_REACH = 0.2967479674796748
+1R_CAPABILITY = 0.44571428571428573
+2R_CAPABILITY = 0.24685714285714286
+3R_CAPABILITY = 0.15314285714285714
+4R_CAPABILITY = 0.08342857142857144
+5R_CAPABILITY = 0.036571428571428574
+NATURAL_TARGET_MEDIAN_R = 0.608695652174018
+GROSS_STRUCTURAL_R = -88.5498963360058
+MEAN_STRUCTURAL_R = -0.1056681340525129
+MEDIAN_STRUCTURAL_R = -0.4214572192513466
+MAX_STRUCTURAL_DRAWDOWN_R = 102.71812905556621
+UNRESOLVED_RUNNER_N = 0
+RIGHT_CENSORED_N = 0
+CAUSALITY = PASS
+INDEPENDENT_REPRODUCTION = PASS
+DETERMINISM = PASS
+FRICTION_AUTHORITY_COMPLETE = NO
+ECONOMIC_METRICS = NOT_ESTIMABLE_NO_FRICTION_AUTHORITY
+EDGE_VERIFIED = FALSE
+OOS_STRUCTURAL_VERDICT = C
+OOS_STRUCTURAL_VERDICT_NAME = STRUCTURAL_GENERALIZATION_FAILS
+STRATEGY_RULES_CHANGED = NO
+ENTRY_CHANGED = NO
+SL_CHANGED = NO
+TARGET_CHANGED = NO
+HOLDOUT_TOUCHED = NO
+EXECUTION_CAPABILITY_ADDED = NO
+STATUS = STRUCTURAL_GENERALIZATION_FAILED
+NEXT = STOP_CANDIDATE
+VERIFICATION_NOTES = Initial sealed run (sealed-evaluation commit, phase 10 of the same single authorized OOS open) reported verdict E because the verifier's preregistration_integrity check read the candidate pin and dataset role at the wrong JSON nesting level — a tooling bug in the check itself, not an integrity failure. The runner's startup gate had already verified companion==file==git-committed preregistration and embedded pin==mission pin BEFORE the OOS partition was opened, and the printed check detail showed companion==file. The check was fixed (check_preregistration_integrity, unit-tested) and phase-10 verification re-executed. The evaluation artifacts (ledger, accounting, metrics, comparison, controls, hypothesis, verdict, causality, determinism) are byte-identical to the sealed-evaluation commit (asserted at reverify startup). No evaluation was recomputed, no parameter, rule, or threshold was changed, and no second evaluation attempt was made. This is the same sealed run's verification step, completed.
+EURUSD_VERDICT = C
+GBPUSD_VERDICT = C
+USDJPY_VERDICT = C
+XAUUSD_VERDICT = C
+POOLED_GENERALIZATION = C
+
+## OOS structural metrics (pooled)
+
+- ENTRY_N = 875
+- FIRST_LEG_CONTRIBUTION_R = -40.06750025705207
+- FIRST_OBJECTIVE_AVAILABLE_N = 874
+- FIRST_OBJECTIVE_REACHED_N = 492
+- FIRST_OBJECTIVE_REACHED_PCT = 0.5871121718377088
+- FURTHEST_OBJECTIVE_AVAILABLE_N = 838
+- FURTHEST_TARGET_MEDIAN_R = 3.448051948051994
+- GROSS_STRUCTURAL_R = -88.5498963360058
+- MAX_STRUCTURAL_DRAWDOWN_R = 102.71812905556621
+- MEAN_STRUCTURAL_R = -0.1056681340525129
+- MEDIAN_STRUCTURAL_R = -0.4214572192513466
+- NATURAL_TARGET_MEDIAN_R = 0.608695652174018
+- NATURAL_TARGET_P25_R = 0.2741325505130756
+- NATURAL_TARGET_P75_R = 1.1525423728813473
+- NOT_APPLICABLE_N = 37
+- P_SECOND_GIVEN_FIRST = 0.5284552845528455
+- R1_CAPABILITY = 0.44571428571428573
+- R2_CAPABILITY = 0.24685714285714286
+- R3_CAPABILITY = 0.15314285714285714
+- R4_CAPABILITY = 0.08342857142857144
+- R5_CAPABILITY = 0.036571428571428574
+- RIGHT_CENSORED_N = 0
+- RUNNER_CONTRIBUTION_R = -48.48239607895358
+- RUNNER_EXTENDED_REACH = 0.2967479674796748
+- RUNNER_HORIZON_CLOSE_CONTRIBUTION_R = 94.86044503719359
+- RUNNER_HORIZON_N = 122
+- RUNNER_LOSS_CONTRIBUTION_R = -285.0
+- RUNNER_STOP_N = 570
+- RUNNER_TARGET_CONTRIBUTION_R = 141.65715888385276
+- RUNNER_TARGET_N = 146
+- SECOND_OBJECTIVE_AVAILABLE_N = 838
+- TRADED_N = 838
+- UNRESOLVED_RUNNER_N = 0
+
+## DEV -> OOS deltas (pooled; negative = OOS weaker)
+
+- FIRST_OBJECTIVE_REACHED_PCT: DEV 0.682083 -> OOS 0.587112 (delta -9.4971 pp)
+- MAX_STRUCTURAL_DRAWDOWN_R: DEV 102.145384 -> OOS 102.718129 (delta +0.5727 R)
+- MEAN_STRUCTURAL_R: DEV 0.060308 -> OOS -0.105668 (delta -0.1660 R)
+- MEDIAN_STRUCTURAL_R: DEV -0.330363 -> OOS -0.421457 (delta -0.0911 R)
+- NATURAL_TARGET_MEDIAN_R: DEV 0.401577 -> OOS 0.608696 (delta +0.2071 R)
+- P_SECOND_GIVEN_FIRST: DEV 0.635372 -> OOS 0.528455 (delta -10.6917 pp)
+- R1_CAPABILITY: DEV 0.492617 -> OOS 0.445714 (delta -4.6903 pp)
+- R2_CAPABILITY: DEV 0.303173 -> OOS 0.246857 (delta -5.6316 pp)
+- R3_CAPABILITY: DEV 0.200126 -> OOS 0.153143 (delta -4.6983 pp)
+- R4_CAPABILITY: DEV 0.137606 -> OOS 0.083429 (delta -5.4177 pp)
+- R5_CAPABILITY: DEV 0.095193 -> OOS 0.036571 (delta -5.8622 pp)
+- RUNNER_EXTENDED_REACH: DEV 0.412518 -> OOS 0.296748 (delta -11.5770 pp)
+
+## Per-symbol verdicts
+
+- EURUSD: C (traded 239)
+- GBPUSD: C (traded 218)
+- USDJPY: C (traded 196)
+- XAUUSD: C (traded 185)
+
+## Runner hypothesis (phase 6, frozen controls only)
+
+- P_SECOND_GIVEN_FIRST = 0.5284552845528455
+- RUNNER_EXTENDED_REACH = 0.2967479674796748
+- runner contribution to structural R = -48.4824 (target 141.6572, loss -285.0000, horizon-close 94.8604)
+- vs_C0_2R: OOS mean paired delta +0.010911 over 690 pairs (DEV pinned +0.043812 over 2573 pairs)
+- vs_C0_5R: OOS mean paired delta +0.327815 over 638 pairs (DEV pinned +0.058312 over 2301 pairs)
+
+## Notes
+
+- The OOS partition was opened ONCE for this sealed evaluation (2017-09-01..2017-12-01, pinned HistData identities verified); the sealed holdout was never sliced or read.
+- The verdict thresholds were preregistered and committed (oos_preregistration.json) BEFORE the OOS partition was opened; the preregistration hash is bound into this report.
+- All metrics are GROSS STRUCTURAL quantities with complete termination; NO friction, NO net-R, NO profitability claim (FRICTION_AUTHORITY_COMPLETE = NO).
+- No retuning occurred after the result: fraction, trigger, targets, SL, horizon, collision policy and sessions are exactly the frozen candidate's.
+- TREE_SHA is the git tree of the OOS results commit (a file cannot contain its own tree hash); see the mission return.

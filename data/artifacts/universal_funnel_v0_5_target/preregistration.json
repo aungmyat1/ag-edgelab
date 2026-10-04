@@ -1,0 +1,183 @@
+{
+  "causality_contract": "target_created_time <= entry_time enforced per target; closed-bar cuts for H4/D1; completed-window cut for session levels; no future swings/zones/levels; trade result never selects a target",
+  "collision_rule": "stop counted FIRST (frozen V0.3 fail-closed rule); same-bar stop+target collision => invalidated",
+  "experiment_hash": "4c5822ccf600edf33206330bac59b4753fe12b4d4066a8775a96ce1e843264df",
+  "experiment_id": "TARGET_MODEL_DIAGNOSTICS_V1",
+  "fit_tolerance": {
+    "TARGET_FIT_TOLERANCE_PCT": 5.0,
+    "rule": "ratio=FIXED_R/NATURAL_R; BELOW<0.95, NEAR 0.95..1.05, ABOVE>1.05; invalid natural => NULL (INVALID_OR_UNAVAILABLE_NATURAL_TARGET)"
+  },
+  "forbidden": [
+    "TP selection/grid",
+    "per-symbol/direction/session TP",
+    "SL testing",
+    "partial exits",
+    "realized economics",
+    "untested rule imports (RSI/MACD/fib/pip-SL/risk %/news/...)",
+    "V0.6 creation",
+    "auto-merge"
+  ],
+  "frozen_upstream": [
+    "D01",
+    "T1",
+    "T2",
+    "location",
+    "confirmation",
+    "entry",
+    "SL",
+    "session definitions",
+    "fill semantics",
+    "friction",
+    "existing fixed targets",
+    "dataset lineage"
+  ],
+  "natural_families": {
+    "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": {
+      "created_time": "close of the confirming H4 bar",
+      "definition": "most recent H4 swing high/low opposing the trade direction and beyond entry, confirmed (2-bar rule, frozen crypto_mtf_smc.confirmed_swing_points) at or before the H4 closed-bar cut at entry",
+      "status": "CONTRACT_COMPLETE"
+    },
+    "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": {
+      "created_time": "close of the previous D1 bar",
+      "definition": "previous D1 bar high (LONG) / low (SHORT) beyond entry, from the frozen single-lineage D1 derivation",
+      "status": "CONTRACT_COMPLETE"
+    },
+    "NT03_OPPOSITE_SESSION_LIQUIDITY": {
+      "created_time": "end of that completed session window",
+      "definition": "directional extreme (high for LONG, low for SHORT) of the most recent COMPLETED frozen session window (V0.3 session authority: ASIAN 00-08, LONDON 08-13, OVERLAP 13-16, NEW_YORK 16-21, OFF_SESSION 21-24 UTC) beyond entry; composition of the frozen session windows with the frozen SESSION_LEVEL location contract (LOC_SESSION_PREV_HIGH/LOW_V1 semantics); no new windows invented",
+      "status": "CONTRACT_COMPLETE"
+    },
+    "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": {
+      "created_time": "close of the zone-creating H4 bar",
+      "definition": "nearest opposing H4 supply/demand zone edge beyond entry (frozen V0.3 _precompute_sd_zones), zone created at or before the H4 closed-bar cut at entry",
+      "status": "CONTRACT_COMPLETE"
+    },
+    "NT05_NEXT_VALID_ORDER_BLOCK": {
+      "created_time": null,
+      "definition": "NO deterministic causal order-block detector exists in this repository (ORDER_BLOCK is an enum label only); fail-closed: AVAILABLE=false for every entry, never invented",
+      "status": "TARGET_FAMILY_CONTRACT_INCOMPLETE"
+    }
+  },
+  "nt05_status": "AVAILABLE=false REASON=TARGET_FAMILY_CONTRACT_INCOMPLETE (no deterministic order-block detector exists in this repository; never invented)",
+  "objective": [
+    "are frozen fixed targets beyond the market's causal structural objectives?",
+    "do suitable structural/liquidity targets exist at entry but price fail to deliver?",
+    "is normalized target R distorted by frozen stop geometry?",
+    "does T1 improve quality/location of natural objectives vs D01?",
+    "is there evidence for a future natural / natural+runner / fixed-R experiment?"
+  ],
+  "parent_expected": {
+    "D01_DIRECTIONAL_N": 9226,
+    "D01_ENTERED_N": 3183,
+    "D01_FIXED": {
+      "1R": 0.4926,
+      "2R": 0.3032,
+      "3R": 0.2001,
+      "4R": 0.1376,
+      "5R": 0.0952
+    },
+    "D01_NATURAL_TARGET_MEDIAN_R": 2.34,
+    "D01_SEPARATION_PP": 2.04,
+    "T1_DIRECTIONAL_N": 899,
+    "T1_ENTERED_N": 379,
+    "T1_FIXED": {
+      "1R": 0.533,
+      "2R": 0.3509,
+      "3R": 0.2058,
+      "4R": 0.1293,
+      "5R": 0.0765
+    },
+    "T1_NATURAL_TARGET_MEDIAN_R": 2.63,
+    "T1_SEPARATION_PP": 7.55
+  },
+  "parent_sha": "09ddc4d0f90eb1bf4ffbe00780e959d947177b6a",
+  "parent_tree": "ffa60fd6157c1af78e18f1b0f21cbd147abc4271",
+  "populations": {
+    "P0": "D01 frozen entries",
+    "P1": "T1 frozen entries",
+    "strata": [
+      "POOLED",
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ]
+  },
+  "primary_rule": "PRIMARY_NATURAL_TARGET = nearest positive directionally-valid causal objective (smallest positive price distance from entry == min positive TARGET_R under the frozen SL); every alternative objective preserved separately in the ladder",
+  "registered_before_results": true,
+  "registry_sha256": "8cfa81f9d1c6724c63eeec7aa86201af99a129f3ccf8dd9acdb078c8d1d8e9c9",
+  "root_cause_classifier": {
+    "CASE_A_TARGET_MODEL_MISMATCH": "primary objectives commonly exist (>=50%) and are reached (first-objective delivery >=40%), AND fixed 4R/5R ABOVE primary natural >=60%, AND 5R beyond EVERY causal objective >=60%",
+    "CASE_B_TARGET_CONTINUATION_WEAKNESS": "some level k in {3,4,5}: >=kR objective available >=25% (n>=20) but delivered <25%",
+    "CASE_C_FIXED_5R_SUPPORTED": ">=5R objective available >=25% (n>=20) AND delivered >=25%",
+    "CASE_D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": "first-objective delivery >=60% AND P(SECOND|FIRST) >=35% \u2014 DIAGNOSTIC ONLY, no partial exits implemented",
+    "CASE_E_SL_TARGET_GEOMETRY_INTERACTION": "Q1/Q4 primary-median ratio >=2.0 AND rank spearman(risk, raw target distance) <0.5",
+    "CASE_F_TARGET_FAMILY_INSUFFICIENT": "none of A..E measurable/true, or availability below 50%, or n<100",
+    "next_funnel_map": {
+      "A": "NATURAL_TARGET_EXPERIMENT",
+      "A_and_D": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+      "B": "TARGET_CONTINUATION_RESEARCH",
+      "C": "FIXED_R_TARGET_EXPERIMENT",
+      "D": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+      "E": "SL_TARGET_GEOMETRY_RESEARCH",
+      "F": "INSUFFICIENT_EVIDENCE"
+    },
+    "primary_precedence": [
+      "C",
+      "A",
+      "B",
+      "D",
+      "E",
+      "else F"
+    ]
+  },
+  "runnable_families": [
+    "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING",
+    "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME",
+    "NT03_OPPOSITE_SESSION_LIQUIDITY",
+    "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE"
+  ],
+  "t1_effect_classifier": {
+    "deep_continuation": "P(SECOND|FIRST) delta, material at 5pp",
+    "delivery": "first-objective reach delta, material at 5pp",
+    "direction_authority": "V0.4 parent (frozen) +7.55pp vs +2.04pp",
+    "geometry": "T1-D01 primary/furthest P50 delta, material at 0.25R"
+  },
+  "thresholds": {
+    "atr_normalization": "NULL \u2014 no causal ATR authority in repository",
+    "deterioration_pp": 5.0,
+    "family_insufficient_pct": 0.5,
+    "first_delivery_strong": 0.6,
+    "material_pp": 5.0,
+    "material_r": 0.25,
+    "min_corr_n": 30,
+    "min_stratum_n": 100,
+    "mismatch_beyond_pct": 0.6,
+    "natural_reachable_low": 0.4,
+    "pip_or_point_authority": {
+      "EURUSD": {
+        "size": 0.0001,
+        "unit": "PIP"
+      },
+      "GBPUSD": {
+        "size": 0.0001,
+        "unit": "PIP"
+      },
+      "USDJPY": {
+        "size": 0.01,
+        "unit": "PIP"
+      },
+      "XAUUSD": {
+        "size": 1.0,
+        "unit": "PRICE_POINT"
+      }
+    },
+    "raw_coscaling_rho": 0.5,
+    "realize_low": 0.25,
+    "realize_min_n": 20,
+    "runner_continuation": 0.35,
+    "sl_interaction_ratio": 2.0,
+    "support_low": 0.25
+  },
+  "version": "0.3.0-research"
+}

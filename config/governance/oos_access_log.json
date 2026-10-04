@@ -1,0 +1,76 @@
+{
+  "log_version": "CONSOLIDATION_R1_OOS_ACCESS_LOG_V1",
+  "purpose": "THE authoritative log of every out-of-sample dataset open in this repository. Future agents MUST consult this log before opening any OOS data. Duplicate OOS use (same candidate identity re-opening a consumed window) must fail closed. The sealed holdout partition (2017-12-01 to 2018-01-01 UTC, HistData 2017) has NEVER been opened by any recorded event and must remain sealed unless a future governance mission explicitly unseals it with a new preregistration.",
+  "fail_closed_rules": [
+    "Before any OOS evaluation, the runner must verify the candidate identity is absent from this log for the target dataset+window, or must STOP with OOS_ALREADY_CONSUMED.",
+    "A window consumed by candidate X may be opened by a DIFFERENT preregistered candidate Y only with an explicit preregistration that acknowledges the prior consumption (data reuse is disclosed, never hidden).",
+    "The SEALED_HOLDOUT window of any dataset may only be opened by an explicit governance mission that amends this log's holdout policy first.",
+    "Events are append-only. No event may be edited or deleted; corrections add a new event referencing the old one."
+  ],
+  "dataset_registry": {
+    "HISTDATA_ASCII_M1_2017_PR10_PINNED": {
+      "symbols": {
+        "EURUSD": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "GBPUSD": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "USDJPY": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+        "XAUUSD": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+      },
+      "partitions_utc": {
+        "DEVELOPMENT": "[2017-01-01T00:00:00Z, 2017-09-01T00:00:00Z)",
+        "OOS": "[2017-09-01T00:00:00Z, 2017-12-01T00:00:00Z)",
+        "SEALED_HOLDOUT": "[2017-12-01T00:00:00Z, 2018-01-01T00:00:00Z)"
+      },
+      "acquisition": "scripts/acquire_histdata_fx_2017.sh (mirror parrondo/deeptrading via GitHub contents API; sha256-pinned, zips never committed)",
+      "holdout_policy": "SEALED \u2014 never opened; fail-closed guards exist in src/ag_edgelab/data/fx_histdata_2017.py (HoldoutAccessError) and in the STV2 campaign dataset layer"
+    }
+  },
+  "events": [
+    {
+      "event_id": "OOS-001",
+      "candidate_id": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc",
+      "candidate_hash": "e1ffe9f1e5ccfb9a336f1b4ae4289d41901ec5d2",
+      "dataset_id": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "dataset_hash": {
+        "EURUSD": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "GBPUSD": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "USDJPY": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+        "XAUUSD": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+      },
+      "window": "2017-09-01T00:00:00Z to 2017-12-01T00:00:00Z",
+      "opened_at": "2026-10-03T09:25:20.586796Z",
+      "preregistration_hash": null,
+      "preregistration_note": "Pre-V0.6.2 process: the campaign froze DEV-survivor cells (A_SWEEP_REENTRY x 4 symbols LONDON_NEWYORK) in the DEV result and final report before the OOS replay; no separate hash-pinned preregistration file existed. Recorded as null deliberately \u2014 no hash may be invented.",
+      "verdict": "OOS_PASS=false \u2014 BRANCH_A REJECT (fails OOS); pooled gate net expectancy -0.0992 R; aggregate net_r -80.78, net PF 0.8432 after friction",
+      "commit": "e75c2ac (campaign; branch arena/01a100ce-ag-edgelab, PR#10)",
+      "holdout_touched": false
+    },
+    {
+      "event_id": "OOS-002",
+      "candidate_id": "TARGET_POLICY_C3_V1",
+      "candidate_hash": "5a485308841d1c5d2096e348665ef3f9b1f689c1ed4ce4b30385eeaf2c828112",
+      "dataset_id": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "dataset_hash": {
+        "EURUSD": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "GBPUSD": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "USDJPY": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+        "XAUUSD": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+      },
+      "window": "2017-09-01T00:00:00Z to 2017-12-01T00:00:00Z",
+      "opened_at": "2026-10-04T15:27:38Z",
+      "preregistration_hash": "ff49d6fa2e61131c7dd90539f51ca0700052bf7320a7f19bf41285edcf19cae7",
+      "verdict": "C \u2014 STRUCTURAL_GENERALIZATION_FAILS (pooled and all four symbols; preregistered thresholds; independent reproduction 12/12)",
+      "commit": "21b3ebb (sealed evaluation; verification check fix 9c94c77) on branch arena/01a1073e-ag-edgelab",
+      "holdout_touched": false,
+      "prior_consumption_disclosed": "OOS-001 consumed the same window for a different candidate (SESSION_TRADE_V2); acknowledged in the V0.6.2 preregistration process \u2014 the C3 structural evaluation is independent of any STV2 outcome.",
+      "candidate_version": "1.0.0-frozen",
+      "preregistration_note": "committed c8cd7c2 BEFORE the open; git history proves ordering",
+      "opened_at_note": "sealed-evaluation commit 21b3ebb author date; single authorized open"
+    }
+  ],
+  "non_events_recorded_for_completeness": [
+    {
+      "candidate_id": "ST_MTF_CONTROL_SHIFT_V1@1.0.0",
+      "note": "OOS NOT_RUN \u2014 no DEV survivor cells; the OOS window was never opened for this candidate (oos_result.json status NOT_RUN)."
+    }
+  ]
+}

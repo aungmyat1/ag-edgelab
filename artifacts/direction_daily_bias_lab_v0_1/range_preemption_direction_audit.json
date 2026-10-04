@@ -1,0 +1,10 @@
+{
+  "historical_counts_trusted": false,
+  "recomputed_counts": {
+    "RANGE_PREEMPTED_SWEEP_N": 0,
+    "RANGE_PREEMPTED_TREND_N": 0
+  },
+  "rows": [],
+  "schema": "RangePreemptionDirectionAuditV0.1",
+  "status": "BLOCKED_NO_V1_V2_CANDIDATE_LEDGER_IN_CHECKOUT"
+}

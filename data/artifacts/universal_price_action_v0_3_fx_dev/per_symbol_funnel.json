@@ -1,0 +1,250 @@
+{
+  "EURUSD": [
+    {
+      "n": 3789,
+      "pct_of_previous": null,
+      "stage": "RAW_OBSERVATIONS"
+    },
+    {
+      "n": 3789,
+      "pct_of_previous": 100.0,
+      "stage": "DIRECTION_DECIDED"
+    },
+    {
+      "n": 2408,
+      "pct_of_previous": 63.55,
+      "stage": "DIRECTION_NON_NEUTRAL"
+    },
+    {
+      "n": 2408,
+      "pct_of_previous": 100.0,
+      "stage": "LOCATION_AVAILABLE"
+    },
+    {
+      "n": 1640,
+      "pct_of_previous": 68.11,
+      "stage": "LOCATION_ALIGNED"
+    },
+    {
+      "n": 1568,
+      "pct_of_previous": 95.61,
+      "stage": "CONFIRMATION_AVAILABLE"
+    },
+    {
+      "n": 749,
+      "pct_of_previous": 47.77,
+      "stage": "ENTRY_AVAILABLE"
+    },
+    {
+      "n": 319,
+      "pct_of_previous": 42.59,
+      "stage": "R1"
+    },
+    {
+      "n": 179,
+      "pct_of_previous": 56.11,
+      "stage": "R2"
+    },
+    {
+      "n": 104,
+      "pct_of_previous": 58.1,
+      "stage": "R3"
+    },
+    {
+      "n": 72,
+      "pct_of_previous": 69.23,
+      "stage": "R4"
+    },
+    {
+      "n": 55,
+      "pct_of_previous": 76.39,
+      "stage": "R5"
+    }
+  ],
+  "GBPUSD": [
+    {
+      "n": 3784,
+      "pct_of_previous": null,
+      "stage": "RAW_OBSERVATIONS"
+    },
+    {
+      "n": 3784,
+      "pct_of_previous": 100.0,
+      "stage": "DIRECTION_DECIDED"
+    },
+    {
+      "n": 2329,
+      "pct_of_previous": 61.55,
+      "stage": "DIRECTION_NON_NEUTRAL"
+    },
+    {
+      "n": 2329,
+      "pct_of_previous": 100.0,
+      "stage": "LOCATION_AVAILABLE"
+    },
+    {
+      "n": 1826,
+      "pct_of_previous": 78.4,
+      "stage": "LOCATION_ALIGNED"
+    },
+    {
+      "n": 1732,
+      "pct_of_previous": 94.85,
+      "stage": "CONFIRMATION_AVAILABLE"
+    },
+    {
+      "n": 873,
+      "pct_of_previous": 50.4,
+      "stage": "ENTRY_AVAILABLE"
+    },
+    {
+      "n": 403,
+      "pct_of_previous": 46.16,
+      "stage": "R1"
+    },
+    {
+      "n": 263,
+      "pct_of_previous": 65.26,
+      "stage": "R2"
+    },
+    {
+      "n": 175,
+      "pct_of_previous": 66.54,
+      "stage": "R3"
+    },
+    {
+      "n": 112,
+      "pct_of_previous": 64.0,
+      "stage": "R4"
+    },
+    {
+      "n": 72,
+      "pct_of_previous": 64.29,
+      "stage": "R5"
+    }
+  ],
+  "USDJPY": [
+    {
+      "n": 3774,
+      "pct_of_previous": null,
+      "stage": "RAW_OBSERVATIONS"
+    },
+    {
+      "n": 3774,
+      "pct_of_previous": 100.0,
+      "stage": "DIRECTION_DECIDED"
+    },
+    {
+      "n": 2263,
+      "pct_of_previous": 59.96,
+      "stage": "DIRECTION_NON_NEUTRAL"
+    },
+    {
+      "n": 2263,
+      "pct_of_previous": 100.0,
+      "stage": "LOCATION_AVAILABLE"
+    },
+    {
+      "n": 1715,
+      "pct_of_previous": 75.78,
+      "stage": "LOCATION_ALIGNED"
+    },
+    {
+      "n": 1652,
+      "pct_of_previous": 96.33,
+      "stage": "CONFIRMATION_AVAILABLE"
+    },
+    {
+      "n": 733,
+      "pct_of_previous": 44.37,
+      "stage": "ENTRY_AVAILABLE"
+    },
+    {
+      "n": 392,
+      "pct_of_previous": 53.48,
+      "stage": "R1"
+    },
+    {
+      "n": 204,
+      "pct_of_previous": 52.04,
+      "stage": "R2"
+    },
+    {
+      "n": 128,
+      "pct_of_previous": 62.75,
+      "stage": "R3"
+    },
+    {
+      "n": 85,
+      "pct_of_previous": 66.41,
+      "stage": "R4"
+    },
+    {
+      "n": 50,
+      "pct_of_previous": 58.82,
+      "stage": "R5"
+    }
+  ],
+  "XAUUSD": [
+    {
+      "n": 3579,
+      "pct_of_previous": null,
+      "stage": "RAW_OBSERVATIONS"
+    },
+    {
+      "n": 3579,
+      "pct_of_previous": 100.0,
+      "stage": "DIRECTION_DECIDED"
+    },
+    {
+      "n": 2226,
+      "pct_of_previous": 62.2,
+      "stage": "DIRECTION_NON_NEUTRAL"
+    },
+    {
+      "n": 2226,
+      "pct_of_previous": 100.0,
+      "stage": "LOCATION_AVAILABLE"
+    },
+    {
+      "n": 1610,
+      "pct_of_previous": 72.33,
+      "stage": "LOCATION_ALIGNED"
+    },
+    {
+      "n": 1544,
+      "pct_of_previous": 95.9,
+      "stage": "CONFIRMATION_AVAILABLE"
+    },
+    {
+      "n": 828,
+      "pct_of_previous": 53.63,
+      "stage": "ENTRY_AVAILABLE"
+    },
+    {
+      "n": 454,
+      "pct_of_previous": 54.83,
+      "stage": "R1"
+    },
+    {
+      "n": 319,
+      "pct_of_previous": 70.26,
+      "stage": "R2"
+    },
+    {
+      "n": 230,
+      "pct_of_previous": 72.1,
+      "stage": "R3"
+    },
+    {
+      "n": 169,
+      "pct_of_previous": 73.48,
+      "stage": "R4"
+    },
+    {
+      "n": 126,
+      "pct_of_previous": 74.56,
+      "stage": "R5"
+    }
+  ]
+}

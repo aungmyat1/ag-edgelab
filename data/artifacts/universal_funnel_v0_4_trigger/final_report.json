@@ -1,0 +1,199 @@
+{
+  "asian_v2_identity_result": "INSUFFICIENT_EVIDENCE",
+  "attrition_vs_d01_pct": {
+    "T1": 90.26,
+    "T2": 48.38
+  },
+  "base_parent_reproduced": true,
+  "causality": "PASS",
+  "confirmation_value_stable": "YES",
+  "continuation_survival": {
+    "D01": {
+      "P2_GIVEN_1": 0.6154336734693877,
+      "P3_GIVEN_2": 0.6601036269430052,
+      "P4_GIVEN_3": 0.6875981161695447,
+      "P5_GIVEN_4": 0.6917808219178082
+    },
+    "T1": {
+      "P2_GIVEN_1": 0.6584158415841584,
+      "P3_GIVEN_2": 0.5864661654135338,
+      "P4_GIVEN_3": 0.6282051282051282,
+      "P5_GIVEN_4": 0.5918367346938775
+    },
+    "T2": {
+      "P2_GIVEN_1": 0.6323529411764706,
+      "P3_GIVEN_2": 0.6465116279069767,
+      "P4_GIVEN_3": 0.6402877697841727,
+      "P5_GIVEN_4": 0.6966292134831461
+    }
+  },
+  "dataset": {
+    "authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+    "hashes_verified": true,
+    "role": "DEVELOPMENT"
+  },
+  "deltas_vs_d01": {
+    "T1": {
+      "DELTA_1R_vs_D01_pp": 4.04,
+      "DELTA_2R_vs_D01_pp": 4.78,
+      "DELTA_3R_vs_D01_pp": 0.57,
+      "DELTA_4R_vs_D01_pp": -0.83,
+      "DELTA_5R_vs_D01_pp": -1.87,
+      "DELTA_NATURAL_TARGET_MEDIAN_R": 0.2907
+    },
+    "T2": {
+      "DELTA_1R_vs_D01_pp": -1.0,
+      "DELTA_2R_vs_D01_pp": 0.2,
+      "DELTA_3R_vs_D01_pp": -0.28,
+      "DELTA_4R_vs_D01_pp": -1.13,
+      "DELTA_5R_vs_D01_pp": -0.72,
+      "DELTA_NATURAL_TARGET_MEDIAN_R": -1.0948
+    }
+  },
+  "determinism": "PASS",
+  "directional_n": {
+    "D01": 9226,
+    "T1": 899,
+    "T2": 4762
+  },
+  "experiment_id": "MTF_DIRECTION_TRIGGER_V1",
+  "final_report_sha256": "bb4e1076903849f02a9973286f4ab64a6d55dc4cfc96913255117fd8b234f6ce",
+  "fixed_reach": {
+    "D01": {
+      "1R": 0.49261702796104306,
+      "2R": 0.3031731071316368,
+      "3R": 0.20012566760917375,
+      "4R": 0.13760603204524033,
+      "5R": 0.09519321394910461
+    },
+    "T1": {
+      "1R": 0.5329815303430079,
+      "2R": 0.35092348284960423,
+      "3R": 0.20580474934036938,
+      "4R": 0.12928759894459102,
+      "5R": 0.07651715039577836
+    },
+    "T2": {
+      "1R": 0.48261178140525196,
+      "2R": 0.30518097941802697,
+      "3R": 0.19730305180979418,
+      "4R": 0.1263307310149042,
+      "5R": 0.0880056777856636
+    }
+  },
+  "guards": {
+    "execution_capability_added": false,
+    "holdout_touched": false,
+    "new_strategy_created": false,
+    "oos_opened": false,
+    "realized_economics_run": false,
+    "strategy_rules_changed": false
+  },
+  "location_value_stable": "YES",
+  "ma_adds_value_beyond_structure": "NO",
+  "mission": "UNIVERSAL FUNNEL V0.4 \u2014 TRIGGER RESEARCH (D01 vs T1 vs T2)",
+  "natural_target_r": {
+    "D01": {
+      "P25": 1.0510948905109334,
+      "P50": 2.3402777777776684,
+      "P75": 4.178947368421132,
+      "P90": 6.840909090909562
+    },
+    "T1": {
+      "P25": 1.3894736842105042,
+      "P50": 2.631016042781026,
+      "P75": 4.009999999999991,
+      "P90": 5.677183908046055
+    },
+    "T2": {
+      "P25": 0.6014658176139087,
+      "P50": 1.245454545454541,
+      "P75": 2.601696001366786,
+      "P90": 4.268518518518641
+    }
+  },
+  "observations_raw": {
+    "EURUSD": 3789,
+    "GBPUSD": 3784,
+    "USDJPY": 3774,
+    "XAUUSD": 3579
+  },
+  "overall": {
+    "best_policy": "T1",
+    "best_result_type": "B",
+    "direction_improvement_propagates_downstream": "NO",
+    "next_funnel_to_test": "TARGET",
+    "note": "winner NOT chosen on separation alone; attrition and target-capability propagation are part of the verdict (mission sections 10-12)",
+    "primary_diagnosis": "TRIGGER_DIRECTION_IMPROVED_TARGET_NOT_IMPROVED"
+  },
+  "parent_sha": "977f99c53b3952dacc684056b60e7e49d6145d30",
+  "per_policy_result": {
+    "T1": {
+      "attrition_vs_d01_pct": 90.26,
+      "deltas": {
+        "DELTA_1R_vs_D01_pp": 4.04,
+        "DELTA_2R_vs_D01_pp": 4.78,
+        "DELTA_3R_vs_D01_pp": 0.57,
+        "DELTA_4R_vs_D01_pp": -0.83,
+        "DELTA_5R_vs_D01_pp": -1.87,
+        "DELTA_NATURAL_TARGET_MEDIAN_R": 0.2907
+      },
+      "interpretation": "TRIGGER_DIRECTION_IMPROVED_TARGET_NOT_IMPROVED",
+      "policy": "T1",
+      "reason": "separation 7.55pp >= threshold but target capability not materially improved (d2R 4.78pp < 5.0pp or d3R 0.57pp < 3.0pp)",
+      "research_diagnostic_threshold_pp": 5.0,
+      "result_type": "B",
+      "separation_pp": 7.55,
+      "threshold_label": "RESEARCH_DIAGNOSTIC_THRESHOLD (not edge/profit/production/deployment)"
+    },
+    "T2": {
+      "attrition_vs_d01_pct": 48.38,
+      "deltas": {
+        "DELTA_1R_vs_D01_pp": -1.0,
+        "DELTA_2R_vs_D01_pp": 0.2,
+        "DELTA_3R_vs_D01_pp": -0.28,
+        "DELTA_4R_vs_D01_pp": -1.13,
+        "DELTA_5R_vs_D01_pp": -0.72,
+        "DELTA_NATURAL_TARGET_MEDIAN_R": -1.0948
+      },
+      "interpretation": "TRIGGER_HYPOTHESIS_NOT_SUPPORTED",
+      "policy": "T2",
+      "reason": "separation -1.43pp < 5.0pp diagnostic threshold",
+      "research_diagnostic_threshold_pp": 5.0,
+      "result_type": "C",
+      "separation_pp": -1.43,
+      "threshold_label": "RESEARCH_DIAGNOSTIC_THRESHOLD (not edge/profit/production/deployment)"
+    }
+  },
+  "phase_pooled": {
+    "BEAR_CONTINUATION": 2431,
+    "BEAR_PULLBACK": 2126,
+    "BULL_CONTINUATION": 2331,
+    "BULL_PULLBACK": 2338,
+    "NEUTRAL": 5700
+  },
+  "pullback_pooled": {
+    "PULLBACK_N": 4464,
+    "PULLBACK_REALIGN_N": 4358,
+    "PULLBACK_REALIGN_RATE": 0.9762544802867383,
+    "REALIGN_DELAY_H1_BARS": {
+      "P25": 6.0,
+      "P50": 12.0,
+      "P75": 22.0,
+      "P90": 36.0,
+      "max": 60,
+      "min": 1
+    }
+  },
+  "separation_pp": {
+    "D01": 2.04,
+    "T1": 7.55,
+    "T2": -1.43
+  },
+  "status": "TRIGGER_RESEARCH_COMPLETE",
+  "target_distribution_shift": {
+    "T1": "IMPROVED",
+    "T2": "UNCHANGED"
+  },
+  "version": "0.1.0-research"
+}

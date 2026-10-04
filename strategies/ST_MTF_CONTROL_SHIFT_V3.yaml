@@ -1,0 +1,86 @@
+strategy_id: ST_MTF_CONTROL_SHIFT_V3
+strategy_name: Multi-Timeframe Smart Money Control Shift
+strategy_family: MTF_SMC_CONTROL_SHIFT
+version: "3.0.0"
+status: RESEARCH_SHADOW
+registered_utc: "2026-10-03"
+
+instruments: [EURUSD, GBPUSD, USDJPY, XAUUSD]
+
+timeframes:
+  bias: [D1, H4]
+  setup: H1
+  entry: M15
+
+sessions:
+  ASIAN_LONDON: ["06:00", "09:00"]
+  LONDON_NEWYORK: ["11:00", "14:00"]
+
+definitions:
+  swing_strength: 2
+  order_block_lookback_bars: 6
+  fvg_mode: STRICT_THREE_CANDLE
+  htf_bias_requires_d1_h4_alignment: true
+  htf_location_zone_timeframe: H4
+  control_shift_timeframe: H1
+  entry_refinement_timeframe: M15
+  max_h1_shift_age_bars: 24
+  h1_shift_requires_active_session_date: true
+  stop_buffer_fraction_of_ob_height: 0.10
+
+context:
+  bullish: D1_AND_H4_HIGHER_HIGHS_HIGHER_LOWS
+  bearish: D1_AND_H4_LOWER_HIGHS_LOWER_LOWS
+  neutral_action: NO_TRADE
+  poi_requirement: LATEST_UNMITIGATED_H4_ZONE_IN_BIAS_DIRECTION_TOUCHED
+
+zone_contract:
+  bullish_demand:
+    requires: [BULLISH_FVG, CLOSE_ABOVE_CONFIRMED_SWING_HIGH, LAST_BEARISH_ORIGIN_CANDLE]
+  bearish_supply:
+    requires: [BEARISH_FVG, CLOSE_BELOW_CONFIRMED_SWING_LOW, LAST_BULLISH_ORIGIN_CANDLE]
+  order_block_zone: FULL_ORIGIN_CANDLE_HIGH_LOW
+
+control_shift:
+  true_shift_requires:
+    - H1_CLOSE_BEYOND_ACTIVE_OPPOSING_ZONE
+    - H1_BOS_IN_NEW_CONTROL_DIRECTION
+    - H1_FVG_IN_NEW_CONTROL_DIRECTION
+    - NEW_H1_ORDER_BLOCK
+  false_shift_classes:
+    LIQUIDITY_SWEEP: WICK_BREACH_AND_CLOSE_BACK_INSIDE
+    FVG_REBALANCE: PRIOR_UNMITIGATED_FVG_TOUCHED_WITHOUT_VALID_CONTROL_SHIFT
+    FAILED_SHIFT: VALID_BREAK_THEN_RECLAIM_WITHIN_TWO_H1_BARS_DIAGNOSTIC_ONLY
+
+entry:
+  order_type: LIMIT
+  requires_m15_same_direction_zone_after_h1_shift: true
+  price: M15_ORDER_BLOCK_MIDPOINT
+  stop_loss: M15_ORDER_BLOCK_EXTREME_PLUS_10PCT_OB_HEIGHT_BUFFER
+  expiry: END_OF_ACTIVE_SESSION
+  max_entries_per_symbol_per_cycle_per_day: 1
+  signal_selection: EARLIEST_VALID_SIGNAL_WINS
+  no_overnight: true
+
+management:
+  risk_per_trade_pct_intent: 0.5
+  tp1_r: 2.0
+  tp1_volume_pct: 0.50
+  tp2_volume_pct: 0.50
+  tp2: NEAREST_OPPOSING_H4_ZONE_OR_CONFIRMED_SWING_BEYOND_TP1
+  move_runner_to_breakeven_after_tp1: true
+  forced_flat_time_utc: "21:00"
+
+execution:
+  proposal_generation_authorized: true
+  demo_authorized: false
+  live_authorized: false
+  allow_order_send: false
+  position_size_authorized: false
+
+research_notes:
+  - Parameters above are deterministic formalization choices for testing, not claimed source-video constants.
+  - One-entry-per-symbol/session/day and 21:00 UTC force-flat are V1 backtest formalizations.
+  - No machine-learning classifier is part of V1; false-CHoCH labels are deterministic diagnostics.
+  - Friction must be modeled by EdgeLab before any economic qualification.
+  - No strategy rule may be optimized during the first frozen campaign.

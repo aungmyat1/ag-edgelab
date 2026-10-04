@@ -1,0 +1,405 @@
+{
+  "per_symbol": {
+    "EURUSD": {
+      "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+      "SECONDARY_DIAGNOSES": [
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+        "E_SL_TARGET_GEOMETRY_INTERACTION"
+      ]
+    },
+    "GBPUSD": {
+      "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+      "SECONDARY_DIAGNOSES": [
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+        "E_SL_TARGET_GEOMETRY_INTERACTION"
+      ]
+    },
+    "USDJPY": {
+      "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+      "SECONDARY_DIAGNOSES": [
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS"
+      ]
+    },
+    "XAUUSD": {
+      "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+      "SECONDARY_DIAGNOSES": [
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS"
+      ]
+    }
+  },
+  "per_symbol_detail": {
+    "EURUSD": {
+      "NEXT_FUNNEL_TO_TEST": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+      "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+      "SECONDARY_DIAGNOSES": [
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+        "E_SL_TARGET_GEOMETRY_INTERACTION"
+      ],
+      "cases": {
+        "A_TARGET_MODEL_MISMATCH": {
+          "evidence": {
+            "5r_beyond_every_objective_pct": 0.6577540106951871,
+            "first_objective_reached_pct": 0.6042780748663101,
+            "fixed_4r_5r_above_primary_pct": {
+              "4": 0.9572192513368984,
+              "5": 0.9692513368983957
+            },
+            "primary_available_pct": 0.9986648865153538
+          },
+          "true": true
+        },
+        "B_TARGET_CONTINUATION_WEAKNESS": {
+          "evidence": {
+            "failing_levels": [
+              "3R",
+              "4R",
+              "5R"
+            ]
+          },
+          "true": true
+        },
+        "C_FIXED_5R_SUPPORTED": {
+          "evidence": {
+            "ge5_available_pct": 0.32754010695187163,
+            "ge5_delivery_pct": 0.05714285714285714,
+            "measurable": true
+          },
+          "true": false
+        },
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": {
+          "evidence": {
+            "first_objective_reached_pct": 0.6042780748663101,
+            "p_second_given_first": 0.5337837837837838
+          },
+          "note": "DIAGNOSTIC ONLY \u2014 no partial exits implemented",
+          "true": true
+        },
+        "E_SL_TARGET_GEOMETRY_INTERACTION": {
+          "evidence": {
+            "q1_over_q4_ratio": 2.635627524380504,
+            "raw_coscaling_rank_spearman": 0.11705837934423087
+          },
+          "true": true
+        }
+      },
+      "next_map": {
+        "A_TARGET_MODEL_MISMATCH": "NATURAL_TARGET_EXPERIMENT",
+        "B_TARGET_CONTINUATION_WEAKNESS": "TARGET_CONTINUATION_RESEARCH",
+        "C_FIXED_5R_SUPPORTED": "FIXED_R_TARGET_EXPERIMENT",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+        "E_SL_TARGET_GEOMETRY_INTERACTION": "SL_TARGET_GEOMETRY_RESEARCH",
+        "F_TARGET_FAMILY_INSUFFICIENT": "INSUFFICIENT_EVIDENCE"
+      },
+      "no_parameter_search": true,
+      "no_partial_exits_implemented": true,
+      "no_sl_changed": true,
+      "no_tp_changed": true,
+      "precedence": [
+        "C_FIXED_5R_SUPPORTED",
+        "A_TARGET_MODEL_MISMATCH",
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+        "E_SL_TARGET_GEOMETRY_INTERACTION"
+      ]
+    },
+    "GBPUSD": {
+      "NEXT_FUNNEL_TO_TEST": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+      "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+      "SECONDARY_DIAGNOSES": [
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+        "E_SL_TARGET_GEOMETRY_INTERACTION"
+      ],
+      "cases": {
+        "A_TARGET_MODEL_MISMATCH": {
+          "evidence": {
+            "5r_beyond_every_objective_pct": 0.7431192660550459,
+            "first_objective_reached_pct": 0.6903669724770642,
+            "fixed_4r_5r_above_primary_pct": {
+              "4": 0.9862385321100917,
+              "5": 0.9977064220183486
+            },
+            "primary_available_pct": 0.9988545246277205
+          },
+          "true": true
+        },
+        "B_TARGET_CONTINUATION_WEAKNESS": {
+          "evidence": {
+            "failing_levels": [
+              "3R",
+              "4R"
+            ]
+          },
+          "true": true
+        },
+        "C_FIXED_5R_SUPPORTED": {
+          "evidence": {
+            "ge5_available_pct": 0.24426605504587157,
+            "ge5_delivery_pct": 0.023474178403755867,
+            "measurable": true
+          },
+          "true": false
+        },
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": {
+          "evidence": {
+            "first_objective_reached_pct": 0.6903669724770642,
+            "p_second_given_first": 0.6188870151770658
+          },
+          "note": "DIAGNOSTIC ONLY \u2014 no partial exits implemented",
+          "true": true
+        },
+        "E_SL_TARGET_GEOMETRY_INTERACTION": {
+          "evidence": {
+            "q1_over_q4_ratio": 2.198418099951307,
+            "raw_coscaling_rank_spearman": 0.21306696908331696
+          },
+          "true": true
+        }
+      },
+      "next_map": {
+        "A_TARGET_MODEL_MISMATCH": "NATURAL_TARGET_EXPERIMENT",
+        "B_TARGET_CONTINUATION_WEAKNESS": "TARGET_CONTINUATION_RESEARCH",
+        "C_FIXED_5R_SUPPORTED": "FIXED_R_TARGET_EXPERIMENT",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+        "E_SL_TARGET_GEOMETRY_INTERACTION": "SL_TARGET_GEOMETRY_RESEARCH",
+        "F_TARGET_FAMILY_INSUFFICIENT": "INSUFFICIENT_EVIDENCE"
+      },
+      "no_parameter_search": true,
+      "no_partial_exits_implemented": true,
+      "no_sl_changed": true,
+      "no_tp_changed": true,
+      "precedence": [
+        "C_FIXED_5R_SUPPORTED",
+        "A_TARGET_MODEL_MISMATCH",
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+        "E_SL_TARGET_GEOMETRY_INTERACTION"
+      ]
+    },
+    "USDJPY": {
+      "NEXT_FUNNEL_TO_TEST": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+      "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+      "SECONDARY_DIAGNOSES": [
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS"
+      ],
+      "cases": {
+        "A_TARGET_MODEL_MISMATCH": {
+          "evidence": {
+            "5r_beyond_every_objective_pct": 0.7517053206002728,
+            "first_objective_reached_pct": 0.6834924965893588,
+            "fixed_4r_5r_above_primary_pct": {
+              "4": 0.9877216916780355,
+              "5": 0.9945429740791268
+            },
+            "primary_available_pct": 1.0
+          },
+          "true": true
+        },
+        "B_TARGET_CONTINUATION_WEAKNESS": {
+          "evidence": {
+            "failing_levels": [
+              "3R",
+              "4R"
+            ]
+          },
+          "true": true
+        },
+        "C_FIXED_5R_SUPPORTED": {
+          "evidence": {
+            "ge5_available_pct": 0.24010914051841747,
+            "ge5_delivery_pct": 0.022727272727272728,
+            "measurable": true
+          },
+          "true": false
+        },
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": {
+          "evidence": {
+            "first_objective_reached_pct": 0.6834924965893588,
+            "p_second_given_first": 0.680161943319838
+          },
+          "note": "DIAGNOSTIC ONLY \u2014 no partial exits implemented",
+          "true": true
+        },
+        "E_SL_TARGET_GEOMETRY_INTERACTION": {
+          "evidence": {
+            "q1_over_q4_ratio": 1.972584322996071,
+            "raw_coscaling_rank_spearman": 0.13712450474597596
+          },
+          "true": false
+        }
+      },
+      "next_map": {
+        "A_TARGET_MODEL_MISMATCH": "NATURAL_TARGET_EXPERIMENT",
+        "B_TARGET_CONTINUATION_WEAKNESS": "TARGET_CONTINUATION_RESEARCH",
+        "C_FIXED_5R_SUPPORTED": "FIXED_R_TARGET_EXPERIMENT",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+        "E_SL_TARGET_GEOMETRY_INTERACTION": "SL_TARGET_GEOMETRY_RESEARCH",
+        "F_TARGET_FAMILY_INSUFFICIENT": "INSUFFICIENT_EVIDENCE"
+      },
+      "no_parameter_search": true,
+      "no_partial_exits_implemented": true,
+      "no_sl_changed": true,
+      "no_tp_changed": true,
+      "precedence": [
+        "C_FIXED_5R_SUPPORTED",
+        "A_TARGET_MODEL_MISMATCH",
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+        "E_SL_TARGET_GEOMETRY_INTERACTION"
+      ]
+    },
+    "XAUUSD": {
+      "NEXT_FUNNEL_TO_TEST": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+      "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+      "SECONDARY_DIAGNOSES": [
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS"
+      ],
+      "cases": {
+        "A_TARGET_MODEL_MISMATCH": {
+          "evidence": {
+            "5r_beyond_every_objective_pct": 0.7823458282950423,
+            "first_objective_reached_pct": 0.717049576783555,
+            "fixed_4r_5r_above_primary_pct": {
+              "4": 0.992744860943168,
+              "5": 0.9963724304715841
+            },
+            "primary_available_pct": 0.998792270531401
+          },
+          "true": true
+        },
+        "B_TARGET_CONTINUATION_WEAKNESS": {
+          "evidence": {
+            "failing_levels": [
+              "3R",
+              "4R"
+            ]
+          },
+          "true": true
+        },
+        "C_FIXED_5R_SUPPORTED": {
+          "evidence": {
+            "ge5_available_pct": 0.19105199516324062,
+            "ge5_delivery_pct": 0.15822784810126583,
+            "measurable": true
+          },
+          "true": false
+        },
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": {
+          "evidence": {
+            "first_objective_reached_pct": 0.717049576783555,
+            "p_second_given_first": 0.6920415224913494
+          },
+          "note": "DIAGNOSTIC ONLY \u2014 no partial exits implemented",
+          "true": true
+        },
+        "E_SL_TARGET_GEOMETRY_INTERACTION": {
+          "evidence": {
+            "q1_over_q4_ratio": 1.8650555165895437,
+            "raw_coscaling_rank_spearman": 0.2371269022335237
+          },
+          "true": false
+        }
+      },
+      "next_map": {
+        "A_TARGET_MODEL_MISMATCH": "NATURAL_TARGET_EXPERIMENT",
+        "B_TARGET_CONTINUATION_WEAKNESS": "TARGET_CONTINUATION_RESEARCH",
+        "C_FIXED_5R_SUPPORTED": "FIXED_R_TARGET_EXPERIMENT",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+        "E_SL_TARGET_GEOMETRY_INTERACTION": "SL_TARGET_GEOMETRY_RESEARCH",
+        "F_TARGET_FAMILY_INSUFFICIENT": "INSUFFICIENT_EVIDENCE"
+      },
+      "no_parameter_search": true,
+      "no_partial_exits_implemented": true,
+      "no_sl_changed": true,
+      "no_tp_changed": true,
+      "precedence": [
+        "C_FIXED_5R_SUPPORTED",
+        "A_TARGET_MODEL_MISMATCH",
+        "B_TARGET_CONTINUATION_WEAKNESS",
+        "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+        "E_SL_TARGET_GEOMETRY_INTERACTION"
+      ]
+    }
+  },
+  "pooled": {
+    "NEXT_FUNNEL_TO_TEST": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+    "PRIMARY_DIAGNOSIS": "A_TARGET_MODEL_MISMATCH",
+    "SECONDARY_DIAGNOSES": [
+      "B_TARGET_CONTINUATION_WEAKNESS",
+      "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+      "E_SL_TARGET_GEOMETRY_INTERACTION"
+    ],
+    "cases": {
+      "A_TARGET_MODEL_MISMATCH": {
+        "evidence": {
+          "5r_beyond_every_objective_pct": 0.7352201257861635,
+          "first_objective_reached_pct": 0.6754716981132075,
+          "fixed_4r_5r_above_primary_pct": {
+            "4": 0.9814465408805031,
+            "5": 0.989937106918239
+          },
+          "primary_available_pct": 0.9990574929311969
+        },
+        "true": true
+      },
+      "B_TARGET_CONTINUATION_WEAKNESS": {
+        "evidence": {
+          "failing_levels": [
+            "3R",
+            "4R"
+          ]
+        },
+        "true": true
+      },
+      "C_FIXED_5R_SUPPORTED": {
+        "evidence": {
+          "ge5_available_pct": 0.2490566037735849,
+          "ge5_delivery_pct": 0.06060606060606061,
+          "measurable": true
+        },
+        "true": false
+      },
+      "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": {
+        "evidence": {
+          "first_objective_reached_pct": 0.6754716981132075,
+          "p_second_given_first": 0.6353722143195828
+        },
+        "note": "DIAGNOSTIC ONLY \u2014 no partial exits implemented",
+        "true": true
+      },
+      "E_SL_TARGET_GEOMETRY_INTERACTION": {
+        "evidence": {
+          "q1_over_q4_ratio": 2.0822473973521816,
+          "raw_coscaling_rank_spearman": 0.17923624171863037
+        },
+        "true": true
+      }
+    },
+    "next_map": {
+      "A_TARGET_MODEL_MISMATCH": "NATURAL_TARGET_EXPERIMENT",
+      "B_TARGET_CONTINUATION_WEAKNESS": "TARGET_CONTINUATION_RESEARCH",
+      "C_FIXED_5R_SUPPORTED": "FIXED_R_TARGET_EXPERIMENT",
+      "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+      "E_SL_TARGET_GEOMETRY_INTERACTION": "SL_TARGET_GEOMETRY_RESEARCH",
+      "F_TARGET_FAMILY_INSUFFICIENT": "INSUFFICIENT_EVIDENCE"
+    },
+    "no_parameter_search": true,
+    "no_partial_exits_implemented": true,
+    "no_sl_changed": true,
+    "no_tp_changed": true,
+    "precedence": [
+      "C_FIXED_5R_SUPPORTED",
+      "A_TARGET_MODEL_MISMATCH",
+      "B_TARGET_CONTINUATION_WEAKNESS",
+      "D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS",
+      "E_SL_TARGET_GEOMETRY_INTERACTION"
+    ]
+  }
+}

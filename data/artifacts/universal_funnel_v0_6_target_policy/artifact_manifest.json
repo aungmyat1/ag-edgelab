@@ -1,0 +1,28 @@
+{
+  "artifacts": {
+    "candidate_freeze_decision.json": "1e7a51dfc48c9cf51779cd108188998a6d3e696503dcd2800bd13d4a66dfd569",
+    "causality_audit.json": "2dea24373fbf7c41690708ab56fd2014d8fa4bdb6fda4598e71b7eb7176bc75b",
+    "d01_policy_results.json": "6190ee13a62ecaa847961e576a6af87641daa1b3fa3e3e56c6c75e368b765303",
+    "determinism_report.json": "ab57f1a59645fb7a3217c740e8c22b4f131e71412a163b52266560d4bd3f967b",
+    "economic_authority.json": "e8bcc1df56e56d33f85b2454098e6f80f16968071924a58f24d8588c0a35c675",
+    "economic_results.json": "e07a7fdd6fdb8dcf8673a1271dd6f59b771a1117102c05012e340deb539ff4d9",
+    "entry_policy_ledger.jsonl": "83ec42db616e247c59a2a21715aa41d99469da163cccd3025d61ee62426c000b",
+    "final_report.json": "4c6d3cfbac5fd4fed0bbe4558df6e44f1f1ef1240e14320608b090e6646bfce9",
+    "final_report.md": "bf377cbe52247be2e983825be7ba06b26e3a41ed1758a7154b36a1eb4ccf1782",
+    "objective_sequence_ledger.jsonl": "3729a96940886b73314309beb6ffff3b12a8c7d456865770c1a99d27aaf4f9b9",
+    "parent_reproduction.json": "84b5a2f6e7189fdf20801fc7fd6784bc559b65b12a6979a3b6bd5200f6fdb2ba",
+    "partial_runner_contracts.json": "2e4a24e63bc0ac020b73799597e2802cc4334f49821ae760d53ac011d4468a7b",
+    "pathwise_policy_comparison.json": "42333adfae5ad2f9f995dc02ea81470610e458d7424ebca7aabe40616be03122",
+    "policy_structural_results.json": "ef0c9535bca44faf432b6c1c23ff1d4abf8fd54179bcb597ac827a56eefc8f45",
+    "preregistration.json": "c007e50175e52cde95d6dd241fc87f009d3d8e3a1b5134e1ca20623304cce589",
+    "risk_quartile_analysis.json": "bb366f8202ece5644ed8216f36d6718064771f1be49de015785ca1421eedd8fe",
+    "root_cause_analysis.json": "5f669c9701de5c80b81347ff4056164ba9dcda67318e8792e9302fb38a303712",
+    "runner_results.json": "49c41a0e41e8cc38a9d681577fbb35d65d85ea0ae768479b3f986d3772e595b2",
+    "session_stratification.json": "2032e38b00843b555e311895058934d39517840ce9f76cfb5e7962b9d9d5c736",
+    "t1_policy_results.json": "1f72ea645394155fb07d0fc03157bf0d062d0c79ed781d14e59ab7e871632f02",
+    "target_policy_contracts.json": "4558ed0263201d7665b88e6b31978035fbe666ae8220ef34c4a47d8a19548995",
+    "test_results.txt": "304d8411cf530261914c56e4cdd057da356d574dcd91540c944224ec46bc2544",
+    "v0_5_authority_resolution.json": "d66ca4fbc9188a7522e96711542b31b58b823547dbd9e2f5b89bcdcc741a3209"
+  },
+  "experiment_id": "TARGET_POLICY_NATURAL_RUNNER_V1"
+}

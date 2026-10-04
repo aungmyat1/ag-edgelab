@@ -1,0 +1,1 @@
+{"consequence":"FRICTION_AUTHORITY_COMPLETE=NO; OOS_ECONOMIC_READY=NO; net_trade_R is never claimed; gross structural R only","friction_model_id":"FX_2017_FRICTION_AUTHORITY_ABSENT_FAIL_CLOSED_V1","parametric_contract":"ag_edgelab.friction.model.FrictionScenario (spread_r/commission_r/slippage_r/swap_r in R)","status":"AUTHORITY_ABSENT_FAIL_CLOSED"}

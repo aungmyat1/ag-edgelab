@@ -1,0 +1,75 @@
+{
+  "record_version": "CONSOLIDATION_R1_CANONICAL_SUBSYSTEMS_V1",
+  "selection_principle": "For each subsystem exactly ONE current authority is selected. Later audited code is preferred where it contains all protections of an older branch. Superseded implementations remain in git history and on archived branches; they are never deleted.",
+  "subsystems": {
+    "funnel_analyzer": {
+      "authority": "src/ag_edgelab/analytics/funnel.py + src/ag_edgelab/analytics/diagnostic.py + src/ag_edgelab/contracts/diagnostic.py (Universal Three-Funnel Analyzer V0.2, from feat/universal-three-funnel-analyzer-v0-2)",
+      "why": "Strategy-agnostic DEVELOPMENT diagnostic layer built on contracts: hashed rule-to-group mapping, preregistered StageExcursionObservation policy (frozen anchor/risk-unit/horizon/termination conventions), target-capability diagnostics at trigger and confirmation boundaries (input/pass/fail reach, uplift pp), and an explicit no-EDGE_VERIFIED authority bound. It is the only funnel analyzer that is contract-first and strategy-agnostic. Wilson statistics have a single implementation (wilson_interval in analytics/funnel.py, enforced by the 01a1015a refactor).",
+      "superseded_or_archived": [
+        "campaigns/session_trade_v2/funnel_analyzer.py — campaign-specific (STV2); frozen with its rejected campaign",
+        "analytics/temporal.py + analytics/unified.py (01a101e6) — temporal diagnostics for the MTF lineage; retained in-tree as frozen research tooling, not the canonical analyzer",
+        "analytics/funnel_v3.py (01a1041d) — V3 schema from the BLOCKED direction-bias lab; retained in-tree as research tooling",
+        "R0-era funnel MVP (pre-PR#6 funnel analytics) — superseded by the R3-R7 production line in main"
+      ]
+    },
+    "verification_authority": {
+      "authority": "main-line R8/R8.1 boundary (src/ag_edgelab/verification/{evidence,production,provenance,regimes,time,walk_forward}.py from PR#6) for generic verification; candidate-specific frozen verifiers src/ag_edgelab/verification/c3_v1_verifier.py, c3_v1_adversarial.py, c3_v1_oos_verifier.py (V0.6.1a/V0.6.2) for the C3 line",
+      "why": "The R8/R8.1 line is the later, audited, fail-closed boundary (ID-only verifier recomputation from authoritative trade lists, malformed-evidence failure, provenance registries, append-only exposure ledger, deterministic-cost friction binding, frozen regime classifier, development-provenance stability binding). The C3 verifiers are the most recent authority for the sealed structural-OOS discipline (12/12 independent reproduction checks) and define the pattern for future candidate verifiers.",
+      "superseded_or_archived": [
+        "feat/strategy-verification validation/evidence.py + verification scripts — predates R8/R8.1 (fork base bbf88699 is an ancestor of the PR#6 tip); its honest-verdict idea was subsumed by the R8 boundary; SSC GEN001 and BTC sweep-retest verdicts are preserved in the candidate ledger with branch pointers"
+      ]
+    },
+    "r8_1_protections": {
+      "authority": "the R8.1 commits merged in main via PR#6 (267ec00, b5a4006, a5bc461, 01cc4d8, 45a647f) — fail-closed malformed evidence/timestamps, deterministic friction evidence binding, frozen regime authority, development-provenance stability binding, server-authority window parity",
+      "why": "These protections were the explicit target of the R8.1 audit line and are locked by adversarial regression tests in main's test suite; consolidation ran the full suite after every merge step and the protections remain intact (729 passing, zero removed tests).",
+      "superseded_or_archived": []
+    },
+    "friction_framework": {
+      "authority": "src/ag_edgelab/friction/ (main R8.1 deterministic-cost friction model) as the FRAMEWORK; campaign-scoped evidence values remain in artifacts/session_trade_v2_economic_matrix (STV2) and are recorded in config/governance/friction_authority_gap.json",
+      "why": "The framework authority (deterministic costs, evidence-bound, normalized_r_stress implementation pinning) lives in main's friction model; no repository-level friction AUTHORITY (values + provenance contract) exists yet — the gap record defines the required contract per symbol and the acceptance rules.",
+      "superseded_or_archived": [
+        "campaigns/session_trade_v2/friction.py — STV2's campaign friction implementation; frozen with its campaign"
+      ]
+    },
+    "dataset_acquisition": {
+      "authority": "src/ag_edgelab/data/fx_histdata_2017.py + scripts/acquire_histdata_fx_2017.sh (hash-pinned HistData 2017 zips, quality gates, causal UTC normalization, partition guards, fail-closed holdout)",
+      "why": "The only dataset acquisition path with sha256-pinned raw sources, per-timeframe derived dataset hashes, and fail-closed partition discipline; it is the verified data layer of the V0.3-V0.6.2 research line and the template for the multi-year contract in data_authority_gap.json.",
+      "superseded_or_archived": [
+        "src/ag_edgelab/data/fx_histdata.py (01a101e6 lineage) — the MTF lineage's own loader for the same zips at a different path (data/raw/fx_histdata/); frozen for that campaign's reproducibility, not canonical for future work"
+      ]
+    },
+    "fx_campaign_engine": {
+      "authority": "src/ag_edgelab/universal/fx_dev_campaign.py + src/ag_edgelab/universal/campaign.py (V0.3 universal line, audited through V0.6.2)",
+      "why": "The engine that produced the only fully preregistered, independently reproduced DEV/OOS evaluations in the repository (V0.3 campaign through the V0.6.2 sealed structural OOS). Direction-first, window-disciplined, causality-audited.",
+      "superseded_or_archived": [
+        "campaigns/session_trade_v2/* engine modules — frozen campaign engine of the rejected STV2 candidate (windows/friction/replay retained as evidence)",
+        "src/mtf_control_shift/* — frozen engine of the DEV-rejected MTF candidate"
+      ]
+    },
+    "crypto_data_adapter": {
+      "authority": "NONE (no passing implementation)",
+      "why": "Both existing public-data acquisition paths fail the merge contract (missing-bar validation and byte-level provenance/checksums absent; Binance path also lacks a convention contract) — see data_authority_gap.json contract reviews. Per the consolidation mandate, only code that passes those contracts may be merged; none did.",
+      "superseded_or_archived": [
+        "feat/crypto-btc-economic-verification (Bybit archives + funding stress) — archived branch, reference implementation for a future authority",
+        "feat/crypto-btc-spot-candidate (Binance monthly archives) — archived branch"
+      ]
+    },
+    "content_addressed_evidence": {
+      "authority": "src/ag_edgelab/data/fingerprint.py (canonical_json, sha256_json) + config/governance/external_artifact_registry.json + scripts/verify_external_artifacts.py",
+      "why": "fingerprint.py is the single canonical serializer used by every frozen contract and preregistration hash in the repository. The registry + verifier extend it to bulky evidence wherever the bytes live (git history or tree), with fail-closed sha256 verification (7/7 pointers verified).",
+      "superseded_or_archived": []
+    },
+    "candidate_ledger": {
+      "authority": "config/governance/candidate_ledger.json",
+      "why": "Append-only, single authoritative ledger with the permanent C3 rejection record and every other candidate verdict; future agents must consult it before candidate work (see also tests locking the rejection record below).",
+      "superseded_or_archived": [
+        "ledger/ package in src (R0-era exposure/provenance ledgers) — remains the engine-level authority for the R8 boundary; the candidate ledger is the research-governance layer above it"
+      ]
+    },
+    "oos_governance": {
+      "authority": "config/governance/oos_access_log.json (authoritative access log) + the fail-closed data layer (HoldoutAccessError in fx_histdata_2017.py; STV2 dataset layer) + the V0.6.2 preregistration discipline (scripts/preregister_oos_c3_v1.py as the template)",
+      "why": "One authoritative log with fail-closed duplicate-use rules, a dataset registry with pinned partition windows, and a code-level holdout guard. The preregistration template (thresholds frozen and hash-committed before any open) is the binding process for every future OOS event.",
+      "superseded_or_archived": []
+    }
+  }
+}

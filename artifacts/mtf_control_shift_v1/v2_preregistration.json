@@ -1,0 +1,94 @@
+{
+  "preregistration_status": "PREREGISTERED_BEFORE_ECONOMIC_REPLAY",
+  "parent_strategy": {
+    "strategy_id": "ST_MTF_CONTROL_SHIFT_V1",
+    "version": "1.0.0",
+    "yaml_sha256": "9e94b4354caf81bb596fcf981cb723fbc7755bc0401d51f8eb2c291635ddb80f"
+  },
+  "new_strategy": {
+    "strategy_id": "ST_MTF_CONTROL_SHIFT_V2",
+    "version": "2.0.0",
+    "yaml_sha256": "56b6032fc949564e0ff8d147eb794560088fb0d90eac3bc549de504f01a6cc91"
+  },
+  "single_changed_rule": {
+    "name": "max_h1_shift_age",
+    "old_value": 4,
+    "new_value": 24,
+    "unit": "closed H1 bars"
+  },
+  "rationale": {
+    "selection_rule": "smallest value among preregistered diagnostic thresholds {4,6,8,12,16,24} with nonzero structural trigger coverage",
+    "observed_distribution": "ages begin at 17; thresholds 4,6,8,12,16 produce 0/170; threshold 24 produces 18/170 (10.5882%)",
+    "no_economic_results_used": true
+  },
+  "development_window": {
+    "warmup": [
+      "2017-01-01",
+      "2017-03-01"
+    ],
+    "dev": [
+      "2017-03-01",
+      "2017-09-01"
+    ],
+    "oos": [
+      "2017-09-01",
+      "2017-12-01"
+    ],
+    "sealed_holdout": [
+      "2017-12-01",
+      "2018-01-01"
+    ],
+    "holdout_touched": false
+  },
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "sessions": {
+    "ASIAN_LONDON": [
+      "06:00",
+      "09:00"
+    ],
+    "LONDON_NEWYORK": [
+      "11:00",
+      "14:00"
+    ]
+  },
+  "data_authority": "PR_10_HISTDATA_2017; America/New_York normalized to UTC; raw hashes unchanged",
+  "friction_authority": "PR_10_APPROVED_FX_FRICTION; symbol-specific spread/slippage/commission including XAUUSD",
+  "funnel_mapping": {
+    "TRIGGER": [
+      "D1_H4_ALIGNED",
+      "FRESH_H4_POI",
+      "H4_POI_REACHED",
+      "TRUE_H1_CONTROL_SHIFT",
+      "LIQUIDITY_SWEEP"
+    ],
+    "CONFIRMATION": [
+      "FVG_REBALANCE",
+      "M15_REFINEMENT",
+      "VALID_GEOMETRY"
+    ],
+    "OUTCOME": [
+      "LIMIT_FILLED",
+      "LIMIT_EXPIRED",
+      "TP1",
+      "TP2",
+      "RUNNER_BE",
+      "FORCED_FLAT"
+    ]
+  },
+  "fixed_gates": {
+    "one_entry_per_symbol_session_day": true,
+    "earliest_valid_signal_wins": true,
+    "limit_post_signal_m1_only": true,
+    "no_overnight": true,
+    "force_flat_utc": "21:00",
+    "dev_screen": "existing EdgeLab gates",
+    "no_parameter_optimization": true
+  },
+  "economic_replay_started": false,
+  "oos_opened": false
+}

@@ -209,3 +209,32 @@ The project should be implemented in the smallest useful vertical slices. The im
 `MarketFrame -> Funnel contracts -> Candidate-flow runner -> Weak Funnel Diagnostic -> simulation adapter -> economic metrics -> version comparison -> branching funnels -> FrozenStrategy handoff`.
 
 See `docs/FUNNEL_DEVELOPMENT_AND_EDGE_VERIFICATION_ROADMAP.md` for detailed work packages and the Edge Validator upgrade sequence.
+
+## Governance (Consolidation R1)
+
+The repository is governed by append-only, hash-pinned records. Before any
+candidate work, OOS access, or merge decision, consult:
+
+- `config/governance/candidate_ledger.json` — every candidate's verdict
+  (the C3 rejection record is permanent and append-only)
+- `config/governance/oos_access_log.json` — THE authoritative OOS log
+  (duplicate use fails closed; sealed holdouts stay sealed)
+- `config/governance/friction_authority_gap.json` and
+  `config/governance/data_authority_gap.json` — what evidence is missing
+  and the contracts for filling it (never invent values)
+- `config/governance/edge_status_vocabulary.json` and
+  `config/governance/ticket_integration_contract.json` — status vocabularies
+  and the ticket data contract (execution stays separately governed)
+- `config/governance/canonical_subsystems.json` — the single selected
+  authority per subsystem
+- `config/consolidation/branch_inventory.json` and
+  `config/consolidation/integration_graph.json` — every branch's
+  classification and every merge decision's rationale
+- `config/governance/external_artifact_registry.json` +
+  `scripts/verify_external_artifacts.py` — content-addressed pointers for
+  large evidence (7/7 verified)
+- `CONTRIBUTING.md` — agent and size governance rules
+- `docs/CONSOLIDATION_R1.md` — the consolidation record
+
+The governance records are locked by
+`tests/test_governance_consolidation_r1.py`.

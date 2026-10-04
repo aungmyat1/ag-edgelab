@@ -1,0 +1,262 @@
+{
+  "EURUSD": {
+    "D01": {
+      "BEAR": 1092,
+      "BULL": 1316,
+      "NEUTRAL": 1381
+    },
+    "D02": {
+      "BEAR": 156,
+      "BULL": 599,
+      "NEUTRAL": 3034
+    },
+    "D03": {
+      "BEAR": 282,
+      "BULL": 379,
+      "NEUTRAL": 3128
+    },
+    "D04": {
+      "BEAR": 31,
+      "BULL": 144,
+      "NEUTRAL": 3614
+    },
+    "D05": {
+      "BEAR": 540,
+      "BULL": 545,
+      "NEUTRAL": 2704
+    },
+    "D06": {
+      "BEAR": 57,
+      "BULL": 239,
+      "NEUTRAL": 3493
+    },
+    "D07": {
+      "BEAR": 217,
+      "BULL": 138,
+      "NEUTRAL": 3434
+    },
+    "D08": {
+      "BEAR": 166,
+      "BULL": 116,
+      "NEUTRAL": 3507
+    },
+    "D09": {
+      "BEAR": 1397,
+      "BULL": 2392,
+      "NEUTRAL": 0
+    },
+    "D10": {
+      "BEAR": 641,
+      "BULL": 1031,
+      "NEUTRAL": 2117
+    }
+  },
+  "GBPUSD": {
+    "D01": {
+      "BEAR": 998,
+      "BULL": 1331,
+      "NEUTRAL": 1455
+    },
+    "D02": {
+      "BEAR": 205,
+      "BULL": 407,
+      "NEUTRAL": 3172
+    },
+    "D03": {
+      "BEAR": 286,
+      "BULL": 429,
+      "NEUTRAL": 3069
+    },
+    "D04": {
+      "BEAR": 40,
+      "BULL": 125,
+      "NEUTRAL": 3619
+    },
+    "D05": {
+      "BEAR": 419,
+      "BULL": 541,
+      "NEUTRAL": 2824
+    },
+    "D06": {
+      "BEAR": 84,
+      "BULL": 202,
+      "NEUTRAL": 3498
+    },
+    "D07": {
+      "BEAR": 182,
+      "BULL": 276,
+      "NEUTRAL": 3326
+    },
+    "D08": {
+      "BEAR": 108,
+      "BULL": 92,
+      "NEUTRAL": 3584
+    },
+    "D09": {
+      "BEAR": 1821,
+      "BULL": 1963,
+      "NEUTRAL": 0
+    },
+    "D10": {
+      "BEAR": 745,
+      "BULL": 1041,
+      "NEUTRAL": 1998
+    }
+  },
+  "POOLED": {
+    "D01": {
+      "BEAR": 4557,
+      "BULL": 4669,
+      "NEUTRAL": 5700
+    },
+    "D02": {
+      "BEAR": 1128,
+      "BULL": 1451,
+      "NEUTRAL": 12347
+    },
+    "D03": {
+      "BEAR": 1358,
+      "BULL": 1436,
+      "NEUTRAL": 12132
+    },
+    "D04": {
+      "BEAR": 286,
+      "BULL": 381,
+      "NEUTRAL": 14259
+    },
+    "D05": {
+      "BEAR": 1997,
+      "BULL": 1896,
+      "NEUTRAL": 11033
+    },
+    "D06": {
+      "BEAR": 491,
+      "BULL": 640,
+      "NEUTRAL": 13795
+    },
+    "D07": {
+      "BEAR": 770,
+      "BULL": 719,
+      "NEUTRAL": 13437
+    },
+    "D08": {
+      "BEAR": 499,
+      "BULL": 400,
+      "NEUTRAL": 14027
+    },
+    "D09": {
+      "BEAR": 6807,
+      "BULL": 8119,
+      "NEUTRAL": 0
+    },
+    "D10": {
+      "BEAR": 3193,
+      "BULL": 3570,
+      "NEUTRAL": 8163
+    }
+  },
+  "USDJPY": {
+    "D01": {
+      "BEAR": 1367,
+      "BULL": 896,
+      "NEUTRAL": 1511
+    },
+    "D02": {
+      "BEAR": 549,
+      "BULL": 227,
+      "NEUTRAL": 2998
+    },
+    "D03": {
+      "BEAR": 392,
+      "BULL": 248,
+      "NEUTRAL": 3134
+    },
+    "D04": {
+      "BEAR": 148,
+      "BULL": 69,
+      "NEUTRAL": 3557
+    },
+    "D05": {
+      "BEAR": 654,
+      "BULL": 437,
+      "NEUTRAL": 2683
+    },
+    "D06": {
+      "BEAR": 219,
+      "BULL": 116,
+      "NEUTRAL": 3439
+    },
+    "D07": {
+      "BEAR": 185,
+      "BULL": 144,
+      "NEUTRAL": 3445
+    },
+    "D08": {
+      "BEAR": 127,
+      "BULL": 108,
+      "NEUTRAL": 3539
+    },
+    "D09": {
+      "BEAR": 2249,
+      "BULL": 1525,
+      "NEUTRAL": 0
+    },
+    "D10": {
+      "BEAR": 1152,
+      "BULL": 629,
+      "NEUTRAL": 1993
+    }
+  },
+  "XAUUSD": {
+    "D01": {
+      "BEAR": 1100,
+      "BULL": 1126,
+      "NEUTRAL": 1353
+    },
+    "D02": {
+      "BEAR": 218,
+      "BULL": 218,
+      "NEUTRAL": 3143
+    },
+    "D03": {
+      "BEAR": 398,
+      "BULL": 380,
+      "NEUTRAL": 2801
+    },
+    "D04": {
+      "BEAR": 67,
+      "BULL": 43,
+      "NEUTRAL": 3469
+    },
+    "D05": {
+      "BEAR": 384,
+      "BULL": 373,
+      "NEUTRAL": 2822
+    },
+    "D06": {
+      "BEAR": 131,
+      "BULL": 83,
+      "NEUTRAL": 3365
+    },
+    "D07": {
+      "BEAR": 186,
+      "BULL": 161,
+      "NEUTRAL": 3232
+    },
+    "D08": {
+      "BEAR": 98,
+      "BULL": 84,
+      "NEUTRAL": 3397
+    },
+    "D09": {
+      "BEAR": 1340,
+      "BULL": 2239,
+      "NEUTRAL": 0
+    },
+    "D10": {
+      "BEAR": 655,
+      "BULL": 869,
+      "NEUTRAL": 2055
+    }
+  }
+}

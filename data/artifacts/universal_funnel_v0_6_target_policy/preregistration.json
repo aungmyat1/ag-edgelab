@@ -1,0 +1,134 @@
+{
+  "authoritative_v0_5_sha": "65ba0ed763048307a499734ebe5b9a22e3f3103c",
+  "best_policy_rule": "BEST_STRUCTURAL_POLICY = highest mean paired delta vs C0_2R with >= 100 pairs; descriptive only; partial fraction never promoted",
+  "decision_rules": {
+    "A": "FIXED_TARGET_MODEL_INFERIOR: C1 or a runner family (all fractions, R0) beats every C0_k pairwise (mean delta > 0, >= 100 pairs)",
+    "B": "NATURAL_SINGLE_TARGET_SUPPORTED: C1 beats every C0_k",
+    "C": "NATURAL_TARGET_PLUS_RUNNER_SUPPORTED: some runner family R0 beats every C0_k AND C1 across ALL fractions",
+    "D": "RUNNER_CONTINUATION_TOO_WEAK: P(2nd|1st) < 0.35 OR no runner policy beats C1 on any fraction",
+    "E": "TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY: every pooled positive paired advantage is confined to risk quartiles Q1/Q2",
+    "F": "T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION: D01 P(2nd|1st) exceeds T1's by >= 5pp (evaluated for T1)",
+    "G": "INSUFFICIENT_EVIDENCE: population or pair floors unmet",
+    "freeze_rule": "if D01 primary is C -> freeze the qualifying runner family contract (fraction grid intact, no selection); if B -> freeze C1 contract; else NO_FREEZE; frozen contract is hashed for a FUTURE OOS mission only",
+    "primary_precedence": [
+      "C",
+      "B",
+      "D",
+      "F",
+      "E",
+      "else G"
+    ]
+  },
+  "economics_gate": "realized economics ONLY if EXIT_CONTRACT_COMPLETE and FRICTION_AUTHORITY_COMPLETE; both fail closed here",
+  "experiment_hash": "748f4d08283a74596aca81d26cd401eb162b90f8c94b55b50221b2388c21c92b",
+  "experiment_id": "TARGET_POLICY_NATURAL_RUNNER_V1",
+  "focal_controls_for_pairing": [
+    "C0_2R",
+    "C0_5R"
+  ],
+  "forbidden": [
+    "SL change",
+    "entry/trigger/location/confirmation change",
+    "partial-percentage optimization",
+    "policy promotion",
+    "EDGE_VERIFIED claims",
+    "OOS/holdout",
+    "V0.7",
+    "auto-merge"
+  ],
+  "fraction_grid_rule": "25/75, 50/50, 75/25 sensitivity grid only; no best percentage may be promoted from DEV",
+  "frozen_upstream": [
+    "direction",
+    "location",
+    "confirmation",
+    "entry",
+    "SL",
+    "sessions",
+    "dataset",
+    "fill semantics",
+    "V0.5 causal target contracts"
+  ],
+  "objective": "does a causal natural-target (+ runner) exit policy improve structural target delivery vs the frozen fixed-R ladder on the SAME entries? DEVELOPMENT research only; no promotion",
+  "pathwise_rule": "all policy comparisons are paired on the SAME entry ids, both outcomes resolved; different-population exit inference is forbidden",
+  "policy_contracts": {
+    "C1": "exit 100% at FIRST_VALID_CAUSAL_OBJECTIVE (V0.5 primary rule); NOT_APPLICABLE when no causal objective exists at entry",
+    "C2": "partial f% at FIRST objective + runner (100-f)% to SECOND objective; NOT_APPLICABLE when no second objective exists",
+    "C3": "partial f% at FIRST objective + runner to FURTHEST objective; NOT_APPLICABLE when the ladder has a single objective",
+    "C4": "partial f% at FIRST objective + runner to the frozen fixed 5R ceiling; NOT_APPLICABLE when FIRST objective R >= 5",
+    "R0": "runner retains the original frozen SL (full -1R on the runner fraction if stopped after the partial)",
+    "R1": "NEW EXIT HYPOTHESIS: runner stop moves to entry (break-even) from the bar AFTER first-objective realization; BE counted FIRST within a bar (fail-closed); no spread adjustment (no authority)",
+    "controls": {
+      "C0_1R": "exit 100% at the frozen fixed 1R level; stop first; unresolved window => NULL",
+      "C0_2R": "exit 100% at the frozen fixed 2R level; stop first; unresolved window => NULL",
+      "C0_3R": "exit 100% at the frozen fixed 3R level; stop first; unresolved window => NULL",
+      "C0_4R": "exit 100% at the frozen fixed 4R level; stop first; unresolved window => NULL",
+      "C0_5R": "exit 100% at the frozen fixed 5R level; stop first; unresolved window => NULL"
+    },
+    "fraction_rule": "3-point preregistered sensitivity grid; no percentage is promoted from DEV",
+    "fractions": {
+      "25": "25% exit at first objective, 75% runner",
+      "50": "50% exit at first objective, 50% runner",
+      "75": "75% exit at first objective, 25% runner"
+    },
+    "runner_rule": "runner begins ONLY after the first objective is actually reached (no hypothetical credit); same-bar first+runner objective touch pays the runner objective (monotone path through the nearer level under the frozen stop-first scan)",
+    "unresolved": "no stop/target resolution inside the frozen 96-bar window => structural outcome NULL (UNRESOLVED/RUNNER_OPEN), never imputed, never a loss"
+  },
+  "policy_ids": [
+    "C0_1R",
+    "C0_2R",
+    "C0_3R",
+    "C0_4R",
+    "C0_5R",
+    "C1",
+    "C2_F25_R0",
+    "C2_F25_R1",
+    "C2_F50_R0",
+    "C2_F50_R1",
+    "C2_F75_R0",
+    "C2_F75_R1",
+    "C3_F25_R0",
+    "C3_F25_R1",
+    "C3_F50_R0",
+    "C3_F50_R1",
+    "C3_F75_R0",
+    "C3_F75_R1",
+    "C4_F25_R0",
+    "C4_F25_R1",
+    "C4_F50_R0",
+    "C4_F50_R1",
+    "C4_F75_R0",
+    "C4_F75_R1"
+  ],
+  "populations": {
+    "D01": "control population",
+    "T1": "research treatment; never assumed superior; never pooled for selection"
+  },
+  "registered_before_results": true,
+  "registry_sha256": "05255d26df861a80336d1d381402d4c4d38af5d9bf6d9c30dddfb1b1b8737c32",
+  "superseded_v0_5_sha": "e5b38b875c1167ee19b24e246ecd5b879869ff16",
+  "v0_5_pinned_reproduction_targets": {
+    "D01_5R_REACH_WHEN_AVAILABLE_PCT": 6.06,
+    "D01_ENTRY_N": 3183,
+    "D01_FIRST_OBJECTIVE_PCT": 67.55,
+    "D01_FURTHEST_P50": 2.737,
+    "D01_GE5R_AVAILABLE_PCT": 24.91,
+    "D01_PRIMARY": {
+      "P25": 0.15,
+      "P50": 0.402,
+      "P75": 0.891
+    },
+    "D01_SECOND_OBJECTIVE_PCT": 43.34,
+    "T1_5R_REACH_WHEN_AVAILABLE_PCT": 3.45,
+    "T1_ENTRY_N": 379,
+    "T1_FIRST_OBJECTIVE_PCT": 68.6,
+    "T1_FURTHEST_P50": 2.967,
+    "T1_GE5R_AVAILABLE_PCT": 22.96,
+    "T1_PRIMARY": {
+      "P25": 0.14,
+      "P50": 0.377,
+      "P75": 0.849
+    },
+    "T1_SECOND_OBJECTIVE_PCT": 37.64
+  },
+  "version": "0.1.0-research"
+}

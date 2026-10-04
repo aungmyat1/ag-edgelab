@@ -1,0 +1,6 @@
+{
+  "byte_identical": true,
+  "run_1_sha256": "de128e01aa097daa0fd87b0d36c4834afc405e59fc73216aa49fa3a7a85c8694",
+  "run_2_sha256": "de128e01aa097daa0fd87b0d36c4834afc405e59fc73216aa49fa3a7a85c8694",
+  "scope": "all candidate metrics, ledgers, verdicts, phase/pullback/session/stability/ablation payloads"
+}

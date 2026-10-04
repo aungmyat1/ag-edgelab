@@ -1,0 +1,11 @@
+{
+  "experiment_hash": "b4419d27851b116a0a579d0828d6c534135814eb0b42ac2ece10fc03ad0fb5b5",
+  "experiment_id": "MTF_DIRECTION_TRIGGER_V1",
+  "funnel_engine_sha_v0_3": "2ae7474bd5dff5a6eea9fdf9cfdcfc7381692789",
+  "parent_pr": 14,
+  "parent_sha": "977f99c53b3952dacc684056b60e7e49d6145d30",
+  "parent_status": "FX_DEV_FUNNEL_COMPLETE",
+  "parent_tree": "d2c374a57e9026497ac04dc5f28b4b6a587bf7aa",
+  "policy_registry_sha256": "02c3321a695025b3a92d88a5c38864aeea1775b041c1def1af3cb0682a46043b",
+  "version": "0.1.0-research"
+}

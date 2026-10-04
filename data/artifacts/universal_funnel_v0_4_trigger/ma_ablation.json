@@ -1,0 +1,31 @@
+{
+  "MA_ADDS_VALUE_BEYOND_STRUCTURE": "NO",
+  "capability_2r_change_pp": 1.54,
+  "population_change_n": -1210,
+  "rule": "YES iff separation gain >= +2.0pp AND 2R capability not reduced, at preregistered population floors; MA50/200 parameters NOT tuned",
+  "separation_change_pp": 1.19,
+  "t2": {
+    "directional_n": 4762,
+    "entered_n": 1409,
+    "fixed_reach": {
+      "1R": 0.48261178140525196,
+      "2R": 0.30518097941802697,
+      "3R": 0.19730305180979418,
+      "4R": 0.1263307310149042,
+      "5R": 0.0880056777856636
+    },
+    "separation_pp": -1.43
+  },
+  "t2_plus_ma": {
+    "directional_n": 3552,
+    "entered_n": 967,
+    "fixed_reach": {
+      "1R": 0.49741468459152016,
+      "2R": 0.32057911065149947,
+      "3R": 0.20579110651499483,
+      "4R": 0.13650465356773525,
+      "5R": 0.09203722854188211
+    },
+    "separation_pp": -0.24
+  }
+}

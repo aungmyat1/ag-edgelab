@@ -1,0 +1,37 @@
+{
+  "families": {
+    "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": {
+      "created_time": "close of the confirming H4 bar",
+      "definition": "most recent H4 swing high/low opposing the trade direction and beyond entry, confirmed (2-bar rule, frozen crypto_mtf_smc.confirmed_swing_points) at or before the H4 closed-bar cut at entry",
+      "status": "CONTRACT_COMPLETE"
+    },
+    "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": {
+      "created_time": "close of the previous D1 bar",
+      "definition": "previous D1 bar high (LONG) / low (SHORT) beyond entry, from the frozen single-lineage D1 derivation",
+      "status": "CONTRACT_COMPLETE"
+    },
+    "NT03_OPPOSITE_SESSION_LIQUIDITY": {
+      "created_time": "end of that completed session window",
+      "definition": "directional extreme (high for LONG, low for SHORT) of the most recent COMPLETED frozen session window (V0.3 session authority: ASIAN 00-08, LONDON 08-13, OVERLAP 13-16, NEW_YORK 16-21, OFF_SESSION 21-24 UTC) beyond entry; composition of the frozen session windows with the frozen SESSION_LEVEL location contract (LOC_SESSION_PREV_HIGH/LOW_V1 semantics); no new windows invented",
+      "status": "CONTRACT_COMPLETE"
+    },
+    "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": {
+      "created_time": "close of the zone-creating H4 bar",
+      "definition": "nearest opposing H4 supply/demand zone edge beyond entry (frozen V0.3 _precompute_sd_zones), zone created at or before the H4 closed-bar cut at entry",
+      "status": "CONTRACT_COMPLETE"
+    },
+    "NT05_NEXT_VALID_ORDER_BLOCK": {
+      "created_time": null,
+      "definition": "NO deterministic causal order-block detector exists in this repository (ORDER_BLOCK is an enum label only); fail-closed: AVAILABLE=false for every entry, never invented",
+      "status": "TARGET_FAMILY_CONTRACT_INCOMPLETE"
+    }
+  },
+  "primary_rule": "PRIMARY_NATURAL_TARGET = nearest positive directionally-valid causal objective (smallest positive price distance from entry == min positive TARGET_R under the frozen SL); every alternative objective preserved separately in the ladder",
+  "registry_sha256": "8cfa81f9d1c6724c63eeec7aa86201af99a129f3ccf8dd9acdb078c8d1d8e9c9",
+  "runnable": [
+    "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING",
+    "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME",
+    "NT03_OPPOSITE_SESSION_LIQUIDITY",
+    "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE"
+  ]
+}

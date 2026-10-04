@@ -1,0 +1,84 @@
+{
+  "D01": {
+    "ASIAN": {
+      "capability_decided": 0.3977382875605816,
+      "directional_n": 3108,
+      "separation_pp": 5.89
+    },
+    "LONDON": {
+      "capability_decided": 0.3518711018711019,
+      "directional_n": 1928,
+      "separation_pp": 2.7
+    },
+    "LONDON_NEWYORK_OVERLAP": {
+      "capability_decided": 0.2889079965606191,
+      "directional_n": 1164,
+      "separation_pp": -2.41
+    },
+    "NEW_YORK": {
+      "capability_decided": 0.30318342597271347,
+      "directional_n": 1985,
+      "separation_pp": 0.26
+    },
+    "OFF_SESSION": {
+      "capability_decided": 0.3041385948026949,
+      "directional_n": 1041,
+      "separation_pp": -2.28
+    }
+  },
+  "T1": {
+    "ASIAN": {
+      "capability_decided": 0.4219858156028369,
+      "directional_n": 284,
+      "separation_pp": 8.98
+    },
+    "LONDON": {
+      "capability_decided": 0.3812154696132597,
+      "directional_n": 181,
+      "separation_pp": 10.34
+    },
+    "LONDON_NEWYORK_OVERLAP": {
+      "capability_decided": 0.4,
+      "directional_n": 115,
+      "separation_pp": 16.52
+    },
+    "NEW_YORK": {
+      "capability_decided": 0.35545023696682465,
+      "directional_n": 211,
+      "separation_pp": 7.45
+    },
+    "OFF_SESSION": {
+      "capability_decided": 0.3425925925925926,
+      "directional_n": 108,
+      "separation_pp": -10.19
+    }
+  },
+  "T2": {
+    "ASIAN": {
+      "capability_decided": 0.37006887914840325,
+      "directional_n": 1602,
+      "separation_pp": 1.02
+    },
+    "LONDON": {
+      "capability_decided": 0.34069400630914826,
+      "directional_n": 951,
+      "separation_pp": 0.6
+    },
+    "LONDON_NEWYORK_OVERLAP": {
+      "capability_decided": 0.2586490939044481,
+      "directional_n": 607,
+      "separation_pp": -9.06
+    },
+    "NEW_YORK": {
+      "capability_decided": 0.2944496707431797,
+      "directional_n": 1066,
+      "separation_pp": -1.92
+    },
+    "OFF_SESSION": {
+      "capability_decided": 0.3102803738317757,
+      "directional_n": 536,
+      "separation_pp": -2.74
+    }
+  },
+  "note": "diagnostic stratification only \u2014 sessions are NEVER trigger requirements; definitions are the frozen V0.3 preregistered UTC windows (overlap 13:00-16:00)"
+}

@@ -1,0 +1,189 @@
+{
+  "NEXT_RECOMMENDED_RESEARCH": "FREEZE_RUNNER_POLICY_CONTRACT_THEN_OOS_VERIFICATION_MISSION",
+  "PRIMARY_DIAGNOSIS": "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING",
+  "SECONDARY_DIAGNOSES": [
+    "A_FIXED_TARGET_MODEL_INFERIOR",
+    "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION"
+  ],
+  "authoritative_v0_5_sha": "65ba0ed763048307a499734ebe5b9a22e3f3103c",
+  "best_structural_policy": {
+    "D01": {
+      "fraction_not_promoted": true,
+      "mean_paired_delta_vs_C0_2R": 0.1844064645558774,
+      "pair_n": 2343,
+      "policy": "C4_F75_R0",
+      "rule": "BEST_STRUCTURAL_POLICY = highest mean paired delta vs C0_2R with >= 100 pairs; descriptive only; partial fraction never promoted"
+    },
+    "T1": {
+      "fraction_not_promoted": true,
+      "mean_paired_delta_vs_C0_2R": -0.0008709861968253706,
+      "pair_n": 279,
+      "policy": "C4_F75_R0",
+      "rule": "BEST_STRUCTURAL_POLICY = highest mean paired delta vs C0_2R with >= 100 pairs; descriptive only; partial fraction never promoted"
+    }
+  },
+  "candidate_freeze": "FREEZE_CANDIDATE_FOR_FUTURE_OOS_VERIFICATION",
+  "causality": "PASS",
+  "decisions": {
+    "D01": {
+      "PRIMARY_DIAGNOSIS": "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING",
+      "SECONDARY_DIAGNOSES": [
+        "A_FIXED_TARGET_MODEL_INFERIOR"
+      ],
+      "cases": {
+        "A_FIXED_TARGET_MODEL_INFERIOR": true,
+        "B_NATURAL_SINGLE_TARGET_SUPPORTED_FOR_FURTHER_TESTING": false,
+        "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING": true,
+        "D_RUNNER_CONTINUATION_TOO_WEAK": false,
+        "E_TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY": false,
+        "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION": false,
+        "G_INSUFFICIENT_EVIDENCE": false
+      },
+      "no_candidate_edge_verified": true,
+      "no_candidate_promoted_to_production": true,
+      "precedence": [
+        "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING",
+        "B_NATURAL_SINGLE_TARGET_SUPPORTED_FOR_FURTHER_TESTING",
+        "D_RUNNER_CONTINUATION_TOO_WEAK",
+        "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION",
+        "E_TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY"
+      ],
+      "runner_family_wins": {
+        "C2": false,
+        "C3": true,
+        "C4": false
+      }
+    },
+    "T1": {
+      "PRIMARY_DIAGNOSIS": "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION",
+      "SECONDARY_DIAGNOSES": [],
+      "cases": {
+        "A_FIXED_TARGET_MODEL_INFERIOR": false,
+        "B_NATURAL_SINGLE_TARGET_SUPPORTED_FOR_FURTHER_TESTING": false,
+        "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING": false,
+        "D_RUNNER_CONTINUATION_TOO_WEAK": false,
+        "E_TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY": false,
+        "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION": true,
+        "G_INSUFFICIENT_EVIDENCE": false
+      },
+      "no_candidate_edge_verified": true,
+      "no_candidate_promoted_to_production": true,
+      "precedence": [
+        "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING",
+        "B_NATURAL_SINGLE_TARGET_SUPPORTED_FOR_FURTHER_TESTING",
+        "D_RUNNER_CONTINUATION_TOO_WEAK",
+        "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION",
+        "E_TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY"
+      ],
+      "runner_family_wins": {
+        "C2": false,
+        "C3": false,
+        "C4": false
+      }
+    }
+  },
+  "determinism": "PASS",
+  "economics": {
+    "EXIT_CONTRACT_COMPLETE": "NO",
+    "FRICTION_AUTHORITY_COMPLETE": "NO",
+    "REALIZED_ECONOMICS_RUN": "NO",
+    "consequence": "structural diagnostics only; unresolved outcomes stay NULL; nothing here is verified economics",
+    "exit_contract_gaps": [
+      "C0 control has no committed single frozen TP level (the frozen funnel measures a 1R..5R ladder, it does not commit an exit)",
+      "no frozen authority defines a forced exit price at the 96-bar horizon for unresolved windows / open runners"
+    ],
+    "friction_gaps": [
+      "ag_edgelab.friction is a parametric contract; no pinned authoritative spread/commission/slippage values exist for EURUSD/GBPUSD/USDJPY/XAUUSD 2017; inventing values is forbidden"
+    ]
+  },
+  "entry_n": {
+    "D01": 3183,
+    "T1": 379
+  },
+  "experiment_id": "TARGET_POLICY_NATURAL_RUNNER_V1",
+  "final_report_sha256": "1064262d351992abb54ce657b884ea02db885c0b9e5917ded2348c9db526bf75",
+  "guards": {
+    "confirmation_changed": false,
+    "edge_verified_claimed": false,
+    "entry_changed": false,
+    "execution_capability_added": false,
+    "holdout_touched": false,
+    "location_changed": false,
+    "oos_opened": false,
+    "partial_percentage_optimized": false,
+    "policy_promoted": false,
+    "sl_changed": false,
+    "strategy_rules_changed": false,
+    "trigger_changed": false,
+    "v0_7_created": false
+  },
+  "mission": "UNIVERSAL FUNNEL V0.6 \u2014 NATURAL TARGET + RUNNER RESEARCH",
+  "p_second_given_first": {
+    "D01": 0.6353722143195828,
+    "T1": 0.541501976284585
+  },
+  "policy_means_d01": {
+    "C0_1R": 0.03361898483849703,
+    "C0_2R": 0.025141643059490085,
+    "C0_3R": -0.026366068016813144,
+    "C0_4R": -0.11729141475211609,
+    "C0_5R": -0.23355817875210794,
+    "C1": 0.006339842534816094,
+    "C2_F25_R0": 0.01282181914530537,
+    "C2_F25_R1": 0.017128663036337026,
+    "C2_F50_R0": 0.002033288906347766,
+    "C2_F50_R1": 0.01134921839060003,
+    "C2_F75_R0": -0.008755241332609916,
+    "C2_F75_R1": 0.005569773744862998,
+    "C3_F25_R0": -0.03870045249666048,
+    "C3_F25_R1": -0.016817203382362086,
+    "C3_F50_R0": -0.043339071983672615,
+    "C3_F50_R1": -0.01607249558461724,
+    "C3_F75_R0": -0.047977691470684626,
+    "C3_F75_R1": -0.015327787786872287,
+    "C4_F25_R0": -0.21083164796494247,
+    "C4_F25_R1": -0.07259553967850799,
+    "C4_F50_R0": -0.18734831513603065,
+    "C4_F50_R1": -0.06376349792943448,
+    "C4_F75_R0": -0.16386498230711857,
+    "C4_F75_R1": -0.05493145618036105
+  },
+  "policy_means_t1": {
+    "C0_1R": 0.11602209944751381,
+    "C0_2R": 0.17699115044247787,
+    "C0_3R": -0.009523809523809525,
+    "C0_4R": -0.1750841750841751,
+    "C0_5R": -0.37857142857142856,
+    "C1": -0.001333760780851552,
+    "C2_F25_R0": -0.025626830877673902,
+    "C2_F25_R1": -0.07647083321469765,
+    "C2_F50_R0": -0.026620592827004776,
+    "C2_F50_R1": -0.05516098068508707,
+    "C2_F75_R0": -0.0276143547763355,
+    "C2_F75_R1": -0.03385112815547635,
+    "C3_F25_R0": -0.04924259987474308,
+    "C3_F25_R1": -0.0794794975229348,
+    "C3_F50_R0": -0.04810899810973569,
+    "C3_F50_R1": -0.05716675689057848,
+    "C3_F75_R0": -0.04697539634472818,
+    "C3_F75_R1": -0.03485401625822205,
+    "C4_F25_R0": -0.33720789145628977,
+    "C4_F25_R1": -0.17722799184476132,
+    "C4_F50_R0": -0.2765663205469872,
+    "C4_F50_R1": -0.1328493354900766,
+    "C4_F75_R0": -0.21592474963768563,
+    "C4_F75_R1": -0.08847067913539206
+  },
+  "runner_extended_reach": {
+    "D01": 0.41251778093883357,
+    "T1": 0.35177865612648224
+  },
+  "status": "V0_6_TARGET_POLICY_RESEARCH_COMPLETE",
+  "target_policy_depends_on_sl_geometry": {
+    "D01": "NO",
+    "T1": "NO"
+  },
+  "v0_5_authority_resolved": true,
+  "v0_5_reproduced": true,
+  "version": "0.1.0-research"
+}

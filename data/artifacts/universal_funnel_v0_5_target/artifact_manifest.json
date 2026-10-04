@@ -1,0 +1,26 @@
+{
+  "artifacts": {
+    "causality_audit.json": "4eeb2c9dd3bf4d59bf63ec8cf3aa7edda3f35459ddb0ce6fbe4a3106f6a98478",
+    "d01_target_report.json": "dc5457e35aba83ff8e8e22c0d551155375adb8a24602c6f54b4a42aa04ae1671",
+    "d01_vs_t1_target_comparison.json": "34b4bbea24c8ee7b7ab4ee9315c0c71c45d938de5bc339b208b85eaf2c0ba96f",
+    "dataset_manifest.json": "28a17922f90922846dbaa79f0fada4f84510ce096781cebd95cb171e2778e9b5",
+    "determinism_report.json": "c87038b7218bf315c784053b85448910c331228c9d986016e29e86be8c683f7b",
+    "final_report.json": "6e6dc0fdc63e3d829d720fd8ec452863c0e46487056253afb128c068eae5393a",
+    "final_report.md": "984c024c310e21a1f3f116700b0bf91188536d2d4ddabcd5253ee808dfa0eb10",
+    "fixed_vs_natural.json": "d8ffa0b0c46c2eecae8b73161558d5e53e30ddc101f921739abf03f02b1258f1",
+    "multi_objective_delivery.json": "93f24511482393d369420bbd1cb06f4f3301d69e500a612631c7661192c2cc77",
+    "parent_reproduction.json": "72dc193360d0036fca9e980d8b2c77b2447d326e3ba48be8cc26b8c592c2eb96",
+    "per_symbol_target_report.json": "c80bc4c819dacf5f0f99d0ee4866450266bdd6c91f961547d6a46743235836f2",
+    "preregistration.json": "d8100fcdb45f2577e600e95b6ebe589a68dd088124675ff317341107bdb71914",
+    "root_cause_analysis.json": "8c9d30834b0020025e0fbc0fd9846e3ccc9eff5fb8ab7dae03f0d67b84928023",
+    "stop_target_geometry.json": "c0516f7995eda2619872589bdd7b03444c08ac04314f0ae451aabe759ae98cbe",
+    "t1_target_report.json": "716fd630d6b2dcc200c79d1fd8a9df6d0e4f92785c1afb0e239c2b8ff6d2e99e",
+    "target_candidate_ledger.jsonl": "98d002f283f42c4c8341e066f3d4fd5215c5b598b9792525f79a901441668e57",
+    "target_delivery.json": "6e37ed320d09f8a5f5d1587a670a80b53ab56d827bb377063b3fd6d1ba2fc665",
+    "target_family_contracts.json": "0e705c88c1b278b93c66be5463f87ed0b53c26bb8f54cd2ecb2075d37af3dbe0",
+    "target_geometry_distribution.json": "1d36aa7ac8e18d4b2ee1dfc679832b3b12a1d0cabae3087b395d1954b725b604",
+    "target_ladders.jsonl": "eb56e59aedb8ce660ec354572d699f54e38e39db01c7828004397d7ff87f15c5",
+    "test_results.txt": "66c291d19a876674412c2c3e8d6bae01546903bafe8946f8e0e6969bd0af753a"
+  },
+  "experiment_id": "TARGET_MODEL_DIAGNOSTICS_V1"
+}

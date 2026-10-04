@@ -1,0 +1,79 @@
+{
+  "ASIAN_V2_ALIGNED_N": 0,
+  "ASIAN_V2_COUNTER_N": 0,
+  "ASIAN_V2_NEUTRAL_N": 0,
+  "BASELINE_HEAD_SHA": "af58e2f23e2bd331b220c92180760ca651fdc7ed",
+  "BASELINE_TREE_SHA": "6de91f9685ea748228f762be2a69f3ff34b4de36",
+  "BASE_TEST_COUNT": 174,
+  "BEST_MA_EVIDENCE": null,
+  "BEST_STRUCTURAL_EVIDENCE": null,
+  "BRANCH": "arena/01a1041d-ag-edgelab",
+  "DATASET_LINEAGE": "BLOCKED_NO_AUTHORIZED_ASIAN_DEV_LINEAGE",
+  "DATASET_ROLE": "DEVELOPMENT_ONLY",
+  "DIRECTION_ENGINE_VERSION": "DIRECTION_DAILY_BIAS_ENGINE_V0.1",
+  "EXECUTION_CAPABILITY_ADDED": "NO",
+  "FINAL_TEST_COUNT": 188,
+  "FIXED_5R_CAPABILITY": null,
+  "HOLDOUT_TOUCHED": "NO",
+  "IMPLEMENTATION_SHA": "5bd91360653005cb2b407382ba243fd95e54b145",
+  "INTERNAL_FLOW_ADDS_VALUE": null,
+  "LIQUIDITY_CONTEXT_ADDS_VALUE": null,
+  "MA_ADDS_VALUE_BEYOND_STRUCTURE": null,
+  "MD01_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD02_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD03_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD04_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD05_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD06_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD07_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD08_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD09_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD10_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD11_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "MD12_RESULT": "NOT_RUN_NO_AUTHORIZED_DATASET",
+  "NATURAL_TARGET_MEDIAN_R": null,
+  "NATURAL_TARGET_P25_R": null,
+  "NATURAL_TARGET_P75_R": null,
+  "NEXT_FUNNEL_TO_CHANGE": "NONE",
+  "OOS_OPENED": "NO",
+  "PREMIUM_DISCOUNT_ADDS_VALUE": null,
+  "PRIMARY_DIAGNOSIS": "CONTRACT_INCOMPLETE",
+  "RANGE_PREEMPTED_SWEEP_N": 0,
+  "RANGE_PREEMPTED_TREND_N": 0,
+  "REALIZED_ECONOMICS_RUN": "NO",
+  "REPORT_SCHEMA": "FunnelDiagnosticReportV3",
+  "SECONDARY_DIAGNOSES": [
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "SOURCE_FAMILIES": {
+    "A": "NOT_LOCATED_IN_CHECKOUT",
+    "B": "NOT_LOCATED_IN_CHECKOUT",
+    "C": "RESEARCH_HYPOTHESIS"
+  },
+  "STATUS": "BLOCKED",
+  "STOP_REASON": "Expected Asian V1/V2 strategy identities, MTF Control Shift candidates, owner source documents, and authorized four-symbol DEVELOPMENT lineage are not present in this checkout. The non-authoritative synthetic BTC fixture was not substituted.",
+  "STRATEGY_RULES_CHANGED": "NO",
+  "TESTS": "PASS (188 passed; baseline archived HEAD 174 passed)",
+  "TREE_SHA": "3fd71c0fc78ec17f0df29f443be3f44e35d4aaf3",
+  "TREE_SHA_AT_GENERATION": "3e820383ddf2e7296a4e22471dbac2ef487c2393",
+  "existing_strategy_hashes": {
+    "baseline_strategy_files": {
+      "src/ag_edgelab/strategies/crypto_mtf_smc.py": "7903b660214b56b77e89550c714f986a1409b104d5966512296159fe1e579dd8",
+      "src/ag_edgelab/strategies/reference_branching.py": "b82403ddb9fe39d0ba18809263815870c104eaddf6686e0e7a857006dcdcf976"
+    },
+    "expected_immutable_identities": {
+      "MTF_CONTROL_SHIFT_V1": null,
+      "MTF_CONTROL_SHIFT_V2": null,
+      "MTF_CONTROL_SHIFT_V3": null,
+      "ST_ASIAN_SESSION_BRANCH_V1": null,
+      "ST_ASIAN_SESSION_BRANCH_V2": null
+    },
+    "present_strategy_files": {
+      "src/ag_edgelab/strategies/crypto_mtf_smc.py": "7903b660214b56b77e89550c714f986a1409b104d5966512296159fe1e579dd8",
+      "src/ag_edgelab/strategies/reference_branching.py": "b82403ddb9fe39d0ba18809263815870c104eaddf6686e0e7a857006dcdcf976"
+    },
+    "unchanged_from_baseline": true
+  },
+  "git_status_at_generation": "",
+  "schema": "DirectionDailyBiasLabFinalReportV0.1"
+}

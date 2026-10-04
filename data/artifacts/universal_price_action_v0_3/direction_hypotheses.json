@@ -1,0 +1,1 @@
+{"composite_rule":"DIR_STRUCT_MTF_V1 (conflict across required TFs -> NEUTRAL)","ma_family":{"assumed_improvement":"NONE","fast":50,"modes":["STRUCTURE_ONLY","MA_ONLY","STRUCTURE_PLUS_MA"],"optimization":"NONE","slow":200},"optional":["W1"],"required_timeframes":["D1","H4","H1"],"structural":{"BEAR":"confirmed LH/LL","BULL":"confirmed HH/HL","NEUTRAL":"unresolved/conflicting"}}

@@ -1,0 +1,13 @@
+{
+  "R0": "runner retains the original frozen SL (full -1R on the runner fraction if stopped after the partial)",
+  "R1": "NEW EXIT HYPOTHESIS: runner stop moves to entry (break-even) from the bar AFTER first-objective realization; BE counted FIRST within a bar (fail-closed); no spread adjustment (no authority)",
+  "fraction_rule": "3-point preregistered sensitivity grid; no percentage is promoted from DEV",
+  "fractions": {
+    "25": "25% exit at first objective, 75% runner",
+    "50": "50% exit at first objective, 50% runner",
+    "75": "75% exit at first objective, 25% runner"
+  },
+  "no_spread_adjusted_breakeven": "no authoritative spread contract exists; plain entry-price BE only",
+  "r0_r1_never_mixed": true,
+  "runner_rule": "runner begins ONLY after the first objective is actually reached (no hypothetical credit); same-bar first+runner objective touch pays the runner objective (monotone path through the nearer level under the frozen stop-first scan)"
+}

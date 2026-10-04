@@ -1,0 +1,6 @@
+{
+  "byte_identical": true,
+  "run_1_sha256": "9f5c6042d0aac0aea82ee5b3ad4f8c2c6b6c0901adc338de1d5e0c56f8f1ac3f",
+  "run_2_sha256": "9f5c6042d0aac0aea82ee5b3ad4f8c2c6b6c0901adc338de1d5e0c56f8f1ac3f",
+  "scope": "policy outcomes, summaries, pathwise deltas, runner metrics, stratifications, decisions (two full independent computations)"
+}

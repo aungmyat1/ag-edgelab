@@ -1,0 +1,292 @@
+{
+  "status": "PASS",
+  "authority": "PR_10_HISTDATA_2017",
+  "timezone": "America/New_York -> UTC",
+  "raw_archive_quality_from_pr10": {
+    "EURUSD": {
+      "symbol": "EURUSD",
+      "m1_rows": 371635,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m15_bars": 24793,
+      "m15_buckets_with_lt13_minutes": 35,
+      "first_bar": "2017-01-02T07:00:00+00:00",
+      "last_bar": "2017-12-29T21:45:00+00:00",
+      "raw_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57"
+    },
+    "GBPUSD": {
+      "symbol": "GBPUSD",
+      "m1_rows": 371204,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m15_bars": 24757,
+      "m15_buckets_with_lt13_minutes": 70,
+      "first_bar": "2017-01-02T07:00:00+00:00",
+      "last_bar": "2017-12-29T21:45:00+00:00",
+      "raw_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b"
+    },
+    "USDJPY": {
+      "symbol": "USDJPY",
+      "m1_rows": 371298,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m15_bars": 24731,
+      "m15_buckets_with_lt13_minutes": 97,
+      "first_bar": "2017-01-02T07:00:00+00:00",
+      "last_bar": "2017-12-29T21:45:00+00:00",
+      "raw_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f"
+    },
+    "XAUUSD": {
+      "symbol": "XAUUSD",
+      "m1_rows": 352360,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m15_bars": 23500,
+      "m15_buckets_with_lt13_minutes": 90,
+      "first_bar": "2017-01-02T23:00:00+00:00",
+      "last_bar": "2017-12-29T21:45:00+00:00",
+      "raw_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+    }
+  },
+  "derived_dev_quality": {
+    "EURUSD": {
+      "M1": {
+        "symbol": "EURUSD",
+        "timeframe": "M1",
+        "source_raw_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:59:00+00:00",
+        "bar_count": 249805,
+        "dataset_sha256": "3a9bcfd2b699e0668e88ceb8181d0531df114f572d71936aeba76acbd362d9ff",
+        "incomplete_buckets_rejected": 0
+      },
+      "M15": {
+        "symbol": "EURUSD",
+        "timeframe": "M15",
+        "source_raw_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:45:00+00:00",
+        "bar_count": 16661,
+        "dataset_sha256": "24f129f526f7d47af098626c5236058ab6ea7ce16ef44e7f383e469a73d346f9",
+        "incomplete_buckets_rejected": 19
+      },
+      "H1": {
+        "symbol": "EURUSD",
+        "timeframe": "H1",
+        "source_raw_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:00:00+00:00",
+        "bar_count": 4154,
+        "dataset_sha256": "922210bcc521c99290b5ec339474ac0fa2ebe0463394de50c0f1f3513bae134f",
+        "incomplete_buckets_rejected": 16
+      },
+      "H4": {
+        "symbol": "EURUSD",
+        "timeframe": "H4",
+        "source_raw_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T08:00:00+00:00",
+        "last_timestamp": "2017-08-31T20:00:00+00:00",
+        "bar_count": 1004,
+        "dataset_sha256": "33e621ea9e8234772807249ac75beb08cec5415955faeba56775a5ad3e822cc0",
+        "incomplete_buckets_rejected": 73
+      },
+      "D1": {
+        "symbol": "EURUSD",
+        "timeframe": "D1",
+        "source_raw_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-03T00:00:00+00:00",
+        "last_timestamp": "2017-08-31T00:00:00+00:00",
+        "bar_count": 172,
+        "dataset_sha256": "f4d0851b4cca5f50f1db148e38c1bc07eee9462405e4316a24adab3aa750bd82",
+        "incomplete_buckets_rejected": 2
+      }
+    },
+    "GBPUSD": {
+      "M1": {
+        "symbol": "GBPUSD",
+        "timeframe": "M1",
+        "source_raw_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:59:00+00:00",
+        "bar_count": 249511,
+        "dataset_sha256": "b32c0630933e3f5cd404a9af55ea963dc7dd88ee23d25fee02f94da40a9e8857",
+        "incomplete_buckets_rejected": 0
+      },
+      "M15": {
+        "symbol": "GBPUSD",
+        "timeframe": "M15",
+        "source_raw_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:45:00+00:00",
+        "bar_count": 16632,
+        "dataset_sha256": "3a4ce85e368d5301e8cdd6985b87fdcfa0b152ff06b71a8fe3fc964f27bb7682",
+        "incomplete_buckets_rejected": 47
+      },
+      "H1": {
+        "symbol": "GBPUSD",
+        "timeframe": "H1",
+        "source_raw_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:00:00+00:00",
+        "bar_count": 4132,
+        "dataset_sha256": "101848366dffc9ef5ff7ec35a2079c373a397f7707ebca8bbdfbc29d7d39489e",
+        "incomplete_buckets_rejected": 38
+      },
+      "H4": {
+        "symbol": "GBPUSD",
+        "timeframe": "H4",
+        "source_raw_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T08:00:00+00:00",
+        "last_timestamp": "2017-08-31T20:00:00+00:00",
+        "bar_count": 987,
+        "dataset_sha256": "dd65a8401dba399c572fc700d9b38629be7b0c96d8bf2cfd877af2726e8cba26",
+        "incomplete_buckets_rejected": 90
+      },
+      "D1": {
+        "symbol": "GBPUSD",
+        "timeframe": "D1",
+        "source_raw_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-03T00:00:00+00:00",
+        "last_timestamp": "2017-08-31T00:00:00+00:00",
+        "bar_count": 173,
+        "dataset_sha256": "087ed577ccd11365c53f9537a2a5b6d40d946703a19e75041aaffb389c82d091",
+        "incomplete_buckets_rejected": 1
+      }
+    },
+    "USDJPY": {
+      "M1": {
+        "symbol": "USDJPY",
+        "timeframe": "M1",
+        "source_raw_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:59:00+00:00",
+        "bar_count": 249562,
+        "dataset_sha256": "1d8b14c604b38f0671c86cfb0c240c263a2504455d2581465b8b959d6c5fb4bd",
+        "incomplete_buckets_rejected": 0
+      },
+      "M15": {
+        "symbol": "USDJPY",
+        "timeframe": "M15",
+        "source_raw_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:45:00+00:00",
+        "bar_count": 16621,
+        "dataset_sha256": "abe1f06111b6c7585c9e031cbe49876d75b1fe9bd29283fb94948750c93e0368",
+        "incomplete_buckets_rejected": 59
+      },
+      "H1": {
+        "symbol": "USDJPY",
+        "timeframe": "H1",
+        "source_raw_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T07:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:00:00+00:00",
+        "bar_count": 4135,
+        "dataset_sha256": "c73c98671e55fda7e720e23549a163241eda312eb1e69f98248b70d780d10e68",
+        "incomplete_buckets_rejected": 31
+      },
+      "H4": {
+        "symbol": "USDJPY",
+        "timeframe": "H4",
+        "source_raw_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T08:00:00+00:00",
+        "last_timestamp": "2017-08-31T20:00:00+00:00",
+        "bar_count": 989,
+        "dataset_sha256": "e5ff00d507aa48b0ffd397841b42d23f6dc5eea4f81f69ebcfbcf4e2bd442428",
+        "incomplete_buckets_rejected": 88
+      },
+      "D1": {
+        "symbol": "USDJPY",
+        "timeframe": "D1",
+        "source_raw_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-03T00:00:00+00:00",
+        "last_timestamp": "2017-08-31T00:00:00+00:00",
+        "bar_count": 173,
+        "dataset_sha256": "fe602cc25b8757b9c0fb84fc652bad1f2b6eeb9a49167b25720930d8109bdbf4",
+        "incomplete_buckets_rejected": 1
+      }
+    },
+    "XAUUSD": {
+      "M1": {
+        "symbol": "XAUUSD",
+        "timeframe": "M1",
+        "source_raw_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T23:01:00+00:00",
+        "last_timestamp": "2017-08-31T23:59:00+00:00",
+        "bar_count": 235925,
+        "dataset_sha256": "b309d10fb149b48008dc93f53c1fc608735f23876575f9d29ef696b67360ac57",
+        "incomplete_buckets_rejected": 0
+      },
+      "M15": {
+        "symbol": "XAUUSD",
+        "timeframe": "M15",
+        "source_raw_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T23:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:45:00+00:00",
+        "bar_count": 15733,
+        "dataset_sha256": "26dba0c9ac6fc3428e0b384863c9207f9c60828ef69c779857acacd35ddb42a1",
+        "incomplete_buckets_rejected": 54
+      },
+      "H1": {
+        "symbol": "XAUUSD",
+        "timeframe": "H1",
+        "source_raw_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-02T23:00:00+00:00",
+        "last_timestamp": "2017-08-31T23:00:00+00:00",
+        "bar_count": 3917,
+        "dataset_sha256": "df4dada161c9b66719c7caa37708dceddc8300d426d3b7f62004a757d6c73c7c",
+        "incomplete_buckets_rejected": 24
+      },
+      "H4": {
+        "symbol": "XAUUSD",
+        "timeframe": "H4",
+        "source_raw_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-03T00:00:00+00:00",
+        "last_timestamp": "2017-08-31T16:00:00+00:00",
+        "bar_count": 855,
+        "dataset_sha256": "d9eb54ba01ed93350bfb37d345484e9a7f49593aadad2eaf9e14e7fa6e6e558a",
+        "incomplete_buckets_rejected": 209
+      },
+      "D1": {
+        "symbol": "XAUUSD",
+        "timeframe": "D1",
+        "source_raw_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff",
+        "aggregation_contract_version": "FX_HISTDATA_CAUSAL_UTC_V1",
+        "first_timestamp": "2017-01-03T00:00:00+00:00",
+        "last_timestamp": "2017-08-31T00:00:00+00:00",
+        "bar_count": 167,
+        "dataset_sha256": "53f428ad940d6424ef9bb3f021483645b593cd9875e4066aeb1c46e4e7d46e45",
+        "incomplete_buckets_rejected": 5
+      }
+    }
+  },
+  "checks": {
+    "duplicate_timestamps": 0,
+    "ohlc_violations": 0,
+    "non_monotonic": 0,
+    "forward_fill": false,
+    "holdout_touched": false,
+    "m15_rule": ">=13/15 M1 minutes",
+    "h1_rule": "4 complete M15 bars",
+    "h4_rule": "4 complete H1 bars",
+    "d1_rule": "5 complete H4 bars due documented session closure"
+  }
+}

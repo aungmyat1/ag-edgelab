@@ -1,0 +1,417 @@
+{
+  "by_symbol": {
+    "EURUSD": {
+      "bear_n": 1092,
+      "bull_n": 1316,
+      "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "capability_decided_direction": 0.31012922050854524,
+      "capability_opposite_direction": 0.3234927234927235,
+      "confirmation": {
+        "confirmed_n": 749,
+        "confirmed_subset_capability_same_basis": 0.46328437917222964,
+        "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+        "entry_conditioned_capability": 0.24032042723631508,
+        "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+        "entry_conditioned_uplift_vs_opportunity": null,
+        "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+        "opportunity_capability_location_aligned": 0.3180147058823529,
+        "unconfirmed_capability_same_basis": 0.22535211267605634,
+        "unconfirmed_n": 72,
+        "uplift_pp_same_basis": 14.53
+      },
+      "continuation_survival": {
+        "P2_GIVEN_1": 0.5611285266457681,
+        "P3_GIVEN_2": 0.5810055865921788,
+        "P4_GIVEN_3": 0.6923076923076923,
+        "P5_GIVEN_4": 0.7638888888888888
+      },
+      "definition": "frozen V0.3 baseline: H4 structural direction only (BULL on confirmed HH/HL, BEAR on confirmed LH/LL, else NEUTRAL)",
+      "directional_n": 2408,
+      "entered_n": 749,
+      "fixed_reach": {
+        "1R": 0.4259012016021362,
+        "2R": 0.2389853137516689,
+        "3R": 0.13885180240320427,
+        "4R": 0.09612817089452604,
+        "5R": 0.07343124165554073
+      },
+      "funnel": {
+        "CONFIRMATION_AVAILABLE": 1568,
+        "DIRECTIONAL": 2408,
+        "ENTERED": 749,
+        "LOCATION_ALIGNED": 1640,
+        "LOCATION_AVAILABLE": 2408,
+        "LOCATION_MISMATCH_RECORDED": 768,
+        "R1": 319,
+        "R2": 179,
+        "R3": 104,
+        "R4": 72,
+        "R5": 55
+      },
+      "location": {
+        "aligned_capability": 0.3180147058823529,
+        "aligned_n": 1640,
+        "directional_capability": 0.31012922050854524,
+        "mismatch_capability": 0.29335071707953064,
+        "mismatch_n": 768
+      },
+      "mae_r_median": 1.0833333333333095,
+      "mfe_r_median": 0.7868852459016991,
+      "natural_target_n": 1324,
+      "natural_target_r": {
+        "P25": 1.1115384615383315,
+        "P50": 2.310559006211443,
+        "P75": 4.604651162790693,
+        "P90": 7.5855742296917406
+      },
+      "policy": "D01",
+      "separation_pp": -1.34
+    },
+    "GBPUSD": {
+      "bear_n": 998,
+      "bull_n": 1331,
+      "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "capability_decided_direction": 0.35200344679017664,
+      "capability_opposite_direction": 0.30103359173126615,
+      "confirmation": {
+        "confirmed_n": 873,
+        "confirmed_subset_capability_same_basis": 0.4896788990825688,
+        "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+        "entry_conditioned_capability": 0.30126002290950743,
+        "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+        "entry_conditioned_uplift_vs_opportunity": null,
+        "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+        "opportunity_capability_location_aligned": 0.3547854785478548,
+        "unconfirmed_capability_same_basis": 0.40425531914893614,
+        "unconfirmed_n": 94,
+        "uplift_pp_same_basis": 13.49
+      },
+      "continuation_survival": {
+        "P2_GIVEN_1": 0.652605459057072,
+        "P3_GIVEN_2": 0.6653992395437263,
+        "P4_GIVEN_3": 0.64,
+        "P5_GIVEN_4": 0.6428571428571429
+      },
+      "definition": "frozen V0.3 baseline: H4 structural direction only (BULL on confirmed HH/HL, BEAR on confirmed LH/LL, else NEUTRAL)",
+      "directional_n": 2329,
+      "entered_n": 873,
+      "fixed_reach": {
+        "1R": 0.4616265750286369,
+        "2R": 0.30126002290950743,
+        "3R": 0.2004581901489118,
+        "4R": 0.12829324169530354,
+        "5R": 0.08247422680412371
+      },
+      "funnel": {
+        "CONFIRMATION_AVAILABLE": 1732,
+        "DIRECTIONAL": 2329,
+        "ENTERED": 873,
+        "LOCATION_ALIGNED": 1826,
+        "LOCATION_AVAILABLE": 2329,
+        "LOCATION_MISMATCH_RECORDED": 503,
+        "R1": 403,
+        "R2": 263,
+        "R3": 175,
+        "R4": 112,
+        "R5": 72
+      },
+      "location": {
+        "aligned_capability": 0.3547854785478548,
+        "aligned_n": 1826,
+        "directional_capability": 0.35200344679017664,
+        "mismatch_capability": 0.341948310139165,
+        "mismatch_n": 503
+      },
+      "mae_r_median": 1.0827067669173447,
+      "mfe_r_median": 0.8972602739725392,
+      "natural_target_n": 1454,
+      "natural_target_r": {
+        "P25": 0.9122137404579509,
+        "P50": 2.1811023622048786,
+        "P75": 3.8083067092650595,
+        "P90": 5.848095238095324
+      },
+      "policy": "D01",
+      "separation_pp": 5.1
+    },
+    "USDJPY": {
+      "bear_n": 1367,
+      "bull_n": 896,
+      "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "capability_decided_direction": 0.3383525243578388,
+      "capability_opposite_direction": 0.33672566371681417,
+      "confirmation": {
+        "confirmed_n": 733,
+        "confirmed_subset_capability_same_basis": 0.5109289617486339,
+        "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+        "entry_conditioned_capability": 0.28240109140518416,
+        "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+        "entry_conditioned_uplift_vs_opportunity": null,
+        "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+        "opportunity_capability_location_aligned": 0.3483343074225599,
+        "unconfirmed_capability_same_basis": 0.3333333333333333,
+        "unconfirmed_n": 63,
+        "uplift_pp_same_basis": 16.26
+      },
+      "continuation_survival": {
+        "P2_GIVEN_1": 0.5204081632653061,
+        "P3_GIVEN_2": 0.6274509803921569,
+        "P4_GIVEN_3": 0.6640625,
+        "P5_GIVEN_4": 0.5882352941176471
+      },
+      "definition": "frozen V0.3 baseline: H4 structural direction only (BULL on confirmed HH/HL, BEAR on confirmed LH/LL, else NEUTRAL)",
+      "directional_n": 2263,
+      "entered_n": 733,
+      "fixed_reach": {
+        "1R": 0.5347885402455662,
+        "2R": 0.2783083219645293,
+        "3R": 0.17462482946793997,
+        "4R": 0.11596180081855388,
+        "5R": 0.06821282401091405
+      },
+      "funnel": {
+        "CONFIRMATION_AVAILABLE": 1652,
+        "DIRECTIONAL": 2263,
+        "ENTERED": 733,
+        "LOCATION_ALIGNED": 1715,
+        "LOCATION_AVAILABLE": 2263,
+        "LOCATION_MISMATCH_RECORDED": 548,
+        "R1": 392,
+        "R2": 204,
+        "R3": 128,
+        "R4": 85,
+        "R5": 50
+      },
+      "location": {
+        "aligned_capability": 0.3483343074225599,
+        "aligned_n": 1715,
+        "directional_capability": 0.3383525243578388,
+        "mismatch_capability": 0.3071297989031079,
+        "mismatch_n": 548
+      },
+      "mae_r_median": 1.0758293838862818,
+      "mfe_r_median": 1.1868131868131395,
+      "natural_target_n": 1236,
+      "natural_target_r": {
+        "P25": 1.226110017206834,
+        "P50": 2.572687224669574,
+        "P75": 4.4711713642695825,
+        "P90": 6.743902439024549
+      },
+      "policy": "D01",
+      "separation_pp": 0.16
+    },
+    "XAUUSD": {
+      "bear_n": 1100,
+      "bull_n": 1126,
+      "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "capability_decided_direction": 0.3757875787578758,
+      "capability_opposite_direction": 0.3316831683168317,
+      "confirmation": {
+        "confirmed_n": 828,
+        "confirmed_subset_capability_same_basis": 0.5362318840579711,
+        "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+        "entry_conditioned_capability": 0.3852657004830918,
+        "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+        "entry_conditioned_uplift_vs_opportunity": null,
+        "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+        "opportunity_capability_location_aligned": 0.38854296388542964,
+        "unconfirmed_capability_same_basis": 0.36363636363636365,
+        "unconfirmed_n": 66,
+        "uplift_pp_same_basis": 14.77
+      },
+      "continuation_survival": {
+        "P2_GIVEN_1": 0.7026431718061674,
+        "P3_GIVEN_2": 0.7210031347962382,
+        "P4_GIVEN_3": 0.7347826086956522,
+        "P5_GIVEN_4": 0.7455621301775148
+      },
+      "definition": "frozen V0.3 baseline: H4 structural direction only (BULL on confirmed HH/HL, BEAR on confirmed LH/LL, else NEUTRAL)",
+      "directional_n": 2226,
+      "entered_n": 828,
+      "fixed_reach": {
+        "1R": 0.5483091787439613,
+        "2R": 0.3852657004830918,
+        "3R": 0.2777777777777778,
+        "4R": 0.2041062801932367,
+        "5R": 0.15217391304347827
+      },
+      "funnel": {
+        "CONFIRMATION_AVAILABLE": 1544,
+        "DIRECTIONAL": 2226,
+        "ENTERED": 828,
+        "LOCATION_ALIGNED": 1610,
+        "LOCATION_AVAILABLE": 2226,
+        "LOCATION_MISMATCH_RECORDED": 616,
+        "R1": 454,
+        "R2": 319,
+        "R3": 230,
+        "R4": 169,
+        "R5": 126
+      },
+      "location": {
+        "aligned_capability": 0.38854296388542964,
+        "aligned_n": 1610,
+        "directional_capability": 0.3757875787578758,
+        "mismatch_capability": 0.3425324675324675,
+        "mismatch_n": 616
+      },
+      "mae_r_median": 1.0436580367292951,
+      "mfe_r_median": 1.1947831978320027,
+      "natural_target_n": 1347,
+      "natural_target_r": {
+        "P25": 0.9965517241379342,
+        "P50": 2.2033898305085486,
+        "P75": 4.053956834532407,
+        "P90": 6.807407407406592
+      },
+      "policy": "D01",
+      "separation_pp": 4.41
+    }
+  },
+  "detail": {
+    "P2_GIVEN_1": {
+      "computed": 0.6154336734693877,
+      "frozen": 0.6154336734693877,
+      "match": true
+    },
+    "P3_GIVEN_2": {
+      "computed": 0.6601036269430052,
+      "frozen": 0.6601036269430052,
+      "match": true
+    },
+    "P4_GIVEN_3": {
+      "computed": 0.6875981161695447,
+      "frozen": 0.6875981161695447,
+      "match": true
+    },
+    "P5_GIVEN_4": {
+      "computed": 0.6917808219178082,
+      "frozen": 0.6917808219178082,
+      "match": true
+    },
+    "confirmation_uplift_pp": {
+      "computed": 14.82,
+      "frozen": 14.82,
+      "match": true
+    },
+    "entered_n": {
+      "computed": 3183,
+      "frozen": 3183,
+      "match": true
+    },
+    "natural_median_r": {
+      "computed": 2.3402777777776684,
+      "frozen": 2.3402777777776684,
+      "match": true
+    },
+    "natural_p25_r": {
+      "computed": 1.0510948905109334,
+      "frozen": 1.0510948905109334,
+      "match": true
+    },
+    "natural_p75_r": {
+      "computed": 4.178947368421132,
+      "frozen": 4.178947368421132,
+      "match": true
+    },
+    "reach_1R": {
+      "computed": 0.49261702796104306,
+      "frozen": 0.49261702796104306,
+      "match": true
+    },
+    "reach_2R": {
+      "computed": 0.3031731071316368,
+      "frozen": 0.3031731071316368,
+      "match": true
+    },
+    "reach_3R": {
+      "computed": 0.20012566760917375,
+      "frozen": 0.20012566760917375,
+      "match": true
+    },
+    "reach_4R": {
+      "computed": 0.13760603204524033,
+      "frozen": 0.13760603204524033,
+      "match": true
+    },
+    "reach_5R": {
+      "computed": 0.09519321394910461,
+      "frozen": 0.09519321394910461,
+      "match": true
+    },
+    "separation_pp": {
+      "computed": 2.04,
+      "frozen": 2.04,
+      "match": true
+    }
+  },
+  "pooled": {
+    "bear_n": 4557,
+    "bull_n": 4669,
+    "capability_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+    "capability_decided_direction": 0.34347826086956523,
+    "capability_opposite_direction": 0.32305353458573133,
+    "confirmation": {
+      "confirmed_n": 3183,
+      "confirmed_subset_capability_same_basis": 0.5004715498270984,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.30442978322337416,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.35229791635880003,
+      "unconfirmed_capability_same_basis": 0.336734693877551,
+      "unconfirmed_n": 295,
+      "uplift_pp_same_basis": 14.82
+    },
+    "continuation_survival": {
+      "P2_GIVEN_1": 0.6154336734693877,
+      "P3_GIVEN_2": 0.6601036269430052,
+      "P4_GIVEN_3": 0.6875981161695447,
+      "P5_GIVEN_4": 0.6917808219178082
+    },
+    "definition": "frozen V0.3 baseline: H4 structural direction only (BULL on confirmed HH/HL, BEAR on confirmed LH/LL, else NEUTRAL)",
+    "directional_n": 9226,
+    "entered_n": 3183,
+    "fixed_reach": {
+      "1R": 0.49261702796104306,
+      "2R": 0.3031731071316368,
+      "3R": 0.20012566760917375,
+      "4R": 0.13760603204524033,
+      "5R": 0.09519321394910461
+    },
+    "funnel": {
+      "CONFIRMATION_AVAILABLE": 6496,
+      "DIRECTIONAL": 9226,
+      "ENTERED": 3183,
+      "LOCATION_ALIGNED": 6791,
+      "LOCATION_AVAILABLE": 9226,
+      "LOCATION_MISMATCH_RECORDED": 2435,
+      "R1": 1568,
+      "R2": 965,
+      "R3": 637,
+      "R4": 438,
+      "R5": 303
+    },
+    "location": {
+      "aligned_capability": 0.35229791635880003,
+      "aligned_n": 6791,
+      "directional_capability": 0.34347826086956523,
+      "mismatch_capability": 0.3189478010686395,
+      "mismatch_n": 2435
+    },
+    "mae_r_median": 1.0758293838862818,
+    "mfe_r_median": 0.9937888198758732,
+    "natural_target_n": 5361,
+    "natural_target_r": {
+      "P25": 1.0510948905109334,
+      "P50": 2.3402777777776684,
+      "P75": 4.178947368421132,
+      "P90": 6.840909090909562
+    },
+    "policy": "D01",
+    "separation_pp": 2.04
+  },
+  "reproduced": true
+}

@@ -1,0 +1,298 @@
+{
+  "all_passed": true,
+  "invariants": [
+    "decision at T uses only bars fully closed at T (open + span <= T)",
+    "truncating all frames at T leaves every decision unchanged",
+    "mutating bars not closed at T (OHLC x1.1) leaves every decision unchanged"
+  ],
+  "samples": [
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-03-07T11:15:00+00:00",
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-04-19T23:15:00+00:00",
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "BULL",
+        "D02": "BULL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "BULL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "BULL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-06-02T12:15:00+00:00",
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "BULL",
+        "D02": "BULL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "BULL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "BULL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-07-18T01:15:00+00:00",
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BEAR",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-03-07T12:15:00+00:00",
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-04-19T23:15:00+00:00",
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BEAR",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-06-02T11:15:00+00:00",
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-07-18T00:15:00+00:00",
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "BEAR",
+        "D02": "BEAR",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "BEAR",
+        "D06": "BEAR",
+        "D07": "NEUTRAL",
+        "D08": "BEAR",
+        "D09": "BULL",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-03-07T09:15:00+00:00",
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BEAR",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-04-19T22:15:00+00:00",
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BEAR",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-06-02T11:15:00+00:00",
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BEAR",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-07-18T01:15:00+00:00",
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "BEAR",
+        "D02": "NEUTRAL",
+        "D03": "BEAR",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BEAR",
+        "D10": "BEAR"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-03-07T06:15:00+00:00",
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "BEAR",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "BEAR",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-04-20T11:15:00+00:00",
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "BEAR",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "BEAR",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-06-04T22:15:00+00:00",
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "campaign_decisions": {
+        "D01": "NEUTRAL",
+        "D02": "NEUTRAL",
+        "D03": "NEUTRAL",
+        "D04": "NEUTRAL",
+        "D05": "NEUTRAL",
+        "D06": "NEUTRAL",
+        "D07": "NEUTRAL",
+        "D08": "NEUTRAL",
+        "D09": "BULL",
+        "D10": "NEUTRAL"
+      },
+      "future_mutation_invariant": true,
+      "observed_at": "2017-07-18T09:15:00+00:00",
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    }
+  ]
+}

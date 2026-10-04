@@ -1,0 +1,24 @@
+{
+  "status": "NO_REALIZED_TRADES",
+  "MFE_R": null,
+  "MAE_R": null,
+  "target_reachability": {
+    "1R": null,
+    "2R": null,
+    "3R": null,
+    "4R": null,
+    "5R": null
+  },
+  "frozen_policy": {
+    "TP1": "2R, 50%",
+    "TP2": "structural",
+    "runner": "50% to TP2 or BE",
+    "force_flat": "21:00 UTC"
+  },
+  "gross_R": null,
+  "friction_R": 0,
+  "net_R": null,
+  "expectancy_R": null,
+  "PF": null,
+  "max_DD_R": null
+}

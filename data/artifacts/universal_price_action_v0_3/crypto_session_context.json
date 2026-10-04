@@ -1,0 +1,1 @@
+{"diagnostic_time_metadata_example":{"gating":"NEVER","utc_hour":0,"volatility_window":"UTC_00_08","weekday":"FRIDAY"},"gating":"NEVER","reason":"crypto core operates continuously; absence is intentional, not missing evidence","session_context":"NOT_APPLICABLE"}

@@ -1,0 +1,13 @@
+{
+  "analysis": "STRUCTURE_DIRECTION_ANALYSIS",
+  "dataset_role": "DEVELOPMENT",
+  "layers": [
+    "MD01",
+    "MD02",
+    "MD03"
+  ],
+  "metrics": {},
+  "note": "No authorized DEV population.",
+  "population_n": 0,
+  "status": "BLOCKED_NO_AUTHORIZED_DEVELOPMENT_DATA"
+}

@@ -1,0 +1,114 @@
+{
+  "EURUSD": {
+    "coverage_fraction": 0.75,
+    "derived": [
+      {
+        "coverage_rule": ">= ceil(0.75 * 4) = 3 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "5569b5a563eb4afde89a826e75ff41c08dc84ea3bc71aa5730e1e92dd0f45f76",
+        "rows": 4168,
+        "source_hash": "5495eeab0baa859d272c21a006898d1f7f6b4477f530bf139488cd43205b054c",
+        "timeframe": "H1"
+      },
+      {
+        "coverage_rule": ">= ceil(0.75 * 16) = 12 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "855bad2a6dee7a2e22bcd44f8a41c4f79c5fd6a15776a40495051d20edcad12f",
+        "rows": 1023,
+        "source_hash": "5495eeab0baa859d272c21a006898d1f7f6b4477f530bf139488cd43205b054c",
+        "timeframe": "H4"
+      },
+      {
+        "coverage_rule": ">= ceil(0.75 * 96) = 72 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "a9d89b6cf4bb4bb428c615b1e966bc32af8c65c8f091bfd0af6fbfa7df9963e0",
+        "rows": 173,
+        "source_hash": "5495eeab0baa859d272c21a006898d1f7f6b4477f530bf139488cd43205b054c",
+        "timeframe": "D1"
+      }
+    ],
+    "m15_rule": ">= 13/15 M1 minutes per bucket; missing bars never filled",
+    "statement": "M15/H1/H4/D1 all derived from ONE normalized M1 feed; no independent higher-timeframe provider"
+  },
+  "GBPUSD": {
+    "coverage_fraction": 0.75,
+    "derived": [
+      {
+        "coverage_rule": ">= ceil(0.75 * 4) = 3 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "b64c960e1ce5e2497c743c351e4fe14491e405d7c310b29986366ff76c6cca98",
+        "rows": 4161,
+        "source_hash": "450705774517f44b42b09953ab11cf69b5bc2a04c4e36c11e97ef81530ab976f",
+        "timeframe": "H1"
+      },
+      {
+        "coverage_rule": ">= ceil(0.75 * 16) = 12 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "befb55faff174d63b35752ea5028a41d1b12ad2e4c502f72bee98b2862c4c00c",
+        "rows": 1020,
+        "source_hash": "450705774517f44b42b09953ab11cf69b5bc2a04c4e36c11e97ef81530ab976f",
+        "timeframe": "H4"
+      },
+      {
+        "coverage_rule": ">= ceil(0.75 * 96) = 72 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "53f1415dfcf2758b89f02c549a23a490b0695f4067a8ee13c9179405b0319bfa",
+        "rows": 173,
+        "source_hash": "450705774517f44b42b09953ab11cf69b5bc2a04c4e36c11e97ef81530ab976f",
+        "timeframe": "D1"
+      }
+    ],
+    "m15_rule": ">= 13/15 M1 minutes per bucket; missing bars never filled",
+    "statement": "M15/H1/H4/D1 all derived from ONE normalized M1 feed; no independent higher-timeframe provider"
+  },
+  "USDJPY": {
+    "coverage_fraction": 0.75,
+    "derived": [
+      {
+        "coverage_rule": ">= ceil(0.75 * 4) = 3 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "d93574d307245412fa85b08ada13aa0cd0532de45e6a638249cb2c207aea8ba4",
+        "rows": 4156,
+        "source_hash": "683a1684ce7fa3faa1037c297ac4e71fce00f247631ed5e2784d263bd4f64cbc",
+        "timeframe": "H1"
+      },
+      {
+        "coverage_rule": ">= ceil(0.75 * 16) = 12 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "9b70783e014280319901142138c161a0a319ff8266fe28e901ab95e623dfa3f8",
+        "rows": 1017,
+        "source_hash": "683a1684ce7fa3faa1037c297ac4e71fce00f247631ed5e2784d263bd4f64cbc",
+        "timeframe": "H4"
+      },
+      {
+        "coverage_rule": ">= ceil(0.75 * 96) = 72 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "c9c497b338f31e7de8edba71ecf029755cd17be52b25a0fb960fe51423b309a5",
+        "rows": 173,
+        "source_hash": "683a1684ce7fa3faa1037c297ac4e71fce00f247631ed5e2784d263bd4f64cbc",
+        "timeframe": "D1"
+      }
+    ],
+    "m15_rule": ">= 13/15 M1 minutes per bucket; missing bars never filled",
+    "statement": "M15/H1/H4/D1 all derived from ONE normalized M1 feed; no independent higher-timeframe provider"
+  },
+  "XAUUSD": {
+    "coverage_fraction": 0.75,
+    "derived": [
+      {
+        "coverage_rule": ">= ceil(0.75 * 4) = 3 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "8b40a419c5429e6cfa7b685389bfced84bca50ca50fc575c0ed698e674a1b4bb",
+        "rows": 3935,
+        "source_hash": "34d59711bb81852a803565a1101ae29d54a839bbfceb55120ddcfe0084136153",
+        "timeframe": "H1"
+      },
+      {
+        "coverage_rule": ">= ceil(0.75 * 16) = 12 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "8f3b93b9c0dc75a98155ed5e37361d1a664241e3240b3c3ea95accb7c7501066",
+        "rows": 976,
+        "source_hash": "34d59711bb81852a803565a1101ae29d54a839bbfceb55120ddcfe0084136153",
+        "timeframe": "H4"
+      },
+      {
+        "coverage_rule": ">= ceil(0.75 * 96) = 72 present M15 slots per UTC bucket; no forward fill",
+        "output_hash": "e40b4650e4c9aae493b3c5dd6bd5c218d3afe32953e0e54171750689b44d48fb",
+        "rows": 172,
+        "source_hash": "34d59711bb81852a803565a1101ae29d54a839bbfceb55120ddcfe0084136153",
+        "timeframe": "D1"
+      }
+    ],
+    "m15_rule": ">= 13/15 M1 minutes per bucket; missing bars never filled",
+    "statement": "M15/H1/H4/D1 all derived from ONE normalized M1 feed; no independent higher-timeframe provider"
+  }
+}

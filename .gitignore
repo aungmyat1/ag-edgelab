@@ -10,3 +10,11 @@ build/
 reports/
 *.parquet
 *.csv
+
+# external raw datasets (hash-pinned, never committed)
+data/external/
+# campaign runtime caches
+.campaign_cache/
+# mtf control-shift lineage: deps + raw archives
+.deps/
+data/raw/fx_histdata/*.zip

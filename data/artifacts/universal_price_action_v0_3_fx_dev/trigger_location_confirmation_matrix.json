@@ -1,0 +1,642 @@
+{
+  "EURUSD": [
+    {
+      "capability": 0.4766081871345029,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 342
+    },
+    {
+      "capability": 0.20178041543026706,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 340
+    },
+    {
+      "capability": 0.175,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 41
+    },
+    {
+      "capability": 0.42105263157894735,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 304
+    },
+    {
+      "capability": 0.1857707509881423,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 254
+    },
+    {
+      "capability": 0.3142857142857143,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 35
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": 0.4520884520884521,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 407
+    },
+    {
+      "capability": 0.18526315789473685,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 479
+    },
+    {
+      "capability": 0.2903225806451613,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 31
+    },
+    {
+      "capability": 0.26,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 100
+    },
+    {
+      "capability": 0.15517241379310345,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 58
+    },
+    {
+      "capability": 0.23529411764705882,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 17
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    }
+  ],
+  "GBPUSD": [
+    {
+      "capability": 0.5161290322580645,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 497
+    },
+    {
+      "capability": 0.2275449101796407,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 505
+    },
+    {
+      "capability": 0.4897959183673469,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 49
+    },
+    {
+      "capability": 0.43243243243243246,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 148
+    },
+    {
+      "capability": 0.20833333333333334,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 120
+    },
+    {
+      "capability": 0.3333333333333333,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 12
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": 0.45478723404255317,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 376
+    },
+    {
+      "capability": 0.18803418803418803,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 354
+    },
+    {
+      "capability": 0.3111111111111111,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 45
+    },
+    {
+      "capability": 0.49523809523809526,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 105
+    },
+    {
+      "capability": 0.1836734693877551,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 98
+    },
+    {
+      "capability": 0.45,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 20
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    }
+  ],
+  "POOLED": [
+    {
+      "capability": 0.49967170059093896,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 1525
+    },
+    {
+      "capability": 0.225,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 1569
+    },
+    {
+      "capability": 0.35570469798657717,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 150
+    },
+    {
+      "capability": 0.428380187416332,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 747
+    },
+    {
+      "capability": 0.1913477537437604,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 603
+    },
+    {
+      "capability": 0.29333333333333333,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 75
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": 0.5012062726176115,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 1658
+    },
+    {
+      "capability": 0.197459584295612,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 1744
+    },
+    {
+      "capability": 0.31724137931034485,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 145
+    },
+    {
+      "capability": 0.43018867924528303,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 530
+    },
+    {
+      "capability": 0.17026378896882494,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 417
+    },
+    {
+      "capability": 0.31746031746031744,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 63
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    }
+  ],
+  "USDJPY": [
+    {
+      "capability": 0.4861111111111111,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 289
+    },
+    {
+      "capability": 0.22546419098143236,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 378
+    },
+    {
+      "capability": 0.30303030303030304,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 33
+    },
+    {
+      "capability": 0.45714285714285713,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 105
+    },
+    {
+      "capability": 0.1744186046511628,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 87
+    },
+    {
+      "capability": 0.25,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 4
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": 0.527027027027027,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 444
+    },
+    {
+      "capability": 0.21521335807050093,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 541
+    },
+    {
+      "capability": 0.36666666666666664,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 30
+    },
+    {
+      "capability": 0.3954802259887006,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 177
+    },
+    {
+      "capability": 0.18125,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 160
+    },
+    {
+      "capability": 0.3333333333333333,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 15
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    }
+  ],
+  "XAUUSD": [
+    {
+      "capability": 0.5088161209068011,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 397
+    },
+    {
+      "capability": 0.24347826086956523,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 346
+    },
+    {
+      "capability": 0.4444444444444444,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "ALIGNED",
+      "n": 27
+    },
+    {
+      "capability": 0.42105263157894735,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 190
+    },
+    {
+      "capability": 0.19718309859154928,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 142
+    },
+    {
+      "capability": 0.25,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "MISMATCH_RECORDED",
+      "n": 24
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BULL",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": 0.5614849187935035,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 431
+    },
+    {
+      "capability": 0.19618528610354224,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 370
+    },
+    {
+      "capability": 0.3076923076923077,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "ALIGNED",
+      "n": 39
+    },
+    {
+      "capability": 0.5405405405405406,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 148
+    },
+    {
+      "capability": 0.1485148514851485,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 101
+    },
+    {
+      "capability": 0.18181818181818182,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "MISMATCH_RECORDED",
+      "n": 11
+    },
+    {
+      "capability": null,
+      "confirmation": "ALIGNED",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "COUNTER_DIRECTION",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    },
+    {
+      "capability": null,
+      "confirmation": "NONE",
+      "direction": "BEAR",
+      "location": "UNAVAILABLE",
+      "n": 0
+    }
+  ]
+}

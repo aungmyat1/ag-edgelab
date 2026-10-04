@@ -1,0 +1,20 @@
+{
+  "candidate_id": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc",
+  "session_observations": 1936,
+  "context_valid": 1301,
+  "data_invalid": 635,
+  "data_invalid_pct": 32.7996,
+  "data_invalid_no_reference_bars_at_all": 551,
+  "data_invalid_partial_reference_window": 84,
+  "reasons": {
+    "DATA_INVALID_REFERENCE_INCOMPLETE_0_OF_32": 277,
+    "DATA_INVALID_REFERENCE_INCOMPLETE_0_OF_20": 274,
+    "DATA_INVALID_REFERENCE_INCOMPLETE_28_OF_32": 49,
+    "DATA_INVALID_REFERENCE_INCOMPLETE_31_OF_32": 26,
+    "DATA_INVALID_REFERENCE_INCOMPLETE_30_OF_32": 4,
+    "DATA_INVALID_REFERENCE_INCOMPLETE_16_OF_20": 3,
+    "DATA_INVALID_REFERENCE_INCOMPLETE_26_OF_32": 1,
+    "DATA_INVALID_REFERENCE_INCOMPLETE_27_OF_32": 1
+  },
+  "semantics": "DATA_INVALID observations are counted separately and are NEVER converted into losses or 0R outcomes. Sessions with zero reference bars are non-trading calendar days (weekends/holidays) inside the DEV date range, not strategy rejections."
+}

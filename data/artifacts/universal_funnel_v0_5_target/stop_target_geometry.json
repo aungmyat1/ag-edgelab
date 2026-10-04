@@ -1,0 +1,198 @@
+{
+  "SL_TARGET_GEOMETRY_INTERACTION": "YES",
+  "correlations": {
+    "RISK_VS_MAE_DISTANCE": {
+      "min_corr_n": 30,
+      "per_symbol": {
+        "EURUSD": {
+          "n": 749,
+          "pearson": 0.5615500644474519,
+          "spearman": 0.5672525517187645
+        },
+        "GBPUSD": {
+          "n": 873,
+          "pearson": 0.2787482679694147,
+          "spearman": 0.495397587936888
+        },
+        "USDJPY": {
+          "n": 733,
+          "pearson": 0.5541805243058077,
+          "spearman": 0.5665445946162099
+        },
+        "XAUUSD": {
+          "n": 828,
+          "pearson": 0.35357896325786464,
+          "spearman": 0.4460633100592346
+        }
+      },
+      "pooled_pearson": null,
+      "pooled_pearson_reason": "CROSS_SYMBOL_PRICE_SCALE_MIX",
+      "pooled_within_symbol_rank_spearman": 0.515856409054588
+    },
+    "RISK_VS_MFE_DISTANCE": {
+      "min_corr_n": 30,
+      "per_symbol": {
+        "EURUSD": {
+          "n": 749,
+          "pearson": 0.12134682889778257,
+          "spearman": 0.14843726907472368
+        },
+        "GBPUSD": {
+          "n": 873,
+          "pearson": 0.15998703780532375,
+          "spearman": 0.28362040191769955
+        },
+        "USDJPY": {
+          "n": 733,
+          "pearson": 0.19407917647076914,
+          "spearman": 0.19338854017489968
+        },
+        "XAUUSD": {
+          "n": 828,
+          "pearson": 0.09196350286114648,
+          "spearman": 0.14802580197044446
+        }
+      },
+      "pooled_pearson": null,
+      "pooled_pearson_reason": "CROSS_SYMBOL_PRICE_SCALE_MIX",
+      "pooled_within_symbol_rank_spearman": 0.19575849755720118
+    },
+    "RISK_VS_PRIMARY_TARGET_R": {
+      "caution": "NATURAL_TARGET_R = TARGET_DISTANCE / RISK_DISTANCE: the denominator couples this statistic to risk mechanically. Do NOT infer that a tight stop causes larger opportunity (or a wide stop smaller opportunity) from this value alone; interpret SL/target interaction from the raw-distance relationships and stratified distributions.",
+      "label": "MECHANICALLY_COUPLED_DIAGNOSTIC",
+      "min_corr_n": 30,
+      "per_symbol": {
+        "EURUSD": {
+          "n": 748,
+          "pearson": -0.22104543708488505,
+          "spearman": -0.259074267571013
+        },
+        "GBPUSD": {
+          "n": 872,
+          "pearson": -0.21371470081384322,
+          "spearman": -0.20470282791874012
+        },
+        "USDJPY": {
+          "n": 733,
+          "pearson": -0.1933117367717744,
+          "spearman": -0.21237275346654022
+        },
+        "XAUUSD": {
+          "n": 827,
+          "pearson": -0.16866085748091428,
+          "spearman": -0.13794664279890448
+        }
+      },
+      "pooled_pearson": null,
+      "pooled_pearson_reason": "CROSS_SYMBOL_PRICE_SCALE_MIX",
+      "pooled_within_symbol_rank_spearman": -0.2018990591203748
+    },
+    "RISK_VS_TARGET_DISTANCE": {
+      "min_corr_n": 30,
+      "per_symbol": {
+        "EURUSD": {
+          "n": 748,
+          "pearson": 0.05618042897822927,
+          "spearman": 0.11705837934423063
+        },
+        "GBPUSD": {
+          "n": 872,
+          "pearson": 0.22061636619356964,
+          "spearman": 0.21306696908331646
+        },
+        "USDJPY": {
+          "n": 733,
+          "pearson": 0.21032444426829272,
+          "spearman": 0.1371245047459761
+        },
+        "XAUUSD": {
+          "n": 827,
+          "pearson": 0.21278049844670374,
+          "spearman": 0.23712690223352367
+        }
+      },
+      "pooled_pearson": null,
+      "pooled_pearson_reason": "CROSS_SYMBOL_PRICE_SCALE_MIX",
+      "pooled_within_symbol_rank_spearman": 0.17923624171863037
+    }
+  },
+  "decision_rule": "YES iff Q1/Q4 primary-median ratio >= 2.0 AND pooled within-symbol rank spearman(risk, raw target distance) < 0.5 (gradient not explained by genuine raw co-scaling)",
+  "note": "SL remains frozen; no alternative SL tested in V0.5",
+  "preregistered_ratio_threshold": 2.0,
+  "primary_target_r_median_by_risk_quartile": {
+    "Q1": 0.5684210526316072,
+    "Q2": 0.4876543209875731,
+    "Q3": 0.36496350364961305,
+    "Q4": 0.27298439818170517
+  },
+  "q1_over_q4_ratio": 2.0822473973521816,
+  "q1_over_q4_ratio_label": "MECHANICALLY_COUPLED_DIAGNOSTIC (R denominator)",
+  "quartiles_are_distribution_based": "within-symbol quantiles of the frozen entry population; no pip thresholds invented",
+  "raw_coscaling_rho_threshold": 0.5,
+  "risk_distance_atr_normalized": null,
+  "risk_distance_atr_reason": "NO_CAUSAL_ATR_AUTHORITY_IN_REPOSITORY",
+  "risk_quartile_table": {
+    "Q1": {
+      "entry_n": 798,
+      "first_objective_reached_pct": 0.6553884711779449,
+      "fixed_reach": {
+        "1R": 0.5363408521303258,
+        "2R": 0.38596491228070173,
+        "3R": 0.3082706766917293,
+        "4R": 0.23433583959899748,
+        "5R": 0.18671679197994986
+      },
+      "median_mae_r": 1.1456434108528064,
+      "median_mfe_r": 1.169117647058654,
+      "median_primary_target_r": 0.5684210526316072,
+      "median_target_distance_price": 0.0047999999999999154
+    },
+    "Q2": {
+      "entry_n": 795,
+      "first_objective_reached_pct": 0.6553459119496855,
+      "fixed_reach": {
+        "1R": 0.5106918238993711,
+        "2R": 0.379874213836478,
+        "3R": 0.25534591194968553,
+        "4R": 0.19748427672955976,
+        "5R": 0.12578616352201258
+      },
+      "median_mae_r": 1.0847457627118713,
+      "median_mfe_r": 1.132867132867399,
+      "median_primary_target_r": 0.4876543209875731,
+      "median_target_distance_price": 0.0046200000000000685
+    },
+    "Q3": {
+      "entry_n": 795,
+      "first_objective_reached_pct": 0.7069182389937106,
+      "fixed_reach": {
+        "1R": 0.5081761006289308,
+        "2R": 0.31069182389937106,
+        "3R": 0.1811320754716981,
+        "4R": 0.09559748427672957,
+        "5R": 0.05660377358490566
+      },
+      "median_mae_r": 1.0833333333333444,
+      "median_mfe_r": 1.0585937499999474,
+      "median_primary_target_r": 0.36496350364961305,
+      "median_target_distance_price": 0.004049999999999887
+    },
+    "Q4": {
+      "entry_n": 792,
+      "first_objective_reached_pct": 0.6843434343434344,
+      "fixed_reach": {
+        "1R": 0.4166666666666667,
+        "2R": 0.13636363636363635,
+        "3R": 0.05555555555555555,
+        "4R": 0.022727272727272728,
+        "5R": 0.011363636363636364
+      },
+      "median_mae_r": 0.9715596082872819,
+      "median_mfe_r": 0.7678986941036772,
+      "median_primary_target_r": 0.27298439818170517,
+      "median_target_distance_price": 0.005249999999999977
+    }
+  },
+  "risk_quartiles_within_symbol": true,
+  "risk_vs_target_distance_rank_spearman": 0.17923624171863037
+}

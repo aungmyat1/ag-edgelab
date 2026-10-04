@@ -1,0 +1,161 @@
+{
+  "EURUSD": {
+    "PULLBACK_N": 1180,
+    "PULLBACK_REALIGN_N": 1157,
+    "PULLBACK_REALIGN_RATE": 0.9805084745762712,
+    "REALIGN_DELAY_H1_BARS": {
+      "P25": 6.0,
+      "P50": 13.0,
+      "P75": 24.0,
+      "P90": 37.0,
+      "max": 60,
+      "min": 1
+    },
+    "capability_after_realignment": {
+      "measured_n": 1135,
+      "mfe_r_median": 0.9809523809523618,
+      "reach_2r_share": 0.24845814977973568
+    },
+    "censored_n": 0,
+    "confirmation_available_after_realignment": {
+      "no": 126,
+      "unmeasured": 0,
+      "yes": 1031
+    },
+    "diagnostic_only": true,
+    "location_at_realignment": {
+      "DISCOUNT": 448,
+      "PREMIUM": 701,
+      "UNAVAILABLE": 8
+    },
+    "measurement_window_h1_bars": 60,
+    "window_note": "diagnostic measurement horizon only \u2014 NOT a maximum-wait trading rule"
+  },
+  "GBPUSD": {
+    "PULLBACK_N": 1110,
+    "PULLBACK_REALIGN_N": 1063,
+    "PULLBACK_REALIGN_RATE": 0.9576576576576576,
+    "REALIGN_DELAY_H1_BARS": {
+      "P25": 6.0,
+      "P50": 14.0,
+      "P75": 23.5,
+      "P90": 39.80000000000007,
+      "max": 60,
+      "min": 1
+    },
+    "capability_after_realignment": {
+      "measured_n": 1063,
+      "mfe_r_median": 0.99344978165937,
+      "reach_2r_share": 0.23800564440263405
+    },
+    "censored_n": 0,
+    "confirmation_available_after_realignment": {
+      "no": 156,
+      "unmeasured": 0,
+      "yes": 907
+    },
+    "diagnostic_only": true,
+    "location_at_realignment": {
+      "DISCOUNT": 488,
+      "PREMIUM": 575
+    },
+    "measurement_window_h1_bars": 60,
+    "window_note": "diagnostic measurement horizon only \u2014 NOT a maximum-wait trading rule"
+  },
+  "POOLED": {
+    "PULLBACK_N": 4464,
+    "PULLBACK_REALIGN_N": 4358,
+    "PULLBACK_REALIGN_RATE": 0.9762544802867383,
+    "REALIGN_DELAY_H1_BARS": {
+      "P25": 6.0,
+      "P50": 12.0,
+      "P75": 22.0,
+      "P90": 36.0,
+      "max": 60,
+      "min": 1
+    },
+    "capability_after_realignment": {
+      "measured_n": 4294,
+      "mfe_r_median": 0.8936877076412357,
+      "reach_2r_share": 0.2594317652538426
+    },
+    "censored_n": 0,
+    "confirmation_available_after_realignment": {
+      "no": 570,
+      "unmeasured": 0,
+      "yes": 3788
+    },
+    "diagnostic_only": true,
+    "location_at_realignment": {
+      "DISCOUNT": 1845,
+      "MIDRANGE": 15,
+      "PREMIUM": 2490,
+      "UNAVAILABLE": 8
+    },
+    "measurement_window_h1_bars": 60,
+    "window_note": "diagnostic measurement horizon only \u2014 NOT a maximum-wait trading rule"
+  },
+  "USDJPY": {
+    "PULLBACK_N": 1231,
+    "PULLBACK_REALIGN_N": 1231,
+    "PULLBACK_REALIGN_RATE": 1.0,
+    "REALIGN_DELAY_H1_BARS": {
+      "P25": 6.0,
+      "P50": 12.0,
+      "P75": 21.0,
+      "P90": 33.0,
+      "max": 59,
+      "min": 1
+    },
+    "capability_after_realignment": {
+      "measured_n": 1203,
+      "mfe_r_median": 0.8206278026906179,
+      "reach_2r_share": 0.29343308395677475
+    },
+    "censored_n": 0,
+    "confirmation_available_after_realignment": {
+      "no": 105,
+      "unmeasured": 0,
+      "yes": 1126
+    },
+    "diagnostic_only": true,
+    "location_at_realignment": {
+      "DISCOUNT": 493,
+      "PREMIUM": 738
+    },
+    "measurement_window_h1_bars": 60,
+    "window_note": "diagnostic measurement horizon only \u2014 NOT a maximum-wait trading rule"
+  },
+  "XAUUSD": {
+    "PULLBACK_N": 943,
+    "PULLBACK_REALIGN_N": 907,
+    "PULLBACK_REALIGN_RATE": 0.9618239660657476,
+    "REALIGN_DELAY_H1_BARS": {
+      "P25": 5.0,
+      "P50": 11.0,
+      "P75": 19.0,
+      "P90": 34.0,
+      "max": 60,
+      "min": 1
+    },
+    "capability_after_realignment": {
+      "measured_n": 893,
+      "mfe_r_median": 0.9252336448597783,
+      "reach_2r_share": 0.2530795072788354
+    },
+    "censored_n": 0,
+    "confirmation_available_after_realignment": {
+      "no": 183,
+      "unmeasured": 0,
+      "yes": 724
+    },
+    "diagnostic_only": true,
+    "location_at_realignment": {
+      "DISCOUNT": 416,
+      "MIDRANGE": 15,
+      "PREMIUM": 476
+    },
+    "measurement_window_h1_bars": 60,
+    "window_note": "diagnostic measurement horizon only \u2014 NOT a maximum-wait trading rule"
+  }
+}
