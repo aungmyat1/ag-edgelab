@@ -1,0 +1,52 @@
+{
+  "EURUSD": {
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.310559006211443,
+    "natural_target_n": 1324,
+    "natural_target_p25_r": 1.1115384615383315,
+    "natural_target_p75_r": 4.604651162790693
+  },
+  "GBPUSD": {
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.1811023622048786,
+    "natural_target_n": 1454,
+    "natural_target_p25_r": 0.9122137404579509,
+    "natural_target_p75_r": 3.8083067092650595
+  },
+  "POOLED": {
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.3402777777776684,
+    "natural_target_n": 5361,
+    "natural_target_p25_r": 1.0510948905109334,
+    "natural_target_p75_r": 4.178947368421132
+  },
+  "USDJPY": {
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.572687224669574,
+    "natural_target_n": 1236,
+    "natural_target_p25_r": 1.226110017206834,
+    "natural_target_p75_r": 4.4711713642695825
+  },
+  "XAUUSD": {
+    "natural_families": [
+      "NEXT_SWING",
+      "PDH_PDL"
+    ],
+    "natural_target_median_r": 2.2033898305085486,
+    "natural_target_n": 1347,
+    "natural_target_p25_r": 0.9965517241379342,
+    "natural_target_p75_r": 4.053956834532407
+  }
+}

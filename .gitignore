@@ -10,3 +10,6 @@ build/
 reports/
 *.parquet
 *.csv
+
+# external raw datasets (hash-pinned, never committed)
+data/external/

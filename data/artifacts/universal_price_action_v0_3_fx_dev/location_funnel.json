@@ -1,0 +1,122 @@
+{
+  "EURUSD": {
+    "direction_n": 2408,
+    "families_hit": {
+      "LIQUIDITY_LEVEL": 355,
+      "PREMIUM_DISCOUNT": 1085,
+      "STRUCTURAL_LEVEL": 112,
+      "SUPPLY_DEMAND": 1112
+    },
+    "midrange_policy": "MISMATCH_RECORDED observations are recorded, never dropped",
+    "states": {
+      "ALIGNED": {
+        "capability": 0.3180147058823529,
+        "n": 1640
+      },
+      "MISMATCH_RECORDED": {
+        "capability": 0.29335071707953064,
+        "n": 768
+      },
+      "UNAVAILABLE": {
+        "capability": null,
+        "n": 0
+      }
+    }
+  },
+  "GBPUSD": {
+    "direction_n": 2329,
+    "families_hit": {
+      "LIQUIDITY_LEVEL": 458,
+      "PREMIUM_DISCOUNT": 960,
+      "STRUCTURAL_LEVEL": 183,
+      "SUPPLY_DEMAND": 1610
+    },
+    "midrange_policy": "MISMATCH_RECORDED observations are recorded, never dropped",
+    "states": {
+      "ALIGNED": {
+        "capability": 0.3547854785478548,
+        "n": 1826
+      },
+      "MISMATCH_RECORDED": {
+        "capability": 0.341948310139165,
+        "n": 503
+      },
+      "UNAVAILABLE": {
+        "capability": null,
+        "n": 0
+      }
+    }
+  },
+  "POOLED": {
+    "direction_n": 9226,
+    "families_hit": {
+      "LIQUIDITY_LEVEL": 1489,
+      "PREMIUM_DISCOUNT": 3893,
+      "STRUCTURAL_LEVEL": 503,
+      "SUPPLY_DEMAND": 5453
+    },
+    "midrange_policy": "MISMATCH_RECORDED observations are recorded, never dropped",
+    "states": {
+      "ALIGNED": {
+        "capability": 0.35229791635880003,
+        "n": 6791
+      },
+      "MISMATCH_RECORDED": {
+        "capability": 0.3189478010686395,
+        "n": 2435
+      },
+      "UNAVAILABLE": {
+        "capability": null,
+        "n": 0
+      }
+    }
+  },
+  "USDJPY": {
+    "direction_n": 2263,
+    "families_hit": {
+      "LIQUIDITY_LEVEL": 329,
+      "PREMIUM_DISCOUNT": 1091,
+      "STRUCTURAL_LEVEL": 103,
+      "SUPPLY_DEMAND": 1402
+    },
+    "midrange_policy": "MISMATCH_RECORDED observations are recorded, never dropped",
+    "states": {
+      "ALIGNED": {
+        "capability": 0.3483343074225599,
+        "n": 1715
+      },
+      "MISMATCH_RECORDED": {
+        "capability": 0.3071297989031079,
+        "n": 548
+      },
+      "UNAVAILABLE": {
+        "capability": null,
+        "n": 0
+      }
+    }
+  },
+  "XAUUSD": {
+    "direction_n": 2226,
+    "families_hit": {
+      "LIQUIDITY_LEVEL": 347,
+      "PREMIUM_DISCOUNT": 757,
+      "STRUCTURAL_LEVEL": 105,
+      "SUPPLY_DEMAND": 1329
+    },
+    "midrange_policy": "MISMATCH_RECORDED observations are recorded, never dropped",
+    "states": {
+      "ALIGNED": {
+        "capability": 0.38854296388542964,
+        "n": 1610
+      },
+      "MISMATCH_RECORDED": {
+        "capability": 0.3425324675324675,
+        "n": 616
+      },
+      "UNAVAILABLE": {
+        "capability": null,
+        "n": 0
+      }
+    }
+  }
+}

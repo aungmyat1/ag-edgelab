@@ -1,0 +1,65 @@
+{
+  "note": "pooled across EURUSD/GBPUSD/USDJPY/XAUUSD; per-symbol funnels in per_symbol_funnel.json",
+  "stages": [
+    {
+      "n": 14926,
+      "pct_of_previous": null,
+      "stage": "RAW_OBSERVATIONS"
+    },
+    {
+      "n": 14926,
+      "pct_of_previous": 100.0,
+      "stage": "DIRECTION_DECIDED"
+    },
+    {
+      "n": 9226,
+      "pct_of_previous": 61.81,
+      "stage": "DIRECTION_NON_NEUTRAL"
+    },
+    {
+      "n": 9226,
+      "pct_of_previous": 100.0,
+      "stage": "LOCATION_AVAILABLE"
+    },
+    {
+      "n": 6791,
+      "pct_of_previous": 73.61,
+      "stage": "LOCATION_ALIGNED"
+    },
+    {
+      "n": 6496,
+      "pct_of_previous": 95.66,
+      "stage": "CONFIRMATION_AVAILABLE"
+    },
+    {
+      "n": 3183,
+      "pct_of_previous": 49.0,
+      "stage": "ENTRY_AVAILABLE"
+    },
+    {
+      "n": 1568,
+      "pct_of_previous": 49.26,
+      "stage": "R1"
+    },
+    {
+      "n": 965,
+      "pct_of_previous": 61.54,
+      "stage": "R2"
+    },
+    {
+      "n": 637,
+      "pct_of_previous": 66.01,
+      "stage": "R3"
+    },
+    {
+      "n": 438,
+      "pct_of_previous": 68.76,
+      "stage": "R4"
+    },
+    {
+      "n": 303,
+      "pct_of_previous": 69.18,
+      "stage": "R5"
+    }
+  ]
+}

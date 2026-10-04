@@ -1,0 +1,127 @@
+{
+  "EURUSD": {
+    "candle_primitives_present_in_window": {
+      "ENGULFING": 1520,
+      "EVENING_STAR": 644,
+      "MORNING_STAR": 562,
+      "PIN_BAR": 1469
+    },
+    "first_structure_event": {
+      "BOS:ALIGNED": 430,
+      "BOS:COUNTER_DIRECTION": 552,
+      "MSS:ALIGNED": 319,
+      "MSS:COUNTER_DIRECTION": 267
+    },
+    "location_aligned_n": 1640,
+    "value_analysis": {
+      "confirmed_subset_capability_same_basis": 0.46328437917222964,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.24032042723631508,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.3180147058823529,
+      "uplift_pp_same_basis": 14.53
+    }
+  },
+  "GBPUSD": {
+    "candle_primitives_present_in_window": {
+      "ENGULFING": 1713,
+      "EVENING_STAR": 753,
+      "MORNING_STAR": 666,
+      "PIN_BAR": 1630
+    },
+    "first_structure_event": {
+      "BOS:ALIGNED": 513,
+      "BOS:COUNTER_DIRECTION": 549,
+      "MSS:ALIGNED": 360,
+      "MSS:COUNTER_DIRECTION": 310
+    },
+    "location_aligned_n": 1826,
+    "value_analysis": {
+      "confirmed_subset_capability_same_basis": 0.4896788990825688,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.30126002290950743,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.3547854785478548,
+      "uplift_pp_same_basis": 13.49
+    }
+  },
+  "POOLED": {
+    "candle_primitives_present_in_window": {
+      "ENGULFING": 6241,
+      "EVENING_STAR": 2677,
+      "MORNING_STAR": 2401,
+      "PIN_BAR": 6008
+    },
+    "first_structure_event": {
+      "BOS:ALIGNED": 1893,
+      "BOS:COUNTER_DIRECTION": 2159,
+      "MSS:ALIGNED": 1290,
+      "MSS:COUNTER_DIRECTION": 1154
+    },
+    "location_aligned_n": 6791,
+    "value_analysis": {
+      "confirmed_subset_capability_same_basis": 0.5004715498270984,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.30442978322337416,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.35229791635880003,
+      "uplift_pp_same_basis": 14.82
+    }
+  },
+  "USDJPY": {
+    "candle_primitives_present_in_window": {
+      "ENGULFING": 1597,
+      "EVENING_STAR": 659,
+      "MORNING_STAR": 550,
+      "PIN_BAR": 1489
+    },
+    "first_structure_event": {
+      "BOS:ALIGNED": 428,
+      "BOS:COUNTER_DIRECTION": 618,
+      "MSS:ALIGNED": 305,
+      "MSS:COUNTER_DIRECTION": 301
+    },
+    "location_aligned_n": 1715,
+    "value_analysis": {
+      "confirmed_subset_capability_same_basis": 0.5109289617486339,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.28240109140518416,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.3483343074225599,
+      "uplift_pp_same_basis": 16.26
+    }
+  },
+  "XAUUSD": {
+    "candle_primitives_present_in_window": {
+      "ENGULFING": 1411,
+      "EVENING_STAR": 621,
+      "MORNING_STAR": 623,
+      "PIN_BAR": 1420
+    },
+    "first_structure_event": {
+      "BOS:ALIGNED": 522,
+      "BOS:COUNTER_DIRECTION": 440,
+      "MSS:ALIGNED": 306,
+      "MSS:COUNTER_DIRECTION": 276
+    },
+    "location_aligned_n": 1610,
+    "value_analysis": {
+      "confirmed_subset_capability_same_basis": 0.5362318840579711,
+      "entry_conditioned_basis": "MFE_R_REACH_2.0R_ENTRY_CONDITIONED_GEOMETRY_V1",
+      "entry_conditioned_capability": 0.3852657004830918,
+      "entry_conditioned_uplift_reason": "INCOMPARABLE_CAPABILITY_SEMANTICS",
+      "entry_conditioned_uplift_vs_opportunity": null,
+      "opportunity_basis": "MFE_R_REACH_2.0R_SHARED_DIAGNOSTIC_GEOMETRY_V1",
+      "opportunity_capability_location_aligned": 0.38854296388542964,
+      "uplift_pp_same_basis": 14.77
+    }
+  }
+}
