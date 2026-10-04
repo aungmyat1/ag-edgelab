@@ -1,0 +1,64 @@
+{
+  "D01": {
+    "PRIMARY_DIAGNOSIS": "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING",
+    "SECONDARY_DIAGNOSES": [
+      "A_FIXED_TARGET_MODEL_INFERIOR"
+    ],
+    "cases": {
+      "A_FIXED_TARGET_MODEL_INFERIOR": true,
+      "B_NATURAL_SINGLE_TARGET_SUPPORTED_FOR_FURTHER_TESTING": false,
+      "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING": true,
+      "D_RUNNER_CONTINUATION_TOO_WEAK": false,
+      "E_TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY": false,
+      "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION": false,
+      "G_INSUFFICIENT_EVIDENCE": false
+    },
+    "no_candidate_edge_verified": true,
+    "no_candidate_promoted_to_production": true,
+    "precedence": [
+      "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING",
+      "B_NATURAL_SINGLE_TARGET_SUPPORTED_FOR_FURTHER_TESTING",
+      "D_RUNNER_CONTINUATION_TOO_WEAK",
+      "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION",
+      "E_TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY"
+    ],
+    "runner_family_wins": {
+      "C2": false,
+      "C3": true,
+      "C4": false
+    }
+  },
+  "PRIMARY_DIAGNOSIS": "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING",
+  "SECONDARY_DIAGNOSES": [
+    "A_FIXED_TARGET_MODEL_INFERIOR",
+    "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION"
+  ],
+  "T1": {
+    "PRIMARY_DIAGNOSIS": "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION",
+    "SECONDARY_DIAGNOSES": [],
+    "cases": {
+      "A_FIXED_TARGET_MODEL_INFERIOR": false,
+      "B_NATURAL_SINGLE_TARGET_SUPPORTED_FOR_FURTHER_TESTING": false,
+      "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING": false,
+      "D_RUNNER_CONTINUATION_TOO_WEAK": false,
+      "E_TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY": false,
+      "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION": true,
+      "G_INSUFFICIENT_EVIDENCE": false
+    },
+    "no_candidate_edge_verified": true,
+    "no_candidate_promoted_to_production": true,
+    "precedence": [
+      "C_NATURAL_TARGET_PLUS_RUNNER_SUPPORTED_FOR_FURTHER_TESTING",
+      "B_NATURAL_SINGLE_TARGET_SUPPORTED_FOR_FURTHER_TESTING",
+      "D_RUNNER_CONTINUATION_TOO_WEAK",
+      "F_T1_DIRECTION_FILTER_HARMS_RUNNER_CONTINUATION",
+      "E_TARGET_POLICY_DEPENDS_ON_SL_GEOMETRY"
+    ],
+    "runner_family_wins": {
+      "C2": false,
+      "C3": false,
+      "C4": false
+    }
+  },
+  "decision_authority": "D01 is the control population; T1 informs F only; populations never pooled"
+}

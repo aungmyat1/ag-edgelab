@@ -1,0 +1,107 @@
+{
+  "all_passed": true,
+  "invariants": [
+    "natural target selection unchanged under post-entry mutation (x1.1) and truncation across M15/H4/D1",
+    "runner begins only after the first objective is actually reached (structural; enforced in policy_outcome and unit-tested)",
+    "stop counted FIRST on every bar; BE counted FIRST for R1 runners",
+    "unavailable objective => NOT_APPLICABLE/NULL, never a loss"
+  ],
+  "samples": [
+    {
+      "entry_time": "2017-03-03T16:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-04-05T09:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-05-29T03:00:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-07-07T02:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "EURUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-03-03T09:45:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-04-06T10:45:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-06-02T00:00:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-07-05T18:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "GBPUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-03-06T18:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-05-03T14:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-06-15T05:15:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-07-25T02:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "USDJPY",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-03-15T09:45:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-04-27T00:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-05-22T11:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    },
+    {
+      "entry_time": "2017-07-12T09:30:00+00:00",
+      "future_mutation_invariant": true,
+      "symbol": "XAUUSD",
+      "truncation_invariant": true
+    }
+  ]
+}

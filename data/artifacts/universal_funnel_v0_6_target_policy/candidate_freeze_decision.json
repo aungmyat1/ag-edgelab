@@ -1,0 +1,19 @@
+{
+  "candidate_contract": {
+    "family": [
+      "C3"
+    ],
+    "fraction_selection": "DEFERRED \u2014 never selected in DEV",
+    "fractions": [
+      25,
+      50,
+      75
+    ],
+    "runner_family": "R0",
+    "target_contracts": "8cfa81f9d1c6724c63eeec7aa86201af99a129f3ccf8dd9acdb078c8d1d8e9c9"
+  },
+  "candidate_contract_sha256": "3aec8b6a60cf65de3cd72ea5159a68c9d08749b17c8174e0b881aaa0fc32623e",
+  "decision": "FREEZE_CANDIDATE_FOR_FUTURE_OOS_VERIFICATION",
+  "oos_opened": false,
+  "rule": "if D01 primary is C -> freeze the qualifying runner family contract (fraction grid intact, no selection); if B -> freeze C1 contract; else NO_FREEZE; frozen contract is hashed for a FUTURE OOS mission only"
+}

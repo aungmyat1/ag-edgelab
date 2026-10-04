@@ -1,0 +1,13 @@
+{
+  "EXIT_CONTRACT_COMPLETE": "NO",
+  "FRICTION_AUTHORITY_COMPLETE": "NO",
+  "REALIZED_ECONOMICS_RUN": "NO",
+  "consequence": "structural diagnostics only; unresolved outcomes stay NULL; nothing here is verified economics",
+  "exit_contract_gaps": [
+    "C0 control has no committed single frozen TP level (the frozen funnel measures a 1R..5R ladder, it does not commit an exit)",
+    "no frozen authority defines a forced exit price at the 96-bar horizon for unresolved windows / open runners"
+  ],
+  "friction_gaps": [
+    "ag_edgelab.friction is a parametric contract; no pinned authoritative spread/commission/slippage values exist for EURUSD/GBPUSD/USDJPY/XAUUSD 2017; inventing values is forbidden"
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "D01": {
+    "P_SECOND_GIVEN_FIRST": 0.6353722143195828,
+    "P_THIRD_GIVEN_SECOND": 0.5189309576837416,
+    "be_runner_outcomes": {
+      "FIXED5": {
+        "BE": 1799,
+        "OPEN": 204,
+        "TARGET": 145
+      },
+      "FURTHEST": {
+        "BE": 1579,
+        "OPEN": 69,
+        "TARGET": 500
+      },
+      "SECOND": {
+        "BE": 1255,
+        "OPEN": 31,
+        "TARGET": 823
+      }
+    },
+    "first_reached_n": 2148,
+    "runner_extended_objective_rate": 0.41251778093883357,
+    "runner_mae_r_quantiles": {
+      "MAX": 0.9971181556196237,
+      "P10": 0.0,
+      "P25": 0.1780821917809219,
+      "P50": 0.6038159642555188,
+      "P75": 0.8516102512778274,
+      "P90": 0.9408458324316128,
+      "n": 2148
+    },
+    "runner_mfe_r_quantiles": {
+      "MAX": 24.818181818186314,
+      "P10": 0.3302726387537601,
+      "P25": 0.745069033530515,
+      "P50": 1.6711501673839935,
+      "P75": 3.4011262441067043,
+      "P90": 5.389471715755108,
+      "n": 2148
+    },
+    "runner_rule": "runner begins ONLY after the first objective is actually reached; no hypothetical credit",
+    "runner_second_objective_rate": 0.6353722143195828,
+    "runner_stop_rate": 0.5251396648044693,
+    "time_first_to_second_bars": {
+      "MAX": 94.0,
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 3.0,
+      "P75": 14.0,
+      "P90": 37.0,
+      "n": 1340
+    },
+    "time_second_to_extended_bars": {
+      "MAX": 90.0,
+      "P10": 0.0,
+      "P25": 1.0,
+      "P50": 5.0,
+      "P75": 17.0,
+      "P90": 39.0,
+      "n": 428
+    }
+  },
+  "T1": {
+    "P_SECOND_GIVEN_FIRST": 0.541501976284585,
+    "P_THIRD_GIVEN_SECOND": 0.5384615384615384,
+    "be_runner_outcomes": {
+      "FIXED5": {
+        "BE": 239,
+        "OPEN": 13,
+        "TARGET": 8
+      },
+      "FURTHEST": {
+        "BE": 221,
+        "OPEN": 2,
+        "TARGET": 37
+      },
+      "SECOND": {
+        "BE": 193,
+        "OPEN": 2,
+        "TARGET": 58
+      }
+    },
+    "first_reached_n": 260,
+    "runner_extended_objective_rate": 0.35177865612648224,
+    "runner_mae_r_quantiles": {
+      "MAX": 0.9971181556196237,
+      "P10": 0.008157099697939195,
+      "P25": 0.27105263157898707,
+      "P50": 0.5805428321548947,
+      "P75": 0.8382840387557383,
+      "P90": 0.9417168820600283,
+      "n": 260
+    },
+    "runner_mfe_r_quantiles": {
+      "MAX": 24.818181818186314,
+      "P10": 0.3496083254493605,
+      "P25": 0.8354225070083566,
+      "P50": 1.9347745839151602,
+      "P75": 3.252747252747542,
+      "P90": 5.302919708029139,
+      "n": 260
+    },
+    "runner_rule": "runner begins ONLY after the first objective is actually reached; no hypothetical credit",
+    "runner_second_objective_rate": 0.541501976284585,
+    "runner_stop_rate": 0.5230769230769231,
+    "time_first_to_second_bars": {
+      "MAX": 94.0,
+      "P10": 0.0,
+      "P25": 1.0,
+      "P50": 6.0,
+      "P75": 17.0,
+      "P90": 52.80000000000001,
+      "n": 137
+    },
+    "time_second_to_extended_bars": {
+      "MAX": 65.0,
+      "P10": 0.20000000000000018,
+      "P25": 2.0,
+      "P50": 12.0,
+      "P75": 26.0,
+      "P90": 55.0,
+      "n": 43
+    }
+  }
+}

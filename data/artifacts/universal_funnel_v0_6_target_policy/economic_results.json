@@ -1,0 +1,5 @@
+{
+  "REALIZED_ECONOMICS_RUN": "NO",
+  "reason": "EXIT_CONTRACT_COMPLETE=NO and FRICTION_AUTHORITY_COMPLETE=NO (fail-closed); see economic_authority.json",
+  "structural_results_instead": "policy_structural_results.json"
+}
