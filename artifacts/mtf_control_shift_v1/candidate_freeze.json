@@ -1,0 +1,11 @@
+{
+  "status": "FROZEN_FOR_OOS_NOT_REACHED",
+  "strategy_source_frozen": true,
+  "adapter_frozen": true,
+  "parameters_frozen": true,
+  "fill_model_frozen": true,
+  "friction_model_frozen": true,
+  "dev_survivor_cells": [],
+  "oos_authorized": false,
+  "reason": "All eight DEV cells have zero signals and are INSUFFICIENT_SAMPLE."
+}

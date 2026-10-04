@@ -1,0 +1,17 @@
+{
+  "parent": "ST_MTF_CONTROL_SHIFT_V2@2.0.0",
+  "v3_id": "ST_MTF_CONTROL_SHIFT_V3@3.0.0",
+  "v3_hash": "65862fa02e6b38d0b1a3f06489c81ff3313384b392fa11df075674ac54f7c918",
+  "only_rule_changed": "H1_SHIFT_SESSION_DATE_COUPLING",
+  "location_pass": 170,
+  "v2_structural_eligible": 18,
+  "v3_structural_eligible": 0,
+  "same_session_date": 0,
+  "prior_session_date": 18,
+  "future_date_invalid": 0,
+  "preregistered": true,
+  "economic_replay_started": false,
+  "oos_opened": false,
+  "holdout_touched": false,
+  "status": "V3_STRUCTURALLY_ZERO_BUT_PREREGISTERED"
+}

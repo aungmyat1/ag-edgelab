@@ -1,0 +1,22 @@
+{
+  "candidate": "ST_MTF_CONTROL_SHIFT_V2@2.0.0",
+  "h1_shift_pass": 18,
+  "cases_audited": 18,
+  "failure_reasons": {
+    "SESSION_WINDOW_EXPIRED": {
+      "count": 18,
+      "pct": 100.0
+    }
+  },
+  "parity": {
+    "MATCH": 18
+  },
+  "causality": {
+    "PASS": 18
+  },
+  "holdout_touched": false,
+  "source_references": [
+    "src/mtf_control_shift/engine.py:evaluate",
+    "src/mtf_control_shift/structure.py:zones"
+  ]
+}

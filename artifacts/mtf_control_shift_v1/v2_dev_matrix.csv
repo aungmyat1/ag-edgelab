@@ -1,0 +1,9 @@
+signals,fills,unfilled,expired,forced_flat,closed,wins,losses,breakeven,gross_r,net_r,gross_expectancy,net_expectancy,net_pf,win_rate,max_dd_r,max_losing_streak,tp1_hits,tp2_hits,runner_be,total_friction_r,average_friction_r,symbol,session,status
+0,0,0,0,0,0,0,0,0,,,,,,,,0,0,0,0,0,0.0,EURUSD,ASIAN_LONDON,INSUFFICIENT_SAMPLE
+0,0,0,0,0,0,0,0,0,,,,,,,,0,0,0,0,0,0.0,EURUSD,LONDON_NEWYORK,INSUFFICIENT_SAMPLE
+0,0,0,0,0,0,0,0,0,,,,,,,,0,0,0,0,0,0.0,GBPUSD,ASIAN_LONDON,INSUFFICIENT_SAMPLE
+0,0,0,0,0,0,0,0,0,,,,,,,,0,0,0,0,0,0.0,GBPUSD,LONDON_NEWYORK,INSUFFICIENT_SAMPLE
+0,0,0,0,0,0,0,0,0,,,,,,,,0,0,0,0,0,0.0,USDJPY,ASIAN_LONDON,INSUFFICIENT_SAMPLE
+0,0,0,0,0,0,0,0,0,,,,,,,,0,0,0,0,0,0.0,USDJPY,LONDON_NEWYORK,INSUFFICIENT_SAMPLE
+0,0,0,0,0,0,0,0,0,,,,,,,,0,0,0,0,0,0.0,XAUUSD,ASIAN_LONDON,INSUFFICIENT_SAMPLE
+0,0,0,0,0,0,0,0,0,,,,,,,,0,0,0,0,0,0.0,XAUUSD,LONDON_NEWYORK,INSUFFICIENT_SAMPLE
