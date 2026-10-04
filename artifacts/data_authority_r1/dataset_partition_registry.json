@@ -1,0 +1,167 @@
+{
+  "access_statuses": [
+    "AVAILABLE",
+    "CONSUMED",
+    "SEALED",
+    "DEVELOPMENT_KNOWN"
+  ],
+  "datasets": {
+    "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1": {
+      "corpus_sha256": "101e1575dcd6bf81b26b658a1347c3f9dd0f055f784ef0878f838d442b253862",
+      "coverage_end_utc": "2018-12-31T22:00:00Z",
+      "coverage_start_utc": "2011-01-02T22:00:00Z",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDJPY",
+        "XAUUSD"
+      ]
+    },
+    "HISTDATA_ASCII_M1_2017_PR10_PINNED": {
+      "status": "FROZEN \u2014 mirrored read-only from config/governance/oos_access_log.json; unchanged by this mission"
+    }
+  },
+  "fail_closed_rules": [
+    "Partitions of one (dataset_id, candidate_family) may not overlap.",
+    "SEALED_HOLDOUT reads raise SealedHoldoutDenied unconditionally.",
+    "CONSUMED OOS reads raise ConsumedOosDenied.",
+    "A window consumed by any family is DEVELOPMENT_KNOWN for every family defined afterwards.",
+    "mark_consumed only moves AVAILABLE -> CONSUMED; it is append-only."
+  ],
+  "record_count": 9,
+  "records": [
+    {
+      "access_status": "AVAILABLE",
+      "candidate_family": "R1_BASELINE_UNASSIGNED",
+      "consumed_at": null,
+      "consumed_by": null,
+      "dataset_hash": "see normalized_manifest.corpus_sha256",
+      "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
+      "end": "2016-01-01T00:00:00Z",
+      "note": "Five years for model development and selection.",
+      "role": "DEVELOPMENT",
+      "sealed": false,
+      "start": "2011-01-01T00:00:00Z",
+      "window_utc": "[2011-01-01T00:00:00Z, 2016-01-01T00:00:00Z)"
+    },
+    {
+      "access_status": "AVAILABLE",
+      "candidate_family": "R1_BASELINE_UNASSIGNED",
+      "consumed_at": null,
+      "consumed_by": null,
+      "dataset_hash": "see normalized_manifest.corpus_sha256",
+      "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
+      "end": "2017-09-01T00:00:00Z",
+      "note": "Rolling re-fit/evaluate folds. Fold ordering is enforced by the walk-forward runner, not by this registry.",
+      "role": "WALK_FORWARD",
+      "sealed": false,
+      "start": "2016-01-01T00:00:00Z",
+      "window_utc": "[2016-01-01T00:00:00Z, 2017-09-01T00:00:00Z)"
+    },
+    {
+      "access_status": "DEVELOPMENT_KNOWN",
+      "candidate_family": "R1_BASELINE_UNASSIGNED",
+      "consumed_at": null,
+      "consumed_by": null,
+      "dataset_hash": "see normalized_manifest.corpus_sha256",
+      "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
+      "end": "2017-12-01T00:00:00Z",
+      "note": "CALENDAR MIRROR of the consumed HistData OOS window. The bytes are from a different provider, but the market period is the same and its outcome has already been observed twice. Treating it as fresh OOS would launder spent data through a new vendor, so it is DEVELOPMENT_KNOWN and the registry refuses to serve it as OOS.",
+      "role": "DEVELOPMENT",
+      "sealed": false,
+      "start": "2017-09-01T00:00:00Z",
+      "window_utc": "[2017-09-01T00:00:00Z, 2017-12-01T00:00:00Z)"
+    },
+    {
+      "access_status": "SEALED",
+      "candidate_family": "R1_BASELINE_UNASSIGNED",
+      "consumed_at": null,
+      "consumed_by": null,
+      "dataset_hash": "see normalized_manifest.corpus_sha256",
+      "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
+      "end": "2018-01-01T00:00:00Z",
+      "note": "CALENDAR MIRROR of the sealed HistData holdout. Sealed here too, so the sealed month cannot be read through a second provider.",
+      "role": "SEALED_HOLDOUT",
+      "sealed": true,
+      "start": "2017-12-01T00:00:00Z",
+      "window_utc": "[2017-12-01T00:00:00Z, 2018-01-01T00:00:00Z)"
+    },
+    {
+      "access_status": "AVAILABLE",
+      "candidate_family": "R1_BASELINE_UNASSIGNED",
+      "consumed_at": null,
+      "consumed_by": null,
+      "dataset_hash": "see normalized_manifest.corpus_sha256",
+      "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
+      "end": "2018-07-01T00:00:00Z",
+      "note": "FRESH, NEVER OPENED. Six months of genuinely unspent out-of-sample data \u2014 the first this repository has had since 2017 was consumed. Opening it requires a preregistration recorded in the OOS access log.",
+      "role": "OOS",
+      "sealed": false,
+      "start": "2018-01-01T00:00:00Z",
+      "window_utc": "[2018-01-01T00:00:00Z, 2018-07-01T00:00:00Z)"
+    },
+    {
+      "access_status": "SEALED",
+      "candidate_family": "R1_BASELINE_UNASSIGNED",
+      "consumed_at": null,
+      "consumed_by": null,
+      "dataset_hash": "see normalized_manifest.corpus_sha256",
+      "dataset_id": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
+      "end": "2019-01-01T00:00:00Z",
+      "note": "Final sealed holdout. Not read in this mission; fails closed.",
+      "role": "SEALED_HOLDOUT",
+      "sealed": true,
+      "start": "2018-07-01T00:00:00Z",
+      "window_utc": "[2018-07-01T00:00:00Z, 2019-01-01T00:00:00Z)"
+    },
+    {
+      "access_status": "AVAILABLE",
+      "candidate_family": "LEGACY_2017_FAMILY",
+      "consumed_at": null,
+      "consumed_by": null,
+      "dataset_hash": "see oos_access_log dataset_registry",
+      "dataset_id": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "end": "2017-09-01T00:00:00Z",
+      "note": "Mirrored from config/governance/oos_access_log.json; unchanged.",
+      "role": "DEVELOPMENT",
+      "sealed": false,
+      "start": "2017-01-01T00:00:00Z",
+      "window_utc": "[2017-01-01T00:00:00Z, 2017-09-01T00:00:00Z)"
+    },
+    {
+      "access_status": "CONSUMED",
+      "candidate_family": "LEGACY_2017_FAMILY",
+      "consumed_at": "2026-10-04T15:27:38Z",
+      "consumed_by": "SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc (OOS-001); TARGET_POLICY_C3_V1 (OOS-002)",
+      "dataset_hash": "see oos_access_log dataset_registry",
+      "dataset_id": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "end": "2017-12-01T00:00:00Z",
+      "note": "PRESERVED, NOT RE-DERIVED. Remains CONSUMED for related candidate families. TARGET_POLICY_C3_V1 stays EDGE_STATUS=NO_EDGE with RETUNING=FORBIDDEN.",
+      "role": "OOS",
+      "sealed": false,
+      "start": "2017-09-01T00:00:00Z",
+      "window_utc": "[2017-09-01T00:00:00Z, 2017-12-01T00:00:00Z)"
+    },
+    {
+      "access_status": "SEALED",
+      "candidate_family": "LEGACY_2017_FAMILY",
+      "consumed_at": null,
+      "consumed_by": null,
+      "dataset_hash": "see oos_access_log dataset_registry",
+      "dataset_id": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "end": "2018-01-01T00:00:00Z",
+      "note": "NEVER OPENED. This mission did not read it and did not weaken it.",
+      "role": "SEALED_HOLDOUT",
+      "sealed": true,
+      "start": "2017-12-01T00:00:00Z",
+      "window_utc": "[2017-12-01T00:00:00Z, 2018-01-01T00:00:00Z)"
+    }
+  ],
+  "registry_version": "DATA_AUTHORITY_R1_DATASET_PARTITION_REGISTRY_V1",
+  "roles": [
+    "DEVELOPMENT",
+    "WALK_FORWARD",
+    "OOS",
+    "SEALED_HOLDOUT"
+  ]
+}

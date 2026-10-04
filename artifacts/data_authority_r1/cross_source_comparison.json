@@ -1,0 +1,167 @@
+{
+  "comparisons": [
+    {
+      "action_taken": "NONE \u2014 diagnostic only; neither source was altered",
+      "bars_source_a": 24838,
+      "bars_source_b": 24793,
+      "common_timestamps": 24767,
+      "large_outliers": 0,
+      "max_abs_close_diff_ticks": 68.0,
+      "median_abs_close_diff_ticks": 1.0,
+      "median_abs_high_diff_ticks": 1.0,
+      "median_abs_low_diff_ticks": 1.0,
+      "median_relative_close_diff": 8.59e-06,
+      "notes": [
+        "the two independent sources agree to 8.59e-06 relative (1.0 ticks median). Agreement at this level also independently corroborates the price scale and the UTC timezone frame: a wrong decimal scale or a one-hour clock error could not produce it.",
+        "97 timestamps exist in exactly one source; different inclusion rules are expected and are NOT errors"
+      ],
+      "outlier_examples": [],
+      "p95_abs_close_diff_ticks": 3.0,
+      "price_precision_a_decimals": 5,
+      "price_precision_b_decimals": 5,
+      "source_a": "DUKASCOPY_TICK_FX31337_MIRROR_V1",
+      "source_b": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "symbol": "EURUSD",
+      "timeframe": "M15",
+      "timestamp_agreement_pct": 99.6099,
+      "timestamps_only_in_a": 71,
+      "timestamps_only_in_b": 26,
+      "verdict": "AGREEMENT",
+      "window_end_utc": "2017-12-29T21:45:00Z",
+      "window_start_utc": "2017-01-02T07:00:00Z"
+    },
+    {
+      "action_taken": "NONE \u2014 diagnostic only; neither source was altered",
+      "bars_source_a": 23826,
+      "bars_source_b": 24757,
+      "common_timestamps": 23725,
+      "large_outliers": 0,
+      "max_abs_close_diff_ticks": 92.0,
+      "median_abs_close_diff_ticks": 1.0,
+      "median_abs_high_diff_ticks": 1.0,
+      "median_abs_low_diff_ticks": 1.0,
+      "median_relative_close_diff": 7.98e-06,
+      "notes": [
+        "the two independent sources agree to 7.98e-06 relative (1.0 ticks median). Agreement at this level also independently corroborates the price scale and the UTC timezone frame: a wrong decimal scale or a one-hour clock error could not produce it.",
+        "1133 timestamps exist in exactly one source; different inclusion rules are expected and are NOT errors"
+      ],
+      "outlier_examples": [],
+      "p95_abs_close_diff_ticks": 5.0,
+      "price_precision_a_decimals": 5,
+      "price_precision_b_decimals": 5,
+      "source_a": "DUKASCOPY_TICK_FX31337_MIRROR_V1",
+      "source_b": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "symbol": "GBPUSD",
+      "timeframe": "M15",
+      "timestamp_agreement_pct": 95.4421,
+      "timestamps_only_in_a": 101,
+      "timestamps_only_in_b": 1032,
+      "verdict": "AGREEMENT",
+      "window_end_utc": "2017-12-29T21:45:00Z",
+      "window_start_utc": "2017-01-02T07:00:00Z"
+    },
+    {
+      "reason": "HistData zip or 2017 slice unavailable in this run",
+      "status": "NOT_COMPARED",
+      "symbol": "USDJPY"
+    },
+    {
+      "action_taken": "NONE \u2014 diagnostic only; neither source was altered",
+      "bars_source_a": 22527,
+      "bars_source_b": 23500,
+      "common_timestamps": 22468,
+      "large_outliers": 1973,
+      "max_abs_close_diff_ticks": 1322.0,
+      "median_abs_close_diff_ticks": 49.0,
+      "median_abs_high_diff_ticks": 49.0,
+      "median_abs_low_diff_ticks": 51.0,
+      "median_relative_close_diff": 3.909e-05,
+      "notes": [
+        "the two independent sources agree to 3.91e-05 relative (49.0 ticks median). Agreement at this level also independently corroborates the price scale and the UTC timezone frame: a wrong decimal scale or a one-hour clock error could not produce it.",
+        "1091 timestamps exist in exactly one source; different inclusion rules are expected and are NOT errors"
+      ],
+      "outlier_examples": [
+        {
+          "close_a": 1158.251,
+          "close_b": 1158.15,
+          "diff_ticks": 101.0,
+          "timestamp_utc": "2017-01-03T02:15:00Z"
+        },
+        {
+          "close_a": 1156.988,
+          "close_b": 1156.81,
+          "diff_ticks": 178.0,
+          "timestamp_utc": "2017-01-03T03:00:00Z"
+        },
+        {
+          "close_a": 1156.861,
+          "close_b": 1156.69,
+          "diff_ticks": 171.0,
+          "timestamp_utc": "2017-01-03T03:15:00Z"
+        },
+        {
+          "close_a": 1156.731,
+          "close_b": 1156.57,
+          "diff_ticks": 161.0,
+          "timestamp_utc": "2017-01-03T03:30:00Z"
+        },
+        {
+          "close_a": 1157.098,
+          "close_b": 1156.97,
+          "diff_ticks": 128.0,
+          "timestamp_utc": "2017-01-03T05:30:00Z"
+        },
+        {
+          "close_a": 1150.711,
+          "close_b": 1150.54,
+          "diff_ticks": 171.0,
+          "timestamp_utc": "2017-01-03T13:00:00Z"
+        },
+        {
+          "close_a": 1153.161,
+          "close_b": 1153.05,
+          "diff_ticks": 111.0,
+          "timestamp_utc": "2017-01-03T14:30:00Z"
+        },
+        {
+          "close_a": 1153.741,
+          "close_b": 1153.29,
+          "diff_ticks": 451.0,
+          "timestamp_utc": "2017-01-03T14:45:00Z"
+        },
+        {
+          "close_a": 1154.918,
+          "close_b": 1154.81,
+          "diff_ticks": 108.0,
+          "timestamp_utc": "2017-01-03T15:45:00Z"
+        },
+        {
+          "close_a": 1158.102,
+          "close_b": 1158.54,
+          "diff_ticks": 438.0,
+          "timestamp_utc": "2017-01-03T21:45:00Z"
+        }
+      ],
+      "p95_abs_close_diff_ticks": 119.0,
+      "price_precision_a_decimals": 3,
+      "price_precision_b_decimals": 3,
+      "source_a": "DUKASCOPY_TICK_FX31337_MIRROR_V1",
+      "source_b": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "symbol": "XAUUSD",
+      "timeframe": "M15",
+      "timestamp_agreement_pct": 95.3691,
+      "timestamps_only_in_a": 59,
+      "timestamps_only_in_b": 1032,
+      "verdict": "AGREEMENT",
+      "window_end_utc": "2017-12-29T21:45:00Z",
+      "window_start_utc": "2017-01-02T23:00:00Z"
+    }
+  ],
+  "note": "HistData M15 uses the frozen >=13/15-minute rule; the Dukascopy M15 uses ANY_OBSERVATION. Different inclusion rules are expected and are NOT errors \u2014 that is precisely why timestamp agreement is reported separately from price agreement.",
+  "overlap_window": "2017 (the only year both authorities cover)",
+  "purpose": "Diagnostic only. Neither source was altered, re-based or blended, and no dataset hash changed as a result of this comparison.",
+  "report_version": "DATA_AUTHORITY_R1_CROSS_SOURCE_COMPARISON_V1",
+  "scale_disagreements": 0,
+  "scale_guard": "SCALE_DISAGREEMENT on any symbol is a hard stop",
+  "timeframe": "M15"
+}

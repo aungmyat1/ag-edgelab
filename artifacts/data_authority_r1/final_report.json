@@ -1,0 +1,126 @@
+{
+  "CONTENT_ADDRESSED_ENTRIES": 46,
+  "COVERAGE": {
+    "all_timeframe_rows_total": 10477831,
+    "best_in_session_coverage_pct": 99.924194,
+    "m1_bars_total": 8127988,
+    "raw_bytes": 26668384941,
+    "raw_member_files": 135745,
+    "span": "2011-01-01 .. 2018-12-31",
+    "symbol_years": 23,
+    "ticks_processed": 523254646,
+    "worst_in_session_coverage_pct": 40.94801,
+    "years": [
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ]
+  },
+  "CROSS_SOURCE": {
+    "action_taken": "NONE \u2014 diagnostic only, neither source altered",
+    "comparator": "HISTDATA_ASCII_M1_2017_PR10_PINNED (frozen, unmodified)",
+    "median_relative_close_diff": {
+      "EURUSD": 8.59e-06,
+      "GBPUSD": 7.98e-06,
+      "XAUUSD": 3.909e-05
+    },
+    "scale_disagreements": 0,
+    "symbols_compared": 3,
+    "verdicts": {
+      "EURUSD": "AGREEMENT",
+      "GBPUSD": "AGREEMENT",
+      "XAUUSD": "AGREEMENT"
+    }
+  },
+  "CRYPTO_DATA_ADAPTER_READY": "NO",
+  "DATASET_ID": "DUKASCOPY_FX_MULTIYEAR_2011_2018_V1",
+  "FRICTION_AUTHORITY_COMPLETE": "NO",
+  "FRICTION_FRAMEWORK_READY": "YES",
+  "FX_DATA_AUTHORITY": "DUKASCOPY_TICK_FX31337_MIRROR_V1",
+  "GOVERNANCE_PRESERVED": {
+    "C3_REJECTION_PRESERVED": "YES",
+    "CONSUMED_OOS_WINDOW": "[2017-09-01, 2017-12-01) remains CONSUMED; the same calendar period in the new dataset is registered DEVELOPMENT_KNOWN so it cannot be re-sold as fresh OOS via a second provider",
+    "PREVIOUS_OOS_LOG_PRESERVED": "YES",
+    "SEALED_HOLDOUT": "[2017-12-01, 2018-01-01) never opened; mirrored as SEALED in the new dataset too",
+    "TARGET_POLICY_C3_V1": "EDGE_STATUS=NO_EDGE, OOS_STATUS=CONSUMED, RETUNING=FORBIDDEN"
+  },
+  "INTEGRITY": {
+    "duplicate_timestamps": 0,
+    "grid_misalignments": 0,
+    "invalid_ohlc": 0,
+    "non_monotonic_timestamps": 0,
+    "normalization_anomaly_totals": {
+      "CROSSED_QUOTE": 0,
+      "MALFORMED_ROW": 0,
+      "NONPOSITIVE_PRICE": 0,
+      "NON_MONOTONIC_TICK": 0,
+      "OUT_OF_BAND_PRICE": 0,
+      "PRECISION_EXCEEDED": 0,
+      "TIMESTAMP_FILE_MISMATCH": 0,
+      "counted_but_retained": 0,
+      "excluded_from_bars": 0
+    },
+    "price_precision_anomalies": 0,
+    "timezone_anomalies": 0
+  },
+  "MISSING_BAR_POLICY": "EXPLICIT_ABSENCE_NO_FILL",
+  "MULTIYEAR_FX_DATA_READY": "YES",
+  "NEXT": [
+    "Capture an authoritative VT Markets RAW_ECN friction snapshot into the prepared FrictionQuote schema; that single input flips FRICTION_AUTHORITY_COMPLETE and unlocks net economic evaluation.",
+    "Preregister any candidate BEFORE touching the fresh [2018-01-01, 2018-07-01) OOS window, and record it in config/governance/oos_access_log.json.",
+    "Keep [2017-09-01, 2017-12-01) classified DEVELOPMENT_KNOWN for every new candidate family.",
+    "If crypto is wanted, close the exact contracts listed in crypto_data_adapter_review.json rather than merging an adapter."
+  ],
+  "PARTITIONS": {
+    "count": 9,
+    "fresh_oos_window": "[2018-01-01, 2018-07-01) \u2014 AVAILABLE, never opened",
+    "overlaps": 0,
+    "sealed_windows": [
+      "[2017-12-01T00:00:00Z, 2018-01-01T00:00:00Z)",
+      "[2017-12-01T00:00:00Z, 2018-01-01T00:00:00Z)",
+      "[2018-07-01T00:00:00Z, 2019-01-01T00:00:00Z)"
+    ]
+  },
+  "PRIMARY_BLOCKER": "FRICTION_VALUE_AUTHORITY \u2014 commission, swap and contract specifications require broker access that does not exist in this environment. Net/economic claims remain NOT_ESTIMABLE.",
+  "RAW_HASHES_VERIFIED": "YES",
+  "REGIME_DATA_READY": "YES",
+  "SAFETY_BOUNDARY": {
+    "EXECUTION_CAPABILITY_ADDED": "NO",
+    "HOLDOUT_TOUCHED": "NO",
+    "NEW_STRATEGY_CREATED": "NO",
+    "OOS_OPENED": "NO",
+    "PARAMETER_OPTIMIZATION": "NO",
+    "STRATEGIES_RUN": "NO",
+    "STRATEGY_RULES_CHANGED": "NO",
+    "SYNTHETIC_USED_AS_EDGE_EVIDENCE": "NO"
+  },
+  "STATUS": "DATA_AUTHORITY_ESTABLISHED",
+  "SYMBOLS": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "TASK_CLASS": "SYSTEM_DEVELOPMENT / DATA_AUTHORITY",
+  "TIMEFRAME_LINEAGE": "RAW -> M1 -> M5/M15/H1/H4/D1 (single lineage, UTC-floored buckets, completed bars only)",
+  "TIMEZONE_AUTHORITY": {
+    "detail": "every instrument admits UTC+0 and no other offset is admitted by all of them; with the clock fixed, each instrument's venue session contract is uniquely determined",
+    "frame": "UTC",
+    "method": "joint (clock offset, venue session) identification per instrument, then corpus-wide offset intersection",
+    "resolved_session_contracts": {
+      "EURUSD": "SPOT_FX_NY_1700",
+      "GBPUSD": "SPOT_FX_NY_1700",
+      "USDJPY": "SPOT_FX_NY_1700",
+      "XAUUSD": "CME_METALS_CHICAGO_1700"
+    },
+    "status": "PROVEN"
+  },
+  "WALK_FORWARD_DATA_READY": "NO",
+  "WALK_FORWARD_USABLE_FOLDS_MIN_ACROSS_SYMBOLS": 0,
+  "report_version": "DATA_AUTHORITY_R1_FINAL_REPORT_V1"
+}

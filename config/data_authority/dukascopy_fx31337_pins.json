@@ -1,0 +1,58 @@
+{
+  "pin_version": "DATA_AUTHORITY_R1_DUKASCOPY_FX31337_PINS_V1",
+  "source_id": "DUKASCOPY_TICK_FX31337_MIRROR_V1",
+  "purpose": "Immutable upstream pins for the multi-year Dukascopy FX tick mirror maintained by the FX-Data organisation (populated by fx31337/fx-data-download-action from Dukascopy's public historical feed). Each (symbol, year) is pinned to a git COMMIT sha, not a branch name: branches may move, commits may not. The acquisition script refuses any ref that is not one of these commits.",
+  "upstream": {
+    "provider": "Dukascopy Bank SA (originating venue feed)",
+    "mirror_org": "FX-Data",
+    "mirror_repo_pattern": "FX-Data/FX-Data-{SYMBOL}-DS",
+    "mirror_branch_pattern": "{SYMBOL}-{YEAR}",
+    "mirror_producer": "fx31337/fx-data-download-action (GitHub Action, Dukascopy downloader + CSV converter)",
+    "path_pattern": "{SYMBOL}/{YYYY}/{MM}/{YYYY}-{MM}-{DD}--{HH}h_ticks.csv",
+    "row_format": "YYYY.MM.DD HH:MM:SS.mmm,bid,ask,bid_volume,ask_volume",
+    "line_terminator": "CRLF",
+    "declared_timezone": "UTC",
+    "timezone_proof": "DST_SESSION_BOUNDARY_PROOF — the weekly Sunday session open observed in the file clock moves 22h -> 21h exactly at the US DST onset and back at the US DST end, which can only happen if the file clock is a FIXED offset frame and 17:00 America/New_York maps to 22:00 (EST) / 21:00 (EDT) in it. That fixes the offset at UTC+00:00. Verified programmatically by ag_edgelab.data.authority.timezone_proof."
+  },
+  "pins": [
+    {"symbol": "EURUSD", "year": 2011, "repo": "FX-Data/FX-Data-EURUSD-DS", "ref": "EURUSD-2011", "commit": "8fbe8209830ca941dfa7f5616caf82213b18f222"},
+    {"symbol": "EURUSD", "year": 2012, "repo": "FX-Data/FX-Data-EURUSD-DS", "ref": "EURUSD-2012", "commit": "10720109add9b76ec5b2d0416c95e25ede6a4209"},
+    {"symbol": "EURUSD", "year": 2013, "repo": "FX-Data/FX-Data-EURUSD-DS", "ref": "EURUSD-2013", "commit": "f301d558ae05a5c9e7739ad4e835af885985166e"},
+    {"symbol": "EURUSD", "year": 2014, "repo": "FX-Data/FX-Data-EURUSD-DS", "ref": "EURUSD-2014", "commit": "42873af65e80e577634531b97dbcf4de6e73b04c"},
+    {"symbol": "EURUSD", "year": 2015, "repo": "FX-Data/FX-Data-EURUSD-DS", "ref": "EURUSD-2015", "commit": "8c28f58466ccf6acfeccdb85202d484546c956ff"},
+    {"symbol": "EURUSD", "year": 2016, "repo": "FX-Data/FX-Data-EURUSD-DS", "ref": "EURUSD-2016", "commit": "3e0a2a6e5dfed1d138fd949b3a7a050959fc38b0"},
+    {"symbol": "EURUSD", "year": 2017, "repo": "FX-Data/FX-Data-EURUSD-DS", "ref": "EURUSD-2017", "commit": "b75e2d846045d937a004eb10252d459f71204ddb"},
+    {"symbol": "EURUSD", "year": 2018, "repo": "FX-Data/FX-Data-EURUSD-DS", "ref": "EURUSD-2018", "commit": "5c11b5b111000deaeef266a9096fa748f1cc31ce"},
+
+    {"symbol": "GBPUSD", "year": 2011, "repo": "FX-Data/FX-Data-GBPUSD-DS", "ref": "GBPUSD-2011", "commit": "ed590eac118bf2e49257aeda0890e931cc6d34c9"},
+    {"symbol": "GBPUSD", "year": 2012, "repo": "FX-Data/FX-Data-GBPUSD-DS", "ref": "GBPUSD-2012", "commit": "f3f2b4ad201a7d2189cae2683a969339146c1d3a"},
+    {"symbol": "GBPUSD", "year": 2013, "repo": "FX-Data/FX-Data-GBPUSD-DS", "ref": "GBPUSD-2013", "commit": "8e54591a21d6bc6c1a09c4217b21762c046885cd"},
+    {"symbol": "GBPUSD", "year": 2014, "repo": "FX-Data/FX-Data-GBPUSD-DS", "ref": "GBPUSD-2014", "commit": "8d1e806ae162c1eb3c74c5a5e838d13aa7db6556"},
+    {"symbol": "GBPUSD", "year": 2015, "repo": "FX-Data/FX-Data-GBPUSD-DS", "ref": "GBPUSD-2015", "commit": "37ac0a7d4bd6e6cc6fab1c528bde195eb91259ca"},
+    {"symbol": "GBPUSD", "year": 2016, "repo": "FX-Data/FX-Data-GBPUSD-DS", "ref": "GBPUSD-2016", "commit": "74623afba77f87f520da521329e0a29455566dbe"},
+    {"symbol": "GBPUSD", "year": 2017, "repo": "FX-Data/FX-Data-GBPUSD-DS", "ref": "GBPUSD-2017", "commit": "c611b441886c0906b1ce74c6cccf3417d68cc88a"},
+    {"symbol": "GBPUSD", "year": 2018, "repo": "FX-Data/FX-Data-GBPUSD-DS", "ref": "GBPUSD-2018", "commit": "df1848f2d2a17ae795011313bf98382b1e4bd7ad"},
+
+    {"symbol": "USDJPY", "year": 2011, "repo": "FX-Data/FX-Data-USDJPY-DS", "ref": "USDJPY-2011", "commit": "d755e1ca8f1cc5dfa830a1fc1563106bd38a4ab2"},
+    {"symbol": "USDJPY", "year": 2012, "repo": "FX-Data/FX-Data-USDJPY-DS", "ref": "USDJPY-2012", "commit": "ee7898269910c5929558c8160b39d9161f586481"},
+    {"symbol": "USDJPY", "year": 2013, "repo": "FX-Data/FX-Data-USDJPY-DS", "ref": "USDJPY-2013", "commit": "5e0dd8b16b91df63d953e7cdd880202d9f389ba6"},
+    {"symbol": "USDJPY", "year": 2014, "repo": "FX-Data/FX-Data-USDJPY-DS", "ref": "USDJPY-2014", "commit": "ca0686d61e6f1f9e6c025fafd03d1bee600518ff"},
+    {"symbol": "USDJPY", "year": 2015, "repo": "FX-Data/FX-Data-USDJPY-DS", "ref": "USDJPY-2015", "commit": "7f97f1693e59c35d09842c282e055d2953b1926a"},
+    {"symbol": "USDJPY", "year": 2016, "repo": "FX-Data/FX-Data-USDJPY-DS", "ref": "USDJPY-2016", "commit": "4ab0b95f9541d3dc3c45ad400c54b5b85f764167"},
+    {"symbol": "USDJPY", "year": 2017, "repo": "FX-Data/FX-Data-USDJPY-DS", "ref": "USDJPY-2017", "commit": "425a00f7c9c8b8194b72832516d5e4e4e9230d6a"},
+    {"symbol": "USDJPY", "year": 2018, "repo": "FX-Data/FX-Data-USDJPY-DS", "ref": "USDJPY-2018", "commit": "7ff5085c1f652df1551df5379429fd2f09314eb5"},
+
+    {"symbol": "XAUUSD", "year": 2011, "repo": "FX-Data/FX-Data-XAUUSD-DS", "ref": "XAUUSD-2011", "commit": "75406de38876b3ac13e4d2321d6dca1586d8692e"},
+    {"symbol": "XAUUSD", "year": 2012, "repo": "FX-Data/FX-Data-XAUUSD-DS", "ref": "XAUUSD-2012", "commit": "80df4537c1a4bd15c8425629c13271891fb39ab6"},
+    {"symbol": "XAUUSD", "year": 2013, "repo": "FX-Data/FX-Data-XAUUSD-DS", "ref": "XAUUSD-2013", "commit": "f195a948abb45acf934df925368f3ca4e9ea6cf7"},
+    {"symbol": "XAUUSD", "year": 2014, "repo": "FX-Data/FX-Data-XAUUSD-DS", "ref": "XAUUSD-2014", "commit": "880879ee7a9a518e3ce40ede0c5118c87e051e57"},
+    {"symbol": "XAUUSD", "year": 2015, "repo": "FX-Data/FX-Data-XAUUSD-DS", "ref": "XAUUSD-2015", "commit": "88d49391aa0c6bde3e4db0cf2a66f508707fc847"},
+    {"symbol": "XAUUSD", "year": 2016, "repo": "FX-Data/FX-Data-XAUUSD-DS", "ref": "XAUUSD-2016", "commit": "1d0b950f0d63a934a6c2d21d0cd93e79af115c16"},
+    {"symbol": "XAUUSD", "year": 2017, "repo": "FX-Data/FX-Data-XAUUSD-DS", "ref": "XAUUSD-2017", "commit": "6cdee81249d18378cb4b2dc08e23f2513634ca5e"},
+    {"symbol": "XAUUSD", "year": 2018, "repo": "FX-Data/FX-Data-XAUUSD-DS", "ref": "XAUUSD-2018", "commit": "e392db6b0cbc1da241ea5ce410490504204b1c1b"}
+  ],
+  "notes": [
+    "Tarball BYTES are not content-stable (gzip/tar framing may differ between GitHub responses). Identity is therefore established over the CONTENT of the extracted CSV members: a Merkle root over sorted (relative_path, sha256(bytes)) pairs. See ag_edgelab.data.authority.rawobj.raw_tree_sha256.",
+    "Raw tick archives are NEVER committed to git. They live under data/external/ (gitignored) and are referenced by hash from raw_manifest.json."
+  ]
+}

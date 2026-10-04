@@ -1,0 +1,98 @@
+{
+  "CRYPTO_DATA_ADAPTER_READY": "NO",
+  "assessment": {
+    "deterministic_pagination": {
+      "detail": "Bybit branch uses cursor pagination with oldest-1 continuation; Binance branch uses whole-month archives. Reviewed as code only \u2014 not executed.",
+      "verdict": "PASS_ON_REVIEW"
+    },
+    "duplicate_detection": {
+      "detail": "Both branches dedupe by timestamp key rather than rejecting duplicates. The R1 contract requires rejection: a duplicate is a provider defect to be reported, not smoothed over.",
+      "verdict": "PARTIAL"
+    },
+    "funding_authority": {
+      "detail": "Bybit branch fetches funding history with a conservative synthetic fallback. A synthetic fallback cannot back a net economic claim under this contract.",
+      "verdict": "PARTIAL"
+    },
+    "hashing": {
+      "detail": "No sha256 of downloaded archive bytes in either branch.",
+      "verdict": "FAIL"
+    },
+    "missing_bar_detection": {
+      "detail": "Neither branch performs any gap or completeness validation; holes are skipped silently.",
+      "verdict": "FAIL"
+    },
+    "no_synthetic_as_edge_evidence": {
+      "detail": "data/artifacts/synthetic_btcusdt is a CI fixture and is recorded as non-citable in the governance gap record.",
+      "verdict": "PASS"
+    },
+    "provenance": {
+      "detail": "No retrieval timestamp, no immutable pin, no manifest.",
+      "verdict": "FAIL"
+    },
+    "real_public_data": {
+      "detail": "data.binance.vision and api.bybit.com are unreachable from this sandbox; zero crypto bytes were retrieved, so nothing could be hashed or verified.",
+      "verdict": "FAIL"
+    },
+    "utc_normalization": {
+      "detail": "Open-time ms normalization present; the bar-open convention is not frozen in a contract.",
+      "verdict": "PASS_ON_REVIEW"
+    }
+  },
+  "branches_reviewed": {
+    "binance_public_archives": {
+      "branch": "feat/crypto-btc-spot-candidate",
+      "code": "scripts/screen_crypto_btc_spot.py (data.binance.vision monthly kline zips, ms/us timestamp normalization)",
+      "contract_review": {
+        "causal_timestamp_semantics": "PARTIAL \u2014 open-time normalization present; no explicit convention contract",
+        "checksum_provenance": "FAIL \u2014 no hashes of downloaded zips",
+        "duplicate_candles": "PARTIAL \u2014 dict dedup at aggregation only",
+        "funding_handling": "N/A \u2014 spot",
+        "missing_bars": "FAIL \u2014 no gap detection",
+        "pagination": "N/A \u2014 whole-month archive files"
+      },
+      "merge_decision": "NOT MERGED \u2014 fails the merge contract; branch archived"
+    },
+    "bybit_public_archives": {
+      "branch": "feat/crypto-btc-economic-verification",
+      "code": "scripts/verify_btc_sweep_retest_bybit.py (public.bybit.com kline archives + /v5/market/kline fallback + funding history with conservative synthetic-schedule fallback)",
+      "contract_review": {
+        "causal_timestamp_semantics": "PASS \u2014 bar open-time ms in UTC, backward cursor pagination",
+        "checksum_provenance": "FAIL \u2014 no sha256 of downloaded archive bytes, no dataset manifest",
+        "duplicate_candles": "PASS \u2014 timestamp-keyed dedup on both API and archive paths",
+        "funding_handling": "PASS \u2014 funding history API + stress fallback that can only reduce measured edge",
+        "missing_bars": "FAIL \u2014 no gap/completeness validation (no expected-count or contiguity assertion; silently skips holes)",
+        "pagination": "PASS \u2014 cursor-based, limit 1000, oldest-1 continuation, terminates correctly"
+      },
+      "merge_decision": "NOT MERGED \u2014 fails the missing-bar and provenance contracts; code preserved on the archived branch as reference"
+    }
+  },
+  "exact_missing_contracts": [
+    "duplicate_detection",
+    "funding_authority",
+    "hashing",
+    "missing_bar_detection",
+    "provenance",
+    "real_public_data"
+  ],
+  "promotion_preconditions": [
+    "Network access to a real crypto venue archive from the executing environment (the hard blocker today).",
+    "Raw byte sha256 recorded BEFORE any derivation, with an immutable pin.",
+    "Gap inventory against the 24/7 grid with every hole dated and classified.",
+    "Duplicate timestamps REJECTED rather than deduplicated.",
+    "Real funding history for any perpetual economic claim; no synthetic fallback may back a net number.",
+    "Reuse of the R1 canonical schema, CAS and partition registry rather than a parallel crypto-only pipeline."
+  ],
+  "report_version": "DATA_AUTHORITY_R1_CRYPTO_DATA_ADAPTER_REVIEW_V1",
+  "required_contracts": {
+    "deterministic_pagination": "Cursor/segment walk that provably terminates and yields the same set every run.",
+    "duplicate_detection": "Duplicates REJECTED, not silently deduplicated.",
+    "funding_authority": "Real funding history for perpetual economics.",
+    "hashing": "sha256 of raw bytes before derivation; dataset hash after.",
+    "missing_bar_detection": "Expected-vs-actual bar inventory against the 24/7 grid, every gap dated and classified.",
+    "no_synthetic_as_edge_evidence": "Synthetic fixtures structurally excluded from evidence paths.",
+    "provenance": "Venue, endpoint, retrieval timestamp, immutable pin.",
+    "real_public_data": "Bytes from a real public venue archive, retrieved and hashed in this environment.",
+    "utc_normalization": "Epoch-ms open time, bar-open convention frozen."
+  },
+  "scope": "CONTRACT REVIEW ONLY. No crypto adapter was merged, no crypto data was acquired, and no crypto strategy verification was run."
+}

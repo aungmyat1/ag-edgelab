@@ -1,0 +1,747 @@
+{
+  "WALK_FORWARD_DATA_READY": "NO",
+  "disclaimer": "DATA readiness only. No strategy was run, fitted, scored or selected to produce these numbers; folds are counted, not evaluated.",
+  "fold_design": {
+    "min_test_bars": 400,
+    "min_train_bars": 2000,
+    "span": "[2011-01-01, 2017-09-01) = DEVELOPMENT + WALK_FORWARD",
+    "step_months": 3,
+    "test_months": 3,
+    "train_months": 12
+  },
+  "per_symbol": {
+    "EURUSD": {
+      "folds": [
+        {
+          "fold": 1,
+          "test_bars": 1560,
+          "test_window_utc": "[2012-01-01T00:00:00Z, 2012-04-01T00:00:00Z)",
+          "train_bars": 6235,
+          "train_window_utc": "[2011-01-01T00:00:00Z, 2012-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 2,
+          "test_bars": 1560,
+          "test_window_utc": "[2012-04-01T00:00:00Z, 2012-07-01T00:00:00Z)",
+          "train_bars": 6258,
+          "train_window_utc": "[2011-04-01T00:00:00Z, 2012-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 3,
+          "test_bars": 1563,
+          "test_window_utc": "[2012-07-01T00:00:00Z, 2012-10-01T00:00:00Z)",
+          "train_bars": 6259,
+          "train_window_utc": "[2011-07-01T00:00:00Z, 2012-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 4,
+          "test_bars": 1583,
+          "test_window_utc": "[2012-10-01T00:00:00Z, 2013-01-01T00:00:00Z)",
+          "train_bars": 6242,
+          "train_window_utc": "[2011-10-01T00:00:00Z, 2012-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 5,
+          "test_bars": 1516,
+          "test_window_utc": "[2013-01-01T00:00:00Z, 2013-04-01T00:00:00Z)",
+          "train_bars": 6266,
+          "train_window_utc": "[2012-01-01T00:00:00Z, 2013-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 6,
+          "test_bars": 1560,
+          "test_window_utc": "[2013-04-01T00:00:00Z, 2013-07-01T00:00:00Z)",
+          "train_bars": 6222,
+          "train_window_utc": "[2012-04-01T00:00:00Z, 2013-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 7,
+          "test_bars": 1584,
+          "test_window_utc": "[2013-07-01T00:00:00Z, 2013-10-01T00:00:00Z)",
+          "train_bars": 6222,
+          "train_window_utc": "[2012-07-01T00:00:00Z, 2013-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 8,
+          "test_bars": 1569,
+          "test_window_utc": "[2013-10-01T00:00:00Z, 2014-01-01T00:00:00Z)",
+          "train_bars": 6243,
+          "train_window_utc": "[2012-10-01T00:00:00Z, 2013-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 9,
+          "test_bars": 1515,
+          "test_window_utc": "[2014-01-01T00:00:00Z, 2014-04-01T00:00:00Z)",
+          "train_bars": 6229,
+          "train_window_utc": "[2013-01-01T00:00:00Z, 2014-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 10,
+          "test_bars": 1560,
+          "test_window_utc": "[2014-04-01T00:00:00Z, 2014-07-01T00:00:00Z)",
+          "train_bars": 6228,
+          "train_window_utc": "[2013-04-01T00:00:00Z, 2014-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 11,
+          "test_bars": 1584,
+          "test_window_utc": "[2014-07-01T00:00:00Z, 2014-10-01T00:00:00Z)",
+          "train_bars": 6228,
+          "train_window_utc": "[2013-07-01T00:00:00Z, 2014-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 12,
+          "test_bars": 1568,
+          "test_window_utc": "[2014-10-01T00:00:00Z, 2015-01-01T00:00:00Z)",
+          "train_bars": 6228,
+          "train_window_utc": "[2013-10-01T00:00:00Z, 2014-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 13,
+          "test_bars": 1515,
+          "test_window_utc": "[2015-01-01T00:00:00Z, 2015-04-01T00:00:00Z)",
+          "train_bars": 6227,
+          "train_window_utc": "[2014-01-01T00:00:00Z, 2015-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 14,
+          "test_bars": 1560,
+          "test_window_utc": "[2015-04-01T00:00:00Z, 2015-07-01T00:00:00Z)",
+          "train_bars": 6227,
+          "train_window_utc": "[2014-04-01T00:00:00Z, 2015-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 15,
+          "test_bars": 1584,
+          "test_window_utc": "[2015-07-01T00:00:00Z, 2015-10-01T00:00:00Z)",
+          "train_bars": 6227,
+          "train_window_utc": "[2014-07-01T00:00:00Z, 2015-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 16,
+          "test_bars": 1567,
+          "test_window_utc": "[2015-10-01T00:00:00Z, 2016-01-01T00:00:00Z)",
+          "train_bars": 6227,
+          "train_window_utc": "[2014-10-01T00:00:00Z, 2015-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 17,
+          "test_bars": 1538,
+          "test_window_utc": "[2016-01-01T00:00:00Z, 2016-04-01T00:00:00Z)",
+          "train_bars": 6226,
+          "train_window_utc": "[2015-01-01T00:00:00Z, 2016-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 18,
+          "test_bars": 1559,
+          "test_window_utc": "[2016-04-01T00:00:00Z, 2016-07-01T00:00:00Z)",
+          "train_bars": 6249,
+          "train_window_utc": "[2015-04-01T00:00:00Z, 2016-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 19,
+          "test_bars": 1579,
+          "test_window_utc": "[2016-07-01T00:00:00Z, 2016-10-01T00:00:00Z)",
+          "train_bars": 6248,
+          "train_window_utc": "[2015-07-01T00:00:00Z, 2016-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 20,
+          "test_bars": 1559,
+          "test_window_utc": "[2016-10-01T00:00:00Z, 2017-01-01T00:00:00Z)",
+          "train_bars": 6243,
+          "train_window_utc": "[2015-10-01T00:00:00Z, 2016-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 21,
+          "test_bars": 1558,
+          "test_window_utc": "[2017-01-01T00:00:00Z, 2017-04-01T00:00:00Z)",
+          "train_bars": 6235,
+          "train_window_utc": "[2016-01-01T00:00:00Z, 2017-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 22,
+          "test_bars": 1559,
+          "test_window_utc": "[2017-04-01T00:00:00Z, 2017-07-01T00:00:00Z)",
+          "train_bars": 6255,
+          "train_window_utc": "[2016-04-01T00:00:00Z, 2017-04-01T00:00:00Z)",
+          "usable": true
+        }
+      ],
+      "folds_total": 22,
+      "folds_usable": 22,
+      "timeframe": "H1"
+    },
+    "GBPUSD": {
+      "folds": [
+        {
+          "fold": 1,
+          "test_bars": 1495,
+          "test_window_utc": "[2012-01-01T00:00:00Z, 2012-04-01T00:00:00Z)",
+          "train_bars": 5980,
+          "train_window_utc": "[2011-01-01T00:00:00Z, 2012-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 2,
+          "test_bars": 1495,
+          "test_window_utc": "[2012-04-01T00:00:00Z, 2012-07-01T00:00:00Z)",
+          "train_bars": 6000,
+          "train_window_utc": "[2011-04-01T00:00:00Z, 2012-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 3,
+          "test_bars": 1498,
+          "test_window_utc": "[2012-07-01T00:00:00Z, 2012-10-01T00:00:00Z)",
+          "train_bars": 6000,
+          "train_window_utc": "[2011-07-01T00:00:00Z, 2012-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 4,
+          "test_bars": 1511,
+          "test_window_utc": "[2012-10-01T00:00:00Z, 2013-01-01T00:00:00Z)",
+          "train_bars": 5983,
+          "train_window_utc": "[2011-10-01T00:00:00Z, 2012-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 5,
+          "test_bars": 1452,
+          "test_window_utc": "[2013-01-01T00:00:00Z, 2013-04-01T00:00:00Z)",
+          "train_bars": 5999,
+          "train_window_utc": "[2012-01-01T00:00:00Z, 2013-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 6,
+          "test_bars": 1495,
+          "test_window_utc": "[2013-04-01T00:00:00Z, 2013-07-01T00:00:00Z)",
+          "train_bars": 5956,
+          "train_window_utc": "[2012-04-01T00:00:00Z, 2013-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 7,
+          "test_bars": 1518,
+          "test_window_utc": "[2013-07-01T00:00:00Z, 2013-10-01T00:00:00Z)",
+          "train_bars": 5956,
+          "train_window_utc": "[2012-07-01T00:00:00Z, 2013-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 8,
+          "test_bars": 1502,
+          "test_window_utc": "[2013-10-01T00:00:00Z, 2014-01-01T00:00:00Z)",
+          "train_bars": 5976,
+          "train_window_utc": "[2012-10-01T00:00:00Z, 2013-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 9,
+          "test_bars": 1452,
+          "test_window_utc": "[2014-01-01T00:00:00Z, 2014-04-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2013-01-01T00:00:00Z, 2014-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 10,
+          "test_bars": 1495,
+          "test_window_utc": "[2014-04-01T00:00:00Z, 2014-07-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2013-04-01T00:00:00Z, 2014-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 11,
+          "test_bars": 1518,
+          "test_window_utc": "[2014-07-01T00:00:00Z, 2014-10-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2013-07-01T00:00:00Z, 2014-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 12,
+          "test_bars": 1502,
+          "test_window_utc": "[2014-10-01T00:00:00Z, 2015-01-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2013-10-01T00:00:00Z, 2014-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 13,
+          "test_bars": 1452,
+          "test_window_utc": "[2015-01-01T00:00:00Z, 2015-04-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2014-01-01T00:00:00Z, 2015-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 14,
+          "test_bars": 1495,
+          "test_window_utc": "[2015-04-01T00:00:00Z, 2015-07-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2014-04-01T00:00:00Z, 2015-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 15,
+          "test_bars": 1518,
+          "test_window_utc": "[2015-07-01T00:00:00Z, 2015-10-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2014-07-01T00:00:00Z, 2015-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 16,
+          "test_bars": 1501,
+          "test_window_utc": "[2015-10-01T00:00:00Z, 2016-01-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2014-10-01T00:00:00Z, 2015-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 17,
+          "test_bars": 1475,
+          "test_window_utc": "[2016-01-01T00:00:00Z, 2016-04-01T00:00:00Z)",
+          "train_bars": 5966,
+          "train_window_utc": "[2015-01-01T00:00:00Z, 2016-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 18,
+          "test_bars": 1495,
+          "test_window_utc": "[2016-04-01T00:00:00Z, 2016-07-01T00:00:00Z)",
+          "train_bars": 5989,
+          "train_window_utc": "[2015-04-01T00:00:00Z, 2016-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 19,
+          "test_bars": 1514,
+          "test_window_utc": "[2016-07-01T00:00:00Z, 2016-10-01T00:00:00Z)",
+          "train_bars": 5989,
+          "train_window_utc": "[2015-07-01T00:00:00Z, 2016-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 20,
+          "test_bars": 1495,
+          "test_window_utc": "[2016-10-01T00:00:00Z, 2017-01-01T00:00:00Z)",
+          "train_bars": 5985,
+          "train_window_utc": "[2015-10-01T00:00:00Z, 2016-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 21,
+          "test_bars": 1495,
+          "test_window_utc": "[2017-01-01T00:00:00Z, 2017-04-01T00:00:00Z)",
+          "train_bars": 5979,
+          "train_window_utc": "[2016-01-01T00:00:00Z, 2017-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 22,
+          "test_bars": 1495,
+          "test_window_utc": "[2017-04-01T00:00:00Z, 2017-07-01T00:00:00Z)",
+          "train_bars": 5999,
+          "train_window_utc": "[2016-04-01T00:00:00Z, 2017-04-01T00:00:00Z)",
+          "usable": true
+        }
+      ],
+      "folds_total": 22,
+      "folds_usable": 22,
+      "timeframe": "H1"
+    },
+    "USDJPY": {
+      "folds": [
+        {
+          "fold": 1,
+          "test_bars": 1495,
+          "test_window_utc": "[2012-01-01T00:00:00Z, 2012-04-01T00:00:00Z)",
+          "train_bars": 5979,
+          "train_window_utc": "[2011-01-01T00:00:00Z, 2012-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 2,
+          "test_bars": 1490,
+          "test_window_utc": "[2012-04-01T00:00:00Z, 2012-07-01T00:00:00Z)",
+          "train_bars": 6000,
+          "train_window_utc": "[2011-04-01T00:00:00Z, 2012-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 3,
+          "test_bars": 1498,
+          "test_window_utc": "[2012-07-01T00:00:00Z, 2012-10-01T00:00:00Z)",
+          "train_bars": 5995,
+          "train_window_utc": "[2011-07-01T00:00:00Z, 2012-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 4,
+          "test_bars": 1502,
+          "test_window_utc": "[2012-10-01T00:00:00Z, 2013-01-01T00:00:00Z)",
+          "train_bars": 5978,
+          "train_window_utc": "[2011-10-01T00:00:00Z, 2012-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 5,
+          "test_bars": 1452,
+          "test_window_utc": "[2013-01-01T00:00:00Z, 2013-04-01T00:00:00Z)",
+          "train_bars": 5985,
+          "train_window_utc": "[2012-01-01T00:00:00Z, 2013-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 6,
+          "test_bars": 1495,
+          "test_window_utc": "[2013-04-01T00:00:00Z, 2013-07-01T00:00:00Z)",
+          "train_bars": 5942,
+          "train_window_utc": "[2012-04-01T00:00:00Z, 2013-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 7,
+          "test_bars": 1518,
+          "test_window_utc": "[2013-07-01T00:00:00Z, 2013-10-01T00:00:00Z)",
+          "train_bars": 5947,
+          "train_window_utc": "[2012-07-01T00:00:00Z, 2013-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 8,
+          "test_bars": 1502,
+          "test_window_utc": "[2013-10-01T00:00:00Z, 2014-01-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2012-10-01T00:00:00Z, 2013-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 9,
+          "test_bars": 1452,
+          "test_window_utc": "[2014-01-01T00:00:00Z, 2014-04-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2013-01-01T00:00:00Z, 2014-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 10,
+          "test_bars": 1495,
+          "test_window_utc": "[2014-04-01T00:00:00Z, 2014-07-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2013-04-01T00:00:00Z, 2014-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 11,
+          "test_bars": 1518,
+          "test_window_utc": "[2014-07-01T00:00:00Z, 2014-10-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2013-07-01T00:00:00Z, 2014-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 12,
+          "test_bars": 1502,
+          "test_window_utc": "[2014-10-01T00:00:00Z, 2015-01-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2013-10-01T00:00:00Z, 2014-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 13,
+          "test_bars": 1452,
+          "test_window_utc": "[2015-01-01T00:00:00Z, 2015-04-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2014-01-01T00:00:00Z, 2015-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 14,
+          "test_bars": 1495,
+          "test_window_utc": "[2015-04-01T00:00:00Z, 2015-07-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2014-04-01T00:00:00Z, 2015-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 15,
+          "test_bars": 1518,
+          "test_window_utc": "[2015-07-01T00:00:00Z, 2015-10-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2014-07-01T00:00:00Z, 2015-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 16,
+          "test_bars": 1501,
+          "test_window_utc": "[2015-10-01T00:00:00Z, 2016-01-01T00:00:00Z)",
+          "train_bars": 5967,
+          "train_window_utc": "[2014-10-01T00:00:00Z, 2015-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 17,
+          "test_bars": 1475,
+          "test_window_utc": "[2016-01-01T00:00:00Z, 2016-04-01T00:00:00Z)",
+          "train_bars": 5966,
+          "train_window_utc": "[2015-01-01T00:00:00Z, 2016-01-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 18,
+          "test_bars": 1495,
+          "test_window_utc": "[2016-04-01T00:00:00Z, 2016-07-01T00:00:00Z)",
+          "train_bars": 5989,
+          "train_window_utc": "[2015-04-01T00:00:00Z, 2016-04-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 19,
+          "test_bars": 1514,
+          "test_window_utc": "[2016-07-01T00:00:00Z, 2016-10-01T00:00:00Z)",
+          "train_bars": 5989,
+          "train_window_utc": "[2015-07-01T00:00:00Z, 2016-07-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 20,
+          "test_bars": 1495,
+          "test_window_utc": "[2016-10-01T00:00:00Z, 2017-01-01T00:00:00Z)",
+          "train_bars": 5985,
+          "train_window_utc": "[2015-10-01T00:00:00Z, 2016-10-01T00:00:00Z)",
+          "usable": true
+        },
+        {
+          "fold": 21,
+          "test_bars": 0,
+          "test_window_utc": "[2017-01-01T00:00:00Z, 2017-04-01T00:00:00Z)",
+          "train_bars": 5979,
+          "train_window_utc": "[2016-01-01T00:00:00Z, 2017-01-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 22,
+          "test_bars": 0,
+          "test_window_utc": "[2017-04-01T00:00:00Z, 2017-07-01T00:00:00Z)",
+          "train_bars": 4504,
+          "train_window_utc": "[2016-04-01T00:00:00Z, 2017-04-01T00:00:00Z)",
+          "usable": false
+        }
+      ],
+      "folds_total": 22,
+      "folds_usable": 20,
+      "timeframe": "H1"
+    },
+    "XAUUSD": {
+      "folds": [
+        {
+          "fold": 1,
+          "test_bars": 0,
+          "test_window_utc": "[2012-01-01T00:00:00Z, 2012-04-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2011-01-01T00:00:00Z, 2012-01-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 2,
+          "test_bars": 0,
+          "test_window_utc": "[2012-04-01T00:00:00Z, 2012-07-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2011-04-01T00:00:00Z, 2012-04-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 3,
+          "test_bars": 0,
+          "test_window_utc": "[2012-07-01T00:00:00Z, 2012-10-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2011-07-01T00:00:00Z, 2012-07-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 4,
+          "test_bars": 0,
+          "test_window_utc": "[2012-10-01T00:00:00Z, 2013-01-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2011-10-01T00:00:00Z, 2012-10-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 5,
+          "test_bars": 0,
+          "test_window_utc": "[2013-01-01T00:00:00Z, 2013-04-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2012-01-01T00:00:00Z, 2013-01-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 6,
+          "test_bars": 0,
+          "test_window_utc": "[2013-04-01T00:00:00Z, 2013-07-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2012-04-01T00:00:00Z, 2013-04-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 7,
+          "test_bars": 0,
+          "test_window_utc": "[2013-07-01T00:00:00Z, 2013-10-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2012-07-01T00:00:00Z, 2013-07-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 8,
+          "test_bars": 0,
+          "test_window_utc": "[2013-10-01T00:00:00Z, 2014-01-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2012-10-01T00:00:00Z, 2013-10-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 9,
+          "test_bars": 0,
+          "test_window_utc": "[2014-01-01T00:00:00Z, 2014-04-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2013-01-01T00:00:00Z, 2014-01-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 10,
+          "test_bars": 0,
+          "test_window_utc": "[2014-04-01T00:00:00Z, 2014-07-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2013-04-01T00:00:00Z, 2014-04-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 11,
+          "test_bars": 0,
+          "test_window_utc": "[2014-07-01T00:00:00Z, 2014-10-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2013-07-01T00:00:00Z, 2014-07-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 12,
+          "test_bars": 0,
+          "test_window_utc": "[2014-10-01T00:00:00Z, 2015-01-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2013-10-01T00:00:00Z, 2014-10-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 13,
+          "test_bars": 0,
+          "test_window_utc": "[2015-01-01T00:00:00Z, 2015-04-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2014-01-01T00:00:00Z, 2015-01-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 14,
+          "test_bars": 0,
+          "test_window_utc": "[2015-04-01T00:00:00Z, 2015-07-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2014-04-01T00:00:00Z, 2015-04-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 15,
+          "test_bars": 0,
+          "test_window_utc": "[2015-07-01T00:00:00Z, 2015-10-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2014-07-01T00:00:00Z, 2015-07-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 16,
+          "test_bars": 0,
+          "test_window_utc": "[2015-10-01T00:00:00Z, 2016-01-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2014-10-01T00:00:00Z, 2015-10-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 17,
+          "test_bars": 0,
+          "test_window_utc": "[2016-01-01T00:00:00Z, 2016-04-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2015-01-01T00:00:00Z, 2016-01-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 18,
+          "test_bars": 0,
+          "test_window_utc": "[2016-04-01T00:00:00Z, 2016-07-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2015-04-01T00:00:00Z, 2016-04-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 19,
+          "test_bars": 0,
+          "test_window_utc": "[2016-07-01T00:00:00Z, 2016-10-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2015-07-01T00:00:00Z, 2016-07-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 20,
+          "test_bars": 0,
+          "test_window_utc": "[2016-10-01T00:00:00Z, 2017-01-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2015-10-01T00:00:00Z, 2016-10-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 21,
+          "test_bars": 1425,
+          "test_window_utc": "[2017-01-01T00:00:00Z, 2017-04-01T00:00:00Z)",
+          "train_bars": 0,
+          "train_window_utc": "[2016-01-01T00:00:00Z, 2017-01-01T00:00:00Z)",
+          "usable": false
+        },
+        {
+          "fold": 22,
+          "test_bars": 1406,
+          "test_window_utc": "[2017-04-01T00:00:00Z, 2017-07-01T00:00:00Z)",
+          "train_bars": 1425,
+          "train_window_utc": "[2016-04-01T00:00:00Z, 2017-04-01T00:00:00Z)",
+          "usable": false
+        }
+      ],
+      "folds_total": 22,
+      "folds_usable": 0,
+      "timeframe": "H1"
+    }
+  },
+  "report_version": "DATA_AUTHORITY_R1_WALK_FORWARD_READINESS_V1"
+}

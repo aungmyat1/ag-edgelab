@@ -1,0 +1,277 @@
+{
+  "MULTIYEAR_FX_DATA_READY": "YES",
+  "REGIME_DATA_READY": "YES",
+  "disclaimer": "DATA readiness only. Volatility, trend and session statistics are properties of the price series; they are not edge claims and no strategy produced them.",
+  "method": {
+    "efficiency_ratio": "|last close - first close| / sum(|close deltas|); >=0.30 TRENDING, <=0.10 RANGING, else MIXED",
+    "realized_volatility": "annualized population stdev of D1 log returns x sqrt(252), in percent"
+  },
+  "per_symbol_year": [
+    {
+      "d1_bars": 312,
+      "efficiency_ratio": 0.017617,
+      "max_drawdown_pct": 12.9102,
+      "net_change_pct": -2.9793,
+      "realized_volatility_annualized_pct": 10.8954,
+      "symbol": "EURUSD",
+      "trend_label": "RANGING",
+      "year": 2011
+    },
+    {
+      "d1_bars": 314,
+      "efficiency_ratio": 0.016584,
+      "max_drawdown_pct": 10.5126,
+      "net_change_pct": 1.9344,
+      "realized_volatility_annualized_pct": 7.8832,
+      "symbol": "EURUSD",
+      "trend_label": "RANGING",
+      "year": 2012
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.040955,
+      "max_drawdown_pct": 6.3811,
+      "net_change_pct": 4.1166,
+      "realized_volatility_annualized_pct": 7.2138,
+      "symbol": "EURUSD",
+      "trend_label": "RANGING",
+      "year": 2013
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.163553,
+      "max_drawdown_pct": 13.1494,
+      "net_change_pct": -12.1152,
+      "realized_volatility_annualized_pct": 5.6877,
+      "symbol": "EURUSD",
+      "trend_label": "MIXED",
+      "year": 2014
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.070852,
+      "max_drawdown_pct": 13.2639,
+      "net_change_pct": -10.1804,
+      "realized_volatility_annualized_pct": 11.0307,
+      "symbol": "EURUSD",
+      "trend_label": "RANGING",
+      "year": 2015
+    },
+    {
+      "d1_bars": 312,
+      "efficiency_ratio": 0.029089,
+      "max_drawdown_pct": 9.8304,
+      "net_change_pct": -3.1018,
+      "realized_volatility_annualized_pct": 7.56,
+      "symbol": "EURUSD",
+      "trend_label": "RANGING",
+      "year": 2016
+    },
+    {
+      "d1_bars": 312,
+      "efficiency_ratio": 0.136221,
+      "max_drawdown_pct": 3.6536,
+      "net_change_pct": 14.0217,
+      "realized_volatility_annualized_pct": 6.4953,
+      "symbol": "EURUSD",
+      "trend_label": "MIXED",
+      "year": 2017
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.047977,
+      "max_drawdown_pct": 10.2874,
+      "net_change_pct": -4.5618,
+      "realized_volatility_annualized_pct": 6.5637,
+      "symbol": "EURUSD",
+      "trend_label": "RANGING",
+      "year": 2018
+    },
+    {
+      "d1_bars": 312,
+      "efficiency_ratio": 0.001582,
+      "max_drawdown_pct": 7.8913,
+      "net_change_pct": -0.1901,
+      "realized_volatility_annualized_pct": 7.7595,
+      "symbol": "GBPUSD",
+      "trend_label": "RANGING",
+      "year": 2011
+    },
+    {
+      "d1_bars": 314,
+      "efficiency_ratio": 0.056665,
+      "max_drawdown_pct": 5.7156,
+      "net_change_pct": 4.7519,
+      "realized_volatility_annualized_pct": 5.6519,
+      "symbol": "GBPUSD",
+      "trend_label": "RANGING",
+      "year": 2012
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.019477,
+      "max_drawdown_pct": 8.6365,
+      "net_change_pct": 1.8856,
+      "realized_volatility_annualized_pct": 7.0637,
+      "symbol": "GBPUSD",
+      "trend_label": "RANGING",
+      "year": 2013
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.086519,
+      "max_drawdown_pct": 9.5976,
+      "net_change_pct": -6.0601,
+      "realized_volatility_annualized_pct": 5.2199,
+      "symbol": "GBPUSD",
+      "trend_label": "RANGING",
+      "year": 2014
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.051456,
+      "max_drawdown_pct": 7.2585,
+      "net_change_pct": -5.4517,
+      "realized_volatility_annualized_pct": 7.5881,
+      "symbol": "GBPUSD",
+      "trend_label": "RANGING",
+      "year": 2015
+    },
+    {
+      "d1_bars": 312,
+      "efficiency_ratio": 0.117939,
+      "max_drawdown_pct": 17.7002,
+      "net_change_pct": -16.2556,
+      "realized_volatility_annualized_pct": 11.4953,
+      "symbol": "GBPUSD",
+      "trend_label": "MIXED",
+      "year": 2016
+    },
+    {
+      "d1_bars": 312,
+      "efficiency_ratio": 0.082654,
+      "max_drawdown_pct": 3.9812,
+      "net_change_pct": 9.3319,
+      "realized_volatility_annualized_pct": 7.8858,
+      "symbol": "GBPUSD",
+      "trend_label": "RANGING",
+      "year": 2017
+    },
+    {
+      "d1_bars": 135,
+      "efficiency_ratio": 0.015073,
+      "max_drawdown_pct": 7.5767,
+      "net_change_pct": -0.6899,
+      "realized_volatility_annualized_pct": 7.1789,
+      "symbol": "GBPUSD",
+      "trend_label": "RANGING",
+      "year": 2018
+    },
+    {
+      "d1_bars": 312,
+      "efficiency_ratio": 0.05161,
+      "max_drawdown_pct": 11.3249,
+      "net_change_pct": -5.2515,
+      "realized_volatility_annualized_pct": 7.9356,
+      "symbol": "USDJPY",
+      "trend_label": "RANGING",
+      "year": 2011
+    },
+    {
+      "d1_bars": 314,
+      "efficiency_ratio": 0.114988,
+      "max_drawdown_pct": 7.4171,
+      "net_change_pct": 12.5365,
+      "realized_volatility_annualized_pct": 7.202,
+      "symbol": "USDJPY",
+      "trend_label": "MIXED",
+      "year": 2012
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.115345,
+      "max_drawdown_pct": 8.835,
+      "net_change_pct": 21.535,
+      "realized_volatility_annualized_pct": 11.5003,
+      "symbol": "USDJPY",
+      "trend_label": "MIXED",
+      "year": 2013
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.13634,
+      "max_drawdown_pct": 4.1009,
+      "net_change_pct": 13.6645,
+      "realized_volatility_annualized_pct": 7.284,
+      "symbol": "USDJPY",
+      "trend_label": "MIXED",
+      "year": 2014
+    },
+    {
+      "d1_bars": 313,
+      "efficiency_ratio": 0.002865,
+      "max_drawdown_pct": 5.6223,
+      "net_change_pct": 0.2878,
+      "realized_volatility_annualized_pct": 7.1391,
+      "symbol": "USDJPY",
+      "trend_label": "RANGING",
+      "year": 2015
+    },
+    {
+      "d1_bars": 312,
+      "efficiency_ratio": 0.020066,
+      "max_drawdown_pct": 17.6789,
+      "net_change_pct": -2.8151,
+      "realized_volatility_annualized_pct": 10.9906,
+      "symbol": "USDJPY",
+      "trend_label": "RANGING",
+      "year": 2016
+    },
+    {
+      "d1_bars": 309,
+      "efficiency_ratio": 0.085965,
+      "max_drawdown_pct": 7.8616,
+      "net_change_pct": 13.2359,
+      "realized_volatility_annualized_pct": 9.2479,
+      "symbol": "XAUUSD",
+      "trend_label": "RANGING",
+      "year": 2017
+    }
+  ],
+  "readiness_reasons": [
+    "8 complete calendar years x 4 symbols (threshold 3 years) -> MULTIYEAR=YES",
+    "worst in-session coverage 40.95% is below the 90.0% floor -> WALK_FORWARD=NO",
+    "annual realized-volatility dispersion (max/min) is EURUSD=1.94x, GBPUSD=2.20x, USDJPY=1.61x; all exceed 1.5x -> REGIME=YES"
+  ],
+  "report_version": "DATA_AUTHORITY_R1_REGIME_READINESS_V1",
+  "session_distribution_h1_bars": {
+    "EURUSD": {
+      "ASIA_00_07": 14547,
+      "LATE_21_24": 6243,
+      "LONDON_07_12": 10385,
+      "LONDON_NY_12_16": 8304,
+      "NY_16_21": 10379
+    },
+    "GBPUSD": {
+      "ASIA_00_07": 11598,
+      "LATE_21_24": 5797,
+      "LONDON_07_12": 9648,
+      "LONDON_NY_12_16": 7709,
+      "NY_16_21": 9637
+    },
+    "USDJPY": {
+      "ASIA_00_07": 9364,
+      "LATE_21_24": 4677,
+      "LONDON_07_12": 7790,
+      "LONDON_NY_12_16": 6228,
+      "NY_16_21": 7784
+    },
+    "XAUUSD": {
+      "ASIA_00_07": 1542,
+      "LATE_21_24": 536,
+      "LONDON_07_12": 1285,
+      "LONDON_NY_12_16": 1028,
+      "NY_16_21": 1264
+    }
+  }
+}
