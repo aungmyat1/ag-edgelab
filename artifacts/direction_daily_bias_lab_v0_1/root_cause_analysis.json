@@ -1,0 +1,12 @@
+{
+  "diagnoses": [
+    "CONTRACT_INCOMPLETE",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "precedence_applied": [
+    "TARGET_MODEL_MISMATCH before TRIGGER_DIRECTION_WEAKNESS when natural target useful and fixed 5R collapses"
+  ],
+  "primary_diagnosis": "CONTRACT_INCOMPLETE",
+  "schema": "RootCauseAnalysisV0.1",
+  "status": "CONTRACT_INCOMPLETE"
+}

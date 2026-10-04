@@ -1,0 +1,44 @@
+{
+  "available_data_rejected": [
+    {
+      "path": "data/artifacts/synthetic_btcusdt",
+      "reason": "synthetic BTC fixture; manifest says dataset_is_authoritative=false and it is not the expected four-symbol Asian DEV lineage"
+    }
+  ],
+  "dataset_authority": "NO_AUTHORIZED_ASIAN_DEV_LINEAGE_FOUND",
+  "expected_symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "generated_at_utc": "2026-10-03T09:47:39+00:00",
+  "holdout_touched": false,
+  "oos_opened": false,
+  "schema": "DirectionDailyBiasSourceAuthorityV0.1",
+  "source_families": {
+    "A": {
+      "repository_evidence": "docs/DONOR_INVENTORY.md does not contain the owner supplied prior Direction Engine package",
+      "role": "SMART_MONEY_MTF_AUTHORITY",
+      "status": "NOT_LOCATED_IN_CHECKOUT"
+    },
+    "B": {
+      "role": "DAILY_BIAS_CONCEPT_AUTHORITY",
+      "status": "NOT_LOCATED_IN_CHECKOUT",
+      "title": "How I Find My Daily Bias (step-by-step)"
+    },
+    "C": {
+      "execution_timeframe": "M15",
+      "periods": [
+        50,
+        200
+      ],
+      "role": "RESEARCH_HYPOTHESIS",
+      "status": "DECLARED_BY_MISSION",
+      "timeframes": [
+        "D1",
+        "H4"
+      ]
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "rules": [
+    {
+      "authority": "deterministic implementation in this change",
+      "future_data": "right-bar confirmation only",
+      "rule": "CONFIRMED_SWING_HH_HL_LH_LL",
+      "status": "COMPLETE"
+    },
+    {
+      "authority": "deterministic implementation in this change",
+      "future_data": "close after confirmed swing only",
+      "rule": "BOS",
+      "status": "COMPLETE"
+    },
+    {
+      "authority": "deterministic implementation in this change",
+      "rule": "ACTIVE_H4_RANGE",
+      "status": "COMPLETE"
+    },
+    {
+      "authority": "mission exact equality rule",
+      "middle_zone": "none",
+      "rule": "PREMIUM_DISCOUNT",
+      "status": "COMPLETE"
+    },
+    {
+      "authority": "UTC observed prior trading date",
+      "rule": "PDH_PDL",
+      "status": "COMPLETE"
+    },
+    {
+      "authority": "none",
+      "reason": "no tolerance invented",
+      "rule": "EQH_EQL",
+      "status": "CONTRACT_INCOMPLETE"
+    },
+    {
+      "authority": "deterministic H1 structure",
+      "rule": "H1_INTERNAL_FLOW",
+      "status": "COMPLETE"
+    },
+    {
+      "authority": "macro versus internal direction comparison",
+      "rule": "CONTINUATION_PULLBACK",
+      "status": "COMPLETE"
+    },
+    {
+      "authority": "mission frozen research hypothesis",
+      "crossover_entry_signal": false,
+      "periods": [
+        50,
+        200
+      ],
+      "rule": "MA50_MA200",
+      "status": "COMPLETE"
+    },
+    {
+      "authority": "none",
+      "rule": "ACCEPTANCE",
+      "rule_value": "ACCEPTANCE_RULE=UNRESOLVED",
+      "status": "UNRESOLVED"
+    },
+    {
+      "authority": "none",
+      "rule": "SUPPLY_DEMAND_ZONE",
+      "status": "CONTRACT_INCOMPLETE"
+    },
+    {
+      "authority": "no Asian target authority",
+      "rule": "FVG_TARGET",
+      "status": "CONTRACT_INCOMPLETE"
+    }
+  ],
+  "schema": "RuleAuthorityMatrixV0.1"
+}

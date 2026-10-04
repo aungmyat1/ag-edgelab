@@ -1,0 +1,10 @@
+{
+  "natural_target_r": {
+    "median": null,
+    "p25": null,
+    "p75": null
+  },
+  "rows": [],
+  "schema": "TargetGeometryAnalysisV0.1",
+  "status": "BLOCKED_NO_AUTHORIZED_ENTRY_POPULATION"
+}

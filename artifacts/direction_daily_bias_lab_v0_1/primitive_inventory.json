@@ -1,0 +1,37 @@
+{
+  "contract_incomplete": [
+    "EQH_EQL",
+    "acceptance",
+    "supply_demand_zone",
+    "Asian_FVG_target",
+    "future_next_swing_objective"
+  ],
+  "implemented": [
+    "confirmed_swing_points",
+    "HH",
+    "HL",
+    "LH",
+    "LL",
+    "BOS",
+    "active_H4_swing_range",
+    "equilibrium",
+    "premium_discount",
+    "PDH",
+    "PDL",
+    "PDH_PDL_sweep_state",
+    "H1_internal_order_flow",
+    "continuation_pullback_phase",
+    "MA50",
+    "MA200",
+    "invalidation_reference",
+    "fixed_target_R",
+    "natural_target_R",
+    "causal_fixed_target_capability"
+  ],
+  "not_implemented": [
+    "strategy mutation",
+    "execution",
+    "realized economics"
+  ],
+  "schema": "DirectionPrimitiveInventoryV0.1"
+}

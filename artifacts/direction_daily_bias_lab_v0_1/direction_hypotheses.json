@@ -1,0 +1,142 @@
+{
+  "hypotheses": [
+    {
+      "id": "MD01",
+      "inputs": [
+        "confirmed H4 HH/HL or LH/LL"
+      ],
+      "name": "H4 STRUCTURE",
+      "neutral_rule": "otherwise"
+    },
+    {
+      "id": "MD02",
+      "inputs": [
+        "D1 structure",
+        "H4 structure"
+      ],
+      "name": "D1/H4 STRUCTURE ALIGNMENT",
+      "neutral_rule": "not aligned"
+    },
+    {
+      "id": "MD03",
+      "inputs": [
+        "H4 structure",
+        "H1 structure"
+      ],
+      "name": "H4 + H1 STRUCTURE ALIGNMENT",
+      "neutral_rule": "not aligned"
+    },
+    {
+      "id": "MD04",
+      "inputs": [
+        "MA50",
+        "MA200"
+      ],
+      "name": "MA50/200 MACRO TREND",
+      "neutral_rule": "equality or insufficient history",
+      "periods_frozen": [
+        50,
+        200
+      ],
+      "variants": [
+        "MD04_D1",
+        "MD04_H4"
+      ]
+    },
+    {
+      "id": "MD05",
+      "inputs": [
+        "D1 MA50/200",
+        "H4 structure"
+      ],
+      "name": "MA + STRUCTURE AGREEMENT",
+      "neutral_rule": "not agreed"
+    },
+    {
+      "id": "MD06",
+      "inputs": [
+        "H4 structure",
+        "active H4 range",
+        "current price"
+      ],
+      "name": "STRUCTURE + PREMIUM/DISCOUNT",
+      "neutral_rule": "conflict or unavailable"
+    },
+    {
+      "id": "MD07",
+      "inputs": [
+        "H1 structure"
+      ],
+      "name": "INTERNAL ORDER FLOW",
+      "neutral_rule": "H1 neutral or unavailable"
+    },
+    {
+      "id": "MD08",
+      "inputs": [
+        "H4 structure",
+        "H1 structure"
+      ],
+      "name": "HTF + INTERNAL PHASE MODEL",
+      "outputs": [
+        "MACRO_DIRECTION",
+        "IMMEDIATE_DIRECTION",
+        "PHASE"
+      ]
+    },
+    {
+      "id": "MD09",
+      "inputs": [
+        "H4 structure",
+        "H4 location",
+        "H1 internal flow"
+      ],
+      "liquidity_required": false,
+      "name": "DAILY BIAS CORE"
+    },
+    {
+      "id": "MD10",
+      "inputs": [
+        "MD09",
+        "PDH",
+        "PDL",
+        "sweep state"
+      ],
+      "liquidity_is_context": true,
+      "name": "DAILY BIAS + PRIOR-DAY LIQUIDITY"
+    },
+    {
+      "id": "MD11",
+      "inputs": [
+        "HTF structure",
+        "location",
+        "liquidity",
+        "phase",
+        "internal flow"
+      ],
+      "name": "FULL SOURCE-STYLE BIAS",
+      "outputs": [
+        "MACRO_DIRECTION",
+        "IMMEDIATE_DIRECTION",
+        "PHASE",
+        "LOCATION",
+        "LIQUIDITY_OBJECTIVE",
+        "INVALIDATION_REFERENCE"
+      ]
+    },
+    {
+      "experimental": true,
+      "id": "MD12",
+      "inputs": [
+        "D1 MA50/200",
+        "H4 structure",
+        "location",
+        "H1 internal flow"
+      ],
+      "name": "MA + SOURCE-STYLE CONFLUENCE"
+    }
+  ],
+  "population_n": 0,
+  "results": [],
+  "schema": "DirectionHypothesesV0.1",
+  "status": "NOT_RUN_NO_AUTHORIZED_DATASET"
+}

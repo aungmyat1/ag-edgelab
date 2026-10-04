@@ -1,0 +1,14 @@
+{
+  "population_n": 0,
+  "required_classifications": [
+    "ALIGNED",
+    "COUNTER_DIRECTION",
+    "NEUTRAL",
+    "MACRO_ALIGNED_INTERNAL_COUNTER",
+    "MACRO_COUNTER_INTERNAL_ALIGNED"
+  ],
+  "rows": [],
+  "schema": "AsianV2DirectionOverlayV0.1",
+  "status": "BLOCKED_NO_ASIAN_V2_IN_CHECKOUT",
+  "strategy_identity_changed": false
+}
