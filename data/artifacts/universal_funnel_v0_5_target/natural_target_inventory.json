@@ -1,0 +1,25 @@
+{
+  "availability_d01": {
+    "NT01_NEXT_SWING": 0.9990574929311969,
+    "NT02_PDH_PDL": 0.8212378259503613,
+    "NT03_LIQUIDITY": 0.8846999685830977,
+    "NT04_OPPOSING_SUPPLY_DEMAND": 0.9158027018535972,
+    "NT05_FVG_IMBALANCE": 0.9541313226515865
+  },
+  "families": {
+    "NT01_NEXT_SWING": "most recent confirmed opposing H4 swing beyond entry",
+    "NT02_PDH_PDL": "directionally appropriate previous-day high/low",
+    "NT03_LIQUIDITY": "nearest of the last 6 confirmed opposing H4 swings beyond entry (frozen V0.3 liquidity basis)",
+    "NT04_OPPOSING_SUPPLY_DEMAND": "nearest opposing S/D zone edge beyond entry (deterministic causal contract -> RUN)",
+    "NT05_FVG_IMBALANCE": "nearest opposing H4 FVG midpoint beyond entry (deterministic causal contract -> RUN)"
+  },
+  "nearest_family_share_d01": {
+    "NT01_NEXT_SWING": 288,
+    "NT02_PDH_PDL": 103,
+    "NT03_LIQUIDITY": 447,
+    "NT04_OPPOSING_SUPPLY_DEMAND": 608,
+    "NT05_FVG_IMBALANCE": 1734
+  },
+  "nt04_nt05_status": "RUN (repository contracts deterministic and causal)",
+  "target_existence_rule": "TARGET_CREATED_TIME <= ENTRY_TIME (asserted per target during the build)"
+}

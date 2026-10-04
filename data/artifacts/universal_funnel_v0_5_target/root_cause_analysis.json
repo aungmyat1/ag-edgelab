@@ -1,0 +1,127 @@
+{
+  "SL_TARGET_INTERACTION_EVIDENCE": {
+    "decision_rule": "YES iff Q1/Q4 nearest-median ratio >= 2.0 AND pooled within-symbol rank spearman(risk, raw target distance) < 0.5 (gradient not explained by genuine raw co-scaling)",
+    "interaction": "YES",
+    "q1_over_q4_ratio_mechanically_coupled": 2.8114285714303002,
+    "risk_vs_target_distance_rank_spearman": 0.0864432531972668
+  },
+  "TARGET_CONTINUATION_WEAKNESS_EVIDENCE": {
+    "levels_with_continuation_failure": [],
+    "nearest_objective_commonly_unreached": false
+  },
+  "TARGET_MODEL_MISMATCH_EVIDENCE": {
+    "fit_2r_pct_beyond": 0.9770440251572327,
+    "leg1_objectives_frequently_exist": true,
+    "leg2_fixed_frequently_beyond": true,
+    "leg3_natural_objective_reachable": true,
+    "thresholds": {
+      "family_insufficient_pct": 0.5,
+      "mismatch_beyond_pct": 0.6,
+      "natural_reachable_low": 0.4
+    }
+  },
+  "mapping": {
+    "INSUFFICIENT_EVIDENCE": "INSUFFICIENT_EVIDENCE",
+    "NONE_DETECTED": "KEEP_FIXED_TARGET_RESEARCH",
+    "TARGET_CONTINUATION_WEAKNESS": "KEEP_FIXED_TARGET_RESEARCH",
+    "TARGET_FAMILY_INSUFFICIENT": "INSUFFICIENT_EVIDENCE",
+    "TARGET_MODEL_AND_CONTINUATION_WEAKNESS": "PREREGISTER_HYBRID_TARGET_POLICY",
+    "TARGET_MODEL_MISMATCH": "PREREGISTER_NATURAL_TARGET_POLICY"
+  },
+  "next_recommended_research": "PREREGISTER_NATURAL_TARGET_POLICY",
+  "no_parameter_search": true,
+  "no_sl_changed": true,
+  "no_tp_changed": true,
+  "pooled": {
+    "continuation_evidence": {
+      "level_detail": {
+        "2R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.34375,
+            "SUPPORT_pct": 0.02012578616352201,
+            "level": "2R",
+            "natural_ge_level_n": 64,
+            "reach_when_not_supported_pct": 0.3026315789473684,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": true,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "3R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.21052631578947367,
+            "SUPPORT_pct": 0.005974842767295598,
+            "level": "3R",
+            "natural_ge_level_n": 19,
+            "reach_when_not_supported_pct": 0.20025308446694084,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "4R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.0,
+            "SUPPORT_pct": 0.0012578616352201257,
+            "level": "4R",
+            "natural_ge_level_n": 4,
+            "reach_when_not_supported_pct": 0.13790931989924432,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "5R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.0,
+            "SUPPORT_pct": 0.0006289308176100629,
+            "level": "5R",
+            "natural_ge_level_n": 2,
+            "reach_when_not_supported_pct": 0.09534298300818124,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        }
+      },
+      "levels_with_continuation_failure": [],
+      "nearest_objective_commonly_unreached": false
+    },
+    "diagnosis": "TARGET_MODEL_MISMATCH",
+    "mismatch_evidence": {
+      "fit_2r_pct_beyond": 0.9770440251572327,
+      "leg1_objectives_frequently_exist": true,
+      "leg2_fixed_frequently_beyond": true,
+      "leg3_natural_objective_reachable": true,
+      "thresholds": {
+        "family_insufficient_pct": 0.5,
+        "mismatch_beyond_pct": 0.6,
+        "natural_reachable_low": 0.4
+      }
+    },
+    "n": 3183,
+    "nearest_available_pct": 0.9990574929311969,
+    "nearest_p50_r": 0.22587202085408167,
+    "nearest_p50_r_role": "corroborating context only (never decisive)",
+    "nearest_reached_before_sl_pct": 0.7644654088050314,
+    "reach_2r": 0.3031731071316368
+  },
+  "pooled_entry_n": 3183,
+  "primary": "TARGET_MODEL_MISMATCH",
+  "secondary": [
+    "SL_TARGET_GEOMETRY_INTERACTION"
+  ],
+  "verdicts_2r_3r_5r": {
+    "2R": "TARGET_GEOMETRY_MISMATCH",
+    "3R": "TARGET_GEOMETRY_MISMATCH",
+    "5R": "TARGET_GEOMETRY_MISMATCH"
+  }
+}

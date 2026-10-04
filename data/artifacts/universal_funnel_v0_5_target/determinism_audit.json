@@ -1,0 +1,6 @@
+{
+  "byte_identical": true,
+  "run_1_sha256": "fe50b0d3ebacffb012064b0e4abe70d3db98050774e113a294c1b69914cbd152",
+  "run_2_sha256": "fe50b0d3ebacffb012064b0e4abe70d3db98050774e113a294c1b69914cbd152",
+  "scope": "entry ledgers, target selections, geometry, metrics, reports (two full independent computations)"
+}

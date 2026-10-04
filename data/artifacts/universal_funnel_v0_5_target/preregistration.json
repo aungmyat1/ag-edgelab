@@ -1,0 +1,96 @@
+{
+  "amendments": [
+    {
+      "authority": "owner directive, 2026-10-04",
+      "changes": [
+        "TARGET_FIT_TOLERANCE_PCT=5.0 ratio rule replaces the 0.1.0 absolute 0.25R tolerance; invalid/unavailable natural targets classify as NULL with reason INVALID_OR_UNAVAILABLE_NATURAL_TARGET",
+        "per-family target records persisted per entry (never collapsed)",
+        "eligibility-gated NEAREST_CAUSAL_OBJECTIVE + objective ladder + reach sequence (FIRST/SECOND/EXTENDED, MAX_CAUSAL_OBJECTIVE)",
+        "raw price/pip distances persisted alongside R metrics (pip authority fail-closed: XAUUSD pips = NULL)",
+        "Pearson+Spearman coupling diagnostics; RISK vs TARGET_R labelled MECHANICALLY_COUPLED_DIAGNOSTIC (denominator coupling)",
+        "risk quartiles are within-symbol distribution-based (no invented pip thresholds) with full per-quartile capability tables",
+        "root-cause evidence refinement: TARGET_MODEL_MISMATCH requires existence + materially-beyond + reachability legs, never merely a low natural median; SL interaction requires raw-distance AND stratified evidence"
+      ],
+      "id": "A-J_GOVERNANCE_HARDENING",
+      "note": "the superseded 0.1.0 run's artifacts were discarded and the entire evaluation recomputed under this amendment"
+    }
+  ],
+  "collision_rule": "stop counted FIRST (frozen V0.3 fail-closed rule)",
+  "experiment_hash": "c6c1c076ab85e3f1a37df0d1e4001cc31a2de1d7a6afebd389c17a39b563a4f7",
+  "experiment_id": "TARGET_MODEL_DIAGNOSTICS_V1",
+  "forbidden": [
+    "TP selection (e.g. pick 2R/2.5R because it wins)",
+    "TP parameter search",
+    "per-symbol/direction/session TP",
+    "SL testing",
+    "realized economics"
+  ],
+  "frozen_upstream": [
+    "D01",
+    "T1",
+    "T2",
+    "market structure",
+    "premium/discount",
+    "H1 internal flow",
+    "location",
+    "sweep/range/trend",
+    "confirmation",
+    "entry geometry",
+    "SL geometry",
+    "session definitions",
+    "dataset lineage"
+  ],
+  "natural_families": {
+    "NT01_NEXT_SWING": "most recent confirmed opposing H4 swing beyond entry",
+    "NT02_PDH_PDL": "directionally appropriate previous-day high/low",
+    "NT03_LIQUIDITY": "nearest of the last 6 confirmed opposing H4 swings beyond entry (frozen V0.3 liquidity basis)",
+    "NT04_OPPOSING_SUPPLY_DEMAND": "nearest opposing S/D zone edge beyond entry (deterministic causal contract -> RUN)",
+    "NT05_FVG_IMBALANCE": "nearest opposing H4 FVG midpoint beyond entry (deterministic causal contract -> RUN)"
+  },
+  "nearest_objective_eligibility": [
+    "target existed at entry (TARGET_CREATED_TIME <= ENTRY_TIME)",
+    "target is in the intended trade direction",
+    "target is beyond entry (positive distance)",
+    "target family is contract-complete",
+    "target not invalidated at entry",
+    "then: smallest positive absolute price distance from entry (== min positive TARGET_R under the frozen SL)"
+  ],
+  "nearest_objective_rule": "per entry, the PRIMARY natural objective is the NEAREST available family target (minimum TARGET_R across NT01..NT05 valid at entry) \u2014 the first causal obstacle; preregistered, never searched",
+  "objective_ladder": "full ladder preserved per entry (FIRST / SECONDARY / EXTENDED / MAX objectives kept distinct); price is never assumed to stop at the nearest objective",
+  "parent_sha": "09ddc4d0f90eb1bf4ffbe00780e959d947177b6a",
+  "parent_tree": "ffa60fd6157c1af78e18f1b0f21cbd147abc4271",
+  "primary_populations": [
+    "D01 confirmed entries",
+    "T1 confirmed entries"
+  ],
+  "question": "is the frozen fixed-R target model mismatched with the causal natural market objective?",
+  "registered_before_results": true,
+  "registry_sha256": "11376c432cf3dae757147dec4ea09456125c319a9b7d08b430e4b65a39e3a147",
+  "selection_reason": "NEAREST_VALID_CAUSAL_OBJECTIVE",
+  "t2_role": "diagnostic control only, never a candidate target policy",
+  "target_existence_rule": "TARGET_CREATED_TIME <= ENTRY_TIME enforced per target",
+  "thresholds": {
+    "asymmetry_median_r": 0.5,
+    "asymmetry_reach_pp": 5.0,
+    "deterioration_pp": 5.0,
+    "family_insufficient_pct": 0.5,
+    "median_mismatch_r_corroborating_only": 3.0,
+    "min_corr_n": 30,
+    "min_stratum_n": 100,
+    "mismatch_beyond_pct": 0.6,
+    "natural_reachable_low": 0.4,
+    "pip_size_authority": {
+      "EURUSD": 0.0001,
+      "GBPUSD": 0.0001,
+      "USDJPY": 0.01
+    },
+    "raw_coscaling_rho": 0.5,
+    "realize_low": 0.25,
+    "realize_min_n": 20,
+    "sl_interaction_ratio": 2.0,
+    "support_low": 0.25,
+    "tail_shift_r": 0.5,
+    "target_fit_tolerance_pct": 5.0
+  },
+  "version": "0.2.0-research"
+}

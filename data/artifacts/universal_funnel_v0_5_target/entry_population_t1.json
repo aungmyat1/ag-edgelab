@@ -1,0 +1,30 @@
+{
+  "by_direction": {
+    "BEAR": 212,
+    "BULL": 167
+  },
+  "by_session": {
+    "ASIAN": 152,
+    "LONDON": 65,
+    "LONDON_NEWYORK_OVERLAP": 49,
+    "NEW_YORK": 62,
+    "OFF_SESSION": 51
+  },
+  "by_symbol": {
+    "EURUSD": 138,
+    "GBPUSD": 67,
+    "USDJPY": 91,
+    "XAUUSD": 83
+  },
+  "entry_n": 379,
+  "per_entry_ledger_note": "T1 rows are the is_t1=true subset of the per_entry_ledger in entry_population_d01.json (not duplicated)",
+  "risk_distance_quantiles": {
+    "MAX": 12.129999999999882,
+    "P10": 0.0010480000000000268,
+    "P25": 0.0014699999999999713,
+    "P50": 0.003869999999999818,
+    "P75": 0.41900000000000404,
+    "P90": 2.650000000000091,
+    "n": 379
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "BEAR": {
+    "continuation_evidence": {
+      "level_detail": {
+        "2R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.25,
+            "SUPPORT_pct": 0.009650180940892641,
+            "level": "2R",
+            "natural_ge_level_n": 16,
+            "reach_when_not_supported_pct": 0.29598051157125455,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "3R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.8,
+            "SUPPORT_pct": 0.0030156815440289505,
+            "level": "3R",
+            "natural_ge_level_n": 5,
+            "reach_when_not_supported_pct": 0.19782214156079855,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "4R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": null,
+            "SUPPORT_pct": 0.0,
+            "level": "4R",
+            "natural_ge_level_n": 0,
+            "reach_when_not_supported_pct": 0.1344993968636912,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "5R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": null,
+            "SUPPORT_pct": 0.0,
+            "level": "5R",
+            "natural_ge_level_n": 0,
+            "reach_when_not_supported_pct": 0.08986731001206273,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        }
+      },
+      "levels_with_continuation_failure": [],
+      "nearest_objective_commonly_unreached": false
+    },
+    "diagnosis": "TARGET_MODEL_MISMATCH",
+    "mismatch_evidence": {
+      "fit_2r_pct_beyond": 0.9873341375150784,
+      "leg1_objectives_frequently_exist": true,
+      "leg2_fixed_frequently_beyond": true,
+      "leg3_natural_objective_reachable": true,
+      "thresholds": {
+        "family_insufficient_pct": 0.5,
+        "mismatch_beyond_pct": 0.6,
+        "natural_reachable_low": 0.4
+      }
+    },
+    "n": 1658,
+    "nearest_available_pct": 1.0,
+    "nearest_p50_r": 0.2276544895869494,
+    "nearest_p50_r_role": "corroborating context only (never decisive)",
+    "nearest_reached_before_sl_pct": 0.7629674306393245,
+    "reach_2r": 0.2955367913148372
+  },
+  "BULL": {
+    "continuation_evidence": {
+      "level_detail": {
+        "2R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.375,
+            "SUPPORT_pct": 0.03153745072273324,
+            "level": "2R",
+            "natural_ge_level_n": 48,
+            "reach_when_not_supported_pct": 0.3100407055630936,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": true,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "3R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.0,
+            "SUPPORT_pct": 0.009198423127463863,
+            "level": "3R",
+            "natural_ge_level_n": 14,
+            "reach_when_not_supported_pct": 0.20291777188328913,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "4R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.0,
+            "SUPPORT_pct": 0.002628120893561104,
+            "level": "4R",
+            "natural_ge_level_n": 4,
+            "reach_when_not_supported_pct": 0.14163372859025034,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        },
+        "5R": {
+          "diagnostic": {
+            "REALIZE_when_supported_pct": 0.0,
+            "SUPPORT_pct": 0.001314060446780552,
+            "level": "5R",
+            "natural_ge_level_n": 2,
+            "reach_when_not_supported_pct": 0.1013157894736842,
+            "realize_low_threshold": 0.25,
+            "realize_measurable": false,
+            "realize_min_n": 20,
+            "support_low_threshold": 0.25
+          },
+          "verdict": "TARGET_GEOMETRY_MISMATCH"
+        }
+      },
+      "levels_with_continuation_failure": [],
+      "nearest_objective_commonly_unreached": false
+    },
+    "diagnosis": "TARGET_MODEL_MISMATCH",
+    "mismatch_evidence": {
+      "fit_2r_pct_beyond": 0.9658344283837057,
+      "leg1_objectives_frequently_exist": true,
+      "leg2_fixed_frequently_beyond": true,
+      "leg3_natural_objective_reachable": true,
+      "thresholds": {
+        "family_insufficient_pct": 0.5,
+        "mismatch_beyond_pct": 0.6,
+        "natural_reachable_low": 0.4
+      }
+    },
+    "n": 1525,
+    "nearest_available_pct": 0.9980327868852459,
+    "nearest_p50_r": 0.2234848484849689,
+    "nearest_p50_r_role": "corroborating context only (never decisive)",
+    "nearest_reached_before_sl_pct": 0.7660972404730617,
+    "reach_2r": 0.3114754098360656
+  },
+  "asymmetry": {
+    "TARGET_GEOMETRY_DIRECTION_DEPENDENT": false,
+    "median_gap_r": 0.004169641101980481,
+    "no_direction_specific_tp_created": true,
+    "reach_2r_gap_pp": 1.593861852122841,
+    "thresholds": {
+      "median_r": 0.5,
+      "reach_pp": 5.0
+    }
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "EXTENDED_OBJECTIVE_REACHED_PCT": 0.27864496844902026,
+  "FIRST_OBJECTIVE_REACHED_PCT": 0.7644654088050314,
+  "MAX_CAUSAL_OBJECTIVE_R_quantiles": {
+    "MAX": 24.22727272727321,
+    "P10": 0.7981402514511893,
+    "P25": 1.4696188418925393,
+    "P50": 2.780182072829364,
+    "P75": 4.99659090909106,
+    "P90": 7.697674418604567,
+    "n": 3180
+  },
+  "MULTI_OBJECTIVE_ENTRY_PCT": 0.9842915488532831,
+  "NEAREST_CAUSAL_OBJECTIVE_AVAILABLE_PCT": 0.9990574929311969,
+  "P_SECOND_REACHED_GIVEN_FIRST_REACHED": 0.7609958506224066,
+  "RISK_DISTANCE_by_symbol": {
+    "EURUSD": {
+      "P25": 0.0010699999999999044,
+      "P50": 0.0015300000000000313,
+      "P75": 0.0022699999999999942
+    },
+    "GBPUSD": {
+      "P25": 0.0014000000000000679,
+      "P50": 0.0019900000000001583,
+      "P75": 0.003009999999999957
+    },
+    "USDJPY": {
+      "P25": 0.14799999999999613,
+      "P50": 0.19700000000000273,
+      "P75": 0.29299999999999216
+    },
+    "XAUUSD": {
+      "P25": 1.8400000000001455,
+      "P50": 2.449999999999818,
+      "P75": 3.5024999999999977
+    }
+  },
+  "RISK_QUARTILE_TARGET_ANALYSIS": {
+    "Q1": {
+      "entry_n": 798,
+      "fixed_reach": {
+        "1R": 0.5363408521303258,
+        "2R": 0.38596491228070173,
+        "3R": 0.3082706766917293,
+        "4R": 0.23433583959899748,
+        "5R": 0.18671679197994986
+      },
+      "median_mae_r": 1.1456434108528064,
+      "median_mfe_r": 1.169117647058654,
+      "median_natural_target_r": 0.3904761904764241,
+      "median_target_distance_price": 0.002555000000000085
+    },
+    "Q2": {
+      "entry_n": 795,
+      "fixed_reach": {
+        "1R": 0.5106918238993711,
+        "2R": 0.379874213836478,
+        "3R": 0.25534591194968553,
+        "4R": 0.19748427672955976,
+        "5R": 0.12578616352201258
+      },
+      "median_mae_r": 1.0847457627118713,
+      "median_mfe_r": 1.132867132867399,
+      "median_natural_target_r": 0.2834394904458653,
+      "median_target_distance_price": 0.002769999999999939
+    },
+    "Q3": {
+      "entry_n": 795,
+      "fixed_reach": {
+        "1R": 0.5081761006289308,
+        "2R": 0.31069182389937106,
+        "3R": 0.1811320754716981,
+        "4R": 0.09559748427672957,
+        "5R": 0.05660377358490566
+      },
+      "median_mae_r": 1.0833333333333444,
+      "median_mfe_r": 1.0585937499999474,
+      "median_natural_target_r": 0.1931034482758372,
+      "median_target_distance_price": 0.00275000000000003
+    },
+    "Q4": {
+      "entry_n": 792,
+      "fixed_reach": {
+        "1R": 0.4166666666666667,
+        "2R": 0.13636363636363635,
+        "3R": 0.05555555555555555,
+        "4R": 0.022727272727272728,
+        "5R": 0.011363636363636364
+      },
+      "median_mae_r": 0.9715596082872819,
+      "median_mfe_r": 0.7678986941036772,
+      "median_natural_target_r": 0.1388888888888866,
+      "median_target_distance_price": 0.003454999999999986
+    }
+  },
+  "RISK_VS_MAE_DISTANCE": 0.515856409054588,
+  "RISK_VS_MFE_DISTANCE": 0.19575849755720118,
+  "RISK_VS_TARGET_DISTANCE": {
+    "per_symbol": {
+      "EURUSD": {
+        "n": 748,
+        "pearson": 0.024315258678561984,
+        "spearman": 0.06505373930800663
+      },
+      "GBPUSD": {
+        "n": 872,
+        "pearson": 0.11102552934853237,
+        "spearman": 0.022940729361314235
+      },
+      "USDJPY": {
+        "n": 733,
+        "pearson": 0.16843363457495167,
+        "spearman": 0.10492603999089833
+      },
+      "XAUUSD": {
+        "n": 827,
+        "pearson": 0.18330382419404356,
+        "spearman": 0.1563656938728412
+      }
+    },
+    "pooled_within_symbol_rank_spearman": 0.0864432531972668
+  },
+  "RISK_VS_TARGET_R": {
+    "label": "MECHANICALLY_COUPLED_DIAGNOSTIC",
+    "per_symbol": {
+      "EURUSD": {
+        "n": 748,
+        "pearson": -0.2677084748525134,
+        "spearman": -0.3164158450558761
+      },
+      "GBPUSD": {
+        "n": 872,
+        "pearson": -0.32707871344622846,
+        "spearman": -0.4028821241506572
+      },
+      "USDJPY": {
+        "n": 733,
+        "pearson": -0.18008464813144842,
+        "spearman": -0.24632218792771443
+      },
+      "XAUUSD": {
+        "n": 827,
+        "pearson": -0.20148507048804495,
+        "spearman": -0.2293426701065082
+      }
+    },
+    "pooled_within_symbol_rank_spearman": -0.30132478123737494
+  },
+  "SECOND_OBJECTIVE_REACHED_PCT": 0.5853814235556974,
+  "TARGET_FIT_TOLERANCE_PCT": 5.0,
+  "base_parent_reproduced": true,
+  "causality": "PASS",
+  "continuation": {
+    "D01": {
+      "P1": 0.49261702796104306,
+      "P2_GIVEN_1": 0.6154336734693877,
+      "P3_GIVEN_2": 0.6601036269430052,
+      "P4_GIVEN_3": 0.6875981161695447,
+      "P5_GIVEN_4": 0.6917808219178082
+    },
+    "T1": {
+      "P1": 0.5329815303430079,
+      "P2_GIVEN_1": 0.6584158415841584,
+      "P3_GIVEN_2": 0.5864661654135338,
+      "P4_GIVEN_3": 0.6282051282051282,
+      "P5_GIVEN_4": 0.5918367346938775
+    }
+  },
+  "d01_vs_t1_distribution": {
+    "D01": {
+      "MAX": 5.0578512396696205,
+      "P10": 0.03164556962017667,
+      "P25": 0.08604341982237365,
+      "P50": 0.22587202085408167,
+      "P75": 0.520258285021969,
+      "P90": 0.9820289855072809,
+      "n": 3180
+    },
+    "T1": {
+      "MAX": 3.4745762711865553,
+      "P10": 0.023822192661627037,
+      "P25": 0.07116788321165536,
+      "P50": 0.21082949308760807,
+      "P75": 0.4679144385026979,
+      "P90": 0.8563028677531609,
+      "n": 379
+    },
+    "answer": "T1 shifted the distribution only modestly; the upper tail (P75/P90) did not improve by the preregistered threshold",
+    "deltas_t1_minus_d01": {
+      "P10": -0.007823376958549635,
+      "P25": -0.01487553661071829,
+      "P50": -0.015042527766473607,
+      "P75": -0.0523438465192711,
+      "P90": -0.12572611775412001
+    },
+    "tail_shift_threshold_r": 0.5,
+    "upper_tail_meaningfully_improved": false
+  },
+  "dataset": {
+    "authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+    "hashes_verified": true,
+    "role": "DEVELOPMENT"
+  },
+  "determinism": "PASS",
+  "direction_diagnosis": {
+    "BEAR": "TARGET_MODEL_MISMATCH",
+    "BULL": "TARGET_MODEL_MISMATCH",
+    "asymmetry": {
+      "TARGET_GEOMETRY_DIRECTION_DEPENDENT": false,
+      "median_gap_r": 0.004169641101980481,
+      "no_direction_specific_tp_created": true,
+      "reach_2r_gap_pp": 1.593861852122841,
+      "thresholds": {
+        "median_r": 0.5,
+        "reach_pp": 5.0
+      }
+    }
+  },
+  "earliest_material_deterioration": {
+    "D01": null,
+    "T1": "P3_GIVEN_2"
+  },
+  "entry_n": {
+    "D01": 3183,
+    "T1": 379
+  },
+  "experiment_id": "TARGET_MODEL_DIAGNOSTICS_V1",
+  "final_report_sha256": "494ff0aace3f823356515a993fa784b95769d5df45ea1e94cf89ab85c97b8711",
+  "fixed_fit": {
+    "2R": {
+      "pct_below_natural": 0.018553459119496855,
+      "pct_beyond_natural": 0.9770440251572327,
+      "pct_near_natural": 0.00440251572327044
+    },
+    "3R": {
+      "pct_below_natural": 0.005660377358490566,
+      "pct_beyond_natural": 0.9930817610062893,
+      "pct_near_natural": 0.0012578616352201257
+    },
+    "4R": {
+      "pct_below_natural": 0.0012578616352201257,
+      "pct_beyond_natural": 0.9987421383647799,
+      "pct_near_natural": 0.0
+    },
+    "5R": {
+      "pct_below_natural": 0.0,
+      "pct_beyond_natural": 0.9993710691823899,
+      "pct_near_natural": 0.0006289308176100629
+    }
+  },
+  "fixed_reach": {
+    "D01": {
+      "1R": 0.49261702796104306,
+      "2R": 0.3031731071316368,
+      "3R": 0.20012566760917375,
+      "4R": 0.13760603204524033,
+      "5R": 0.09519321394910461
+    },
+    "T1": {
+      "1R": 0.5329815303430079,
+      "2R": 0.35092348284960423,
+      "3R": 0.20580474934036938,
+      "4R": 0.12928759894459102,
+      "5R": 0.07651715039577836
+    }
+  },
+  "guards": {
+    "execution_capability_added": false,
+    "holdout_touched": false,
+    "new_strategy_created": false,
+    "oos_opened": false,
+    "parameter_search": false,
+    "realized_economics_run": false,
+    "sl_changed": false,
+    "strategy_rules_changed": false,
+    "tp_changed": false
+  },
+  "mission": "UNIVERSAL FUNNEL V0.5 \u2014 TARGET MODEL DIAGNOSTICS",
+  "natural_family_available_pct": {
+    "NT01_NEXT_SWING": 0.9990574929311969,
+    "NT02_PDH_PDL": 0.8212378259503613,
+    "NT03_LIQUIDITY": 0.8846999685830977,
+    "NT04_OPPOSING_SUPPLY_DEMAND": 0.9158027018535972,
+    "NT05_FVG_IMBALANCE": 0.9541313226515865
+  },
+  "natural_target_ge_pct": {
+    "2R": 0.02012578616352201,
+    "3R": 0.005974842767295598,
+    "4R": 0.0012578616352201257,
+    "5R": 0.0006289308176100629
+  },
+  "natural_target_quantiles": {
+    "D01": {
+      "MAX": 5.0578512396696205,
+      "P10": 0.03164556962017667,
+      "P25": 0.08604341982237365,
+      "P50": 0.22587202085408167,
+      "P75": 0.520258285021969,
+      "P90": 0.9820289855072809,
+      "n": 3180
+    },
+    "T1": {
+      "MAX": 3.4745762711865553,
+      "P10": 0.023822192661627037,
+      "P25": 0.07116788321165536,
+      "P50": 0.21082949308760807,
+      "P75": 0.4679144385026979,
+      "P90": 0.8563028677531609,
+      "n": 379
+    }
+  },
+  "parent_sha": "09ddc4d0f90eb1bf4ffbe00780e959d947177b6a",
+  "reach_5r_when_natural_lt_5r": 0.09534298300818124,
+  "realize_when_supported": {
+    "2R": 0.34375,
+    "3R": 0.21052631578947367,
+    "4R": 0.0,
+    "5R": 0.0
+  },
+  "root_cause": {
+    "SL_TARGET_INTERACTION_EVIDENCE": {
+      "decision_rule": "YES iff Q1/Q4 nearest-median ratio >= 2.0 AND pooled within-symbol rank spearman(risk, raw target distance) < 0.5 (gradient not explained by genuine raw co-scaling)",
+      "interaction": "YES",
+      "q1_over_q4_ratio_mechanically_coupled": 2.8114285714303002,
+      "risk_vs_target_distance_rank_spearman": 0.0864432531972668
+    },
+    "TARGET_CONTINUATION_WEAKNESS_EVIDENCE": {
+      "levels_with_continuation_failure": [],
+      "nearest_objective_commonly_unreached": false
+    },
+    "TARGET_MODEL_MISMATCH_EVIDENCE": {
+      "fit_2r_pct_beyond": 0.9770440251572327,
+      "leg1_objectives_frequently_exist": true,
+      "leg2_fixed_frequently_beyond": true,
+      "leg3_natural_objective_reachable": true,
+      "thresholds": {
+        "family_insufficient_pct": 0.5,
+        "mismatch_beyond_pct": 0.6,
+        "natural_reachable_low": 0.4
+      }
+    },
+    "mapping": {
+      "INSUFFICIENT_EVIDENCE": "INSUFFICIENT_EVIDENCE",
+      "NONE_DETECTED": "KEEP_FIXED_TARGET_RESEARCH",
+      "TARGET_CONTINUATION_WEAKNESS": "KEEP_FIXED_TARGET_RESEARCH",
+      "TARGET_FAMILY_INSUFFICIENT": "INSUFFICIENT_EVIDENCE",
+      "TARGET_MODEL_AND_CONTINUATION_WEAKNESS": "PREREGISTER_HYBRID_TARGET_POLICY",
+      "TARGET_MODEL_MISMATCH": "PREREGISTER_NATURAL_TARGET_POLICY"
+    },
+    "next_recommended_research": "PREREGISTER_NATURAL_TARGET_POLICY",
+    "no_parameter_search": true,
+    "no_sl_changed": true,
+    "no_tp_changed": true,
+    "pooled_entry_n": 3183,
+    "primary": "TARGET_MODEL_MISMATCH",
+    "secondary": [
+      "SL_TARGET_GEOMETRY_INTERACTION"
+    ]
+  },
+  "sl_target_interaction": "YES",
+  "status": "TARGET_DIAGNOSTICS_COMPLETE",
+  "symbol_diagnosis": {
+    "EURUSD": "TARGET_MODEL_MISMATCH",
+    "GBPUSD": "TARGET_MODEL_MISMATCH",
+    "USDJPY": "TARGET_MODEL_MISMATCH",
+    "XAUUSD": "TARGET_MODEL_MISMATCH"
+  },
+  "target_available_pct": 0.9990574929311969,
+  "version": "0.2.0-research"
+}
