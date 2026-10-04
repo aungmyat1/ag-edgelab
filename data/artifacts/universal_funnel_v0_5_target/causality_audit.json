@@ -1,36 +1,32 @@
 {
   "all_passed": true,
   "invariants": [
-    "natural target selected at entry unchanged when every bar strictly after entry time is mutated (x1.1)",
+    "natural target selected at entry unchanged when every bar strictly after entry time is mutated (x1.1) across M15, H4 and D1",
     "natural target selection identical on frames truncated at entry time",
-    "no future swing / liquidity / PDH-PDL / supply-demand / FVG can enter selection (closed-bar cuts)",
+    "no future swing / zone / PDH-PDL / session level can enter selection (closed-bar and completed-window cuts)",
+    "NT05 never selected (TARGET_FAMILY_CONTRACT_INCOMPLETE, fail-closed)",
     "stop/target collision deterministic: stop counted FIRST (frozen rule)"
   ],
   "samples": [
     {
       "entry_time": "2017-03-03T16:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1.04949,
           "2017-03-03T04:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1.04949,
           "2017-03-03T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1.05375,
-          "2017-02-23T20:00:00+00:00"
-        ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": null,
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1.05206,
           "2017-01-11T20:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1.0542449999999999,
-          "2017-01-12T00:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "EURUSD",
       "truncation_invariant": true
@@ -38,27 +34,22 @@
     {
       "entry_time": "2017-04-05T09:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1.06356,
           "2017-04-04T20:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1.06356,
           "2017-04-05T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1.06584,
-          "2017-04-03T08:00:00+00:00"
-        ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": null,
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1.06639,
           "2017-02-08T16:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1.06443,
-          "2017-02-16T20:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "EURUSD",
       "truncation_invariant": true
@@ -66,27 +57,22 @@
     {
       "entry_time": "2017-05-29T03:00:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1.11614,
           "2017-05-22T20:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1.11605,
           "2017-05-27T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1.11614,
-          "2017-05-22T20:00:00+00:00"
-        ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": null,
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1.09775,
           "2017-05-05T16:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1.11591,
-          "2017-05-19T16:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "EURUSD",
       "truncation_invariant": true
@@ -94,27 +80,22 @@
     {
       "entry_time": "2017-07-07T02:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1.13122,
           "2017-07-05T20:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1.13298,
           "2017-07-07T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1.13921,
-          "2017-06-30T20:00:00+00:00"
-        ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": null,
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1.13853,
           "2017-06-29T04:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1.13971,
-          "2017-07-06T20:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "EURUSD",
       "truncation_invariant": true
@@ -122,21 +103,19 @@
     {
       "entry_time": "2017-03-03T09:45:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1.20163,
           "2017-01-17T08:00:00+00:00"
         ],
-        "NT02_PDH_PDL": null,
-        "NT03_LIQUIDITY": null,
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": null,
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": null,
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1.22137,
           "2017-01-12T08:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1.22312,
-          "2017-01-12T12:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "GBPUSD",
       "truncation_invariant": true
@@ -144,27 +123,22 @@
     {
       "entry_time": "2017-04-06T10:45:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1.24226,
           "2017-04-05T16:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1.24226,
           "2017-04-06T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1.24329,
-          "2017-03-31T20:00:00+00:00"
-        ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": null,
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1.24483,
           "2017-04-05T12:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1.244785,
-          "2017-03-30T16:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "GBPUSD",
       "truncation_invariant": true
@@ -172,27 +146,25 @@
     {
       "entry_time": "2017-06-02T00:00:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1.29154,
           "2017-06-02T00:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1.29154,
           "2017-06-02T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1.2888,
-          "2017-05-31T00:00:00+00:00"
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": [
+          1.289,
+          "2017-06-02T00:00:00+00:00"
         ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1.2889,
           "2017-05-02T08:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1.2906849999999999,
-          "2017-05-02T00:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "GBPUSD",
       "truncation_invariant": true
@@ -200,27 +172,25 @@
     {
       "entry_time": "2017-07-05T18:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1.27937,
           "2017-06-28T16:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1.29113,
           "2017-07-05T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1.27937,
-          "2017-06-28T16:00:00+00:00"
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": [
+          1.29029,
+          "2017-07-05T16:00:00+00:00"
         ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1.29113,
           "2017-06-06T04:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1.29082,
-          "2017-05-15T12:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "GBPUSD",
       "truncation_invariant": true
@@ -228,27 +198,22 @@
     {
       "entry_time": "2017-03-06T18:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           114.747,
           "2017-03-06T08:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           114.747,
           "2017-03-04T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          114.589,
-          "2017-03-03T04:00:00+00:00"
-        ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": null,
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           114.076,
           "2017-01-26T20:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          114.21950000000001,
-          "2017-01-30T20:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "USDJPY",
       "truncation_invariant": true
@@ -256,21 +221,19 @@
     {
       "entry_time": "2017-05-03T14:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           112.865,
           "2017-03-21T20:00:00+00:00"
         ],
-        "NT02_PDH_PDL": null,
-        "NT03_LIQUIDITY": null,
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": null,
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": null,
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           112.483,
           "2017-02-02T12:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          112.588,
-          "2017-02-24T16:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "USDJPY",
       "truncation_invariant": true
@@ -278,27 +241,25 @@
     {
       "entry_time": "2017-06-15T05:15:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           110.341,
           "2017-06-14T20:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           110.341,
           "2017-06-15T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          110.268,
-          "2017-06-13T16:00:00+00:00"
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": [
+          109.686,
+          "2017-06-15T00:00:00+00:00"
         ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           110.048,
           "2017-04-24T16:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          110.00450000000001,
-          "2017-04-24T20:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "USDJPY",
       "truncation_invariant": true
@@ -306,27 +267,25 @@
     {
       "entry_time": "2017-07-25T02:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           110.62,
           "2017-07-24T20:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           110.62,
           "2017-07-25T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          110.62,
-          "2017-07-24T20:00:00+00:00"
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": [
+          111.062,
+          "2017-07-25T00:00:00+00:00"
         ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           110.746,
           "2017-04-05T12:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          111.0215,
-          "2017-06-16T08:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "USDJPY",
       "truncation_invariant": true
@@ -334,27 +293,25 @@
     {
       "entry_time": "2017-03-15T09:45:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1197.06,
           "2017-03-15T08:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1197.06,
           "2017-03-15T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1200.52,
-          "2017-03-14T16:00:00+00:00"
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": [
+          1198.9,
+          "2017-03-15T08:00:00+00:00"
         ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1191.87,
           "2017-01-30T16:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1200.795,
-          "2017-01-16T08:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "XAUUSD",
       "truncation_invariant": true
@@ -362,27 +319,25 @@
     {
       "entry_time": "2017-04-27T00:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1261.24,
           "2017-04-26T12:00:00+00:00"
         ],
-        "NT02_PDH_PDL": [
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": [
           1259.56,
           "2017-04-27T00:00:00+00:00"
         ],
-        "NT03_LIQUIDITY": [
-          1266.54,
-          "2017-04-25T00:00:00+00:00"
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": [
+          1267.09,
+          "2017-04-27T00:00:00+00:00"
         ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1256.53,
           "2017-02-27T16:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1263.35,
-          "2017-04-11T20:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "XAUUSD",
       "truncation_invariant": true
@@ -390,24 +345,22 @@
     {
       "entry_time": "2017-05-22T11:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1264.91,
           "2017-05-18T20:00:00+00:00"
         ],
-        "NT02_PDH_PDL": null,
-        "NT03_LIQUIDITY": [
-          1263.11,
-          "2017-05-18T08:00:00+00:00"
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": null,
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": [
+          1257.2,
+          "2017-05-22T08:00:00+00:00"
         ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1257.02,
           "2017-04-04T16:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1256.895,
-          "2017-04-04T20:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "XAUUSD",
       "truncation_invariant": true
@@ -415,24 +368,22 @@
     {
       "entry_time": "2017-07-12T09:30:00+00:00",
       "future_mutation_invariant": true,
+      "nt05_absent": true,
       "selected": {
-        "NT01_NEXT_SWING": [
+        "NT01_NEXT_CONFIRMED_STRUCTURAL_SWING": [
           1228.42,
           "2017-07-10T04:00:00+00:00"
         ],
-        "NT02_PDH_PDL": null,
-        "NT03_LIQUIDITY": [
-          1227.3,
-          "2017-07-07T00:00:00+00:00"
+        "NT02_PREVIOUS_DAY_DIRECTIONAL_EXTREME": null,
+        "NT03_OPPOSITE_SESSION_LIQUIDITY": [
+          1220.45,
+          "2017-07-12T08:00:00+00:00"
         ],
-        "NT04_OPPOSING_SUPPLY_DEMAND": [
+        "NT04_NEXT_VALID_SUPPLY_DEMAND_ZONE": [
           1220.53,
           "2017-07-07T16:00:00+00:00"
         ],
-        "NT05_FVG_IMBALANCE": [
-          1219.79,
-          "2017-05-11T00:00:00+00:00"
-        ]
+        "NT05_NEXT_VALID_ORDER_BLOCK": null
       },
       "symbol": "XAUUSD",
       "truncation_invariant": true

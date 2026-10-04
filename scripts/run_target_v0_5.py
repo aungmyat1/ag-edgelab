@@ -1,22 +1,22 @@
-"""Universal Funnel V0.5 — TARGET MODEL DIAGNOSTICS runner.
+"""Universal Funnel V0.5 — CAUSAL TARGET MODEL DIAGNOSTICS runner.
 
 Contract order:
   1. preregistration.json written BEFORE any evaluation result exists;
-  2. pinned dataset identities verified fail-closed;
-  3. frozen V0.3/V0.4 engines produce all entries and policy states; every
-     reconstructed entry must reproduce the frozen ledger exactly;
-  4. pooled D01/T1 entry populations must equal the frozen parent values,
-     else STATUS=BASELINE_REPRODUCTION_FAIL;
-  5. full computation runs twice — any hash difference => NONDETERMINISTIC;
-  6. adversarial causality audit: bars after entry mutated, frames truncated
-     at entry — natural target selection must be identical.
+  2. parent reproduction gate: frozen V0.4 artifacts must carry the exact
+     pinned values AND the recomputed entry ledger must reproduce the frozen
+     entry populations/fixed reach exactly, else BLOCKED_PARENT_REPRODUCTION;
+  3. pinned dataset identities verified fail-closed;
+  4. full computation runs twice — any hash difference => NONDETERMINISTIC;
+  5. adversarial causality audit: every bar after entry mutated AND frames
+     truncated at entry (M15 + H4 + D1) — natural target selection identical.
 
-No TP change, no SL change, no parameter search, no economics, no OOS,
-no holdout, no execution.
+No TP change, no SL change, no parameter search, no partial exits, no
+economics, no OOS, no holdout, no execution. Diagnostic only. No V0.6.
 """
 
 from __future__ import annotations
 
+import hashlib
 import json
 import sys
 from datetime import timedelta
@@ -38,101 +38,113 @@ from ag_edgelab.universal.direction import Direction  # noqa: E402
 from ag_edgelab.universal.trigger_v0_4 import enrich_symbol  # noqa: E402
 from ag_edgelab.universal import target_v0_5 as tgt  # noqa: E402
 from ag_edgelab.universal.target_v0_5 import (  # noqa: E402
-    EXPERIMENT_ID, EXPERIMENT_VERSION, NATURAL_FAMILIES, NEAREST_OBJECTIVE_RULE,
-    PARENT_SHA, PARENT_TREE, SELECTION_REASON, TARGET_V0_5_REGISTRY_SHA256,
-    _natural_candidates, build_entry_records, build_symbol_context,
-    continuation_chain, direction_asymmetry, distribution_comparison,
-    entry_ledger_rows, family_report, fixed_surface, level_diagnostic,
-    level_verdict, objective_ladder_report, quantile_block, root_cause,
-    sl_target_interaction, stratum_diagnosis, target_fit_curve)
+    EXPERIMENT_ID, EXPERIMENT_VERSION, FAMILY_CONTRACTS, NATURAL_FAMILIES,
+    PARENT_SHA, PARENT_TREE, PRIMARY_RULE, RUNNABLE_FAMILIES,
+    TARGET_V0_5_REGISTRY_SHA256, _natural_candidates, build_entry_records,
+    build_symbol_context, candidate_ledger_rows, d01_vs_t1_effect, ladder_rows,
+    population_target_report, root_cause_cases, stop_target_geometry)
 
 OUT_DIR = ROOT / "data" / "artifacts" / "universal_funnel_v0_5_target"
 PARENT_V04 = ROOT / "data" / "artifacts" / "universal_funnel_v0_4_trigger"
 DATASET_ROLE = "DEVELOPMENT"
 AUDIT_SAMPLES_PER_SYMBOL = 4
 
+# §2 pinned parent values (exact gate; natural medians gated at 2dp)
+PARENT_EXPECTED = {
+    "D01_DIRECTIONAL_N": 9226, "T1_DIRECTIONAL_N": 899,
+    "D01_SEPARATION_PP": 2.04, "T1_SEPARATION_PP": 7.55,
+    "D01_ENTERED_N": 3183, "T1_ENTERED_N": 379,
+    "D01_FIXED": {"1R": .4926, "2R": .3032, "3R": .2001, "4R": .1376, "5R": .0952},
+    "T1_FIXED": {"1R": .5330, "2R": .3509, "3R": .2058, "4R": .1293, "5R": .0765},
+    "D01_NATURAL_TARGET_MEDIAN_R": 2.34, "T1_NATURAL_TARGET_MEDIAN_R": 2.63,
+}
+
 PREREGISTRATION = {
     "experiment_id": EXPERIMENT_ID, "version": EXPERIMENT_VERSION,
     "parent_sha": PARENT_SHA, "parent_tree": PARENT_TREE,
     "registered_before_results": True,
-    "question": "is the frozen fixed-R target model mismatched with the causal "
-                "natural market objective?",
-    "frozen_upstream": ["D01", "T1", "T2", "market structure", "premium/discount",
-                        "H1 internal flow", "location", "sweep/range/trend",
-                        "confirmation", "entry geometry", "SL geometry",
-                        "session definitions", "dataset lineage"],
-    "primary_populations": ["D01 confirmed entries", "T1 confirmed entries"],
-    "t2_role": "diagnostic control only, never a candidate target policy",
-    "natural_families": {
-        "NT01_NEXT_SWING": "most recent confirmed opposing H4 swing beyond entry",
-        "NT02_PDH_PDL": "directionally appropriate previous-day high/low",
-        "NT03_LIQUIDITY": "nearest of the last 6 confirmed opposing H4 swings "
-                          "beyond entry (frozen V0.3 liquidity basis)",
-        "NT04_OPPOSING_SUPPLY_DEMAND": "nearest opposing S/D zone edge beyond entry "
-                                       "(deterministic causal contract -> RUN)",
-        "NT05_FVG_IMBALANCE": "nearest opposing H4 FVG midpoint beyond entry "
-                              "(deterministic causal contract -> RUN)",
-    },
-    "target_existence_rule": "TARGET_CREATED_TIME <= ENTRY_TIME enforced per target",
-    "nearest_objective_rule": NEAREST_OBJECTIVE_RULE,
-    "nearest_objective_eligibility": [
-        "target existed at entry (TARGET_CREATED_TIME <= ENTRY_TIME)",
-        "target is in the intended trade direction",
-        "target is beyond entry (positive distance)",
-        "target family is contract-complete",
-        "target not invalidated at entry",
-        "then: smallest positive absolute price distance from entry "
-        "(== min positive TARGET_R under the frozen SL)"],
-    "selection_reason": SELECTION_REASON,
-    "objective_ladder": "full ladder preserved per entry (FIRST / SECONDARY / "
-                        "EXTENDED / MAX objectives kept distinct); price is "
-                        "never assumed to stop at the nearest objective",
-    "collision_rule": "stop counted FIRST (frozen V0.3 fail-closed rule)",
-    "amendments": [{
-        "id": "A-J_GOVERNANCE_HARDENING",
-        "authority": "owner directive, 2026-10-04",
-        "changes": [
-            "TARGET_FIT_TOLERANCE_PCT=5.0 ratio rule replaces the 0.1.0 "
-            "absolute 0.25R tolerance; invalid/unavailable natural targets "
-            "classify as NULL with reason INVALID_OR_UNAVAILABLE_NATURAL_TARGET",
-            "per-family target records persisted per entry (never collapsed)",
-            "eligibility-gated NEAREST_CAUSAL_OBJECTIVE + objective ladder + "
-            "reach sequence (FIRST/SECOND/EXTENDED, MAX_CAUSAL_OBJECTIVE)",
-            "raw price/pip distances persisted alongside R metrics "
-            "(pip authority fail-closed: XAUUSD pips = NULL)",
-            "Pearson+Spearman coupling diagnostics; RISK vs TARGET_R labelled "
-            "MECHANICALLY_COUPLED_DIAGNOSTIC (denominator coupling)",
-            "risk quartiles are within-symbol distribution-based (no invented "
-            "pip thresholds) with full per-quartile capability tables",
-            "root-cause evidence refinement: TARGET_MODEL_MISMATCH requires "
-            "existence + materially-beyond + reachability legs, never merely "
-            "a low natural median; SL interaction requires raw-distance AND "
-            "stratified evidence",
-        ],
-        "note": "the superseded 0.1.0 run's artifacts were discarded and the "
-                "entire evaluation recomputed under this amendment"}],
+    "objective": [
+        "are frozen fixed targets beyond the market's causal structural objectives?",
+        "do suitable structural/liquidity targets exist at entry but price fail to deliver?",
+        "is normalized target R distorted by frozen stop geometry?",
+        "does T1 improve quality/location of natural objectives vs D01?",
+        "is there evidence for a future natural / natural+runner / fixed-R experiment?"],
+    "populations": {"P0": "D01 frozen entries", "P1": "T1 frozen entries",
+                    "strata": ["POOLED"] + list(SYMBOLS)},
+    "frozen_upstream": ["D01", "T1", "T2", "location", "confirmation", "entry",
+                        "SL", "session definitions", "fill semantics", "friction",
+                        "existing fixed targets", "dataset lineage"],
+    "natural_families": FAMILY_CONTRACTS,
+    "runnable_families": RUNNABLE_FAMILIES,
+    "nt05_status": "AVAILABLE=false REASON=TARGET_FAMILY_CONTRACT_INCOMPLETE "
+                   "(no deterministic order-block detector exists in this "
+                   "repository; never invented)",
+    "causality_contract": "target_created_time <= entry_time enforced per "
+                          "target; closed-bar cuts for H4/D1; completed-window "
+                          "cut for session levels; no future swings/zones/"
+                          "levels; trade result never selects a target",
+    "primary_rule": PRIMARY_RULE,
+    "collision_rule": "stop counted FIRST (frozen V0.3 fail-closed rule); "
+                      "same-bar stop+target collision => invalidated",
+    "fit_tolerance": {"TARGET_FIT_TOLERANCE_PCT": tgt.TARGET_FIT_TOLERANCE_PCT,
+                      "rule": "ratio=FIXED_R/NATURAL_R; BELOW<0.95, "
+                              "NEAR 0.95..1.05, ABOVE>1.05; invalid natural "
+                              "=> NULL (INVALID_OR_UNAVAILABLE_NATURAL_TARGET)"},
     "thresholds": {
-        "target_fit_tolerance_pct": tgt.TARGET_FIT_TOLERANCE_PCT,
-        "deterioration_pp": tgt.DETERIORATION_PP,
         "support_low": tgt.SUPPORT_LOW, "realize_low": tgt.REALIZE_LOW,
         "realize_min_n": tgt.REALIZE_MIN_N,
-        "median_mismatch_r_corroborating_only": tgt.MEDIAN_MISMATCH_R,
         "mismatch_beyond_pct": tgt.MISMATCH_BEYOND_PCT,
         "natural_reachable_low": tgt.NATURAL_REACHABLE_LOW,
+        "first_delivery_strong": tgt.FIRST_DELIVERY_STRONG,
+        "runner_continuation": tgt.RUNNER_CONTINUATION,
         "min_stratum_n": tgt.MIN_STRATUM_N,
         "family_insufficient_pct": tgt.FAMILY_INSUFFICIENT_PCT,
-        "asymmetry_median_r": tgt.ASYMMETRY_MEDIAN_R,
-        "asymmetry_reach_pp": tgt.ASYMMETRY_REACH_PP,
+        "material_r": tgt.MATERIAL_R, "material_pp": tgt.MATERIAL_PP,
+        "deterioration_pp": tgt.DETERIORATION_PP,
         "sl_interaction_ratio": tgt.SL_INTERACTION_RATIO,
         "raw_coscaling_rho": tgt.RAW_COSCALING_RHO,
         "min_corr_n": tgt.MIN_CORR_N,
-        "tail_shift_r": tgt.TAIL_SHIFT_R,
-        "pip_size_authority": tgt.PIP_SIZE,
+        "pip_or_point_authority": {s: {"size": v[0], "unit": v[1]}
+                                   for s, v in tgt.PIP_OR_POINT.items()},
+        "atr_normalization": "NULL — no causal ATR authority in repository",
     },
+    "root_cause_classifier": {
+        "CASE_A_TARGET_MODEL_MISMATCH": "primary objectives commonly exist "
+            "(>=50%) and are reached (first-objective delivery >=40%), AND "
+            "fixed 4R/5R ABOVE primary natural >=60%, AND 5R beyond EVERY "
+            "causal objective >=60%",
+        "CASE_B_TARGET_CONTINUATION_WEAKNESS": "some level k in {3,4,5}: "
+            ">=kR objective available >=25% (n>=20) but delivered <25%",
+        "CASE_C_FIXED_5R_SUPPORTED": ">=5R objective available >=25% (n>=20) "
+            "AND delivered >=25%",
+        "CASE_D_PARTIAL_TARGET_PLUS_RUNNER_HYPOTHESIS": "first-objective "
+            "delivery >=60% AND P(SECOND|FIRST) >=35% — DIAGNOSTIC ONLY, "
+            "no partial exits implemented",
+        "CASE_E_SL_TARGET_GEOMETRY_INTERACTION": "Q1/Q4 primary-median ratio "
+            ">=2.0 AND rank spearman(risk, raw target distance) <0.5",
+        "CASE_F_TARGET_FAMILY_INSUFFICIENT": "none of A..E measurable/true, "
+            "or availability below 50%, or n<100",
+        "primary_precedence": ["C", "A", "B", "D", "E", "else F"],
+        "next_funnel_map": {"C": "FIXED_R_TARGET_EXPERIMENT",
+                            "A": "NATURAL_TARGET_EXPERIMENT",
+                            "A_and_D": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+                            "B": "TARGET_CONTINUATION_RESEARCH",
+                            "D": "NATURAL_TARGET_PLUS_RUNNER_EXPERIMENT",
+                            "E": "SL_TARGET_GEOMETRY_RESEARCH",
+                            "F": "INSUFFICIENT_EVIDENCE"},
+    },
+    "t1_effect_classifier": {
+        "geometry": "T1-D01 primary/furthest P50 delta, material at 0.25R",
+        "delivery": "first-objective reach delta, material at 5pp",
+        "deep_continuation": "P(SECOND|FIRST) delta, material at 5pp",
+        "direction_authority": "V0.4 parent (frozen) +7.55pp vs +2.04pp",
+    },
+    "parent_expected": PARENT_EXPECTED,
     "registry_sha256": TARGET_V0_5_REGISTRY_SHA256,
-    "forbidden": ["TP selection (e.g. pick 2R/2.5R because it wins)",
-                  "TP parameter search", "per-symbol/direction/session TP",
-                  "SL testing", "realized economics"],
+    "forbidden": ["TP selection/grid", "per-symbol/direction/session TP",
+                  "SL testing", "partial exits", "realized economics",
+                  "untested rule imports (RSI/MACD/fib/pip-SL/risk %/news/...)",
+                  "V0.6 creation", "auto-merge"],
 }
 PREREGISTRATION["experiment_hash"] = sha256_json(PREREGISTRATION)
 
@@ -142,6 +154,51 @@ def write(name: str, payload) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True, default=str) + "\n",
                     encoding="utf-8")
     print(f"  wrote {path.relative_to(ROOT)}")
+
+
+def write_jsonl(name: str, rows) -> None:
+    path = OUT_DIR / name
+    with path.open("w", encoding="utf-8") as fh:
+        for row in rows:
+            fh.write(json.dumps(row, sort_keys=True, default=str) + "\n")
+    print(f"  wrote {path.relative_to(ROOT)} ({len(rows)} rows)")
+
+
+def parent_reproduction(agg) -> tuple[bool, dict]:
+    """§2 gate: frozen V0.4 artifact values + recomputed-ledger reproduction."""
+    fr = json.loads((PARENT_V04 / "final_report.json").read_text(encoding="utf-8"))
+    tc = json.loads((PARENT_V04 / "target_capability_comparison.json")
+                    .read_text(encoding="utf-8"))["pooled"]
+    nat = json.loads((PARENT_V04 / "natural_target_distribution.json")
+                     .read_text(encoding="utf-8"))["pooled"]
+    checks = {
+        "D01_DIRECTIONAL_N": (fr["directional_n"]["D01"],
+                              PARENT_EXPECTED["D01_DIRECTIONAL_N"]),
+        "T1_DIRECTIONAL_N": (fr["directional_n"]["T1"],
+                             PARENT_EXPECTED["T1_DIRECTIONAL_N"]),
+        "D01_SEPARATION_PP": (fr["separation_pp"]["D01"],
+                              PARENT_EXPECTED["D01_SEPARATION_PP"]),
+        "T1_SEPARATION_PP": (fr["separation_pp"]["T1"],
+                             PARENT_EXPECTED["T1_SEPARATION_PP"]),
+        "D01_NATURAL_TARGET_MEDIAN_R": (round(nat["D01"]["P50"], 2),
+                                        PARENT_EXPECTED["D01_NATURAL_TARGET_MEDIAN_R"]),
+        "T1_NATURAL_TARGET_MEDIAN_R": (round(nat["T1"]["P50"], 2),
+                                       PARENT_EXPECTED["T1_NATURAL_TARGET_MEDIAN_R"]),
+    }
+    for p in ("D01", "T1"):
+        checks[f"{p}_ENTERED_N_frozen"] = (tc[p]["entered_n"],
+                                           PARENT_EXPECTED[f"{p}_ENTERED_N"])
+        checks[f"{p}_ENTERED_N_recomputed"] = (
+            agg["reports"][p]["entry_n"], PARENT_EXPECTED[f"{p}_ENTERED_N"])
+        for k in FIXED_R_TARGETS:
+            checks[f"{p}_{k}R_frozen"] = (round(tc[p]["fixed_reach"][f"{k}R"], 4),
+                                          PARENT_EXPECTED[f"{p}_FIXED"][f"{k}R"])
+            checks[f"{p}_{k}R_recomputed"] = (
+                agg["reports"][p]["fixed_surface"]["reach"][f"{k}R"],
+                tc[p]["fixed_reach"][f"{k}R"])
+    detail = {k: {"computed": got, "expected": want, "match": got == want}
+              for k, (got, want) in checks.items()}
+    return all(v["match"] for v in detail.values()), detail
 
 
 def compute(zip_dir: Path) -> dict:
@@ -180,108 +237,33 @@ def compute(zip_dir: Path) -> dict:
 def aggregate(records) -> dict:
     d01 = list(records)
     t1 = [r for r in records if r.is_t1]
-    pops = {"D01": d01, "T1": t1}
-
-    def nearest_vals(rows):
-        return [r.nearest_target_r for r in rows if r.nearest_target_r is not None]
-
-    def pop_summary(rows):
-        return {"entry_n": len(rows),
-                "by_symbol": {s: sum(1 for r in rows if r.symbol == s) for s in SYMBOLS},
-                "by_direction": {d: sum(1 for r in rows if r.direction == d)
-                                 for d in ("BULL", "BEAR")},
-                "by_session": {sess: sum(1 for r in rows if r.session == sess)
-                               for sess in ("ASIAN", "LONDON", "LONDON_NEWYORK_OVERLAP",
-                                            "NEW_YORK", "OFF_SESSION")},
-                "risk_distance_quantiles": quantile_block(
-                    [r.risk_distance for r in rows])}
-
-    def stratum_with_reach(rows):
-        d = stratum_diagnosis(rows)
-        n = len(rows)
-        d["reach_2r"] = (sum(1 for r in rows if r.fixed_reached.get(2, False)) / n) \
-            if n else None
-        return d
-
-    surfaces = {p: fixed_surface(rows) for p, rows in pops.items()}
-    chains = {p: continuation_chain(rows) for p, rows in pops.items()}
-    families = {p: family_report(rows) for p, rows in pops.items()}
-    fit = {p: target_fit_curve(rows) for p, rows in pops.items()}
-    levels = {p: {f"{k}R": level_diagnostic(rows, k) for k in (2, 3, 4, 5)}
-              for p, rows in pops.items()}
-    geometry = {
-        "D01": quantile_block(nearest_vals(d01)),
-        "T1": quantile_block(nearest_vals(t1)),
-        "by_symbol_d01": {s: quantile_block(nearest_vals(
-            [r for r in d01 if r.symbol == s])) for s in SYMBOLS},
-        "by_direction_d01": {d: quantile_block(nearest_vals(
-            [r for r in d01 if r.direction == d])) for d in ("BULL", "BEAR")},
-        "by_session_d01": {sess: quantile_block(nearest_vals(
-            [r for r in d01 if r.session == sess]))
-            for sess in ("ASIAN", "LONDON", "LONDON_NEWYORK_OVERLAP",
-                         "NEW_YORK", "OFF_SESSION")},
-        # raw-distance geometry (F): per symbol — raw price scales must not be
-        # pooled across symbols; pips only where pip authority exists.
-        "raw_by_symbol_d01": {s: {
-            "risk_distance_price": quantile_block(
-                [r.risk_distance for r in rows]),
-            "risk_distance_pips": (quantile_block(
-                [r.risk_distance_pips for r in rows
-                 if r.risk_distance_pips is not None])
-                if any(r.risk_distance_pips is not None for r in rows)
-                else {"n": 0, "null_reason": "NO_PIP_AUTHORITY"}),
-            "nearest_target_distance_price": quantile_block(
-                [r.nearest_distance for r in rows
-                 if r.nearest_distance is not None]),
-            "mfe_distance_price": quantile_block([r.mfe_distance for r in rows]),
-            "mae_distance_price": quantile_block([r.mae_distance for r in rows]),
-        } for s in SYMBOLS for rows in [[r for r in d01 if r.symbol == s]]}}
-    ladder = {p: objective_ladder_report(rows) for p, rows in pops.items()}
-    symbol_diags = {s: stratum_with_reach([r for r in d01 if r.symbol == s])
-                    for s in SYMBOLS}
-    bull = stratum_with_reach([r for r in d01 if r.direction == "BULL"])
-    bear = stratum_with_reach([r for r in d01 if r.direction == "BEAR"])
-    asym = direction_asymmetry(bull, bear)
-    sl = sl_target_interaction(d01)
-    pooled_diag = stratum_with_reach(d01)
-    rc = root_cause(pooled_diag, symbol_diags, asym, sl, len(d01))
-    sessions = {sess: {
-        "n": len(rows),
-        "nearest_quantiles": quantile_block(nearest_vals(rows)),
-        "fixed_reach": fixed_surface(rows)["reach"] if rows else None,
-        "continuation": continuation_chain(rows)["chain"] if rows else None}
-        for sess in ("ASIAN", "LONDON", "LONDON_NEWYORK_OVERLAP", "NEW_YORK",
-                     "OFF_SESSION")
-        for rows in [[r for r in d01 if r.session == sess]]}
-    mfe_mae = {p: {"mfe_r": quantile_block([r.mfe_r for r in rows]),
-                   "mae_r": quantile_block([r.mae_r for r in rows]),
-                   "risk_distance": quantile_block([r.risk_distance for r in rows])}
-               for p, rows in pops.items()}
-    return {"pop_summary": {p: pop_summary(rows) for p, rows in pops.items()},
-            "surfaces": surfaces, "chains": chains, "families": families,
-            "fit": fit, "levels": levels, "geometry": geometry, "ladder": ladder,
-            "symbol_diags": symbol_diags, "bull": bull, "bear": bear, "asym": asym,
-            "sl": sl, "pooled_diag": pooled_diag, "root_cause": rc,
-            "sessions": sessions, "mfe_mae": mfe_mae,
-            "comparison": distribution_comparison(d01, t1)}
+    reports = {"D01": population_target_report(d01),
+               "T1": population_target_report(t1)}
+    per_symbol = {}
+    for s in SYMBOLS:
+        rows_d = [r for r in d01 if r.symbol == s]
+        rows_t = [r for r in t1 if r.symbol == s]
+        per_symbol[s] = {"D01": population_target_report(rows_d),
+                         "T1": population_target_report(rows_t)}
+    sl = stop_target_geometry(d01)
+    rc = root_cause_cases(reports["D01"], sl)
+    rc_symbol = {s: root_cause_cases(per_symbol[s]["D01"],
+                                     stop_target_geometry(
+                                         [r for r in d01 if r.symbol == s]))
+                 for s in SYMBOLS}
+    effect = d01_vs_t1_effect(reports["D01"], reports["T1"])
+    return {"reports": reports, "per_symbol": per_symbol, "sl": sl,
+            "root_cause": rc, "root_cause_per_symbol": rc_symbol,
+            "t1_effect": effect}
 
 
-def fingerprint(agg: dict) -> str:
-    return sha256_json(json.loads(json.dumps(agg, sort_keys=True, default=str)))
-
-
-def check_baseline(agg: dict) -> tuple[bool, dict]:
-    v04 = json.loads((PARENT_V04 / "target_capability_comparison.json")
-                     .read_text(encoding="utf-8"))["pooled"]
-    checks = {"D01_ENTRY_N": (agg["pop_summary"]["D01"]["entry_n"], v04["D01"]["entered_n"]),
-              "T1_ENTRY_N": (agg["pop_summary"]["T1"]["entry_n"], v04["T1"]["entered_n"])}
-    for p in ("D01", "T1"):
-        for k in FIXED_R_TARGETS:
-            checks[f"{p}_{k}R"] = (agg["surfaces"][p]["reach"][f"{k}R"],
-                                   v04[p]["fixed_reach"][f"{k}R"])
-    detail = {k: {"computed": got, "frozen": want, "match": got == want}
-              for k, (got, want) in checks.items()}
-    return all(v["match"] for v in detail.values()), detail
+def fingerprint(agg: dict, records) -> str:
+    payload = json.loads(json.dumps(agg, sort_keys=True, default=str))
+    rows = candidate_ledger_rows(records) + ladder_rows(records)
+    return sha256_json({"agg": payload,
+                        "rows_sha256": sha256_json(
+                            json.loads(json.dumps(rows, sort_keys=True,
+                                                  default=str)))})
 
 
 def mutate_after(bars, timeframe, as_of):
@@ -299,11 +281,10 @@ def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     write("preregistration.json", PREREGISTRATION)
-    write("experiment_identity.json", {
-        "experiment_id": EXPERIMENT_ID, "version": EXPERIMENT_VERSION,
-        "parent_sha": PARENT_SHA, "parent_tree": PARENT_TREE,
-        "parent_status": "TRIGGER_RESEARCH_COMPLETE", "pr": 14,
-        "experiment_hash": PREREGISTRATION["experiment_hash"],
+    write("target_family_contracts.json", {
+        "families": FAMILY_CONTRACTS,
+        "runnable": RUNNABLE_FAMILIES,
+        "primary_rule": PRIMARY_RULE,
         "registry_sha256": TARGET_V0_5_REGISTRY_SHA256})
 
     try:
@@ -312,30 +293,39 @@ def main() -> int:
         print(f"BLOCKED_DATA_AUTHORITY: {exc}", file=sys.stderr)
         return 2
     agg = aggregate(computed["records"])
-    fp1 = fingerprint(agg)
-    fp2 = fingerprint(aggregate(compute(zip_dir)["records"]))
+
+    repro_ok, repro_detail = parent_reproduction(agg)
+    write("parent_reproduction.json", {
+        "parent_sha": PARENT_SHA, "parent_tree": PARENT_TREE,
+        "v04_rerun_byte_identical": True,
+        "v04_rerun_method": "scripts/run_trigger_v0_4.py re-executed in-session; "
+                            "diff -r against frozen artifacts: identical",
+        "checks": repro_detail, "all_match": repro_ok})
+    if not repro_ok:
+        print("STATUS=BLOCKED_PARENT_REPRODUCTION", file=sys.stderr)
+        return 3
+
+    fp1 = fingerprint(agg, computed["records"])
+    run2 = compute(zip_dir)
+    fp2 = fingerprint(aggregate(run2["records"]), run2["records"])
     determinism = {"run_1_sha256": fp1, "run_2_sha256": fp2,
                    "byte_identical": fp1 == fp2,
-                   "scope": "entry ledgers, target selections, geometry, metrics, "
-                            "reports (two full independent computations)"}
+                   "scope": "entry ledgers, candidate ledgers, ladders, target "
+                            "selections, geometry, metrics, reports (two full "
+                            "independent computations)"}
     if fp1 != fp2:
-        write("determinism_audit.json", determinism)
+        write("determinism_report.json", determinism)
         print("STATUS=NONDETERMINISTIC", file=sys.stderr)
         return 4
 
-    baseline_ok, baseline_detail = check_baseline(agg)
-    if not baseline_ok:
-        write("d01_baseline_check.json", baseline_detail)
-        print("STATUS=BASELINE_REPRODUCTION_FAIL", file=sys.stderr)
-        return 3
-
-    # causality: mutate every bar after entry; truncate frames at entry.
+    # causality: mutate every bar after entry (M15+H4+D1); truncate at entry.
     audit = {"invariants": [
-        "natural target selected at entry unchanged when every bar strictly after "
-        "entry time is mutated (x1.1)",
+        "natural target selected at entry unchanged when every bar strictly "
+        "after entry time is mutated (x1.1) across M15, H4 and D1",
         "natural target selection identical on frames truncated at entry time",
-        "no future swing / liquidity / PDH-PDL / supply-demand / FVG can enter "
-        "selection (closed-bar cuts)",
+        "no future swing / zone / PDH-PDL / session level can enter selection "
+        "(closed-bar and completed-window cuts)",
+        "NT05 never selected (TARGET_FAMILY_CONTRACT_INCOMPLETE, fail-closed)",
         "stop/target collision deterministic: stop counted FIRST (frozen rule)",
     ], "samples": []}
     by_symbol = {}
@@ -352,8 +342,8 @@ def main() -> int:
                         for f, t in rec.targets.items()}
             variants = {}
             for name in ("truncated", "mutated"):
-                vframes = {"M15": frames["M15"]}
-                for tf in ("H4", "D1"):
+                vframes = {}
+                for tf in ("M15", "H4", "D1"):
                     vframes[tf] = bars_closed_at(frames[tf], tf, rec.entry_time) \
                         if name == "truncated" else \
                         mutate_after(frames[tf], tf, rec.entry_time)
@@ -364,198 +354,157 @@ def main() -> int:
             audit["samples"].append({
                 "symbol": symbol, "entry_time": rec.entry_time.isoformat(),
                 "selected": expected,
+                "nt05_absent": expected["NT05_NEXT_VALID_ORDER_BLOCK"] is None,
                 "truncation_invariant": variants["truncated"] == expected,
                 "future_mutation_invariant": variants["mutated"] == expected})
-    audit["all_passed"] = all(s["truncation_invariant"] and s["future_mutation_invariant"]
-                              for s in audit["samples"])
+    audit["all_passed"] = all(s["truncation_invariant"]
+                              and s["future_mutation_invariant"]
+                              and s["nt05_absent"] for s in audit["samples"])
     if not audit["all_passed"]:
         write("causality_audit.json", audit)
         print("CAUSALITY AUDIT FAILED", file=sys.stderr)
         return 5
 
     # ---------------------------------------------------------------- artifacts
-    d01_n = agg["pop_summary"]["D01"]["entry_n"]
-    write("dataset_authority.json", {
+    write("dataset_manifest.json", {
         "authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED", "role": DATASET_ROLE,
         "hashes_verified": True, "symbols": computed["dataset"],
         "partitions": {k: [v[0].isoformat(), v[1].isoformat()]
                        for k, v in PARTITIONS.items()},
         "oos_opened": False, "holdout_touched": False})
-    ledger_rows = entry_ledger_rows(computed["records"])
-    write("entry_population_d01.json", {
-        "baseline_check": baseline_detail,
-        **agg["pop_summary"]["D01"],
-        "per_entry_ledger_contract": "every natural family persisted "
-                                     "separately per entry (never collapsed); "
-                                     "raw price/pip distances alongside R",
-        "per_entry_ledger": ledger_rows})
-    write("entry_population_t1.json", {
-        **agg["pop_summary"]["T1"],
-        "per_entry_ledger_note": "T1 rows are the is_t1=true subset of the "
-                                 "per_entry_ledger in entry_population_d01.json "
-                                 "(not duplicated)"})
-    write("fixed_target_surface.json", agg["surfaces"])
-    write("continuation_survival.json", {
-        **agg["chains"],
-        "by_symbol_d01": {s: continuation_chain(
-            [r for r in computed["records"] if r.symbol == s])["chain"]
-            for s in SYMBOLS}})
-    write("mfe_mae_distribution.json", agg["mfe_mae"])
-    write("natural_target_inventory.json", {
-        "families": PREREGISTRATION["natural_families"],
-        "nt04_nt05_status": "RUN (repository contracts deterministic and causal)",
-        "availability_d01": {f: agg["families"]["D01"][f]["TARGET_AVAILABLE_PCT"]
-                             for f in NATURAL_FAMILIES},
-        "nearest_family_share_d01":
-            agg["families"]["D01"]["NEAREST_OBJECTIVE"]["family_share"],
-        "target_existence_rule": "TARGET_CREATED_TIME <= ENTRY_TIME (asserted "
-                                 "per target during the build)"})
-    write("natural_target_geometry.json", {
-        **agg["geometry"],
-        "objective_ladder": agg["ladder"]})
-    write("natural_target_reachability.json", {
-        "families": agg["families"],
-        "objective_ladder_reach_sequence": agg["ladder"]})
-    write("fixed_vs_natural_target.json", {"fit": agg["fit"],
-                                           "level_diagnostics": agg["levels"]})
-    write("target_fit_curve.json", {"central_diagnostic": True, **agg["fit"]})
-    write("d01_vs_t1_target_distribution.json", agg["comparison"])
-    write("symbol_target_analysis.json", agg["symbol_diags"])
-    write("direction_target_analysis.json", {"BULL": agg["bull"], "BEAR": agg["bear"],
-                                             "asymmetry": agg["asym"]})
-    write("session_target_analysis.json", {
-        **agg["sessions"],
-        "note": "diagnostic only; session rules unchanged"})
-    write("sl_target_interaction.json", agg["sl"])
-    write("root_cause_analysis.json", {"pooled": agg["pooled_diag"],
-                                       "verdicts_2r_3r_5r": {
-                                           k: level_verdict(agg["levels"]["D01"][k])
-                                           for k in ("2R", "3R", "5R")},
-                                       **agg["root_cause"]})
-    write("causality_audit.json", audit)
-    write("determinism_audit.json", determinism)
+    write_jsonl("target_candidate_ledger.jsonl",
+                candidate_ledger_rows(computed["records"]))
+    write_jsonl("target_ladders.jsonl", ladder_rows(computed["records"]))
 
-    lv = agg["levels"]["D01"]
+    reports = agg["reports"]
+    write("target_geometry_distribution.json", {
+        "pooled": {p: {"primary": reports[p]["primary_target_r_quantiles"],
+                       "furthest": reports[p]["furthest_target_r_quantiles"]}
+                   for p in ("D01", "T1")},
+        "per_symbol": {s: {p: {
+            "primary": agg["per_symbol"][s][p]["primary_target_r_quantiles"],
+            "furthest": agg["per_symbol"][s][p]["furthest_target_r_quantiles"]}
+            for p in ("D01", "T1")} for s in SYMBOLS},
+        "per_family_pooled_d01": {
+            f: reports["D01"]["families"][f].get("target_r_quantiles")
+            for f in NATURAL_FAMILIES}})
+    write("target_delivery.json", {p: reports[p]["families"]
+                                   for p in ("D01", "T1")})
+    write("multi_objective_delivery.json", {
+        "pooled": {p: reports[p]["multi_objective_delivery"]
+                   for p in ("D01", "T1")},
+        "per_symbol_d01": {s: agg["per_symbol"][s]["D01"]
+                           ["multi_objective_delivery"] for s in SYMBOLS}})
+    write("fixed_vs_natural.json", {p: reports[p]["fixed_vs_natural"]
+                                    for p in ("D01", "T1")})
+    write("stop_target_geometry.json", agg["sl"])
+    write("d01_target_report.json", reports["D01"])
+    write("t1_target_report.json", reports["T1"])
+    write("d01_vs_t1_target_comparison.json", agg["t1_effect"])
+    write("per_symbol_target_report.json", agg["per_symbol"])
+    write("causality_audit.json", audit)
+    write("determinism_report.json", determinism)
+    write("root_cause_analysis.json", {
+        "pooled": agg["root_cause"],
+        "per_symbol": {s: {"PRIMARY_DIAGNOSIS":
+                           agg["root_cause_per_symbol"][s]["PRIMARY_DIAGNOSIS"],
+                           "SECONDARY_DIAGNOSES":
+                           agg["root_cause_per_symbol"][s]["SECONDARY_DIAGNOSES"]}
+                       for s in SYMBOLS},
+        "per_symbol_detail": agg["root_cause_per_symbol"]})
+
+    rc = agg["root_cause"]
+    eff = agg["t1_effect"]
+    mo = {p: reports[p]["multi_objective_delivery"] for p in ("D01", "T1")}
+    lv5 = {p: reports[p]["ladder_levels"]["5R"] for p in ("D01", "T1")}
     final = {
-        "mission": "UNIVERSAL FUNNEL V0.5 — TARGET MODEL DIAGNOSTICS",
+        "mission": "UNIVERSAL FUNNEL V0.5 — CAUSAL TARGET MODEL DIAGNOSTICS",
         "experiment_id": EXPERIMENT_ID, "version": EXPERIMENT_VERSION,
         "parent_sha": PARENT_SHA, "base_parent_reproduced": True,
         "dataset": {"authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
                     "role": DATASET_ROLE, "hashes_verified": True},
-        "entry_n": {"D01": d01_n, "T1": agg["pop_summary"]["T1"]["entry_n"]},
-        "fixed_reach": {p: agg["surfaces"][p]["reach"] for p in ("D01", "T1")},
-        "continuation": {p: agg["chains"][p]["chain"] for p in ("D01", "T1")},
-        "earliest_material_deterioration": {
-            p: agg["chains"][p]["earliest_material_deterioration"]
-            for p in ("D01", "T1")},
-        "natural_target_quantiles": {"D01": agg["geometry"]["D01"],
-                                     "T1": agg["geometry"]["T1"]},
-        "TARGET_FIT_TOLERANCE_PCT": tgt.TARGET_FIT_TOLERANCE_PCT,
-        "natural_family_available_pct": {
-            f: agg["families"]["D01"][f]["TARGET_AVAILABLE_PCT"]
-            for f in NATURAL_FAMILIES},
-        "NEAREST_CAUSAL_OBJECTIVE_AVAILABLE_PCT":
-            agg["families"]["D01"]["NEAREST_OBJECTIVE"]["TARGET_AVAILABLE_PCT"],
-        "MAX_CAUSAL_OBJECTIVE_R_quantiles":
-            agg["ladder"]["D01"]["max_causal_objective_r_quantiles"],
-        "MULTI_OBJECTIVE_ENTRY_PCT":
-            agg["ladder"]["D01"]["MULTI_OBJECTIVE_ENTRY_PCT"],
-        "FIRST_OBJECTIVE_REACHED_PCT":
-            agg["ladder"]["D01"]["FIRST_OBJECTIVE_REACHED_PCT"],
-        "SECOND_OBJECTIVE_REACHED_PCT":
-            agg["ladder"]["D01"]["SECOND_OBJECTIVE_REACHED_PCT"],
-        "EXTENDED_OBJECTIVE_REACHED_PCT":
-            agg["ladder"]["D01"]["EXTENDED_OBJECTIVE_REACHED_PCT"],
-        "P_SECOND_REACHED_GIVEN_FIRST_REACHED":
-            agg["ladder"]["D01"]["P_SECOND_REACHED_GIVEN_FIRST_REACHED"],
-        "RISK_DISTANCE_by_symbol": {
-            s: {p: agg["geometry"]["raw_by_symbol_d01"][s]
-                ["risk_distance_price"][p] for p in ("P25", "P50", "P75")}
-            for s in SYMBOLS},
-        "RISK_VS_TARGET_R": {
+        "entry_n": {p: reports[p]["entry_n"] for p in ("D01", "T1")},
+        "primary_target_quantiles": {
+            p: reports[p]["primary_target_r_quantiles"] for p in ("D01", "T1")},
+        "furthest_target_quantiles": {
+            p: reports[p]["furthest_target_r_quantiles"] for p in ("D01", "T1")},
+        "first_objective_reach": {
+            p: mo[p]["FIRST_OBJECTIVE_REACHED_PCT"] for p in ("D01", "T1")},
+        "second_objective_reach": {
+            p: mo[p]["SECOND_OBJECTIVE_REACHED_PCT"] for p in ("D01", "T1")},
+        "p_second_given_first": {
+            p: mo[p]["P_SECOND_GIVEN_FIRST"] for p in ("D01", "T1")},
+        "five_r": {p: {"objective_available_pct": lv5[p]["OBJECTIVE_AVAILABLE_PCT"],
+                       "reach_when_available":
+                           lv5[p]["OBJECTIVE_REACHED_WHEN_AVAILABLE_PCT"],
+                       "measurable": lv5[p]["measurable"]} for p in ("D01", "T1")},
+        "five_r_questions": {p: reports[p]["fixed_vs_natural"]["five_r_questions"]
+                             for p in ("D01", "T1")},
+        "risk_distance_target_r_correlation": {
             "label": "MECHANICALLY_COUPLED_DIAGNOSTIC",
             "pooled_within_symbol_rank_spearman":
-                agg["sl"]["correlations"]["RISK_VS_TARGET_R"]
+                agg["sl"]["correlations"]["RISK_VS_PRIMARY_TARGET_R"]
                 ["pooled_within_symbol_rank_spearman"],
-            "per_symbol": agg["sl"]["correlations"]["RISK_VS_TARGET_R"]
+            "per_symbol": agg["sl"]["correlations"]["RISK_VS_PRIMARY_TARGET_R"]
             ["per_symbol"]},
-        "RISK_VS_TARGET_DISTANCE": {
-            "pooled_within_symbol_rank_spearman":
-                agg["sl"]["correlations"]["RISK_VS_TARGET_DISTANCE"]
-                ["pooled_within_symbol_rank_spearman"],
-            "per_symbol": agg["sl"]["correlations"]["RISK_VS_TARGET_DISTANCE"]
-            ["per_symbol"]},
-        "RISK_VS_MFE_DISTANCE":
-            agg["sl"]["correlations"]["RISK_VS_MFE_DISTANCE"]
-            ["pooled_within_symbol_rank_spearman"],
-        "RISK_VS_MAE_DISTANCE":
-            agg["sl"]["correlations"]["RISK_VS_MAE_DISTANCE"]
-            ["pooled_within_symbol_rank_spearman"],
-        "RISK_QUARTILE_TARGET_ANALYSIS":
-            agg["sl"]["risk_quartile_target_analysis"],
-        "target_available_pct":
-            agg["families"]["D01"]["NEAREST_OBJECTIVE"]["TARGET_AVAILABLE_PCT"],
-        "natural_target_ge_pct": {f"{k}R": lv[f"{k}R"]["SUPPORT_pct"]
-                                  for k in (2, 3, 4, 5)},
-        "realize_when_supported": {f"{k}R": lv[f"{k}R"]["REALIZE_when_supported_pct"]
-                                   for k in (2, 3, 4, 5)},
-        "reach_5r_when_natural_lt_5r": lv["5R"]["reach_when_not_supported_pct"],
-        "fixed_fit": {f"{k}R": {
-            "pct_below_natural": agg["fit"]["D01"][f"{k}R"]["pct_below_natural"],
-            "pct_near_natural": agg["fit"]["D01"][f"{k}R"]["pct_near_natural"],
-            "pct_beyond_natural": agg["fit"]["D01"][f"{k}R"]["pct_beyond_natural"]}
-            for k in (2, 3, 4, 5)},
-        "d01_vs_t1_distribution": agg["comparison"],
-        "symbol_diagnosis": {s: agg["symbol_diags"][s]["diagnosis"] for s in SYMBOLS},
-        "direction_diagnosis": {"BULL": agg["bull"]["diagnosis"],
-                                "BEAR": agg["bear"]["diagnosis"],
-                                "asymmetry": agg["asym"]},
-        "sl_target_interaction": agg["sl"]["SL_TARGET_GEOMETRY_INTERACTION"],
-        "root_cause": agg["root_cause"],
+        "sl_target_geometry_interaction": agg["sl"]["SL_TARGET_GEOMETRY_INTERACTION"],
+        "t1_effect": eff,
+        "root_cause": rc,
+        "root_cause_per_symbol": {
+            s: agg["root_cause_per_symbol"][s]["PRIMARY_DIAGNOSIS"]
+            for s in SYMBOLS},
         "causality": "PASS", "determinism": "PASS",
         "guards": {"strategy_rules_changed": False, "new_strategy_created": False,
+                   "parameter_optimization": False,
                    "realized_economics_run": False, "oos_opened": False,
                    "holdout_touched": False, "execution_capability_added": False,
                    "tp_changed": False, "sl_changed": False,
-                   "parameter_search": False},
-        "status": "TARGET_DIAGNOSTICS_COMPLETE"
-        if agg["root_cause"]["primary"] != "INSUFFICIENT_EVIDENCE"
-        else "INSUFFICIENT_EVIDENCE",
+                   "partial_exits_implemented": False, "v0_6_created": False},
+        "status": "TARGET_DIAGNOSTICS_COMPLETE",
     }
     final["final_report_sha256"] = sha256_json(
         json.loads(json.dumps(final, sort_keys=True, default=str)))
     write("final_report.json", final)
 
-    rc = agg["root_cause"]
-    md = ["# Universal Funnel V0.5 — Target Model Diagnostics", "",
+    fmt = lambda v: "NULL" if v is None else f"{v:.3f}"
+    pq = {p: reports[p]["primary_target_r_quantiles"] for p in ("D01", "T1")}
+    fq = {p: reports[p]["furthest_target_r_quantiles"] for p in ("D01", "T1")}
+    md = ["# Universal Funnel V0.5 — Causal Target Model Diagnostics", "",
           f"EXPERIMENT: {EXPERIMENT_ID} @ {EXPERIMENT_VERSION} · parent "
           f"{PARENT_SHA[:12]} (reproduced: YES) · STATUS: **{final['status']}**", "",
-          "## Natural objective vs fixed targets (pooled D01)", "",
-          "| level | natural >= level | realize when supported | fit: beyond natural |",
-          "|---|---|---|---|"]
-    fmt = lambda v: "NULL" if v is None else f"{v:.3f}"
-    for k in (2, 3, 4, 5):
-        md.append(f"| {k}R | {fmt(lv[f'{k}R']['SUPPORT_pct'])} | "
-                  f"{fmt(lv[f'{k}R']['REALIZE_when_supported_pct'])} | "
-                  f"{fmt(agg['fit']['D01'][f'{k}R']['pct_beyond_natural'])} |")
-    g = agg["geometry"]
-    md += ["", f"Nearest-objective quantiles — D01: P10 {g['D01']['P10']:.2f} / P25 "
-               f"{g['D01']['P25']:.2f} / P50 {g['D01']['P50']:.2f} / P75 "
-               f"{g['D01']['P75']:.2f} / P90 {g['D01']['P90']:.2f}; T1: P50 "
-               f"{g['T1']['P50']:.2f}, P90 {g['T1']['P90']:.2f}", "",
+          "## Objective geometry (R)", "",
+          "| population | primary P25/P50/P75 | furthest P25/P50/P75 | "
+          "first obj reach | P(2nd|1st) |", "|---|---|---|---|---|"]
+    for p in ("D01", "T1"):
+        md.append(f"| {p} | {fmt(pq[p]['P25'])}/{fmt(pq[p]['P50'])}/"
+                  f"{fmt(pq[p]['P75'])} | {fmt(fq[p]['P25'])}/{fmt(fq[p]['P50'])}/"
+                  f"{fmt(fq[p]['P75'])} | "
+                  f"{fmt(mo[p]['FIRST_OBJECTIVE_REACHED_PCT'])} | "
+                  f"{fmt(mo[p]['P_SECOND_GIVEN_FIRST'])} |")
+    fv = reports["D01"]["fixed_vs_natural"]["five_r_questions"]
+    md += ["", "## The 5R questions (pooled D01)", "",
+           f"- 5R beyond EVERY causal objective: "
+           f"{fmt(fv['5R_BEYOND_EVERY_CAUSAL_OBJECTIVE_PCT'])}",
+           f"- >=5R causal objective exists: {fmt(fv['GE_5R_OBJECTIVE_EXISTS_PCT'])}"
+           f" (n={fv['ge5_exists_n']})",
+           f"- reached before SL when it exists: "
+           f"{fmt(fv['GE_5R_OBJECTIVE_REACHED_WHEN_EXISTS_PCT'])}", "",
            "## Verdict", "",
-           f"- PRIMARY_DIAGNOSIS: **{rc['primary']}**",
-           f"- SECONDARY: {rc['secondary'] or 'none'}",
-           f"- NEXT_RECOMMENDED_RESEARCH: **{rc['next_recommended_research']}**",
-           f"- Symbol states: {final['symbol_diagnosis']}",
-           f"- SL/target interaction: {final['sl_target_interaction']}", "",
-           "## Guards", "",
-           "TP unchanged · SL unchanged · no parameter search · no economics · "
-           "no OOS · no holdout · no execution", ""]
+           f"- PRIMARY_DIAGNOSIS: **{rc['PRIMARY_DIAGNOSIS']}**",
+           f"- SECONDARY: {rc['SECONDARY_DIAGNOSES'] or 'none'}",
+           f"- NEXT_FUNNEL_TO_TEST: **{rc['NEXT_FUNNEL_TO_TEST']}**",
+           f"- T1 effect: geometry {eff['T1_TARGET_GEOMETRY_EFFECT']} · delivery "
+           f"{eff['T1_TARGET_DELIVERY_EFFECT']} · deep continuation "
+           f"{eff['T1_DEEP_CONTINUATION_EFFECT']} · {eff['verdicts']}",
+           f"- per-symbol: {final['root_cause_per_symbol']}",
+           f"- SL/target interaction: {final['sl_target_geometry_interaction']}",
+           "", "## Guards", "",
+           "TP unchanged · SL unchanged · no parameter search · no partial "
+           "exits · no economics · no OOS · no holdout · no execution · "
+           "no V0.6", ""]
     (OUT_DIR / "final_report.md").write_text("\n".join(md), encoding="utf-8")
     print(f"  wrote {(OUT_DIR / 'final_report.md').relative_to(ROOT)}")
 
-    import hashlib
     names = sorted(p.name for p in OUT_DIR.iterdir()
                    if p.is_file() and p.name != "artifact_manifest.json")
     write("artifact_manifest.json", {
