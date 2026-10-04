@@ -1,15 +1,5 @@
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.venv/
-venv/
-.env
-*.egg-info/
-dist/
-build/
-reports/
-*.parquet
-*.csv
 
 # external raw datasets (hash-pinned, never committed)
 data/external/
+# campaign runtime caches
+.campaign_cache/

@@ -1,0 +1,291 @@
+{
+  "findings": {
+    "largest_attrition_points": [
+      "`SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|B_RANGE_REJECTION` LOCATION\u2192TRIGGER: -160 of 160 (100.0%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d7127",
+      "`SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|B_RANGE_REJECTION` LOCATION\u2192TRIGGER: -152 of 152 (100.0%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d7115",
+      "`SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|B_RANGE_REJECTION` LOCATION\u2192TRIGGER: -150 of 154 (97.4%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d7124",
+      "`SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|B_RANGE_REJECTION` LOCATION\u2192TRIGGER: -146 of 146 (100.0%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d7121",
+      "`SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|B_RANGE_REJECTION` LOCATION\u2192TRIGGER: -135 of 135 (100.0%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d7106",
+      "`SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|C_TREND_EXPANSION` LOCATION\u2192TRIGGER: -130 of 160 (81.2%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d797",
+      "`SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|C_TREND_EXPANSION` LOCATION\u2192TRIGGER: -129 of 152 (84.9%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d784",
+      "`SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|B_RANGE_REJECTION` LOCATION\u2192TRIGGER: -128 of 128 (100.0%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d7102",
+      "`SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|C_TREND_EXPANSION` LOCATION\u2192TRIGGER: -123 of 146 (84.2%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d778",
+      "`SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|C_TREND_EXPANSION` LOCATION\u2192TRIGGER: -120 of 152 (78.9%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d774",
+      "`SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|B_RANGE_REJECTION` LOCATION\u2192TRIGGER: -118 of 118 (100.0%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d790",
+      "`SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|C_TREND_EXPANSION` LOCATION\u2192TRIGGER: -111 of 135 (82.2%), dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY` \u00d764"
+    ],
+    "geometry_rejection_hotspots": [
+      "`SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|A_SWEEP_REENTRY`: 61/123 triggers rejected by `SWEEP_STOP_DOES_NOT_PROTECT_EXTREME` (49.6%)",
+      "`SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|A_SWEEP_REENTRY`: 60/128 triggers rejected by `SWEEP_STOP_DOES_NOT_PROTECT_EXTREME` (46.9%)",
+      "`SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|A_SWEEP_REENTRY`: 54/116 triggers rejected by `SWEEP_STOP_DOES_NOT_PROTECT_EXTREME` (46.6%)",
+      "`SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|A_SWEEP_REENTRY`: 33/105 triggers rejected by `SWEEP_STOP_DOES_NOT_PROTECT_EXTREME` (31.4%)",
+      "`SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|A_SWEEP_REENTRY`: 33/120 triggers rejected by `SWEEP_STOP_DOES_NOT_PROTECT_EXTREME` (27.5%)",
+      "`SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|A_SWEEP_REENTRY`: 29/90 triggers rejected by `SWEEP_STOP_DOES_NOT_PROTECT_EXTREME` (32.2%)",
+      "`SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|A_SWEEP_REENTRY`: 22/102 triggers rejected by `SWEEP_STOP_DOES_NOT_PROTECT_EXTREME` (21.6%)",
+      "`SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|A_SWEEP_REENTRY`: 12/62 triggers rejected by `SWEEP_STOP_DOES_NOT_PROTECT_EXTREME` (19.4%)"
+    ],
+    "other_geometry_rejection_reasons": [],
+    "execution_fill_starvation": [
+      "`SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|C_TREND_EXPANSION` (LIMIT): 1/27 geometry-valid proposals filled (fill rate 3.70%; 26 expired, 0 unfilled)",
+      "`SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|B_RANGE_REJECTION` (LIMIT): 1/3 geometry-valid proposals filled (fill rate 33.33%; 2 expired, 0 unfilled)",
+      "`SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|B_RANGE_REJECTION` (LIMIT): 2/4 geometry-valid proposals filled (fill rate 50.00%; 2 expired, 0 unfilled)"
+    ],
+    "friction_destroyed_segments": [
+      "SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|A_SWEEP_REENTRY"
+    ],
+    "largest_conditional_expectancy_drops": [
+      "`SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|A_SWEEP_REENTRY`: gross +0.5097R \u2192 net +0.0828R (-0.4270R over 62 closed trades)",
+      "`SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|A_SWEEP_REENTRY`: gross +0.0044R \u2192 net -0.3890R (-0.3933R over 50 closed trades)",
+      "`SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|B_RANGE_REJECTION`: gross -1.0000R \u2192 net -1.2389R (-0.2389R over 1 closed trades)",
+      "`SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|C_TREND_EXPANSION`: gross +4.2500R \u2192 net +4.0515R (-0.1985R over 1 closed trades)",
+      "`SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|A_SWEEP_REENTRY`: gross -0.1676R \u2192 net -0.3650R (-0.1974R over 68 closed trades)",
+      "`SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|B_RANGE_REJECTION`: gross -1.0000R \u2192 net -1.1781R (-0.1781R over 2 closed trades)",
+      "`SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|A_SWEEP_REENTRY`: gross -0.2272R \u2192 net -0.3950R (-0.1678R over 62 closed trades)",
+      "`SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|A_SWEEP_REENTRY`: gross +0.2576R \u2192 net +0.1081R (-0.1495R over 87 closed trades)"
+    ],
+    "largest_conditional_expectancy_improvements": [],
+    "inconclusive": [
+      "`SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|B_RANGE_REJECTION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|B_RANGE_REJECTION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|B_RANGE_REJECTION`: 2 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|B_RANGE_REJECTION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|B_RANGE_REJECTION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|B_RANGE_REJECTION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|B_RANGE_REJECTION`: 1 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|B_RANGE_REJECTION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|EURUSD|ASIAN_LONDON|C_TREND_EXPANSION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|EURUSD|LONDON_NEWYORK|C_TREND_EXPANSION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|GBPUSD|ASIAN_LONDON|C_TREND_EXPANSION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|GBPUSD|LONDON_NEWYORK|C_TREND_EXPANSION`: 1 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|USDJPY|ASIAN_LONDON|C_TREND_EXPANSION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|USDJPY|LONDON_NEWYORK|C_TREND_EXPANSION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|XAUUSD|ASIAN_LONDON|C_TREND_EXPANSION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "`SESSION_TRADE_V2|XAUUSD|LONDON_NEWYORK|C_TREND_EXPANSION`: 0 closed trades (< 30) \u2014 no economic conclusion supportable",
+      "Stage-to-stage conditional expectancy shifts are 0.0 by construction and therefore carry no information about whether any individual stage rule helps or hurts; answering that requires a preregistered counterfactual experiment, which is out of scope for this diagnostic mission."
+    ],
+    "conditional_shift_note": "All conditional_net_expectancy_shift_r values are 0.0 by construction: the closed-trade cohort is identical at every stage because a trade can only close if it survived every stage. Reported shifts are therefore NOT evidence that any stage improves or degrades expectancy.",
+    "branch_b_structural_reachability": {
+      "authoritative_b_triggers": 7,
+      "entries_exactly_on_reference_boundary": 7,
+      "all_entries_exact_tick_touches": true,
+      "structural_explanation": "A's sweep predicate (low < ref_low AND close > ref_low) strictly subsumes B's rejection predicate (low <= ref_low AND inward close) whenever the boundary is BREACHED. Because the frozen engine scans A over the entire trade window before B, B can only own a session when price touches the reference boundary to the exact tick without breaching it, and no A sweep occurs anywhere in the window. B's scarcity is therefore a structural consequence of the frozen predicate overlap plus A->B->C precedence, not evidence that range rejection is a weak idea."
+    }
+  },
+  "root_causes": [
+    {
+      "branch": "A_SWEEP_REENTRY",
+      "root_cause": "MULTIPLE_CONTRIBUTORS",
+      "contributors": [
+        "EVIDENCE_SUPPORTS_GEOMETRY_ATTRITION",
+        "EVIDENCE_SUPPORTS_FRICTION_DECAY"
+      ],
+      "evidence": [
+        "A_SWEEP_REENTRY: LOCATION->TRIGGER attrition 20.7% (1067->846); own predicate fired 852 times, 0 removed by frozen precedence",
+        "A_SWEEP_REENTRY: TRIGGER->GEOMETRY attrition 35.9% (846->542); rejection reasons {'SWEEP_STOP_DOES_NOT_PROTECT_EXTREME': 304}",
+        "A_SWEEP_REENTRY: conditional downstream gross expectancy +0.0527R flips to net -0.1499R over 542 closed trades (avg cost 0.2026R/trade)"
+      ],
+      "context_n": 1301,
+      "location_n": 1067,
+      "trigger_n": 846,
+      "geometry_n": 542,
+      "execution_n": 542,
+      "closed_n": 542,
+      "raw_branch_rule_fired": 852,
+      "trigger_preempted_by_precedence": 0,
+      "fill_rate": 1.0,
+      "sample_sufficient_for_economics": true,
+      "sample_sufficient_for_structural_claims": {
+        "location": true,
+        "trigger": true,
+        "geometry": true
+      }
+    },
+    {
+      "branch": "B_RANGE_REJECTION",
+      "root_cause": "INSUFFICIENT_SAMPLE",
+      "contributors": [],
+      "evidence": [
+        "B_RANGE_REJECTION: LOCATION->TRIGGER attrition is 99.3% (1071->7) BUT the branch's own predicate fires on 854/1071 (79.7%) observations and 847 are removed by the frozen A->B->C precedence. This is precedence preemption, NOT trigger weakness \u2014 it is not classified as a trigger-rule defect.",
+        "B_RANGE_REJECTION: geometry removes only 0.0% of triggers (7->7) \u2014 geometry is not a material filter for this branch",
+        "B_RANGE_REJECTION: fill rate 42.86% (3/7) is low but the 7-proposal sample is below the 30-observation threshold for a structural claim",
+        "B_RANGE_REJECTION: only 3 closed trades (< 30); no economic claim about this branch is supportable"
+      ],
+      "context_n": 1301,
+      "location_n": 1071,
+      "trigger_n": 7,
+      "geometry_n": 7,
+      "execution_n": 3,
+      "closed_n": 3,
+      "raw_branch_rule_fired": 854,
+      "trigger_preempted_by_precedence": 847,
+      "fill_rate": 0.428571,
+      "sample_sufficient_for_economics": false,
+      "sample_sufficient_for_structural_claims": {
+        "location": true,
+        "trigger": false,
+        "geometry": false
+      }
+    },
+    {
+      "branch": "C_TREND_EXPANSION",
+      "root_cause": "EVIDENCE_SUPPORTS_EXECUTION_FILL_STARVATION",
+      "contributors": [
+        "EVIDENCE_SUPPORTS_EXECUTION_FILL_STARVATION"
+      ],
+      "evidence": [
+        "C_TREND_EXPANSION: LOCATION->TRIGGER attrition 81.6% (1067->196); own predicate fired 733 times, 537 removed by frozen precedence",
+        "C_TREND_EXPANSION: geometry removes only 0.0% of triggers (196->196) \u2014 geometry is not a material filter for this branch",
+        "C_TREND_EXPANSION: fill rate 0.51% (1/196 geometry-valid proposals filled under the frozen order model)",
+        "C_TREND_EXPANSION: only 1 closed trades (< 30); no economic claim about this branch is supportable"
+      ],
+      "context_n": 1301,
+      "location_n": 1067,
+      "trigger_n": 196,
+      "geometry_n": 196,
+      "execution_n": 1,
+      "closed_n": 1,
+      "raw_branch_rule_fired": 733,
+      "trigger_preempted_by_precedence": 537,
+      "fill_rate": 0.005102,
+      "sample_sufficient_for_economics": false,
+      "sample_sufficient_for_structural_claims": {
+        "location": true,
+        "trigger": true,
+        "geometry": true
+      }
+    }
+  ],
+  "branch_counts": {
+    "A_SWEEP_REENTRY": {
+      "CONTEXT": 1301,
+      "LOCATION": 1067,
+      "TRIGGER": 846,
+      "GEOMETRY": 542,
+      "EXECUTION": 542,
+      "CLOSED": 542,
+      "RAW_CONTEXT_INPUT": 1936
+    },
+    "B_RANGE_REJECTION": {
+      "CONTEXT": 1301,
+      "LOCATION": 1071,
+      "TRIGGER": 7,
+      "GEOMETRY": 7,
+      "EXECUTION": 3,
+      "CLOSED": 3,
+      "RAW_CONTEXT_INPUT": 1936
+    },
+    "C_TREND_EXPANSION": {
+      "CONTEXT": 1301,
+      "LOCATION": 1067,
+      "TRIGGER": 196,
+      "GEOMETRY": 196,
+      "EXECUTION": 1,
+      "CLOSED": 1,
+      "RAW_CONTEXT_INPUT": 1936
+    }
+  },
+  "consistency": {
+    "consistent": true,
+    "statement": "Every economic quantity in this funnel analysis is produced by the SAME frozen evaluation path (`campaign.evaluate_window`) as the economic-verification campaign, then re-aggregated along the strategy funnel. The DEV campaign result was also re-executed from the frozen HistData zips and reproduced `dev_result.json` exactly. The two reports therefore agree on every shared quantity.",
+    "checks": {
+      "A_SWEEP_REENTRY closed trades": {
+        "campaign": 542,
+        "funnel": 542,
+        "match": true
+      },
+      "A_SWEEP_REENTRY gross expectancy R": {
+        "campaign": 0.0528,
+        "funnel": 0.0527,
+        "match": true
+      },
+      "A_SWEEP_REENTRY net expectancy R": {
+        "campaign": -0.1499,
+        "funnel": -0.1499,
+        "match": true
+      },
+      "B_RANGE_REJECTION closed trades": {
+        "campaign": 3,
+        "funnel": 3,
+        "match": true
+      },
+      "B_RANGE_REJECTION gross expectancy R": {
+        "campaign": -1.0,
+        "funnel": -1.0,
+        "match": true
+      },
+      "B_RANGE_REJECTION net expectancy R": {
+        "campaign": -1.1983,
+        "funnel": -1.1983,
+        "match": true
+      },
+      "C_TREND_EXPANSION closed trades": {
+        "campaign": 1,
+        "funnel": 1,
+        "match": true
+      },
+      "C_TREND_EXPANSION gross expectancy R": {
+        "campaign": 4.25,
+        "funnel": 4.25,
+        "match": true
+      },
+      "C_TREND_EXPANSION net expectancy R": {
+        "campaign": 4.0515,
+        "funnel": 4.0515,
+        "match": true
+      },
+      "Combined closed trades": {
+        "campaign": 546,
+        "funnel": 546,
+        "match": true
+      },
+      "Combined net R": {
+        "campaign": -80.7814,
+        "funnel": -80.7814,
+        "match": true
+      }
+    },
+    "contradictions": [],
+    "comparison_policy": "Shared economic quantities are compared at the economic-verification report's own display precision (tolerance 1e-4 R). Differences below that are rounding artifacts of independent round() calls on the same underlying float, not disagreements. Counts are compared exactly.",
+    "notes": [
+      "The economic-verification report's conclusion (A_SWEEP_REENTRY REJECT on OOS; B and C RESEARCH_ONLY) is a VERIFICATION-LIFECYCLE verdict. This strategy-funnel report makes no promotion/rejection decision and does not re-open or re-interpret the OOS result; it only localizes WHERE opportunity and economics are lost on DEV.",
+      "No OOS data was used to design any stage of this funnel. The DEV funnel definition is frozen by this report; any later OOS confirmation view must not alter it."
+    ]
+  },
+  "follow_up_hypotheses": [
+    {
+      "hypothesis_id": "STV3_H1_SWEEP_STOP_GEOMETRY",
+      "evidence_source": "geometry_analysis.json; funnel_stage_matrix.json (TRIGGER\u2192GEOMETRY rows)",
+      "observed_problem": "304 of 846 A triggers (35.9%) are discarded because the fixed 25%-of-reference-range stop sits inside the sweep extreme. This is a measured attrition fact; the economics of the discarded opportunities are unknown and unknowable from this dataset.",
+      "proposed_new_candidate_change": "A NEW candidate (e.g. SESSION_TRADE_V3_A_STOPGEOM) whose A stop is placed beyond the sweep extreme by a defined buffer instead of at a fixed 25% of the reference range. SESSION_TRADE_V2 @ 2.0.0 is NOT modified.",
+      "what_must_be_preregistered": "The exact stop formula and buffer; that R is redefined by that stop (so 4R/5R targets move); the expected direction and magnitude of the effect; the acceptance thresholds; the DEV/OOS/holdout partitions; and an explicit statement that the retained-but-previously-rejected trades are a NEW population, not a recovered one.",
+      "required_new_validation": "A fresh full verification lifecycle for the new candidate id: contract, data quality, DEV screen, freeze, OOS verification, walk-forward, regime/stability. The STV2 OOS failure may not be reused as evidence for or against it."
+    },
+    {
+      "hypothesis_id": "STV3_H2_EXPANSION_ENTRY_MODEL",
+      "evidence_source": "execution_analysis.json (C_TREND_EXPANSION rows)",
+      "observed_problem": "C produces 196 valid expansion triggers with 100% geometry validity but only 1/196 fills (0.51%). The EQ (box-mid) retrace limit is almost never reached inside the remaining trade window, so C is structurally unmeasurable rather than unprofitable.",
+      "proposed_new_candidate_change": "A NEW candidate whose expansion entry model is specified to be reachable (the design space includes, but is not limited to, a shallower retrace level, a broken-boundary retest, or a stop-entry continuation). No specific variant is endorsed by this analysis.",
+      "what_must_be_preregistered": "The entry model and its stop/target geometry; the order type; the expiry rule; the minimum fill rate that would make the branch measurable at all; and the sample size required before any economic statement is permitted.",
+      "required_new_validation": "Fill-rate feasibility screen on DEV first (a purely structural gate), then the full verification lifecycle under a new candidate id. C's deterministic runner management must also be defined, since the frozen spec's 'confirmed M15 swing' trail is not deterministic and is currently replayed as C_FIXED_EXIT_PROXY."
+    },
+    {
+      "hypothesis_id": "STV3_H3_BRANCH_PRECEDENCE",
+      "evidence_source": "attrition_analysis.json (B/C TRIGGER rejection reasons)",
+      "observed_problem": "B's rejection rule fires on many sessions but the frozen A\u2192B\u2192C precedence attributes only 7 sessions to B (dominant reason `TRIGGER_PREEMPTED_BY_A_SWEEP_REENTRY`); C loses 871 observations at TRIGGER with preemption as a major component. The branches are therefore not independently measurable under V2's single-decision-per-session contract.",
+      "proposed_new_candidate_change": "A NEW candidate that makes branch arbitration explicit and measurable \u2014 e.g. evaluating branches independently per session, or defining a precedence rule that is itself a declared parameter. V2's precedence stays frozen.",
+      "what_must_be_preregistered": "Whether branches may co-fire on one session; how overlapping positions are accounted for in R terms; the risk-budget implications; and the fact that this changes the unit of observation, so prior STV2 statistics are not comparable.",
+      "required_new_validation": "Full verification lifecycle under a new candidate id, plus an explicit multiple-comparisons policy because independent branch evaluation materially increases the number of tested hypotheses."
+    },
+    {
+      "hypothesis_id": "STV3_H4_FRICTION_AWARE_RISK_UNIT",
+      "evidence_source": "friction_analysis.json; branch_summary.json",
+      "observed_problem": "A's 542 closed trades are gross-positive and net-negative; the friction drag is large relative to R because R itself is only 25% of a session reference range, which on quiet sessions is small in price terms.",
+      "proposed_new_candidate_change": "A NEW candidate with a declared minimum risk distance (or a minimum friction-to-R ratio) as an admission filter, so that sessions whose R is too small to survive realistic cost are never traded.",
+      "what_must_be_preregistered": "The exact threshold and the fact that it is a CONTEXT-stage admission filter, not an exit optimization; the expected reduction in trade count; and that the threshold must be chosen on DEV only and then frozen.",
+      "required_new_validation": "Full verification lifecycle under a new candidate id. This is explicitly NOT a validated improvement: filtering on an in-sample cost ratio is a known overfitting hazard and must be tested out of sample."
+    }
+  ],
+  "generated_at": "2026-10-03T11:12:06.463286+00:00",
+  "commit_sha": "599c16b05d823c7c9be0ec1f35dff1b4b6c84670",
+  "pr_number": null
+}

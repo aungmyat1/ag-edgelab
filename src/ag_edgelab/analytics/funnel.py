@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from typing import Mapping, Sequence
+from typing import Callable, Mapping, Sequence
 
 from ag_edgelab.contracts.funnel import FunnelStage
 from ag_edgelab.ledger.candidate import CandidateRecord
@@ -23,7 +23,13 @@ class FunnelStat:
     expectancy_lift_r: float | None
 
 
-def _wilson(wins: int, n: int, z: float = 1.959963984540054) -> tuple[float | None, float | None]:
+def wilson_interval(wins: int, n: int, z: float = 1.959963984540054) -> tuple[float | None, float | None]:
+    """Wilson score interval for a binomial proportion.
+
+    This is EdgeLab's single Wilson implementation; campaign-specific analytics
+    must reuse it rather than introducing a new statistics dependency.  Returns
+    ``(None, None)`` when ``n == 0`` (undefined, never 0.0).
+    """
     if n == 0:
         return None, None
     p = wins / n
@@ -31,6 +37,10 @@ def _wilson(wins: int, n: int, z: float = 1.959963984540054) -> tuple[float | No
     center = (p + z * z / (2 * n)) / denom
     margin = z * math.sqrt((p * (1 - p) + z * z / (4 * n)) / n) / denom
     return max(0.0, center - margin), min(1.0, center + margin)
+
+
+#: Backwards-compatible private alias (pre-existing callers/tests).
+_wilson = wilson_interval
 
 
 def _economic(rs: Sequence[float]) -> tuple[float | None, float | None]:
@@ -43,7 +53,31 @@ def _economic(rs: Sequence[float]) -> tuple[float | None, float | None]:
     return expectancy, pf
 
 
-def compute_funnel_stats(records: Sequence[CandidateRecord], outcomes_r: Mapping[str, float]) -> tuple[FunnelStat, ...]:
+def default_outcome_key(record: CandidateRecord) -> str:
+    """Default unit-level economic lookup key: the strategy candidate id.
+
+    This is correct only when one :class:`CandidateRecord` == one economic
+    observation.  Campaigns whose records fan out over symbol / session /
+    branch / trading date share a single top-level ``candidate_id`` and MUST
+    pass their own ``key_fn`` (see
+    ``ag_edgelab.campaigns.session_trade_v2.funnel_models.analysis_unit_key``),
+    otherwise every observation would collide onto the same outcome.
+    """
+    return record.candidate_id
+
+
+def compute_funnel_stats(
+    records: Sequence[CandidateRecord],
+    outcomes_r: Mapping[str, float],
+    key_fn: Callable[[CandidateRecord], str] | None = None,
+) -> tuple[FunnelStat, ...]:
+    """Cumulative per-stage funnel statistics.
+
+    ``key_fn`` selects the per-record key used to look an economic outcome up
+    in ``outcomes_r``.  It defaults to :func:`default_outcome_key`
+    (``record.candidate_id``) so existing callers are unaffected.
+    """
+    key = key_fn or default_outcome_key
     stages = [
         FunnelStage.CONTEXT, FunnelStage.LOCATION, FunnelStage.TRIGGER,
         FunnelStage.GEOMETRY, FunnelStage.EXECUTION,
@@ -60,10 +94,10 @@ def compute_funnel_stats(records: Sequence[CandidateRecord], outcomes_r: Mapping
             if result is not None and result.passed:
                 eligible.append(record)
 
-        values = [float(outcomes_r[r.candidate_id]) for r in eligible if r.candidate_id in outcomes_r]
+        values = [float(outcomes_r[k]) for k in (key(r) for r in eligible) if k in outcomes_r]
         wins = sum(1 for value in values if value > 0)
         wr = wins / len(values) if values else None
-        low, high = _wilson(wins, len(values))
+        low, high = wilson_interval(wins, len(values))
         exp, pf = _economic(values)
         retained = (len(eligible) / prior_count * 100.0) if prior_count else 0.0
         output.append(FunnelStat(

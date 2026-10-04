@@ -1,0 +1,199 @@
+STV2_STRATEGY_FUNNEL_ANALYZER_V1 — test results
+===============================================
+repo            : aungmyat1/ag-edgelab
+branch          : arena/01a1015a-ag-edgelab
+baseline_head   : 599c16b05d823c7c9be0ec1f35dff1b4b6c84670
+candidate_id    : SESSION_TRADE_V2_v2.0.0_e1ffe9f1e5cc
+python          : Python 3.11.2
+generated_at    : 2026-10-03T11:16:01Z
+
+===============================================================
+1) FOCUSED SUITE — STV2 strategy funnel analyzer (46 requirements)
+===============================================================
+  tests/test_stv2_funnel_identity.py    req 1-8, 33, 35-36, 45
+  tests/test_stv2_funnel_stages.py      req 9-32
+  tests/test_stv2_funnel_statistics.py  req 34-38
+  tests/test_stv2_funnel_matrix.py      req 39-44
+  tests/test_stv2_funnel_guards.py      req 46 + mission prohibitions
+
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-8.4.2, pluggy-1.6.0 -- /home/user/.venv/bin/python
+hypothesis profile 'default'
+rootdir: /home/user/ag-edgelab
+configfile: pyproject.toml
+plugins: hypothesis-6.168.3
+collecting ... collected 112 items
+
+tests/test_stv2_funnel_identity.py::test_canonical_candidate_identity_preserved PASSED [  0%]
+tests/test_stv2_funnel_identity.py::test_analysis_unit_id_is_a_sha256_hex_digest PASSED [  1%]
+tests/test_stv2_funnel_identity.py::test_analysis_unit_ids_are_unique_across_the_identity_payload PASSED [  2%]
+tests/test_stv2_funnel_identity.py::test_same_candidate_across_symbols_does_not_collide PASSED [  3%]
+tests/test_stv2_funnel_identity.py::test_same_candidate_and_symbol_across_sessions_does_not_collide PASSED [  4%]
+tests/test_stv2_funnel_identity.py::test_same_candidate_symbol_session_across_branches_does_not_collide PASSED [  5%]
+tests/test_stv2_funnel_identity.py::test_separate_trading_dates_and_events_do_not_collide PASSED [  6%]
+tests/test_stv2_funnel_identity.py::test_strategy_commit_hash_alone_is_not_the_instance_hash PASSED [  7%]
+tests/test_stv2_funnel_identity.py::test_analysis_unit_id_is_deterministic_and_key_order_independent PASSED [  8%]
+tests/test_stv2_funnel_identity.py::test_exactly_24_segment_identities PASSED [  8%]
+tests/test_stv2_funnel_identity.py::test_segment_id_format_and_validation PASSED [  9%]
+tests/test_stv2_funnel_identity.py::test_segment_and_analysis_unit_and_candidate_are_three_distinct_concepts PASSED [ 10%]
+tests/test_stv2_funnel_identity.py::test_compute_funnel_stats_default_key_is_unchanged PASSED [ 11%]
+tests/test_stv2_funnel_identity.py::test_candidate_id_keying_collides_but_analysis_unit_keying_does_not PASSED [ 12%]
+tests/test_stv2_funnel_identity.py::test_analysis_unit_key_rejects_records_without_unit_identity PASSED [ 13%]
+tests/test_stv2_funnel_identity.py::test_stv2_record_preserves_canonical_candidate_id_alongside_unit_id PASSED [ 14%]
+tests/test_stv2_funnel_identity.py::test_wilson_interval_reused_and_undefined_at_zero_samples PASSED [ 15%]
+tests/test_stv2_funnel_identity.py::test_no_scipy_dependency_introduced PASSED [ 16%]
+tests/test_stv2_funnel_stages.py::test_context_counts_a_complete_session_as_valid_for_all_three_branches PASSED [ 16%]
+tests/test_stv2_funnel_stages.py::test_context_reference_box_is_frozen_strictly_before_the_trade_window PASSED [ 17%]
+tests/test_stv2_funnel_stages.py::test_incomplete_reference_window_is_data_invalid_and_never_a_loss PASSED [ 18%]
+tests/test_stv2_funnel_stages.py::test_data_invalid_sessions_are_counted_separately_in_context_analysis PASSED [ 19%]
+tests/test_stv2_funnel_stages.py::test_location_a_requires_a_strict_boundary_breach PASSED [ 20%]
+tests/test_stv2_funnel_stages.py::test_location_a_measures_both_high_and_low_side_interaction PASSED [ 21%]
+tests/test_stv2_funnel_stages.py::test_location_b_accepts_an_exact_boundary_touch_without_rejection_close PASSED [ 22%]
+tests/test_stv2_funnel_stages.py::test_location_c_requires_extension_beyond_the_boundary_not_a_full_body_close PASSED [ 23%]
+tests/test_stv2_funnel_stages.py::test_every_branch_trigger_implies_its_own_location_cumulativity PASSED [ 24%]
+tests/test_stv2_funnel_stages.py::test_a_trigger_matches_frozen_engine_long_and_short PASSED [ 25%]
+tests/test_stv2_funnel_stages.py::test_b_trigger_matches_frozen_engine_and_needs_an_exact_tick_touch PASSED [ 25%]
+tests/test_stv2_funnel_stages.py::test_a_sweep_predicate_subsumes_b_on_any_breached_boundary PASSED [ 26%]
+tests/test_stv2_funnel_stages.py::test_c_trigger_uses_the_frozen_body_close_rule_only PASSED [ 27%]
+tests/test_stv2_funnel_stages.py::test_a_dual_side_sweep_is_ambiguous_and_fails_closed PASSED [ 28%]
+tests/test_stv2_funnel_stages.py::test_b_dual_boundary_rejection_is_ambiguous_and_fails_closed PASSED [ 29%]
+tests/test_stv2_funnel_stages.py::test_a_sweep_stop_protection_geometry_rejects_shallow_sweeps PASSED [ 30%]
+tests/test_stv2_funnel_stages.py::test_a_shallow_sweep_passes_stop_protection PASSED [ 31%]
+tests/test_stv2_funnel_stages.py::test_quarter_range_geometry_holds_for_every_branch PASSED [ 32%]
+tests/test_stv2_funnel_stages.py::test_c_eq_geometry_is_unchanged_entry_at_equilibrium PASSED [ 33%]
+tests/test_stv2_funnel_stages.py::test_a_next_executable_price_behaviour_unchanged PASSED [ 33%]
+tests/test_stv2_funnel_stages.py::test_b_limit_fill_at_the_boundary_price PASSED [ 34%]
+tests/test_stv2_funnel_stages.py::test_c_limit_fill_at_equilibrium PASSED [ 35%]
+tests/test_stv2_funnel_stages.py::test_unfilled_and_expired_limits_are_tracked_separately_and_never_scored PASSED [ 36%]
+tests/test_stv2_funnel_stages.py::test_limit_generated_on_the_final_candle_expires_as_never_workable PASSED [ 37%]
+tests/test_stv2_funnel_stages.py::test_same_bar_ambiguity_is_recorded_not_silently_resolved PASSED [ 38%]
+tests/test_stv2_funnel_stages.py::test_friction_is_applied_after_fill_and_gross_net_accounting_is_consistent PASSED [ 39%]
+tests/test_stv2_funnel_stages.py::test_partial_4r_and_runner_5r_accounting_is_weighted_not_relabelled PASSED [ 40%]
+tests/test_stv2_funnel_stages.py::test_runner_breakeven_accounting PASSED [ 41%]
+tests/test_stv2_funnel_stages.py::test_holding_time_is_preserved PASSED  [ 41%]
+tests/test_stv2_funnel_statistics.py::test_profit_factor_semantics_are_explicit_and_never_a_sentinel PASSED [ 42%]
+tests/test_stv2_funnel_statistics.py::test_infinite_pf_is_json_serializable_without_nan_or_inf PASSED [ 43%]
+tests/test_stv2_funnel_statistics.py::test_undefined_metrics_are_null_not_zero PASSED [ 44%]
+tests/test_stv2_funnel_statistics.py::test_empty_segment_rows_have_null_economics_and_null_retention_pct PASSED [ 45%]
+tests/test_stv2_funnel_statistics.py::test_retained_percentage_is_retained_over_input_at_every_stage PASSED [ 46%]
+tests/test_stv2_funnel_statistics.py::test_funnel_is_cumulative_each_stage_input_equals_previous_retained PASSED [ 47%]
+tests/test_stv2_funnel_statistics.py::test_a_record_failing_an_early_stage_never_reappears_downstream PASSED [ 48%]
+tests/test_stv2_funnel_statistics.py::test_conditional_economics_only_count_closed_trades_of_the_retained_cohort PASSED [ 49%]
+tests/test_stv2_funnel_statistics.py::test_conditional_shift_is_zero_by_construction_and_declared_as_such PASSED [ 50%]
+tests/test_stv2_funnel_statistics.py::test_rejected_and_unfilled_observations_carry_no_economics_at_all PASSED [ 50%]
+tests/test_stv2_funnel_statistics.py::test_outcome_key_maps_only_closed_trades_so_no_zero_is_imputed PASSED [ 51%]
+tests/test_stv2_funnel_statistics.py::test_friction_analysis_reports_null_not_zero_for_segments_without_trades PASSED [ 52%]
+tests/test_stv2_funnel_statistics.py::test_open_at_end_fills_are_censored_from_closed_trade_economics PASSED [ 53%]
+tests/test_stv2_funnel_matrix.py::test_segment_manifest_contains_exactly_24_segments PASSED [ 54%]
+tests/test_stv2_funnel_matrix.py::test_stage_matrix_has_exactly_120_filter_stage_rows PASSED [ 55%]
+tests/test_stv2_funnel_matrix.py::test_segments_and_analysis_units_are_not_conflated PASSED [ 56%]
+tests/test_stv2_funnel_matrix.py::test_outcome_stage_is_reported_separately_from_the_five_filter_stages PASSED [ 57%]
+tests/test_stv2_funnel_matrix.py::test_csv_and_json_matrices_agree PASSED [ 58%]
+tests/test_stv2_funnel_matrix.py::test_csv_carries_every_mandated_per_stage_statistic PASSED [ 58%]
+tests/test_stv2_funnel_matrix.py::test_holdout_is_never_touched PASSED   [ 59%]
+tests/test_stv2_funnel_matrix.py::test_every_analysis_unit_lies_inside_the_development_partition PASSED [ 60%]
+tests/test_stv2_funnel_matrix.py::test_execution_authority_remains_frozen_and_unauthorized PASSED [ 61%]
+tests/test_stv2_funnel_matrix.py::test_no_order_send_or_broker_surface_in_the_new_modules PASSED [ 62%]
+tests/test_stv2_funnel_matrix.py::test_generic_analytics_contain_no_stv2_specific_parsing PASSED [ 63%]
+tests/test_stv2_funnel_matrix.py::test_frozen_strategy_files_are_byte_identical_to_the_recorded_hashes PASSED [ 64%]
+tests/test_stv2_funnel_matrix.py::test_dataset_hashes_match_the_frozen_campaign_dataset PASSED [ 65%]
+tests/test_stv2_funnel_matrix.py::test_preserved_dataset_semantics_are_declared PASSED [ 66%]
+tests/test_stv2_funnel_matrix.py::test_funnel_reconciles_with_the_campaign_dev_result PASSED [ 66%]
+tests/test_stv2_funnel_matrix.py::test_matrix_closed_trades_equal_the_campaign_total PASSED [ 67%]
+tests/test_stv2_funnel_matrix.py::test_per_branch_funnel_economics_match_the_campaign_branch_table PASSED [ 68%]
+tests/test_stv2_funnel_matrix.py::test_branch_stage_counts_are_cumulative_and_monotonic PASSED [ 69%]
+tests/test_stv2_funnel_matrix.py::test_dimension_summaries_partition_the_same_546_closed_trades PASSED [ 70%]
+tests/test_stv2_funnel_matrix.py::test_attrition_transitions_are_internally_consistent PASSED [ 71%]
+tests/test_stv2_funnel_matrix.py::test_geometry_diagnostics_isolate_the_sweep_stop_rejection PASSED [ 72%]
+tests/test_stv2_funnel_matrix.py::test_execution_diagnostics_show_c_fill_starvation_and_a_market_fills PASSED [ 73%]
+tests/test_stv2_funnel_matrix.py::test_friction_analysis_identifies_the_gross_positive_net_negative_segments PASSED [ 74%]
+tests/test_stv2_funnel_matrix.py::test_every_required_artifact_exists_and_is_non_empty PASSED [ 75%]
+tests/test_stv2_funnel_matrix.py::test_summary_markdown_contains_all_nine_report_views PASSED [ 75%]
+tests/test_stv2_funnel_matrix.py::test_summary_markdown_answers_all_ten_report_questions PASSED [ 76%]
+tests/test_stv2_funnel_matrix.py::test_the_two_funnels_are_kept_conceptually_separate PASSED [ 77%]
+tests/test_stv2_funnel_matrix.py::test_metric_semantics_section_states_the_non_causal_and_no_zero_rules PASSED [ 78%]
+tests/test_stv2_funnel_matrix.py::test_weighted_target_economics_are_labelled_4_25r_not_5r PASSED [ 79%]
+tests/test_stv2_funnel_matrix.py::test_root_causes_use_calibrated_classifications PASSED [ 80%]
+tests/test_stv2_funnel_matrix.py::test_consistency_with_the_existing_report_is_stated_explicitly PASSED [ 81%]
+tests/test_stv2_funnel_matrix.py::test_follow_up_hypotheses_are_new_candidates_and_fully_specified PASSED [ 82%]
+tests/test_stv2_funnel_matrix.py::test_inconclusive_findings_are_reported_separately PASSED [ 83%]
+tests/test_stv2_funnel_matrix.py::test_no_sentinel_or_non_finite_values_in_any_json_artifact PASSED [ 83%]
+tests/test_stv2_funnel_matrix.py::test_infinite_profit_factor_is_null_with_an_explicit_status PASSED [ 84%]
+tests/test_stv2_funnel_guards.py::test_generic_funnel_analytics_suite_still_passes PASSED [ 85%]
+tests/test_stv2_funnel_guards.py::test_existing_stv2_campaign_suites_still_pass PASSED [ 86%]
+tests/test_stv2_funnel_guards.py::test_the_generic_contract_was_not_extended_with_an_outcome_stage PASSED [ 87%]
+tests/test_stv2_funnel_guards.py::test_shared_candidate_record_was_not_modified_for_stv2 PASSED [ 88%]
+tests/test_stv2_funnel_guards.py::test_compute_funnel_stats_signature_stays_backward_compatible PASSED [ 89%]
+tests/test_stv2_funnel_guards.py::test_frozen_directory_is_untracked_by_this_change PASSED [ 90%]
+tests/test_stv2_funnel_guards.py::test_campaign_replay_and_friction_modules_are_unmodified PASSED [ 91%]
+tests/test_stv2_funnel_guards.py::test_no_new_parameters_are_tuned_or_swept PASSED [ 91%]
+tests/test_stv2_funnel_guards.py::test_no_v3_rule_changes_are_implemented_anywhere_in_code PASSED [ 92%]
+tests/test_stv2_funnel_guards.py::test_hypotheses_are_declared_only_after_measurement_and_never_mutate_stv2 PASSED [ 93%]
+tests/test_stv2_funnel_guards.py::test_no_promotion_or_authorization_recommendation_is_made PASSED [ 94%]
+tests/test_stv2_funnel_guards.py::test_the_verification_lifecycle_funnel_is_not_repurposed PASSED [ 95%]
+tests/test_stv2_funnel_guards.py::test_no_production_scanner_module_is_imported_by_the_analyzer PASSED [ 96%]
+tests/test_stv2_funnel_guards.py::test_no_new_third_party_dependency_was_added PASSED [ 97%]
+tests/test_stv2_funnel_guards.py::test_analyzer_is_pure_analysis_and_writes_nothing_outside_its_artifact_dir PASSED [ 98%]
+tests/test_stv2_funnel_guards.py::test_existing_campaign_artifacts_are_unchanged PASSED [ 99%]
+tests/test_stv2_funnel_guards.py::test_source_identity_records_the_exact_analysis_lineage PASSED [100%]
+
+============================= 112 passed in 13.90s =============================
+FOCUSED_SUITE_EXIT=0
+
+===============================================================
+2) FULL REGRESSION — entire EdgeLab test suite
+===============================================================
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-8.4.2, pluggy-1.6.0
+rootdir: /home/user/ag-edgelab
+configfile: pyproject.toml
+testpaths: tests
+plugins: hypothesis-6.168.3
+collected 383 items
+
+tests/test_bootstrap.py .                                                [  0%]
+tests/test_branching_analytics.py ..                                     [  0%]
+tests/test_branching_contracts.py ...                                    [  1%]
+tests/test_branching_reference.py ..                                     [  2%]
+tests/test_canonical_fingerprint.py .                                    [  2%]
+tests/test_content_addressed_store.py ........                           [  4%]
+tests/test_crypto_mtf_smc.py ...............                             [  8%]
+tests/test_data_quality_gate.py .........                                [ 10%]
+tests/test_dataset_manifest_v2.py ....                                   [ 11%]
+tests/test_fingerprint.py ..                                             [ 12%]
+tests/test_friction.py ..                                                [ 12%]
+tests/test_funding_friction.py ..........                                [ 15%]
+tests/test_funnel_analytics.py .                                         [ 15%]
+tests/test_funnel_runner.py .                                            [ 15%]
+tests/test_market_context.py ..                                          [ 16%]
+tests/test_mtf_derive.py ........                                        [ 18%]
+tests/test_optimization_engine.py .......                                [ 20%]
+tests/test_order_intent.py ..                                            [ 20%]
+tests/test_production_verification.py .................................. [ 29%]
+..................                                                       [ 34%]
+tests/test_properties.py ...                                             [ 35%]
+tests/test_provenance.py .....                                           [ 36%]
+tests/test_r0_foundation.py ....                                         [ 37%]
+tests/test_r8_audit_regressions.py ........                              [ 39%]
+tests/test_reference_replay.py ...                                       [ 40%]
+tests/test_reference_replay_breakeven.py .                               [ 40%]
+tests/test_reference_replay_edge_cases.py ...                            [ 41%]
+tests/test_rejection_lineage.py .                                        [ 41%]
+tests/test_rule_registry.py ..                                           [ 42%]
+tests/test_sealing.py ...                                                [ 43%]
+tests/test_stv2_campaign_matrix.py ..........                            [ 45%]
+tests/test_stv2_friction_and_dataset.py ......................           [ 51%]
+tests/test_stv2_frozen_engine_contract.py .......................        [ 57%]
+tests/test_stv2_funnel_guards.py .................                       [ 61%]
+tests/test_stv2_funnel_identity.py ..................                    [ 66%]
+tests/test_stv2_funnel_matrix.py ...................................     [ 75%]
+tests/test_stv2_funnel_stages.py .............................           [ 83%]
+tests/test_stv2_funnel_statistics.py .............                       [ 86%]
+tests/test_stv2_identity_and_guards.py ..........                        [ 89%]
+tests/test_stv2_replay.py ...............                                [ 93%]
+tests/test_stv2_report.py .....                                          [ 94%]
+tests/test_stv2_windows.py ............                                  [ 97%]
+tests/test_temporal_state_machine.py .........                           [100%]
+
+============================= 383 passed in 38.29s =============================
+FULL_REGRESSION_EXIT=0
