@@ -74,6 +74,7 @@ from ag_edgelab.universal.location import (
     premium_discount,
 )
 from ag_edgelab.universal.targets import EntryGeometry, compute_excursions
+from ag_edgelab.verification.regimes import classify_market_state
 
 UTC = timezone.utc
 
@@ -355,6 +356,19 @@ class CandidateUnit:
     management_r: float | None = None
     management_exit: float | None = None
 
+    horizon_r: float | None = None
+
+    # temporal diagnostics (mission section 8 TEMPORAL_INCOMPATIBILITY)
+    window_m15_bars: int = 0
+    m15_bars_after_sweep: int | None = None
+    m15_bars_after_reclaim: int | None = None
+    m15_bars_after_displacement: int | None = None
+    m5_bars_after_mss: int | None = None
+
+    # regime / calendar strata (frozen classifier; strata are not gates)
+    regime: str = "UNAVAILABLE"
+    quarter: str = ""
+
     # opportunity-basis diagnostic (frozen observation policy)
     opp_mfe_r: float | None = None
     opp_mae_r: float | None = None
@@ -381,12 +395,19 @@ def body_range_ratio(bar: MarketBar) -> float | None:
     return abs(bar.close - bar.open) / rng
 
 
-def is_displacement(bar: MarketBar, direction: Direction) -> tuple[bool, float | None]:
-    """Frozen V1 displacement: body/range >= 0.70 AND body on the thesis side."""
+def is_displacement(bar: MarketBar, direction: Direction,
+                    threshold: float = DISPLACEMENT_BODY_RANGE_MIN) -> tuple[bool, float | None]:
+    """Frozen V1 displacement: body/range >= 0.70 AND body on the thesis side.
+
+    ``threshold`` exists solely so the preregistered NON-SELECTING
+    parameter-neighborhood robustness diagnostic can be computed. The V1
+    contract value is DISPLACEMENT_BODY_RANGE_MIN and is never changed by
+    an observed result.
+    """
     ratio = body_range_ratio(bar)
     if ratio is None:
         return False, None
-    if ratio < DISPLACEMENT_BODY_RANGE_MIN:
+    if ratio < threshold:
         return False, ratio
     if direction == Direction.BULL and bar.close <= bar.open:
         return False, ratio
@@ -428,7 +449,8 @@ def decide_direction(d1: str, h4: str, h1: str) -> Direction:
 # Replay — one deterministic pass per (symbol, UTC day, session pair)
 # ---------------------------------------------------------------------------
 
-def replay_symbol(dataset: SymbolDataset) -> list[CandidateUnit]:
+def replay_symbol(dataset: SymbolDataset,
+                  displacement_min: float = DISPLACEMENT_BODY_RANGE_MIN) -> list[CandidateUnit]:
     frames = dataset.frames
     m15, m5 = frames["M15"], frames["M5"]
     h1, h4, d1 = frames["H1"], frames["H4"], frames["D1"]
@@ -472,8 +494,10 @@ def replay_symbol(dataset: SymbolDataset) -> list[CandidateUnit]:
                 asian_high=asian_high, asian_low=asian_low, asian_bars=asian_bars,
             )
             units.append(unit)
+            unit.quarter = f"{day.year}Q{(day.month - 1) // 3 + 1}"
             _evaluate_unit(unit, dataset, m15, m5, h1, h4, d1,
-                           shifts_by_index, fvgs_by_index, w_start, w_end, dev_end)
+                           shifts_by_index, fvgs_by_index, w_start, w_end, dev_end,
+                           displacement_min)
         day = day + timedelta(days=1)
     return units
 
@@ -497,6 +521,7 @@ def _evaluate_unit(
     w_start: datetime,
     w_end: datetime,
     dev_end: datetime,
+    displacement_min: float = DISPLACEMENT_BODY_RANGE_MIN,
 ) -> None:
     # ---------------- TRIGGER 1: Asian reference validity -----------------
     if unit.asian_bars < MIN_ASIAN_M15_BARS or unit.asian_high is None or unit.asian_low is None:
@@ -507,6 +532,7 @@ def _evaluate_unit(
         return
     win_idx = _window_indices(m15, w_start, w_end)
     unit.entry_window_bars = len(win_idx)
+    unit.window_m15_bars = len(win_idx)
     if not win_idx:
         _fail(unit, "T1_ASIAN_REFERENCE_VALID", "ENTRY_WINDOW_NO_BARS")
         return
@@ -528,6 +554,7 @@ def _evaluate_unit(
     pd_state = premium_discount(h4_closed, "H4", price, SWING_ORDER_H4)
     unit.premium_discount_state = pd_state.state if pd_state else "UNAVAILABLE"
     unit.prev_day_context = _prev_day_context(d1_closed, price)
+    unit.regime = classify_market_state(d1_closed[-1])
     liq = liquidity_levels(h1_closed, "H1", SWING_ORDER_H1)
     unit.liquidity_context_above = sum(1 for z in liq if z.side == LocationSide.RESISTANCE and z.zone_low > price)
     unit.liquidity_context_below = sum(1 for z in liq if z.side == LocationSide.SUPPORT and z.zone_high < price)
@@ -574,6 +601,7 @@ def _evaluate_unit(
         return
     unit.stages["T4_ASIAN_SWEEP"] = True
     unit.sweep_time = m15[sweep_i].timestamp.isoformat()
+    unit.m15_bars_after_sweep = sum(1 for i in win_idx if i > sweep_i)
 
     # ---------------- TRIGGER 5: close back INSIDE the Asian range --------
     reclaim_i: int | None = None
@@ -589,13 +617,14 @@ def _evaluate_unit(
         return
     unit.stages["T5_CLOSE_BACK_INSIDE"] = True
     unit.reclaim_time = m15[reclaim_i].timestamp.isoformat()
+    unit.m15_bars_after_reclaim = sum(1 for i in win_idx if i > reclaim_i)
 
     # ---------------- CONFIRMATION 1: displacement ------------------------
     disp_i: int | None = None
     for i in win_idx:
         if i < reclaim_i:
             continue
-        ok, ratio = is_displacement(m15[i], direction)
+        ok, ratio = is_displacement(m15[i], direction, displacement_min)
         if ok:
             disp_i, unit.displacement_body_ratio = i, ratio
             break
@@ -605,6 +634,7 @@ def _evaluate_unit(
     unit.stages["C1_DISPLACEMENT"] = True
     unit.displacement_time = m15[disp_i].timestamp.isoformat()
     unit.same_bar_reclaim_displacement = disp_i == reclaim_i
+    unit.m15_bars_after_displacement = sum(1 for i in win_idx if i > disp_i)
 
     # ---------------- CONFIRMATION 2: MSS / BOS ---------------------------
     mss_i: int | None = None
@@ -628,6 +658,7 @@ def _evaluate_unit(
 
     # ---------------- CONFIRMATION 3: fresh FVG on M5 ---------------------
     mss_close_time = m15[mss_i].timestamp + timedelta(minutes=15)
+    unit.m5_bars_after_mss = len(_window_indices(m5, m15[mss_i].timestamp + timedelta(minutes=15), w_end))
     want = "BULLISH" if direction == Direction.BULL else "BEARISH"
     fvg = None
     fvg_i: int | None = None
@@ -738,6 +769,7 @@ def _evaluate_unit(
         unit.stopped_out = True
         unit.resolution = "STOPPED_SAME_BAR"
         unit.management_r, unit.management_exit = -1.0, stop_price
+        unit.horizon_r = -1.0
     else:
         exc = compute_excursions(tuple(forward), geo, OUTCOME_HORIZON_M5_BARS)
         unit.mfe_r, unit.mae_r = exc.mfe_r, exc.mae_r
@@ -747,6 +779,10 @@ def _evaluate_unit(
             "TARGET_5R" if exc.fixed_target_reached[5] else "HORIZON")
         unit.management_r, unit.management_exit = _management_50_50(
             forward, direction, entry_price, stop_price, unit.tp1, unit.tp2)
+        if forward:
+            last = forward[-1].close
+            unit.horizon_r = ((last - entry_price) / risk if direction == Direction.BULL
+                              else (entry_price - last) / risk)
 
     for k in FIXED_R_TARGETS:
         node = f"O{k}_{k}R"

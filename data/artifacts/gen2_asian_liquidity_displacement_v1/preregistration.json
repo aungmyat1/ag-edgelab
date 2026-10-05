@@ -7,7 +7,7 @@
     "SYSTEM_SOFTWARE_COMPLETE": "YES",
     "evidence": "data/artifacts/edgelab_system_completion_v1/system_readiness.json"
   },
-  "base_commit": "062265cc1e773d1f6762c9ac64f2e7fdd9f7e86f",
+  "base_commit": "4f27640bc91483943828354aafdd6d206c64603d",
   "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
   "dataset_contract": {
     "allowed_roles": [
@@ -33,7 +33,7 @@
       "XAUUSD": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
     }
   },
-  "implementation_sha": "062265cc1e773d1f6762c9ac64f2e7fdd9f7e86f",
+  "implementation_sha": "4f27640bc91483943828354aafdd6d206c64603d",
   "mission": "ARENA RESEARCH GENERATION 2 \u2014 FX SESSION CANDIDATE V1 (6h dev-only sprint)",
   "outputs": [
     "preregistration.json",
@@ -125,7 +125,7 @@
     },
     "threshold_mutation_allowed": false
   },
-  "preregistration_hash": "6111de48c9e17929775b6644dd3f1af70cf2f8e579159b9ee35c9dfc43002a50",
+  "preregistration_hash": "6662c33f9b5b6d5b05bcabff889659ca522abe0a00d1e4dcce4dc89d9972f13b",
   "preregistration_id": "GEN2_ASIAN_LIQUIDITY_DISPLACEMENT_V1_PREREGISTRATION",
   "preregistration_version": "1.0.0",
   "prohibitions": {
