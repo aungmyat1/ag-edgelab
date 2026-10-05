@@ -1,0 +1,23 @@
+{
+  "DETERMINISTIC": true,
+  "SYNTHETIC_RUN_1_HASH": "7491361521425f8ef22175c7aafe2e7c45bf28b096bc17a9d5556aeae9fe6667",
+  "SYNTHETIC_RUN_2_HASH": "7491361521425f8ef22175c7aafe2e7c45bf28b096bc17a9d5556aeae9fe6667",
+  "artifact": "synthetic_determinism_evidence",
+  "fixtures": "SYNTHETIC_FIXTURE_ONLY \u2014 no market corpus was read",
+  "per_section_hashes": {
+    "event_ledger": "d7070493d1fce139b78db5fbcd3c9f6ef95ef1a9a97b0e7b4effdaeb670deebc",
+    "final_return_fixture": "2c02ef38253ab4ac5f7eaebafd89022c2cf81ed21f08e2c8063054840a9908c9",
+    "funnel_report": "d32da95f6b30fa8e368ebdd6d12fe30b89f18c2cc33da3a524c2c85ea6222c62",
+    "robustness_fixture_report": "fd34fc7e4249e0c2d631496db899e2d5c0a6a2fcbcdee2ea48aff13494f02490",
+    "trade_ledger": "b795f16b051b37f0f10e76538aad538d997f2f4078e78a7d30c7b1f3a38f8517",
+    "transition_ledger": "00c7d03ac4c6e329e475c59b8814f5c7927a97358570e70f244263da0b7f7024"
+  },
+  "sections": [
+    "event_ledger",
+    "final_return_fixture",
+    "funnel_report",
+    "robustness_fixture_report",
+    "trade_ledger",
+    "transition_ledger"
+  ]
+}
