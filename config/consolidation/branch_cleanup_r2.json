@@ -1,0 +1,45 @@
+{
+  "mission_id": "EDGELAB_CONSOLIDATION_R2C",
+  "base_ref": "origin/main",
+  "base_commit": "cc6e4a3",
+  "classification_method": "git ancestry against origin/main; no remote branch was deleted",
+  "merged_remote_branches": [
+    "arena/01a1007a-ag-edgelab",
+    "arena/01a100ce-ag-edgelab",
+    "arena/01a1015a-ag-edgelab",
+    "arena/01a101e6-ag-edgelab",
+    "arena/01a1041d-ag-edgelab",
+    "arena/01a105f9-ag-edgelab",
+    "arena/01a1073e-ag-edgelab",
+    "arena/01a10816-ag-edgelab",
+    "arena/01a10a59-ag-edgelab",
+    "arena/01a10add-ag-edgelab",
+    "codex/conduct-adversarial-audit-for-pr-#6",
+    "consolidation/r2-gen2",
+    "feat/r0-foundation",
+    "feat/r3-r7-funnel-optimization-production",
+    "feat/universal-three-funnel-analyzer-v0-2",
+    "fix/zero-variance-test-contract",
+    "integration/r0-foundation-into-main",
+    "main"
+  ],
+  "unmerged_remote_branches": [
+    "ci/edgelab-py312-acceptance",
+    "feat/crypto-btc-breakout-candidate",
+    "feat/crypto-btc-economic-verification",
+    "feat/crypto-btc-h1-candidate",
+    "feat/crypto-btc-spot-candidate",
+    "feat/fx-asian-sweep-candidate",
+    "feat/fx-cycle2-breakout",
+    "feat/fx-edge-candidate",
+    "feat/fx-lny-candidate",
+    "feat/r1-nautilus-adapter",
+    "feat/r2-robustness",
+    "feat/strategy-verification"
+  ],
+  "proposed_deletion_commands": [
+    "git push origin --delete arena/01a10816-ag-edgelab",
+    "git push origin --delete arena/01a10add-ag-edgelab"
+  ],
+  "deletions_executed": false
+}
