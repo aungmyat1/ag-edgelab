@@ -1,0 +1,16 @@
+{
+  "schema_version": "CANONICAL_SUBSYSTEMS_V1",
+  "subsystems": [
+    "data_authority",
+    "friction_authority",
+    "candidate_contamination",
+    "pre_oos_robustness",
+    "candidate_freeze",
+    "oos_governance",
+    "holdout_governance",
+    "verification_verdict",
+    "artifact_cas",
+    "ticket_status",
+    "execution_firewall"
+  ]
+}

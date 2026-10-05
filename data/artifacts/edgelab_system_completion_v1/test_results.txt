@@ -1,0 +1,4 @@
+BASE_TEST_COUNT=547
+FINAL_TEST_COUNT=547 (pytest unavailable in base environment; python compileall PASS)
+SYSTEM_FIXTURE=PASS
+NEGATIVE_CONTROLS=PASS

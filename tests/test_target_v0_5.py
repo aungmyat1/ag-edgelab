@@ -31,6 +31,9 @@ from ag_edgelab.universal.target_v0_5 import (
     d01_vs_t1_effect, family_report, fit_class_for, fit_classification,
     ladder_rows, multi_objective_delivery, population_target_report,
     root_cause_cases, stop_target_geometry)
+from ag_edgelab.universal.target_v0_5 import (CorrelationResult,
+                                              pearson_result,
+                                              spearman_result)
 
 UTC = timezone.utc
 T0 = datetime(2017, 1, 2, tzinfo=UTC)          # Monday
@@ -330,7 +333,12 @@ class TestStopTargetGeometry:
                 for i in range(200)]
         out = stop_target_geometry(rows)
         assert out["q1_over_q4_ratio"] > tv5.SL_INTERACTION_RATIO
-        assert out["risk_vs_target_distance_rank_spearman"] < tv5.RAW_COSCALING_RHO
+        # constant raw target distance: rank correlation is undefined (never
+        # numeric zero) and the structured interpretation is NO_RAW_COSCALING
+        assert out["risk_vs_target_distance_rank_spearman"] is None
+        assert out["correlations"]["RISK_VS_TARGET_DISTANCE"][
+            "pooled_within_symbol_rank_spearman_reason"] == "ZERO_VARIANCE"
+        assert out["raw_coscaling_interpretation"] == "NO_RAW_COSCALING"
         assert out["SL_TARGET_GEOMETRY_INTERACTION"] == "YES"
         assert out["risk_distance_atr_normalized"] is None   # no ATR authority
 
@@ -340,6 +348,83 @@ class TestStopTargetGeometry:
                 for i in range(200)]
         out = stop_target_geometry(rows)
         assert out["SL_TARGET_GEOMETRY_INTERACTION"] == "NO"
+
+
+class TestZeroVarianceCorrelationContract:
+    """Undefined correlation is never coerced to numeric zero."""
+
+    ZERO = CorrelationResult(None, "ZERO_VARIANCE", "NO_RAW_COSCALING")
+    XS = [float(i) for i in range(40)]
+    CONST = [1.0] * 40
+
+    @pytest.mark.parametrize("fn", [pearson_result, spearman_result])
+    def test_x_constant(self, fn):
+        assert fn(self.CONST, self.XS) == self.ZERO
+
+    @pytest.mark.parametrize("fn", [pearson_result, spearman_result])
+    def test_y_constant(self, fn):
+        assert fn(self.XS, self.CONST) == self.ZERO
+
+    @pytest.mark.parametrize("fn", [pearson_result, spearman_result])
+    def test_both_constant(self, fn):
+        assert fn(self.CONST, [2.0] * 40) == self.ZERO
+
+    @pytest.mark.parametrize("legacy", [_pearson, _spearman])
+    def test_legacy_float_api_returns_none_not_zero(self, legacy):
+        assert legacy(self.CONST, self.XS) is None
+        assert legacy(self.XS, self.CONST) is None
+        assert legacy(self.CONST, [2.0] * 40) is None
+
+    def test_insufficient_population(self):
+        res = pearson_result(self.XS[:10], self.XS[:10])
+        assert res == CorrelationResult(None, "INSUFFICIENT_POPULATION",
+                                        "INSUFFICIENT_EVIDENCE")
+        assert spearman_result(self.XS[:10], self.XS[:10]).value is None
+
+    def test_nonconstant_positive(self):
+        p = pearson_result(self.XS, [2.0 * x + 1.0 for x in self.XS])
+        s = spearman_result(self.XS, [x ** 3 for x in self.XS])
+        for res in (p, s):
+            assert res.value == pytest.approx(1.0)
+            assert res.reason is None and res.interpretation == "DEFINED"
+        assert _pearson(self.XS, [2.0 * x + 1.0 for x in self.XS])             == pytest.approx(p.value)
+
+    def test_nonconstant_weak(self):
+        # y alternates 0/1 over x = 0..39: cov = 10, Sxx = 5330, Syy = 10
+        ys = [float(i % 2) for i in range(40)]
+        expected = 10.0 / (5330.0 * 10.0) ** 0.5
+        for fn, legacy in ((pearson_result, _pearson),
+                           (spearman_result, _spearman)):
+            res = fn(self.XS, ys)
+            assert res.value == pytest.approx(expected)
+            assert res.reason is None and res.interpretation == "DEFINED"
+            assert abs(res.value) < tv5.RAW_COSCALING_RHO
+            assert legacy(self.XS, ys) == pytest.approx(expected)
+
+    def test_stop_target_constant_target_distance(self):
+        risks = [0.001 * (1 + i / 25.0) for i in range(200)]
+        rows = [mk_entry(risk=r, nearest_distance=0.002, nearest_r=0.002 / r)
+                for r in risks]
+        targets = [e.nearest_distance for e in rows]
+        assert len(set(targets)) == 1            # target variance == 0
+        assert len(set(e.risk_distance for e in rows)) > 1   # stop variance > 0
+        out = stop_target_geometry(rows)
+        pair = out["correlations"]["RISK_VS_TARGET_DISTANCE"]
+        assert out["risk_vs_target_distance_rank_spearman"] is None
+        assert pair["pooled_within_symbol_rank_spearman"] is None
+        assert pair["pooled_within_symbol_rank_spearman_reason"] == "ZERO_VARIANCE"
+        assert out["raw_coscaling_interpretation"] == "NO_RAW_COSCALING"
+        assert out["SL_TARGET_GEOMETRY_INTERACTION"] == "YES"
+
+    def test_stop_target_nonconstant_coscaling_is_defined(self):
+        rows = [mk_entry(risk=0.001 * (1 + i / 25.0),
+                         nearest_distance=0.002 * (1 + i / 25.0), nearest_r=2.0)
+                for i in range(200)]
+        out = stop_target_geometry(rows)
+        assert out["risk_vs_target_distance_rank_spearman"] == pytest.approx(1.0)
+        assert out["correlations"]["RISK_VS_TARGET_DISTANCE"][
+            "pooled_within_symbol_rank_spearman_reason"] is None
+        assert out["raw_coscaling_interpretation"] == "DEFINED"
 
 
 # ---------------------------------------------------------------------------

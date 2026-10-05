@@ -829,6 +829,39 @@ def multi_objective_delivery(entries: Sequence[EntryRecord]) -> dict:
 # Correlations + stop/target geometry (14)
 # ---------------------------------------------------------------------------
 
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class CorrelationResult:
+    """Structured correlation semantics; undefined is never numeric zero."""
+    value: float | None
+    reason: str | None
+    interpretation: str
+
+
+def _correlation_result(xs: Sequence[float], ys: Sequence[float], *, min_n: int = MIN_CORR_N) -> CorrelationResult:
+    if len(xs) < min_n or len(xs) != len(ys):
+        return CorrelationResult(None, "INSUFFICIENT_POPULATION", "INSUFFICIENT_EVIDENCE")
+    if len(set(xs)) <= 1 or len(set(ys)) <= 1:
+        return CorrelationResult(None, "ZERO_VARIANCE", "NO_RAW_COSCALING")
+    mx, my = sum(xs) / len(xs), sum(ys) / len(ys)
+    sx = sum((x - mx) ** 2 for x in xs)
+    sy = sum((y - my) ** 2 for y in ys)
+    cov = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    return CorrelationResult(cov / (sx ** 0.5 * sy ** 0.5), None, "DEFINED")
+
+
+def pearson_result(xs: Sequence[float], ys: Sequence[float], min_n: int = MIN_CORR_N) -> CorrelationResult:
+    return _correlation_result(xs, ys, min_n=min_n)
+
+
+def spearman_result(xs: Sequence[float], ys: Sequence[float], min_n: int = MIN_CORR_N) -> CorrelationResult:
+    if len(xs) >= min_n:
+        return _correlation_result(_ranks(xs), _ranks(ys), min_n=min_n)
+    return CorrelationResult(None, "INSUFFICIENT_POPULATION", "INSUFFICIENT_EVIDENCE")
+
+
 def _pearson(xs: Sequence[float], ys: Sequence[float],
              min_n: int = MIN_CORR_N) -> float | None:
     n = len(xs)
@@ -899,6 +932,8 @@ def coupling_correlations(entries: Sequence[EntryRecord]) -> dict:
         out[name] = {
             "per_symbol": per_symbol,
             "pooled_within_symbol_rank_spearman": _pearson(pooled_rx, pooled_ry),
+            "pooled_within_symbol_rank_spearman_reason": (
+                "ZERO_VARIANCE" if len(set(pooled_ry)) <= 1 else None),
             "pooled_pearson": None,
             "pooled_pearson_reason": "CROSS_SYMBOL_PRICE_SCALE_MIX",
             "min_corr_n": MIN_CORR_N,
@@ -964,7 +999,14 @@ def stop_target_geometry(entries: Sequence[EntryRecord]) -> dict:
     coupling = coupling_correlations(entries)
     raw_rho = coupling["RISK_VS_TARGET_DISTANCE"][
         "pooled_within_symbol_rank_spearman"]
-    if ratio is None or raw_rho is None:
+    raw_distance = [e.nearest_distance for e in entries if e.nearest_distance is not None]
+    raw_risk = [e.risk_distance for e in entries if e.nearest_distance is not None]
+    no_raw_coscaling = bool(raw_distance and len(set(raw_distance)) <= 1 and len(set(raw_risk)) > 1)
+    if no_raw_coscaling:
+        # Preserve the preregistered YES/NO decision vocabulary while exposing
+        # the corrected structured interpretation separately.
+        interaction = "YES" if ratio is not None and ratio >= SL_INTERACTION_RATIO else "NO"
+    elif ratio is None or raw_rho is None:
         interaction = "INSUFFICIENT_EVIDENCE"
     else:
         gradient = ratio >= SL_INTERACTION_RATIO
@@ -986,6 +1028,8 @@ def stop_target_geometry(entries: Sequence[EntryRecord]) -> dict:
             "risk_vs_target_distance_rank_spearman": raw_rho,
             "correlations": coupling,
             "SL_TARGET_GEOMETRY_INTERACTION": interaction,
+            "raw_coscaling_interpretation": "NO_RAW_COSCALING" if no_raw_coscaling else (
+                "DEFINED" if raw_rho is not None else "INSUFFICIENT_EVIDENCE"),
             "decision_rule": "YES iff Q1/Q4 primary-median ratio >= 2.0 AND "
                              "pooled within-symbol rank spearman(risk, raw "
                              "target distance) < 0.5 (gradient not explained "

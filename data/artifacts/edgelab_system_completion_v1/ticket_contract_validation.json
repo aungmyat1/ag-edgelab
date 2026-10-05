@@ -1,0 +1,16 @@
+{
+  "edge_verified_is_not_live_authorized": true,
+  "fields": [
+    "strategy_id",
+    "strategy_version",
+    "strategy_hash",
+    "edge_status",
+    "verification_stage",
+    "verification_evidence_id",
+    "verification_evidence_hash",
+    "data_authority_id",
+    "friction_authority_id",
+    "last_verified_at"
+  ],
+  "state": "PASS"
+}

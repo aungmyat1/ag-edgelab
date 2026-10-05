@@ -1,0 +1,5 @@
+{
+  "schema_version": "CANDIDATE_CONTAMINATION_REGISTRY_V1",
+  "records": [],
+  "rule": "UNKNOWN exposure or reuse policy is not fresh and denies OOS"
+}

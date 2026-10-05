@@ -1,0 +1,26 @@
+{
+  "base_sha": "35723e504bd0b7509708a874ed74582a6579e0fb",
+  "base_tree": "dff9b985c710bbdf324f09a30c45992e0f12b76b",
+  "baseline_tests": 547,
+  "canonical_subsystems": [
+    "data_authority",
+    "friction_authority",
+    "candidate_contamination",
+    "pre_oos_robustness",
+    "candidate_freeze",
+    "oos_governance",
+    "holdout_governance",
+    "verification_verdict",
+    "artifact_cas",
+    "ticket_status",
+    "execution_firewall"
+  ],
+  "known_external_blockers": [
+    "BROKER_FRICTION_VALUES_READY",
+    "RECENT_2019_2025_DATA_READY",
+    "REAL_CRYPTO_CORPUS_READY"
+  ],
+  "pending_integrations": [
+    "EDGELAB_SYSTEM_READINESS_V1"
+  ]
+}

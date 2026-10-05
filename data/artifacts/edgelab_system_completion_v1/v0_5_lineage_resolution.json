@@ -1,0 +1,20 @@
+{
+  "authority_commit": "65ba0ed763048307a499734ebe5b9a22e3f3103c",
+  "authority_tree": "9fc02cb22d6dcdd25b24cfce3bf398ea047f4ddd",
+  "authority_content_hash": "0adab4cfb85f7ad3bfcde14a654ff923c706fdae73f4f1958df1cabf52a93e29",
+  "current_head": "84414f489ea65d04d6fdab4496d8c59dccfc4faf",
+  "current_tree": "fc14a400265a8d1f5806d0002ad0ea0e44cb760b",
+  "is_ancestor": false,
+  "content_present": true,
+  "content_equivalent": true,
+  "resolution_type": "FORMALIZE_CONTENT_IDENTITY_AUTHORITY",
+  "supersession_evidence": {
+    "historical_manifest_verified_from_git_bytes": true,
+    "all_manifest_artifact_hashes_recomputed": true,
+    "historical_commit_supersedes_parent": true,
+    "current_manifest_matches_authority_manifest": true,
+    "git_ancestry_supporting_only": true
+  },
+  "verification_result": "PASS",
+  "migration_commit": "PENDING_COMMIT"
+}

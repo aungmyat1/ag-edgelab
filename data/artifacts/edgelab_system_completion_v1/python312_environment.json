@@ -1,0 +1,10 @@
+{
+  "python_version": "3.11.2",
+  "python_requirement": ">=3.12",
+  "python_requirement_satisfied": false,
+  "pytest_version": "8.4.2",
+  "hypothesis_version": "6.168.4",
+  "pydantic_version": "2.13.5",
+  "pyyaml_version": "6.0.3",
+  "reason": "Python 3.12 executable is unavailable in the acceptance environment"
+}

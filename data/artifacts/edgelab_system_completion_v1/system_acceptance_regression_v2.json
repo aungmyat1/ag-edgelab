@@ -1,0 +1,57 @@
+{
+  "schema_version": "SYSTEM_ACCEPTANCE_REGRESSION_V2",
+  "supersedes": "data/artifacts/edgelab_system_completion_v1/system_acceptance_regression.json",
+  "historical_artifact_status": "PRESERVED_BUT_SUPERSEDED",
+  "previous_claim": {
+    "source_sha": "129dd55751430959c11272c983521babdf5a6fae",
+    "python_runtime": "3.11.2",
+    "collected": 751,
+    "passed": 743,
+    "failed": 0,
+    "skipped": 8
+  },
+  "reproduction_result": {
+    "actions_run_id": 37273255447,
+    "workflow_sha": "83151ded6d265aae9e38a790ad7ec9d7f49ae018",
+    "pytest_invocation": "python -m pytest -q -rA --junitxml=pytest-results.xml",
+    "source_sha": "129dd55751430959c11272c983521babdf5a6fae",
+    "source_tree": "a9ce57342f2d800fc5a1929974ffd8133370de50",
+    "python_3_12_14": {"collected": 751, "passed": 742, "failed": 1, "errors": 0, "skipped": 8, "xfailed": 0, "xpassed": 0},
+    "python_3_13_15": {"collected": 751, "passed": 742, "failed": 1, "errors": 0, "skipped": 8, "xfailed": 0, "xpassed": 0},
+    "parent_84414f489ea65d04d6fdab4496d8c59dccfc4faf": "SAME_SINGLE_FAILURE_ON_3_12_AND_3_13",
+    "failure_nodes": [
+      "tests/test_target_v0_5.py::TestStopTargetGeometry::test_yes_when_gradient_and_no_raw_coscaling"
+    ],
+    "exception": "TypeError: '<' not supported between instances of 'NoneType' and 'float'"
+  },
+  "reason_for_supersession": [
+    "The previous claim (743 passed, 0 failed) is not reproducible: 742 passed, 1 failed on Python 3.12.14 and 3.13.15, at 129dd557 and at its parent.",
+    "The failure is a pre-existing test-contract defect, not Python-version specific: the fixture holds raw target distance constant (variance 0) while stop distance varies (variance > 0), so the pooled within-symbol rank Spearman is undefined (null, ZERO_VARIANCE) and the test evaluated None < 0.5.",
+    "Separately, canonical CI invoked bare `pytest`, which does not place the repository root on sys.path, so `tests.stv2_funnel_fixtures` failed to import (collection error, exit 2) and masked the regression result in run 37267680266."
+  ],
+  "remediation": {
+    "type": "TEST_CONTRACT_CORRECTION_PLUS_REGRESSION_COVERAGE",
+    "implementation_changed": false,
+    "correlation_semantics": "undefined correlation remains null with reason ZERO_VARIANCE; never coerced to 0.0",
+    "tests_added": 13
+  },
+  "tested_sha": "3aae1670453d92473daabe8d94400a442e07fdb5",
+  "tested_tree": "69e63da9242130fbebc34901931db453e31a7535",
+  "pytest_invocation": "python -m pytest -q -rA --junitxml=pytest-results.xml",
+  "counts": {
+    "python_3_12_14": {"collected": 764, "passed": 756, "failed": 0, "errors": 0, "skipped": 8, "xfailed": 0, "xpassed": 0},
+    "python_3_13_15": {"collected": 764, "passed": 756, "failed": 0, "errors": 0, "skipped": 8, "xfailed": 0, "xpassed": 0}
+  },
+  "failure_nodes": [],
+  "skipped_reason": "8 x tests/test_fx_dev_real_data.py: pinned HistData zips absent (pre-existing, data-gated)",
+  "final_result": "PASS",
+  "note": "This record is committed after the tested SHA; the commit adding it changes only this file and is re-verified separately.",
+  "integrity": {
+    "strategy_rules_changed": false,
+    "new_strategy_created": false,
+    "parameter_optimization": false,
+    "oos_opened": false,
+    "holdout_touched": false,
+    "execution_capability_added": false
+  }
+}

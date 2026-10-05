@@ -1,0 +1,11 @@
+{
+  "required": [
+    "OOS_PASS",
+    "economic_authority",
+    "candidate_unchanged",
+    "unconsumed",
+    "preregistration"
+  ],
+  "state": "PASS",
+  "touched": false
+}

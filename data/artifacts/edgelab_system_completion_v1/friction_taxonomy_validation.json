@@ -1,0 +1,18 @@
+{
+  "components": [
+    "spread",
+    "commission",
+    "slippage",
+    "swap",
+    "funding"
+  ],
+  "scenario_cannot_verify_edge": true,
+  "state": "PASS",
+  "values": [
+    "MEASURED",
+    "PARTIAL",
+    "SCENARIO",
+    "UNAVAILABLE",
+    "NOT_APPLICABLE"
+  ]
+}
