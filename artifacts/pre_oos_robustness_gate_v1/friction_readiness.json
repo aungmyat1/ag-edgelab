@@ -1,0 +1,187 @@
+{
+  "authority_evidence": {
+    "FRICTION_AUTHORITY_COMPLETE": "NO",
+    "FRICTION_FRAMEWORK_READY": "YES",
+    "account_type": "RAW_ECN",
+    "blockers": [
+      "No MT5 terminal and no broker credentials exist in this environment, and none may be requested.",
+      "Outbound network reaches GitHub and PyPI only; no broker endpoint is reachable.",
+      "Commission, swap, contract size, tick size and tick value are broker facts. They cannot be derived from a price feed at any precision."
+    ],
+    "framework_components": {
+      "cost_application": "src/ag_edgelab/friction/model.py \u2014 FrictionScenario in R space, funding schedules, NET_ECONOMIC_QUALIFICATION gate",
+      "venue_quote_schema": "src/ag_edgelab/data/authority/friction_contract.py \u2014 FrictionQuote with the exact section 11 fields"
+    },
+    "null_means": "NOT MEASURED. Never zero. assert_estimable() raises while any required field is NULL, so no net claim can be produced by accident.",
+    "null_semantics": "NULL means NOT MEASURED. It never means zero. net_economics_estimable() is False and assert_estimable() raises while any required field is NULL, so no net claim can be produced from this record by accident.",
+    "quotes": [
+      {
+        "account_type": "RAW_ECN",
+        "ask": null,
+        "bid": null,
+        "commission": null,
+        "complete": false,
+        "contract_size": null,
+        "missing_provenance_fields": [
+          "timestamp",
+          "source",
+          "source_hash"
+        ],
+        "missing_value_fields": [
+          "bid",
+          "ask",
+          "spread_points",
+          "spread_pips",
+          "commission",
+          "swap_long",
+          "swap_short",
+          "contract_size",
+          "tick_size",
+          "tick_value"
+        ],
+        "schema_version": "EDGELAB_FRICTION_QUOTE_V1",
+        "source": null,
+        "source_hash": null,
+        "spread_pips": null,
+        "spread_points": null,
+        "swap_long": null,
+        "swap_short": null,
+        "symbol": "EURUSD",
+        "tick_size": null,
+        "tick_value": null,
+        "timestamp": null,
+        "venue": "VT Markets"
+      },
+      {
+        "account_type": "RAW_ECN",
+        "ask": null,
+        "bid": null,
+        "commission": null,
+        "complete": false,
+        "contract_size": null,
+        "missing_provenance_fields": [
+          "timestamp",
+          "source",
+          "source_hash"
+        ],
+        "missing_value_fields": [
+          "bid",
+          "ask",
+          "spread_points",
+          "spread_pips",
+          "commission",
+          "swap_long",
+          "swap_short",
+          "contract_size",
+          "tick_size",
+          "tick_value"
+        ],
+        "schema_version": "EDGELAB_FRICTION_QUOTE_V1",
+        "source": null,
+        "source_hash": null,
+        "spread_pips": null,
+        "spread_points": null,
+        "swap_long": null,
+        "swap_short": null,
+        "symbol": "GBPUSD",
+        "tick_size": null,
+        "tick_value": null,
+        "timestamp": null,
+        "venue": "VT Markets"
+      },
+      {
+        "account_type": "RAW_ECN",
+        "ask": null,
+        "bid": null,
+        "commission": null,
+        "complete": false,
+        "contract_size": null,
+        "missing_provenance_fields": [
+          "timestamp",
+          "source",
+          "source_hash"
+        ],
+        "missing_value_fields": [
+          "bid",
+          "ask",
+          "spread_points",
+          "spread_pips",
+          "commission",
+          "swap_long",
+          "swap_short",
+          "contract_size",
+          "tick_size",
+          "tick_value"
+        ],
+        "schema_version": "EDGELAB_FRICTION_QUOTE_V1",
+        "source": null,
+        "source_hash": null,
+        "spread_pips": null,
+        "spread_points": null,
+        "swap_long": null,
+        "swap_short": null,
+        "symbol": "USDJPY",
+        "tick_size": null,
+        "tick_value": null,
+        "timestamp": null,
+        "venue": "VT Markets"
+      },
+      {
+        "account_type": "RAW_ECN",
+        "ask": null,
+        "bid": null,
+        "commission": null,
+        "complete": false,
+        "contract_size": null,
+        "missing_provenance_fields": [
+          "timestamp",
+          "source",
+          "source_hash"
+        ],
+        "missing_value_fields": [
+          "bid",
+          "ask",
+          "spread_points",
+          "spread_pips",
+          "commission",
+          "swap_long",
+          "swap_short",
+          "contract_size",
+          "tick_size",
+          "tick_value"
+        ],
+        "schema_version": "EDGELAB_FRICTION_QUOTE_V1",
+        "source": null,
+        "source_hash": null,
+        "spread_pips": null,
+        "spread_points": null,
+        "swap_long": null,
+        "swap_short": null,
+        "symbol": "XAUUSD",
+        "tick_size": null,
+        "tick_value": null,
+        "timestamp": null,
+        "venue": "VT Markets"
+      }
+    ],
+    "record_version": "DATA_AUTHORITY_R1_FRICTION_AUTHORITY_GAP_V1",
+    "supersedes": "config/governance/friction_authority_gap.json is PRESERVED unchanged; this record adds the prepared schema and the measured-spread evidence lane.",
+    "symbols": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ],
+    "venue": "VT Markets",
+    "what_this_mission_DID_add": "A genuinely MEASURED spread series: the Dukascopy source is tick-native with bid and ask, so every canonical bar carries an observed mean spread in the `spread` column. That is real market evidence and it is already hashed into the datasets.",
+    "why_that_is_still_NOT_a_friction_authority": "Spread is one of five cost components. Commission, swap long/short, contract size and tick value remain NULL, and the measured spread is Dukascopy's ECN aggregate rather than the execution venue's. FRICTION_AUTHORITY_COMPLETE=NO."
+  },
+  "authority_status": "BLOCKED_BROKER_AUTHORITY",
+  "blocks_economic_verified": true,
+  "blocks_edge_verified": true,
+  "blocks_structural_analysis": false,
+  "economic_verdict": "NOT_ESTIMABLE_NO_FRICTION_AUTHORITY",
+  "friction_readiness": "FRICTION_UNAVAILABLE",
+  "missing_treated_as_zero": false,
+  "note": "Absent friction is recorded as NOT MEASURED. It does not stop the structural axes from being evaluated, and it does not get silently rounded to zero to let an economic claim through."
+}

@@ -1,0 +1,20 @@
+{
+  "MEAN_MINUS_MEDIAN_R": 0.39067076294504377,
+  "MEAN_R": 0.0603082142056087,
+  "MEDIAN_R": -0.33036254873943505,
+  "NEGATIVE_OUTCOME_RATE": 0.593143596377749,
+  "POSITIVE_OUTCOME_RATE": 0.40685640362225095,
+  "ZERO_OUTCOME_RATE": 0.0,
+  "asymmetric_tail_dependence": true,
+  "mean_is_tail_driven": true,
+  "n": 3092,
+  "relative_divergence": 6.477903020194406,
+  "shape": "RARE_LARGE_WINNER",
+  "shape_rules": {
+    "BALANCED_DISTRIBUTION": "otherwise",
+    "FREQUENT_SMALL_LOSSES": "negative_rate >= frequent_rate and mean <= 0",
+    "FREQUENT_SMALL_WINS": "positive_rate >= frequent_rate and mean > 0",
+    "RARE_LARGE_LOSER": "positive_rate >= frequent_rate and mean <= 0",
+    "RARE_LARGE_WINNER": "negative_rate >= frequent_rate and mean > 0, or mean > 0 >= median"
+  }
+}

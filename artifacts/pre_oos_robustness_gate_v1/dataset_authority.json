@@ -1,0 +1,15 @@
+{
+  "admitted": 3183,
+  "by_role": {
+    "DEVELOPMENT": 3183
+  },
+  "clean": true,
+  "contaminated": [],
+  "contamination_count": 0,
+  "policy": "offending observations are reported, never silently dropped; dropping them would change the population the metrics describe while leaving them looking clean",
+  "resolved": 3092,
+  "total_offered": 3183,
+  "unresolved": 91,
+  "violation_count": 0,
+  "violations": []
+}

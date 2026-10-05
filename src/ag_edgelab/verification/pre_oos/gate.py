@@ -168,7 +168,7 @@ def temporal_integrity(observations, *, regime_recompute=None) -> AxisFinding:
                 "fold, year or trailing-window logic can be trusted")
     if regime_recompute is not None:
         declared = [o.regime for o in observations]
-        recomputed = regime_recompute()
+        recomputed = regime_recompute(observations)
         if len(recomputed) != len(declared):
             problems.append("regime recomputation returned a different length")
         else:
@@ -379,11 +379,15 @@ def evaluate_bootstrap(report: dict, contract: RobustnessContract) -> AxisFindin
 
 def evaluate_parameters(report: dict) -> AxisFinding:
     if report.get("status") == "NOT_APPLICABLE":
+        reasons = report.get("reason") or "; ".join(
+            f"{p['PARAMETER']}: {p['reason']}"
+            for p in report.get("parameters", []) if p.get("reason"))
         return AxisFinding(
             axis="parameter_neighborhood", diagnosis=None, fired=False,
             evaluated=False,
-            detail=f"NOT_APPLICABLE — {report.get('reason', '')}",
-            evidence={"status": "NOT_APPLICABLE"})
+            detail=f"NOT_APPLICABLE — {reasons or 'no perturbable parameter'}",
+            evidence={"status": "NOT_APPLICABLE",
+                      "parameters": report.get("parameters", [])})
     all_stable = report.get("all_stable")
     fired = all_stable is False
     return AxisFinding(
@@ -423,6 +427,14 @@ def decide(findings: list[AxisFinding], *, contract: RobustnessContract,
     secondary = [Diagnosis(d) for d in DIAGNOSIS_PRECEDENCE
                  if d in fired and d != primary_name]
     secondary += [Diagnosis(d) for d in SECONDARY_ONLY_DIAGNOSES if d in fired]
+
+    # Friction is derived from the readiness argument directly, not only
+    # from a finding that a caller might forget to pass. The gate must not
+    # be able to report a clean verdict while friction is unmeasured
+    # merely because one axis was omitted from the findings list.
+    if (friction is not FrictionReadiness.FRICTION_MEASURED
+            and Diagnosis.FRICTION_AUTHORITY_INCOMPLETE not in secondary):
+        secondary.append(Diagnosis.FRICTION_AUTHORITY_INCOMPLETE)
 
     unevaluated = tuple(f.axis for f in findings if not f.evaluated)
 

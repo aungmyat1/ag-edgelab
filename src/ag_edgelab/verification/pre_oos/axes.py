@@ -147,6 +147,17 @@ def assert_folds_ordered(folds: list[Fold]) -> None:
     """Test windows must not overlap; train must never follow test."""
     previous_end = None
     for fold in folds:
+        if fold.train_end > fold.test_start:
+            raise ValueError(
+                f"fold {fold.fold_id} trains to {fold.train_end} but tests "
+                f"from {fold.test_start}: the training window reaches past "
+                "the start of its own test window, which is lookahead.")
+        if fold.train_start >= fold.train_end:
+            raise ValueError(
+                f"fold {fold.fold_id} has an empty or inverted train window")
+        if fold.test_start >= fold.test_end:
+            raise ValueError(
+                f"fold {fold.fold_id} has an empty or inverted test window")
         if previous_end is not None and fold.test_start < previous_end:
             raise ValueError(
                 f"walk-forward test windows overlap at {fold.fold_id}: "

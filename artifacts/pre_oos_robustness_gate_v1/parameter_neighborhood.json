@@ -1,0 +1,20 @@
+{
+  "all_stable": null,
+  "is_search": false,
+  "parameters": [
+    {
+      "FROZEN_VALUE": 50.0,
+      "PARAMETER": "first_objective_pct",
+      "reason": "NOT_EVALUABLE_FROM_FROZEN_LEDGER \u2014 changing the split changes which path events fire; the DEV ledger stores resolved outcomes only, and replaying the engine to re-derive them would be a strategy re-run, which this mission forbids. No interpolation is substituted.",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "FROZEN_VALUE": 96.0,
+      "PARAMETER": "research_horizon_bars",
+      "reason": "NOT_EVALUABLE_FROM_FROZEN_LEDGER \u2014 the horizon determines the forced-close price, which is a path property absent from the resolved ledger.",
+      "status": "NOT_APPLICABLE"
+    }
+  ],
+  "promotion_policy": "no neighbour may be promoted; the frozen value is never replaced by a better-scoring one",
+  "status": "NOT_APPLICABLE"
+}
