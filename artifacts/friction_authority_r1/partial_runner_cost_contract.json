@@ -1,0 +1,297 @@
+{
+  "commission_allocation": {
+    "charged": "per side, on the volume that side actually transacts",
+    "invariant": "sum(partial exit commissions) == full exit commission",
+    "partial_exits": "each partial is charged on its own closed volume, so the sum over partials equals the single full-volume exit charge",
+    "round_turn_modes_are_halved_per_side": true
+  },
+  "contract_version": "EDGELAB_PARTIAL_RUNNER_COST_CONTRACT_V1",
+  "double_counting_guards": [
+    "spread total is invariant to the number of partial exits",
+    "commission is never charged twice for the same crossing",
+    "swap is charged on open volume only, so a closed partial stops accruing financing"
+  ],
+  "exit_shapes_priced": [
+    "forced_close",
+    "horizon_exit",
+    "partial_then_runner",
+    "single_full_exit",
+    "stop_exit"
+  ],
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "leg_model": {
+    "each_exit": "one crossing on that leg's volume",
+    "entry": "one crossing on full volume",
+    "exit_kinds": [
+      "TARGET_PARTIAL",
+      "RUNNER",
+      "STOP",
+      "HORIZON",
+      "FORCED_CLOSE",
+      "FULL_TARGET"
+    ],
+    "legs_are_explicit": true
+  },
+  "slippage_allocation": {
+    "charged": "per leg, on that leg's volume",
+    "default": "the authority's conservative (P90) figure",
+    "missing_behaviour": "raises; never silently zero",
+    "per_leg_override": "supported, for stop/forced legs that slip worse"
+  },
+  "spread_allocation": {
+    "alternative_convention": "HALF_SPREAD_PER_LEG",
+    "alternative_use": "correct when the reference series is mid-price; half the spread is charged at entry and half pro-rata across exits",
+    "default_convention": "FULL_SPREAD_ON_ENTRY",
+    "invariant": "total spread cost depends only on the volume traded, never on how many pieces the exit was broken into; both conventions produce the same round-trip total",
+    "reference_price_basis": "BID",
+    "why": "The data authority's canonical OHLC is built from the BID series. A long signalled on bid actually enters at ask (bid + spread) and exits at bid, so the entire round-trip spread is incurred once, at entry. A short is the mirror image. Charging a further spread at each exit would bill a two-partial trade for three round trips."
+  },
+  "swap_allocation": {
+    "charged": "per rollover held, on the volume still open",
+    "excluded_only_when": "a FROZEN strategy contract proves no position can be open at the venue rollover"
+  },
+  "worked_example_illustrative": {
+    "WARNING": "These numbers are ARITHMETIC ILLUSTRATION ONLY. The symbol contract, commission and slippage values below are invented placeholders to demonstrate the leg algebra. They are NOT VT Markets evidence and must never be cited as venue friction.",
+    "commission_spec": {
+      "complete": true,
+      "currency": "YYY",
+      "missing_fields": [],
+      "mode": "PER_LOT_PER_SIDE",
+      "note": "",
+      "scales_linearly_with_closed_volume": true,
+      "source": "ILLUSTRATIVE_NOT_VENUE_EVIDENCE",
+      "source_hash": null,
+      "status": "CAPTURED",
+      "symbol": "ILLUSTRATIVE_FX_5DIGIT",
+      "value": 3.5
+    },
+    "demonstrated_invariants": {
+      "commission_identical_across_exit_shapes": true,
+      "spread_identical_across_exit_shapes": true
+    },
+    "is_venue_evidence": false,
+    "results": {
+      "forced_close": {
+        "GROSS_R": 0.375,
+        "NET_R": 0.29,
+        "commission_money": 7.0,
+        "cost_model_version": "EDGELAB_FRICTION_COST_MODEL_V1",
+        "gross_money": 75.0,
+        "legs": [
+          {
+            "commission_money": 3.5,
+            "leg": "ENTRY",
+            "price": 1.1,
+            "slippage_points": 0.0,
+            "spread_money": 10.0,
+            "volume_lots": 1.0
+          },
+          {
+            "commission_money": 1.75,
+            "gross_money": 100.0,
+            "leg": "TARGET_PARTIAL",
+            "price": 1.102,
+            "slippage_points": 0.0,
+            "spread_money": 0.0,
+            "volume_lots": 0.5
+          },
+          {
+            "commission_money": 1.75,
+            "gross_money": -25.0,
+            "leg": "FORCED_CLOSE",
+            "price": 1.0995,
+            "slippage_points": 0.0,
+            "spread_money": 0.0,
+            "volume_lots": 0.5
+          }
+        ],
+        "net_money": 58.0,
+        "risk_money": 200.0,
+        "slippage_money": 0.0,
+        "spread_convention": "FULL_SPREAD_ON_ENTRY",
+        "spread_money": 10.0,
+        "swap_applicability": "NOT_APPLICABLE",
+        "swap_money": 0.0,
+        "symbol": "ILLUSTRATIVE_FX_5DIGIT",
+        "total_cost_R": 0.085,
+        "total_cost_money": 17.0
+      },
+      "horizon_exit": {
+        "GROSS_R": 0.25,
+        "NET_R": 0.165,
+        "commission_money": 7.0,
+        "cost_model_version": "EDGELAB_FRICTION_COST_MODEL_V1",
+        "gross_money": 50.0,
+        "legs": [
+          {
+            "commission_money": 3.5,
+            "leg": "ENTRY",
+            "price": 1.1,
+            "slippage_points": 0.0,
+            "spread_money": 10.0,
+            "volume_lots": 1.0
+          },
+          {
+            "commission_money": 3.5,
+            "gross_money": 50.0,
+            "leg": "HORIZON",
+            "price": 1.1005,
+            "slippage_points": 0.0,
+            "spread_money": 0.0,
+            "volume_lots": 1.0
+          }
+        ],
+        "net_money": 33.0,
+        "risk_money": 200.0,
+        "slippage_money": 0.0,
+        "spread_convention": "FULL_SPREAD_ON_ENTRY",
+        "spread_money": 10.0,
+        "swap_applicability": "NOT_APPLICABLE",
+        "swap_money": 0.0,
+        "symbol": "ILLUSTRATIVE_FX_5DIGIT",
+        "total_cost_R": 0.085,
+        "total_cost_money": 17.0
+      },
+      "partial_then_runner": {
+        "GROSS_R": 2.0,
+        "NET_R": 1.915,
+        "commission_money": 7.0,
+        "cost_model_version": "EDGELAB_FRICTION_COST_MODEL_V1",
+        "gross_money": 400.0,
+        "legs": [
+          {
+            "commission_money": 3.5,
+            "leg": "ENTRY",
+            "price": 1.1,
+            "slippage_points": 0.0,
+            "spread_money": 10.0,
+            "volume_lots": 1.0
+          },
+          {
+            "commission_money": 1.75,
+            "gross_money": 100.0,
+            "leg": "TARGET_PARTIAL",
+            "price": 1.102,
+            "slippage_points": 0.0,
+            "spread_money": 0.0,
+            "volume_lots": 0.5
+          },
+          {
+            "commission_money": 1.75,
+            "gross_money": 300.0,
+            "leg": "RUNNER",
+            "price": 1.106,
+            "slippage_points": 0.0,
+            "spread_money": 0.0,
+            "volume_lots": 0.5
+          }
+        ],
+        "net_money": 383.0,
+        "risk_money": 200.0,
+        "slippage_money": 0.0,
+        "spread_convention": "FULL_SPREAD_ON_ENTRY",
+        "spread_money": 10.0,
+        "swap_applicability": "NOT_APPLICABLE",
+        "swap_money": 0.0,
+        "symbol": "ILLUSTRATIVE_FX_5DIGIT",
+        "total_cost_R": 0.085,
+        "total_cost_money": 17.0
+      },
+      "single_full_exit": {
+        "GROSS_R": 2.0,
+        "NET_R": 1.915,
+        "commission_money": 7.0,
+        "cost_model_version": "EDGELAB_FRICTION_COST_MODEL_V1",
+        "gross_money": 400.0,
+        "legs": [
+          {
+            "commission_money": 3.5,
+            "leg": "ENTRY",
+            "price": 1.1,
+            "slippage_points": 0.0,
+            "spread_money": 10.0,
+            "volume_lots": 1.0
+          },
+          {
+            "commission_money": 3.5,
+            "gross_money": 400.0,
+            "leg": "FULL_TARGET",
+            "price": 1.104,
+            "slippage_points": 0.0,
+            "spread_money": 0.0,
+            "volume_lots": 1.0
+          }
+        ],
+        "net_money": 383.0,
+        "risk_money": 200.0,
+        "slippage_money": 0.0,
+        "spread_convention": "FULL_SPREAD_ON_ENTRY",
+        "spread_money": 10.0,
+        "swap_applicability": "NOT_APPLICABLE",
+        "swap_money": 0.0,
+        "symbol": "ILLUSTRATIVE_FX_5DIGIT",
+        "total_cost_R": 0.085,
+        "total_cost_money": 17.0
+      },
+      "stop_exit": {
+        "GROSS_R": -1.0,
+        "NET_R": -1.085,
+        "commission_money": 7.0,
+        "cost_model_version": "EDGELAB_FRICTION_COST_MODEL_V1",
+        "gross_money": -200.0,
+        "legs": [
+          {
+            "commission_money": 3.5,
+            "leg": "ENTRY",
+            "price": 1.1,
+            "slippage_points": 0.0,
+            "spread_money": 10.0,
+            "volume_lots": 1.0
+          },
+          {
+            "commission_money": 3.5,
+            "gross_money": -200.0,
+            "leg": "STOP",
+            "price": 1.098,
+            "slippage_points": 0.0,
+            "spread_money": 0.0,
+            "volume_lots": 1.0
+          }
+        ],
+        "net_money": -217.0,
+        "risk_money": 200.0,
+        "slippage_money": 0.0,
+        "spread_convention": "FULL_SPREAD_ON_ENTRY",
+        "spread_money": 10.0,
+        "swap_applicability": "NOT_APPLICABLE",
+        "swap_money": 0.0,
+        "symbol": "ILLUSTRATIVE_FX_5DIGIT",
+        "total_cost_R": 0.085,
+        "total_cost_money": 17.0
+      }
+    },
+    "spread_price": 0.0001,
+    "symbol_spec": {
+      "broker_symbol": null,
+      "captured_at": null,
+      "complete": true,
+      "contract_size": 100000.0,
+      "currency_base": "XXX",
+      "currency_margin": "XXX",
+      "currency_profit": "YYY",
+      "digits": 5,
+      "missing_fields": [],
+      "pip_convention": "FX_FRACTIONAL",
+      "pip_size": 0.0001,
+      "point": 1e-05,
+      "quote_unit": "pips",
+      "source": "ILLUSTRATIVE_NOT_VENUE_EVIDENCE",
+      "symbol": "ILLUSTRATIVE_FX_5DIGIT",
+      "trade_tick_size": 1e-05,
+      "trade_tick_value": 1.0,
+      "volume_max": null,
+      "volume_min": null,
+      "volume_step": null
+    }
+  }
+}

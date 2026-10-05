@@ -1,0 +1,28 @@
+{
+  "bundles": [],
+  "cadence_policy": "capture in several short supervised sessions across different market hours; do not leave an unattended machine running to satisfy a cadence target",
+  "coverage_complete": false,
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "quote_csv_columns": [
+    "timestamp_utc",
+    "symbol",
+    "bid",
+    "ask",
+    "spread_price",
+    "spread_points",
+    "session"
+  ],
+  "quote_files": [],
+  "schema_version": "VT_MARKETS_FRICTION_CAPTURE_V1",
+  "session_coverage_observed": [],
+  "session_coverage_required": [
+    "ASIAN (quiet)",
+    "LONDON",
+    "OVERLAP (London/New York)",
+    "NEW_YORK",
+    "session opens",
+    "XAUUSD instrument-specific hours"
+  ],
+  "storage_policy": "raw quote CSVs are content-addressed evidence held OUTSIDE git; only hashes, counts and summary statistics are committed",
+  "total_observations": 0
+}

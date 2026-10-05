@@ -1,0 +1,36 @@
+{
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "outlier_policy": "flagged above 10x the median and COUNTED, never removed \u2014 a spread spike is real cost",
+  "quantile_method": "nearest-rank, no interpolation",
+  "quantile_selection_policy": "this mission establishes the distribution only; it does not nominate P50/P90/P95 as 'the' friction for any strategy",
+  "symbols": {
+    "EURUSD": {
+      "N": 0,
+      "note": "no quote observations captured for this symbol; SPREAD_AUTHORITY=MISSING",
+      "sessions": {},
+      "status": "MISSING",
+      "symbol": "EURUSD"
+    },
+    "GBPUSD": {
+      "N": 0,
+      "note": "no quote observations captured for this symbol; SPREAD_AUTHORITY=MISSING",
+      "sessions": {},
+      "status": "MISSING",
+      "symbol": "GBPUSD"
+    },
+    "USDJPY": {
+      "N": 0,
+      "note": "no quote observations captured for this symbol; SPREAD_AUTHORITY=MISSING",
+      "sessions": {},
+      "status": "MISSING",
+      "symbol": "USDJPY"
+    },
+    "XAUUSD": {
+      "N": 0,
+      "note": "no quote observations captured for this symbol; SPREAD_AUTHORITY=MISSING",
+      "sessions": {},
+      "status": "MISSING",
+      "symbol": "XAUUSD"
+    }
+  }
+}
