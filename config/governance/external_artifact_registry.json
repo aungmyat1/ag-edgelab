@@ -101,6 +101,19 @@
       "dataset_window": "[2017-09-01T00:00:00+00:00, 2017-12-01T00:00:00+00:00)",
       "storage_location": "tree:data/artifacts/target_policy_c3_v1_oos/oos_ledger.jsonl",
       "note": "Sealed OOS evidence backing the permanent C3 rejection record; retained in-tree for rejection auditability"
+    },
+    {
+      "artifact_id": "GEN2_ASIAN_LIQUIDITY_DISPLACEMENT_V1_CANDIDATE_LEDGER",
+      "sha256": "5b6df7eb441aee7a17739389cda18c994c604c2e6e4a16013bc7ab17819a3269",
+      "byte_size": 2276237,
+      "schema_version": "GEN2_ASIAN_LIQUIDITY_DISPLACEMENT_V1_CANDIDATE_LEDGER_ROWS_V1",
+      "producer_commit": "705ec56",
+      "producer_script": "scripts/run_gen2_asian_liquidity_displacement_v1_dev.py",
+      "candidate_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1@1.0.0-research (DEV_REJECTED; never frozen)",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[2017-01-01T00:00:00+00:00, 2017-09-01T00:00:00+00:00)",
+      "storage_location": "tree:data/artifacts/gen2_asian_liquidity_displacement_v1/candidate_ledger.jsonl",
+      "note": "2.3 MB per-unit replay ledger backing the permanent DEV rejection; required by tests/test_gen2_asian_liquidity_displacement_v1.py (artifact completeness, DEVELOPMENT-only dataset-role assertion and cross-artifact count agreement), therefore retained in-tree per the consolidation policy. Regenerable byte-identically by the producer script from the pinned HistData 2017 zips."
     }
   ]
 }
