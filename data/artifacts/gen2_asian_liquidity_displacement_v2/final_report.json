@@ -1,0 +1,178 @@
+{
+  "BRANCHES": {
+    "A_SWEEP_RECLAIM_REVERSAL": {
+      "ENTRY_AVAILABLE_N": 1378,
+      "OPPORTUNITY_N": 3148,
+      "TRADE_COMPLETED_N": 1306,
+      "state": "BRANCH_POWERED"
+    },
+    "B_BREAKOUT_RETEST_CONTINUATION": {
+      "ENTRY_AVAILABLE_N": 700,
+      "OPPORTUNITY_N": 8023,
+      "TRADE_COMPLETED_N": 628,
+      "state": "BRANCH_POWERED"
+    }
+  },
+  "BROKER_MUTATION": "NO",
+  "CAPABILITY": {
+    "1R": 0.516546,
+    "2R": 0.332472,
+    "3R": 0.229059,
+    "4R": 0.160807,
+    "5R": 0.116339
+  },
+  "CONTEXT_ELIGIBLE_N": 12602,
+  "DATASET_AUTHORITY": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+  "DEV_SYMBOL_YEARS_N": 63,
+  "DEV_YEARS_N": 18,
+  "ECONOMIC_EDGE": "NOT_ESTIMABLE",
+  "EDGE_VERIFIED": "NO",
+  "ENTRY_AVAILABLE_N": 2078,
+  "ENTRY_YIELD_PER_1000_OPPORTUNITIES": 77.49683,
+  "EXCLUDED_SYMBOL_YEARS": [],
+  "FAILED_ROBUSTNESS_AXES": [
+    "BOOTSTRAP",
+    "BRANCH_STABILITY",
+    "CONCENTRATION",
+    "REGIME_STABILITY",
+    "SESSION_STABILITY",
+    "STRUCTURAL_CAPABILITY",
+    "SYMBOL_STABILITY",
+    "TAIL_DEPENDENCE",
+    "YEAR_STABILITY"
+  ],
+  "FROZEN_CANDIDATE": "NO",
+  "FUNNEL_WEAKNESS_DETAIL": {
+    "PRIMARY_FUNNEL_WEAKNESS": "S1_CONTEXT_ELIGIBLE",
+    "dominant_reasons_at_that_stage": {
+      "ENTRY_WINDOW_NO_BARS": 16,
+      "REFERENCE_INSUFFICIENT_BARS": 14196
+    },
+    "loss_by_stage": {
+      "S1_CONTEXT_ELIGIBLE": 14212,
+      "S2_LOCATION_ELIGIBLE": 31,
+      "S3_SESSION_EVENT": 1187,
+      "S4_SWEEP_OR_BREAKOUT": 213,
+      "S5_RECLAIM_OR_RETEST": 5441,
+      "S6_STRUCTURE_CONFIRM": 3652,
+      "S7_ENTRY_AVAILABLE": 0,
+      "S8_GEOMETRY_VALID": 144,
+      "S9_TRADE_COMPLETED": 0
+    },
+    "lost_at_that_stage": 14212,
+    "pct_of_opportunities_lost_there": 53.002163,
+    "rule": "largest absolute FAIL_N; reported as a diagnosis, never used to justify changing a rule inside this mission"
+  },
+  "GEOMETRY_VALID_N": 1934,
+  "HOLDOUT_TOUCHED": "NO",
+  "LIVE_EXECUTION": "NO",
+  "LOCATION_ELIGIBLE_N": 12571,
+  "MEDIAN_NATURAL_TARGET_R": 1.241788,
+  "NEXT": "PRE_OOS_FAILED \u2014 no OOS. Any revision needs a NEW preregistration.",
+  "OOS_OPENED": "NO",
+  "OPPORTUNITY_N": 26814,
+  "PARAMETER_OPTIMIZATION": "NO",
+  "PREREGISTRATION_BASE_COMMIT": "feaf3c660b848a5e4297a0edd450ceefcbe6212b",
+  "PREREGISTRATION_COMMIT": "6ae179a18b456b1903efa2c111ec49453578caab",
+  "PREREGISTRATION_SHA256": "c914c657097bb262c67ca119204ee6182cf7938b9176950643ee947d80349b9f",
+  "PRE_OOS_RESULT": "FAIL",
+  "PRIMARY_FUNNEL_WEAKNESS": "S1_CONTEXT_ELIGIBLE",
+  "RECLAIM_OR_RETEST_N": 5730,
+  "ROBUSTNESS_RUN": "YES",
+  "SAMPLE_FLOOR": 100,
+  "SAMPLE_GATE": "PASS",
+  "SESSION_EVENT_N": 11384,
+  "STATUS": "V2_DEV_SAMPLE_SUFFICIENT_PRE_OOS_FAILED",
+  "STRATEGY_CONTRACT_SHA256": "f4bef1cf7044138c7471261855836557f8a0dee1b213506883de19e2b7dded53",
+  "STRATEGY_ID": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+  "STRATEGY_VERSION": "2.0.0-research",
+  "STRUCTURE_CONFIRM_N": 2078,
+  "SWEEP_OR_BREAKOUT_N": 11171,
+  "TARGET_REACHED_RATE": 0.468459,
+  "TRADE_COMPLETED_N": 1934,
+  "V1_VS_V2": {
+    "answer": "YES \u2014 pooled entries reached the preregistered floor",
+    "authority": "DIAGNOSTIC ONLY. V1 is closed evidence: not re-run, not re-tuned, not re-interpreted. V2 was never optimized against these numbers.",
+    "comparison_table": [
+      {
+        "V1": 26814,
+        "V2": 26814,
+        "V2_over_V1": 1.0,
+        "metric": "opportunities"
+      },
+      {
+        "V1": 441,
+        "V2": 11171,
+        "V2_over_V1": 25.331066,
+        "metric": "event_or_trigger_passes"
+      },
+      {
+        "V1": 51,
+        "V2": 2078,
+        "V2_over_V1": 40.745098,
+        "metric": "confirmations"
+      },
+      {
+        "V1": 35,
+        "V2": 2078,
+        "V2_over_V1": 59.371429,
+        "metric": "entries"
+      },
+      {
+        "V1": 1.305288,
+        "V2": 77.49683,
+        "V2_over_V1": 59.371441,
+        "metric": "entry_yield_per_1000"
+      },
+      {
+        "V1": 1.003804,
+        "V2": 1.241788,
+        "V2_over_V1": 1.237082,
+        "metric": "median_natural_target_R"
+      },
+      {
+        "V1": 0.428571,
+        "V2": 0.516546,
+        "V2_over_V1": 1.205275,
+        "metric": "1R_capability"
+      },
+      {
+        "V1": 0.285714,
+        "V2": 0.332472,
+        "V2_over_V1": 1.163653,
+        "metric": "2R_capability"
+      },
+      {
+        "V1": 0.257143,
+        "V2": 0.229059,
+        "V2_over_V1": 0.890785,
+        "metric": "3R_capability"
+      },
+      {
+        "V1": 0.057143,
+        "V2": 0.160807,
+        "V2_over_V1": 2.814115,
+        "metric": "4R_capability"
+      },
+      {
+        "V1": 0.0,
+        "V2": 0.116339,
+        "V2_over_V1": null,
+        "metric": "5R_capability"
+      }
+    ],
+    "opportunity_basis_identical": true,
+    "opportunity_basis_note": "V2 deliberately uses V1's opportunity basis (one unit per symbol-day-session) so this table compares ARCHITECTURE, not a changed denominator.",
+    "primary_question": "DID V2 SOLVE STRUCTURAL STARVATION?",
+    "v1_evidence_sha256": "46393c519c2d6a674b348b5796dc460bb6f074b47a5eb30cf717bb2aa6913235"
+  },
+  "V2_ARCHITECTURE": "A/B_BRANCH_MODEL(A_SWEEP_RECLAIM_REVERSAL|B_BREAKOUT_RETEST_CONTINUATION)",
+  "experiment_id": "GEN2_ALD_V2_DEV_R1",
+  "generated_at_utc": "2026-10-05T11:03:28.284062+00:00",
+  "governance_inputs": {
+    "candidate_contamination_registry_sha256": "b0ea16c07f43edd79db81acafdd7e6284a733b7979666ce491d0678f451843b0",
+    "data_authority_gap_sha256": "5169328cd47f60b5938868686af8d6e58cd58729fd313a0380fec8a889da6daa",
+    "oos_access_log_sha256": "316ec2b0839d4ffa077ee16ce463519642a9bfe42b6cb69ef52af69d03e44f01"
+  },
+  "implementation_sha": "6ae179a18b456b1903efa2c111ec49453578caab"
+}

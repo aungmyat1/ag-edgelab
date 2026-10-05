@@ -1,0 +1,174 @@
+{
+  "funnel": [
+    {
+      "FAIL_N": 14212,
+      "INPUT_N": 26814,
+      "N": 12602,
+      "PCT_OF_OPPORTUNITIES": 46.997837,
+      "PCT_OF_PREVIOUS_STAGE": 46.997837,
+      "stage": "S1_CONTEXT_ELIGIBLE",
+      "transition": "OPPORTUNITY -> S1_CONTEXT_ELIGIBLE"
+    },
+    {
+      "FAIL_N": 31,
+      "INPUT_N": 12602,
+      "N": 12571,
+      "PCT_OF_OPPORTUNITIES": 46.882226,
+      "PCT_OF_PREVIOUS_STAGE": 99.754007,
+      "stage": "S2_LOCATION_ELIGIBLE",
+      "transition": "S1_CONTEXT_ELIGIBLE -> S2_LOCATION_ELIGIBLE"
+    },
+    {
+      "FAIL_N": 1187,
+      "INPUT_N": 12571,
+      "N": 11384,
+      "PCT_OF_OPPORTUNITIES": 42.455434,
+      "PCT_OF_PREVIOUS_STAGE": 90.557633,
+      "stage": "S3_SESSION_EVENT",
+      "transition": "S2_LOCATION_ELIGIBLE -> S3_SESSION_EVENT"
+    },
+    {
+      "FAIL_N": 213,
+      "INPUT_N": 11384,
+      "N": 11171,
+      "PCT_OF_OPPORTUNITIES": 41.661073,
+      "PCT_OF_PREVIOUS_STAGE": 98.128953,
+      "stage": "S4_SWEEP_OR_BREAKOUT",
+      "transition": "S3_SESSION_EVENT -> S4_SWEEP_OR_BREAKOUT"
+    },
+    {
+      "FAIL_N": 5441,
+      "INPUT_N": 11171,
+      "N": 5730,
+      "PCT_OF_OPPORTUNITIES": 21.369434,
+      "PCT_OF_PREVIOUS_STAGE": 51.293528,
+      "stage": "S5_RECLAIM_OR_RETEST",
+      "transition": "S4_SWEEP_OR_BREAKOUT -> S5_RECLAIM_OR_RETEST"
+    },
+    {
+      "FAIL_N": 3652,
+      "INPUT_N": 5730,
+      "N": 2078,
+      "PCT_OF_OPPORTUNITIES": 7.749683,
+      "PCT_OF_PREVIOUS_STAGE": 36.265271,
+      "stage": "S6_STRUCTURE_CONFIRM",
+      "transition": "S5_RECLAIM_OR_RETEST -> S6_STRUCTURE_CONFIRM"
+    },
+    {
+      "FAIL_N": 0,
+      "INPUT_N": 2078,
+      "N": 2078,
+      "PCT_OF_OPPORTUNITIES": 7.749683,
+      "PCT_OF_PREVIOUS_STAGE": 100.0,
+      "stage": "S7_ENTRY_AVAILABLE",
+      "transition": "S6_STRUCTURE_CONFIRM -> S7_ENTRY_AVAILABLE"
+    },
+    {
+      "FAIL_N": 144,
+      "INPUT_N": 2078,
+      "N": 1934,
+      "PCT_OF_OPPORTUNITIES": 7.21265,
+      "PCT_OF_PREVIOUS_STAGE": 93.07026,
+      "stage": "S8_GEOMETRY_VALID",
+      "transition": "S7_ENTRY_AVAILABLE -> S8_GEOMETRY_VALID"
+    },
+    {
+      "FAIL_N": 0,
+      "INPUT_N": 1934,
+      "N": 1934,
+      "PCT_OF_OPPORTUNITIES": 7.21265,
+      "PCT_OF_PREVIOUS_STAGE": 100.0,
+      "stage": "S9_TRADE_COMPLETED",
+      "transition": "S8_GEOMETRY_VALID -> S9_TRADE_COMPLETED"
+    }
+  ],
+  "pooled_counts": {
+    "O1_1R": 999,
+    "O2_2R": 643,
+    "O3_3R": 443,
+    "O4_4R": 311,
+    "O5_5R": 225,
+    "OPPORTUNITY": 26814,
+    "S1_CONTEXT_ELIGIBLE": 12602,
+    "S2_LOCATION_ELIGIBLE": 12571,
+    "S3_SESSION_EVENT": 11384,
+    "S4_SWEEP_OR_BREAKOUT": 11171,
+    "S5_RECLAIM_OR_RETEST": 5730,
+    "S6_STRUCTURE_CONFIRM": 2078,
+    "S7_ENTRY_AVAILABLE": 2078,
+    "S8_GEOMETRY_VALID": 1934,
+    "S9_TRADE_COMPLETED": 1934
+  },
+  "taxonomy": {
+    "branches": [
+      "A_SWEEP_RECLAIM_REVERSAL",
+      "B_BREAKOUT_RETEST_CONTINUATION"
+    ],
+    "outcome_nodes": [
+      "O1_1R",
+      "O2_2R",
+      "O3_3R",
+      "O4_4R",
+      "O5_5R"
+    ],
+    "reason_to_node": {
+      "ENTRY_WINDOW_NO_BARS": "S1_CONTEXT_ELIGIBLE",
+      "GEOMETRY_RISK_NON_POSITIVE": "S8_GEOMETRY_VALID",
+      "GEOMETRY_TARGET_NOT_BEYOND_ENTRY": "S8_GEOMETRY_VALID",
+      "GEOMETRY_TEMPORAL_ORDER_INVALID": "S8_GEOMETRY_VALID",
+      "INVALIDATED_BEFORE_CONFIRM": "S6_STRUCTURE_CONFIRM",
+      "INVALIDATED_BEFORE_RETEST": "S5_RECLAIM_OR_RETEST",
+      "LOCATION_STATE_UNAVAILABLE": "S2_LOCATION_ELIGIBLE",
+      "NO_BOUNDARY_INTERACTION": "S3_SESSION_EVENT",
+      "NO_FORWARD_BARS": "S7_ENTRY_AVAILABLE",
+      "NO_RECLAIM_BEFORE_EXPIRY": "S5_RECLAIM_OR_RETEST",
+      "NO_RETEST_BEFORE_EXPIRY": "S5_RECLAIM_OR_RETEST",
+      "NO_STRUCTURE_SHIFT_BEFORE_EXPIRY": "S6_STRUCTURE_CONFIRM",
+      "NO_TARGET_OBJECTIVE": "S8_GEOMETRY_VALID",
+      "ON_BOUNDARY_UNDECIDABLE": "S4_SWEEP_OR_BREAKOUT",
+      "REFERENCE_INSUFFICIENT_BARS": "S1_CONTEXT_ELIGIBLE",
+      "REFERENCE_RANGE_DEGENERATE": "S2_LOCATION_ELIGIBLE",
+      "RIGHT_CENSORED_DATA_BOUNDARY": "S9_TRADE_COMPLETED"
+    },
+    "reject_reasons": [
+      "PASS",
+      "REFERENCE_INSUFFICIENT_BARS",
+      "ENTRY_WINDOW_NO_BARS",
+      "REFERENCE_RANGE_DEGENERATE",
+      "LOCATION_STATE_UNAVAILABLE",
+      "NO_BOUNDARY_INTERACTION",
+      "ON_BOUNDARY_UNDECIDABLE",
+      "NO_RECLAIM_BEFORE_EXPIRY",
+      "NO_RETEST_BEFORE_EXPIRY",
+      "INVALIDATED_BEFORE_RETEST",
+      "NO_STRUCTURE_SHIFT_BEFORE_EXPIRY",
+      "INVALIDATED_BEFORE_CONFIRM",
+      "NO_FORWARD_BARS",
+      "GEOMETRY_RISK_NON_POSITIVE",
+      "GEOMETRY_TARGET_NOT_BEYOND_ENTRY",
+      "GEOMETRY_TEMPORAL_ORDER_INVALID",
+      "NO_TARGET_OBJECTIVE",
+      "RIGHT_CENSORED_DATA_BOUNDARY"
+    ],
+    "reporting_rule": "for every transition report N, % of the previous stage and % of the original opportunity population; never collapse a stage",
+    "stages_in_order": [
+      "S1_CONTEXT_ELIGIBLE",
+      "S2_LOCATION_ELIGIBLE",
+      "S3_SESSION_EVENT",
+      "S4_SWEEP_OR_BREAKOUT",
+      "S5_RECLAIM_OR_RETEST",
+      "S6_STRUCTURE_CONFIRM",
+      "S7_ENTRY_AVAILABLE",
+      "S8_GEOMETRY_VALID",
+      "S9_TRADE_COMPLETED"
+    ],
+    "strata": [
+      "branch",
+      "symbol",
+      "year",
+      "session",
+      "symbol x session",
+      "regime"
+    ]
+  }
+}

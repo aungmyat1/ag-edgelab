@@ -1,0 +1,76 @@
+{
+  "answer": "YES \u2014 pooled entries reached the preregistered floor",
+  "authority": "DIAGNOSTIC ONLY. V1 is closed evidence: not re-run, not re-tuned, not re-interpreted. V2 was never optimized against these numbers.",
+  "comparison_table": [
+    {
+      "V1": 26814,
+      "V2": 26814,
+      "V2_over_V1": 1.0,
+      "metric": "opportunities"
+    },
+    {
+      "V1": 441,
+      "V2": 11171,
+      "V2_over_V1": 25.331066,
+      "metric": "event_or_trigger_passes"
+    },
+    {
+      "V1": 51,
+      "V2": 2078,
+      "V2_over_V1": 40.745098,
+      "metric": "confirmations"
+    },
+    {
+      "V1": 35,
+      "V2": 2078,
+      "V2_over_V1": 59.371429,
+      "metric": "entries"
+    },
+    {
+      "V1": 1.305288,
+      "V2": 77.49683,
+      "V2_over_V1": 59.371441,
+      "metric": "entry_yield_per_1000"
+    },
+    {
+      "V1": 1.003804,
+      "V2": 1.241788,
+      "V2_over_V1": 1.237082,
+      "metric": "median_natural_target_R"
+    },
+    {
+      "V1": 0.428571,
+      "V2": 0.516546,
+      "V2_over_V1": 1.205275,
+      "metric": "1R_capability"
+    },
+    {
+      "V1": 0.285714,
+      "V2": 0.332472,
+      "V2_over_V1": 1.163653,
+      "metric": "2R_capability"
+    },
+    {
+      "V1": 0.257143,
+      "V2": 0.229059,
+      "V2_over_V1": 0.890785,
+      "metric": "3R_capability"
+    },
+    {
+      "V1": 0.057143,
+      "V2": 0.160807,
+      "V2_over_V1": 2.814115,
+      "metric": "4R_capability"
+    },
+    {
+      "V1": 0.0,
+      "V2": 0.116339,
+      "V2_over_V1": null,
+      "metric": "5R_capability"
+    }
+  ],
+  "opportunity_basis_identical": true,
+  "opportunity_basis_note": "V2 deliberately uses V1's opportunity basis (one unit per symbol-day-session) so this table compares ARCHITECTURE, not a changed denominator.",
+  "primary_question": "DID V2 SOLVE STRUCTURAL STARVATION?",
+  "v1_evidence_sha256": "46393c519c2d6a674b348b5796dc460bb6f074b47a5eb30cf717bb2aa6913235"
+}

@@ -1,0 +1,47 @@
+{
+  "ENTRY_AVAILABLE_N": 2078,
+  "MAE_R": {
+    "max": 14.88,
+    "mean": 1.192516,
+    "median": 1.108462,
+    "min": 0.0,
+    "n": 1934
+  },
+  "MFE_R": {
+    "max": 41.793103,
+    "mean": 2.132042,
+    "median": 1.090909,
+    "min": 0.0,
+    "n": 1934
+  },
+  "TRADE_COMPLETED_N": 1934,
+  "economic_claim": "NOT_ESTIMABLE \u2014 structural R only, no measured friction",
+  "fixed_r_capability": {
+    "1R": 0.516546,
+    "2R": 0.332472,
+    "3R": 0.229059,
+    "4R": 0.160807,
+    "5R": 0.116339
+  },
+  "natural_target_R": {
+    "max": 116.019643,
+    "mean": 2.435962,
+    "median": 1.241788,
+    "min": 0.001185,
+    "n": 1934
+  },
+  "realised_R": {
+    "max": 14.632653,
+    "mean": -0.004215,
+    "median": -1.0,
+    "min": -1.0,
+    "n": 1934
+  },
+  "resolution_mix": {
+    "HORIZON": 36,
+    "STOPPED_OUT": 992,
+    "TARGET_REACHED": 906
+  },
+  "stopped_same_bar_n": 0,
+  "target_reached_rate": 0.468459
+}

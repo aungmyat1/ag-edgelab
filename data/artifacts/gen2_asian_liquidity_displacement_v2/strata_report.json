@@ -1,0 +1,896 @@
+{
+  "branch": {
+    "A_SWEEP_RECLAIM_REVERSAL": {
+      "ENTRY_AVAILABLE_N": 1378,
+      "GEOMETRY_VALID_N": 1306,
+      "OPPORTUNITY_N": 3148,
+      "RECLAIM_OR_RETEST_N": 3148,
+      "SESSION_EVENT_N": 3148,
+      "STRUCTURE_CONFIRM_N": 1378,
+      "SWEEP_OR_BREAKOUT_N": 3148,
+      "TRADE_COMPLETED_N": 1306,
+      "entry_yield_per_1000_opportunities": 437.738247,
+      "fixed_r_capability": {
+        "1R": 0.532925,
+        "2R": 0.344564,
+        "3R": 0.243492,
+        "4R": 0.174579,
+        "5R": 0.125574
+      },
+      "natural_target_R_median": 1.227091,
+      "target_reached_rate": 0.495406
+    },
+    "B_BREAKOUT_RETEST_CONTINUATION": {
+      "ENTRY_AVAILABLE_N": 700,
+      "GEOMETRY_VALID_N": 628,
+      "OPPORTUNITY_N": 8023,
+      "RECLAIM_OR_RETEST_N": 2582,
+      "SESSION_EVENT_N": 8023,
+      "STRUCTURE_CONFIRM_N": 700,
+      "SWEEP_OR_BREAKOUT_N": 8023,
+      "TRADE_COMPLETED_N": 628,
+      "entry_yield_per_1000_opportunities": 87.249159,
+      "fixed_r_capability": {
+        "1R": 0.482484,
+        "2R": 0.307325,
+        "3R": 0.199045,
+        "4R": 0.132166,
+        "5R": 0.097134
+      },
+      "natural_target_R_median": 1.324849,
+      "target_reached_rate": 0.41242
+    },
+    "NO_BRANCH": {
+      "ENTRY_AVAILABLE_N": 0,
+      "GEOMETRY_VALID_N": 0,
+      "OPPORTUNITY_N": 15643,
+      "RECLAIM_OR_RETEST_N": 0,
+      "SESSION_EVENT_N": 213,
+      "STRUCTURE_CONFIRM_N": 0,
+      "SWEEP_OR_BREAKOUT_N": 0,
+      "TRADE_COMPLETED_N": 0,
+      "entry_yield_per_1000_opportunities": 0.0,
+      "fixed_r_capability": {
+        "1R": null,
+        "2R": null,
+        "3R": null,
+        "4R": null,
+        "5R": null
+      },
+      "natural_target_R_median": null,
+      "target_reached_rate": null
+    }
+  },
+  "branch_session": {
+    "A_SWEEP_RECLAIM_REVERSAL|ASIAN_LONDON": {
+      "ENTRY_AVAILABLE_N": 847,
+      "GEOMETRY_VALID_N": 809,
+      "OPPORTUNITY_N": 1939,
+      "RECLAIM_OR_RETEST_N": 1939,
+      "SESSION_EVENT_N": 1939,
+      "STRUCTURE_CONFIRM_N": 847,
+      "SWEEP_OR_BREAKOUT_N": 1939,
+      "TRADE_COMPLETED_N": 809,
+      "entry_yield_per_1000_opportunities": 436.823105,
+      "fixed_r_capability": {
+        "1R": 0.546354,
+        "2R": 0.372064,
+        "3R": 0.26576,
+        "4R": 0.187886,
+        "5R": 0.139679
+      },
+      "natural_target_R_median": 1.210762,
+      "target_reached_rate": 0.520396
+    },
+    "A_SWEEP_RECLAIM_REVERSAL|LONDON_NEWYORK": {
+      "ENTRY_AVAILABLE_N": 531,
+      "GEOMETRY_VALID_N": 497,
+      "OPPORTUNITY_N": 1209,
+      "RECLAIM_OR_RETEST_N": 1209,
+      "SESSION_EVENT_N": 1209,
+      "STRUCTURE_CONFIRM_N": 531,
+      "SWEEP_OR_BREAKOUT_N": 1209,
+      "TRADE_COMPLETED_N": 497,
+      "entry_yield_per_1000_opportunities": 439.205955,
+      "fixed_r_capability": {
+        "1R": 0.511066,
+        "2R": 0.299799,
+        "3R": 0.207243,
+        "4R": 0.152918,
+        "5R": 0.102616
+      },
+      "natural_target_R_median": 1.265233,
+      "target_reached_rate": 0.454728
+    },
+    "B_BREAKOUT_RETEST_CONTINUATION|ASIAN_LONDON": {
+      "ENTRY_AVAILABLE_N": 348,
+      "GEOMETRY_VALID_N": 314,
+      "OPPORTUNITY_N": 3398,
+      "RECLAIM_OR_RETEST_N": 1282,
+      "SESSION_EVENT_N": 3398,
+      "STRUCTURE_CONFIRM_N": 348,
+      "SWEEP_OR_BREAKOUT_N": 3398,
+      "TRADE_COMPLETED_N": 314,
+      "entry_yield_per_1000_opportunities": 102.413184,
+      "fixed_r_capability": {
+        "1R": 0.487261,
+        "2R": 0.324841,
+        "3R": 0.207006,
+        "4R": 0.156051,
+        "5R": 0.117834
+      },
+      "natural_target_R_median": 1.749785,
+      "target_reached_rate": 0.359873
+    },
+    "B_BREAKOUT_RETEST_CONTINUATION|LONDON_NEWYORK": {
+      "ENTRY_AVAILABLE_N": 352,
+      "GEOMETRY_VALID_N": 314,
+      "OPPORTUNITY_N": 4625,
+      "RECLAIM_OR_RETEST_N": 1300,
+      "SESSION_EVENT_N": 4625,
+      "STRUCTURE_CONFIRM_N": 352,
+      "SWEEP_OR_BREAKOUT_N": 4625,
+      "TRADE_COMPLETED_N": 314,
+      "entry_yield_per_1000_opportunities": 76.108108,
+      "fixed_r_capability": {
+        "1R": 0.477707,
+        "2R": 0.289809,
+        "3R": 0.191083,
+        "4R": 0.10828,
+        "5R": 0.076433
+      },
+      "natural_target_R_median": 1.087116,
+      "target_reached_rate": 0.464968
+    },
+    "NO_BRANCH|ASIAN_LONDON": {
+      "ENTRY_AVAILABLE_N": 0,
+      "GEOMETRY_VALID_N": 0,
+      "OPPORTUNITY_N": 8070,
+      "RECLAIM_OR_RETEST_N": 0,
+      "SESSION_EVENT_N": 130,
+      "STRUCTURE_CONFIRM_N": 0,
+      "SWEEP_OR_BREAKOUT_N": 0,
+      "TRADE_COMPLETED_N": 0,
+      "entry_yield_per_1000_opportunities": 0.0,
+      "fixed_r_capability": {
+        "1R": null,
+        "2R": null,
+        "3R": null,
+        "4R": null,
+        "5R": null
+      },
+      "natural_target_R_median": null,
+      "target_reached_rate": null
+    },
+    "NO_BRANCH|LONDON_NEWYORK": {
+      "ENTRY_AVAILABLE_N": 0,
+      "GEOMETRY_VALID_N": 0,
+      "OPPORTUNITY_N": 7573,
+      "RECLAIM_OR_RETEST_N": 0,
+      "SESSION_EVENT_N": 83,
+      "STRUCTURE_CONFIRM_N": 0,
+      "SWEEP_OR_BREAKOUT_N": 0,
+      "TRADE_COMPLETED_N": 0,
+      "entry_yield_per_1000_opportunities": 0.0,
+      "fixed_r_capability": {
+        "1R": null,
+        "2R": null,
+        "3R": null,
+        "4R": null,
+        "5R": null
+      },
+      "natural_target_R_median": null,
+      "target_reached_rate": null
+    }
+  },
+  "regime": {
+    "RANGE": {
+      "ENTRY_AVAILABLE_N": 1023,
+      "GEOMETRY_VALID_N": 944,
+      "OPPORTUNITY_N": 6339,
+      "RECLAIM_OR_RETEST_N": 2865,
+      "SESSION_EVENT_N": 5733,
+      "STRUCTURE_CONFIRM_N": 1023,
+      "SWEEP_OR_BREAKOUT_N": 5623,
+      "TRADE_COMPLETED_N": 944,
+      "entry_yield_per_1000_opportunities": 161.381921,
+      "fixed_r_capability": {
+        "1R": 0.516949,
+        "2R": 0.323093,
+        "3R": 0.217161,
+        "4R": 0.154661,
+        "5R": 0.108051
+      },
+      "natural_target_R_median": 1.23218,
+      "target_reached_rate": 0.467161
+    },
+    "TREND": {
+      "ENTRY_AVAILABLE_N": 1055,
+      "GEOMETRY_VALID_N": 990,
+      "OPPORTUNITY_N": 6232,
+      "RECLAIM_OR_RETEST_N": 2865,
+      "SESSION_EVENT_N": 5651,
+      "STRUCTURE_CONFIRM_N": 1055,
+      "SWEEP_OR_BREAKOUT_N": 5548,
+      "TRADE_COMPLETED_N": 990,
+      "entry_yield_per_1000_opportunities": 169.287548,
+      "fixed_r_capability": {
+        "1R": 0.516162,
+        "2R": 0.341414,
+        "3R": 0.240404,
+        "4R": 0.166667,
+        "5R": 0.124242
+      },
+      "natural_target_R_median": 1.24906,
+      "target_reached_rate": 0.469697
+    },
+    "UNAVAILABLE": {
+      "ENTRY_AVAILABLE_N": 0,
+      "GEOMETRY_VALID_N": 0,
+      "OPPORTUNITY_N": 14243,
+      "RECLAIM_OR_RETEST_N": 0,
+      "SESSION_EVENT_N": 0,
+      "STRUCTURE_CONFIRM_N": 0,
+      "SWEEP_OR_BREAKOUT_N": 0,
+      "TRADE_COMPLETED_N": 0,
+      "entry_yield_per_1000_opportunities": 0.0,
+      "fixed_r_capability": {
+        "1R": null,
+        "2R": null,
+        "3R": null,
+        "4R": null,
+        "5R": null
+      },
+      "natural_target_R_median": null,
+      "target_reached_rate": null
+    }
+  },
+  "session": {
+    "ASIAN_LONDON": {
+      "ENTRY_AVAILABLE_N": 1195,
+      "GEOMETRY_VALID_N": 1123,
+      "OPPORTUNITY_N": 13407,
+      "RECLAIM_OR_RETEST_N": 3221,
+      "SESSION_EVENT_N": 5467,
+      "STRUCTURE_CONFIRM_N": 1195,
+      "SWEEP_OR_BREAKOUT_N": 5337,
+      "TRADE_COMPLETED_N": 1123,
+      "entry_yield_per_1000_opportunities": 89.132543,
+      "fixed_r_capability": {
+        "1R": 0.529831,
+        "2R": 0.35886,
+        "3R": 0.249332,
+        "4R": 0.178985,
+        "5R": 0.133571
+      },
+      "natural_target_R_median": 1.283972,
+      "target_reached_rate": 0.475512
+    },
+    "LONDON_NEWYORK": {
+      "ENTRY_AVAILABLE_N": 883,
+      "GEOMETRY_VALID_N": 811,
+      "OPPORTUNITY_N": 13407,
+      "RECLAIM_OR_RETEST_N": 2509,
+      "SESSION_EVENT_N": 5917,
+      "STRUCTURE_CONFIRM_N": 883,
+      "SWEEP_OR_BREAKOUT_N": 5834,
+      "TRADE_COMPLETED_N": 811,
+      "entry_yield_per_1000_opportunities": 65.861117,
+      "fixed_r_capability": {
+        "1R": 0.49815,
+        "2R": 0.295931,
+        "3R": 0.200986,
+        "4R": 0.135635,
+        "5R": 0.092478
+      },
+      "natural_target_R_median": 1.186284,
+      "target_reached_rate": 0.458693
+    }
+  },
+  "symbol": {
+    "EURUSD": {
+      "ENTRY_AVAILABLE_N": 567,
+      "GEOMETRY_VALID_N": 531,
+      "OPPORTUNITY_N": 7660,
+      "RECLAIM_OR_RETEST_N": 1549,
+      "SESSION_EVENT_N": 3124,
+      "STRUCTURE_CONFIRM_N": 567,
+      "SWEEP_OR_BREAKOUT_N": 3063,
+      "TRADE_COMPLETED_N": 531,
+      "entry_yield_per_1000_opportunities": 74.020888,
+      "fixed_r_capability": {
+        "1R": 0.542373,
+        "2R": 0.34275,
+        "3R": 0.242938,
+        "4R": 0.167608,
+        "5R": 0.116761
+      },
+      "natural_target_R_median": 1.071429,
+      "target_reached_rate": 0.527307
+    },
+    "GBPUSD": {
+      "ENTRY_AVAILABLE_N": 524,
+      "GEOMETRY_VALID_N": 482,
+      "OPPORTUNITY_N": 7656,
+      "RECLAIM_OR_RETEST_N": 1359,
+      "SESSION_EVENT_N": 2838,
+      "STRUCTURE_CONFIRM_N": 524,
+      "SWEEP_OR_BREAKOUT_N": 2791,
+      "TRADE_COMPLETED_N": 482,
+      "entry_yield_per_1000_opportunities": 68.443051,
+      "fixed_r_capability": {
+        "1R": 0.504149,
+        "2R": 0.325726,
+        "3R": 0.23029,
+        "4R": 0.155602,
+        "5R": 0.112033
+      },
+      "natural_target_R_median": 0.83112,
+      "target_reached_rate": 0.537344
+    },
+    "USDJPY": {
+      "ENTRY_AVAILABLE_N": 528,
+      "GEOMETRY_VALID_N": 501,
+      "OPPORTUNITY_N": 7660,
+      "RECLAIM_OR_RETEST_N": 1571,
+      "SESSION_EVENT_N": 2981,
+      "STRUCTURE_CONFIRM_N": 528,
+      "SWEEP_OR_BREAKOUT_N": 2900,
+      "TRADE_COMPLETED_N": 501,
+      "entry_yield_per_1000_opportunities": 68.929504,
+      "fixed_r_capability": {
+        "1R": 0.497006,
+        "2R": 0.331337,
+        "3R": 0.227545,
+        "4R": 0.157685,
+        "5R": 0.113772
+      },
+      "natural_target_R_median": 1.764706,
+      "target_reached_rate": 0.399202
+    },
+    "XAUUSD": {
+      "ENTRY_AVAILABLE_N": 459,
+      "GEOMETRY_VALID_N": 420,
+      "OPPORTUNITY_N": 3838,
+      "RECLAIM_OR_RETEST_N": 1251,
+      "SESSION_EVENT_N": 2441,
+      "STRUCTURE_CONFIRM_N": 459,
+      "SWEEP_OR_BREAKOUT_N": 2417,
+      "TRADE_COMPLETED_N": 420,
+      "entry_yield_per_1000_opportunities": 119.593538,
+      "fixed_r_capability": {
+        "1R": 0.521429,
+        "2R": 0.328571,
+        "3R": 0.211905,
+        "4R": 0.161905,
+        "5R": 0.12381
+      },
+      "natural_target_R_median": 1.563531,
+      "target_reached_rate": 0.397619
+    }
+  },
+  "symbol_session": {
+    "EURUSD|ASIAN_LONDON": {
+      "ENTRY_AVAILABLE_N": 338,
+      "GEOMETRY_VALID_N": 320,
+      "OPPORTUNITY_N": 3830,
+      "RECLAIM_OR_RETEST_N": 909,
+      "SESSION_EVENT_N": 1531,
+      "STRUCTURE_CONFIRM_N": 338,
+      "SWEEP_OR_BREAKOUT_N": 1491,
+      "TRADE_COMPLETED_N": 320,
+      "entry_yield_per_1000_opportunities": 88.250653,
+      "fixed_r_capability": {
+        "1R": 0.559375,
+        "2R": 0.384375,
+        "3R": 0.275,
+        "4R": 0.19375,
+        "5R": 0.134375
+      },
+      "natural_target_R_median": 1.090476,
+      "target_reached_rate": 0.55
+    },
+    "EURUSD|LONDON_NEWYORK": {
+      "ENTRY_AVAILABLE_N": 229,
+      "GEOMETRY_VALID_N": 211,
+      "OPPORTUNITY_N": 3830,
+      "RECLAIM_OR_RETEST_N": 640,
+      "SESSION_EVENT_N": 1593,
+      "STRUCTURE_CONFIRM_N": 229,
+      "SWEEP_OR_BREAKOUT_N": 1572,
+      "TRADE_COMPLETED_N": 211,
+      "entry_yield_per_1000_opportunities": 59.791123,
+      "fixed_r_capability": {
+        "1R": 0.516588,
+        "2R": 0.279621,
+        "3R": 0.194313,
+        "4R": 0.127962,
+        "5R": 0.090047
+      },
+      "natural_target_R_median": 1.023125,
+      "target_reached_rate": 0.492891
+    },
+    "GBPUSD|ASIAN_LONDON": {
+      "ENTRY_AVAILABLE_N": 330,
+      "GEOMETRY_VALID_N": 302,
+      "OPPORTUNITY_N": 3828,
+      "RECLAIM_OR_RETEST_N": 832,
+      "SESSION_EVENT_N": 1412,
+      "STRUCTURE_CONFIRM_N": 330,
+      "SWEEP_OR_BREAKOUT_N": 1384,
+      "TRADE_COMPLETED_N": 302,
+      "entry_yield_per_1000_opportunities": 86.206897,
+      "fixed_r_capability": {
+        "1R": 0.523179,
+        "2R": 0.350993,
+        "3R": 0.241722,
+        "4R": 0.15894,
+        "5R": 0.122517
+      },
+      "natural_target_R_median": 0.74149,
+      "target_reached_rate": 0.556291
+    },
+    "GBPUSD|LONDON_NEWYORK": {
+      "ENTRY_AVAILABLE_N": 194,
+      "GEOMETRY_VALID_N": 180,
+      "OPPORTUNITY_N": 3828,
+      "RECLAIM_OR_RETEST_N": 527,
+      "SESSION_EVENT_N": 1426,
+      "STRUCTURE_CONFIRM_N": 194,
+      "SWEEP_OR_BREAKOUT_N": 1407,
+      "TRADE_COMPLETED_N": 180,
+      "entry_yield_per_1000_opportunities": 50.679206,
+      "fixed_r_capability": {
+        "1R": 0.472222,
+        "2R": 0.283333,
+        "3R": 0.211111,
+        "4R": 0.15,
+        "5R": 0.094444
+      },
+      "natural_target_R_median": 0.90003,
+      "target_reached_rate": 0.505556
+    },
+    "USDJPY|ASIAN_LONDON": {
+      "ENTRY_AVAILABLE_N": 284,
+      "GEOMETRY_VALID_N": 275,
+      "OPPORTUNITY_N": 3830,
+      "RECLAIM_OR_RETEST_N": 812,
+      "SESSION_EVENT_N": 1378,
+      "STRUCTURE_CONFIRM_N": 284,
+      "SWEEP_OR_BREAKOUT_N": 1330,
+      "TRADE_COMPLETED_N": 275,
+      "entry_yield_per_1000_opportunities": 74.151436,
+      "fixed_r_capability": {
+        "1R": 0.501818,
+        "2R": 0.356364,
+        "3R": 0.258182,
+        "4R": 0.192727,
+        "5R": 0.145455
+      },
+      "natural_target_R_median": 2.084746,
+      "target_reached_rate": 0.381818
+    },
+    "USDJPY|LONDON_NEWYORK": {
+      "ENTRY_AVAILABLE_N": 244,
+      "GEOMETRY_VALID_N": 226,
+      "OPPORTUNITY_N": 3830,
+      "RECLAIM_OR_RETEST_N": 759,
+      "SESSION_EVENT_N": 1603,
+      "STRUCTURE_CONFIRM_N": 244,
+      "SWEEP_OR_BREAKOUT_N": 1570,
+      "TRADE_COMPLETED_N": 226,
+      "entry_yield_per_1000_opportunities": 63.707572,
+      "fixed_r_capability": {
+        "1R": 0.49115,
+        "2R": 0.300885,
+        "3R": 0.190265,
+        "4R": 0.115044,
+        "5R": 0.075221
+      },
+      "natural_target_R_median": 1.476195,
+      "target_reached_rate": 0.420354
+    },
+    "XAUUSD|ASIAN_LONDON": {
+      "ENTRY_AVAILABLE_N": 243,
+      "GEOMETRY_VALID_N": 226,
+      "OPPORTUNITY_N": 1919,
+      "RECLAIM_OR_RETEST_N": 668,
+      "SESSION_EVENT_N": 1146,
+      "STRUCTURE_CONFIRM_N": 243,
+      "SWEEP_OR_BREAKOUT_N": 1132,
+      "TRADE_COMPLETED_N": 226,
+      "entry_yield_per_1000_opportunities": 126.628452,
+      "fixed_r_capability": {
+        "1R": 0.530973,
+        "2R": 0.336283,
+        "3R": 0.212389,
+        "4R": 0.168142,
+        "5R": 0.132743
+      },
+      "natural_target_R_median": 1.899339,
+      "target_reached_rate": 0.376106
+    },
+    "XAUUSD|LONDON_NEWYORK": {
+      "ENTRY_AVAILABLE_N": 216,
+      "GEOMETRY_VALID_N": 194,
+      "OPPORTUNITY_N": 1919,
+      "RECLAIM_OR_RETEST_N": 583,
+      "SESSION_EVENT_N": 1295,
+      "STRUCTURE_CONFIRM_N": 216,
+      "SWEEP_OR_BREAKOUT_N": 1285,
+      "TRADE_COMPLETED_N": 194,
+      "entry_yield_per_1000_opportunities": 112.558624,
+      "fixed_r_capability": {
+        "1R": 0.510309,
+        "2R": 0.319588,
+        "3R": 0.21134,
+        "4R": 0.154639,
+        "5R": 0.113402
+      },
+      "natural_target_R_median": 1.327895,
+      "target_reached_rate": 0.42268
+    }
+  },
+  "year": {
+    "2000": {
+      "ENTRY_AVAILABLE_N": 0,
+      "GEOMETRY_VALID_N": 0,
+      "OPPORTUNITY_N": 432,
+      "RECLAIM_OR_RETEST_N": 0,
+      "SESSION_EVENT_N": 0,
+      "STRUCTURE_CONFIRM_N": 0,
+      "SWEEP_OR_BREAKOUT_N": 0,
+      "TRADE_COMPLETED_N": 0,
+      "entry_yield_per_1000_opportunities": 0.0,
+      "fixed_r_capability": {
+        "1R": null,
+        "2R": null,
+        "3R": null,
+        "4R": null,
+        "5R": null
+      },
+      "natural_target_R_median": null,
+      "target_reached_rate": null
+    },
+    "2001": {
+      "ENTRY_AVAILABLE_N": 7,
+      "GEOMETRY_VALID_N": 7,
+      "OPPORTUNITY_N": 1326,
+      "RECLAIM_OR_RETEST_N": 18,
+      "SESSION_EVENT_N": 41,
+      "STRUCTURE_CONFIRM_N": 7,
+      "SWEEP_OR_BREAKOUT_N": 39,
+      "TRADE_COMPLETED_N": 7,
+      "entry_yield_per_1000_opportunities": 5.279035,
+      "fixed_r_capability": {
+        "1R": 0.714286,
+        "2R": 0.571429,
+        "3R": 0.142857,
+        "4R": 0.0,
+        "5R": 0.0
+      },
+      "natural_target_R_median": 2.0,
+      "target_reached_rate": 0.571429
+    },
+    "2002": {
+      "ENTRY_AVAILABLE_N": 13,
+      "GEOMETRY_VALID_N": 13,
+      "OPPORTUNITY_N": 1320,
+      "RECLAIM_OR_RETEST_N": 36,
+      "SESSION_EVENT_N": 68,
+      "STRUCTURE_CONFIRM_N": 13,
+      "SWEEP_OR_BREAKOUT_N": 68,
+      "TRADE_COMPLETED_N": 13,
+      "entry_yield_per_1000_opportunities": 9.848485,
+      "fixed_r_capability": {
+        "1R": 0.538462,
+        "2R": 0.461538,
+        "3R": 0.307692,
+        "4R": 0.230769,
+        "5R": 0.153846
+      },
+      "natural_target_R_median": 2.621667,
+      "target_reached_rate": 0.307692
+    },
+    "2003": {
+      "ENTRY_AVAILABLE_N": 46,
+      "GEOMETRY_VALID_N": 45,
+      "OPPORTUNITY_N": 1322,
+      "RECLAIM_OR_RETEST_N": 135,
+      "SESSION_EVENT_N": 261,
+      "STRUCTURE_CONFIRM_N": 46,
+      "SWEEP_OR_BREAKOUT_N": 251,
+      "TRADE_COMPLETED_N": 45,
+      "entry_yield_per_1000_opportunities": 34.795764,
+      "fixed_r_capability": {
+        "1R": 0.533333,
+        "2R": 0.311111,
+        "3R": 0.222222,
+        "4R": 0.133333,
+        "5R": 0.066667
+      },
+      "natural_target_R_median": 1.052632,
+      "target_reached_rate": 0.533333
+    },
+    "2004": {
+      "ENTRY_AVAILABLE_N": 77,
+      "GEOMETRY_VALID_N": 75,
+      "OPPORTUNITY_N": 1332,
+      "RECLAIM_OR_RETEST_N": 220,
+      "SESSION_EVENT_N": 428,
+      "STRUCTURE_CONFIRM_N": 77,
+      "SWEEP_OR_BREAKOUT_N": 406,
+      "TRADE_COMPLETED_N": 75,
+      "entry_yield_per_1000_opportunities": 57.807808,
+      "fixed_r_capability": {
+        "1R": 0.48,
+        "2R": 0.253333,
+        "3R": 0.173333,
+        "4R": 0.12,
+        "5R": 0.08
+      },
+      "natural_target_R_median": 1.642857,
+      "target_reached_rate": 0.4
+    },
+    "2005": {
+      "ENTRY_AVAILABLE_N": 27,
+      "GEOMETRY_VALID_N": 25,
+      "OPPORTUNITY_N": 1320,
+      "RECLAIM_OR_RETEST_N": 84,
+      "SESSION_EVENT_N": 180,
+      "STRUCTURE_CONFIRM_N": 27,
+      "SWEEP_OR_BREAKOUT_N": 169,
+      "TRADE_COMPLETED_N": 25,
+      "entry_yield_per_1000_opportunities": 20.454545,
+      "fixed_r_capability": {
+        "1R": 0.52,
+        "2R": 0.2,
+        "3R": 0.2,
+        "4R": 0.12,
+        "5R": 0.12
+      },
+      "natural_target_R_median": 2.0,
+      "target_reached_rate": 0.44
+    },
+    "2006": {
+      "ENTRY_AVAILABLE_N": 41,
+      "GEOMETRY_VALID_N": 39,
+      "OPPORTUNITY_N": 1320,
+      "RECLAIM_OR_RETEST_N": 105,
+      "SESSION_EVENT_N": 187,
+      "STRUCTURE_CONFIRM_N": 41,
+      "SWEEP_OR_BREAKOUT_N": 178,
+      "TRADE_COMPLETED_N": 39,
+      "entry_yield_per_1000_opportunities": 31.060606,
+      "fixed_r_capability": {
+        "1R": 0.461538,
+        "2R": 0.435897,
+        "3R": 0.282051,
+        "4R": 0.179487,
+        "5R": 0.128205
+      },
+      "natural_target_R_median": 1.916667,
+      "target_reached_rate": 0.358974
+    },
+    "2007": {
+      "ENTRY_AVAILABLE_N": 25,
+      "GEOMETRY_VALID_N": 24,
+      "OPPORTUNITY_N": 1326,
+      "RECLAIM_OR_RETEST_N": 83,
+      "SESSION_EVENT_N": 147,
+      "STRUCTURE_CONFIRM_N": 25,
+      "SWEEP_OR_BREAKOUT_N": 141,
+      "TRADE_COMPLETED_N": 24,
+      "entry_yield_per_1000_opportunities": 18.853695,
+      "fixed_r_capability": {
+        "1R": 0.541667,
+        "2R": 0.25,
+        "3R": 0.166667,
+        "4R": 0.125,
+        "5R": 0.125
+      },
+      "natural_target_R_median": 1.366667,
+      "target_reached_rate": 0.458333
+    },
+    "2008": {
+      "ENTRY_AVAILABLE_N": 57,
+      "GEOMETRY_VALID_N": 56,
+      "OPPORTUNITY_N": 1332,
+      "RECLAIM_OR_RETEST_N": 169,
+      "SESSION_EVENT_N": 335,
+      "STRUCTURE_CONFIRM_N": 57,
+      "SWEEP_OR_BREAKOUT_N": 324,
+      "TRADE_COMPLETED_N": 56,
+      "entry_yield_per_1000_opportunities": 42.792793,
+      "fixed_r_capability": {
+        "1R": 0.660714,
+        "2R": 0.428571,
+        "3R": 0.339286,
+        "4R": 0.214286,
+        "5R": 0.160714
+      },
+      "natural_target_R_median": 1.527031,
+      "target_reached_rate": 0.482143
+    },
+    "2009": {
+      "ENTRY_AVAILABLE_N": 186,
+      "GEOMETRY_VALID_N": 177,
+      "OPPORTUNITY_N": 1624,
+      "RECLAIM_OR_RETEST_N": 515,
+      "SESSION_EVENT_N": 996,
+      "STRUCTURE_CONFIRM_N": 186,
+      "SWEEP_OR_BREAKOUT_N": 968,
+      "TRADE_COMPLETED_N": 177,
+      "entry_yield_per_1000_opportunities": 114.53202,
+      "fixed_r_capability": {
+        "1R": 0.559322,
+        "2R": 0.322034,
+        "3R": 0.259887,
+        "4R": 0.20339,
+        "5R": 0.152542
+      },
+      "natural_target_R_median": 1.27027,
+      "target_reached_rate": 0.508475
+    },
+    "2010": {
+      "ENTRY_AVAILABLE_N": 195,
+      "GEOMETRY_VALID_N": 180,
+      "OPPORTUNITY_N": 1760,
+      "RECLAIM_OR_RETEST_N": 518,
+      "SESSION_EVENT_N": 997,
+      "STRUCTURE_CONFIRM_N": 195,
+      "SWEEP_OR_BREAKOUT_N": 972,
+      "TRADE_COMPLETED_N": 180,
+      "entry_yield_per_1000_opportunities": 110.795455,
+      "fixed_r_capability": {
+        "1R": 0.533333,
+        "2R": 0.344444,
+        "3R": 0.261111,
+        "4R": 0.194444,
+        "5R": 0.127778
+      },
+      "natural_target_R_median": 1.196856,
+      "target_reached_rate": 0.477778
+    },
+    "2011": {
+      "ENTRY_AVAILABLE_N": 168,
+      "GEOMETRY_VALID_N": 159,
+      "OPPORTUNITY_N": 1768,
+      "RECLAIM_OR_RETEST_N": 456,
+      "SESSION_EVENT_N": 816,
+      "STRUCTURE_CONFIRM_N": 168,
+      "SWEEP_OR_BREAKOUT_N": 800,
+      "TRADE_COMPLETED_N": 159,
+      "entry_yield_per_1000_opportunities": 95.022624,
+      "fixed_r_capability": {
+        "1R": 0.477987,
+        "2R": 0.320755,
+        "3R": 0.220126,
+        "4R": 0.163522,
+        "5R": 0.138365
+      },
+      "natural_target_R_median": 1.166667,
+      "target_reached_rate": 0.503145
+    },
+    "2012": {
+      "ENTRY_AVAILABLE_N": 224,
+      "GEOMETRY_VALID_N": 209,
+      "OPPORTUNITY_N": 1776,
+      "RECLAIM_OR_RETEST_N": 587,
+      "SESSION_EVENT_N": 1199,
+      "STRUCTURE_CONFIRM_N": 224,
+      "SWEEP_OR_BREAKOUT_N": 1188,
+      "TRADE_COMPLETED_N": 209,
+      "entry_yield_per_1000_opportunities": 126.126126,
+      "fixed_r_capability": {
+        "1R": 0.478469,
+        "2R": 0.282297,
+        "3R": 0.167464,
+        "4R": 0.100478,
+        "5R": 0.076555
+      },
+      "natural_target_R_median": 1.130178,
+      "target_reached_rate": 0.464115
+    },
+    "2013": {
+      "ENTRY_AVAILABLE_N": 214,
+      "GEOMETRY_VALID_N": 200,
+      "OPPORTUNITY_N": 1768,
+      "RECLAIM_OR_RETEST_N": 563,
+      "SESSION_EVENT_N": 1137,
+      "STRUCTURE_CONFIRM_N": 214,
+      "SWEEP_OR_BREAKOUT_N": 1129,
+      "TRADE_COMPLETED_N": 200,
+      "entry_yield_per_1000_opportunities": 121.040724,
+      "fixed_r_capability": {
+        "1R": 0.48,
+        "2R": 0.315,
+        "3R": 0.22,
+        "4R": 0.18,
+        "5R": 0.13
+      },
+      "natural_target_R_median": 1.175671,
+      "target_reached_rate": 0.46
+    },
+    "2014": {
+      "ENTRY_AVAILABLE_N": 174,
+      "GEOMETRY_VALID_N": 158,
+      "OPPORTUNITY_N": 1776,
+      "RECLAIM_OR_RETEST_N": 534,
+      "SESSION_EVENT_N": 1137,
+      "STRUCTURE_CONFIRM_N": 174,
+      "SWEEP_OR_BREAKOUT_N": 1117,
+      "TRADE_COMPLETED_N": 158,
+      "entry_yield_per_1000_opportunities": 97.972973,
+      "fixed_r_capability": {
+        "1R": 0.537975,
+        "2R": 0.35443,
+        "3R": 0.234177,
+        "4R": 0.151899,
+        "5R": 0.101266
+      },
+      "natural_target_R_median": 1.211907,
+      "target_reached_rate": 0.436709
+    },
+    "2015": {
+      "ENTRY_AVAILABLE_N": 198,
+      "GEOMETRY_VALID_N": 179,
+      "OPPORTUNITY_N": 1776,
+      "RECLAIM_OR_RETEST_N": 541,
+      "SESSION_EVENT_N": 1172,
+      "STRUCTURE_CONFIRM_N": 198,
+      "SWEEP_OR_BREAKOUT_N": 1158,
+      "TRADE_COMPLETED_N": 179,
+      "entry_yield_per_1000_opportunities": 111.486486,
+      "fixed_r_capability": {
+        "1R": 0.553073,
+        "2R": 0.374302,
+        "3R": 0.240223,
+        "4R": 0.178771,
+        "5R": 0.100559
+      },
+      "natural_target_R_median": 1.081871,
+      "target_reached_rate": 0.513966
+    },
+    "2016": {
+      "ENTRY_AVAILABLE_N": 214,
+      "GEOMETRY_VALID_N": 194,
+      "OPPORTUNITY_N": 1768,
+      "RECLAIM_OR_RETEST_N": 556,
+      "SESSION_EVENT_N": 1110,
+      "STRUCTURE_CONFIRM_N": 214,
+      "SWEEP_OR_BREAKOUT_N": 1102,
+      "TRADE_COMPLETED_N": 194,
+      "entry_yield_per_1000_opportunities": 121.040724,
+      "fixed_r_capability": {
+        "1R": 0.510309,
+        "2R": 0.309278,
+        "3R": 0.195876,
+        "4R": 0.134021,
+        "5R": 0.097938
+      },
+      "natural_target_R_median": 1.417666,
+      "target_reached_rate": 0.417526
+    },
+    "2017": {
+      "ENTRY_AVAILABLE_N": 212,
+      "GEOMETRY_VALID_N": 194,
+      "OPPORTUNITY_N": 1768,
+      "RECLAIM_OR_RETEST_N": 610,
+      "SESSION_EVENT_N": 1173,
+      "STRUCTURE_CONFIRM_N": 212,
+      "SWEEP_OR_BREAKOUT_N": 1161,
+      "TRADE_COMPLETED_N": 194,
+      "entry_yield_per_1000_opportunities": 119.909502,
+      "fixed_r_capability": {
+        "1R": 0.494845,
+        "2R": 0.376289,
+        "3R": 0.262887,
+        "4R": 0.164948,
+        "5R": 0.139175
+      },
+      "natural_target_R_median": 1.296378,
+      "target_reached_rate": 0.484536
+    }
+  }
+}

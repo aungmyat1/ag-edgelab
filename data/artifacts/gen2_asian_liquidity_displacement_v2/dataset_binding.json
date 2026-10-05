@@ -1,0 +1,293 @@
+{
+  "HOLDOUT_TOUCHED": "NO",
+  "OOS_OPENED": "NO",
+  "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+  "cross_source_identity_proof": {
+    "claim": "the mirror carries the same HistData payload as the PR #10 authority",
+    "method": "sha256 of the inner DAT_ASCII_{SYM}_M1_2017.csv compared against the inner csv of the PR #10 pinned zip, for all four symbols",
+    "per_symbol": {
+      "EURUSD": {
+        "inner_csv": "DAT_ASCII_EURUSD_M1_2017.csv",
+        "inner_csv_bytes": "20068290",
+        "inner_csv_sha256": "d5d095207bcdbfc77b899e4ab69c2fd31cee09791a9ff4c74f9c066fb49a6ac4",
+        "pr10_zip_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57"
+      },
+      "GBPUSD": {
+        "inner_csv": "DAT_ASCII_GBPUSD_M1_2017.csv",
+        "inner_csv_bytes": "20045016",
+        "inner_csv_sha256": "04726017e04391b319cce1ad01b7146332c6cf6247890b9999dc7e106f8a2939",
+        "pr10_zip_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b"
+      },
+      "USDJPY": {
+        "inner_csv": "DAT_ASCII_USDJPY_M1_2017.csv",
+        "inner_csv_bytes": "23020476",
+        "inner_csv_sha256": "849f3c89d84f5db0150604306e45f07586865f40a33ca5d363f48df381b85a2b",
+        "pr10_zip_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f"
+      },
+      "XAUUSD": {
+        "inner_csv": "DAT_ASCII_XAUUSD_M1_2017.csv",
+        "inner_csv_bytes": "23255760",
+        "inner_csv_sha256": "b97c6ecb8dbc0fa11f8f32082498573b36f0a0276e51c843b5609b16fdeb0ad7",
+        "pr10_zip_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+      }
+    },
+    "result": "IDENTICAL_4_OF_4"
+  },
+  "dataset_manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+  "dev_partition_hash": "f3d4b4299a3e653430473d8f9578e1e8a62847cb08a80db87b04155d5020b1d1",
+  "role": "DEVELOPMENT",
+  "symbol_years": [
+    {
+      "symbol": "EURUSD",
+      "year": 2000
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2001
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2002
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2003
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2004
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2005
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2006
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2007
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2008
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2009
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2010
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2011
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2012
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2013
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2014
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2015
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2016
+    },
+    {
+      "symbol": "EURUSD",
+      "year": 2017
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2000
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2001
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2002
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2003
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2004
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2005
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2006
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2007
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2008
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2009
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2010
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2011
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2012
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2013
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2014
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2015
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2016
+    },
+    {
+      "symbol": "GBPUSD",
+      "year": 2017
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2000
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2001
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2002
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2003
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2004
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2005
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2006
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2007
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2008
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2009
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2010
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2011
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2012
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2013
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2014
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2015
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2016
+    },
+    {
+      "symbol": "USDJPY",
+      "year": 2017
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2009
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2010
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2011
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2012
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2013
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2014
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2015
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2016
+    },
+    {
+      "symbol": "XAUUSD",
+      "year": 2017
+    }
+  ]
+}
