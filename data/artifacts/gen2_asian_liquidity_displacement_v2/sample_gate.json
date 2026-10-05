@@ -1,0 +1,13 @@
+{
+  "BRANCH_MIN_N": 30,
+  "ENTRY_AVAILABLE_N": 2078,
+  "SAMPLE_FLOOR": 100,
+  "SAMPLE_GATE": "PASS",
+  "per_branch_entries": {
+    "A_SWEEP_RECLAIM_REVERSAL": 1378,
+    "B_BREAKOUT_RETEST_CONTINUATION": 700
+  },
+  "threshold_origin": "inherited unchanged from the EdgeLab verifier; never relaxed after seeing a result",
+  "underpowered_branches": [],
+  "verdict": "sample floor satisfied"
+}

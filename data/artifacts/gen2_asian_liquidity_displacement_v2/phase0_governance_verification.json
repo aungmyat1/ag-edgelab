@@ -1,0 +1,156 @@
+{
+  "phase": "MISSION_3_PHASE_0_GOVERNANCE",
+  "generated_at_utc": "2026-10-05T10:43:16.050943+00:00",
+  "base_commit": "feaf3c660b848a5e4297a0edd450ceefcbe6212b",
+  "state": "PASS",
+  "failures": [],
+  "checks": [
+    {
+      "check": "base_branch_is_the_session_branch",
+      "state": "PASS",
+      "detail": "arena/01a10add-ag-edgelab"
+    },
+    {
+      "check": "no_tracked_file_modified_v1_is_closed_evidence",
+      "state": "PASS",
+      "detail": "clean"
+    },
+    {
+      "check": "head_is_the_mission_2_final_commit",
+      "state": "PASS",
+      "detail": {
+        "head": "feaf3c660b848a5e4297a0edd450ceefcbe6212b",
+        "subject": "GEN2 ALD V1 multi-year: emit the FINAL RETURN contract block"
+      }
+    },
+    {
+      "check": "v1_frozen_rule_hash_unchanged",
+      "state": "PASS",
+      "detail": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94"
+    },
+    {
+      "check": "v1_evidence_bundles_hash_clean",
+      "state": "PASS",
+      "detail": "all files match their manifests"
+    },
+    {
+      "check": "v1_final_return_is_the_closed_verdict",
+      "state": "PASS",
+      "detail": {
+        "STATUS": "MULTIYEAR_DEV_INSUFFICIENT_SAMPLE",
+        "NEXT": "NEW_V2_HYPOTHESIS_DESIGN",
+        "ENTRY_AVAILABLE_N": 35,
+        "FROZEN_CANDIDATE": "NO"
+      }
+    },
+    {
+      "check": "v1_final_return_sources_unmodified",
+      "state": "PASS",
+      "detail": {
+        "final_report.json": "46393c519c2d6a674b348b5796dc460bb6f074b47a5eb30cf717bb2aa6913235",
+        "v1_narrow_vs_multiyear.json": "b3c331b7de31e8e727d38d2a5c6018224c2e5a10091c572632044a02ab82b70e"
+      }
+    },
+    {
+      "check": "every_dev_year_is_registered_development_known",
+      "state": "PASS",
+      "detail": {
+        "registered": [
+          2000,
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017
+        ],
+        "corpus": [
+          2000,
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017
+        ],
+        "records": 19
+      }
+    },
+    {
+      "check": "no_contamination_record_extends_past_september",
+      "state": "PASS",
+      "detail": "every record is exactly [Y-01-01, Y-09-01)"
+    },
+    {
+      "check": "zero_oos_access_events_under_the_r2_authority",
+      "state": "PASS",
+      "detail": 0
+    },
+    {
+      "check": "r2_dataset_registered_as_unconsumed",
+      "state": "PASS",
+      "detail": "NEVER OPENED for any year by any candidate under this authority. The 2017 OOS window is separately recorded as consumed "
+    },
+    {
+      "check": "no_oos_event_belongs_to_this_candidate_family",
+      "state": "PASS",
+      "detail": 0
+    },
+    {
+      "check": "sealed_holdout_untouched",
+      "state": "PASS",
+      "detail": "no holdout access token present"
+    },
+    {
+      "check": "r2_partition_policy_still_reserves_oos_and_holdout",
+      "state": "PASS",
+      "detail": {
+        "DEVELOPMENT": "[YYYY-01-01, YYYY-09-01) for every admitted year \u2014 CONSUMED by GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+        "OOS": "[YYYY-09-01, YYYY-12-01) for every admitted year \u2014 FRESH, NEVER OPENED (2017 excepted: consumed by OOS-001 and OOS-002 for other candidates)",
+        "SEALED_HOLDOUT": "[YYYY-12-01, YYYY+1-01-01) for every admitted year \u2014 SEALED"
+      }
+    }
+  ],
+  "v1_closed_evidence": {
+    "strategy_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "final_return": {
+      "OPPORTUNITY_N": 26814,
+      "TRIGGER_PASS_N": 441,
+      "CONFIRMATION_PASS_N": 51,
+      "ENTRY_AVAILABLE_N": 35,
+      "1R": 0.428571,
+      "5R": 0.0,
+      "NATURAL_TARGET_MEDIAN_R": 1.003804,
+      "SAMPLE_CLASSIFICATION": "STRATEGY_STRUCTURAL_STARVATION",
+      "SECONDARY_DIAGNOSES": [
+        "TRIGGER_FUNNEL_WEAKNESS",
+        "CONFIRMATION_FUNNEL_WEAKNESS",
+        "TARGET_MODEL_MISMATCH"
+      ],
+      "STATUS": "MULTIYEAR_DEV_INSUFFICIENT_SAMPLE"
+    },
+    "immutability_rule": "V1 is closed evidence. Mission 3 may read it and must not modify, re-run, re-tune or re-interpret it."
+  }
+}

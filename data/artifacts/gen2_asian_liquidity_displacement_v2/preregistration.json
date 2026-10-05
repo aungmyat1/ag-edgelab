@@ -1,0 +1,726 @@
+{
+  "PREREGISTRATION_SHA256": "c914c657097bb262c67ca119204ee6182cf7938b9176950643ee947d80349b9f",
+  "architecture": {
+    "architectures_considered": [
+      {
+        "causal_information_at_decision_time": [
+          "closed reference-window M15 bars (00:00-06:00 UTC)",
+          "the closed M15 interaction bar inside the entry window",
+          "closed M5 bars up to and including the confirming bar",
+          "closed H1/H4/D1 context bars (recorded as strata only)"
+        ],
+        "id": "A_SWEEP_RECLAIM_REVERSAL",
+        "mechanism": "A session reference boundary is raided for resting liquidity and REJECTS price (trades beyond, closes back inside). The raid itself names the direction: trade away from the swept side.",
+        "state": "PREREGISTERED_BRANCH"
+      },
+      {
+        "causal_information_at_decision_time": [
+          "closed reference-window M15 bars",
+          "the closed M15 breakout bar",
+          "closed M5 bars through the retest and the confirming bar",
+          "closed H1 liquidity pools for the target"
+        ],
+        "id": "B_BREAKOUT_RETEST_CONTINUATION",
+        "mechanism": "Price ACCEPTS beyond the boundary (closes beyond), returns to the broken level and holds it. Acceptance plus a held retest names the direction: trade with the breakout.",
+        "state": "PREREGISTERED_BRANCH"
+      },
+      {
+        "id": "C_TIME_OF_DAY_MOMENTUM_IGNITION",
+        "rejection_reason": "No location or liquidity mechanism. Without a structural reference the hypothesis reduces to a search over clock times and momentum thresholds, which is parameter optimization and is forbidden by this mission.",
+        "state": "REJECTED_AT_DESIGN_TIME"
+      }
+    ],
+    "branches": [
+      "A_SWEEP_RECLAIM_REVERSAL",
+      "B_BREAKOUT_RETEST_CONTINUATION"
+    ],
+    "selection_authority": "MECHANISM_ONLY \u2014 no branch may be dropped, ranked or preferred on the basis of its replayed results.",
+    "selection_rule": "A PREREGISTERED A/B BRANCH MODEL, selected before replay on mechanism grounds: A and B are the only two causal resolutions of one event (a boundary interaction) and they PARTITION the event space, so running both measures the whole mechanism instead of a chosen half. Branches are disjoint by construction \u2014 the interaction bar either closes back inside (A) or beyond (B), never both."
+  },
+  "base_commit": "feaf3c660b848a5e4297a0edd450ceefcbe6212b",
+  "committed_before_any_v2_replay": true,
+  "comparison_plan": {
+    "comparison_authority": "DIAGNOSTIC ONLY \u2014 V2 is not optimized against V1 and V1 is never re-run, re-tuned or re-interpreted",
+    "decision_rule": "SAMPLE_GATE = PASS iff pooled ENTRY_AVAILABLE_N >= 100. Otherwise SAMPLE_GATE = FAIL and STATUS = DEV_REJECTED_INSUFFICIENT_SAMPLE. This floor is inherited unchanged from the EdgeLab verifier (POOLED_ENTRY_ELIGIBILITY_N) and was NOT chosen for V2. It may never be lowered after a result is seen; a short sample is a rejection, not a reason to move the line.",
+    "metrics_compared": [
+      "opportunities",
+      "event/trigger passes",
+      "confirmations",
+      "entries",
+      "entry yield",
+      "median natural R",
+      "1R",
+      "2R",
+      "3R",
+      "4R",
+      "5R capability"
+    ],
+    "primary_question": "DID V2 SOLVE STRUCTURAL STARVATION?"
+  },
+  "dataset_authority": {
+    "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "classification": "DEVELOPMENT_KNOWN for every window (registered by the V1 multi-year campaign; re-use is deliberate and disclosed)",
+    "coverage": {
+      "EURUSD": [
+        2000,
+        2017
+      ],
+      "GBPUSD": [
+        2000,
+        2017
+      ],
+      "USDJPY": [
+        2000,
+        2017
+      ],
+      "XAUUSD": [
+        2009,
+        2017
+      ]
+    },
+    "dataset_manifest": "data/external/histdata_fx_multiyear/manifest.json",
+    "dataset_manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+    "dev_partition_hash": "BOUND_AT_LOAD",
+    "dev_windows_utc": [
+      [
+        "2000-01-01T00:00:00+00:00",
+        "2000-09-01T00:00:00+00:00"
+      ],
+      [
+        "2001-01-01T00:00:00+00:00",
+        "2001-09-01T00:00:00+00:00"
+      ],
+      [
+        "2002-01-01T00:00:00+00:00",
+        "2002-09-01T00:00:00+00:00"
+      ],
+      [
+        "2003-01-01T00:00:00+00:00",
+        "2003-09-01T00:00:00+00:00"
+      ],
+      [
+        "2004-01-01T00:00:00+00:00",
+        "2004-09-01T00:00:00+00:00"
+      ],
+      [
+        "2005-01-01T00:00:00+00:00",
+        "2005-09-01T00:00:00+00:00"
+      ],
+      [
+        "2006-01-01T00:00:00+00:00",
+        "2006-09-01T00:00:00+00:00"
+      ],
+      [
+        "2007-01-01T00:00:00+00:00",
+        "2007-09-01T00:00:00+00:00"
+      ],
+      [
+        "2008-01-01T00:00:00+00:00",
+        "2008-09-01T00:00:00+00:00"
+      ],
+      [
+        "2009-01-01T00:00:00+00:00",
+        "2009-09-01T00:00:00+00:00"
+      ],
+      [
+        "2010-01-01T00:00:00+00:00",
+        "2010-09-01T00:00:00+00:00"
+      ],
+      [
+        "2011-01-01T00:00:00+00:00",
+        "2011-09-01T00:00:00+00:00"
+      ],
+      [
+        "2012-01-01T00:00:00+00:00",
+        "2012-09-01T00:00:00+00:00"
+      ],
+      [
+        "2013-01-01T00:00:00+00:00",
+        "2013-09-01T00:00:00+00:00"
+      ],
+      [
+        "2014-01-01T00:00:00+00:00",
+        "2014-09-01T00:00:00+00:00"
+      ],
+      [
+        "2015-01-01T00:00:00+00:00",
+        "2015-09-01T00:00:00+00:00"
+      ],
+      [
+        "2016-01-01T00:00:00+00:00",
+        "2016-09-01T00:00:00+00:00"
+      ],
+      [
+        "2017-01-01T00:00:00+00:00",
+        "2017-09-01T00:00:00+00:00"
+      ]
+    ],
+    "excluded": {
+      "2018+": "NO_WHOLE_YEAR_ARCHIVE",
+      "OOS [Y-09-01, Y-12-01)": "FRESH \u2014 never opened under this authority, and this mission does not open it",
+      "SEALED_HOLDOUT [Y-12-01, Y+1-01-01)": "SEALED"
+    },
+    "partition_policy_id": "FX_ANNUAL_PARTITION_POLICY_R2",
+    "role": "DEVELOPMENT",
+    "symbol_years_n": 63,
+    "years": [
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017
+    ]
+  },
+  "duplicate_signal_policy": "ONE unit per (symbol, trading day, session pair) and at most ONE signal per unit. The FIRST boundary interaction inside the entry window is the only one evaluated; its close decides the branch. If a unit fails at any stage no later interaction is re-examined, so a session can never contribute two correlated observations.",
+  "entry_policy": {
+    "fill_price": "close of the confirming M5 bar",
+    "policy": "MARKET_ON_CONFIRMATION_CLOSE \u2014 the fill price is the CLOSE of the M5 bar on which the structure shift confirms. That price is causally available at the decision instant and requires no second event. Outcome measurement starts at the NEXT M5 bar; if the confirmation bar itself already trades through the structural stop the trade is recorded STOPPED_SAME_BAR = -1R (fail-closed).",
+    "same_bar_collision": "STOP_FIRST_FAIL_CLOSED_V0_3"
+  },
+  "experiment_id": "GEN2_ALD_V2_DEV_R1",
+  "expiry_policy": "Every search \u2014 reclaim, retest, structure confirmation \u2014 is bounded by the END OF THE ENTRY WINDOW and by nothing else. V2 has no 'max age' parameter; expiry is the session clock itself.",
+  "funnel_taxonomy": {
+    "branches": [
+      "A_SWEEP_RECLAIM_REVERSAL",
+      "B_BREAKOUT_RETEST_CONTINUATION"
+    ],
+    "outcome_nodes": [
+      "O1_1R",
+      "O2_2R",
+      "O3_3R",
+      "O4_4R",
+      "O5_5R"
+    ],
+    "reason_to_node": {
+      "ENTRY_WINDOW_NO_BARS": "S1_CONTEXT_ELIGIBLE",
+      "GEOMETRY_RISK_NON_POSITIVE": "S8_GEOMETRY_VALID",
+      "GEOMETRY_TARGET_NOT_BEYOND_ENTRY": "S8_GEOMETRY_VALID",
+      "GEOMETRY_TEMPORAL_ORDER_INVALID": "S8_GEOMETRY_VALID",
+      "INVALIDATED_BEFORE_CONFIRM": "S6_STRUCTURE_CONFIRM",
+      "INVALIDATED_BEFORE_RETEST": "S5_RECLAIM_OR_RETEST",
+      "LOCATION_STATE_UNAVAILABLE": "S2_LOCATION_ELIGIBLE",
+      "NO_BOUNDARY_INTERACTION": "S3_SESSION_EVENT",
+      "NO_FORWARD_BARS": "S7_ENTRY_AVAILABLE",
+      "NO_RECLAIM_BEFORE_EXPIRY": "S5_RECLAIM_OR_RETEST",
+      "NO_RETEST_BEFORE_EXPIRY": "S5_RECLAIM_OR_RETEST",
+      "NO_STRUCTURE_SHIFT_BEFORE_EXPIRY": "S6_STRUCTURE_CONFIRM",
+      "NO_TARGET_OBJECTIVE": "S8_GEOMETRY_VALID",
+      "ON_BOUNDARY_UNDECIDABLE": "S4_SWEEP_OR_BREAKOUT",
+      "REFERENCE_INSUFFICIENT_BARS": "S1_CONTEXT_ELIGIBLE",
+      "REFERENCE_RANGE_DEGENERATE": "S2_LOCATION_ELIGIBLE",
+      "RIGHT_CENSORED_DATA_BOUNDARY": "S9_TRADE_COMPLETED"
+    },
+    "reject_reasons": [
+      "PASS",
+      "REFERENCE_INSUFFICIENT_BARS",
+      "ENTRY_WINDOW_NO_BARS",
+      "REFERENCE_RANGE_DEGENERATE",
+      "LOCATION_STATE_UNAVAILABLE",
+      "NO_BOUNDARY_INTERACTION",
+      "ON_BOUNDARY_UNDECIDABLE",
+      "NO_RECLAIM_BEFORE_EXPIRY",
+      "NO_RETEST_BEFORE_EXPIRY",
+      "INVALIDATED_BEFORE_RETEST",
+      "NO_STRUCTURE_SHIFT_BEFORE_EXPIRY",
+      "INVALIDATED_BEFORE_CONFIRM",
+      "NO_FORWARD_BARS",
+      "GEOMETRY_RISK_NON_POSITIVE",
+      "GEOMETRY_TARGET_NOT_BEYOND_ENTRY",
+      "GEOMETRY_TEMPORAL_ORDER_INVALID",
+      "NO_TARGET_OBJECTIVE",
+      "RIGHT_CENSORED_DATA_BOUNDARY"
+    ],
+    "reporting_rule": "for every transition report N, % of the previous stage and % of the original opportunity population; never collapse a stage",
+    "stages_in_order": [
+      "S1_CONTEXT_ELIGIBLE",
+      "S2_LOCATION_ELIGIBLE",
+      "S3_SESSION_EVENT",
+      "S4_SWEEP_OR_BREAKOUT",
+      "S5_RECLAIM_OR_RETEST",
+      "S6_STRUCTURE_CONFIRM",
+      "S7_ENTRY_AVAILABLE",
+      "S8_GEOMETRY_VALID",
+      "S9_TRADE_COMPLETED"
+    ],
+    "strata": [
+      "branch",
+      "symbol",
+      "year",
+      "session",
+      "symbol x session",
+      "regime"
+    ]
+  },
+  "generated_at_utc": "2026-10-05T10:51:59.129666+00:00",
+  "implementation_sha": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+  "mechanical_validation_before_freeze": "V2's rules were validated on SYNTHETIC bars only (tests/test_gen2_ald_v2.py). No DEVELOPMENT unit was replayed, and no real V2 result existed, at the instant this preregistration was committed.",
+  "mission": "EDGELAB GEN2 MISSION 3 \u2014 V2 NEW HYPOTHESIS DESIGN",
+  "parameters": {
+    "claim": "V2 has NO tunable strategy magnitude. Every search bound is the session expiry; every numeric constant below is either an exogenous session clock or an inherited data-sufficiency / measurement contract shared with V1 so that the comparison is fair.",
+    "exogenous_session_clocks": {
+      "london_entry": [
+        7,
+        10
+      ],
+      "new_york_entry": [
+        12,
+        15
+      ],
+      "reference": [
+        0,
+        6
+      ]
+    },
+    "free_parameters_n": 0,
+    "inherited_measurement_contracts": {
+      "CENSORING_POLICY": "RIGHT_CENSORED_DATA_BOUNDARY_EXPLICIT \u2014 a trade whose 288-M5-bar outcome window is truncated by the DEVELOPMENT partition end and that has not already resolved is RIGHT_CENSORED: it fails TRADE_COMPLETED, is excluded from capability denominators, is counted in the population and is never imputed. The OOS partition is NEVER read to complete an outcome window.",
+      "MIN_REFERENCE_M15_BARS": 16,
+      "OUTCOME_HORIZON_M5_BARS": 288,
+      "SAME_BAR_COLLISION_POLICY": "STOP_FIRST_FAIL_CLOSED_V0_3",
+      "SWING_ORDER": 2,
+      "WARMUP_DAYS": 21
+    },
+    "optimization": "NONE. No grid, no Optuna, no threshold search, no session search, no RR search, no post-hoc symbol or branch selection.",
+    "parameter_vector": [],
+    "v1_tuning_deliberately_absent": [
+      "DISPLACEMENT_BODY_RANGE_MIN",
+      "FVG_MAX_AGE_M5_BARS",
+      "RETRACE_MAX_AGE_M5_BARS",
+      "MTF_DIRECTION_GATE"
+    ]
+  },
+  "prereg_id": "GEN2_ASIAN_LIQUIDITY_DISPLACEMENT_V2_PREREGISTRATION",
+  "prereg_version": "1.0.0",
+  "prohibitions": {
+    "BROKER_MUTATION": "NO",
+    "EDGE_VERIFIED": "NO",
+    "HOLDOUT_TOUCHED": "NO",
+    "LIVE_EXECUTION": "NO",
+    "OOS_OPENED": "NO",
+    "PARAMETER_OPTIMIZATION": "NO",
+    "data_authority": "DEVELOPMENT partitions only, every one already classified DEVELOPMENT_KNOWN for this candidate family",
+    "forbidden_actions": [
+      "lowering V1's 0.70 displacement threshold because V1 starved",
+      "optimizing risk/reward or any target multiple",
+      "choosing the best symbol after seeing results",
+      "choosing the best session after seeing results",
+      "choosing or deleting a branch after seeing results",
+      "using recent, OOS or holdout data to design V2",
+      "relaxing the sample floor or any robustness threshold after a result",
+      "claiming EDGE_VERIFIED or any economic profitability"
+    ]
+  },
+  "robustness": {
+    "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+    "new_threshold_after_results": "FORBIDDEN",
+    "required_axes": [
+      "walk_forward",
+      "year_stability",
+      "symbol_stability",
+      "session_stability",
+      "branch_stability",
+      "regime_stability",
+      "tail_dependence",
+      "bootstrap",
+      "concentration"
+    ],
+    "runs_only_if": "pooled ENTRY_AVAILABLE_N >= 100",
+    "thresholds": {
+      "BOOTSTRAP_CONFIDENCE": 0.95,
+      "BOOTSTRAP_SAMPLES": 5000,
+      "BOOTSTRAP_SEED": 20251005,
+      "STABILITY_MAX_RELATIVE_SPIKE": 2.0,
+      "STABILITY_MIN_POSITIVE_FRACTION": 0.6,
+      "STRATUM_MIN_N": 30
+    },
+    "unchanged_from_v1": true,
+    "v1_gate_contract": {
+      "axes": {
+        "BOOTSTRAP_UNCERTAINTY": {
+          "method": "ag_edgelab.statistics.bootstrap.bootstrap_expectancy_ci(samples=5000, seed=20251005, confidence=0.95)",
+          "pass_rule": "95% CI lower bound of management expectancy R strictly > 0"
+        },
+        "CANDIDATE_IDENTITY_VALIDATION": {
+          "pass_rule": "all contract hashes recomputed and equal; strategy identity collides with no historical candidate id"
+        },
+        "DATASET_ROLE_VALIDATION": {
+          "pass_rule": "every dataset read is role=DEVELOPMENT, recorded in the dataset ledger; OOS_OPENED=NO; HOLDOUT_TOUCHED=NO"
+        },
+        "FRICTION_READINESS": {
+          "mode": "STRUCTURAL_DISCLOSURE",
+          "note": "FRICTION_EDGE_VERIFICATION_READY = NO does not block STRUCTURAL research (mission section 13)",
+          "pass_rule": "the friction authority state is explicitly recorded, economic metrics are suppressed as NOT_ESTIMABLE_NO_FRICTION_AUTHORITY, and NO substitute value (generic spread, $7/lot, fixed slippage, industry default) appears anywhere in the evidence bundle"
+        },
+        "MEAN_MEDIAN_DIVERGENCE": {
+          "pass_rule": "NOT (mean management R > 0 AND median management R < 0) \u2014 a positive mean carried entirely by tails fails"
+        },
+        "PARAMETER_NEIGHBORHOOD": {
+          "method": "ag_edgelab.optimization.stability.assess_parameter_stability over displacement body/range in [0.6, 0.65, 0.7, 0.75, 0.8] centred on 0.7",
+          "pass_rule": "stable == True (positive_fraction >= 0.6 and relative_spike <= 2.0)",
+          "selection_authority": "NONE \u2014 diagnostic only; the V1 threshold 0.70 is frozen and is NOT changed by this mission under any outcome"
+        },
+        "REGIME_STABILITY": {
+          "classifier": "ag_edgelab.verification.regimes.classify_market_state (frozen v1) applied to the D1 bar last closed before the entry-window open",
+          "pass_rule": "fraction of qualifying regime slices with positive management expectancy >= 0.6"
+        },
+        "SESSION_STABILITY": {
+          "pass_rule": "fraction of qualifying session pairs with positive management expectancy >= 0.6"
+        },
+        "SYMBOL_STABILITY": {
+          "pass_rule": "fraction of qualifying symbols with positive management expectancy >= 0.6",
+          "universe": [
+            "EURUSD",
+            "GBPUSD",
+            "USDJPY",
+            "XAUUSD"
+          ]
+        },
+        "TAIL_DEPENDENCE": {
+          "method": "remove the single best trade; separately remove the best 5% of trades",
+          "pass_rule": "pooled management expectancy stays strictly positive under BOTH removals"
+        },
+        "WALK_FORWARD": {
+          "method": "chronological non-overlapping DEV folds (monthly test windows)",
+          "min_fold_n": 30,
+          "pass_rule": "fraction of folds with positive management expectancy >= 0.6"
+        },
+        "YEAR_STABILITY": {
+          "method": "the committed FX authority covers ONE calendar year (2017); per config/governance/data_authority_gap.json no multi-year partition exists. Substitution declared in advance: INTRA_YEAR_SEGMENT_STABILITY over the DEV calendar quarters (2017Q1, 2017Q2, 2017Q3-partial).",
+          "pass_rule": "fraction of qualifying quarters with positive management expectancy >= 0.6",
+          "standing_limitation": "YEAR_COVERAGE_LIMITED_SINGLE_CALENDAR_YEAR_2017"
+        }
+      },
+      "eligibility": {
+        "on_ineligible": "PRE_OOS_RESULT = NOT_REACHED (never a PASS)",
+        "pooled_direction_n_min": 200,
+        "pooled_entry_available_n_min": 100,
+        "stratum_min_n": 30
+      },
+      "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+      "semantics": "FAIL_CLOSED \u2014 the gate PASSES only if every axis is PASS",
+      "structural_capability_floors": {
+        "entry_n_min": 30,
+        "reach_1R_min": 0.5,
+        "reach_3R_min": 0.25,
+        "source": "frozen V0.3 root-cause thresholds in ag_edgelab.universal.fx_dev_campaign"
+      },
+      "threshold_mutation_allowed": false
+    }
+  },
+  "sample_sufficiency": {
+    "BRANCH_MIN_N": 30,
+    "SAMPLE_FLOOR": 100,
+    "branch_rule": "a branch with fewer than BRANCH_MIN_N entries is reported as BRANCH_UNDERPOWERED and is NEVER deleted, hidden or merged away",
+    "floor_applies_to": "pooled ENTRY_AVAILABLE_N across both branches",
+    "inherited_from": "asian_liquidity_displacement_prereg (V1 campaign, unchanged)",
+    "post_hoc_relaxation": "FORBIDDEN",
+    "rule": "SAMPLE_GATE = PASS iff pooled ENTRY_AVAILABLE_N >= 100. Otherwise SAMPLE_GATE = FAIL and STATUS = DEV_REJECTED_INSUFFICIENT_SAMPLE. This floor is inherited unchanged from the EdgeLab verifier (POOLED_ENTRY_ELIGIBILITY_N) and was NOT chosen for V2. It may never be lowered after a result is seen; a short sample is a rejection, not a reason to move the line."
+  },
+  "session_clocks": {
+    "clock": "UTC, derived from the frozen PR#10 timezone normalization",
+    "note": "The Asian range (00:00-06:00 UTC) is the liquidity reference for both entry windows. Session windows are exogenous institutional boundaries, frozen before replay, and are NEVER widened, shifted or searched in response to observed results.",
+    "reference_window_utc": {
+      "end_hour": 6,
+      "start_hour": 0
+    },
+    "session_pairs": {
+      "ASIAN_LONDON": {
+        "end_hour": 10,
+        "start_hour": 7
+      },
+      "LONDON_NEWYORK": {
+        "end_hour": 15,
+        "start_hour": 12
+      }
+    },
+    "widening_allowed": false
+  },
+  "sl_policy": {
+    "branch_A": "sweep extreme (high for SHORT, low for LONG)",
+    "branch_B": "retest extreme (deepest point of the pullback that held)",
+    "buffers": "NONE",
+    "policy": "Structural stop ONLY, taken from the event that defines the thesis: branch A uses the SWEEP EXTREME (the wick that raided the boundary), branch B uses the RETEST EXTREME (the deepest point of the pullback that held). No pip/point buffer is ever added; execution buffering belongs to the friction layer, which has no authority in this mission."
+  },
+  "strategy": {
+    "contract_hashes": {
+      "architecture_contract_hash": "663ab080f13c7dd7c4da8b05d6b932432e9d62c178d5596e9ffb2a7a6a9d3799",
+      "confirmation_contract_hash": "972dbfec22543e569de0828d8c8b98c5c97b6a9529828906dd51811d09fbe139",
+      "entry_contract_hash": "46acf7ccbda659671e444e8659d7c23a2b27e74cd79ccc8afc66d3e9a53b2bc3",
+      "friction_contract_hash": "9423a89c7ffde7256754b2361ebe28ac32ca7ce1d9b5b384ef5c58e12ed3b760",
+      "parameter_contract_hash": "f65c30524a7b4f4cdd8eb862d4785eb8df85a1c88c817dbab6a87bec92f61e51",
+      "session_contract_hash": "41cd37f1ecd1630684390364d28c9ff3f87f6c10960baaa6ef48e2f652b2b42e",
+      "sl_contract_hash": "8f01389372cb52cbcecf19bc5bda6dccab26b780db6ff5e3f09d974242571259",
+      "strategy_contract_hash": "f4bef1cf7044138c7471261855836557f8a0dee1b213506883de19e2b7dded53",
+      "target_contract_hash": "0c6d42fb5a608ee2d4dfba0f74c111b069c51fdcfe20aa0edcdf467d6762dff5",
+      "trigger_contract_hash": "51f7176aaa2840f35b4fb5070f643110c75767906009f8bdc93dd2cf61225b2d"
+    },
+    "full_contract": {
+      "architecture": {
+        "architectures_considered": [
+          {
+            "causal_information_at_decision_time": [
+              "closed reference-window M15 bars (00:00-06:00 UTC)",
+              "the closed M15 interaction bar inside the entry window",
+              "closed M5 bars up to and including the confirming bar",
+              "closed H1/H4/D1 context bars (recorded as strata only)"
+            ],
+            "id": "A_SWEEP_RECLAIM_REVERSAL",
+            "mechanism": "A session reference boundary is raided for resting liquidity and REJECTS price (trades beyond, closes back inside). The raid itself names the direction: trade away from the swept side.",
+            "state": "PREREGISTERED_BRANCH"
+          },
+          {
+            "causal_information_at_decision_time": [
+              "closed reference-window M15 bars",
+              "the closed M15 breakout bar",
+              "closed M5 bars through the retest and the confirming bar",
+              "closed H1 liquidity pools for the target"
+            ],
+            "id": "B_BREAKOUT_RETEST_CONTINUATION",
+            "mechanism": "Price ACCEPTS beyond the boundary (closes beyond), returns to the broken level and holds it. Acceptance plus a held retest names the direction: trade with the breakout.",
+            "state": "PREREGISTERED_BRANCH"
+          },
+          {
+            "id": "C_TIME_OF_DAY_MOMENTUM_IGNITION",
+            "rejection_reason": "No location or liquidity mechanism. Without a structural reference the hypothesis reduces to a search over clock times and momentum thresholds, which is parameter optimization and is forbidden by this mission.",
+            "state": "REJECTED_AT_DESIGN_TIME"
+          }
+        ],
+        "branches": [
+          "A_SWEEP_RECLAIM_REVERSAL",
+          "B_BREAKOUT_RETEST_CONTINUATION"
+        ],
+        "selection_authority": "MECHANISM_ONLY \u2014 no branch may be dropped, ranked or preferred on the basis of its replayed results.",
+        "selection_rule": "A PREREGISTERED A/B BRANCH MODEL, selected before replay on mechanism grounds: A and B are the only two causal resolutions of one event (a boundary interaction) and they PARTITION the event space, so running both measures the whole mechanism instead of a chosen half. Branches are disjoint by construction \u2014 the interaction bar either closes back inside (A) or beyond (B), never both."
+      },
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "censoring": "RIGHT_CENSORED_DATA_BOUNDARY_EXPLICIT \u2014 a trade whose 288-M5-bar outcome window is truncated by the DEVELOPMENT partition end and that has not already resolved is RIGHT_CENSORED: it fails TRADE_COMPLETED, is excluded from capability denominators, is counted in the population and is never imputed. The OOS partition is NEVER read to complete an outcome window.",
+      "confirmation": {
+        "detector": "ag_edgelab.universal.confirmation.structure_shift_events (shared library, swing_order=2 library default)",
+        "invalidation": "the unit dies if price violates the protective extreme (branch A: the sweep extreme; branch B: the retest extreme) BEFORE a structure shift confirms",
+        "removed_from_v1_not_relaxed": [
+          "DISPLACEMENT_BODY_RANGE_MIN",
+          "FVG_MAX_AGE_M5_BARS",
+          "RETRACE_MAX_AGE_M5_BARS",
+          "MTF_DIRECTION_GATE"
+        ],
+        "rule": "the FIRST closed-M5 structure shift (MSS/BOS) in the event direction, strictly after the reclaim/retest instant and strictly before session expiry",
+        "single_condition_rationale": "V1 chained four confirmation conditions and lost 88% of its triggers. V2 keeps the one condition the hypothesis actually entails \u2014 that structure shifted \u2014 and records the V1 body-ratio as a diagnostic instead of a gate."
+      },
+      "edge_verified": false,
+      "entry": {
+        "fill_price": "close of the confirming M5 bar",
+        "policy": "MARKET_ON_CONFIRMATION_CLOSE \u2014 the fill price is the CLOSE of the M5 bar on which the structure shift confirms. That price is causally available at the decision instant and requires no second event. Outcome measurement starts at the NEXT M5 bar; if the confirmation bar itself already trades through the structural stop the trade is recorded STOPPED_SAME_BAR = -1R (fail-closed).",
+        "same_bar_collision": "STOP_FIRST_FAIL_CLOSED_V0_3"
+      },
+      "forbidden_identity_reuse": [
+        "ST_ASIAN_SWEEP_5R_V1",
+        "SESSION_TRADE_V2",
+        "ST_MTF_CONTROL_SHIFT_V1",
+        "ST_MTF_CONTROL_SHIFT_V2",
+        "TARGET_POLICY_C3_V1",
+        "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1"
+      ],
+      "friction": {
+        "ECONOMIC_EDGE": "NOT_ESTIMABLE",
+        "commission_model": "NONE",
+        "measured_friction_available": "NO",
+        "note": "Structural R only. No generic spread, per-lot commission or invented slippage may be substituted, so no economic claim is made anywhere in this campaign.",
+        "slippage_model": "NONE",
+        "spread_model": "NONE"
+      },
+      "funnel_nodes": [
+        "S1_CONTEXT_ELIGIBLE",
+        "S2_LOCATION_ELIGIBLE",
+        "S3_SESSION_EVENT",
+        "S4_SWEEP_OR_BREAKOUT",
+        "S5_RECLAIM_OR_RETEST",
+        "S6_STRUCTURE_CONFIRM",
+        "S7_ENTRY_AVAILABLE",
+        "S8_GEOMETRY_VALID",
+        "S9_TRADE_COMPLETED"
+      ],
+      "outcome_nodes": [
+        "O1_1R",
+        "O2_2R",
+        "O3_3R",
+        "O4_4R",
+        "O5_5R"
+      ],
+      "parameters": {
+        "claim": "V2 has NO tunable strategy magnitude. Every search bound is the session expiry; every numeric constant below is either an exogenous session clock or an inherited data-sufficiency / measurement contract shared with V1 so that the comparison is fair.",
+        "exogenous_session_clocks": {
+          "london_entry": [
+            7,
+            10
+          ],
+          "new_york_entry": [
+            12,
+            15
+          ],
+          "reference": [
+            0,
+            6
+          ]
+        },
+        "free_parameters_n": 0,
+        "inherited_measurement_contracts": {
+          "CENSORING_POLICY": "RIGHT_CENSORED_DATA_BOUNDARY_EXPLICIT \u2014 a trade whose 288-M5-bar outcome window is truncated by the DEVELOPMENT partition end and that has not already resolved is RIGHT_CENSORED: it fails TRADE_COMPLETED, is excluded from capability denominators, is counted in the population and is never imputed. The OOS partition is NEVER read to complete an outcome window.",
+          "MIN_REFERENCE_M15_BARS": 16,
+          "OUTCOME_HORIZON_M5_BARS": 288,
+          "SAME_BAR_COLLISION_POLICY": "STOP_FIRST_FAIL_CLOSED_V0_3",
+          "SWING_ORDER": 2,
+          "WARMUP_DAYS": 21
+        },
+        "optimization": "NONE. No grid, no Optuna, no threshold search, no session search, no RR search, no post-hoc symbol or branch selection.",
+        "parameter_vector": [],
+        "v1_tuning_deliberately_absent": [
+          "DISPLACEMENT_BODY_RANGE_MIN",
+          "FVG_MAX_AGE_M5_BARS",
+          "RETRACE_MAX_AGE_M5_BARS",
+          "MTF_DIRECTION_GATE"
+        ]
+      },
+      "reject_reasons": [
+        "PASS",
+        "REFERENCE_INSUFFICIENT_BARS",
+        "ENTRY_WINDOW_NO_BARS",
+        "REFERENCE_RANGE_DEGENERATE",
+        "LOCATION_STATE_UNAVAILABLE",
+        "NO_BOUNDARY_INTERACTION",
+        "ON_BOUNDARY_UNDECIDABLE",
+        "NO_RECLAIM_BEFORE_EXPIRY",
+        "NO_RETEST_BEFORE_EXPIRY",
+        "INVALIDATED_BEFORE_RETEST",
+        "NO_STRUCTURE_SHIFT_BEFORE_EXPIRY",
+        "INVALIDATED_BEFORE_CONFIRM",
+        "NO_FORWARD_BARS",
+        "GEOMETRY_RISK_NON_POSITIVE",
+        "GEOMETRY_TARGET_NOT_BEYOND_ENTRY",
+        "GEOMETRY_TEMPORAL_ORDER_INVALID",
+        "NO_TARGET_OBJECTIVE",
+        "RIGHT_CENSORED_DATA_BOUNDARY"
+      ],
+      "session": {
+        "clock": "UTC, derived from the frozen PR#10 timezone normalization",
+        "note": "The Asian range (00:00-06:00 UTC) is the liquidity reference for both entry windows. Session windows are exogenous institutional boundaries, frozen before replay, and are NEVER widened, shifted or searched in response to observed results.",
+        "reference_window_utc": {
+          "end_hour": 6,
+          "start_hour": 0
+        },
+        "session_pairs": {
+          "ASIAN_LONDON": {
+            "end_hour": 10,
+            "start_hour": 7
+          },
+          "LONDON_NEWYORK": {
+            "end_hour": 15,
+            "start_hour": 12
+          }
+        },
+        "widening_allowed": false
+      },
+      "status": "RESEARCH_CANDIDATE",
+      "stop_loss": {
+        "branch_A": "sweep extreme (high for SHORT, low for LONG)",
+        "branch_B": "retest extreme (deepest point of the pullback that held)",
+        "buffers": "NONE",
+        "policy": "Structural stop ONLY, taken from the event that defines the thesis: branch A uses the SWEEP EXTREME (the wick that raided the boundary), branch B uses the RETEST EXTREME (the deepest point of the pullback that held). No pip/point buffer is ever added; execution buffering belongs to the friction layer, which has no authority in this mission."
+      },
+      "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+      "strategy_version": "2.0.0-research",
+      "symbol_universe": [
+        "EURUSD",
+        "GBPUSD",
+        "USDJPY",
+        "XAUUSD"
+      ],
+      "target": {
+        "authority": "TARGET AUTHORITY = the next opposing liquidity objective causally known at the entry instant. Branch A: the OPPOSITE reference boundary (the liquidity resting on the far side of the raided range). Branch B: the nearest CLOSED-H1 liquidity pool beyond entry in the direction of travel. No fixed R multiple has any authority. 1R..5R are diagnostics.",
+        "branch_A_target": "OPPOSITE_REFERENCE_BOUNDARY",
+        "branch_B_target": "NEXT_CLOSED_H1_LIQUIDITY_POOL",
+        "five_r_required": false,
+        "fixed_r_role": "DIAGNOSTIC_ONLY \u2014 1R..5R are measured for every completed trade and have no authority over entry, exit, selection or the verdict",
+        "selection_by_future_excursion": "FORBIDDEN \u2014 the target is fixed at the entry instant from causally known levels"
+      },
+      "timeframes": [
+        "D1",
+        "H4",
+        "H1",
+        "M15",
+        "M5"
+      ],
+      "trigger": {
+        "breakout_acceptance": "branch B: the interaction bar CLOSES BEYOND the boundary (body acceptance; no magnitude threshold exists)",
+        "context_eligible": {
+          "entry_window_bars_required": 1,
+          "note": "data-sufficiency only; NOT a directional filter",
+          "reference_bars_required": 16
+        },
+        "direction_rule": "ENDOGENOUS to the event. A: trade away from the swept boundary. B: trade with the accepted breakout. Higher-timeframe structure is recorded as a stratum and NEVER gates a unit.",
+        "duplicate_signal_policy": "ONE unit per (symbol, trading day, session pair) and at most ONE signal per unit. The FIRST boundary interaction inside the entry window is the only one evaluated; its close decides the branch. If a unit fails at any stage no later interaction is re-examined, so a session can never contribute two correlated observations.",
+        "expiry": "Every search \u2014 reclaim, retest, structure confirmation \u2014 is bounded by the END OF THE ENTRY WINDOW and by nothing else. V2 has no 'max age' parameter; expiry is the session clock itself.",
+        "location_eligible": {
+          "note": "availability of a location frame, not a view on it",
+          "rule": "reference range non-degenerate (high > low) AND a causally computable premium/discount state from CLOSED H1 bars"
+        },
+        "opportunity_basis": "one unit per (symbol, trading day, session pair)",
+        "reclaim_definition": "branch A: the close of the interaction bar is strictly inside (reference_low, reference_high)",
+        "retest_definition": "branch B: the first M5 bar after the breakout bar that trades back to the broken level (low <= level for BULL, high >= level for BEAR) while still CLOSING on the breakout side",
+        "session_event": "the FIRST M15 bar of the entry window whose high exceeds the reference high or whose low breaks the reference low",
+        "sweep_definition": "branch A: the interaction bar trades beyond the boundary and CLOSES BACK INSIDE the reference range",
+        "undecidable": "an interaction bar that pierces BOTH boundaries, or closes exactly on the boundary, is ON_BOUNDARY_UNDECIDABLE and is never guessed"
+      },
+      "verifier_version": "EDGELAB_SYSTEM_READINESS_V1"
+    },
+    "strategy_hash": "f4bef1cf7044138c7471261855836557f8a0dee1b213506883de19e2b7dded53",
+    "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+    "strategy_version": "2.0.0-research"
+  },
+  "target_policy": {
+    "authority": "TARGET AUTHORITY = the next opposing liquidity objective causally known at the entry instant. Branch A: the OPPOSITE reference boundary (the liquidity resting on the far side of the raided range). Branch B: the nearest CLOSED-H1 liquidity pool beyond entry in the direction of travel. No fixed R multiple has any authority. 1R..5R are diagnostics.",
+    "branch_A_target": "OPPOSITE_REFERENCE_BOUNDARY",
+    "branch_B_target": "NEXT_CLOSED_H1_LIQUIDITY_POOL",
+    "five_r_required": false,
+    "fixed_r_role": "DIAGNOSTIC_ONLY \u2014 1R..5R are measured for every completed trade and have no authority over entry, exit, selection or the verdict",
+    "selection_by_future_excursion": "FORBIDDEN \u2014 the target is fixed at the entry instant from causally known levels"
+  },
+  "task_class": "RESEARCH / GENERATION_2 / DEV_ONLY",
+  "v1_closed_evidence": {
+    "CONFIRMATION_PASS_N": 51,
+    "ENTRY_AVAILABLE_N": 35,
+    "GEOMETRY_VALID_N": 36,
+    "NATURAL_TARGET_MEDIAN_R": 1.003804,
+    "OPPORTUNITY_N": 26814,
+    "SAMPLE_CLASSIFICATION": "STRATEGY_STRUCTURAL_STARVATION",
+    "TRIGGER_PASS_N": 441,
+    "capability": {
+      "1R": 0.428571,
+      "2R": 0.285714,
+      "3R": 0.257143,
+      "4R": 0.057143,
+      "5R": 0.0
+    },
+    "diagnoses": [
+      "TRIGGER_FUNNEL_WEAKNESS",
+      "CONFIRMATION_FUNNEL_WEAKNESS",
+      "TARGET_MODEL_MISMATCH"
+    ],
+    "experiment_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+    "status": "CLOSED_EVIDENCE \u2014 readable, never modified, never re-tuned",
+    "strategy_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "symbol_years": 63
+  }
+}

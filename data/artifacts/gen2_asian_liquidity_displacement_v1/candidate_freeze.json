@@ -1,0 +1,31 @@
+{
+  "FROZEN_CANDIDATE": "NO",
+  "HOLDOUT_TOUCHED": "NO",
+  "OOS_OPENED": "NO",
+  "binding": {
+    "decision_timeframe": "M15",
+    "dev_dataset_authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+    "dev_partition_hash": "50f0ca09d61ec14a10d12a1b8d7834a937d6361991d6c742279b79bb4b72f2ab",
+    "entry_contract_hash": "01719a1559d4d02ab3076e9c0756ca64ab5db85d3438088378169d3a6293b9d4",
+    "execution_timeframe": "M5",
+    "friction_contract_hash": "12d7f472a7630c024673129adedfa6aaaeb2d147fbbaae66a2565a392649dc6d",
+    "funnel_hash": "ecc2efa5b8ac9a428897d89f5cd714adb73dd38a4d87dd1a8cc9bf847662a033",
+    "parameter_hash": "2c3313ca8effb66d268179b41f223dacb6c0b879a5324bed52ca2d5b72c0160e",
+    "preregistration_hash": "6662c33f9b5b6d5b05bcabff889659ca522abe0a00d1e4dcce4dc89d9972f13b",
+    "session_contract_hash": "e8ea8e0ae660a2a866fd33c0dd90bca97a19913e1b4c75042f2445366445b590",
+    "sl_contract_hash": "34c899349ac62715b33151d867174fea1c1223541819f0abaa74c4f32ddac4cd",
+    "strategy_code_hash": "fb495d51e3bcb6e2ecf10f5e5993b650dbcc4588695a451c8f2308a310b4f196",
+    "symbol_universe": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ],
+    "target_contract_hash": "fad4e130fab35c6b34d8287abf41a91dd328fd549d419975427d436c4245cd39",
+    "verifier_version": "EDGELAB_SYSTEM_READINESS_V1"
+  },
+  "candidate_identity_sha256": null,
+  "computed_identity_sha256_for_audit": "9e6cf1d15458952893b79f0b7d1c7c02c3d4ed9cff6cec95a7354762398ced9d",
+  "identity_contract": "FROZEN_CANDIDATE_IDENTITY_V1",
+  "reason": "Pre-OOS Robustness Gate V1 did not pass: NOT_REACHED; failing axes=[]; unevaluable axes=['BOOTSTRAP', 'ENTRY_POPULATION', 'MEAN_MEDIAN_DIVERGENCE', 'PARAMETER_NEIGHBORHOOD', 'REGIME_STABILITY', 'SAMPLE_ELIGIBILITY', 'SESSION_STABILITY', 'STRUCTURAL_CAPABILITY_1R', 'STRUCTURAL_CAPABILITY_3R', 'SYMBOL_STABILITY', 'TAIL_DEPENDENCE', 'WALK_FORWARD', 'YEAR_STABILITY']"
+}

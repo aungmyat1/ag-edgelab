@@ -1,0 +1,1149 @@
+{
+  "contract": "gap inventory required by config/governance/data_authority_gap.json multi_year_data_authority_contract.gap_handling",
+  "excluded_symbol_years": [],
+  "note": "m15_fill_ratio_vs_calendar compares against ALL calendar slots including weekends, so a complete FX year sits near 0.71, not 1.0. The ratio is reported as a raw coverage fact; no threshold selects or drops a symbol-year.",
+  "pooled": {
+    "duplicate_timestamps_total": 0,
+    "max_fill_ratio": 0.714993,
+    "min_fill_ratio": 0.063439,
+    "ohlc_violations_total": 0,
+    "symbol_years": 63
+  },
+  "rule": "a M15 bucket exists iff >= 13 of its 15 M1 minutes traded; never forward filled",
+  "symbol_years": {
+    "EURUSD_2000": {
+      "bars": {
+        "D1": 0,
+        "H1": 452,
+        "H4": 74,
+        "M15": 2119,
+        "M5": 8871
+      },
+      "first_m15": "2000-05-31T07:30:00+00:00",
+      "last_m15": "2000-08-31T18:30:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.090463,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 143167,
+      "symbol": "EURUSD",
+      "year": 2000
+    },
+    "EURUSD_2001": {
+      "bars": {
+        "D1": 1,
+        "H1": 1658,
+        "H4": 303,
+        "M15": 7533,
+        "M5": 30310
+      },
+      "first_m15": "2001-01-02T09:15:00+00:00",
+      "last_m15": "2001-08-31T15:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.322917,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 230767,
+      "symbol": "EURUSD",
+      "year": 2001
+    },
+    "EURUSD_2002": {
+      "bars": {
+        "D1": 5,
+        "H1": 1029,
+        "H4": 171,
+        "M15": 4991,
+        "M5": 20979
+      },
+      "first_m15": "2002-01-02T06:45:00+00:00",
+      "last_m15": "2002-08-30T16:30:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.213949,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 213000,
+      "symbol": "EURUSD",
+      "year": 2002
+    },
+    "EURUSD_2003": {
+      "bars": {
+        "D1": 39,
+        "H1": 2405,
+        "H4": 506,
+        "M15": 10394,
+        "M5": 37616
+      },
+      "first_m15": "2003-01-02T03:45:00+00:00",
+      "last_m15": "2003-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.445559,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 316351,
+      "symbol": "EURUSD",
+      "year": 2003
+    },
+    "EURUSD_2004": {
+      "bars": {
+        "D1": 122,
+        "H1": 3181,
+        "H4": 736,
+        "M15": 13269,
+        "M5": 43655
+      },
+      "first_m15": "2004-01-02T00:15:00+00:00",
+      "last_m15": "2004-08-31T23:15:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.56647,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 328426,
+      "symbol": "EURUSD",
+      "year": 2004
+    },
+    "EURUSD_2005": {
+      "bars": {
+        "D1": 39,
+        "H1": 2522,
+        "H4": 507,
+        "M15": 11045,
+        "M5": 39752
+      },
+      "first_m15": "2005-01-03T07:00:00+00:00",
+      "last_m15": "2005-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.473465,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 315635,
+      "symbol": "EURUSD",
+      "year": 2005
+    },
+    "EURUSD_2006": {
+      "bars": {
+        "D1": 32,
+        "H1": 2409,
+        "H4": 470,
+        "M15": 10718,
+        "M5": 39533
+      },
+      "first_m15": "2006-01-03T00:00:00+00:00",
+      "last_m15": "2006-08-31T23:30:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.459448,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 307176,
+      "symbol": "EURUSD",
+      "year": 2006
+    },
+    "EURUSD_2007": {
+      "bars": {
+        "D1": 9,
+        "H1": 1758,
+        "H4": 311,
+        "M15": 8404,
+        "M5": 34860
+      },
+      "first_m15": "2007-01-02T01:00:00+00:00",
+      "last_m15": "2007-08-31T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.360254,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 299782,
+      "symbol": "EURUSD",
+      "year": 2007
+    },
+    "EURUSD_2008": {
+      "bars": {
+        "D1": 122,
+        "H1": 3155,
+        "H4": 704,
+        "M15": 13187,
+        "M5": 44163
+      },
+      "first_m15": "2008-01-02T00:00:00+00:00",
+      "last_m15": "2008-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.56297,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 347355,
+      "symbol": "EURUSD",
+      "year": 2008
+    },
+    "EURUSD_2009": {
+      "bars": {
+        "D1": 169,
+        "H1": 3786,
+        "H4": 911,
+        "M15": 15301,
+        "M5": 47553
+      },
+      "first_m15": "2009-01-02T00:00:00+00:00",
+      "last_m15": "2009-08-31T22:00:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.655907,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 355880,
+      "symbol": "EURUSD",
+      "year": 2009
+    },
+    "EURUSD_2010": {
+      "bars": {
+        "D1": 164,
+        "H1": 3541,
+        "H4": 847,
+        "M15": 14490,
+        "M5": 46250
+      },
+      "first_m15": "2010-01-03T22:30:00+00:00",
+      "last_m15": "2010-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.621142,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 352320,
+      "symbol": "EURUSD",
+      "year": 2010
+    },
+    "EURUSD_2011": {
+      "bars": {
+        "D1": 160,
+        "H1": 3637,
+        "H4": 855,
+        "M15": 14786,
+        "M5": 46984
+      },
+      "first_m15": "2011-01-02T22:45:00+00:00",
+      "last_m15": "2011-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.633831,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 358369,
+      "symbol": "EURUSD",
+      "year": 2011
+    },
+    "EURUSD_2012": {
+      "bars": {
+        "D1": 174,
+        "H1": 4188,
+        "H4": 1033,
+        "M15": 16748,
+        "M5": 50254
+      },
+      "first_m15": "2012-01-02T07:00:00+00:00",
+      "last_m15": "2012-08-31T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.714993,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 372161,
+      "symbol": "EURUSD",
+      "year": 2012
+    },
+    "EURUSD_2013": {
+      "bars": {
+        "D1": 173,
+        "H1": 4149,
+        "H4": 1024,
+        "M15": 16570,
+        "M5": 49739
+      },
+      "first_m15": "2013-01-01T22:00:00+00:00",
+      "last_m15": "2013-08-30T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.710305,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 370611,
+      "symbol": "EURUSD",
+      "year": 2013
+    },
+    "EURUSD_2014": {
+      "bars": {
+        "D1": 171,
+        "H1": 4053,
+        "H4": 988,
+        "M15": 16079,
+        "M5": 48682
+      },
+      "first_m15": "2014-01-01T22:00:00+00:00",
+      "last_m15": "2014-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.689258,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 366477,
+      "symbol": "EURUSD",
+      "year": 2014
+    },
+    "EURUSD_2015": {
+      "bars": {
+        "D1": 172,
+        "H1": 4128,
+        "H4": 1020,
+        "M15": 16505,
+        "M5": 49535
+      },
+      "first_m15": "2015-01-01T18:00:00+00:00",
+      "last_m15": "2015-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.707519,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 372210,
+      "symbol": "EURUSD",
+      "year": 2015
+    },
+    "EURUSD_2016": {
+      "bars": {
+        "D1": 173,
+        "H1": 4148,
+        "H4": 1020,
+        "M15": 16588,
+        "M5": 49805
+      },
+      "first_m15": "2016-01-03T22:00:00+00:00",
+      "last_m15": "2016-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.708163,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 372679,
+      "symbol": "EURUSD",
+      "year": 2016
+    },
+    "EURUSD_2017": {
+      "bars": {
+        "D1": 173,
+        "H1": 4168,
+        "H4": 1023,
+        "M15": 16661,
+        "M5": 50010
+      },
+      "first_m15": "2017-01-02T07:00:00+00:00",
+      "last_m15": "2017-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.714206,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 371635,
+      "symbol": "EURUSD",
+      "year": 2017
+    },
+    "GBPUSD_2000": {
+      "bars": {
+        "D1": 0,
+        "H1": 266,
+        "H4": 26,
+        "M15": 1486,
+        "M5": 7688
+      },
+      "first_m15": "2000-05-31T08:15:00+00:00",
+      "last_m15": "2000-08-31T19:30:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.063439,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 132267,
+      "symbol": "GBPUSD",
+      "year": 2000
+    },
+    "GBPUSD_2001": {
+      "bars": {
+        "D1": 0,
+        "H1": 1262,
+        "H4": 216,
+        "M15": 5661,
+        "M5": 24328
+      },
+      "first_m15": "2001-01-02T09:30:00+00:00",
+      "last_m15": "2001-08-31T15:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.24267,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 203038,
+      "symbol": "GBPUSD",
+      "year": 2001
+    },
+    "GBPUSD_2002": {
+      "bars": {
+        "D1": 0,
+        "H1": 915,
+        "H4": 177,
+        "M15": 4315,
+        "M5": 18627
+      },
+      "first_m15": "2002-01-02T06:30:00+00:00",
+      "last_m15": "2002-08-30T16:15:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.184971,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 194701,
+      "symbol": "GBPUSD",
+      "year": 2002
+    },
+    "GBPUSD_2003": {
+      "bars": {
+        "D1": 32,
+        "H1": 2163,
+        "H4": 455,
+        "M15": 9206,
+        "M5": 33650
+      },
+      "first_m15": "2003-01-02T07:30:00+00:00",
+      "last_m15": "2003-08-29T20:00:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.394633,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 296418,
+      "symbol": "GBPUSD",
+      "year": 2003
+    },
+    "GBPUSD_2004": {
+      "bars": {
+        "D1": 64,
+        "H1": 2742,
+        "H4": 593,
+        "M15": 11789,
+        "M5": 40497
+      },
+      "first_m15": "2004-01-02T00:45:00+00:00",
+      "last_m15": "2004-08-31T23:15:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.503287,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 314580,
+      "symbol": "GBPUSD",
+      "year": 2004
+    },
+    "GBPUSD_2005": {
+      "bars": {
+        "D1": 19,
+        "H1": 2466,
+        "H4": 507,
+        "M15": 10860,
+        "M5": 38971
+      },
+      "first_m15": "2005-01-03T07:00:00+00:00",
+      "last_m15": "2005-08-31T20:30:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.465535,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 311286,
+      "symbol": "GBPUSD",
+      "year": 2005
+    },
+    "GBPUSD_2006": {
+      "bars": {
+        "D1": 19,
+        "H1": 2395,
+        "H4": 481,
+        "M15": 10692,
+        "M5": 39097
+      },
+      "first_m15": "2006-01-03T00:00:00+00:00",
+      "last_m15": "2006-08-31T19:00:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.458333,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 308909,
+      "symbol": "GBPUSD",
+      "year": 2006
+    },
+    "GBPUSD_2007": {
+      "bars": {
+        "D1": 11,
+        "H1": 2177,
+        "H4": 432,
+        "M15": 9696,
+        "M5": 36520
+      },
+      "first_m15": "2007-01-02T01:45:00+00:00",
+      "last_m15": "2007-08-31T19:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.415638,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 306750,
+      "symbol": "GBPUSD",
+      "year": 2007
+    },
+    "GBPUSD_2008": {
+      "bars": {
+        "D1": 34,
+        "H1": 2635,
+        "H4": 567,
+        "M15": 11411,
+        "M5": 40226
+      },
+      "first_m15": "2008-01-02T00:30:00+00:00",
+      "last_m15": "2008-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.48715,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 332167,
+      "symbol": "GBPUSD",
+      "year": 2008
+    },
+    "GBPUSD_2009": {
+      "bars": {
+        "D1": 168,
+        "H1": 3619,
+        "H4": 848,
+        "M15": 14719,
+        "M5": 46521
+      },
+      "first_m15": "2009-01-02T00:00:00+00:00",
+      "last_m15": "2009-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.630959,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 354178,
+      "symbol": "GBPUSD",
+      "year": 2009
+    },
+    "GBPUSD_2010": {
+      "bars": {
+        "D1": 154,
+        "H1": 3554,
+        "H4": 848,
+        "M15": 14453,
+        "M5": 46095
+      },
+      "first_m15": "2010-01-03T22:15:00+00:00",
+      "last_m15": "2010-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.619556,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 348663,
+      "symbol": "GBPUSD",
+      "year": 2010
+    },
+    "GBPUSD_2011": {
+      "bars": {
+        "D1": 145,
+        "H1": 3270,
+        "H4": 762,
+        "M15": 13617,
+        "M5": 44908
+      },
+      "first_m15": "2011-01-02T22:45:00+00:00",
+      "last_m15": "2011-08-31T23:15:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.583719,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 349323,
+      "symbol": "GBPUSD",
+      "year": 2011
+    },
+    "GBPUSD_2012": {
+      "bars": {
+        "D1": 174,
+        "H1": 4187,
+        "H4": 1033,
+        "M15": 16739,
+        "M5": 50232
+      },
+      "first_m15": "2012-01-02T07:00:00+00:00",
+      "last_m15": "2012-08-31T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.714609,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 371796,
+      "symbol": "GBPUSD",
+      "year": 2012
+    },
+    "GBPUSD_2013": {
+      "bars": {
+        "D1": 173,
+        "H1": 4141,
+        "H4": 1016,
+        "M15": 16526,
+        "M5": 49671
+      },
+      "first_m15": "2013-01-01T22:00:00+00:00",
+      "last_m15": "2013-08-30T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.708419,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 370762,
+      "symbol": "GBPUSD",
+      "year": 2013
+    },
+    "GBPUSD_2014": {
+      "bars": {
+        "D1": 170,
+        "H1": 4096,
+        "H4": 1007,
+        "M15": 16312,
+        "M5": 49047
+      },
+      "first_m15": "2014-01-01T22:30:00+00:00",
+      "last_m15": "2014-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.699246,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 368916,
+      "symbol": "GBPUSD",
+      "year": 2014
+    },
+    "GBPUSD_2015": {
+      "bars": {
+        "D1": 172,
+        "H1": 4129,
+        "H4": 1015,
+        "M15": 16507,
+        "M5": 49530
+      },
+      "first_m15": "2015-01-01T22:00:00+00:00",
+      "last_m15": "2015-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.707605,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 372231,
+      "symbol": "GBPUSD",
+      "year": 2015
+    },
+    "GBPUSD_2016": {
+      "bars": {
+        "D1": 173,
+        "H1": 4145,
+        "H4": 1016,
+        "M15": 16581,
+        "M5": 49784
+      },
+      "first_m15": "2016-01-03T22:00:00+00:00",
+      "last_m15": "2016-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.707864,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 372480,
+      "symbol": "GBPUSD",
+      "year": 2016
+    },
+    "GBPUSD_2017": {
+      "bars": {
+        "D1": 173,
+        "H1": 4161,
+        "H4": 1020,
+        "M15": 16632,
+        "M5": 49948
+      },
+      "first_m15": "2017-01-02T07:00:00+00:00",
+      "last_m15": "2017-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.712963,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 371204,
+      "symbol": "GBPUSD",
+      "year": 2017
+    },
+    "USDJPY_2000": {
+      "bars": {
+        "D1": 0,
+        "H1": 264,
+        "H4": 29,
+        "M15": 1568,
+        "M5": 8421
+      },
+      "first_m15": "2000-05-31T07:45:00+00:00",
+      "last_m15": "2000-08-31T19:00:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.06694,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 131241,
+      "symbol": "USDJPY",
+      "year": 2000
+    },
+    "USDJPY_2001": {
+      "bars": {
+        "D1": 2,
+        "H1": 1819,
+        "H4": 324,
+        "M15": 8311,
+        "M5": 32942
+      },
+      "first_m15": "2001-01-02T09:15:00+00:00",
+      "last_m15": "2001-08-31T15:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.356267,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 244200,
+      "symbol": "USDJPY",
+      "year": 2001
+    },
+    "USDJPY_2002": {
+      "bars": {
+        "D1": 33,
+        "H1": 1566,
+        "H4": 312,
+        "M15": 6876,
+        "M5": 25440
+      },
+      "first_m15": "2002-01-02T06:45:00+00:00",
+      "last_m15": "2002-08-30T16:15:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.294753,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 238609,
+      "symbol": "USDJPY",
+      "year": 2002
+    },
+    "USDJPY_2003": {
+      "bars": {
+        "D1": 69,
+        "H1": 2815,
+        "H4": 627,
+        "M15": 11963,
+        "M5": 40826
+      },
+      "first_m15": "2003-01-02T01:00:00+00:00",
+      "last_m15": "2003-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.512817,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 330526,
+      "symbol": "USDJPY",
+      "year": 2003
+    },
+    "USDJPY_2004": {
+      "bars": {
+        "D1": 83,
+        "H1": 2892,
+        "H4": 636,
+        "M15": 12274,
+        "M5": 41887
+      },
+      "first_m15": "2004-01-02T00:15:00+00:00",
+      "last_m15": "2004-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.523992,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 321941,
+      "symbol": "USDJPY",
+      "year": 2004
+    },
+    "USDJPY_2005": {
+      "bars": {
+        "D1": 29,
+        "H1": 2436,
+        "H4": 499,
+        "M15": 10740,
+        "M5": 39196
+      },
+      "first_m15": "2005-01-03T07:15:00+00:00",
+      "last_m15": "2005-08-31T23:00:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.460391,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 312962,
+      "symbol": "USDJPY",
+      "year": 2005
+    },
+    "USDJPY_2006": {
+      "bars": {
+        "D1": 68,
+        "H1": 2713,
+        "H4": 593,
+        "M15": 11725,
+        "M5": 41461
+      },
+      "first_m15": "2006-01-03T00:00:00+00:00",
+      "last_m15": "2006-08-31T19:00:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.502615,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 315950,
+      "symbol": "USDJPY",
+      "year": 2006
+    },
+    "USDJPY_2007": {
+      "bars": {
+        "D1": 58,
+        "H1": 2506,
+        "H4": 521,
+        "M15": 10864,
+        "M5": 39893
+      },
+      "first_m15": "2007-01-02T01:00:00+00:00",
+      "last_m15": "2007-08-31T19:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.465706,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 322788,
+      "symbol": "USDJPY",
+      "year": 2007
+    },
+    "USDJPY_2008": {
+      "bars": {
+        "D1": 135,
+        "H1": 3277,
+        "H4": 760,
+        "M15": 13596,
+        "M5": 44782
+      },
+      "first_m15": "2008-01-02T00:00:00+00:00",
+      "last_m15": "2008-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.58043,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 348226,
+      "symbol": "USDJPY",
+      "year": 2008
+    },
+    "USDJPY_2009": {
+      "bars": {
+        "D1": 160,
+        "H1": 3598,
+        "H4": 864,
+        "M15": 14563,
+        "M5": 46308
+      },
+      "first_m15": "2009-01-02T00:45:00+00:00",
+      "last_m15": "2009-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.624271,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 343456,
+      "symbol": "USDJPY",
+      "year": 2009
+    },
+    "USDJPY_2010": {
+      "bars": {
+        "D1": 98,
+        "H1": 3028,
+        "H4": 679,
+        "M15": 12671,
+        "M5": 43197
+      },
+      "first_m15": "2010-01-03T22:30:00+00:00",
+      "last_m15": "2010-08-31T23:30:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.543167,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 328836,
+      "symbol": "USDJPY",
+      "year": 2010
+    },
+    "USDJPY_2011": {
+      "bars": {
+        "D1": 24,
+        "H1": 2079,
+        "H4": 391,
+        "M15": 9563,
+        "M5": 37588
+      },
+      "first_m15": "2011-01-02T22:45:00+00:00",
+      "last_m15": "2011-08-31T23:00:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.409937,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 300286,
+      "symbol": "USDJPY",
+      "year": 2011
+    },
+    "USDJPY_2012": {
+      "bars": {
+        "D1": 174,
+        "H1": 4111,
+        "H4": 1012,
+        "M15": 16348,
+        "M5": 49633
+      },
+      "first_m15": "2012-01-02T07:00:00+00:00",
+      "last_m15": "2012-08-31T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.697917,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 365686,
+      "symbol": "USDJPY",
+      "year": 2012
+    },
+    "USDJPY_2013": {
+      "bars": {
+        "D1": 173,
+        "H1": 4147,
+        "H4": 1022,
+        "M15": 16569,
+        "M5": 49751
+      },
+      "first_m15": "2013-01-01T22:00:00+00:00",
+      "last_m15": "2013-08-30T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.710262,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 370808,
+      "symbol": "USDJPY",
+      "year": 2013
+    },
+    "USDJPY_2014": {
+      "bars": {
+        "D1": 169,
+        "H1": 4039,
+        "H4": 990,
+        "M15": 16075,
+        "M5": 48713
+      },
+      "first_m15": "2014-01-01T22:15:00+00:00",
+      "last_m15": "2014-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.689086,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 366741,
+      "symbol": "USDJPY",
+      "year": 2014
+    },
+    "USDJPY_2015": {
+      "bars": {
+        "D1": 172,
+        "H1": 4127,
+        "H4": 1014,
+        "M15": 16499,
+        "M5": 49510
+      },
+      "first_m15": "2015-01-01T22:00:00+00:00",
+      "last_m15": "2015-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.707262,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 371891,
+      "symbol": "USDJPY",
+      "year": 2015
+    },
+    "USDJPY_2016": {
+      "bars": {
+        "D1": 173,
+        "H1": 4149,
+        "H4": 1015,
+        "M15": 16577,
+        "M5": 49788
+      },
+      "first_m15": "2016-01-03T22:00:00+00:00",
+      "last_m15": "2016-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.707693,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 372417,
+      "symbol": "USDJPY",
+      "year": 2016
+    },
+    "USDJPY_2017": {
+      "bars": {
+        "D1": 173,
+        "H1": 4156,
+        "H4": 1017,
+        "M15": 16621,
+        "M5": 49944
+      },
+      "first_m15": "2017-01-02T07:00:00+00:00",
+      "last_m15": "2017-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.712491,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 371298,
+      "symbol": "USDJPY",
+      "year": 2017
+    },
+    "XAUUSD_2009": {
+      "bars": {
+        "D1": 113,
+        "H1": 2439,
+        "H4": 578,
+        "M15": 9950,
+        "M5": 31437
+      },
+      "first_m15": "2009-03-15T22:00:00+00:00",
+      "last_m15": "2009-08-31T22:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.426526,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 276109,
+      "symbol": "XAUUSD",
+      "year": 2009
+    },
+    "XAUUSD_2010": {
+      "bars": {
+        "D1": 166,
+        "H1": 3660,
+        "H4": 869,
+        "M15": 14755,
+        "M5": 45762
+      },
+      "first_m15": "2010-01-03T23:00:00+00:00",
+      "last_m15": "2010-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.632502,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 346196,
+      "symbol": "XAUUSD",
+      "year": 2010
+    },
+    "XAUUSD_2011": {
+      "bars": {
+        "D1": 171,
+        "H1": 3854,
+        "H4": 933,
+        "M15": 15363,
+        "M5": 46791
+      },
+      "first_m15": "2011-01-02T23:00:00+00:00",
+      "last_m15": "2011-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.658565,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 352266,
+      "symbol": "XAUUSD",
+      "year": 2011
+    },
+    "XAUUSD_2012": {
+      "bars": {
+        "D1": 173,
+        "H1": 3951,
+        "H4": 973,
+        "M15": 15836,
+        "M5": 47614
+      },
+      "first_m15": "2012-01-02T23:15:00+00:00",
+      "last_m15": "2012-08-31T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.676059,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 354797,
+      "symbol": "XAUUSD",
+      "year": 2012
+    },
+    "XAUUSD_2013": {
+      "bars": {
+        "D1": 172,
+        "H1": 3933,
+        "H4": 980,
+        "M15": 15826,
+        "M5": 47561
+      },
+      "first_m15": "2013-01-01T23:00:00+00:00",
+      "last_m15": "2013-08-30T20:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.678412,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 355160,
+      "symbol": "XAUUSD",
+      "year": 2013
+    },
+    "XAUUSD_2014": {
+      "bars": {
+        "D1": 169,
+        "H1": 3874,
+        "H4": 953,
+        "M15": 15529,
+        "M5": 46759
+      },
+      "first_m15": "2014-01-01T23:15:00+00:00",
+      "last_m15": "2014-08-31T23:30:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.665681,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 351606,
+      "symbol": "XAUUSD",
+      "year": 2014
+    },
+    "XAUUSD_2015": {
+      "bars": {
+        "D1": 170,
+        "H1": 3875,
+        "H4": 922,
+        "M15": 15471,
+        "M5": 46691
+      },
+      "first_m15": "2015-01-01T23:00:00+00:00",
+      "last_m15": "2015-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.663194,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 351666,
+      "symbol": "XAUUSD",
+      "year": 2015
+    },
+    "XAUUSD_2016": {
+      "bars": {
+        "D1": 172,
+        "H1": 3941,
+        "H4": 980,
+        "M15": 15746,
+        "M5": 47249
+      },
+      "first_m15": "2016-01-03T23:00:00+00:00",
+      "last_m15": "2016-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23424,
+      "m15_fill_ratio_vs_calendar": 0.672217,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 353415,
+      "symbol": "XAUUSD",
+      "year": 2016
+    },
+    "XAUUSD_2017": {
+      "bars": {
+        "D1": 172,
+        "H1": 3935,
+        "H4": 976,
+        "M15": 15733,
+        "M5": 47207
+      },
+      "first_m15": "2017-01-02T23:00:00+00:00",
+      "last_m15": "2017-08-31T23:45:00+00:00",
+      "m15_calendar_slots_in_window": 23328,
+      "m15_fill_ratio_vs_calendar": 0.674426,
+      "m1_duplicate_timestamps": 0,
+      "m1_ohlc_violations": 0,
+      "m1_rows_in_archive": 352360,
+      "symbol": "XAUUSD",
+      "year": 2017
+    }
+  }
+}

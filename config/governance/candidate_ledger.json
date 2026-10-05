@@ -2,8 +2,22 @@
   "ledger_version": "CONSOLIDATION_R1_CANDIDATE_LEDGER_V1",
   "purpose": "The single authoritative candidate ledger for ag-edgelab. Every research candidate that reached screening, freeze, or verification gets exactly one immutable record. Future agents MUST consult this ledger (and the OOS access log) before defining, freezing, or evaluating any candidate. Records are append-only: a verdict may never be edited to rescue a candidate.",
   "append_only_rule": "A record's verdict fields (STATUS, EDGE_STATUS, FAILURE_STAGE, OOS_VERDICT, ECONOMIC_VERDICT, OOS_ROLE) are immutable once written. Corrections may only ADD a clarification note with a new commit; they may never reverse a rejection.",
-  "edge_status_vocabulary": ["UNVERIFIED", "INSUFFICIENT_EVIDENCE", "NO_EDGE", "EDGE_VERIFIED"],
-  "lifecycle_vocabulary": ["RESEARCH_CANDIDATE", "DEV_SCREENED", "DEV_REJECTED", "FROZEN_FOR_OOS", "OOS_REJECTED", "VERIFICATION_FAILED", "EDGE_VERIFIED", "ARCHIVED"],
+  "edge_status_vocabulary": [
+    "UNVERIFIED",
+    "INSUFFICIENT_EVIDENCE",
+    "NO_EDGE",
+    "EDGE_VERIFIED"
+  ],
+  "lifecycle_vocabulary": [
+    "RESEARCH_CANDIDATE",
+    "DEV_SCREENED",
+    "DEV_REJECTED",
+    "FROZEN_FOR_OOS",
+    "OOS_REJECTED",
+    "VERIFICATION_FAILED",
+    "EDGE_VERIFIED",
+    "ARCHIVED"
+  ],
   "records": [
     {
       "CANDIDATE_ID": "TARGET_POLICY_C3_V1",
@@ -22,7 +36,7 @@
       "candidate_contract": "data/artifacts/target_policy_c3_v1/canonical_contract.json (sha256 5a485308841d1c5d2096e348665ef3f9b1f689c1ed4ce4b30385eeaf2c828112)",
       "preregistration": "data/artifacts/target_policy_c3_v1_oos/oos_preregistration.json (sha256 ff49d6fa2e61131c7dd90539f51ca0700052bf7320a7f19bf41285edcf19cae7, committed c8cd7c2 BEFORE the OOS open)",
       "evidence_bundle": "data/artifacts/target_policy_c3_v1_oos/ (sealed: oos_ledger, oos_metrics, dev_oos_comparison, runner_hypothesis, causality_audit 0 violations 16/16, determinism double-pass byte-identical, independent verification 12/12 checks)",
-      "dataset": "HISTDATA_ASCII_M1_2017_PR10_PINNED (EURUSD 0dcd66dc…, GBPUSD e5ba3800…, USDJPY 477a1f51…, XAUUSD a39c1cca…)",
+      "dataset": "HISTDATA_ASCII_M1_2017_PR10_PINNED (EURUSD 0dcd66dc\u2026, GBPUSD e5ba3800\u2026, USDJPY 477a1f51\u2026, XAUUSD a39c1cca\u2026)",
       "key_results": {
         "ENTRY_N": 875,
         "TRADED_N": 838,
@@ -31,9 +45,14 @@
         "RUNNER_EXTENDED_REACH_OOS": 0.2967479674796748,
         "MEAN_STRUCTURAL_R_OOS": -0.1056681340525129,
         "MAX_STRUCTURAL_DRAWDOWN_R_OOS": 102.71812905556621,
-        "per_symbol_verdicts": {"EURUSD": "C", "GBPUSD": "C", "USDJPY": "C", "XAUUSD": "C"}
+        "per_symbol_verdicts": {
+          "EURUSD": "C",
+          "GBPUSD": "C",
+          "USDJPY": "C",
+          "XAUUSD": "C"
+        }
       },
-      "sealed_run_commit": "21b3ebb (single authorized OOS open; verification check fix 9c94c77 — see VERIFICATION_NOTES in final_report.json)",
+      "sealed_run_commit": "21b3ebb (single authorized OOS open; verification check fix 9c94c77 \u2014 see VERIFICATION_NOTES in final_report.json)",
       "final_report": "data/artifacts/target_policy_c3_v1_oos/final_report.json",
       "note": "PERMANENT REJECTION. Structural edge did not generalize: every symbol failed the preregistered MEAN_STRUCTURAL_R<=0 floor; GBPUSD also -20.81pp first-objective reach, USDJPY -20.89pp runner reach. Related model-selection reuse is FORBIDDEN: no DEV/OOS model selection may reuse this candidate's outcomes to retune, re-select, or revive the C3 family (a failure is evidence). Economic metrics were never estimated (no friction authority); this is a structural rejection only. Never alter this record to rescue the candidate."
     },
@@ -147,6 +166,100 @@
       "evidence_bundle": "branches feat/crypto-btc-breakout-candidate, feat/crypto-btc-h1-candidate, feat/crypto-btc-spot-candidate, feat/fx-asian-sweep-candidate, feat/fx-cycle2-breakout, feat/fx-edge-candidate, feat/fx-lny-candidate (archived)",
       "final_report": "none committed in-repo (CI-run screens)",
       "note": "Exploratory donor-strategy development screens from the R0 era; branches preserved as historical evidence; not merged into the mainline."
+    },
+    {
+      "CANDIDATE_ID": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1@1.0.0-research",
+      "CANDIDATE_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+      "STATUS": "DEV_REJECTED",
+      "EDGE_STATUS": "INSUFFICIENT_EVIDENCE",
+      "FAILURE_STAGE": "DEV_FUNNEL_STARVATION (TRIGGER -> CONFIRMATION)",
+      "OOS_VERDICT": "NOT_RUN (Pre-OOS Robustness Gate V1 NOT_REACHED; DEV sample structurally insufficient)",
+      "ECONOMIC_VERDICT": "NOT_ESTIMABLE_NO_FRICTION_AUTHORITY",
+      "OOS_WINDOW": "not consumed",
+      "OOS_ROLE": "NOT_CONSUMED",
+      "RELATED_MODEL_SELECTION_REUSE": "CAUTIONED \u2014 the DEVELOPMENT partition [2017-01-01, 2017-09-01) is now DEVELOPMENT_KNOWN for the ASIAN_LIQUIDITY_DISPLACEMENT family (see candidate_contamination_registry.json). No rule, threshold, symbol or session was selected from these results; any V2 hypothesis requires a NEW preregistration and must disclose this exposure.",
+      "HOLDOUT_TOUCHED": "NO",
+      "lifecycle": "DEV_REJECTED",
+      "verification_stage": "RESEARCH_GENERATION_2_DEV_ONLY (preregistered 2026-10-05)",
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "preregistration": "data/artifacts/gen2_asian_liquidity_displacement_v1/preregistration.json (sha256 6662c33f9b5b6d5b05bcabff889659ca522abe0a00d1e4dcce4dc89d9972f13b, committed BEFORE the DEV replay)",
+      "evidence_bundle": "data/artifacts/gen2_asian_liquidity_displacement_v1/",
+      "dataset": "HISTDATA_ASCII_M1_2017_PR10_PINNED, DEVELOPMENT partition only",
+      "final_report": "data/artifacts/gen2_asian_liquidity_displacement_v1/final_report.json",
+      "key_results": {
+        "CANDIDATE_N": 1768,
+        "TRIGGER_PASS_N": 42,
+        "CONFIRMATION_PASS_N": 6,
+        "GEOMETRY_VALID_N": 3,
+        "ENTRY_AVAILABLE_N": 3,
+        "fixed_r_capability": {
+          "1R_CAPABILITY": 0.0,
+          "2R_CAPABILITY": 0.0,
+          "3R_CAPABILITY": 0.0,
+          "4R_CAPABILITY": 0.0,
+          "5R_CAPABILITY": 0.0
+        },
+        "NATURAL_TARGET_MEDIAN_R": 1.276923,
+        "PRIMARY_FUNNEL_WEAKNESS": "INSUFFICIENT_SAMPLE",
+        "SECONDARY_DIAGNOSES": [
+          "TRIGGER_FUNNEL_WEAKNESS"
+        ],
+        "PRE_OOS_RESULT": "NOT_REACHED"
+      },
+      "note": "PERMANENT DEVELOPMENT REJECTION of the V1 hypothesis. The funnel starved before it could be measured: 1270 direction-decidable candidates produced 151 non-neutral (11.89%), 42 TRIGGER_PASS, 6 CONFIRMATION_PASS and 3 ENTRY_AVAILABLE across four symbols and eight months \u2014 far below the preregistered eligibility floor of 100, so the robustness battery and the Pre-OOS gate were NEVER RUN (NOT_REACHED, never a PASS). The accepted Universal Funnel Analyzer independently returned POOR_TRIGGER_QUALITY on the trigger nodes (5R opportunity-basis reach 19.87%, selection uplift +1.56pp). No threshold, window or symbol was altered in response. Never edit this record to rescue the candidate."
+    },
+    {
+      "CANDIDATE_ID": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+      "CANDIDATE_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+      "STATUS": "MULTIYEAR_DEV_INSUFFICIENT_SAMPLE",
+      "EDGE_STATUS": "INSUFFICIENT_EVIDENCE",
+      "FAILURE_STAGE": "DEV_FUNNEL_STARVATION (confirmed on a multi-year corpus)",
+      "OOS_VERDICT": "NOT_RUN (PRE_OOS_RESULT = NOT_REACHED)",
+      "ECONOMIC_VERDICT": "NOT_ESTIMABLE",
+      "OOS_WINDOW": "not consumed for any year",
+      "OOS_ROLE": "NOT_CONSUMED",
+      "RELATED_MODEL_SELECTION_REUSE": "CAUTIONED \u2014 the annual DEV windows [YYYY-01-01, YYYY-09-01) for 2000-2017 are now DEVELOPMENT_KNOWN for the ASIAN_LIQUIDITY_DISPLACEMENT family (see candidate_contamination_registry.json). Sep-Dec of every year remains FRESH and unconsumed.",
+      "HOLDOUT_TOUCHED": "NO",
+      "lifecycle": "DEV_REJECTED",
+      "verification_stage": "DEVELOPMENT_EVIDENCE_EXPANSION (multi-year replay, rules frozen)",
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "strategy_identity": {
+        "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+        "strategy_version": "1.0.0-research",
+        "RULES_CHANGED": "NO",
+        "rule_version_bump": "NONE",
+        "EXPECTED_RULE_HASH_reproduced": true
+      },
+      "preregistration": "data/artifacts/gen2_asian_liquidity_displacement_v1_multiyear/preregistration.json (sha256 a255e1d981522d0a8de5ea02fa9071a50a905dac223bd71b7f689990ed3aa52b, committed BEFORE the multi-year replay)",
+      "evidence_bundle": "data/artifacts/gen2_asian_liquidity_displacement_v1_multiyear/",
+      "dataset": "HISTDATA_ASCII_M1_MULTIYEAR_R2 \u2014 63 symbol-years over 18 calendar years, DEVELOPMENT partitions only",
+      "final_report": "data/artifacts/gen2_asian_liquidity_displacement_v1_multiyear/final_report.json",
+      "key_results": {
+        "OPPORTUNITY_N": 26814,
+        "DIRECTIONAL_N": 1382,
+        "TRIGGER_PASS_N": 441,
+        "CONFIRMATION_PASS_N": 51,
+        "GEOMETRY_VALID_N": 36,
+        "ENTRY_AVAILABLE_N": 35,
+        "SAMPLE_CLASSIFICATION": "STRATEGY_STRUCTURAL_STARVATION",
+        "DECISION_CASE": "CASE_B",
+        "2017_ENTRY_N": 3,
+        "corpus_growth_x": 15.75,
+        "2017_representative": true,
+        "PRE_OOS_RESULT": "NOT_REACHED"
+      },
+      "governance_input_hash_semantics": "dataset_binding.json records governance_inputs_sha256 as consulted IMMEDIATELY BEFORE the replay, i.e. the state in which the multi-year DEV windows were still FRESH_DEVELOPMENT. Those pins deliberately do NOT match the files at this commit, because this record and the 17 contamination records below were appended AFTER the replay finished. Post-append hashes are pinned in governance_input_hashes_after_append so both states are verifiable.",
+      "governance_input_hashes_after_append": {
+        "candidate_contamination_registry_sha256": "b0ea16c07f43edd79db81acafdd7e6284a733b7979666ce491d0678f451843b0",
+        "data_authority_gap_sha256": "5169328cd47f60b5938868686af8d6e58cd58729fd313a0380fec8a889da6daa",
+        "oos_access_log_sha256": "316ec2b0839d4ffa077ee16ce463519642a9bfe42b6cb69ef52af69d03e44f01"
+      },
+      "note": "Dataset-expansion experiment on the UNCHANGED V1 rules. The corpus grew 15.75x (4 -> 63 symbol-years) and the entry population went from 3 to 35. SAMPLE_CLASSIFICATION = STRATEGY_STRUCTURAL_STARVATION. No rule, threshold, session window, symbol or year was selected or altered in response to any result. Never edit this record to rescue the candidate.",
+      "governance_input_hashes_before_replay": {
+        "contamination_registry_sha256": "539a193b92756b6c868ab90dd8fdffe07164f072bad674d445c0c02a24c11f8c",
+        "data_authority_gap_sha256": "d0ebeab33fe7f1aff260f07ca015f5146a8c6333df4ba1c1025ce12ccd446f71",
+        "oos_access_log_sha256": "44125ce16b2c2e93c5efe3138a9044e4bdca90edd192e527ea06f8e1271d4df4"
+      }
     }
   ]
 }

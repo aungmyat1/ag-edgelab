@@ -1,0 +1,88 @@
+{
+  "artifact_set": "GEN2_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+  "dataset_authority": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+  "dataset_role": "DEVELOPMENT",
+  "experiment_id": "GEN2_ALD_V2_DEV_R1",
+  "external_evidence_pointer": {
+    "candidate_ledger": {
+      "artifact_id": "GEN2_ALD_V2_CANDIDATE_LEDGER",
+      "bytes": 947109,
+      "path": "data/external/gen2_ald_v2/candidate_ledger.jsonl.gz",
+      "regeneration": "scripts/run_gen2_ald_v2_dev.py (deterministic, gzip mtime=0)",
+      "rows": 26814,
+      "sha256": "fb127740c93455c3a69266b191d86478c456a2b9d2bdc6f12d64c095ee8d742c",
+      "storage": "EXTERNAL \u2014 not committed to git",
+      "uncompressed_bytes": 35010436,
+      "uncompressed_sha256": "d6e8d6992aebd1dd21641ca503d1be2f810a2777ea357b97555afbf62264611d"
+    },
+    "dataset_manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f"
+  },
+  "files": {
+    "attrition_reasons.json": {
+      "bytes": 1799,
+      "sha256": "b38e7f9da7347abde5b2bf52cd795ab8ac7d53c57d0f13a93068a04f540185c1"
+    },
+    "branch_matrix.csv": {
+      "bytes": 566,
+      "sha256": "eaf1ec7aad0d872d38efeb28d37cecb82c43d66b16e209362bce7151f5604edf"
+    },
+    "branch_report.json": {
+      "bytes": 3957,
+      "sha256": "6f8dd6519f7fd88154c41402715e23ef94a1302cc28d7132c63bad57d2e9c68c"
+    },
+    "candidate_instance_identity.json": {
+      "bytes": 1293,
+      "sha256": "20a5aa90182da6b3694edb77f38894ebd82252b2b569aed22287a585205e9444"
+    },
+    "dataset_binding.json": {
+      "bytes": 5559,
+      "sha256": "f19413d3a632b81d2d56b6a8a0f59340cf39d3ca70450f500752e3a61a9e64c5"
+    },
+    "final_report.json": {
+      "bytes": 5671,
+      "sha256": "de41310483054c6d1a5107d0e81bd6dc70468f403c0ebb5a7a89c818874df147"
+    },
+    "funnel_report.json": {
+      "bytes": 5217,
+      "sha256": "4ea92252e5dbf078bffdb1f2b7569d0c5bafed10f95be7f92b9a3b2a97546cb6"
+    },
+    "phase0_governance_verification.json": {
+      "bytes": 4440,
+      "sha256": "bf3fcd6375a115277a32c16c8c72f0b920572a48f7079644dcb5ccae5e7db294"
+    },
+    "pre_oos_gate_result.json": {
+      "bytes": 25892,
+      "sha256": "8edd5d40b77029fe3f3bc3c47a6249f8daaf15d6c772db09743f084568a17a93"
+    },
+    "preregistration.json": {
+      "bytes": 34995,
+      "sha256": "0262aa0a1b58ce6af4203e71cda81b16fdcfa34c1316450d9e407de6253280a8"
+    },
+    "sample_gate.json": {
+      "bytes": 391,
+      "sha256": "8ea206f855fd8bfc7acd01bb10ce30c42c467c70273a17cb1a2e955703fb5632"
+    },
+    "strata_report.json": {
+      "bytes": 25359,
+      "sha256": "b706451308ddfa99e3afe16c2c77feb75cbfd4a72577dd9ea115354e4660d34b"
+    },
+    "symbol_session_matrix.csv": {
+      "bytes": 1266,
+      "sha256": "dd833f307acfd80a1ec92f81ff9a3c8e01016fcb605935ad8fe55067ca1be444"
+    },
+    "target_capability.json": {
+      "bytes": 913,
+      "sha256": "13c9b28e774b6bd29353a100902bd15b990e4ee3e3b0fa744337a6f814779d33"
+    },
+    "v1_vs_v2.json": {
+      "bytes": 1905,
+      "sha256": "e54ead9c6d724fef7c06ffdb8c77e4004f2cf16f1dfd2857524e4cad5c3d7306"
+    },
+    "year_matrix.csv": {
+      "bytes": 2054,
+      "sha256": "166dea93e2693a36047cf462529fef887fc6354d844324eb0e773971c14f3966"
+    }
+  },
+  "generated_at_utc": "2026-10-05T11:03:28.284062+00:00",
+  "implementation_sha": "6ae179a18b456b1903efa2c111ec49453578caab"
+}

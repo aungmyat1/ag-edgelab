@@ -1,0 +1,26 @@
+{
+  "branches": [
+    "A_SWEEP_RECLAIM_REVERSAL",
+    "B_BREAKOUT_RETEST_CONTINUATION"
+  ],
+  "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+  "dataset_authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+  "dataset_manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+  "experiment_id": "GEN2_ALD_V2_DEV_R1",
+  "experiment_identity_sha256": "a0ec503a703cfbb0594502662c10247f42adeab6a1a5d3755ec3b3cf2efcc07b",
+  "generation": 2,
+  "preregistration_sha256": "c914c657097bb262c67ca119204ee6182cf7938b9176950643ee947d80349b9f",
+  "rule_lineage": "NEW ARCHITECTURE. V2 shares V1's session clocks, data authority and measurement contracts so the comparison is fair; it shares no trigger, confirmation, entry or target rule.",
+  "strategy_contract_sha256": "f4bef1cf7044138c7471261855836557f8a0dee1b213506883de19e2b7dded53",
+  "strategy_hash": "f4bef1cf7044138c7471261855836557f8a0dee1b213506883de19e2b7dded53",
+  "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+  "strategy_version": "2.0.0-research",
+  "supersedes": "none \u2014 V1 remains closed evidence and is not superseded, retuned or re-run by this experiment",
+  "symbol_universe": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "verifier_version": "EDGELAB_SYSTEM_READINESS_V1"
+}

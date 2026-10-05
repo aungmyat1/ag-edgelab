@@ -22,6 +22,26 @@
       },
       "acquisition": "scripts/acquire_histdata_fx_2017.sh (mirror parrondo/deeptrading via GitHub contents API; sha256-pinned, zips never committed)",
       "holdout_policy": "SEALED \u2014 never opened; fail-closed guards exist in src/ag_edgelab/data/fx_histdata_2017.py (HoldoutAccessError) and in the STV2 campaign dataset layer"
+    },
+    "HISTDATA_ASCII_M1_MULTIYEAR_R2": {
+      "product": "HistData.com Generic ASCII M1, one archive per symbol-year",
+      "mirror": "github.com/riknv/fx-m1-data",
+      "symbols": {
+        "EURUSD": "2000-2017",
+        "GBPUSD": "2000-2017",
+        "USDJPY": "2000-2017",
+        "XAUUSD": "2009-2017"
+      },
+      "manifest": "data/external/histdata_fx_multiyear/manifest.json",
+      "manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+      "partitions_utc": {
+        "DEVELOPMENT": "[YYYY-01-01, YYYY-09-01) per year",
+        "OOS": "[YYYY-09-01, YYYY-12-01) per year",
+        "SEALED_HOLDOUT": "[YYYY-12-01, YYYY+1-01-01) per year"
+      },
+      "oos_consumption_status": "NEVER OPENED for any year by any candidate under this authority. The 2017 OOS window is separately recorded as consumed under HISTDATA_ASCII_M1_2017_PR10_PINNED (events OOS-001, OOS-002). All other years' OOS windows are FRESH.",
+      "registered_by": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+      "registered_at_utc": "2026-10-05T08:31:34+00:00"
     }
   },
   "events": [

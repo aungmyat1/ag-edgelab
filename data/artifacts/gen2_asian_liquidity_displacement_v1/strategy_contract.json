@@ -1,0 +1,251 @@
+{
+  "asset_class": "FX",
+  "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+  "confirmation_contract": {
+    "close_back_inside": "first M15 bar at or after the sweep whose CLOSE is strictly inside the Asian range",
+    "contract_id": "CONF_ALD_V1",
+    "displacement": {
+      "frozen": true,
+      "optimized_in_this_mission": false,
+      "rule": "body / candle_range >= 0.70 AND body polarity matches the thesis",
+      "threshold": 0.7,
+      "timeframe": "M15"
+    },
+    "fresh_fvg": {
+      "freshness": "third candle closes strictly after the MSS bar close and within 12 M5 bars",
+      "primitive": "ag_edgelab.strategies.crypto_mtf_smc.detect_fvg (strict 3-candle imbalance)",
+      "timeframe": "M5"
+    },
+    "mss_bos": {
+      "primitive": "ag_edgelab.universal.confirmation.structure_shift_events",
+      "rule": "first direction-matched MSS or BOS at or after the displacement bar",
+      "swing_order": 2,
+      "timeframe": "M15"
+    },
+    "retrace": {
+      "backfilled_entry": "FORBIDDEN",
+      "invalidation": "if the structural stop is touched before the FVG, the candidate is rejected",
+      "max_age_m5_bars": 24,
+      "rule": "first causal M5 touch of the FVG strictly after the gap's third candle closes"
+    },
+    "sequence": [
+      "SWEEP",
+      "CLOSE_BACK_INSIDE",
+      "DISPLACEMENT",
+      "MSS_BOS",
+      "FRESH_FVG",
+      "FVG_RETRACE_AVAILABLE"
+    ],
+    "sweep": "M15 bar trades beyond the Asian boundary on the non-direction side",
+    "temporal_envelope": "every funnel event INCLUDING the entry fill must occur inside the session entry window"
+  },
+  "contract_hashes": {
+    "confirmation_contract_hash": "a4802f0d015820db131ab83af5efb376fa32006eff499cd45a20dbbc569edea6",
+    "entry_contract_hash": "01719a1559d4d02ab3076e9c0756ca64ab5db85d3438088378169d3a6293b9d4",
+    "friction_contract_hash": "12d7f472a7630c024673129adedfa6aaaeb2d147fbbaae66a2565a392649dc6d",
+    "parameter_hash": "2c3313ca8effb66d268179b41f223dacb6c0b879a5324bed52ca2d5b72c0160e",
+    "session_contract_hash": "e8ea8e0ae660a2a866fd33c0dd90bca97a19913e1b4c75042f2445366445b590",
+    "sl_contract_hash": "34c899349ac62715b33151d867174fea1c1223541819f0abaa74c4f32ddac4cd",
+    "strategy_code_hash": "fb495d51e3bcb6e2ecf10f5e5993b650dbcc4588695a451c8f2308a310b4f196",
+    "strategy_contract_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "target_contract_hash": "fad4e130fab35c6b34d8287abf41a91dd328fd549d419975427d436c4245cd39",
+    "trigger_contract_hash": "be90382f44c26482f9f4590ce97838015e1fd462f30e3503806cfbee6828121b"
+  },
+  "dataset_authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+  "dataset_role": "DEVELOPMENT",
+  "development_partition_utc": [
+    "2017-01-01T00:00:00+00:00",
+    "2017-09-01T00:00:00+00:00"
+  ],
+  "edge_verified": false,
+  "entry_contract": {
+    "collision_policy": "STOP_FIRST_FAIL_CLOSED_V0_3",
+    "contract_id": "ENTRY_ALD_V1",
+    "fill_policy": "LIMIT_AT_FVG_PROXIMAL_EDGE_ON_FIRST_CAUSAL_TOUCH \u2014 fill price is the proximal FVG edge (upper edge for LONG, lower edge for SHORT) on the first M5 bar that trades into the gap strictly after the gap's third candle closes. Outcome measurement starts at the NEXT M5 bar; if the fill bar itself also trades through the structural stop the candidate is recorded STOPPED_SAME_BAR = -1R (fail-closed).",
+    "outcome_anchor": "M5 bar AFTER the fill bar"
+  },
+  "execution_capability": "NONE \u2014 no broker adapter, no order sending, no EA import",
+  "friction_contract": {
+    "FRICTION_EDGE_VERIFICATION_READY": "NO",
+    "authority_gap_record": "config/governance/friction_authority_gap.json",
+    "commission": "UNAVAILABLE",
+    "consequence": "ECONOMIC_METRICS = NOT_ESTIMABLE_NO_FRICTION_AUTHORITY; structural R only",
+    "contract_id": "FRICTION_ALD_V1_ABSENT_FAIL_CLOSED",
+    "funding": "NOT_APPLICABLE",
+    "slippage": "UNAVAILABLE",
+    "spread": "UNAVAILABLE",
+    "substitution_forbidden": [
+      "generic_spread",
+      "7_usd_per_lot",
+      "fixed_slippage",
+      "industry_defaults"
+    ],
+    "swap": "UNAVAILABLE"
+  },
+  "funnel_nodes": {
+    "CONFIRMATION": [
+      "C1_DISPLACEMENT",
+      "C2_MSS_BOS",
+      "C3_FRESH_FVG",
+      "C4_FVG_RETRACE_AVAILABLE",
+      "C5_GEOMETRY_VALID",
+      "C6_ENTRY_AVAILABLE"
+    ],
+    "OUTCOME": [
+      "O1_1R",
+      "O2_2R",
+      "O3_3R",
+      "O4_4R",
+      "O5_5R"
+    ],
+    "TRIGGER": [
+      "T1_ASIAN_REFERENCE_VALID",
+      "T2_DIRECTION_DECIDED",
+      "T3_DIRECTION_NON_NEUTRAL",
+      "T4_ASIAN_SWEEP",
+      "T5_CLOSE_BACK_INSIDE"
+    ]
+  },
+  "identity_reuse_forbidden": [
+    "ST_ASIAN_SWEEP_5R_V1",
+    "SESSION_TRADE_V2",
+    "ST_MTF_CONTROL_SHIFT_V1",
+    "ST_MTF_CONTROL_SHIFT_V2",
+    "ST_MTF_CONTROL_SHIFT_V3",
+    "TARGET_POLICY_C3_V1"
+  ],
+  "observation_policy_id": "OPP_BASIS_ALD_V1__anchor=last_closed_M15_at_entry_window_open;risk=12_bar_opposite_extreme;horizon=96_M15_bars;collision=STOP_FIRST",
+  "parameters": {
+    "DISPLACEMENT_BODY_RANGE_MIN": 0.7,
+    "FVG_MAX_AGE_M5_BARS": 12,
+    "M5_MINUTES_REQUIRED": 4,
+    "MIN_ASIAN_M15_BARS": 16,
+    "OPPORTUNITY_HORIZON_M15": 96,
+    "OPPORTUNITY_STOP_LOOKBACK_M15": 12,
+    "OUTCOME_HORIZON_M5_BARS": 288,
+    "RETRACE_MAX_AGE_M5_BARS": 24,
+    "SWING_ORDER_D1": 2,
+    "SWING_ORDER_H1": 2,
+    "SWING_ORDER_H4": 2,
+    "SWING_ORDER_M15": 2,
+    "WARMUP_DAYS": 21
+  },
+  "pinned_source_sha256": {
+    "EURUSD": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+    "GBPUSD": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+    "USDJPY": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+    "XAUUSD": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+  },
+  "rejection_vocabulary": [
+    "ASIAN_REFERENCE_INSUFFICIENT_BARS",
+    "ASIAN_RANGE_DEGENERATE",
+    "ENTRY_WINDOW_NO_BARS",
+    "DIRECTION_UNDECIDABLE",
+    "DIRECTION_NEUTRAL",
+    "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE",
+    "NO_CLOSE_BACK_INSIDE",
+    "NO_DISPLACEMENT_BODY_RATIO",
+    "NO_MSS_BOS_AFTER_DISPLACEMENT",
+    "NO_FRESH_FVG_AFTER_MSS",
+    "NO_CAUSAL_RETRACE_INTO_FVG",
+    "RETRACE_INVALIDATED_BY_STOP_FIRST",
+    "GEOMETRY_RISK_NON_POSITIVE",
+    "GEOMETRY_TP1_NOT_BEYOND_ENTRY",
+    "GEOMETRY_TEMPORAL_ORDER_INVALID",
+    "RIGHT_CENSORED_DATA_BOUNDARY",
+    "PASS"
+  ],
+  "session_contract": {
+    "asian_reference_utc": {
+      "end_hour": 6,
+      "start_hour": 0
+    },
+    "contract_id": "SESSION_ALD_V1",
+    "evaluated_pairs": [
+      "ASIAN_LONDON",
+      "LONDON_NEWYORK"
+    ],
+    "london_entry_utc": {
+      "end_hour": 10,
+      "start_hour": 7
+    },
+    "min_asian_m15_bars": 16,
+    "new_york_entry_utc": {
+      "end_hour": 15,
+      "start_hour": 12
+    },
+    "note": "Both evaluated session pairs use the SAME Asian reference range (00:00-06:00 UTC) as the liquidity object, because the hypothesis is Asian-liquidity displacement. The pair label names the ENTRY window: ASIAN_LONDON = London entry window 07:00-10:00 UTC, LONDON_NEWYORK = New York entry window 12:00-15:00 UTC. Windows are frozen and are NEVER widened in response to observed results.",
+    "pooled": true,
+    "widening_allowed": false
+  },
+  "sl_contract": {
+    "buffer_pips": 0,
+    "buffer_points": 0,
+    "contract_id": "SL_ALD_V1",
+    "long": "SL = sweep bar LOW",
+    "note": "Structural stop ONLY: LONG SL = sweep bar low, SHORT SL = sweep bar high. No pip/point buffer is added. Execution/spread buffering belongs to the friction layer, which has no authority in this mission.",
+    "short": "SL = sweep bar HIGH"
+  },
+  "status": "RESEARCH_CANDIDATE",
+  "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+  "strategy_version": "1.0.0-research",
+  "symbol_universe": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "target_contract": {
+    "censoring_policy": "RIGHT_CENSORED_DATA_BOUNDARY_EXPLICIT \u2014 a candidate whose 288-M5-bar outcome window is truncated by the DEVELOPMENT partition end is RIGHT_CENSORED: excluded from target-capability denominators, counted in the population, never imputed. The OOS partition is NEVER read to complete an outcome window.",
+    "contract_id": "TARGET_ALD_V1",
+    "economic_claim": "FORBIDDEN \u2014 no friction authority exists (structural R only)",
+    "fixed_5r_as_sole_authority": false,
+    "fixed_r_measured": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "horizon_m5_bars": 288,
+    "management_diagnostic": "50% at TP1, 50% toward TP2, original structural SL retained by the runner",
+    "natural_target_r": "TP2_R when available, else TP1_R",
+    "tp1": "opposite Asian range boundary",
+    "tp2": "nearest valid H1 liquidity objective strictly beyond TP1 (closed H1 bars only)"
+  },
+  "timeframes": [
+    "D1",
+    "H4",
+    "H1",
+    "M15",
+    "M5"
+  ],
+  "trigger_contract": {
+    "composite_rule": "BULL iff D1==BULL and H4!=BEAR and H1==BULL; BEAR iff D1==BEAR and H4!=BULL and H1==BEAR; else NEUTRAL",
+    "contract_id": "TRIG_ALD_V1",
+    "decision_anchor": "entry window open (UTC); only bars CLOSED at or before the anchor are readable",
+    "direction_components": {
+      "internal_flow": "H1 structural_direction (must confirm)",
+      "macro_context": "H4 structural_direction (must not oppose)",
+      "macro_structure": "D1 structural_direction (confirmed swings, order 2)"
+    },
+    "no_opaque_score": true,
+    "primary_trigger": [
+      "direction non-neutral",
+      "Asian liquidity swept on the opposite side",
+      "M15 close back inside the Asian range"
+    ],
+    "recorded_but_non_gating": [
+      "H4 premium/discount state",
+      "previous-day high/low context",
+      "H1 liquidity pool counts above/below price"
+    ],
+    "rule_id": "TRIG_DIR_ALD_V1",
+    "sweep_side_rule": "direction MUST NOT equal sweep side: BULL sweeps the Asian LOW, BEAR the Asian HIGH",
+    "swing_orders": {
+      "D1": 2,
+      "H1": 2,
+      "H4": 2
+    }
+  }
+}

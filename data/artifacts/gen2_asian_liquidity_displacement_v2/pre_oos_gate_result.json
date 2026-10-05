@@ -1,0 +1,1018 @@
+{
+  "PRE_OOS_RESULT": "FAIL",
+  "axes": {
+    "BOOTSTRAP": {
+      "axis": "BOOTSTRAP",
+      "ci_high_R": 0.054968,
+      "ci_low_R": -0.061856,
+      "confidence": 0.95,
+      "pass_rule": "lower confidence bound of pooled expectancy > 0",
+      "point_estimate_R": -0.004215,
+      "samples": 5000,
+      "seed": 20251005,
+      "state": "FAIL"
+    },
+    "BRANCH_STABILITY": {
+      "axis": "BRANCH_STABILITY",
+      "max_relative_spike": 2.0,
+      "min_slice_n": 30,
+      "positive_fraction": 0.5,
+      "qualifying_n": 2,
+      "relative_spike": 1.418938,
+      "required_positive_fraction": 0.6,
+      "slices": {
+        "A_SWEEP_RECLAIM_REVERSAL": {
+          "expectancy_R": 0.035819,
+          "n": 1306,
+          "qualifying": true
+        },
+        "B_BREAKOUT_RETEST_CONTINUATION": {
+          "expectancy_R": -0.087469,
+          "n": 628,
+          "qualifying": true
+        }
+      },
+      "state": "FAIL"
+    },
+    "CANDIDATE_IDENTITY_VALIDATION": {
+      "axis": "CANDIDATE_IDENTITY_VALIDATION",
+      "state": "PASS"
+    },
+    "CONCENTRATION": {
+      "axis": "CONCENTRATION",
+      "max_share": 0.708618,
+      "pass_rule": "no single stratum supplies > 50% of gross gain",
+      "shares": {
+        "max_branch_share_of_gross_gain": 0.708618,
+        "max_session_share_of_gross_gain": 0.617241,
+        "max_symbol_share_of_gross_gain": 0.300944,
+        "max_year_share_of_gross_gain": 0.119091
+      },
+      "state": "FAIL",
+      "trades": 1934,
+      "winning_trades": 937
+    },
+    "DATASET_ROLE_VALIDATION": {
+      "HOLDOUT_TOUCHED": "NO",
+      "OOS_OPENED": "NO",
+      "axis": "DATASET_ROLE_VALIDATION",
+      "state": "PASS"
+    },
+    "FRICTION_READINESS": {
+      "ECONOMIC_EDGE": "NOT_ESTIMABLE",
+      "axis": "FRICTION_READINESS",
+      "mode": "STRUCTURAL_DISCLOSURE",
+      "state": "PASS"
+    },
+    "PARAMETER_NEIGHBORHOOD": {
+      "axis": "PARAMETER_NEIGHBORHOOD",
+      "counts_toward_pass": false,
+      "explanation": "V2 has no free numeric parameter, so there is no neighbourhood to perturb and no parameter sensitivity to measure. This axis is reported as NOT_APPLICABLE rather than silently PASSED; a reviewer who disagrees should treat the gate as incomplete.",
+      "state": "NOT_APPLICABLE_EMPTY_PARAMETER_VECTOR"
+    },
+    "REGIME_STABILITY": {
+      "axis": "REGIME_STABILITY",
+      "max_relative_spike": 2.0,
+      "min_slice_n": 30,
+      "positive_fraction": 0.5,
+      "qualifying_n": 2,
+      "relative_spike": 1.244712,
+      "required_positive_fraction": 0.6,
+      "slices": {
+        "RANGE": {
+          "expectancy_R": -0.023746,
+          "n": 944,
+          "qualifying": true
+        },
+        "TREND": {
+          "expectancy_R": 0.014409,
+          "n": 990,
+          "qualifying": true
+        }
+      },
+      "state": "FAIL"
+    },
+    "SESSION_STABILITY": {
+      "axis": "SESSION_STABILITY",
+      "max_relative_spike": 2.0,
+      "min_slice_n": 30,
+      "positive_fraction": 0.5,
+      "qualifying_n": 2,
+      "relative_spike": 1.262895,
+      "required_positive_fraction": 0.6,
+      "slices": {
+        "ASIAN_LONDON": {
+          "expectancy_R": 0.030588,
+          "n": 1123,
+          "qualifying": true
+        },
+        "LONDON_NEWYORK": {
+          "expectancy_R": -0.052407,
+          "n": 811,
+          "qualifying": true
+        }
+      },
+      "state": "FAIL"
+    },
+    "STRUCTURAL_CAPABILITY": {
+      "axis": "STRUCTURAL_CAPABILITY",
+      "n": 1934,
+      "reach_1R": 0.516546,
+      "reach_1R_min": 0.5,
+      "reach_3R": 0.229059,
+      "reach_3R_min": 0.25,
+      "source": "frozen V0.3 floors, unchanged",
+      "state": "FAIL"
+    },
+    "SYMBOL_STABILITY": {
+      "axis": "SYMBOL_STABILITY",
+      "max_relative_spike": 2.0,
+      "min_slice_n": 30,
+      "positive_fraction": 0.5,
+      "qualifying_n": 4,
+      "relative_spike": 1.551946,
+      "required_positive_fraction": 0.6,
+      "slices": {
+        "EURUSD": {
+          "expectancy_R": 0.088284,
+          "n": 531,
+          "qualifying": true
+        },
+        "GBPUSD": {
+          "expectancy_R": -0.045876,
+          "n": 482,
+          "qualifying": true
+        },
+        "USDJPY": {
+          "expectancy_R": 0.006844,
+          "n": 501,
+          "qualifying": true
+        },
+        "XAUUSD": {
+          "expectancy_R": -0.08654,
+          "n": 420,
+          "qualifying": true
+        }
+      },
+      "state": "FAIL"
+    },
+    "TAIL_DEPENDENCE": {
+      "axis": "TAIL_DEPENDENCE",
+      "expectancy_R": -0.004215,
+      "pass_rule": "pooled expectancy stays strictly positive after each removal",
+      "state": "FAIL",
+      "trades_removed_at_5pct": 97,
+      "without_best_5pct": -0.191458,
+      "without_best_trade": -0.011787
+    },
+    "WALK_FORWARD": {
+      "axis": "WALK_FORWARD",
+      "folds": [
+        {
+          "expectancy_R": -1.0,
+          "fold": "2001-03",
+          "n": 1
+        },
+        {
+          "expectancy_R": -0.056604,
+          "fold": "2001-04",
+          "n": 3
+        },
+        {
+          "expectancy_R": 1.606579,
+          "fold": "2001-05",
+          "n": 1
+        },
+        {
+          "expectancy_R": 1.597826,
+          "fold": "2001-06",
+          "n": 2
+        },
+        {
+          "expectancy_R": -0.268561,
+          "fold": "2002-02",
+          "n": 3
+        },
+        {
+          "expectancy_R": 0.921569,
+          "fold": "2002-03",
+          "n": 3
+        },
+        {
+          "expectancy_R": 0.75,
+          "fold": "2002-04",
+          "n": 2
+        },
+        {
+          "expectancy_R": -1.0,
+          "fold": "2002-07",
+          "n": 2
+        },
+        {
+          "expectancy_R": -0.871795,
+          "fold": "2002-08",
+          "n": 3
+        },
+        {
+          "expectancy_R": -1.0,
+          "fold": "2003-01",
+          "n": 1
+        },
+        {
+          "expectancy_R": 0.388889,
+          "fold": "2003-02",
+          "n": 1
+        },
+        {
+          "expectancy_R": -0.032456,
+          "fold": "2003-04",
+          "n": 5
+        },
+        {
+          "expectancy_R": 1.151515,
+          "fold": "2003-05",
+          "n": 1
+        },
+        {
+          "expectancy_R": -0.460317,
+          "fold": "2003-06",
+          "n": 3
+        },
+        {
+          "expectancy_R": 0.028238,
+          "fold": "2003-07",
+          "n": 19
+        },
+        {
+          "expectancy_R": 0.146154,
+          "fold": "2003-08",
+          "n": 15
+        },
+        {
+          "expectancy_R": -0.468755,
+          "fold": "2004-01",
+          "n": 7
+        },
+        {
+          "expectancy_R": -0.490196,
+          "fold": "2004-02",
+          "n": 3
+        },
+        {
+          "expectancy_R": 0.362527,
+          "fold": "2004-03",
+          "n": 11
+        },
+        {
+          "expectancy_R": -0.205695,
+          "fold": "2004-04",
+          "n": 14
+        },
+        {
+          "expectancy_R": -0.025395,
+          "fold": "2004-05",
+          "n": 12
+        },
+        {
+          "expectancy_R": -0.525958,
+          "fold": "2004-06",
+          "n": 20
+        },
+        {
+          "expectancy_R": 0.302048,
+          "fold": "2004-07",
+          "n": 5
+        },
+        {
+          "expectancy_R": 0.222222,
+          "fold": "2004-08",
+          "n": 3
+        },
+        {
+          "expectancy_R": 0.304348,
+          "fold": "2005-01",
+          "n": 1
+        },
+        {
+          "expectancy_R": 0.226923,
+          "fold": "2005-03",
+          "n": 6
+        },
+        {
+          "expectancy_R": -0.1,
+          "fold": "2005-04",
+          "n": 5
+        },
+        {
+          "expectancy_R": -1.0,
+          "fold": "2005-05",
+          "n": 2
+        },
+        {
+          "expectancy_R": 0.018175,
+          "fold": "2005-06",
+          "n": 3
+        },
+        {
+          "expectancy_R": 0.125,
+          "fold": "2005-07",
+          "n": 2
+        },
+        {
+          "expectancy_R": 0.437377,
+          "fold": "2005-08",
+          "n": 6
+        },
+        {
+          "expectancy_R": -0.25,
+          "fold": "2006-01",
+          "n": 2
+        },
+        {
+          "expectancy_R": 0.833333,
+          "fold": "2006-02",
+          "n": 3
+        },
+        {
+          "expectancy_R": -0.356522,
+          "fold": "2006-03",
+          "n": 5
+        },
+        {
+          "expectancy_R": 0.660584,
+          "fold": "2006-04",
+          "n": 8
+        },
+        {
+          "expectancy_R": -0.116344,
+          "fold": "2006-05",
+          "n": 11
+        },
+        {
+          "expectancy_R": -1.0,
+          "fold": "2006-06",
+          "n": 6
+        },
+        {
+          "expectancy_R": -1.0,
+          "fold": "2006-07",
+          "n": 2
+        },
+        {
+          "expectancy_R": -0.493452,
+          "fold": "2006-08",
+          "n": 2
+        },
+        {
+          "expectancy_R": -1.0,
+          "fold": "2007-01",
+          "n": 1
+        },
+        {
+          "expectancy_R": 0.004723,
+          "fold": "2007-03",
+          "n": 8
+        },
+        {
+          "expectancy_R": 0.428715,
+          "fold": "2007-04",
+          "n": 6
+        },
+        {
+          "expectancy_R": -1.0,
+          "fold": "2007-06",
+          "n": 2
+        },
+        {
+          "expectancy_R": -0.497115,
+          "fold": "2007-07",
+          "n": 2
+        },
+        {
+          "expectancy_R": 0.200726,
+          "fold": "2007-08",
+          "n": 5
+        },
+        {
+          "expectancy_R": 0.757795,
+          "fold": "2008-01",
+          "n": 4
+        },
+        {
+          "expectancy_R": 0.051923,
+          "fold": "2008-02",
+          "n": 5
+        },
+        {
+          "expectancy_R": -0.474294,
+          "fold": "2008-03",
+          "n": 7
+        },
+        {
+          "expectancy_R": 0.896201,
+          "fold": "2008-04",
+          "n": 14
+        },
+        {
+          "expectancy_R": -0.072246,
+          "fold": "2008-05",
+          "n": 10
+        },
+        {
+          "expectancy_R": 0.831513,
+          "fold": "2008-06",
+          "n": 4
+        },
+        {
+          "expectancy_R": 0.551948,
+          "fold": "2008-07",
+          "n": 2
+        },
+        {
+          "expectancy_R": 0.145448,
+          "fold": "2008-08",
+          "n": 10
+        },
+        {
+          "expectancy_R": 1.231289,
+          "fold": "2009-01",
+          "n": 2
+        },
+        {
+          "expectancy_R": 0.458964,
+          "fold": "2009-02",
+          "n": 19
+        },
+        {
+          "expectancy_R": -0.254713,
+          "fold": "2009-03",
+          "n": 21
+        },
+        {
+          "expectancy_R": 0.53943,
+          "fold": "2009-04",
+          "n": 28
+        },
+        {
+          "expectancy_R": -0.011908,
+          "fold": "2009-05",
+          "n": 18
+        },
+        {
+          "expectancy_R": 0.109148,
+          "fold": "2009-06",
+          "n": 29
+        },
+        {
+          "expectancy_R": 0.0117,
+          "fold": "2009-07",
+          "n": 28
+        },
+        {
+          "expectancy_R": 0.256893,
+          "fold": "2009-08",
+          "n": 32
+        },
+        {
+          "expectancy_R": 0.043446,
+          "fold": "2010-01",
+          "n": 10
+        },
+        {
+          "expectancy_R": -0.340863,
+          "fold": "2010-02",
+          "n": 11
+        },
+        {
+          "expectancy_R": 0.086575,
+          "fold": "2010-03",
+          "n": 25
+        },
+        {
+          "expectancy_R": -0.35618,
+          "fold": "2010-04",
+          "n": 25
+        },
+        {
+          "expectancy_R": 0.086939,
+          "fold": "2010-05",
+          "n": 34
+        },
+        {
+          "expectancy_R": 0.010255,
+          "fold": "2010-06",
+          "n": 33
+        },
+        {
+          "expectancy_R": 0.548053,
+          "fold": "2010-07",
+          "n": 24
+        },
+        {
+          "expectancy_R": -0.499705,
+          "fold": "2010-08",
+          "n": 18
+        },
+        {
+          "expectancy_R": 0.849335,
+          "fold": "2011-01",
+          "n": 8
+        },
+        {
+          "expectancy_R": -0.172259,
+          "fold": "2011-02",
+          "n": 13
+        },
+        {
+          "expectancy_R": -0.157417,
+          "fold": "2011-03",
+          "n": 15
+        },
+        {
+          "expectancy_R": -0.030408,
+          "fold": "2011-04",
+          "n": 23
+        },
+        {
+          "expectancy_R": -0.001264,
+          "fold": "2011-05",
+          "n": 22
+        },
+        {
+          "expectancy_R": -0.09626,
+          "fold": "2011-06",
+          "n": 23
+        },
+        {
+          "expectancy_R": 0.611111,
+          "fold": "2011-07",
+          "n": 22
+        },
+        {
+          "expectancy_R": -0.266045,
+          "fold": "2011-08",
+          "n": 33
+        },
+        {
+          "expectancy_R": -0.150145,
+          "fold": "2012-01",
+          "n": 8
+        },
+        {
+          "expectancy_R": -0.200443,
+          "fold": "2012-02",
+          "n": 29
+        },
+        {
+          "expectancy_R": 0.035424,
+          "fold": "2012-03",
+          "n": 27
+        },
+        {
+          "expectancy_R": -0.343289,
+          "fold": "2012-04",
+          "n": 28
+        },
+        {
+          "expectancy_R": 0.041161,
+          "fold": "2012-05",
+          "n": 27
+        },
+        {
+          "expectancy_R": -0.145862,
+          "fold": "2012-06",
+          "n": 25
+        },
+        {
+          "expectancy_R": 0.07659,
+          "fold": "2012-07",
+          "n": 32
+        },
+        {
+          "expectancy_R": -0.456987,
+          "fold": "2012-08",
+          "n": 33
+        },
+        {
+          "expectancy_R": -0.280321,
+          "fold": "2013-01",
+          "n": 12
+        },
+        {
+          "expectancy_R": 0.034908,
+          "fold": "2013-02",
+          "n": 30
+        },
+        {
+          "expectancy_R": -0.427955,
+          "fold": "2013-03",
+          "n": 27
+        },
+        {
+          "expectancy_R": -0.424874,
+          "fold": "2013-04",
+          "n": 18
+        },
+        {
+          "expectancy_R": 0.037216,
+          "fold": "2013-05",
+          "n": 33
+        },
+        {
+          "expectancy_R": 0.038976,
+          "fold": "2013-06",
+          "n": 28
+        },
+        {
+          "expectancy_R": 0.242944,
+          "fold": "2013-07",
+          "n": 24
+        },
+        {
+          "expectancy_R": -0.271653,
+          "fold": "2013-08",
+          "n": 28
+        },
+        {
+          "expectancy_R": -0.284523,
+          "fold": "2014-01",
+          "n": 11
+        },
+        {
+          "expectancy_R": -0.090389,
+          "fold": "2014-02",
+          "n": 18
+        },
+        {
+          "expectancy_R": -0.164484,
+          "fold": "2014-03",
+          "n": 18
+        },
+        {
+          "expectancy_R": 0.038691,
+          "fold": "2014-04",
+          "n": 19
+        },
+        {
+          "expectancy_R": -0.182599,
+          "fold": "2014-05",
+          "n": 24
+        },
+        {
+          "expectancy_R": 0.274132,
+          "fold": "2014-06",
+          "n": 21
+        },
+        {
+          "expectancy_R": 0.119011,
+          "fold": "2014-07",
+          "n": 24
+        },
+        {
+          "expectancy_R": 0.125616,
+          "fold": "2014-08",
+          "n": 23
+        },
+        {
+          "expectancy_R": -0.178914,
+          "fold": "2015-01",
+          "n": 11
+        },
+        {
+          "expectancy_R": -0.072042,
+          "fold": "2015-02",
+          "n": 26
+        },
+        {
+          "expectancy_R": -0.090666,
+          "fold": "2015-03",
+          "n": 30
+        },
+        {
+          "expectancy_R": -0.034626,
+          "fold": "2015-04",
+          "n": 22
+        },
+        {
+          "expectancy_R": 0.170422,
+          "fold": "2015-05",
+          "n": 21
+        },
+        {
+          "expectancy_R": 0.068765,
+          "fold": "2015-06",
+          "n": 27
+        },
+        {
+          "expectancy_R": 0.280316,
+          "fold": "2015-07",
+          "n": 18
+        },
+        {
+          "expectancy_R": -0.003867,
+          "fold": "2015-08",
+          "n": 24
+        },
+        {
+          "expectancy_R": -0.020775,
+          "fold": "2016-01",
+          "n": 5
+        },
+        {
+          "expectancy_R": 0.003087,
+          "fold": "2016-02",
+          "n": 31
+        },
+        {
+          "expectancy_R": -0.290681,
+          "fold": "2016-03",
+          "n": 25
+        },
+        {
+          "expectancy_R": -0.348743,
+          "fold": "2016-04",
+          "n": 27
+        },
+        {
+          "expectancy_R": 0.065255,
+          "fold": "2016-05",
+          "n": 30
+        },
+        {
+          "expectancy_R": 0.155817,
+          "fold": "2016-06",
+          "n": 28
+        },
+        {
+          "expectancy_R": -0.196937,
+          "fold": "2016-07",
+          "n": 23
+        },
+        {
+          "expectancy_R": -0.096943,
+          "fold": "2016-08",
+          "n": 25
+        },
+        {
+          "expectancy_R": -0.219697,
+          "fold": "2017-01",
+          "n": 4
+        },
+        {
+          "expectancy_R": -0.085742,
+          "fold": "2017-02",
+          "n": 15
+        },
+        {
+          "expectancy_R": -0.075637,
+          "fold": "2017-03",
+          "n": 32
+        },
+        {
+          "expectancy_R": 0.589452,
+          "fold": "2017-04",
+          "n": 20
+        },
+        {
+          "expectancy_R": 0.075593,
+          "fold": "2017-05",
+          "n": 32
+        },
+        {
+          "expectancy_R": -0.210275,
+          "fold": "2017-06",
+          "n": 24
+        },
+        {
+          "expectancy_R": -0.01875,
+          "fold": "2017-07",
+          "n": 36
+        },
+        {
+          "expectancy_R": 0.43824,
+          "fold": "2017-08",
+          "n": 31
+        }
+      ],
+      "method": "chronological non-overlapping monthly test windows",
+      "min_fold_n": 30,
+      "positive_fraction": 0.666667,
+      "qualifying_folds": 15,
+      "required_positive_fraction": 0.6,
+      "state": "PASS"
+    },
+    "YEAR_STABILITY": {
+      "axis": "YEAR_STABILITY",
+      "max_relative_spike": 2.0,
+      "min_slice_n": 30,
+      "positive_fraction": 0.538462,
+      "qualifying_n": 13,
+      "relative_spike": 3.127453,
+      "required_positive_fraction": 0.6,
+      "slices": {
+        "2001": {
+          "expectancy_R": 0.518917,
+          "n": 7,
+          "qualifying": false
+        },
+        "2002": {
+          "expectancy_R": -0.088951,
+          "n": 13,
+          "qualifying": false
+        },
+        "2003": {
+          "expectancy_R": 0.038355,
+          "n": 45,
+          "qualifying": true
+        },
+        "2004": {
+          "expectancy_R": -0.163877,
+          "n": 75,
+          "qualifying": true
+        },
+        "2005": {
+          "expectancy_R": 0.083787,
+          "n": 25,
+          "qualifying": false
+        },
+        "2006": {
+          "expectancy_R": -0.12217,
+          "n": 39,
+          "qualifying": true
+        },
+        "2007": {
+          "expectancy_R": -0.015855,
+          "n": 24,
+          "qualifying": false
+        },
+        "2008": {
+          "expectancy_R": 0.315706,
+          "n": 56,
+          "qualifying": true
+        },
+        "2009": {
+          "expectancy_R": 0.18326,
+          "n": 177,
+          "qualifying": true
+        },
+        "2010": {
+          "expectancy_R": -0.014457,
+          "n": 180,
+          "qualifying": true
+        },
+        "2011": {
+          "expectancy_R": 0.02464,
+          "n": 159,
+          "qualifying": true
+        },
+        "2012": {
+          "expectancy_R": -0.147534,
+          "n": 209,
+          "qualifying": true
+        },
+        "2013": {
+          "expectancy_R": -0.104877,
+          "n": 200,
+          "qualifying": true
+        },
+        "2014": {
+          "expectancy_R": 0.00087,
+          "n": 158,
+          "qualifying": true
+        },
+        "2015": {
+          "expectancy_R": 0.017126,
+          "n": 179,
+          "qualifying": true
+        },
+        "2016": {
+          "expectancy_R": -0.089298,
+          "n": 194,
+          "qualifying": true
+        },
+        "2017": {
+          "expectancy_R": 0.090137,
+          "n": 194,
+          "qualifying": true
+        }
+      },
+      "state": "FAIL"
+    }
+  },
+  "contract": {
+    "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+    "new_threshold_after_results": "FORBIDDEN",
+    "required_axes": [
+      "walk_forward",
+      "year_stability",
+      "symbol_stability",
+      "session_stability",
+      "branch_stability",
+      "regime_stability",
+      "tail_dependence",
+      "bootstrap",
+      "concentration"
+    ],
+    "runs_only_if": "pooled ENTRY_AVAILABLE_N >= 100",
+    "thresholds": {
+      "BOOTSTRAP_CONFIDENCE": 0.95,
+      "BOOTSTRAP_SAMPLES": 5000,
+      "BOOTSTRAP_SEED": 20251005,
+      "STABILITY_MAX_RELATIVE_SPIKE": 2.0,
+      "STABILITY_MIN_POSITIVE_FRACTION": 0.6,
+      "STRATUM_MIN_N": 30
+    },
+    "unchanged_from_v1": true,
+    "v1_gate_contract": {
+      "axes": {
+        "BOOTSTRAP_UNCERTAINTY": {
+          "method": "ag_edgelab.statistics.bootstrap.bootstrap_expectancy_ci(samples=5000, seed=20251005, confidence=0.95)",
+          "pass_rule": "95% CI lower bound of management expectancy R strictly > 0"
+        },
+        "CANDIDATE_IDENTITY_VALIDATION": {
+          "pass_rule": "all contract hashes recomputed and equal; strategy identity collides with no historical candidate id"
+        },
+        "DATASET_ROLE_VALIDATION": {
+          "pass_rule": "every dataset read is role=DEVELOPMENT, recorded in the dataset ledger; OOS_OPENED=NO; HOLDOUT_TOUCHED=NO"
+        },
+        "FRICTION_READINESS": {
+          "mode": "STRUCTURAL_DISCLOSURE",
+          "note": "FRICTION_EDGE_VERIFICATION_READY = NO does not block STRUCTURAL research (mission section 13)",
+          "pass_rule": "the friction authority state is explicitly recorded, economic metrics are suppressed as NOT_ESTIMABLE_NO_FRICTION_AUTHORITY, and NO substitute value (generic spread, $7/lot, fixed slippage, industry default) appears anywhere in the evidence bundle"
+        },
+        "MEAN_MEDIAN_DIVERGENCE": {
+          "pass_rule": "NOT (mean management R > 0 AND median management R < 0) \u2014 a positive mean carried entirely by tails fails"
+        },
+        "PARAMETER_NEIGHBORHOOD": {
+          "method": "ag_edgelab.optimization.stability.assess_parameter_stability over displacement body/range in [0.6, 0.65, 0.7, 0.75, 0.8] centred on 0.7",
+          "pass_rule": "stable == True (positive_fraction >= 0.6 and relative_spike <= 2.0)",
+          "selection_authority": "NONE \u2014 diagnostic only; the V1 threshold 0.70 is frozen and is NOT changed by this mission under any outcome"
+        },
+        "REGIME_STABILITY": {
+          "classifier": "ag_edgelab.verification.regimes.classify_market_state (frozen v1) applied to the D1 bar last closed before the entry-window open",
+          "pass_rule": "fraction of qualifying regime slices with positive management expectancy >= 0.6"
+        },
+        "SESSION_STABILITY": {
+          "pass_rule": "fraction of qualifying session pairs with positive management expectancy >= 0.6"
+        },
+        "SYMBOL_STABILITY": {
+          "pass_rule": "fraction of qualifying symbols with positive management expectancy >= 0.6",
+          "universe": [
+            "EURUSD",
+            "GBPUSD",
+            "USDJPY",
+            "XAUUSD"
+          ]
+        },
+        "TAIL_DEPENDENCE": {
+          "method": "remove the single best trade; separately remove the best 5% of trades",
+          "pass_rule": "pooled management expectancy stays strictly positive under BOTH removals"
+        },
+        "WALK_FORWARD": {
+          "method": "chronological non-overlapping DEV folds (monthly test windows)",
+          "min_fold_n": 30,
+          "pass_rule": "fraction of folds with positive management expectancy >= 0.6"
+        },
+        "YEAR_STABILITY": {
+          "method": "the committed FX authority covers ONE calendar year (2017); per config/governance/data_authority_gap.json no multi-year partition exists. Substitution declared in advance: INTRA_YEAR_SEGMENT_STABILITY over the DEV calendar quarters (2017Q1, 2017Q2, 2017Q3-partial).",
+          "pass_rule": "fraction of qualifying quarters with positive management expectancy >= 0.6",
+          "standing_limitation": "YEAR_COVERAGE_LIMITED_SINGLE_CALENDAR_YEAR_2017"
+        }
+      },
+      "eligibility": {
+        "on_ineligible": "PRE_OOS_RESULT = NOT_REACHED (never a PASS)",
+        "pooled_direction_n_min": 200,
+        "pooled_entry_available_n_min": 100,
+        "stratum_min_n": 30
+      },
+      "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+      "semantics": "FAIL_CLOSED \u2014 the gate PASSES only if every axis is PASS",
+      "structural_capability_floors": {
+        "entry_n_min": 30,
+        "reach_1R_min": 0.5,
+        "reach_3R_min": 0.25,
+        "source": "frozen V0.3 root-cause thresholds in ag_edgelab.universal.fx_dev_campaign"
+      },
+      "threshold_mutation_allowed": false
+    }
+  },
+  "expectancy_metric": "realised structural R per completed trade (target reached -> +natural_target_R, stop -> -1R, horizon -> mark-to-close R). No friction is modelled.",
+  "failed_axes": [
+    "BOOTSTRAP",
+    "BRANCH_STABILITY",
+    "CONCENTRATION",
+    "REGIME_STABILITY",
+    "SESSION_STABILITY",
+    "STRUCTURAL_CAPABILITY",
+    "SYMBOL_STABILITY",
+    "TAIL_DEPENDENCE",
+    "YEAR_STABILITY"
+  ],
+  "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+  "not_applicable_axes": [
+    "PARAMETER_NEIGHBORHOOD"
+  ],
+  "semantics": "FAIL_CLOSED \u2014 the gate passes only if every decisive axis is PASS",
+  "thresholds_unchanged": true,
+  "year_stability_note": "V1 could only run an intra-year substitution because its authority covered one calendar year. V2 runs TRUE calendar-year stability over the multi-year corpus; the V1 standing limitation no longer applies."
+}

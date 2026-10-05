@@ -1,0 +1,1167 @@
+{
+  "ATTRITION": {
+    "confirmation_failures": {
+      "GEOMETRY_INVALID": 15,
+      "NO_DISPLACEMENT": 147,
+      "NO_FVG": 43,
+      "NO_FVG_RETRACE": 25,
+      "NO_MSS_BOS": 175,
+      "TEMPORAL_INVALID": 1
+    },
+    "stages": [
+      {
+        "FAIL_N": 14213,
+        "FINAL_ENTRY_PCT": 0.130529,
+        "INPUT_N": 26814,
+        "NEXT_STAGE_PCT": 46.994108,
+        "PASS_N": 12601,
+        "PASS_PCT": 46.994108,
+        "stage": "T1_ASIAN_REFERENCE_VALID"
+      },
+      {
+        "FAIL_N": 24,
+        "FINAL_ENTRY_PCT": 0.277756,
+        "INPUT_N": 12601,
+        "NEXT_STAGE_PCT": 46.904602,
+        "PASS_N": 12577,
+        "PASS_PCT": 99.809539,
+        "stage": "T2_DIRECTION_DECIDED"
+      },
+      {
+        "FAIL_N": 11195,
+        "FINAL_ENTRY_PCT": 0.278286,
+        "INPUT_N": 12577,
+        "NEXT_STAGE_PCT": 5.154024,
+        "PASS_N": 1382,
+        "PASS_PCT": 10.988312,
+        "stage": "T3_DIRECTION_NON_NEUTRAL"
+      },
+      {
+        "FAIL_N": 713,
+        "FINAL_ENTRY_PCT": 2.532562,
+        "INPUT_N": 1382,
+        "NEXT_STAGE_PCT": 2.494965,
+        "PASS_N": 669,
+        "PASS_PCT": 48.408104,
+        "stage": "T4_ASIAN_SWEEP"
+      },
+      {
+        "FAIL_N": 228,
+        "FINAL_ENTRY_PCT": 5.231689,
+        "INPUT_N": 669,
+        "NEXT_STAGE_PCT": 1.644663,
+        "PASS_N": 441,
+        "PASS_PCT": 65.919283,
+        "stage": "T5_CLOSE_BACK_INSIDE"
+      },
+      {
+        "FAIL_N": 147,
+        "FINAL_ENTRY_PCT": 7.936508,
+        "INPUT_N": 441,
+        "NEXT_STAGE_PCT": 1.096442,
+        "PASS_N": 294,
+        "PASS_PCT": 66.666667,
+        "stage": "C1_DISPLACEMENT"
+      },
+      {
+        "FAIL_N": 175,
+        "FINAL_ENTRY_PCT": 11.904762,
+        "INPUT_N": 294,
+        "NEXT_STAGE_PCT": 0.443798,
+        "PASS_N": 119,
+        "PASS_PCT": 40.47619,
+        "stage": "C2_MSS_BOS"
+      },
+      {
+        "FAIL_N": 43,
+        "FINAL_ENTRY_PCT": 29.411765,
+        "INPUT_N": 119,
+        "NEXT_STAGE_PCT": 0.283434,
+        "PASS_N": 76,
+        "PASS_PCT": 63.865546,
+        "stage": "C3_FRESH_FVG"
+      },
+      {
+        "FAIL_N": 25,
+        "FINAL_ENTRY_PCT": 46.052632,
+        "INPUT_N": 76,
+        "NEXT_STAGE_PCT": 0.190199,
+        "PASS_N": 51,
+        "PASS_PCT": 67.105263,
+        "stage": "C4_FVG_RETRACE_AVAILABLE"
+      },
+      {
+        "FAIL_N": 15,
+        "FINAL_ENTRY_PCT": 68.627451,
+        "INPUT_N": 51,
+        "NEXT_STAGE_PCT": 0.134258,
+        "PASS_N": 36,
+        "PASS_PCT": 70.588235,
+        "stage": "C5_GEOMETRY_VALID"
+      },
+      {
+        "FAIL_N": 1,
+        "FINAL_ENTRY_PCT": 97.222222,
+        "INPUT_N": 36,
+        "NEXT_STAGE_PCT": 0.130529,
+        "PASS_N": 35,
+        "PASS_PCT": 97.222222,
+        "stage": "C6_ENTRY_AVAILABLE"
+      }
+    ],
+    "trigger_failures": {
+      "DIRECTION_SWEEP_MISMATCH": 0,
+      "NEUTRAL_DIRECTION": 11195,
+      "NO_ASIAN_SWEEP": 713,
+      "NO_RECLAIM": 228,
+      "OTHER_DEFINED_REASON": 14220,
+      "SESSION_EXPIRED": 17
+    }
+  },
+  "BALANCED_PANEL": {
+    "classification_on_panel_only": "STRATEGY_STRUCTURAL_STARVATION",
+    "counts": {
+      "CANDIDATE_N": 15784,
+      "CONFIRMATION_PASS_N": 49,
+      "DIRECTIONAL_N": 1222,
+      "ENTRY_AVAILABLE_N": 34,
+      "TRIGGER_PASS_N": 390
+    },
+    "declared_in": "preregistration.data_authority.balanced_panel_years (pre-result)",
+    "entries_per_symbol_year": 0.944444,
+    "fixed_r_capability": {
+      "1R": 0.411765,
+      "2R": 0.264706,
+      "3R": 0.235294,
+      "4R": 0.058824,
+      "5R": 0.0
+    },
+    "selection_authority": "NONE \u2014 reported alongside the pooled corpus, never instead of it",
+    "symbol_years": 36,
+    "years": [
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017"
+    ]
+  },
+  "BROKER_MUTATION": "NO",
+  "CAPABILITY": {
+    "1R": 0.428571,
+    "2R": 0.285714,
+    "3R": 0.257143,
+    "4R": 0.057143,
+    "5R": 0.0
+  },
+  "CONFIRMATION_PASS_N": 51,
+  "CONTINUATION": {
+    "P(2R|1R)": 0.666667,
+    "P(3R|2R)": 0.9,
+    "P(4R|3R)": 0.222222,
+    "P(5R|4R)": 0.0
+  },
+  "DATASET_AUTHORITY": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+  "DATASET_BINDING_CHANGED": "YES",
+  "DATASET_MANIFEST_SHA256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+  "DATASET_QUALITY": {
+    "duplicate_timestamps_total": 0,
+    "max_fill_ratio": 0.714993,
+    "min_fill_ratio": 0.063439,
+    "ohlc_violations_total": 0,
+    "symbol_years": 63
+  },
+  "DATASET_ROLE": "DEVELOPMENT",
+  "DECISION_CASE": "CASE_B",
+  "DEV_PARTITION_HASH": "da5e7c58c1e297d7ac95fe583394909adca637dcf8c78a9a0e3bc14501994e3a",
+  "DEV_SYMBOL_YEARS_N": 63,
+  "DEV_WINDOWS": [
+    [
+      "2000-01-01T00:00:00+00:00",
+      "2000-09-01T00:00:00+00:00"
+    ],
+    [
+      "2001-01-01T00:00:00+00:00",
+      "2001-09-01T00:00:00+00:00"
+    ],
+    [
+      "2002-01-01T00:00:00+00:00",
+      "2002-09-01T00:00:00+00:00"
+    ],
+    [
+      "2003-01-01T00:00:00+00:00",
+      "2003-09-01T00:00:00+00:00"
+    ],
+    [
+      "2004-01-01T00:00:00+00:00",
+      "2004-09-01T00:00:00+00:00"
+    ],
+    [
+      "2005-01-01T00:00:00+00:00",
+      "2005-09-01T00:00:00+00:00"
+    ],
+    [
+      "2006-01-01T00:00:00+00:00",
+      "2006-09-01T00:00:00+00:00"
+    ],
+    [
+      "2007-01-01T00:00:00+00:00",
+      "2007-09-01T00:00:00+00:00"
+    ],
+    [
+      "2008-01-01T00:00:00+00:00",
+      "2008-09-01T00:00:00+00:00"
+    ],
+    [
+      "2009-01-01T00:00:00+00:00",
+      "2009-09-01T00:00:00+00:00"
+    ],
+    [
+      "2010-01-01T00:00:00+00:00",
+      "2010-09-01T00:00:00+00:00"
+    ],
+    [
+      "2011-01-01T00:00:00+00:00",
+      "2011-09-01T00:00:00+00:00"
+    ],
+    [
+      "2012-01-01T00:00:00+00:00",
+      "2012-09-01T00:00:00+00:00"
+    ],
+    [
+      "2013-01-01T00:00:00+00:00",
+      "2013-09-01T00:00:00+00:00"
+    ],
+    [
+      "2014-01-01T00:00:00+00:00",
+      "2014-09-01T00:00:00+00:00"
+    ],
+    [
+      "2015-01-01T00:00:00+00:00",
+      "2015-09-01T00:00:00+00:00"
+    ],
+    [
+      "2016-01-01T00:00:00+00:00",
+      "2016-09-01T00:00:00+00:00"
+    ],
+    [
+      "2017-01-01T00:00:00+00:00",
+      "2017-09-01T00:00:00+00:00"
+    ]
+  ],
+  "DEV_YEARS_N": 18,
+  "DIRECTIONAL_N": 1382,
+  "DIRECTION_DECIDABLE_N": 12577,
+  "ECONOMIC_EDGE": "NOT_ESTIMABLE",
+  "ENTRY_AVAILABLE_N": 35,
+  "EXCLUDED_SYMBOL_YEARS": [],
+  "EXPECTED_RULE_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+  "EXPERIMENT_ID": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+  "FRICTION_EDGE_VERIFICATION_READY": "NO",
+  "FROZEN_CANDIDATE": "NO",
+  "GEOMETRY_VALID_N": 36,
+  "HOLDOUT_TOUCHED": "NO",
+  "IMPLEMENTATION_SHA": "69ad73aea7c424750a743f319656ef33ea4ced16",
+  "MAE_R": {
+    "max": 2.05600000000004,
+    "mean": 1.031218,
+    "median": 1.066946
+  },
+  "MFE_R": {
+    "max": 4.787878787878615,
+    "mean": 1.458841,
+    "median": 0.868889
+  },
+  "NATURAL_TARGET_MEDIAN_R": 1.003804,
+  "NEXT": "NEW_V2_HYPOTHESIS_DESIGN",
+  "OOS_OPENED": "NO",
+  "OPPORTUNITY_N": 26814,
+  "PARAMETER_OPTIMIZATION": "NO",
+  "PREREGISTRATION_HASH": "a255e1d981522d0a8de5ea02fa9071a50a905dac223bd71b7f689990ed3aa52b",
+  "PRE_OOS_RESULT": "NOT_REACHED",
+  "PRIMARY_FUNNEL_WEAKNESS": "INSUFFICIENT_SAMPLE",
+  "ROBUSTNESS": {
+    "BOOTSTRAP": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "INTRA_YEAR_SEGMENT_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "LEAVE_ONE_SYMBOL_OUT": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "LEAVE_ONE_YEAR_OUT": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "MEAN_MEDIAN_DIVERGENCE": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "PARAMETER_NEIGHBORHOOD": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "REGIME_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "SESSION_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "SYMBOL_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "TAIL_DEPENDENCE": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "WALK_FORWARD": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "YEAR_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE"
+  },
+  "ROBUSTNESS_RUN": "NO",
+  "RULES_CHANGED": "NO",
+  "SAMPLE_CLASSIFICATION": "STRATEGY_STRUCTURAL_STARVATION",
+  "SEARCH_LEDGER": {
+    "cells_removed": "NONE",
+    "hypotheses_evaluated": 1,
+    "optimizer_runs": 0,
+    "post_hoc_selection": "NONE",
+    "threshold_mutations": 0,
+    "trial_count": 0,
+    "years_ranked_or_selected": "NONE"
+  },
+  "SECONDARY_DIAGNOSES": [
+    "TRIGGER_FUNNEL_WEAKNESS",
+    "CONFIRMATION_FUNNEL_WEAKNESS",
+    "TARGET_MODEL_MISMATCH"
+  ],
+  "SESSIONS": [
+    "ASIAN_LONDON",
+    "LONDON_NEWYORK",
+    "POOLED"
+  ],
+  "SESSION_STARVATION": [
+    "ASIAN_LONDON",
+    "LONDON_NEWYORK"
+  ],
+  "STATUS": "MULTIYEAR_DEV_INSUFFICIENT_SAMPLE",
+  "STRATEGY_EXECUTION_ADDED": "NO",
+  "STRATEGY_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+  "STRATEGY_ID": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+  "STRATEGY_RULES_CHANGED": "NO",
+  "STRATEGY_VERSION": "1.0.0-research",
+  "SUFFICIENCY_PROJECTION": {
+    "available_history": "HistData FX M1 begins in 2000 and gold in 2009; the DEV half of every year is already consumed by this experiment, so no further DEVELOPMENT evidence of this kind exists to collect",
+    "calendar_years_needed_at_4_symbols": 26.47,
+    "calendar_years_needed_for_full_cell_coverage_at_4_symbols": 63.53,
+    "method": "pure arithmetic on the observed entry yield; no extrapolation of performance, only of SAMPLE SIZE",
+    "observed_entries_per_symbol_year_balanced_panel": 0.944444,
+    "symbol_years_needed_for_every_cell_to_reach_the_30_entry_floor": 255,
+    "symbol_years_needed_for_pooled_eligibility": 106
+  },
+  "SYMBOLS": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "SYMBOL_STARVATION": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "TIMEFRAMES": [
+    "D1",
+    "H4",
+    "H1",
+    "M15",
+    "M5"
+  ],
+  "TREE_SHA": "bfa908a1215846a17d0a34f28a2c3fad698ac0e3",
+  "TRIGGER_PASS_N": 441,
+  "V1_NARROW_VS_MULTIYEAR": {
+    "2017_representative": true,
+    "balanced_panel": {
+      "classification_on_panel_only": "STRATEGY_STRUCTURAL_STARVATION",
+      "counts": {
+        "CANDIDATE_N": 15784,
+        "CONFIRMATION_PASS_N": 49,
+        "DIRECTIONAL_N": 1222,
+        "ENTRY_AVAILABLE_N": 34,
+        "TRIGGER_PASS_N": 390
+      },
+      "declared_in": "preregistration.data_authority.balanced_panel_years (pre-result)",
+      "entries_per_symbol_year": 0.944444,
+      "fixed_r_capability": {
+        "1R": 0.411765,
+        "2R": 0.264706,
+        "3R": 0.235294,
+        "4R": 0.058824,
+        "5R": 0.0
+      },
+      "selection_authority": "NONE \u2014 reported alongside the pooled corpus, never instead of it",
+      "symbol_years": 36,
+      "years": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017"
+      ]
+    },
+    "classification": {
+      "SAMPLE_CLASSIFICATION": "STRATEGY_STRUCTURAL_STARVATION",
+      "applied_rule": "decision_order[4]",
+      "cell_entry_n": {
+        "EURUSD|ASIAN_LONDON": 2,
+        "EURUSD|LONDON_NEWYORK": 3,
+        "GBPUSD|ASIAN_LONDON": 6,
+        "GBPUSD|LONDON_NEWYORK": 4,
+        "USDJPY|ASIAN_LONDON": 1,
+        "USDJPY|LONDON_NEWYORK": 5,
+        "XAUUSD|ASIAN_LONDON": 7,
+        "XAUUSD|LONDON_NEWYORK": 7
+      },
+      "cell_floor": 30,
+      "contract_id": "MULTIYEAR_SAMPLE_CLASSIFICATION_V1",
+      "pooled_eligibility_required": 100,
+      "pooled_entry_n": 35,
+      "pre_oos_result": "NOT_REACHED",
+      "starved_cells": [
+        "EURUSD|ASIAN_LONDON",
+        "EURUSD|LONDON_NEWYORK",
+        "GBPUSD|ASIAN_LONDON",
+        "GBPUSD|LONDON_NEWYORK",
+        "USDJPY|ASIAN_LONDON",
+        "USDJPY|LONDON_NEWYORK",
+        "XAUUSD|ASIAN_LONDON",
+        "XAUUSD|LONDON_NEWYORK"
+      ],
+      "viable_cells": []
+    },
+    "corpus_growth_x": 15.75,
+    "entry_yield_per_1000_candidates_by_year": {
+      "2000": 0.0,
+      "2001": 0.0,
+      "2002": 0.0,
+      "2003": 0.0,
+      "2004": 0.0,
+      "2005": 0.0,
+      "2006": 0.0,
+      "2007": 0.0,
+      "2008": 0.750751,
+      "2009": 1.231527,
+      "2010": 3.409091,
+      "2011": 2.828054,
+      "2012": 1.126126,
+      "2013": 1.696833,
+      "2014": 3.378378,
+      "2015": 2.815315,
+      "2016": 1.131222,
+      "2017": 1.696833
+    },
+    "growth_x": {
+      "CANDIDATE_N": 15.1663,
+      "CONFIRMATION_PASS_N": 8.5,
+      "ENTRY_AVAILABLE_N": 11.6667,
+      "GEOMETRY_VALID_N": 12.0,
+      "TRIGGER_PASS_N": 10.5
+    },
+    "interpretation_rule": "if the 2017 entry yield sits inside the range spanned by the other years, the 2017 window was a representative sample of the rule's behaviour and the starvation is a property of the rules",
+    "multiyear": {
+      "CANDIDATE_N": 26814,
+      "CONFIRMATION_PASS_N": 51,
+      "ENTRY_AVAILABLE_N": 35,
+      "GEOMETRY_VALID_N": 36,
+      "TRIGGER_PASS_N": 441
+    },
+    "multiyear_symbol_years": 63,
+    "narrow_2017_dev": {
+      "CANDIDATE_N": 1768,
+      "CONFIRMATION_PASS_N": 6,
+      "ENTRY_AVAILABLE_N": 3,
+      "GEOMETRY_VALID_N": 3,
+      "TRIGGER_PASS_N": 42
+    },
+    "narrow_campaign_evidence": {
+      "PRE_OOS_RESULT": "NOT_REACHED",
+      "PRIMARY_FUNNEL_WEAKNESS": "INSUFFICIENT_SAMPLE",
+      "STATUS": "DEV_REJECTED",
+      "final_report": "data/artifacts/gen2_asian_liquidity_displacement_v1/final_report.json",
+      "sha256": "61a2e1b6c0ae005b08f7ae93b95060c088ccecac6a79d86de2cfa4642678ed97"
+    },
+    "narrow_symbol_years": 4,
+    "sufficiency_projection": {
+      "available_history": "HistData FX M1 begins in 2000 and gold in 2009; the DEV half of every year is already consumed by this experiment, so no further DEVELOPMENT evidence of this kind exists to collect",
+      "calendar_years_needed_at_4_symbols": 26.47,
+      "calendar_years_needed_for_full_cell_coverage_at_4_symbols": 63.53,
+      "method": "pure arithmetic on the observed entry yield; no extrapolation of performance, only of SAMPLE SIZE",
+      "observed_entries_per_symbol_year_balanced_panel": 0.944444,
+      "symbol_years_needed_for_every_cell_to_reach_the_30_entry_floor": 255,
+      "symbol_years_needed_for_pooled_eligibility": 106
+    },
+    "yield_2017": 1.696833,
+    "yield_other_years_range": [
+      0.0,
+      3.409091
+    ]
+  },
+  "YEAR_DISTRIBUTION": {
+    "2000": {
+      "CONFIRMATION_N": 0,
+      "DIRECTIONAL_N": 0,
+      "ENTRY_N": 0,
+      "OPPORTUNITY_N": 432,
+      "TRIGGER_N": 0,
+      "entry_yield_per_1000_candidates": 0.0
+    },
+    "2001": {
+      "CONFIRMATION_N": 0,
+      "DIRECTIONAL_N": 0,
+      "ENTRY_N": 0,
+      "OPPORTUNITY_N": 1326,
+      "TRIGGER_N": 0,
+      "entry_yield_per_1000_candidates": 0.0
+    },
+    "2002": {
+      "CONFIRMATION_N": 0,
+      "DIRECTIONAL_N": 4,
+      "ENTRY_N": 0,
+      "OPPORTUNITY_N": 1320,
+      "TRIGGER_N": 0,
+      "entry_yield_per_1000_candidates": 0.0
+    },
+    "2003": {
+      "CONFIRMATION_N": 0,
+      "DIRECTIONAL_N": 14,
+      "ENTRY_N": 0,
+      "OPPORTUNITY_N": 1322,
+      "TRIGGER_N": 4,
+      "entry_yield_per_1000_candidates": 0.0
+    },
+    "2004": {
+      "CONFIRMATION_N": 0,
+      "DIRECTIONAL_N": 44,
+      "ENTRY_N": 0,
+      "OPPORTUNITY_N": 1332,
+      "TRIGGER_N": 13,
+      "entry_yield_per_1000_candidates": 0.0
+    },
+    "2005": {
+      "CONFIRMATION_N": 0,
+      "DIRECTIONAL_N": 24,
+      "ENTRY_N": 0,
+      "OPPORTUNITY_N": 1320,
+      "TRIGGER_N": 9,
+      "entry_yield_per_1000_candidates": 0.0
+    },
+    "2006": {
+      "CONFIRMATION_N": 1,
+      "DIRECTIONAL_N": 22,
+      "ENTRY_N": 0,
+      "OPPORTUNITY_N": 1320,
+      "TRIGGER_N": 7,
+      "entry_yield_per_1000_candidates": 0.0
+    },
+    "2007": {
+      "CONFIRMATION_N": 0,
+      "DIRECTIONAL_N": 8,
+      "ENTRY_N": 0,
+      "OPPORTUNITY_N": 1326,
+      "TRIGGER_N": 4,
+      "entry_yield_per_1000_candidates": 0.0
+    },
+    "2008": {
+      "CONFIRMATION_N": 1,
+      "DIRECTIONAL_N": 44,
+      "ENTRY_N": 1,
+      "OPPORTUNITY_N": 1332,
+      "TRIGGER_N": 14,
+      "entry_yield_per_1000_candidates": 0.750751
+    },
+    "2009": {
+      "CONFIRMATION_N": 2,
+      "DIRECTIONAL_N": 130,
+      "ENTRY_N": 2,
+      "OPPORTUNITY_N": 1624,
+      "TRIGGER_N": 34,
+      "entry_yield_per_1000_candidates": 1.231527
+    },
+    "2010": {
+      "CONFIRMATION_N": 8,
+      "DIRECTIONAL_N": 137,
+      "ENTRY_N": 6,
+      "OPPORTUNITY_N": 1760,
+      "TRIGGER_N": 52,
+      "entry_yield_per_1000_candidates": 3.409091
+    },
+    "2011": {
+      "CONFIRMATION_N": 5,
+      "DIRECTIONAL_N": 108,
+      "ENTRY_N": 5,
+      "OPPORTUNITY_N": 1768,
+      "TRIGGER_N": 32,
+      "entry_yield_per_1000_candidates": 2.828054
+    },
+    "2012": {
+      "CONFIRMATION_N": 3,
+      "DIRECTIONAL_N": 143,
+      "ENTRY_N": 2,
+      "OPPORTUNITY_N": 1776,
+      "TRIGGER_N": 45,
+      "entry_yield_per_1000_candidates": 1.126126
+    },
+    "2013": {
+      "CONFIRMATION_N": 4,
+      "DIRECTIONAL_N": 150,
+      "ENTRY_N": 3,
+      "OPPORTUNITY_N": 1768,
+      "TRIGGER_N": 42,
+      "entry_yield_per_1000_candidates": 1.696833
+    },
+    "2014": {
+      "CONFIRMATION_N": 6,
+      "DIRECTIONAL_N": 131,
+      "ENTRY_N": 6,
+      "OPPORTUNITY_N": 1776,
+      "TRIGGER_N": 52,
+      "entry_yield_per_1000_candidates": 3.378378
+    },
+    "2015": {
+      "CONFIRMATION_N": 10,
+      "DIRECTIONAL_N": 156,
+      "ENTRY_N": 5,
+      "OPPORTUNITY_N": 1776,
+      "TRIGGER_N": 57,
+      "entry_yield_per_1000_candidates": 2.815315
+    },
+    "2016": {
+      "CONFIRMATION_N": 5,
+      "DIRECTIONAL_N": 116,
+      "ENTRY_N": 2,
+      "OPPORTUNITY_N": 1768,
+      "TRIGGER_N": 34,
+      "entry_yield_per_1000_candidates": 1.131222
+    },
+    "2017": {
+      "CONFIRMATION_N": 6,
+      "DIRECTIONAL_N": 151,
+      "ENTRY_N": 3,
+      "OPPORTUNITY_N": 1768,
+      "TRIGGER_N": 42,
+      "entry_yield_per_1000_candidates": 1.696833
+    }
+  },
+  "authority_gate": {
+    "evidence_sha256": "62e8c305f527e36655c4c280db8721c68ed9302935d1e07d799a394b2f18c217",
+    "observed": {
+      "HOLDOUT_AUTHORIZED": "NO",
+      "LIVE_EXECUTION_AUTHORIZED": "NO",
+      "OOS_ECONOMIC_AUTHORIZED": "NO",
+      "RESEARCH_GENERATION_2_ALLOWED": "YES",
+      "SYSTEM_SOFTWARE_COMPLETE": "YES"
+    },
+    "required": {
+      "HOLDOUT_AUTHORIZED": "NO",
+      "LIVE_EXECUTION_AUTHORIZED": "NO",
+      "OOS_ECONOMIC_AUTHORIZED": "NO",
+      "RESEARCH_GENERATION_2_ALLOWED": "YES",
+      "SYSTEM_SOFTWARE_COMPLETE": "YES"
+    },
+    "state": "PASS"
+  },
+  "contamination_check": {
+    "DEVELOPMENT_KNOWN_windows": [
+      [
+        "2017-01-01T00:00:00+00:00",
+        "2017-09-01T00:00:00+00:00"
+      ]
+    ],
+    "FRESH_DEVELOPMENT_windows_n": 17,
+    "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+    "candidate_ledger_sha256": "5c785fcdd3213716a53a155e5a85ce45f6a86e320ae77128b8244be8033d7a10",
+    "disclosure": "The 2017 DEV window is already DEVELOPMENT_KNOWN for this family and is reused deliberately as the comparison baseline. Every other DEV window is fresh DEVELOPMENT and becomes DEVELOPMENT_KNOWN for the family after this mission. No OOS or holdout window is read for any year.",
+    "oos_access_log_sha256": "44125ce16b2c2e93c5efe3138a9044e4bdca90edd192e527ea06f8e1271d4df4",
+    "prior_exposure_records": [
+      {
+        "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+        "end": "2017-09-01T00:00:00Z",
+        "evidence_hash": "6662c33f9b5b6d5b05bcabff889659ca522abe0a00d1e4dcce4dc89d9972f13b",
+        "exposure_timestamp": "2025-10-05T00:00:00Z",
+        "exposure_type": "PRIOR_STRATEGY_DESIGN",
+        "knowledge_source": "GENERATION 2 DEVELOPMENT replay of the frozen V1 hypothesis on the HISTDATA_ASCII_M1_2017_PR10_PINNED DEVELOPMENT partition (data/artifacts/gen2_asian_liquidity_displacement_v1/)",
+        "notes": "DEVELOPMENT ONLY. The OOS window [2017-09-01, 2017-12-01) and the sealed holdout were NOT opened by this mission. This window is DEVELOPMENT_KNOWN for the family and may never serve as OOS for any ASIAN_LIQUIDITY_DISPLACEMENT candidate.",
+        "reuse_policy": "DEVELOPMENT_KNOWN",
+        "source_candidate_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+        "start": "2017-01-01T00:00:00Z"
+      },
+      {
+        "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+        "end": "2017-09-01T00:00:00Z",
+        "evidence_hash": "",
+        "exposure_timestamp": "2025-01-01T00:00:00Z",
+        "exposure_type": "PRIOR_STRATEGY_DESIGN",
+        "knowledge_source": "R0-era exploratory DEVELOPMENT screen of an FX Asian-sweep lane on the same DEVELOPMENT partition; no committed verdict artifacts (candidate_ledger.json record 'DEV_SCREEN_LANES')",
+        "notes": "Disclosed conceptual lineage, not identity reuse. ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1 is a NEW identity with a new contract; the prior screen produced no promoted rule, threshold or symbol selection.",
+        "reuse_policy": "DEVELOPMENT_KNOWN",
+        "source_candidate_id": "DEV_SCREEN_LANES (FX Asian sweep, archived feat/fx-asian-sweep-candidate)",
+        "start": "2017-01-01T00:00:00Z"
+      }
+    ],
+    "registry_sha256": "539a193b92756b6c868ab90dd8fdffe07164f072bad674d445c0c02a24c11f8c",
+    "state": "PASS",
+    "windows_checked_n": 18
+  },
+  "contract_hashes": {
+    "confirmation_contract_hash": "a4802f0d015820db131ab83af5efb376fa32006eff499cd45a20dbbc569edea6",
+    "entry_contract_hash": "01719a1559d4d02ab3076e9c0756ca64ab5db85d3438088378169d3a6293b9d4",
+    "friction_contract_hash": "12d7f472a7630c024673129adedfa6aaaeb2d147fbbaae66a2565a392649dc6d",
+    "parameter_hash": "2c3313ca8effb66d268179b41f223dacb6c0b879a5324bed52ca2d5b72c0160e",
+    "session_contract_hash": "e8ea8e0ae660a2a866fd33c0dd90bca97a19913e1b4c75042f2445366445b590",
+    "sl_contract_hash": "34c899349ac62715b33151d867174fea1c1223541819f0abaa74c4f32ddac4cd",
+    "strategy_code_hash": "fb495d51e3bcb6e2ecf10f5e5993b650dbcc4588695a451c8f2308a310b4f196",
+    "strategy_contract_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "target_contract_hash": "fad4e130fab35c6b34d8287abf41a91dd328fd549d419975427d436c4245cd39",
+    "trigger_contract_hash": "be90382f44c26482f9f4590ce97838015e1fd462f30e3503806cfbee6828121b"
+  },
+  "dataset_authority_contract": {
+    "annual_partitions_utc": {
+      "DEVELOPMENT": "[YYYY-01-01, YYYY-09-01)",
+      "OOS": "[YYYY-09-01, YYYY-12-01) \u2014 NOT LOADABLE under this authority",
+      "SEALED_HOLDOUT": "[YYYY-12-01, YYYY+1-01-01) \u2014 NOT LOADABLE, sealed"
+    },
+    "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "balanced_panel_years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017
+    ],
+    "bar_convention": "bar OPEN timestamp",
+    "coverage_years": {
+      "EURUSD": [
+        2000,
+        2017
+      ],
+      "GBPUSD": [
+        2000,
+        2017
+      ],
+      "USDJPY": [
+        2000,
+        2017
+      ],
+      "XAUUSD": [
+        2009,
+        2017
+      ]
+    },
+    "cross_source_identity_proof": "inner DAT_ASCII_{SYM}_M1_2017.csv sha256 == inner csv of the PR #10 pinned zip, 4/4 symbols",
+    "derivation_code": "ag_edgelab.data.fx_histdata_2017 (unmodified)",
+    "duplicate_policy": "zero tolerance \u2014 quality_gate_m1 raises; the symbol-year is excluded, never de-duplicated",
+    "extends": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+    "loadable_roles": [
+      "DEVELOPMENT"
+    ],
+    "m15_rule": ">= 13/15 M1 minutes per bucket; missing buckets never filled",
+    "mirror": "github.com/riknv/fx-m1-data",
+    "mtf_coverage_fraction": 0.75,
+    "normalized_timezone": "UTC",
+    "ohlc_policy": "zero tolerance \u2014 any OHLC-invalid M1 bar excludes the symbol-year",
+    "partition_policy_id": "FX_ANNUAL_PARTITION_POLICY_R2",
+    "product": "HistData.com Generic ASCII M1",
+    "source_timezone": "America/New_York",
+    "symbols": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ],
+    "transport": "GitHub contents API (raw media type)"
+  },
+  "determinism": {
+    "double_pass": "BYTE_IDENTICAL",
+    "mode": "per-symbol-year double pass over the identical derived frames",
+    "per_symbol_year": {
+      "EURUSD_2000": "bb9114716079896ffe0b48f7c166663c211907fdf021bff8985c1e494c19accd",
+      "EURUSD_2001": "b9980fd7ba38b062f04c0942b20345d738ebfcd20d3ac1a2b58a15615b0fbf71",
+      "EURUSD_2002": "7b13be620d7cf5d8d3e1a41f511d50c35ad9209472ff42120f193807fbd03e87",
+      "EURUSD_2003": "a5fbd8170c7eff58116bbc0c061d3d798cfe70905854b8c2a288a5c7b3edb5e2",
+      "EURUSD_2004": "1019053e50bdc6c8e85da7c3627810c8b208eb7fb78d11155d90b7ca7687ddb9",
+      "EURUSD_2005": "c26d94a54672635c8417a8255ec1df60aff58605069e12fb07f52eed3b1c2b5e",
+      "EURUSD_2006": "2f8ba1c15c0480709677913624d301408c9c4523ec88067be76c1fa0845bfb73",
+      "EURUSD_2007": "f6b44fe0c3de2adc4fd975302a3c634f2e765ed962e2a3333ac13e556576cc82",
+      "EURUSD_2008": "0e296c38523480a42f12b317bb397f3896c287ae103002704e2cffc7892751c6",
+      "EURUSD_2009": "7fa4f2d29a8519cfb1405eae0f6e573137a0a743780a36d2f18f56b970ec764b",
+      "EURUSD_2010": "75b7ca8f7dc5a2c926b9299aa43ff93fb5b9235c4dd81d3f6e567e16da41b782",
+      "EURUSD_2011": "101af4c42dd5fe4aa499d648092a6570061835d1e352c96a6a63e69501e1e8de",
+      "EURUSD_2012": "7efd36f52acf25080102c4e9c69cd6be1067a2c3060d82eb640e5aba43cc7aff",
+      "EURUSD_2013": "72367907ee8e482d2801d9f32092e61c55b07c9ed8396750fa16b006e79f110b",
+      "EURUSD_2014": "542b4cc0a889663d35e7a61e1b5c98c81c3db8da32011032c5fab20c2d92425f",
+      "EURUSD_2015": "5d9b0773feae379fe9032dbcea8bef81427b42d50fbcdcf4ee907916575cfc8f",
+      "EURUSD_2016": "abed03a46247183fabfbce93f2890068f818db92a1a8e48caa6a0e9881b552fd",
+      "EURUSD_2017": "9a8e7304c18907dc1c22efb29ee1478c555379a08a1ad56bbb7b4b1f510329c3",
+      "GBPUSD_2000": "38a7842530adc1af3513276011da15e8a308754b69f808958bc2b3cb11ca4ff8",
+      "GBPUSD_2001": "b4e716204cab234f5e287b4cf67a985b350d85ad883ae8335e0fe6da6c70b63d",
+      "GBPUSD_2002": "c487857afde3bcb7bc08e283129a3585308c25e907d3b51b9831d6a6b2057bb0",
+      "GBPUSD_2003": "7f56c818ac55c4e2794c498e64ef69c6fe63b12bd54769b824a76e1a22c8e949",
+      "GBPUSD_2004": "0dfb558429f6546e9d2ef52eca21406f1f28489486a15de0cf6854ae3eb3a72f",
+      "GBPUSD_2005": "0f8afc64c39c4542e98644b8182dd7a007ec8fb7e463c74a420a337fcac1939b",
+      "GBPUSD_2006": "219bb9807bd68ce0ad6f2b18cd5ca2a9f006bf1f5321339b7a32c3bfa7a5981d",
+      "GBPUSD_2007": "fea99f51adbada311b8260ad619ae2e1d81ec871699b94315cd79a153f285b14",
+      "GBPUSD_2008": "30fcd19430fe4973ff767f7a49f70f749dfb0cba6f0249ab7eaa96f45733fccb",
+      "GBPUSD_2009": "2458ce8ee7b8f93191a098f2fee7ff329f39b9ba6b6dd8cf9fc7f196d3f6650c",
+      "GBPUSD_2010": "e4d01ace066bb01e3f213cc782475ba9da1387a22ab924b79e7fea6ea70adc96",
+      "GBPUSD_2011": "0c7a3dec7ae66a55c3ab2b8c77e496d29486561281b1e33b44453d96f15bf961",
+      "GBPUSD_2012": "7f06015c713aa2c3084e074a559ef17abe67a375c833d00132bf3c0701341a15",
+      "GBPUSD_2013": "0f185333be62a87d3e46109983b0b23d32d048d40805473fb60f519465d4eb28",
+      "GBPUSD_2014": "a6ac30905cc5580fb80420b33a292a9978765e99153f0641026164a69726debd",
+      "GBPUSD_2015": "991b25363546bb22eda6b7913c0c2dbd10088e01bde748e0d4890a5d9aaa8bdf",
+      "GBPUSD_2016": "7f99805749dda65e35ccc66e4f5d327dbcdd56a72e4a91d534b117b587e2dde1",
+      "GBPUSD_2017": "5a47166c538f3958bc4f2a47481c19069978933f92d9b7f5b97fa7a62e8b0fa7",
+      "USDJPY_2000": "c6d0cef3032bb3418dcbeb5043dcf7ce36f74d6d788856bfa53e3230fd9517a0",
+      "USDJPY_2001": "3d6ad6c7d8328a53a65de51856e692e86a4c83f22eb338e87144ae7f5539c677",
+      "USDJPY_2002": "e2521ab4ce6d47278ee09a993361b72f1bb84754a091260ceda11fb7f76d01f8",
+      "USDJPY_2003": "0ea6ba84eba2e784895a5f7718b4876fbb1bea34c45edd300723a6fb848d3b8f",
+      "USDJPY_2004": "67aacb97bafbe506ebc088511b90b37224de46a895115e522ac6b2cb964db5b0",
+      "USDJPY_2005": "f833bd4e4fc0b5f2a6ed4c757326eca4f6677d0fee98bf71ee93cfa658fa9a5b",
+      "USDJPY_2006": "d62487ae8a3d48e6bc8bdb880f1be18133ddb035e972cdad12eb47dc96614b4c",
+      "USDJPY_2007": "dbf516623ba0664b05e45da58d89b7c51ecaf60df0db6080107fa7ddfe617f30",
+      "USDJPY_2008": "ef1d4b56d98d099e4f935d7559cb91c3308404c3d345de4f8e8f03b9f9ebd689",
+      "USDJPY_2009": "02d5a867d4c9553e6c30ad5396267c1fd7b8ff3d38e8540c3f01c48a0825227b",
+      "USDJPY_2010": "88a3c82b830778f8670aa65be8caeb1c2411de7efe03eb062adf2de0fa1d0f7b",
+      "USDJPY_2011": "087963edae33878759b58d46316e6511c05eb463de59e1fc5212816a73c82693",
+      "USDJPY_2012": "13a9c50d3120449d2310c62491a0c9ffebc3f1229e650c0131fe56164f3811b1",
+      "USDJPY_2013": "4aa7b0d4c615e92d1542e1e5ffc8abe00d42a62fe539612a457086e7ce0dc349",
+      "USDJPY_2014": "ca1bb1e8240dedca70be5f436e8829a995f5ea026894afff4f7abf310ff093bd",
+      "USDJPY_2015": "b25ee42efd5da9231fb9d4275756735beecd0b171d781cbc96173591c870f5d3",
+      "USDJPY_2016": "11fd1d039d73b342507498ce9149b7c5b803819a6b5a4c7ef096da30ef956731",
+      "USDJPY_2017": "f8fa303908b615b593d8f7940e40e511af12c486b3fe5f5ab6e4dc3e8deead1f",
+      "XAUUSD_2009": "b0526501433342f3dd6f1098f18f5f54fda3e2e14d7fa64cd55cc1de002be211",
+      "XAUUSD_2010": "aa6fa5528fb4d98fdabc7255b56dc302ef8d9316a4af54e6740b51c1f5f29969",
+      "XAUUSD_2011": "e50df4d556e335556796ad97fcfab22935045af94ff8b733ecc8e5cb65f8d797",
+      "XAUUSD_2012": "43cc04cadc95f5610bfb6a3c7d658f2b7575faa5313a512e3e12f9704100e0ea",
+      "XAUUSD_2013": "3793db7f320341b1316ab277636d3f01d1f74c429660fd80c14f699d77a7029b",
+      "XAUUSD_2014": "acce5f465e93195d82b117333296dc717b71c800e686d6561ceb65259becb77a",
+      "XAUUSD_2015": "bcd6bbe56501ebba7640f0e7d0e0286e5e766617310da26c96bda3826b0c77e4",
+      "XAUUSD_2016": "01ae8f8aeeee64599d68a5b91684a1a7c2f8d7b8de458bdaaf73974db73af1c2",
+      "XAUUSD_2017": "eae086276aca7e9cd48c09f97236c5474bad5bc143edd1ce0db548590008dff0"
+    },
+    "pooled_ledger_sha256": "412e680a8ef9a4e4d3985b460293f9af5c049764e1b719ba9d1ba7d6adbf4a5e",
+    "symbol_years_checked": 63
+  },
+  "evidence_ledger_cas_pointer": {
+    "artifact_id": "GEN2_ALD_V1_MULTIYEAR_CANDIDATE_LEDGER",
+    "bytes": 625938,
+    "path": "data/external/gen2_ald_v1_multiyear/candidate_ledger.jsonl.gz",
+    "regeneration": "python scripts/run_gen2_ald_v1_multiyear_dev.py after python scripts/acquire_histdata_fx_multiyear.py; byte-identical by construction (deterministic replay, gzip mtime=0)",
+    "rows": 26878,
+    "sha256": "58dbd55e20754f3b805374c88ce9513f46ec6b06f924cfd53e8933aa9541f8f9",
+    "storage": "EXTERNAL \u2014 not committed to git",
+    "uncompressed_bytes": 34220275,
+    "uncompressed_sha256": "c021d864054bb8816b392960817e90856b3478a06812d10db24e22dfc755f3cd"
+  },
+  "generated_at_utc": "2026-10-05T08:31:34+00:00",
+  "mission": "GEN2 ASIAN LIQUIDITY DISPLACEMENT V1 \u2014 MULTI-YEAR DEV REPLAY",
+  "root_cause": {
+    "PRIMARY_FUNNEL_WEAKNESS": "INSUFFICIENT_SAMPLE",
+    "SECONDARY_DIAGNOSES": [
+      "TRIGGER_FUNNEL_WEAKNESS",
+      "CONFIRMATION_FUNNEL_WEAKNESS",
+      "TARGET_MODEL_MISMATCH"
+    ],
+    "decision_order": [
+      "INSUFFICIENT_SAMPLE",
+      "TEMPORAL_INCOMPATIBILITY",
+      "TRIGGER_FUNNEL_WEAKNESS",
+      "CONFIRMATION_FUNNEL_WEAKNESS",
+      "TARGET_MODEL_MISMATCH",
+      "TARGET_CONTINUATION_WEAKNESS"
+    ],
+    "findings": [
+      {
+        "evidence": "O2_2R: input_n=15 < 30; O3_3R: input_n=10 < 30; O4_4R: input_n=9 < 30; O5_5R: input_n=2 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "priority": 1,
+        "scopes": [
+          "O2_2R",
+          "O3_3R",
+          "O4_4R",
+          "O5_5R"
+        ],
+        "source": "UNIVERSAL_FUNNEL_ANALYZER"
+      },
+      {
+        "evidence": "opportunity-basis 5R reach among TRIGGER_PASS candidates = 12.61% <= 20.0%; 3R reach = 19.5%; selection uplift vs all non-neutral = -3.7118 pp",
+        "label": "TRIGGER_FUNNEL_WEAKNESS",
+        "priority": 3
+      },
+      {
+        "evidence": "C1_DISPLACEMENT: 5R pass_uplift_vs_input_pp=1.82; C3_FRESH_FVG: 5R pass_uplift_vs_input_pp=-2.49; C4_FVG_RETRACE_AVAILABLE: 5R pass_uplift_vs_input_pp=2.67; C5_GEOMETRY_VALID: 5R pass_uplift_vs_input_pp=-2.86; C6_ENTRY_AVAILABLE: 5R pass_uplift_vs_input_pp=0.50",
+        "label": "CONFIRMATION_FUNNEL_WEAKNESS",
+        "priority": 4,
+        "scopes": [
+          "C1_DISPLACEMENT",
+          "C3_FRESH_FVG",
+          "C4_FVG_RETRACE_AVAILABLE",
+          "C5_GEOMETRY_VALID",
+          "C6_ENTRY_AVAILABLE"
+        ],
+        "source": "UNIVERSAL_FUNNEL_ANALYZER"
+      },
+      {
+        "evidence": "5R: reach_pct=0.00",
+        "label": "TARGET_MODEL_MISMATCH",
+        "priority": 5,
+        "scopes": [
+          "5R"
+        ],
+        "source": "UNIVERSAL_FUNNEL_ANALYZER"
+      }
+    ],
+    "starvation_attribution": {
+      "largest_absolute_attrition": {
+        "absolute_loss": 11195,
+        "from": "T2_DIRECTION_DECIDED",
+        "input_n": 12577,
+        "output_n": 1382,
+        "survival_pct": 10.988312,
+        "to": "T3_DIRECTION_NON_NEUTRAL"
+      },
+      "lowest_survival_step_with_sample": {
+        "absolute_loss": 11195,
+        "from": "T2_DIRECTION_DECIDED",
+        "input_n": 12577,
+        "output_n": 1382,
+        "survival_pct": 10.988312,
+        "to": "T3_DIRECTION_NON_NEUTRAL"
+      },
+      "steps": [
+        {
+          "absolute_loss": 14213,
+          "calendar_note": "14196 rejects are ASIAN_REFERENCE_INSUFFICIENT_BARS, of which 7622 fall on Saturday/Sunday (FX has no weekend session); this step is calendar structure, not a rule weakness",
+          "from": "CANDIDATE_N",
+          "input_n": 26814,
+          "output_n": 12601,
+          "survival_pct": 46.994108,
+          "to": "T1_ASIAN_REFERENCE_VALID"
+        },
+        {
+          "absolute_loss": 24,
+          "from": "T1_ASIAN_REFERENCE_VALID",
+          "input_n": 12601,
+          "output_n": 12577,
+          "survival_pct": 99.809539,
+          "to": "T2_DIRECTION_DECIDED"
+        },
+        {
+          "absolute_loss": 11195,
+          "from": "T2_DIRECTION_DECIDED",
+          "input_n": 12577,
+          "output_n": 1382,
+          "survival_pct": 10.988312,
+          "to": "T3_DIRECTION_NON_NEUTRAL"
+        },
+        {
+          "absolute_loss": 713,
+          "from": "T3_DIRECTION_NON_NEUTRAL",
+          "input_n": 1382,
+          "output_n": 669,
+          "survival_pct": 48.408104,
+          "to": "T4_ASIAN_SWEEP"
+        },
+        {
+          "absolute_loss": 228,
+          "from": "T4_ASIAN_SWEEP",
+          "input_n": 669,
+          "output_n": 441,
+          "survival_pct": 65.919283,
+          "to": "T5_CLOSE_BACK_INSIDE"
+        },
+        {
+          "absolute_loss": 147,
+          "from": "T5_CLOSE_BACK_INSIDE",
+          "input_n": 441,
+          "output_n": 294,
+          "survival_pct": 66.666667,
+          "to": "C1_DISPLACEMENT"
+        },
+        {
+          "absolute_loss": 175,
+          "from": "C1_DISPLACEMENT",
+          "input_n": 294,
+          "output_n": 119,
+          "survival_pct": 40.47619,
+          "to": "C2_MSS_BOS"
+        },
+        {
+          "absolute_loss": 43,
+          "from": "C2_MSS_BOS",
+          "input_n": 119,
+          "output_n": 76,
+          "survival_pct": 63.865546,
+          "to": "C3_FRESH_FVG"
+        },
+        {
+          "absolute_loss": 25,
+          "from": "C3_FRESH_FVG",
+          "input_n": 76,
+          "output_n": 51,
+          "survival_pct": 67.105263,
+          "to": "C4_FVG_RETRACE_AVAILABLE"
+        },
+        {
+          "absolute_loss": 15,
+          "from": "C4_FVG_RETRACE_AVAILABLE",
+          "input_n": 51,
+          "output_n": 36,
+          "survival_pct": 70.588235,
+          "to": "C5_GEOMETRY_VALID"
+        },
+        {
+          "absolute_loss": 1,
+          "from": "C5_GEOMETRY_VALID",
+          "input_n": 36,
+          "output_n": 35,
+          "survival_pct": 97.222222,
+          "to": "C6_ENTRY_AVAILABLE"
+        },
+        {
+          "absolute_loss": 20,
+          "from": "C6_ENTRY_AVAILABLE",
+          "input_n": 35,
+          "output_n": 15,
+          "survival_pct": 42.857143,
+          "to": "O1_1R"
+        },
+        {
+          "absolute_loss": 5,
+          "from": "O1_1R",
+          "input_n": 15,
+          "output_n": 10,
+          "survival_pct": 66.666667,
+          "to": "O2_2R"
+        },
+        {
+          "absolute_loss": 1,
+          "from": "O2_2R",
+          "input_n": 10,
+          "output_n": 9,
+          "survival_pct": 90.0,
+          "to": "O3_3R"
+        },
+        {
+          "absolute_loss": 7,
+          "from": "O3_3R",
+          "input_n": 9,
+          "output_n": 2,
+          "survival_pct": 22.222222,
+          "to": "O4_4R"
+        },
+        {
+          "absolute_loss": 2,
+          "from": "O4_4R",
+          "input_n": 2,
+          "output_n": 0,
+          "survival_pct": 0.0,
+          "to": "O5_5R"
+        }
+      ]
+    },
+    "universal_funnel_analyzer_verdict": {
+      "analyzer": "ag_edgelab.analytics.diagnostic.analyze_three_funnel",
+      "mapped_mission_labels": [
+        "CONFIRMATION_FUNNEL_WEAKNESS",
+        "INSUFFICIENT_SAMPLE",
+        "TARGET_MODEL_MISMATCH",
+        "TRIGGER_FUNNEL_WEAKNESS"
+      ],
+      "thresholds": "frozen DiagnosticPolicy defaults \u2014 unmodified by this mission",
+      "weak_points": [
+        {
+          "evidence": "5R pass_uplift_vs_input_pp=1.82",
+          "label": "LOW_DISCRIMINATION",
+          "scope": "C1_DISPLACEMENT"
+        },
+        {
+          "evidence": "5R pass_uplift_vs_input_pp=-2.49",
+          "label": "LOW_DISCRIMINATION",
+          "scope": "C3_FRESH_FVG"
+        },
+        {
+          "evidence": "5R pass_uplift_vs_input_pp=2.67",
+          "label": "LOW_DISCRIMINATION",
+          "scope": "C4_FVG_RETRACE_AVAILABLE"
+        },
+        {
+          "evidence": "5R pass_uplift_vs_input_pp=-2.86",
+          "label": "LOW_DISCRIMINATION",
+          "scope": "C5_GEOMETRY_VALID"
+        },
+        {
+          "evidence": "5R pass_uplift_vs_input_pp=0.50",
+          "label": "LOW_DISCRIMINATION",
+          "scope": "C6_ENTRY_AVAILABLE"
+        },
+        {
+          "evidence": "input_n=15 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O2_2R"
+        },
+        {
+          "evidence": "input_n=10 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O3_3R"
+        },
+        {
+          "evidence": "input_n=9 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O4_4R"
+        },
+        {
+          "evidence": "input_n=2 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O5_5R"
+        },
+        {
+          "evidence": "5R pass_reach_pct=16.33",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T1_ASIAN_REFERENCE_VALID"
+        },
+        {
+          "evidence": "5R pass_reach_pct=16.33",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T2_DIRECTION_DECIDED"
+        },
+        {
+          "evidence": "5R pass_reach_pct=16.33",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T3_DIRECTION_NON_NEUTRAL"
+        },
+        {
+          "evidence": "5R pass_reach_pct=10.42",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T4_ASIAN_SWEEP"
+        },
+        {
+          "evidence": "5R pass_reach_pct=12.61",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T5_CLOSE_BACK_INSIDE"
+        },
+        {
+          "evidence": "reach_pct=0.00",
+          "label": "TP_TOO_AMBITIOUS_CANDIDATE",
+          "scope": "5R"
+        }
+      ]
+    },
+    "upstream_principle_applied": "No additional confirmation filter was designed or tested: the evidence names the first economically relevant weak point and the mission's search policy forbids adding filters in response to it."
+  },
+  "rule_identity_check": {
+    "EXPECTED_RULE_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "RULES_CHANGED": "NO",
+    "checks": {
+      "asian_reference_utc": true,
+      "displacement_threshold": true,
+      "london_entry_utc": true,
+      "new_york_entry_utc": true,
+      "session_widening_forbidden": true,
+      "strategy_hash": true,
+      "strategy_id": true,
+      "strategy_version": true,
+      "symbol_universe": true
+    },
+    "recomputed_strategy_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "state": "PASS"
+  }
+}

@@ -1,0 +1,1807 @@
+{
+  "analyzer": "ag_edgelab.analytics.diagnostic.analyze_three_funnel (accepted Universal Funnel Analyzer)",
+  "dataset_role": "DEVELOPMENT",
+  "determinism": {
+    "double_pass": "BYTE_IDENTICAL",
+    "pass1_sha256": "57c0091869b6b8d9ee275fe04f7f1912b9c72642d5200ee69b2288b4549f0b76",
+    "pass2_sha256": "57c0091869b6b8d9ee275fe04f7f1912b9c72642d5200ee69b2288b4549f0b76"
+  },
+  "dev_partition_hash": "50f0ca09d61ec14a10d12a1b8d7834a937d6361991d6c742279b79bb4b72f2ab",
+  "stage_matrix": {
+    "BY_SESSION": {
+      "ASIAN_LONDON": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 18,
+        "C2_MSS_BOS": 6,
+        "C3_FRESH_FVG": 4,
+        "C4_FVG_RETRACE_AVAILABLE": 3,
+        "C5_GEOMETRY_VALID": 1,
+        "C6_ENTRY_AVAILABLE": 1,
+        "CANDIDATE_N": 884,
+        "CONFIRMATION_INPUT": 25,
+        "CONFIRMATION_PASS": 3,
+        "ENTRY_AVAILABLE": 1,
+        "GEOMETRY_VALID": 1,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 635,
+        "T2_DIRECTION_DECIDED": 635,
+        "T3_DIRECTION_NON_NEUTRAL": 74,
+        "T4_ASIAN_SWEEP": 38,
+        "T5_CLOSE_BACK_INSIDE": 25,
+        "TRIGGER_INPUT": 884,
+        "TRIGGER_PASS": 25
+      },
+      "LONDON_NEWYORK": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 10,
+        "C2_MSS_BOS": 4,
+        "C3_FRESH_FVG": 3,
+        "C4_FVG_RETRACE_AVAILABLE": 3,
+        "C5_GEOMETRY_VALID": 2,
+        "C6_ENTRY_AVAILABLE": 2,
+        "CANDIDATE_N": 884,
+        "CONFIRMATION_INPUT": 17,
+        "CONFIRMATION_PASS": 3,
+        "ENTRY_AVAILABLE": 2,
+        "GEOMETRY_VALID": 2,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 635,
+        "T2_DIRECTION_DECIDED": 635,
+        "T3_DIRECTION_NON_NEUTRAL": 77,
+        "T4_ASIAN_SWEEP": 35,
+        "T5_CLOSE_BACK_INSIDE": 17,
+        "TRIGGER_INPUT": 884,
+        "TRIGGER_PASS": 17
+      }
+    },
+    "BY_SYMBOL": {
+      "EURUSD": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 9,
+        "C2_MSS_BOS": 2,
+        "C3_FRESH_FVG": 1,
+        "C4_FVG_RETRACE_AVAILABLE": 1,
+        "C5_GEOMETRY_VALID": 1,
+        "C6_ENTRY_AVAILABLE": 1,
+        "CANDIDATE_N": 442,
+        "CONFIRMATION_INPUT": 13,
+        "CONFIRMATION_PASS": 1,
+        "ENTRY_AVAILABLE": 1,
+        "GEOMETRY_VALID": 1,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 318,
+        "T2_DIRECTION_DECIDED": 318,
+        "T3_DIRECTION_NON_NEUTRAL": 45,
+        "T4_ASIAN_SWEEP": 26,
+        "T5_CLOSE_BACK_INSIDE": 13,
+        "TRIGGER_INPUT": 442,
+        "TRIGGER_PASS": 13
+      },
+      "GBPUSD": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 5,
+        "C2_MSS_BOS": 3,
+        "C3_FRESH_FVG": 2,
+        "C4_FVG_RETRACE_AVAILABLE": 2,
+        "C5_GEOMETRY_VALID": 0,
+        "C6_ENTRY_AVAILABLE": 0,
+        "CANDIDATE_N": 442,
+        "CONFIRMATION_INPUT": 6,
+        "CONFIRMATION_PASS": 2,
+        "ENTRY_AVAILABLE": 0,
+        "GEOMETRY_VALID": 0,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 318,
+        "T2_DIRECTION_DECIDED": 318,
+        "T3_DIRECTION_NON_NEUTRAL": 29,
+        "T4_ASIAN_SWEEP": 11,
+        "T5_CLOSE_BACK_INSIDE": 6,
+        "TRIGGER_INPUT": 442,
+        "TRIGGER_PASS": 6
+      },
+      "USDJPY": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 9,
+        "C2_MSS_BOS": 2,
+        "C3_FRESH_FVG": 2,
+        "C4_FVG_RETRACE_AVAILABLE": 2,
+        "C5_GEOMETRY_VALID": 1,
+        "C6_ENTRY_AVAILABLE": 1,
+        "CANDIDATE_N": 442,
+        "CONFIRMATION_INPUT": 14,
+        "CONFIRMATION_PASS": 2,
+        "ENTRY_AVAILABLE": 1,
+        "GEOMETRY_VALID": 1,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 318,
+        "T2_DIRECTION_DECIDED": 318,
+        "T3_DIRECTION_NON_NEUTRAL": 40,
+        "T4_ASIAN_SWEEP": 21,
+        "T5_CLOSE_BACK_INSIDE": 14,
+        "TRIGGER_INPUT": 442,
+        "TRIGGER_PASS": 14
+      },
+      "XAUUSD": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 5,
+        "C2_MSS_BOS": 3,
+        "C3_FRESH_FVG": 2,
+        "C4_FVG_RETRACE_AVAILABLE": 1,
+        "C5_GEOMETRY_VALID": 1,
+        "C6_ENTRY_AVAILABLE": 1,
+        "CANDIDATE_N": 442,
+        "CONFIRMATION_INPUT": 9,
+        "CONFIRMATION_PASS": 1,
+        "ENTRY_AVAILABLE": 1,
+        "GEOMETRY_VALID": 1,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 316,
+        "T2_DIRECTION_DECIDED": 316,
+        "T3_DIRECTION_NON_NEUTRAL": 37,
+        "T4_ASIAN_SWEEP": 15,
+        "T5_CLOSE_BACK_INSIDE": 9,
+        "TRIGGER_INPUT": 442,
+        "TRIGGER_PASS": 9
+      }
+    },
+    "BY_SYMBOL_SESSION": {
+      "EURUSD|ASIAN_LONDON": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 6,
+        "C2_MSS_BOS": 1,
+        "C3_FRESH_FVG": 0,
+        "C4_FVG_RETRACE_AVAILABLE": 0,
+        "C5_GEOMETRY_VALID": 0,
+        "C6_ENTRY_AVAILABLE": 0,
+        "CANDIDATE_N": 221,
+        "CONFIRMATION_INPUT": 9,
+        "CONFIRMATION_PASS": 0,
+        "ENTRY_AVAILABLE": 0,
+        "GEOMETRY_VALID": 0,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 159,
+        "T2_DIRECTION_DECIDED": 159,
+        "T3_DIRECTION_NON_NEUTRAL": 22,
+        "T4_ASIAN_SWEEP": 14,
+        "T5_CLOSE_BACK_INSIDE": 9,
+        "TRIGGER_INPUT": 221,
+        "TRIGGER_PASS": 9
+      },
+      "EURUSD|LONDON_NEWYORK": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 3,
+        "C2_MSS_BOS": 1,
+        "C3_FRESH_FVG": 1,
+        "C4_FVG_RETRACE_AVAILABLE": 1,
+        "C5_GEOMETRY_VALID": 1,
+        "C6_ENTRY_AVAILABLE": 1,
+        "CANDIDATE_N": 221,
+        "CONFIRMATION_INPUT": 4,
+        "CONFIRMATION_PASS": 1,
+        "ENTRY_AVAILABLE": 1,
+        "GEOMETRY_VALID": 1,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 159,
+        "T2_DIRECTION_DECIDED": 159,
+        "T3_DIRECTION_NON_NEUTRAL": 23,
+        "T4_ASIAN_SWEEP": 12,
+        "T5_CLOSE_BACK_INSIDE": 4,
+        "TRIGGER_INPUT": 221,
+        "TRIGGER_PASS": 4
+      },
+      "GBPUSD|ASIAN_LONDON": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 4,
+        "C2_MSS_BOS": 3,
+        "C3_FRESH_FVG": 2,
+        "C4_FVG_RETRACE_AVAILABLE": 2,
+        "C5_GEOMETRY_VALID": 0,
+        "C6_ENTRY_AVAILABLE": 0,
+        "CANDIDATE_N": 221,
+        "CONFIRMATION_INPUT": 4,
+        "CONFIRMATION_PASS": 2,
+        "ENTRY_AVAILABLE": 0,
+        "GEOMETRY_VALID": 0,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 159,
+        "T2_DIRECTION_DECIDED": 159,
+        "T3_DIRECTION_NON_NEUTRAL": 13,
+        "T4_ASIAN_SWEEP": 7,
+        "T5_CLOSE_BACK_INSIDE": 4,
+        "TRIGGER_INPUT": 221,
+        "TRIGGER_PASS": 4
+      },
+      "GBPUSD|LONDON_NEWYORK": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 1,
+        "C2_MSS_BOS": 0,
+        "C3_FRESH_FVG": 0,
+        "C4_FVG_RETRACE_AVAILABLE": 0,
+        "C5_GEOMETRY_VALID": 0,
+        "C6_ENTRY_AVAILABLE": 0,
+        "CANDIDATE_N": 221,
+        "CONFIRMATION_INPUT": 2,
+        "CONFIRMATION_PASS": 0,
+        "ENTRY_AVAILABLE": 0,
+        "GEOMETRY_VALID": 0,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 159,
+        "T2_DIRECTION_DECIDED": 159,
+        "T3_DIRECTION_NON_NEUTRAL": 16,
+        "T4_ASIAN_SWEEP": 4,
+        "T5_CLOSE_BACK_INSIDE": 2,
+        "TRIGGER_INPUT": 221,
+        "TRIGGER_PASS": 2
+      },
+      "USDJPY|ASIAN_LONDON": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 5,
+        "C2_MSS_BOS": 0,
+        "C3_FRESH_FVG": 0,
+        "C4_FVG_RETRACE_AVAILABLE": 0,
+        "C5_GEOMETRY_VALID": 0,
+        "C6_ENTRY_AVAILABLE": 0,
+        "CANDIDATE_N": 221,
+        "CONFIRMATION_INPUT": 8,
+        "CONFIRMATION_PASS": 0,
+        "ENTRY_AVAILABLE": 0,
+        "GEOMETRY_VALID": 0,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 159,
+        "T2_DIRECTION_DECIDED": 159,
+        "T3_DIRECTION_NON_NEUTRAL": 22,
+        "T4_ASIAN_SWEEP": 11,
+        "T5_CLOSE_BACK_INSIDE": 8,
+        "TRIGGER_INPUT": 221,
+        "TRIGGER_PASS": 8
+      },
+      "USDJPY|LONDON_NEWYORK": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 4,
+        "C2_MSS_BOS": 2,
+        "C3_FRESH_FVG": 2,
+        "C4_FVG_RETRACE_AVAILABLE": 2,
+        "C5_GEOMETRY_VALID": 1,
+        "C6_ENTRY_AVAILABLE": 1,
+        "CANDIDATE_N": 221,
+        "CONFIRMATION_INPUT": 6,
+        "CONFIRMATION_PASS": 2,
+        "ENTRY_AVAILABLE": 1,
+        "GEOMETRY_VALID": 1,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 159,
+        "T2_DIRECTION_DECIDED": 159,
+        "T3_DIRECTION_NON_NEUTRAL": 18,
+        "T4_ASIAN_SWEEP": 10,
+        "T5_CLOSE_BACK_INSIDE": 6,
+        "TRIGGER_INPUT": 221,
+        "TRIGGER_PASS": 6
+      },
+      "XAUUSD|ASIAN_LONDON": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 3,
+        "C2_MSS_BOS": 2,
+        "C3_FRESH_FVG": 2,
+        "C4_FVG_RETRACE_AVAILABLE": 1,
+        "C5_GEOMETRY_VALID": 1,
+        "C6_ENTRY_AVAILABLE": 1,
+        "CANDIDATE_N": 221,
+        "CONFIRMATION_INPUT": 4,
+        "CONFIRMATION_PASS": 1,
+        "ENTRY_AVAILABLE": 1,
+        "GEOMETRY_VALID": 1,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 158,
+        "T2_DIRECTION_DECIDED": 158,
+        "T3_DIRECTION_NON_NEUTRAL": 17,
+        "T4_ASIAN_SWEEP": 6,
+        "T5_CLOSE_BACK_INSIDE": 4,
+        "TRIGGER_INPUT": 221,
+        "TRIGGER_PASS": 4
+      },
+      "XAUUSD|LONDON_NEWYORK": {
+        "1R": 0,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 2,
+        "C2_MSS_BOS": 1,
+        "C3_FRESH_FVG": 0,
+        "C4_FVG_RETRACE_AVAILABLE": 0,
+        "C5_GEOMETRY_VALID": 0,
+        "C6_ENTRY_AVAILABLE": 0,
+        "CANDIDATE_N": 221,
+        "CONFIRMATION_INPUT": 5,
+        "CONFIRMATION_PASS": 0,
+        "ENTRY_AVAILABLE": 0,
+        "GEOMETRY_VALID": 0,
+        "O1_1R": 0,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 158,
+        "T2_DIRECTION_DECIDED": 158,
+        "T3_DIRECTION_NON_NEUTRAL": 20,
+        "T4_ASIAN_SWEEP": 9,
+        "T5_CLOSE_BACK_INSIDE": 5,
+        "TRIGGER_INPUT": 221,
+        "TRIGGER_PASS": 5
+      }
+    },
+    "POOLED": {
+      "1R": 0,
+      "2R": 0,
+      "3R": 0,
+      "4R": 0,
+      "5R": 0,
+      "C1_DISPLACEMENT": 28,
+      "C2_MSS_BOS": 10,
+      "C3_FRESH_FVG": 7,
+      "C4_FVG_RETRACE_AVAILABLE": 6,
+      "C5_GEOMETRY_VALID": 3,
+      "C6_ENTRY_AVAILABLE": 3,
+      "CANDIDATE_N": 1768,
+      "CONFIRMATION_INPUT": 42,
+      "CONFIRMATION_PASS": 6,
+      "ENTRY_AVAILABLE": 3,
+      "GEOMETRY_VALID": 3,
+      "O1_1R": 0,
+      "O2_2R": 0,
+      "O3_3R": 0,
+      "O4_4R": 0,
+      "O5_5R": 0,
+      "T1_ASIAN_REFERENCE_VALID": 1270,
+      "T2_DIRECTION_DECIDED": 1270,
+      "T3_DIRECTION_NON_NEUTRAL": 151,
+      "T4_ASIAN_SWEEP": 73,
+      "T5_CLOSE_BACK_INSIDE": 42,
+      "TRIGGER_INPUT": 1768,
+      "TRIGGER_PASS": 42
+    }
+  },
+  "universal_funnel_report": {
+    "candidate_n": 1768,
+    "dataset_role": "DEVELOPMENT",
+    "diagnostic_sha256": "27a2ecc05840a40560d096d06494a10fd0f3778947c66bb3e84432284ac9d01d",
+    "edge_verified_authorized": false,
+    "exit_policies": [
+      {
+        "expectancy_r": -1.0,
+        "max_drawdown_r": 3.0,
+        "policy_id": "FIXED_1R",
+        "profit_factor": 0.0,
+        "trade_n": 3,
+        "win_rate_pct": 0.0
+      },
+      {
+        "expectancy_r": -1.0,
+        "max_drawdown_r": 3.0,
+        "policy_id": "FIXED_2R",
+        "profit_factor": 0.0,
+        "trade_n": 3,
+        "win_rate_pct": 0.0
+      },
+      {
+        "expectancy_r": -1.0,
+        "max_drawdown_r": 3.0,
+        "policy_id": "FIXED_3R",
+        "profit_factor": 0.0,
+        "trade_n": 3,
+        "win_rate_pct": 0.0
+      },
+      {
+        "expectancy_r": -1.0,
+        "max_drawdown_r": 3.0,
+        "policy_id": "FIXED_4R",
+        "profit_factor": 0.0,
+        "trade_n": 3,
+        "win_rate_pct": 0.0
+      },
+      {
+        "expectancy_r": -1.0,
+        "max_drawdown_r": 3.0,
+        "policy_id": "FIXED_5R",
+        "profit_factor": 0.0,
+        "trade_n": 3,
+        "win_rate_pct": 0.0
+      },
+      {
+        "expectancy_r": -0.714783821478384,
+        "max_drawdown_r": 2.144351464435152,
+        "policy_id": "TP1_TP2_50_50",
+        "profit_factor": 0.0,
+        "trade_n": 3,
+        "win_rate_pct": 0.0
+      }
+    ],
+    "groups": [
+      {
+        "flow_pct": 2.3755656108597285,
+        "funnel_group": "TRIGGER",
+        "input_n": 1768,
+        "pass_n": 42,
+        "rules": [
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 498,
+            "funnel_group": "TRIGGER",
+            "input_n": 1768,
+            "node_id": "T1_ASIAN_REFERENCE_VALID",
+            "pass_downstream_expectancy_r": 4.12058238389976,
+            "pass_n": 1270,
+            "pass_pct": 71.83257918552036,
+            "reason_counts": [
+              [
+                "ASIAN_REFERENCE_INSUFFICIENT_BARS",
+                498
+              ]
+            ],
+            "sequence": 0,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 56.29139072847682,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 56.29139072847682,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 40.397350993377486,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 40.397350993377486,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 27.1523178807947,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 27.1523178807947,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 23.178807947019866,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 23.178807947019866,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 19.867549668874172,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 19.867549668874172,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 0,
+            "funnel_group": "TRIGGER",
+            "input_n": 1270,
+            "node_id": "T2_DIRECTION_DECIDED",
+            "pass_downstream_expectancy_r": 4.12058238389976,
+            "pass_n": 1270,
+            "pass_pct": 100.0,
+            "reason_counts": [],
+            "sequence": 1,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 56.29139072847682,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 56.29139072847682,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 40.397350993377486,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 40.397350993377486,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 27.1523178807947,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 27.1523178807947,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 23.178807947019866,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 23.178807947019866,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 19.867549668874172,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 19.867549668874172,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 1119,
+            "funnel_group": "TRIGGER",
+            "input_n": 1270,
+            "node_id": "T3_DIRECTION_NON_NEUTRAL",
+            "pass_downstream_expectancy_r": 4.12058238389976,
+            "pass_n": 151,
+            "pass_pct": 11.88976377952756,
+            "reason_counts": [
+              [
+                "DIRECTION_NEUTRAL",
+                1119
+              ]
+            ],
+            "sequence": 2,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 56.29139072847682,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 56.29139072847682,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 40.397350993377486,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 40.397350993377486,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 27.1523178807947,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 27.1523178807947,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 23.178807947019866,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 23.178807947019866,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 19.867549668874172,
+                "observed_fail_n": 0,
+                "observed_input_n": 151,
+                "observed_pass_n": 151,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 19.867549668874172,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 5.197834153788727,
+            "fail_n": 78,
+            "funnel_group": "TRIGGER",
+            "input_n": 151,
+            "node_id": "T4_ASIAN_SWEEP",
+            "pass_downstream_expectancy_r": 2.9695462462101725,
+            "pass_n": 73,
+            "pass_pct": 48.34437086092716,
+            "reason_counts": [
+              [
+                "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE",
+                78
+              ]
+            ],
+            "sequence": 3,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 58.97435897435898,
+                "input_reach_pct": 56.29139072847682,
+                "observed_fail_n": 78,
+                "observed_input_n": 151,
+                "observed_pass_n": 73,
+                "pass_minus_fail_pp": -5.5497014401124005,
+                "pass_reach_pct": 53.42465753424658,
+                "pass_uplift_vs_input_pp": -2.8667331942302425,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 43.58974358974359,
+                "input_reach_pct": 40.397350993377486,
+                "observed_fail_n": 78,
+                "observed_input_n": 151,
+                "observed_pass_n": 73,
+                "pass_minus_fail_pp": -6.603442219880577,
+                "pass_reach_pct": 36.986301369863014,
+                "pass_uplift_vs_input_pp": -3.4110496235144723,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 33.33333333333333,
+                "input_reach_pct": 27.1523178807947,
+                "observed_fail_n": 78,
+                "observed_input_n": 151,
+                "observed_pass_n": 73,
+                "pass_minus_fail_pp": -12.785388127853878,
+                "pass_reach_pct": 20.54794520547945,
+                "pass_uplift_vs_input_pp": -6.6043726753152505,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 26.923076923076923,
+                "input_reach_pct": 23.178807947019866,
+                "observed_fail_n": 78,
+                "observed_input_n": 151,
+                "observed_pass_n": 73,
+                "pass_minus_fail_pp": -7.744994731296103,
+                "pass_reach_pct": 19.17808219178082,
+                "pass_uplift_vs_input_pp": -4.000725755239046,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 23.076923076923077,
+                "input_reach_pct": 19.867549668874172,
+                "observed_fail_n": 78,
+                "observed_input_n": 151,
+                "observed_pass_n": 73,
+                "pass_minus_fail_pp": -6.638566912539517,
+                "pass_reach_pct": 16.43835616438356,
+                "pass_uplift_vs_input_pp": -3.4291935044906126,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 2.1779274667932436,
+            "fail_n": 31,
+            "funnel_group": "TRIGGER",
+            "input_n": 73,
+            "node_id": "T5_CLOSE_BACK_INSIDE",
+            "pass_downstream_expectancy_r": 3.5538362976845725,
+            "pass_n": 42,
+            "pass_pct": 57.534246575342465,
+            "reason_counts": [
+              [
+                "NO_CLOSE_BACK_INSIDE",
+                31
+              ]
+            ],
+            "sequence": 4,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 45.16129032258064,
+                "input_reach_pct": 53.42465753424658,
+                "observed_fail_n": 31,
+                "observed_input_n": 73,
+                "observed_pass_n": 42,
+                "pass_minus_fail_pp": 14.362519201228885,
+                "pass_reach_pct": 59.523809523809526,
+                "pass_uplift_vs_input_pp": 6.099151989562948,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 32.25806451612903,
+                "input_reach_pct": 36.986301369863014,
+                "observed_fail_n": 31,
+                "observed_input_n": 73,
+                "observed_pass_n": 42,
+                "pass_minus_fail_pp": 8.218125960061442,
+                "pass_reach_pct": 40.476190476190474,
+                "pass_uplift_vs_input_pp": 3.4898891063274604,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 12.903225806451612,
+                "input_reach_pct": 20.54794520547945,
+                "observed_fail_n": 31,
+                "observed_input_n": 73,
+                "observed_pass_n": 42,
+                "pass_minus_fail_pp": 13.287250384024581,
+                "pass_reach_pct": 26.190476190476193,
+                "pass_uplift_vs_input_pp": 5.642530984996743,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 12.903225806451612,
+                "input_reach_pct": 19.17808219178082,
+                "observed_fail_n": 31,
+                "observed_input_n": 73,
+                "observed_pass_n": 42,
+                "pass_minus_fail_pp": 10.906298003072195,
+                "pass_reach_pct": 23.809523809523807,
+                "pass_uplift_vs_input_pp": 4.631441617742986,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 9.67741935483871,
+                "input_reach_pct": 16.43835616438356,
+                "observed_fail_n": 31,
+                "observed_input_n": 73,
+                "observed_pass_n": 42,
+                "pass_minus_fail_pp": 11.751152073732717,
+                "pass_reach_pct": 21.428571428571427,
+                "pass_uplift_vs_input_pp": 4.990215264187867,
+                "target_r": 5.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "flow_pct": 7.142857142857142,
+        "funnel_group": "CONFIRMATION",
+        "input_n": 42,
+        "pass_n": 3,
+        "rules": [
+          {
+            "fail_downstream_expectancy_r": 3.2081446007906957,
+            "fail_n": 14,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 42,
+            "node_id": "C1_DISPLACEMENT",
+            "pass_downstream_expectancy_r": 3.726682146131512,
+            "pass_n": 28,
+            "pass_pct": 66.66666666666666,
+            "reason_counts": [
+              [
+                "NO_DISPLACEMENT_BODY_RATIO",
+                14
+              ]
+            ],
+            "sequence": 0,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 57.14285714285714,
+                "input_reach_pct": 59.523809523809526,
+                "observed_fail_n": 14,
+                "observed_input_n": 42,
+                "observed_pass_n": 28,
+                "pass_minus_fail_pp": 3.5714285714285694,
+                "pass_reach_pct": 60.71428571428571,
+                "pass_uplift_vs_input_pp": 1.1904761904761827,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 14.285714285714285,
+                "input_reach_pct": 40.476190476190474,
+                "observed_fail_n": 14,
+                "observed_input_n": 42,
+                "observed_pass_n": 28,
+                "pass_minus_fail_pp": 39.285714285714285,
+                "pass_reach_pct": 53.57142857142857,
+                "pass_uplift_vs_input_pp": 13.095238095238095,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 14.285714285714285,
+                "input_reach_pct": 26.190476190476193,
+                "observed_fail_n": 14,
+                "observed_input_n": 42,
+                "observed_pass_n": 28,
+                "pass_minus_fail_pp": 17.85714285714286,
+                "pass_reach_pct": 32.142857142857146,
+                "pass_uplift_vs_input_pp": 5.9523809523809526,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 14.285714285714285,
+                "input_reach_pct": 23.809523809523807,
+                "observed_fail_n": 14,
+                "observed_input_n": 42,
+                "observed_pass_n": 28,
+                "pass_minus_fail_pp": 14.285714285714285,
+                "pass_reach_pct": 28.57142857142857,
+                "pass_uplift_vs_input_pp": 4.761904761904763,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 14.285714285714285,
+                "input_reach_pct": 21.428571428571427,
+                "observed_fail_n": 14,
+                "observed_input_n": 42,
+                "observed_pass_n": 28,
+                "pass_minus_fail_pp": 10.714285714285715,
+                "pass_reach_pct": 25.0,
+                "pass_uplift_vs_input_pp": 3.571428571428573,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 3.242663475511915,
+            "fail_n": 18,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 28,
+            "node_id": "C2_MSS_BOS",
+            "pass_downstream_expectancy_r": 4.597915753246787,
+            "pass_n": 10,
+            "pass_pct": 35.714285714285715,
+            "reason_counts": [
+              [
+                "NO_MSS_BOS_AFTER_DISPLACEMENT",
+                18
+              ]
+            ],
+            "sequence": 1,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 55.55555555555556,
+                "input_reach_pct": 60.71428571428571,
+                "observed_fail_n": 18,
+                "observed_input_n": 28,
+                "observed_pass_n": 10,
+                "pass_minus_fail_pp": 14.444444444444443,
+                "pass_reach_pct": 70.0,
+                "pass_uplift_vs_input_pp": 9.285714285714292,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 50.0,
+                "input_reach_pct": 53.57142857142857,
+                "observed_fail_n": 18,
+                "observed_input_n": 28,
+                "observed_pass_n": 10,
+                "pass_minus_fail_pp": 10.0,
+                "pass_reach_pct": 60.0,
+                "pass_uplift_vs_input_pp": 6.428571428571431,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 27.77777777777778,
+                "input_reach_pct": 32.142857142857146,
+                "observed_fail_n": 18,
+                "observed_input_n": 28,
+                "observed_pass_n": 10,
+                "pass_minus_fail_pp": 12.222222222222221,
+                "pass_reach_pct": 40.0,
+                "pass_uplift_vs_input_pp": 7.857142857142854,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 27.77777777777778,
+                "input_reach_pct": 28.57142857142857,
+                "observed_fail_n": 18,
+                "observed_input_n": 28,
+                "observed_pass_n": 10,
+                "pass_minus_fail_pp": 2.2222222222222214,
+                "pass_reach_pct": 30.0,
+                "pass_uplift_vs_input_pp": 1.4285714285714306,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 22.22222222222222,
+                "input_reach_pct": 25.0,
+                "observed_fail_n": 18,
+                "observed_input_n": 28,
+                "observed_pass_n": 10,
+                "pass_minus_fail_pp": 7.777777777777779,
+                "pass_reach_pct": 30.0,
+                "pass_uplift_vs_input_pp": 5.0,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 1.3781787726511707,
+            "fail_n": 3,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 10,
+            "node_id": "C3_FRESH_FVG",
+            "pass_downstream_expectancy_r": 5.977803030644909,
+            "pass_n": 7,
+            "pass_pct": 70.0,
+            "reason_counts": [
+              [
+                "NO_FRESH_FVG_AFTER_MSS",
+                3
+              ]
+            ],
+            "sequence": 2,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 33.33333333333333,
+                "input_reach_pct": 70.0,
+                "observed_fail_n": 3,
+                "observed_input_n": 10,
+                "observed_pass_n": 7,
+                "pass_minus_fail_pp": 52.38095238095238,
+                "pass_reach_pct": 85.71428571428571,
+                "pass_uplift_vs_input_pp": 15.714285714285708,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 33.33333333333333,
+                "input_reach_pct": 60.0,
+                "observed_fail_n": 3,
+                "observed_input_n": 10,
+                "observed_pass_n": 7,
+                "pass_minus_fail_pp": 38.0952380952381,
+                "pass_reach_pct": 71.42857142857143,
+                "pass_uplift_vs_input_pp": 11.42857142857143,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 33.33333333333333,
+                "input_reach_pct": 40.0,
+                "observed_fail_n": 3,
+                "observed_input_n": 10,
+                "observed_pass_n": 7,
+                "pass_minus_fail_pp": 9.523809523809526,
+                "pass_reach_pct": 42.857142857142854,
+                "pass_uplift_vs_input_pp": 2.857142857142854,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 0.0,
+                "input_reach_pct": 30.0,
+                "observed_fail_n": 3,
+                "observed_input_n": 10,
+                "observed_pass_n": 7,
+                "pass_minus_fail_pp": 42.857142857142854,
+                "pass_reach_pct": 42.857142857142854,
+                "pass_uplift_vs_input_pp": 12.857142857142854,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 0.0,
+                "input_reach_pct": 30.0,
+                "observed_fail_n": 3,
+                "observed_input_n": 10,
+                "observed_pass_n": 7,
+                "pass_minus_fail_pp": 42.857142857142854,
+                "pass_reach_pct": 42.857142857142854,
+                "pass_uplift_vs_input_pp": 12.857142857142854,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 13.090909090912014,
+            "fail_n": 1,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 7,
+            "node_id": "C4_FVG_RETRACE_AVAILABLE",
+            "pass_downstream_expectancy_r": 4.792285353933725,
+            "pass_n": 6,
+            "pass_pct": 85.71428571428571,
+            "reason_counts": [
+              [
+                "NO_CAUSAL_RETRACE_INTO_FVG",
+                1
+              ]
+            ],
+            "sequence": 3,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 100.0,
+                "input_reach_pct": 85.71428571428571,
+                "observed_fail_n": 1,
+                "observed_input_n": 7,
+                "observed_pass_n": 6,
+                "pass_minus_fail_pp": -16.666666666666657,
+                "pass_reach_pct": 83.33333333333334,
+                "pass_uplift_vs_input_pp": -2.3809523809523654,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 100.0,
+                "input_reach_pct": 71.42857142857143,
+                "observed_fail_n": 1,
+                "observed_input_n": 7,
+                "observed_pass_n": 6,
+                "pass_minus_fail_pp": -33.33333333333334,
+                "pass_reach_pct": 66.66666666666666,
+                "pass_uplift_vs_input_pp": -4.761904761904773,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 100.0,
+                "input_reach_pct": 42.857142857142854,
+                "observed_fail_n": 1,
+                "observed_input_n": 7,
+                "observed_pass_n": 6,
+                "pass_minus_fail_pp": -66.66666666666667,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": -9.523809523809526,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 100.0,
+                "input_reach_pct": 42.857142857142854,
+                "observed_fail_n": 1,
+                "observed_input_n": 7,
+                "observed_pass_n": 6,
+                "pass_minus_fail_pp": -66.66666666666667,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": -9.523809523809526,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 100.0,
+                "input_reach_pct": 42.857142857142854,
+                "observed_fail_n": 1,
+                "observed_input_n": 7,
+                "observed_pass_n": 6,
+                "pass_minus_fail_pp": -66.66666666666667,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": -9.523809523809526,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 3.3965896292298132,
+            "fail_n": 3,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 6,
+            "node_id": "C5_GEOMETRY_VALID",
+            "pass_downstream_expectancy_r": 6.187981078637637,
+            "pass_n": 3,
+            "pass_pct": 50.0,
+            "reason_counts": [
+              [
+                "GEOMETRY_TP1_NOT_BEYOND_ENTRY",
+                3
+              ]
+            ],
+            "sequence": 4,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 100.0,
+                "input_reach_pct": 83.33333333333334,
+                "observed_fail_n": 3,
+                "observed_input_n": 6,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": -33.33333333333334,
+                "pass_reach_pct": 66.66666666666666,
+                "pass_uplift_vs_input_pp": -16.666666666666686,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 66.66666666666666,
+                "input_reach_pct": 66.66666666666666,
+                "observed_fail_n": 3,
+                "observed_input_n": 6,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": 0.0,
+                "pass_reach_pct": 66.66666666666666,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 33.33333333333333,
+                "input_reach_pct": 33.33333333333333,
+                "observed_fail_n": 3,
+                "observed_input_n": 6,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": 0.0,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 33.33333333333333,
+                "input_reach_pct": 33.33333333333333,
+                "observed_fail_n": 3,
+                "observed_input_n": 6,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": 0.0,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 33.33333333333333,
+                "input_reach_pct": 33.33333333333333,
+                "observed_fail_n": 3,
+                "observed_input_n": 6,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": 0.0,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 0,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 3,
+            "node_id": "C6_ENTRY_AVAILABLE",
+            "pass_downstream_expectancy_r": 6.187981078637637,
+            "pass_n": 3,
+            "pass_pct": 100.0,
+            "reason_counts": [],
+            "sequence": 5,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 66.66666666666666,
+                "observed_fail_n": 0,
+                "observed_input_n": 3,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 66.66666666666666,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 66.66666666666666,
+                "observed_fail_n": 0,
+                "observed_input_n": 3,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 66.66666666666666,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 33.33333333333333,
+                "observed_fail_n": 0,
+                "observed_input_n": 3,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 33.33333333333333,
+                "observed_fail_n": 0,
+                "observed_input_n": 3,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 33.33333333333333,
+                "observed_fail_n": 0,
+                "observed_input_n": 3,
+                "observed_pass_n": 3,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 33.33333333333333,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 5.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "flow_pct": 0.0,
+        "funnel_group": "OUTCOME",
+        "input_n": 3,
+        "pass_n": 0,
+        "rules": [
+          {
+            "fail_downstream_expectancy_r": 6.187981078637637,
+            "fail_n": 3,
+            "funnel_group": "OUTCOME",
+            "input_n": 3,
+            "node_id": "O1_1R",
+            "pass_downstream_expectancy_r": null,
+            "pass_n": 0,
+            "pass_pct": 0.0,
+            "reason_counts": [
+              [
+                "PASS",
+                3
+              ]
+            ],
+            "sequence": 0,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 0,
+            "funnel_group": "OUTCOME",
+            "input_n": 0,
+            "node_id": "O2_2R",
+            "pass_downstream_expectancy_r": null,
+            "pass_n": 0,
+            "pass_pct": 0.0,
+            "reason_counts": [],
+            "sequence": 1,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 0,
+            "funnel_group": "OUTCOME",
+            "input_n": 0,
+            "node_id": "O3_3R",
+            "pass_downstream_expectancy_r": null,
+            "pass_n": 0,
+            "pass_pct": 0.0,
+            "reason_counts": [],
+            "sequence": 2,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 0,
+            "funnel_group": "OUTCOME",
+            "input_n": 0,
+            "node_id": "O4_4R",
+            "pass_downstream_expectancy_r": null,
+            "pass_n": 0,
+            "pass_pct": 0.0,
+            "reason_counts": [],
+            "sequence": 3,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 0,
+            "funnel_group": "OUTCOME",
+            "input_n": 0,
+            "node_id": "O5_5R",
+            "pass_downstream_expectancy_r": null,
+            "pass_n": 0,
+            "pass_pct": 0.0,
+            "reason_counts": [],
+            "sequence": 4,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "median_mae_r": 1.0974358974359217,
+    "median_mfe_r": 0.7272727272729567,
+    "status": "DEVELOPMENT_DIAGNOSTIC_ONLY",
+    "strategy_sha256": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "target_reachability": [
+      {
+        "reached_n": 0,
+        "reached_pct": 0.0,
+        "target_r": 1.0
+      },
+      {
+        "reached_n": 0,
+        "reached_pct": 0.0,
+        "target_r": 2.0
+      },
+      {
+        "reached_n": 0,
+        "reached_pct": 0.0,
+        "target_r": 3.0
+      },
+      {
+        "reached_n": 0,
+        "reached_pct": 0.0,
+        "target_r": 4.0
+      },
+      {
+        "reached_n": 0,
+        "reached_pct": 0.0,
+        "target_r": 5.0
+      }
+    ],
+    "weak_points": [
+      {
+        "evidence": "input_n=28 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "C2_MSS_BOS"
+      },
+      {
+        "evidence": "input_n=10 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "C3_FRESH_FVG"
+      },
+      {
+        "evidence": "input_n=7 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "C4_FVG_RETRACE_AVAILABLE"
+      },
+      {
+        "evidence": "input_n=6 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "C5_GEOMETRY_VALID"
+      },
+      {
+        "evidence": "input_n=3 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "C6_ENTRY_AVAILABLE"
+      },
+      {
+        "evidence": "input_n=3 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O1_1R"
+      },
+      {
+        "evidence": "input_n=0 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O2_2R"
+      },
+      {
+        "evidence": "input_n=0 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O3_3R"
+      },
+      {
+        "evidence": "input_n=0 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O4_4R"
+      },
+      {
+        "evidence": "input_n=0 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O5_5R"
+      },
+      {
+        "evidence": "5R pass_reach_pct=19.87",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T1_ASIAN_REFERENCE_VALID"
+      },
+      {
+        "evidence": "5R pass_reach_pct=19.87",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T2_DIRECTION_DECIDED"
+      },
+      {
+        "evidence": "5R pass_reach_pct=19.87",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T3_DIRECTION_NON_NEUTRAL"
+      },
+      {
+        "evidence": "5R pass_reach_pct=16.44",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T4_ASIAN_SWEEP"
+      }
+    ]
+  }
+}

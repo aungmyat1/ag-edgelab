@@ -1,0 +1,204 @@
+{
+  "CANDIDATE_N": 26814,
+  "confirmation_failures": {
+    "GEOMETRY_INVALID": {
+      "frozen_reasons": {
+        "GEOMETRY_RISK_NON_POSITIVE": 0,
+        "GEOMETRY_TP1_NOT_BEYOND_ENTRY": 15
+      },
+      "n": 15
+    },
+    "NO_DISPLACEMENT": {
+      "frozen_reasons": {
+        "NO_DISPLACEMENT_BODY_RATIO": 147
+      },
+      "n": 147
+    },
+    "NO_FVG": {
+      "frozen_reasons": {
+        "NO_FRESH_FVG_AFTER_MSS": 43
+      },
+      "n": 43
+    },
+    "NO_FVG_RETRACE": {
+      "frozen_reasons": {
+        "NO_CAUSAL_RETRACE_INTO_FVG": 22,
+        "RETRACE_INVALIDATED_BY_STOP_FIRST": 3
+      },
+      "n": 25
+    },
+    "NO_MSS_BOS": {
+      "frozen_reasons": {
+        "NO_MSS_BOS_AFTER_DISPLACEMENT": 175
+      },
+      "n": 175
+    },
+    "TEMPORAL_INVALID": {
+      "frozen_reasons": {
+        "GEOMETRY_TEMPORAL_ORDER_INVALID": 0,
+        "RIGHT_CENSORED_DATA_BOUNDARY": 1
+      },
+      "n": 1
+    }
+  },
+  "confirmation_failures_total": 406,
+  "contract": "attrition is never collapsed into a single TRIGGER_FAIL bucket",
+  "raw_frozen_vocabulary_counts": {
+    "ASIAN_REFERENCE_INSUFFICIENT_BARS": 14196,
+    "DIRECTION_NEUTRAL": 11195,
+    "DIRECTION_UNDECIDABLE": 24,
+    "ENTRY_WINDOW_NO_BARS": 17,
+    "GEOMETRY_TP1_NOT_BEYOND_ENTRY": 15,
+    "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE": 713,
+    "NO_CAUSAL_RETRACE_INTO_FVG": 22,
+    "NO_CLOSE_BACK_INSIDE": 228,
+    "NO_DISPLACEMENT_BODY_RATIO": 147,
+    "NO_FRESH_FVG_AFTER_MSS": 43,
+    "NO_MSS_BOS_AFTER_DISPLACEMENT": 175,
+    "RETRACE_INVALIDATED_BY_STOP_FIRST": 3,
+    "RIGHT_CENSORED_DATA_BOUNDARY": 1
+  },
+  "reconciliation_ok": true,
+  "stages": [
+    {
+      "FAIL_N": 14213,
+      "FINAL_ENTRY_PCT": 0.130529,
+      "INPUT_N": 26814,
+      "NEXT_STAGE_PCT": 46.994108,
+      "PASS_N": 12601,
+      "PASS_PCT": 46.994108,
+      "stage": "T1_ASIAN_REFERENCE_VALID"
+    },
+    {
+      "FAIL_N": 24,
+      "FINAL_ENTRY_PCT": 0.277756,
+      "INPUT_N": 12601,
+      "NEXT_STAGE_PCT": 46.904602,
+      "PASS_N": 12577,
+      "PASS_PCT": 99.809539,
+      "stage": "T2_DIRECTION_DECIDED"
+    },
+    {
+      "FAIL_N": 11195,
+      "FINAL_ENTRY_PCT": 0.278286,
+      "INPUT_N": 12577,
+      "NEXT_STAGE_PCT": 5.154024,
+      "PASS_N": 1382,
+      "PASS_PCT": 10.988312,
+      "stage": "T3_DIRECTION_NON_NEUTRAL"
+    },
+    {
+      "FAIL_N": 713,
+      "FINAL_ENTRY_PCT": 2.532562,
+      "INPUT_N": 1382,
+      "NEXT_STAGE_PCT": 2.494965,
+      "PASS_N": 669,
+      "PASS_PCT": 48.408104,
+      "stage": "T4_ASIAN_SWEEP"
+    },
+    {
+      "FAIL_N": 228,
+      "FINAL_ENTRY_PCT": 5.231689,
+      "INPUT_N": 669,
+      "NEXT_STAGE_PCT": 1.644663,
+      "PASS_N": 441,
+      "PASS_PCT": 65.919283,
+      "stage": "T5_CLOSE_BACK_INSIDE"
+    },
+    {
+      "FAIL_N": 147,
+      "FINAL_ENTRY_PCT": 7.936508,
+      "INPUT_N": 441,
+      "NEXT_STAGE_PCT": 1.096442,
+      "PASS_N": 294,
+      "PASS_PCT": 66.666667,
+      "stage": "C1_DISPLACEMENT"
+    },
+    {
+      "FAIL_N": 175,
+      "FINAL_ENTRY_PCT": 11.904762,
+      "INPUT_N": 294,
+      "NEXT_STAGE_PCT": 0.443798,
+      "PASS_N": 119,
+      "PASS_PCT": 40.47619,
+      "stage": "C2_MSS_BOS"
+    },
+    {
+      "FAIL_N": 43,
+      "FINAL_ENTRY_PCT": 29.411765,
+      "INPUT_N": 119,
+      "NEXT_STAGE_PCT": 0.283434,
+      "PASS_N": 76,
+      "PASS_PCT": 63.865546,
+      "stage": "C3_FRESH_FVG"
+    },
+    {
+      "FAIL_N": 25,
+      "FINAL_ENTRY_PCT": 46.052632,
+      "INPUT_N": 76,
+      "NEXT_STAGE_PCT": 0.190199,
+      "PASS_N": 51,
+      "PASS_PCT": 67.105263,
+      "stage": "C4_FVG_RETRACE_AVAILABLE"
+    },
+    {
+      "FAIL_N": 15,
+      "FINAL_ENTRY_PCT": 68.627451,
+      "INPUT_N": 51,
+      "NEXT_STAGE_PCT": 0.134258,
+      "PASS_N": 36,
+      "PASS_PCT": 70.588235,
+      "stage": "C5_GEOMETRY_VALID"
+    },
+    {
+      "FAIL_N": 1,
+      "FINAL_ENTRY_PCT": 97.222222,
+      "INPUT_N": 36,
+      "NEXT_STAGE_PCT": 0.130529,
+      "PASS_N": 35,
+      "PASS_PCT": 97.222222,
+      "stage": "C6_ENTRY_AVAILABLE"
+    }
+  ],
+  "trigger_failures": {
+    "DIRECTION_SWEEP_MISMATCH": {
+      "frozen_reasons": {},
+      "n": 0,
+      "note": "The frozen V1 trigger does not emit a distinct direction/sweep mismatch rejection: the contract requires the sweep to be on the side OPPOSITE the decided direction, so a unit whose only sweep is on the direction side is rejected at T4_ASIAN_SWEEP with NO_ASIAN_SWEEP_ON_DIRECTION_SIDE. That bucket therefore carries both meanings and is reported once, under NO_ASIAN_SWEEP, rather than being split by an invented rule."
+    },
+    "NEUTRAL_DIRECTION": {
+      "frozen_reasons": {
+        "DIRECTION_NEUTRAL": 11195
+      },
+      "n": 11195
+    },
+    "NO_ASIAN_SWEEP": {
+      "frozen_reasons": {
+        "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE": 713
+      },
+      "n": 713
+    },
+    "NO_RECLAIM": {
+      "frozen_reasons": {
+        "NO_CLOSE_BACK_INSIDE": 228
+      },
+      "n": 228
+    },
+    "OTHER_DEFINED_REASON": {
+      "frozen_reasons": {
+        "ASIAN_RANGE_DEGENERATE": 0,
+        "ASIAN_REFERENCE_INSUFFICIENT_BARS": 14196,
+        "DIRECTION_UNDECIDABLE": 24
+      },
+      "n": 14220
+    },
+    "SESSION_EXPIRED": {
+      "frozen_reasons": {
+        "ENTRY_WINDOW_NO_BARS": 17
+      },
+      "n": 17
+    }
+  },
+  "trigger_failures_total": 26373,
+  "unmapped_reasons": []
+}

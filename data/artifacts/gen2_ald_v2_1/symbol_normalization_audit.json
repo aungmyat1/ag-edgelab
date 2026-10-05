@@ -1,0 +1,322 @@
+{
+  "NO_UNIVERSAL_FX_CONSTANT_GOVERNS_JPY_OR_GOLD": true,
+  "artifact": "symbol_normalization_audit",
+  "authority_id": "GEN2_SYMBOL_METADATA_AUTHORITY_V1",
+  "instruments": {
+    "EURUSD": {
+      "digits": 5,
+      "pip_size_REPORTING_ONLY": 0.0001,
+      "point": 1e-05,
+      "price_unit": "USD_PER_EUR",
+      "tick_size": 1e-05
+    },
+    "GBPUSD": {
+      "digits": 5,
+      "pip_size_REPORTING_ONLY": 0.0001,
+      "point": 1e-05,
+      "price_unit": "USD_PER_GBP",
+      "tick_size": 1e-05
+    },
+    "USDJPY": {
+      "digits": 3,
+      "pip_size_REPORTING_ONLY": 0.01,
+      "point": 0.001,
+      "price_unit": "JPY_PER_USD",
+      "tick_size": 0.001
+    },
+    "XAUUSD": {
+      "digits": 2,
+      "pip_size_REPORTING_ONLY": 0.1,
+      "point": 0.01,
+      "price_unit": "USD_PER_TROY_OUNCE",
+      "tick_size": 0.01
+    }
+  },
+  "note": "Rule magnitudes are TICK_SIZE multiples or dimensionless reference-range fractions. pip_size is reporting-only and is never read by a rule.",
+  "occurrences": [
+    {
+      "classification": "PROSE_OR_PROHIBITION",
+      "file": "src/ag_edgelab/strategies/asian_liquidity_displacement_v2_1.py",
+      "line": 231,
+      "text": "\"point of the pullback that held). NO pip/point/ATR buffer is added, in \"",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 5,
+      "text": "The V2 prototype carried universal price assumptions (``0.0001`` style pip",
+      "token": "0.0001"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 5,
+      "text": "The V2 prototype carried universal price assumptions (``0.0001`` style pip",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 30,
+      "text": "PIP_SIZE    the conventional dealing unit. REPORTING ONLY \u2014 no rule may use",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 63,
+      "text": "pip_size: float",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 64,
+      "text": "pip_convention_note: str",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 86,
+      "text": "tick_size=0.00001,",
+      "token": "0.00001"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 87,
+      "text": "point=0.00001,",
+      "token": "0.00001"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 88,
+      "text": "pip_size=0.0001,",
+      "token": "0.0001"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 88,
+      "text": "pip_size=0.0001,",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 89,
+      "text": "pip_convention_note=\"Standard 4th-decimal FX pip on a 5-digit feed.\",",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 95,
+      "text": "tick_size=0.00001,",
+      "token": "0.00001"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 96,
+      "text": "point=0.00001,",
+      "token": "0.00001"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 97,
+      "text": "pip_size=0.0001,",
+      "token": "0.0001"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 97,
+      "text": "pip_size=0.0001,",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 98,
+      "text": "pip_convention_note=\"Standard 4th-decimal FX pip on a 5-digit feed.\",",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 106,
+      "text": "pip_size=0.01,",
+      "token": "0.01"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 106,
+      "text": "pip_size=0.01,",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 107,
+      "text": "pip_convention_note=(",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 108,
+      "text": "\"JPY-quoted pair: the pip is the 2nd decimal, 100x the EURUSD pip \"",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 110,
+      "text": "\"universal 0.0001 constant gets wrong by two orders of magnitude.\"",
+      "token": "0.0001"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 117,
+      "text": "tick_size=0.01,",
+      "token": "0.01"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 118,
+      "text": "point=0.01,",
+      "token": "0.01"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 119,
+      "text": "pip_size=0.1,",
+      "token": "0.1"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 119,
+      "text": "pip_size=0.1,",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 120,
+      "text": "pip_convention_note=(",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 121,
+      "text": "\"AMBIGUOUS BY CONVENTION. Gold is variously dealt in $1.00, $0.10 \"",
+      "token": "0.1"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 122,
+      "text": "\"and $0.01 'pips' depending on venue. We declare 0.1 for \"",
+      "token": "0.01"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 122,
+      "text": "\"and $0.01 'pips' depending on venue. We declare 0.1 for \"",
+      "token": "0.1"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 122,
+      "text": "\"and $0.01 'pips' depending on venue. We declare 0.1 for \"",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 122,
+      "text": "\"and $0.01 'pips' depending on venue. We declare 0.1 for \"",
+      "token": "pips"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 123,
+      "text": "\"REPORTING ONLY and forbid any rule from consuming pip_size, so \"",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 133,
+      "text": "#: Rules may consume these fields; pip_size is deliberately NOT among them.",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 135,
+      "text": "RULE_FORBIDDEN_FIELDS: tuple[str, ...] = (\"pip_size\",)",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 185,
+      "text": "\"pip_size is ambiguous for XAUUSD; admitting it into a rule would \"",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 194,
+      "text": "\"pip_size_reporting_only\": m.pip_size,",
+      "token": "pip"
+    },
+    {
+      "classification": "METADATA_AUTHORITY_DECLARATION",
+      "file": "src/ag_edgelab/strategies/symbol_metadata.py",
+      "line": 195,
+      "text": "\"pip_convention_note\": m.pip_convention_note,",
+      "token": "pip"
+    }
+  ],
+  "occurrences_n": 37,
+  "rule_admissible_fields": [
+    "tick_size",
+    "point"
+  ],
+  "rule_forbidden_fields": [
+    "pip_size"
+  ],
+  "scanned_files": [
+    "src/ag_edgelab/strategies/asian_liquidity_displacement_v2_1.py",
+    "src/ag_edgelab/strategies/symbol_metadata.py",
+    "src/ag_edgelab/strategies/v2_1_engine.py",
+    "src/ag_edgelab/strategies/v2_1_funnel.py",
+    "src/ag_edgelab/governance/v2_1_data_authorization.py"
+  ],
+  "scanned_tokens": [
+    "0.0001",
+    "0.00001",
+    "0.01",
+    "0.1",
+    "pip",
+    "pips"
+  ],
+  "violations": [],
+  "violations_n": 0
+}

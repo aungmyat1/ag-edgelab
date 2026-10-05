@@ -1,0 +1,59 @@
+{
+  "ENTRY_AVAILABLE_N": 35,
+  "MAE_R": {
+    "max": 2.05600000000004,
+    "mean": 1.031218,
+    "median": 1.066946
+  },
+  "MFE_R": {
+    "max": 4.787878787878615,
+    "mean": 1.458841,
+    "median": 0.868889
+  },
+  "TP1_R": {
+    "mean": 1.252003,
+    "median": 0.678571,
+    "n": 35
+  },
+  "TP2_R": {
+    "availability_pct": 82.857143,
+    "mean": 3.382898,
+    "median": 1.419817,
+    "n": 29
+  },
+  "economic_claim": "NOT_ESTIMABLE_NO_FRICTION_AUTHORITY \u2014 structural R only",
+  "fixed_r_capability": {
+    "1R": 0.428571,
+    "2R": 0.285714,
+    "3R": 0.257143,
+    "4R": 0.057143,
+    "5R": 0.0
+  },
+  "fixed_r_reached_n": {
+    "1R": 15,
+    "2R": 10,
+    "3R": 9,
+    "4R": 2,
+    "5R": 0
+  },
+  "management_TP1_TP2_50_50": {
+    "expectancy_r": -0.1669593229120424,
+    "max_consecutive_losses": 6,
+    "max_drawdown_r": 6.981729887991355,
+    "median_r": -0.37776,
+    "profit_factor": 0.6562677510604776,
+    "total_r": -5.843576301921484,
+    "trades": 35,
+    "win_rate": 0.45714285714285713
+  },
+  "natural_target_R": {
+    "mean": 2.924896,
+    "median": 1.003804,
+    "n": 35
+  },
+  "resolution_mix": {
+    "HORIZON": 10,
+    "STOPPED_OUT": 25
+  },
+  "stopped_same_bar_n": 0
+}

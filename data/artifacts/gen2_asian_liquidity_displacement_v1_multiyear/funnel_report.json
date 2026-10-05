@@ -1,0 +1,2858 @@
+{
+  "analyzer": "ag_edgelab.analytics.diagnostic.analyze_three_funnel (accepted Universal Funnel Analyzer)",
+  "confirmation_analysis": {
+    "CONFIRMATION_PASS_N": 51,
+    "displacement_body_ratio_median": 0.822479,
+    "displacement_rule": {
+      "frozen": true,
+      "optimized_in_this_mission": false,
+      "threshold": 0.7
+    },
+    "mss_primitive_mix": {
+      "BOS": 26,
+      "MSS": 93
+    },
+    "note": "Steps 1-2 are the sweep/reclaim predicates that also constitute the TRIGGER contract; they are shown here in the mission's sequential confirmation ordering and are NOT double-counted in the funnel stage matrix.",
+    "population": "DIRECTION_NON_NEUTRAL candidates",
+    "population_n": 1382,
+    "same_bar_displacement_mss_n": 63,
+    "same_bar_reclaim_displacement_n": 108,
+    "sequence": [
+      {
+        "fail_n": 713,
+        "input_n": 1382,
+        "node_id": "T4_ASIAN_SWEEP",
+        "opportunity_reach_3R_input_pct": 25.218659,
+        "opportunity_reach_3R_pass_pct": 17.220544,
+        "pass_n": 669,
+        "pass_pct_of_input": 48.408104,
+        "pass_pct_of_previous_step": 48.408104,
+        "reason_counts": {
+          "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE": 713
+        },
+        "selection_uplift_3R_pp": -7.998115,
+        "step": "1_SWEEP"
+      },
+      {
+        "fail_n": 228,
+        "input_n": 669,
+        "node_id": "T5_CLOSE_BACK_INSIDE",
+        "opportunity_reach_3R_input_pct": 17.220544,
+        "opportunity_reach_3R_pass_pct": 19.495413,
+        "pass_n": 441,
+        "pass_pct_of_input": 65.919283,
+        "pass_pct_of_previous_step": 65.919283,
+        "reason_counts": {
+          "NO_CLOSE_BACK_INSIDE": 228
+        },
+        "selection_uplift_3R_pp": 2.274869,
+        "step": "2_CLOSE_BACK_INSIDE"
+      },
+      {
+        "fail_n": 147,
+        "input_n": 441,
+        "node_id": "C1_DISPLACEMENT",
+        "opportunity_reach_3R_input_pct": 19.495413,
+        "opportunity_reach_3R_pass_pct": 20.962199,
+        "pass_n": 294,
+        "pass_pct_of_input": 66.666667,
+        "pass_pct_of_previous_step": 66.666667,
+        "reason_counts": {
+          "NO_DISPLACEMENT_BODY_RATIO": 147
+        },
+        "selection_uplift_3R_pp": 1.466786,
+        "step": "3_DISPLACEMENT"
+      },
+      {
+        "fail_n": 175,
+        "input_n": 294,
+        "node_id": "C2_MSS_BOS",
+        "opportunity_reach_3R_input_pct": 20.962199,
+        "opportunity_reach_3R_pass_pct": 25.0,
+        "pass_n": 119,
+        "pass_pct_of_input": 40.47619,
+        "pass_pct_of_previous_step": 40.47619,
+        "reason_counts": {
+          "NO_MSS_BOS_AFTER_DISPLACEMENT": 175
+        },
+        "selection_uplift_3R_pp": 4.037801,
+        "step": "4_MSS_BOS"
+      },
+      {
+        "fail_n": 43,
+        "input_n": 119,
+        "node_id": "C3_FRESH_FVG",
+        "opportunity_reach_3R_input_pct": 25.0,
+        "opportunity_reach_3R_pass_pct": 22.666667,
+        "pass_n": 76,
+        "pass_pct_of_input": 63.865546,
+        "pass_pct_of_previous_step": 63.865546,
+        "reason_counts": {
+          "NO_FRESH_FVG_AFTER_MSS": 43
+        },
+        "selection_uplift_3R_pp": -2.333333,
+        "step": "5_FRESH_FVG"
+      },
+      {
+        "fail_n": 25,
+        "input_n": 76,
+        "node_id": "C4_FVG_RETRACE_AVAILABLE",
+        "opportunity_reach_3R_input_pct": 22.666667,
+        "opportunity_reach_3R_pass_pct": 26.0,
+        "pass_n": 51,
+        "pass_pct_of_input": 67.105263,
+        "pass_pct_of_previous_step": 67.105263,
+        "reason_counts": {
+          "NO_CAUSAL_RETRACE_INTO_FVG": 22,
+          "RETRACE_INVALIDATED_BY_STOP_FIRST": 3
+        },
+        "selection_uplift_3R_pp": 3.333333,
+        "step": "6_FVG_RETRACE_AVAILABLE"
+      }
+    ]
+  },
+  "dataset_authority": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+  "dataset_role": "DEVELOPMENT",
+  "determinism": {
+    "double_pass": "BYTE_IDENTICAL",
+    "mode": "per-symbol-year double pass over the identical derived frames",
+    "per_symbol_year": {
+      "EURUSD_2000": "bb9114716079896ffe0b48f7c166663c211907fdf021bff8985c1e494c19accd",
+      "EURUSD_2001": "b9980fd7ba38b062f04c0942b20345d738ebfcd20d3ac1a2b58a15615b0fbf71",
+      "EURUSD_2002": "7b13be620d7cf5d8d3e1a41f511d50c35ad9209472ff42120f193807fbd03e87",
+      "EURUSD_2003": "a5fbd8170c7eff58116bbc0c061d3d798cfe70905854b8c2a288a5c7b3edb5e2",
+      "EURUSD_2004": "1019053e50bdc6c8e85da7c3627810c8b208eb7fb78d11155d90b7ca7687ddb9",
+      "EURUSD_2005": "c26d94a54672635c8417a8255ec1df60aff58605069e12fb07f52eed3b1c2b5e",
+      "EURUSD_2006": "2f8ba1c15c0480709677913624d301408c9c4523ec88067be76c1fa0845bfb73",
+      "EURUSD_2007": "f6b44fe0c3de2adc4fd975302a3c634f2e765ed962e2a3333ac13e556576cc82",
+      "EURUSD_2008": "0e296c38523480a42f12b317bb397f3896c287ae103002704e2cffc7892751c6",
+      "EURUSD_2009": "7fa4f2d29a8519cfb1405eae0f6e573137a0a743780a36d2f18f56b970ec764b",
+      "EURUSD_2010": "75b7ca8f7dc5a2c926b9299aa43ff93fb5b9235c4dd81d3f6e567e16da41b782",
+      "EURUSD_2011": "101af4c42dd5fe4aa499d648092a6570061835d1e352c96a6a63e69501e1e8de",
+      "EURUSD_2012": "7efd36f52acf25080102c4e9c69cd6be1067a2c3060d82eb640e5aba43cc7aff",
+      "EURUSD_2013": "72367907ee8e482d2801d9f32092e61c55b07c9ed8396750fa16b006e79f110b",
+      "EURUSD_2014": "542b4cc0a889663d35e7a61e1b5c98c81c3db8da32011032c5fab20c2d92425f",
+      "EURUSD_2015": "5d9b0773feae379fe9032dbcea8bef81427b42d50fbcdcf4ee907916575cfc8f",
+      "EURUSD_2016": "abed03a46247183fabfbce93f2890068f818db92a1a8e48caa6a0e9881b552fd",
+      "EURUSD_2017": "9a8e7304c18907dc1c22efb29ee1478c555379a08a1ad56bbb7b4b1f510329c3",
+      "GBPUSD_2000": "38a7842530adc1af3513276011da15e8a308754b69f808958bc2b3cb11ca4ff8",
+      "GBPUSD_2001": "b4e716204cab234f5e287b4cf67a985b350d85ad883ae8335e0fe6da6c70b63d",
+      "GBPUSD_2002": "c487857afde3bcb7bc08e283129a3585308c25e907d3b51b9831d6a6b2057bb0",
+      "GBPUSD_2003": "7f56c818ac55c4e2794c498e64ef69c6fe63b12bd54769b824a76e1a22c8e949",
+      "GBPUSD_2004": "0dfb558429f6546e9d2ef52eca21406f1f28489486a15de0cf6854ae3eb3a72f",
+      "GBPUSD_2005": "0f8afc64c39c4542e98644b8182dd7a007ec8fb7e463c74a420a337fcac1939b",
+      "GBPUSD_2006": "219bb9807bd68ce0ad6f2b18cd5ca2a9f006bf1f5321339b7a32c3bfa7a5981d",
+      "GBPUSD_2007": "fea99f51adbada311b8260ad619ae2e1d81ec871699b94315cd79a153f285b14",
+      "GBPUSD_2008": "30fcd19430fe4973ff767f7a49f70f749dfb0cba6f0249ab7eaa96f45733fccb",
+      "GBPUSD_2009": "2458ce8ee7b8f93191a098f2fee7ff329f39b9ba6b6dd8cf9fc7f196d3f6650c",
+      "GBPUSD_2010": "e4d01ace066bb01e3f213cc782475ba9da1387a22ab924b79e7fea6ea70adc96",
+      "GBPUSD_2011": "0c7a3dec7ae66a55c3ab2b8c77e496d29486561281b1e33b44453d96f15bf961",
+      "GBPUSD_2012": "7f06015c713aa2c3084e074a559ef17abe67a375c833d00132bf3c0701341a15",
+      "GBPUSD_2013": "0f185333be62a87d3e46109983b0b23d32d048d40805473fb60f519465d4eb28",
+      "GBPUSD_2014": "a6ac30905cc5580fb80420b33a292a9978765e99153f0641026164a69726debd",
+      "GBPUSD_2015": "991b25363546bb22eda6b7913c0c2dbd10088e01bde748e0d4890a5d9aaa8bdf",
+      "GBPUSD_2016": "7f99805749dda65e35ccc66e4f5d327dbcdd56a72e4a91d534b117b587e2dde1",
+      "GBPUSD_2017": "5a47166c538f3958bc4f2a47481c19069978933f92d9b7f5b97fa7a62e8b0fa7",
+      "USDJPY_2000": "c6d0cef3032bb3418dcbeb5043dcf7ce36f74d6d788856bfa53e3230fd9517a0",
+      "USDJPY_2001": "3d6ad6c7d8328a53a65de51856e692e86a4c83f22eb338e87144ae7f5539c677",
+      "USDJPY_2002": "e2521ab4ce6d47278ee09a993361b72f1bb84754a091260ceda11fb7f76d01f8",
+      "USDJPY_2003": "0ea6ba84eba2e784895a5f7718b4876fbb1bea34c45edd300723a6fb848d3b8f",
+      "USDJPY_2004": "67aacb97bafbe506ebc088511b90b37224de46a895115e522ac6b2cb964db5b0",
+      "USDJPY_2005": "f833bd4e4fc0b5f2a6ed4c757326eca4f6677d0fee98bf71ee93cfa658fa9a5b",
+      "USDJPY_2006": "d62487ae8a3d48e6bc8bdb880f1be18133ddb035e972cdad12eb47dc96614b4c",
+      "USDJPY_2007": "dbf516623ba0664b05e45da58d89b7c51ecaf60df0db6080107fa7ddfe617f30",
+      "USDJPY_2008": "ef1d4b56d98d099e4f935d7559cb91c3308404c3d345de4f8e8f03b9f9ebd689",
+      "USDJPY_2009": "02d5a867d4c9553e6c30ad5396267c1fd7b8ff3d38e8540c3f01c48a0825227b",
+      "USDJPY_2010": "88a3c82b830778f8670aa65be8caeb1c2411de7efe03eb062adf2de0fa1d0f7b",
+      "USDJPY_2011": "087963edae33878759b58d46316e6511c05eb463de59e1fc5212816a73c82693",
+      "USDJPY_2012": "13a9c50d3120449d2310c62491a0c9ffebc3f1229e650c0131fe56164f3811b1",
+      "USDJPY_2013": "4aa7b0d4c615e92d1542e1e5ffc8abe00d42a62fe539612a457086e7ce0dc349",
+      "USDJPY_2014": "ca1bb1e8240dedca70be5f436e8829a995f5ea026894afff4f7abf310ff093bd",
+      "USDJPY_2015": "b25ee42efd5da9231fb9d4275756735beecd0b171d781cbc96173591c870f5d3",
+      "USDJPY_2016": "11fd1d039d73b342507498ce9149b7c5b803819a6b5a4c7ef096da30ef956731",
+      "USDJPY_2017": "f8fa303908b615b593d8f7940e40e511af12c486b3fe5f5ab6e4dc3e8deead1f",
+      "XAUUSD_2009": "b0526501433342f3dd6f1098f18f5f54fda3e2e14d7fa64cd55cc1de002be211",
+      "XAUUSD_2010": "aa6fa5528fb4d98fdabc7255b56dc302ef8d9316a4af54e6740b51c1f5f29969",
+      "XAUUSD_2011": "e50df4d556e335556796ad97fcfab22935045af94ff8b733ecc8e5cb65f8d797",
+      "XAUUSD_2012": "43cc04cadc95f5610bfb6a3c7d658f2b7575faa5313a512e3e12f9704100e0ea",
+      "XAUUSD_2013": "3793db7f320341b1316ab277636d3f01d1f74c429660fd80c14f699d77a7029b",
+      "XAUUSD_2014": "acce5f465e93195d82b117333296dc717b71c800e686d6561ceb65259becb77a",
+      "XAUUSD_2015": "bcd6bbe56501ebba7640f0e7d0e0286e5e766617310da26c96bda3826b0c77e4",
+      "XAUUSD_2016": "01ae8f8aeeee64599d68a5b91684a1a7c2f8d7b8de458bdaaf73974db73af1c2",
+      "XAUUSD_2017": "eae086276aca7e9cd48c09f97236c5474bad5bc143edd1ce0db548590008dff0"
+    },
+    "pooled_ledger_sha256": "412e680a8ef9a4e4d3985b460293f9af5c049764e1b719ba9d1ba7d6adbf4a5e",
+    "symbol_years_checked": 63
+  },
+  "dev_partition_hash": "da5e7c58c1e297d7ac95fe583394909adca637dcf8c78a9a0e3bc14501994e3a",
+  "experiment_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+  "stage_matrix": {
+    "BY_SESSION": {
+      "ASIAN_LONDON": {
+        "1R": 7,
+        "2R": 6,
+        "3R": 6,
+        "4R": 2,
+        "5R": 0,
+        "C1_DISPLACEMENT": 160,
+        "C2_MSS_BOS": 61,
+        "C3_FRESH_FVG": 38,
+        "C4_FVG_RETRACE_AVAILABLE": 25,
+        "C5_GEOMETRY_VALID": 16,
+        "C6_ENTRY_AVAILABLE": 16,
+        "CANDIDATE_N": 13407,
+        "CONFIRMATION_INPUT": 242,
+        "CONFIRMATION_PASS": 25,
+        "ENTRY_AVAILABLE": 16,
+        "GEOMETRY_VALID": 16,
+        "O1_1R": 7,
+        "O2_2R": 6,
+        "O3_3R": 6,
+        "O4_4R": 2,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 6300,
+        "T2_DIRECTION_DECIDED": 6288,
+        "T3_DIRECTION_NON_NEUTRAL": 689,
+        "T4_ASIAN_SWEEP": 348,
+        "T5_CLOSE_BACK_INSIDE": 242,
+        "TRIGGER_INPUT": 13407,
+        "TRIGGER_PASS": 242
+      },
+      "LONDON_NEWYORK": {
+        "1R": 8,
+        "2R": 4,
+        "3R": 3,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 134,
+        "C2_MSS_BOS": 58,
+        "C3_FRESH_FVG": 38,
+        "C4_FVG_RETRACE_AVAILABLE": 26,
+        "C5_GEOMETRY_VALID": 20,
+        "C6_ENTRY_AVAILABLE": 19,
+        "CANDIDATE_N": 13407,
+        "CONFIRMATION_INPUT": 199,
+        "CONFIRMATION_PASS": 26,
+        "ENTRY_AVAILABLE": 19,
+        "GEOMETRY_VALID": 20,
+        "O1_1R": 8,
+        "O2_2R": 4,
+        "O3_3R": 3,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 6301,
+        "T2_DIRECTION_DECIDED": 6289,
+        "T3_DIRECTION_NON_NEUTRAL": 693,
+        "T4_ASIAN_SWEEP": 321,
+        "T5_CLOSE_BACK_INSIDE": 199,
+        "TRIGGER_INPUT": 13407,
+        "TRIGGER_PASS": 199
+      }
+    },
+    "BY_SYMBOL": {
+      "EURUSD": {
+        "1R": 2,
+        "2R": 2,
+        "3R": 1,
+        "4R": 1,
+        "5R": 0,
+        "C1_DISPLACEMENT": 76,
+        "C2_MSS_BOS": 31,
+        "C3_FRESH_FVG": 18,
+        "C4_FVG_RETRACE_AVAILABLE": 8,
+        "C5_GEOMETRY_VALID": 5,
+        "C6_ENTRY_AVAILABLE": 5,
+        "CANDIDATE_N": 7660,
+        "CONFIRMATION_INPUT": 122,
+        "CONFIRMATION_PASS": 8,
+        "ENTRY_AVAILABLE": 5,
+        "GEOMETRY_VALID": 5,
+        "O1_1R": 2,
+        "O2_2R": 2,
+        "O3_3R": 1,
+        "O4_4R": 1,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 3296,
+        "T2_DIRECTION_DECIDED": 3296,
+        "T3_DIRECTION_NON_NEUTRAL": 359,
+        "T4_ASIAN_SWEEP": 205,
+        "T5_CLOSE_BACK_INSIDE": 122,
+        "TRIGGER_INPUT": 7660,
+        "TRIGGER_PASS": 122
+      },
+      "GBPUSD": {
+        "1R": 4,
+        "2R": 2,
+        "3R": 2,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 72,
+        "C2_MSS_BOS": 31,
+        "C3_FRESH_FVG": 23,
+        "C4_FVG_RETRACE_AVAILABLE": 17,
+        "C5_GEOMETRY_VALID": 10,
+        "C6_ENTRY_AVAILABLE": 10,
+        "CANDIDATE_N": 7656,
+        "CONFIRMATION_INPUT": 102,
+        "CONFIRMATION_PASS": 17,
+        "ENTRY_AVAILABLE": 10,
+        "GEOMETRY_VALID": 10,
+        "O1_1R": 4,
+        "O2_2R": 2,
+        "O3_3R": 2,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 2934,
+        "T2_DIRECTION_DECIDED": 2932,
+        "T3_DIRECTION_NON_NEUTRAL": 300,
+        "T4_ASIAN_SWEEP": 157,
+        "T5_CLOSE_BACK_INSIDE": 102,
+        "TRIGGER_INPUT": 7656,
+        "TRIGGER_PASS": 102
+      },
+      "USDJPY": {
+        "1R": 3,
+        "2R": 2,
+        "3R": 2,
+        "4R": 1,
+        "5R": 0,
+        "C1_DISPLACEMENT": 59,
+        "C2_MSS_BOS": 18,
+        "C3_FRESH_FVG": 12,
+        "C4_FVG_RETRACE_AVAILABLE": 9,
+        "C5_GEOMETRY_VALID": 7,
+        "C6_ENTRY_AVAILABLE": 6,
+        "CANDIDATE_N": 7660,
+        "CONFIRMATION_INPUT": 95,
+        "CONFIRMATION_PASS": 9,
+        "ENTRY_AVAILABLE": 6,
+        "GEOMETRY_VALID": 7,
+        "O1_1R": 3,
+        "O2_2R": 2,
+        "O3_3R": 2,
+        "O4_4R": 1,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 3669,
+        "T2_DIRECTION_DECIDED": 3647,
+        "T3_DIRECTION_NON_NEUTRAL": 379,
+        "T4_ASIAN_SWEEP": 134,
+        "T5_CLOSE_BACK_INSIDE": 95,
+        "TRIGGER_INPUT": 7660,
+        "TRIGGER_PASS": 95
+      },
+      "XAUUSD": {
+        "1R": 6,
+        "2R": 4,
+        "3R": 4,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 87,
+        "C2_MSS_BOS": 39,
+        "C3_FRESH_FVG": 23,
+        "C4_FVG_RETRACE_AVAILABLE": 17,
+        "C5_GEOMETRY_VALID": 14,
+        "C6_ENTRY_AVAILABLE": 14,
+        "CANDIDATE_N": 3838,
+        "CONFIRMATION_INPUT": 122,
+        "CONFIRMATION_PASS": 17,
+        "ENTRY_AVAILABLE": 14,
+        "GEOMETRY_VALID": 14,
+        "O1_1R": 6,
+        "O2_2R": 4,
+        "O3_3R": 4,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 2702,
+        "T2_DIRECTION_DECIDED": 2702,
+        "T3_DIRECTION_NON_NEUTRAL": 344,
+        "T4_ASIAN_SWEEP": 173,
+        "T5_CLOSE_BACK_INSIDE": 122,
+        "TRIGGER_INPUT": 3838,
+        "TRIGGER_PASS": 122
+      }
+    },
+    "BY_SYMBOL_SESSION": {
+      "EURUSD|ASIAN_LONDON": {
+        "1R": 1,
+        "2R": 1,
+        "3R": 1,
+        "4R": 1,
+        "5R": 0,
+        "C1_DISPLACEMENT": 45,
+        "C2_MSS_BOS": 16,
+        "C3_FRESH_FVG": 7,
+        "C4_FVG_RETRACE_AVAILABLE": 3,
+        "C5_GEOMETRY_VALID": 2,
+        "C6_ENTRY_AVAILABLE": 2,
+        "CANDIDATE_N": 3830,
+        "CONFIRMATION_INPUT": 79,
+        "CONFIRMATION_PASS": 3,
+        "ENTRY_AVAILABLE": 2,
+        "GEOMETRY_VALID": 2,
+        "O1_1R": 1,
+        "O2_2R": 1,
+        "O3_3R": 1,
+        "O4_4R": 1,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 1648,
+        "T2_DIRECTION_DECIDED": 1648,
+        "T3_DIRECTION_NON_NEUTRAL": 188,
+        "T4_ASIAN_SWEEP": 116,
+        "T5_CLOSE_BACK_INSIDE": 79,
+        "TRIGGER_INPUT": 3830,
+        "TRIGGER_PASS": 79
+      },
+      "EURUSD|LONDON_NEWYORK": {
+        "1R": 1,
+        "2R": 1,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 31,
+        "C2_MSS_BOS": 15,
+        "C3_FRESH_FVG": 11,
+        "C4_FVG_RETRACE_AVAILABLE": 5,
+        "C5_GEOMETRY_VALID": 3,
+        "C6_ENTRY_AVAILABLE": 3,
+        "CANDIDATE_N": 3830,
+        "CONFIRMATION_INPUT": 43,
+        "CONFIRMATION_PASS": 5,
+        "ENTRY_AVAILABLE": 3,
+        "GEOMETRY_VALID": 3,
+        "O1_1R": 1,
+        "O2_2R": 1,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 1648,
+        "T2_DIRECTION_DECIDED": 1648,
+        "T3_DIRECTION_NON_NEUTRAL": 171,
+        "T4_ASIAN_SWEEP": 89,
+        "T5_CLOSE_BACK_INSIDE": 43,
+        "TRIGGER_INPUT": 3830,
+        "TRIGGER_PASS": 43
+      },
+      "GBPUSD|ASIAN_LONDON": {
+        "1R": 2,
+        "2R": 2,
+        "3R": 2,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 45,
+        "C2_MSS_BOS": 20,
+        "C3_FRESH_FVG": 16,
+        "C4_FVG_RETRACE_AVAILABLE": 12,
+        "C5_GEOMETRY_VALID": 6,
+        "C6_ENTRY_AVAILABLE": 6,
+        "CANDIDATE_N": 3828,
+        "CONFIRMATION_INPUT": 61,
+        "CONFIRMATION_PASS": 12,
+        "ENTRY_AVAILABLE": 6,
+        "GEOMETRY_VALID": 6,
+        "O1_1R": 2,
+        "O2_2R": 2,
+        "O3_3R": 2,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 1467,
+        "T2_DIRECTION_DECIDED": 1466,
+        "T3_DIRECTION_NON_NEUTRAL": 146,
+        "T4_ASIAN_SWEEP": 84,
+        "T5_CLOSE_BACK_INSIDE": 61,
+        "TRIGGER_INPUT": 3828,
+        "TRIGGER_PASS": 61
+      },
+      "GBPUSD|LONDON_NEWYORK": {
+        "1R": 2,
+        "2R": 0,
+        "3R": 0,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 27,
+        "C2_MSS_BOS": 11,
+        "C3_FRESH_FVG": 7,
+        "C4_FVG_RETRACE_AVAILABLE": 5,
+        "C5_GEOMETRY_VALID": 4,
+        "C6_ENTRY_AVAILABLE": 4,
+        "CANDIDATE_N": 3828,
+        "CONFIRMATION_INPUT": 41,
+        "CONFIRMATION_PASS": 5,
+        "ENTRY_AVAILABLE": 4,
+        "GEOMETRY_VALID": 4,
+        "O1_1R": 2,
+        "O2_2R": 0,
+        "O3_3R": 0,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 1467,
+        "T2_DIRECTION_DECIDED": 1466,
+        "T3_DIRECTION_NON_NEUTRAL": 154,
+        "T4_ASIAN_SWEEP": 73,
+        "T5_CLOSE_BACK_INSIDE": 41,
+        "TRIGGER_INPUT": 3828,
+        "TRIGGER_PASS": 41
+      },
+      "USDJPY|ASIAN_LONDON": {
+        "1R": 1,
+        "2R": 1,
+        "3R": 1,
+        "4R": 1,
+        "5R": 0,
+        "C1_DISPLACEMENT": 29,
+        "C2_MSS_BOS": 6,
+        "C3_FRESH_FVG": 2,
+        "C4_FVG_RETRACE_AVAILABLE": 1,
+        "C5_GEOMETRY_VALID": 1,
+        "C6_ENTRY_AVAILABLE": 1,
+        "CANDIDATE_N": 3830,
+        "CONFIRMATION_INPUT": 50,
+        "CONFIRMATION_PASS": 1,
+        "ENTRY_AVAILABLE": 1,
+        "GEOMETRY_VALID": 1,
+        "O1_1R": 1,
+        "O2_2R": 1,
+        "O3_3R": 1,
+        "O4_4R": 1,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 1834,
+        "T2_DIRECTION_DECIDED": 1823,
+        "T3_DIRECTION_NON_NEUTRAL": 185,
+        "T4_ASIAN_SWEEP": 70,
+        "T5_CLOSE_BACK_INSIDE": 50,
+        "TRIGGER_INPUT": 3830,
+        "TRIGGER_PASS": 50
+      },
+      "USDJPY|LONDON_NEWYORK": {
+        "1R": 2,
+        "2R": 1,
+        "3R": 1,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 30,
+        "C2_MSS_BOS": 12,
+        "C3_FRESH_FVG": 10,
+        "C4_FVG_RETRACE_AVAILABLE": 8,
+        "C5_GEOMETRY_VALID": 6,
+        "C6_ENTRY_AVAILABLE": 5,
+        "CANDIDATE_N": 3830,
+        "CONFIRMATION_INPUT": 45,
+        "CONFIRMATION_PASS": 8,
+        "ENTRY_AVAILABLE": 5,
+        "GEOMETRY_VALID": 6,
+        "O1_1R": 2,
+        "O2_2R": 1,
+        "O3_3R": 1,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 1835,
+        "T2_DIRECTION_DECIDED": 1824,
+        "T3_DIRECTION_NON_NEUTRAL": 194,
+        "T4_ASIAN_SWEEP": 64,
+        "T5_CLOSE_BACK_INSIDE": 45,
+        "TRIGGER_INPUT": 3830,
+        "TRIGGER_PASS": 45
+      },
+      "XAUUSD|ASIAN_LONDON": {
+        "1R": 3,
+        "2R": 2,
+        "3R": 2,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 41,
+        "C2_MSS_BOS": 19,
+        "C3_FRESH_FVG": 13,
+        "C4_FVG_RETRACE_AVAILABLE": 9,
+        "C5_GEOMETRY_VALID": 7,
+        "C6_ENTRY_AVAILABLE": 7,
+        "CANDIDATE_N": 1919,
+        "CONFIRMATION_INPUT": 52,
+        "CONFIRMATION_PASS": 9,
+        "ENTRY_AVAILABLE": 7,
+        "GEOMETRY_VALID": 7,
+        "O1_1R": 3,
+        "O2_2R": 2,
+        "O3_3R": 2,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 1351,
+        "T2_DIRECTION_DECIDED": 1351,
+        "T3_DIRECTION_NON_NEUTRAL": 170,
+        "T4_ASIAN_SWEEP": 78,
+        "T5_CLOSE_BACK_INSIDE": 52,
+        "TRIGGER_INPUT": 1919,
+        "TRIGGER_PASS": 52
+      },
+      "XAUUSD|LONDON_NEWYORK": {
+        "1R": 3,
+        "2R": 2,
+        "3R": 2,
+        "4R": 0,
+        "5R": 0,
+        "C1_DISPLACEMENT": 46,
+        "C2_MSS_BOS": 20,
+        "C3_FRESH_FVG": 10,
+        "C4_FVG_RETRACE_AVAILABLE": 8,
+        "C5_GEOMETRY_VALID": 7,
+        "C6_ENTRY_AVAILABLE": 7,
+        "CANDIDATE_N": 1919,
+        "CONFIRMATION_INPUT": 70,
+        "CONFIRMATION_PASS": 8,
+        "ENTRY_AVAILABLE": 7,
+        "GEOMETRY_VALID": 7,
+        "O1_1R": 3,
+        "O2_2R": 2,
+        "O3_3R": 2,
+        "O4_4R": 0,
+        "O5_5R": 0,
+        "T1_ASIAN_REFERENCE_VALID": 1351,
+        "T2_DIRECTION_DECIDED": 1351,
+        "T3_DIRECTION_NON_NEUTRAL": 174,
+        "T4_ASIAN_SWEEP": 95,
+        "T5_CLOSE_BACK_INSIDE": 70,
+        "TRIGGER_INPUT": 1919,
+        "TRIGGER_PASS": 70
+      }
+    },
+    "POOLED": {
+      "1R": 15,
+      "2R": 10,
+      "3R": 9,
+      "4R": 2,
+      "5R": 0,
+      "C1_DISPLACEMENT": 294,
+      "C2_MSS_BOS": 119,
+      "C3_FRESH_FVG": 76,
+      "C4_FVG_RETRACE_AVAILABLE": 51,
+      "C5_GEOMETRY_VALID": 36,
+      "C6_ENTRY_AVAILABLE": 35,
+      "CANDIDATE_N": 26814,
+      "CONFIRMATION_INPUT": 441,
+      "CONFIRMATION_PASS": 51,
+      "ENTRY_AVAILABLE": 35,
+      "GEOMETRY_VALID": 36,
+      "O1_1R": 15,
+      "O2_2R": 10,
+      "O3_3R": 9,
+      "O4_4R": 2,
+      "O5_5R": 0,
+      "T1_ASIAN_REFERENCE_VALID": 12601,
+      "T2_DIRECTION_DECIDED": 12577,
+      "T3_DIRECTION_NON_NEUTRAL": 1382,
+      "T4_ASIAN_SWEEP": 669,
+      "T5_CLOSE_BACK_INSIDE": 441,
+      "TRIGGER_INPUT": 26814,
+      "TRIGGER_PASS": 441
+    }
+  },
+  "symbol_session_distribution": {
+    "BY_SESSION": {
+      "ASIAN_LONDON": {
+        "ENTRY_N": 16,
+        "OPPORTUNITY_N": 13407,
+        "STARVED": true,
+        "TRIGGER_N": 242
+      },
+      "LONDON_NEWYORK": {
+        "ENTRY_N": 19,
+        "OPPORTUNITY_N": 13407,
+        "STARVED": true,
+        "TRIGGER_N": 199
+      }
+    },
+    "BY_SYMBOL": {
+      "EURUSD": {
+        "ENTRY_N": 5,
+        "OPPORTUNITY_N": 7660,
+        "STARVED": true,
+        "TRIGGER_N": 122
+      },
+      "GBPUSD": {
+        "ENTRY_N": 10,
+        "OPPORTUNITY_N": 7656,
+        "STARVED": true,
+        "TRIGGER_N": 102
+      },
+      "USDJPY": {
+        "ENTRY_N": 6,
+        "OPPORTUNITY_N": 7660,
+        "STARVED": true,
+        "TRIGGER_N": 95
+      },
+      "XAUUSD": {
+        "ENTRY_N": 14,
+        "OPPORTUNITY_N": 3838,
+        "STARVED": true,
+        "TRIGGER_N": 122
+      }
+    },
+    "SESSION_STARVATION": [
+      "ASIAN_LONDON",
+      "LONDON_NEWYORK"
+    ],
+    "SYMBOL_STARVATION": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ],
+    "cell_floor_entries": 30,
+    "cells": {
+      "EURUSD|ASIAN_LONDON": {
+        "CONFIRMATION_N": 3,
+        "DIRECTIONAL_N": 188,
+        "ENTRY_N": 2,
+        "GEOMETRY_VALID_N": 2,
+        "OPPORTUNITY_N": 3830,
+        "SYMBOL_STARVATION": true,
+        "TRIGGER_N": 79,
+        "session": "ASIAN_LONDON",
+        "symbol": "EURUSD",
+        "years_covered": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017"
+        ]
+      },
+      "EURUSD|LONDON_NEWYORK": {
+        "CONFIRMATION_N": 5,
+        "DIRECTIONAL_N": 171,
+        "ENTRY_N": 3,
+        "GEOMETRY_VALID_N": 3,
+        "OPPORTUNITY_N": 3830,
+        "SYMBOL_STARVATION": true,
+        "TRIGGER_N": 43,
+        "session": "LONDON_NEWYORK",
+        "symbol": "EURUSD",
+        "years_covered": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017"
+        ]
+      },
+      "GBPUSD|ASIAN_LONDON": {
+        "CONFIRMATION_N": 12,
+        "DIRECTIONAL_N": 146,
+        "ENTRY_N": 6,
+        "GEOMETRY_VALID_N": 6,
+        "OPPORTUNITY_N": 3828,
+        "SYMBOL_STARVATION": true,
+        "TRIGGER_N": 61,
+        "session": "ASIAN_LONDON",
+        "symbol": "GBPUSD",
+        "years_covered": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017"
+        ]
+      },
+      "GBPUSD|LONDON_NEWYORK": {
+        "CONFIRMATION_N": 5,
+        "DIRECTIONAL_N": 154,
+        "ENTRY_N": 4,
+        "GEOMETRY_VALID_N": 4,
+        "OPPORTUNITY_N": 3828,
+        "SYMBOL_STARVATION": true,
+        "TRIGGER_N": 41,
+        "session": "LONDON_NEWYORK",
+        "symbol": "GBPUSD",
+        "years_covered": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017"
+        ]
+      },
+      "USDJPY|ASIAN_LONDON": {
+        "CONFIRMATION_N": 1,
+        "DIRECTIONAL_N": 185,
+        "ENTRY_N": 1,
+        "GEOMETRY_VALID_N": 1,
+        "OPPORTUNITY_N": 3830,
+        "SYMBOL_STARVATION": true,
+        "TRIGGER_N": 50,
+        "session": "ASIAN_LONDON",
+        "symbol": "USDJPY",
+        "years_covered": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017"
+        ]
+      },
+      "USDJPY|LONDON_NEWYORK": {
+        "CONFIRMATION_N": 8,
+        "DIRECTIONAL_N": 194,
+        "ENTRY_N": 5,
+        "GEOMETRY_VALID_N": 6,
+        "OPPORTUNITY_N": 3830,
+        "SYMBOL_STARVATION": true,
+        "TRIGGER_N": 45,
+        "session": "LONDON_NEWYORK",
+        "symbol": "USDJPY",
+        "years_covered": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017"
+        ]
+      },
+      "XAUUSD|ASIAN_LONDON": {
+        "CONFIRMATION_N": 9,
+        "DIRECTIONAL_N": 170,
+        "ENTRY_N": 7,
+        "GEOMETRY_VALID_N": 7,
+        "OPPORTUNITY_N": 1919,
+        "SYMBOL_STARVATION": true,
+        "TRIGGER_N": 52,
+        "session": "ASIAN_LONDON",
+        "symbol": "XAUUSD",
+        "years_covered": [
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017"
+        ]
+      },
+      "XAUUSD|LONDON_NEWYORK": {
+        "CONFIRMATION_N": 8,
+        "DIRECTIONAL_N": 174,
+        "ENTRY_N": 7,
+        "GEOMETRY_VALID_N": 7,
+        "OPPORTUNITY_N": 1919,
+        "SYMBOL_STARVATION": true,
+        "TRIGGER_N": 70,
+        "session": "LONDON_NEWYORK",
+        "symbol": "XAUUSD",
+        "years_covered": [
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017"
+        ]
+      }
+    },
+    "removal_policy": "NO CELL IS REMOVED \u2014 weak cells are reported, never dropped"
+  },
+  "trigger_analysis": {
+    "ASIAN_SWEEP": 669,
+    "DIRECTION_DECIDED": 12577,
+    "DIRECTION_NON_NEUTRAL": 1382,
+    "TRIGGER_INPUT": 26814,
+    "TRIGGER_PASS": 441,
+    "basis": "TRIGGER evidence is recorded component-by-component; no opaque composite score exists",
+    "component_distributions": {
+      "d1_structure": {
+        "BEAR": 3379,
+        "BULL": 3998,
+        "NEUTRAL": 5200
+      },
+      "h1_flow": {
+        "BEAR": 3494,
+        "BULL": 3584,
+        "NEUTRAL": 5499
+      },
+      "h4_structure": {
+        "BEAR": 3676,
+        "BULL": 4099,
+        "NEUTRAL": 4802
+      },
+      "premium_discount_state": {
+        "DISCOUNT": 6099,
+        "EQUILIBRIUM": 4,
+        "PREMIUM": 6407,
+        "UNAVAILABLE": 67
+      },
+      "prev_day_context": {
+        "ABOVE_PDH": 2020,
+        "BELOW_PDL": 1909,
+        "INSIDE_PREV_DAY_RANGE": 8648
+      },
+      "regime": {
+        "RANGE": 6253,
+        "TREND": 6324
+      }
+    },
+    "direction_mix": {
+      "BEAR": 624,
+      "BULL": 758,
+      "NEUTRAL": 11195
+    },
+    "direction_not_equal_sweep_side": {
+      "contract": "BULL sweeps the Asian LOW, BEAR sweeps the Asian HIGH",
+      "violations": 0
+    },
+    "liquidity_context": {
+      "median_pools_above": 9,
+      "median_pools_below": 11
+    },
+    "neutral_cause_counts": {
+      "D1=BEAR;H4=BULL;H1=NEUTRAL": 517,
+      "D1=BEAR;H4=NEUTRAL;H1=NEUTRAL": 500,
+      "D1=BULL;H4=BEAR;H1=NEUTRAL": 522,
+      "D1=BULL;H4=BULL;H1=NEUTRAL": 561,
+      "D1=BULL;H4=NEUTRAL;H1=BEAR": 458,
+      "D1=BULL;H4=NEUTRAL;H1=NEUTRAL": 687,
+      "D1=NEUTRAL;H4=BEAR;H1=NEUTRAL": 658,
+      "D1=NEUTRAL;H4=BULL;H1=BEAR": 486,
+      "D1=NEUTRAL;H4=BULL;H1=NEUTRAL": 780,
+      "D1=NEUTRAL;H4=NEUTRAL;H1=BEAR": 529,
+      "D1=NEUTRAL;H4=NEUTRAL;H1=BULL": 617,
+      "D1=NEUTRAL;H4=NEUTRAL;H1=NEUTRAL": 860
+    },
+    "opportunity_basis_capability": {
+      "median_mfe_r_non_neutral": 1.181818,
+      "median_mfe_r_trigger_pass": 0.779133,
+      "non_neutral_n": 1372,
+      "observation_policy_id": "OPP_BASIS_ALD_V1__anchor=last_closed_M15_at_entry_window_open;risk=12_bar_opposite_extreme;horizon=96_M15_bars;collision=STOP_FIRST",
+      "reach_by_target_non_neutral": {
+        "1R": 0.540087,
+        "2R": 0.372449,
+        "3R": 0.252187,
+        "4R": 0.198251,
+        "5R": 0.163265
+      },
+      "reach_by_target_trigger_pass": {
+        "1R": 0.463303,
+        "2R": 0.318807,
+        "3R": 0.194954,
+        "4R": 0.149083,
+        "5R": 0.126147
+      },
+      "selection_uplift_pp_5R": -3.7118,
+      "trigger_pass_n": 436
+    },
+    "rejection_counts": {
+      "ASIAN_REFERENCE_INSUFFICIENT_BARS": 14196,
+      "DIRECTION_NEUTRAL": 11195,
+      "DIRECTION_UNDECIDABLE": 24,
+      "ENTRY_WINDOW_NO_BARS": 17,
+      "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE": 713,
+      "NO_CLOSE_BACK_INSIDE": 228
+    }
+  },
+  "universal_funnel_report": {
+    "candidate_n": 26814,
+    "dataset_role": "DEVELOPMENT",
+    "diagnostic_sha256": "27a2ecc05840a40560d096d06494a10fd0f3778947c66bb3e84432284ac9d01d",
+    "edge_verified_authorized": false,
+    "exit_policies": [
+      {
+        "expectancy_r": -0.14285714285714285,
+        "max_drawdown_r": 6.0,
+        "policy_id": "FIXED_1R",
+        "profit_factor": 0.75,
+        "trade_n": 35,
+        "win_rate_pct": 42.857142857142854
+      },
+      {
+        "expectancy_r": -0.0546372046255135,
+        "max_drawdown_r": 6.863469601677161,
+        "policy_id": "FIXED_2R",
+        "profit_factor": 0.9137124744629422,
+        "trade_n": 35,
+        "win_rate_pct": 31.428571428571427
+      },
+      {
+        "expectancy_r": 0.11679136680305788,
+        "max_drawdown_r": 7.863469601677162,
+        "policy_id": "FIXED_3R",
+        "profit_factor": 1.1764831139737302,
+        "trade_n": 35,
+        "win_rate_pct": 28.57142857142857
+      },
+      {
+        "expectancy_r": -0.19267425008563027,
+        "max_drawdown_r": 10.743598752997059,
+        "policy_id": "FIXED_4R",
+        "profit_factor": 0.7422366537358224,
+        "trade_n": 35,
+        "win_rate_pct": 20.0
+      },
+      {
+        "expectancy_r": -0.19430554561936408,
+        "max_drawdown_r": 11.164330460313991,
+        "policy_id": "FIXED_5R",
+        "profit_factor": 0.7400542749522842,
+        "trade_n": 35,
+        "win_rate_pct": 20.0
+      },
+      {
+        "expectancy_r": -0.1669593229120424,
+        "max_drawdown_r": 6.981729887991355,
+        "policy_id": "TP1_TP2_50_50",
+        "profit_factor": 0.6562677510604776,
+        "trade_n": 35,
+        "win_rate_pct": 45.714285714285715
+      }
+    ],
+    "groups": [
+      {
+        "flow_pct": 1.6446632356231818,
+        "funnel_group": "TRIGGER",
+        "input_n": 26814,
+        "pass_n": 441,
+        "rules": [
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 14213,
+            "funnel_group": "TRIGGER",
+            "input_n": 26814,
+            "node_id": "T1_ASIAN_REFERENCE_VALID",
+            "pass_downstream_expectancy_r": 3.5476360387151638,
+            "pass_n": 12601,
+            "pass_pct": 46.994107555754454,
+            "reason_counts": [
+              [
+                "ASIAN_REFERENCE_INSUFFICIENT_BARS",
+                14196
+              ],
+              [
+                "ENTRY_WINDOW_NO_BARS",
+                17
+              ]
+            ],
+            "sequence": 0,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 54.00874635568513,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 54.00874635568513,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 37.244897959183675,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 37.244897959183675,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 25.218658892128282,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 25.218658892128282,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 19.825072886297377,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 19.825072886297377,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 16.3265306122449,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 16.3265306122449,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 24,
+            "funnel_group": "TRIGGER",
+            "input_n": 12601,
+            "node_id": "T2_DIRECTION_DECIDED",
+            "pass_downstream_expectancy_r": 3.5476360387151638,
+            "pass_n": 12577,
+            "pass_pct": 99.8095389254821,
+            "reason_counts": [
+              [
+                "DIRECTION_UNDECIDABLE",
+                24
+              ]
+            ],
+            "sequence": 1,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 54.00874635568513,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 54.00874635568513,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 37.244897959183675,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 37.244897959183675,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 25.218658892128282,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 25.218658892128282,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 19.825072886297377,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 19.825072886297377,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 16.3265306122449,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 16.3265306122449,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": null,
+            "fail_n": 11195,
+            "funnel_group": "TRIGGER",
+            "input_n": 12577,
+            "node_id": "T3_DIRECTION_NON_NEUTRAL",
+            "pass_downstream_expectancy_r": 3.5476360387151638,
+            "pass_n": 1382,
+            "pass_pct": 10.988311998091755,
+            "reason_counts": [
+              [
+                "DIRECTION_NEUTRAL",
+                11195
+              ]
+            ],
+            "sequence": 2,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 54.00874635568513,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 54.00874635568513,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 37.244897959183675,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 37.244897959183675,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 25.218658892128282,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 25.218658892128282,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 19.825072886297377,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 19.825072886297377,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": 16.3265306122449,
+                "observed_fail_n": 0,
+                "observed_input_n": 1372,
+                "observed_pass_n": 1372,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": 16.3265306122449,
+                "pass_uplift_vs_input_pp": 0.0,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 4.319311268040347,
+            "fail_n": 713,
+            "funnel_group": "TRIGGER",
+            "input_n": 1382,
+            "node_id": "T4_ASIAN_SWEEP",
+            "pass_downstream_expectancy_r": 2.7200085269011427,
+            "pass_n": 669,
+            "pass_pct": 48.40810419681621,
+            "reason_counts": [
+              [
+                "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE",
+                713
+              ]
+            ],
+            "sequence": 3,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 62.112676056338024,
+                "input_reach_pct": 54.00874635568513,
+                "observed_fail_n": 710,
+                "observed_input_n": 1372,
+                "observed_pass_n": 662,
+                "pass_minus_fail_pp": -16.795455512531376,
+                "pass_reach_pct": 45.31722054380665,
+                "pass_uplift_vs_input_pp": -8.691525811878485,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 44.08450704225352,
+                "input_reach_pct": 37.244897959183675,
+                "observed_fail_n": 710,
+                "observed_input_n": 1372,
+                "observed_pass_n": 662,
+                "pass_minus_fail_pp": -14.175141483341132,
+                "pass_reach_pct": 29.909365558912388,
+                "pass_uplift_vs_input_pp": -7.335532400271287,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 32.67605633802817,
+                "input_reach_pct": 25.218658892128282,
+                "observed_fail_n": 710,
+                "observed_input_n": 1372,
+                "observed_pass_n": 662,
+                "pass_minus_fail_pp": -15.455512531381643,
+                "pass_reach_pct": 17.220543806646525,
+                "pass_uplift_vs_input_pp": -7.998115085481757,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 26.197183098591548,
+                "input_reach_pct": 19.825072886297377,
+                "observed_fail_n": 710,
+                "observed_input_n": 1372,
+                "observed_pass_n": 662,
+                "pass_minus_fail_pp": -13.20624654270031,
+                "pass_reach_pct": 12.990936555891238,
+                "pass_uplift_vs_input_pp": -6.834136330406139,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 21.830985915492956,
+                "input_reach_pct": 16.3265306122449,
+                "observed_fail_n": 710,
+                "observed_input_n": 1372,
+                "observed_pass_n": 662,
+                "pass_minus_fail_pp": -11.408025190417426,
+                "pass_reach_pct": 10.42296072507553,
+                "pass_uplift_vs_input_pp": -5.903569887169368,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 1.9562129649437419,
+            "fail_n": 228,
+            "funnel_group": "TRIGGER",
+            "input_n": 669,
+            "node_id": "T5_CLOSE_BACK_INSIDE",
+            "pass_downstream_expectancy_r": 3.11592090534695,
+            "pass_n": 441,
+            "pass_pct": 65.91928251121077,
+            "reason_counts": [
+              [
+                "NO_CLOSE_BACK_INSIDE",
+                228
+              ]
+            ],
+            "sequence": 4,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 43.36283185840708,
+                "input_reach_pct": 45.31722054380665,
+                "observed_fail_n": 226,
+                "observed_input_n": 662,
+                "observed_pass_n": 436,
+                "pass_minus_fail_pp": 2.9674433709507184,
+                "pass_reach_pct": 46.330275229357795,
+                "pass_uplift_vs_input_pp": 1.0130546855511469,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 26.10619469026549,
+                "input_reach_pct": 29.909365558912388,
+                "observed_fail_n": 226,
+                "observed_input_n": 662,
+                "observed_pass_n": 436,
+                "pass_minus_fail_pp": 5.774539254688637,
+                "pass_reach_pct": 31.880733944954127,
+                "pass_uplift_vs_input_pp": 1.971368386041739,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 12.831858407079647,
+                "input_reach_pct": 17.220543806646525,
+                "observed_fail_n": 226,
+                "observed_input_n": 662,
+                "observed_pass_n": 436,
+                "pass_minus_fail_pp": 6.66355443695705,
+                "pass_reach_pct": 19.495412844036696,
+                "pass_uplift_vs_input_pp": 2.2748690373901717,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 9.29203539823009,
+                "input_reach_pct": 12.990936555891238,
+                "observed_fail_n": 226,
+                "observed_input_n": 662,
+                "observed_pass_n": 436,
+                "pass_minus_fail_pp": 5.616221482503855,
+                "pass_reach_pct": 14.908256880733944,
+                "pass_uplift_vs_input_pp": 1.9173203248427058,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 6.1946902654867255,
+                "input_reach_pct": 10.42296072507553,
+                "observed_fail_n": 226,
+                "observed_input_n": 662,
+                "observed_pass_n": 436,
+                "pass_minus_fail_pp": 6.4199886335958425,
+                "pass_reach_pct": 12.614678899082568,
+                "pass_uplift_vs_input_pp": 2.191718174007038,
+                "target_r": 5.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "flow_pct": 7.936507936507936,
+        "funnel_group": "CONFIRMATION",
+        "input_n": 441,
+        "pass_n": 35,
+        "rules": [
+          {
+            "fail_downstream_expectancy_r": 2.153459983408715,
+            "fail_n": 147,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 441,
+            "node_id": "C1_DISPLACEMENT",
+            "pass_downstream_expectancy_r": 3.595497653391772,
+            "pass_n": 294,
+            "pass_pct": 66.66666666666666,
+            "reason_counts": [
+              [
+                "NO_DISPLACEMENT_BODY_RATIO",
+                147
+              ]
+            ],
+            "sequence": 0,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 41.37931034482759,
+                "input_reach_pct": 46.330275229357795,
+                "observed_fail_n": 145,
+                "observed_input_n": 436,
+                "observed_pass_n": 291,
+                "pass_minus_fail_pp": 7.417940514278939,
+                "pass_reach_pct": 48.797250859106526,
+                "pass_uplift_vs_input_pp": 2.466975629748731,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 26.89655172413793,
+                "input_reach_pct": 31.880733944954127,
+                "observed_fail_n": 145,
+                "observed_input_n": 436,
+                "observed_pass_n": 291,
+                "pass_minus_fail_pp": 7.46770944424695,
+                "pass_reach_pct": 34.36426116838488,
+                "pass_uplift_vs_input_pp": 2.4835272234307517,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 16.551724137931036,
+                "input_reach_pct": 19.495412844036696,
+                "observed_fail_n": 145,
+                "observed_input_n": 436,
+                "observed_pass_n": 291,
+                "pass_minus_fail_pp": 4.410475174783741,
+                "pass_reach_pct": 20.962199312714777,
+                "pass_uplift_vs_input_pp": 1.4667864686780803,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 10.344827586206897,
+                "input_reach_pct": 14.908256880733944,
+                "observed_fail_n": 145,
+                "observed_input_n": 436,
+                "observed_pass_n": 291,
+                "pass_minus_fail_pp": 6.837302997985542,
+                "pass_reach_pct": 17.18213058419244,
+                "pass_uplift_vs_input_pp": 2.273873703458495,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 8.96551724137931,
+                "input_reach_pct": 12.614678899082568,
+                "observed_fail_n": 145,
+                "observed_input_n": 436,
+                "observed_pass_n": 291,
+                "pass_minus_fail_pp": 5.467472449342338,
+                "pass_reach_pct": 14.432989690721648,
+                "pass_uplift_vs_input_pp": 1.81831079163908,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 2.649129267244518,
+            "fail_n": 175,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 294,
+            "node_id": "C2_MSS_BOS",
+            "pass_downstream_expectancy_r": 5.023208580769098,
+            "pass_n": 119,
+            "pass_pct": 40.476190476190474,
+            "reason_counts": [
+              [
+                "NO_MSS_BOS_AFTER_DISPLACEMENT",
+                175
+              ]
+            ],
+            "sequence": 1,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 45.14285714285714,
+                "input_reach_pct": 48.797250859106526,
+                "observed_fail_n": 175,
+                "observed_input_n": 291,
+                "observed_pass_n": 116,
+                "pass_minus_fail_pp": 9.167487684729068,
+                "pass_reach_pct": 54.310344827586206,
+                "pass_uplift_vs_input_pp": 5.51309396847968,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 30.857142857142854,
+                "input_reach_pct": 34.36426116838488,
+                "observed_fail_n": 175,
+                "observed_input_n": 291,
+                "observed_pass_n": 116,
+                "pass_minus_fail_pp": 8.798029556650249,
+                "pass_reach_pct": 39.6551724137931,
+                "pass_uplift_vs_input_pp": 5.290911245408225,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 18.285714285714285,
+                "input_reach_pct": 20.962199312714777,
+                "observed_fail_n": 175,
+                "observed_input_n": 291,
+                "observed_pass_n": 116,
+                "pass_minus_fail_pp": 6.714285714285715,
+                "pass_reach_pct": 25.0,
+                "pass_uplift_vs_input_pp": 4.037800687285223,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 12.571428571428573,
+                "input_reach_pct": 17.18213058419244,
+                "observed_fail_n": 175,
+                "observed_input_n": 291,
+                "observed_pass_n": 116,
+                "pass_minus_fail_pp": 11.566502463054185,
+                "pass_reach_pct": 24.137931034482758,
+                "pass_uplift_vs_input_pp": 6.955800450290319,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 10.857142857142858,
+                "input_reach_pct": 14.432989690721648,
+                "observed_fail_n": 175,
+                "observed_input_n": 291,
+                "observed_pass_n": 116,
+                "pass_minus_fail_pp": 8.970443349753694,
+                "pass_reach_pct": 19.82758620689655,
+                "pass_uplift_vs_input_pp": 5.394596516174904,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 7.611385057417117,
+            "fail_n": 43,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 119,
+            "node_id": "C3_FRESH_FVG",
+            "pass_downstream_expectancy_r": 3.6083387735348507,
+            "pass_n": 76,
+            "pass_pct": 63.86554621848739,
+            "reason_counts": [
+              [
+                "NO_FRESH_FVG_AFTER_MSS",
+                43
+              ]
+            ],
+            "sequence": 2,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 46.34146341463415,
+                "input_reach_pct": 54.310344827586206,
+                "observed_fail_n": 41,
+                "observed_input_n": 116,
+                "observed_pass_n": 75,
+                "pass_minus_fail_pp": 12.325203252032516,
+                "pass_reach_pct": 58.666666666666664,
+                "pass_uplift_vs_input_pp": 4.356321839080458,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 39.02439024390244,
+                "input_reach_pct": 39.6551724137931,
+                "observed_fail_n": 41,
+                "observed_input_n": 116,
+                "observed_pass_n": 75,
+                "pass_minus_fail_pp": 0.9756097560975618,
+                "pass_reach_pct": 40.0,
+                "pass_uplift_vs_input_pp": 0.3448275862068968,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 29.268292682926827,
+                "input_reach_pct": 25.0,
+                "observed_fail_n": 41,
+                "observed_input_n": 116,
+                "observed_pass_n": 75,
+                "pass_minus_fail_pp": -6.6016260162601625,
+                "pass_reach_pct": 22.666666666666664,
+                "pass_uplift_vs_input_pp": -2.3333333333333357,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 26.82926829268293,
+                "input_reach_pct": 24.137931034482758,
+                "observed_fail_n": 41,
+                "observed_input_n": 116,
+                "observed_pass_n": 75,
+                "pass_minus_fail_pp": -4.162601626016265,
+                "pass_reach_pct": 22.666666666666664,
+                "pass_uplift_vs_input_pp": -1.4712643678160937,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 24.390243902439025,
+                "input_reach_pct": 19.82758620689655,
+                "observed_fail_n": 41,
+                "observed_input_n": 116,
+                "observed_pass_n": 75,
+                "pass_minus_fail_pp": -7.056910569105689,
+                "pass_reach_pct": 17.333333333333336,
+                "pass_uplift_vs_input_pp": -2.494252873563216,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 2.3311956965170104,
+            "fail_n": 25,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 76,
+            "node_id": "C4_FVG_RETRACE_AVAILABLE",
+            "pass_downstream_expectancy_r": 4.246910312043771,
+            "pass_n": 51,
+            "pass_pct": 67.10526315789474,
+            "reason_counts": [
+              [
+                "NO_CAUSAL_RETRACE_INTO_FVG",
+                22
+              ],
+              [
+                "RETRACE_INVALIDATED_BY_STOP_FIRST",
+                3
+              ]
+            ],
+            "sequence": 3,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 40.0,
+                "input_reach_pct": 58.666666666666664,
+                "observed_fail_n": 25,
+                "observed_input_n": 75,
+                "observed_pass_n": 50,
+                "pass_minus_fail_pp": 28.0,
+                "pass_reach_pct": 68.0,
+                "pass_uplift_vs_input_pp": 9.333333333333336,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 28.000000000000004,
+                "input_reach_pct": 40.0,
+                "observed_fail_n": 25,
+                "observed_input_n": 75,
+                "observed_pass_n": 50,
+                "pass_minus_fail_pp": 17.999999999999996,
+                "pass_reach_pct": 46.0,
+                "pass_uplift_vs_input_pp": 6.0,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 16.0,
+                "input_reach_pct": 22.666666666666664,
+                "observed_fail_n": 25,
+                "observed_input_n": 75,
+                "observed_pass_n": 50,
+                "pass_minus_fail_pp": 10.0,
+                "pass_reach_pct": 26.0,
+                "pass_uplift_vs_input_pp": 3.3333333333333357,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 16.0,
+                "input_reach_pct": 22.666666666666664,
+                "observed_fail_n": 25,
+                "observed_input_n": 75,
+                "observed_pass_n": 50,
+                "pass_minus_fail_pp": 10.0,
+                "pass_reach_pct": 26.0,
+                "pass_uplift_vs_input_pp": 3.3333333333333357,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 12.0,
+                "input_reach_pct": 17.333333333333336,
+                "observed_fail_n": 25,
+                "observed_input_n": 75,
+                "observed_pass_n": 50,
+                "pass_minus_fail_pp": 8.0,
+                "pass_reach_pct": 20.0,
+                "pass_uplift_vs_input_pp": 2.6666666666666643,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 7.975320256851317,
+            "fail_n": 15,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 51,
+            "node_id": "C5_GEOMETRY_VALID",
+            "pass_downstream_expectancy_r": 2.6490203356976787,
+            "pass_n": 36,
+            "pass_pct": 70.58823529411765,
+            "reason_counts": [
+              [
+                "GEOMETRY_TP1_NOT_BEYOND_ENTRY",
+                15
+              ]
+            ],
+            "sequence": 4,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 73.33333333333333,
+                "input_reach_pct": 68.0,
+                "observed_fail_n": 15,
+                "observed_input_n": 50,
+                "observed_pass_n": 35,
+                "pass_minus_fail_pp": -7.61904761904762,
+                "pass_reach_pct": 65.71428571428571,
+                "pass_uplift_vs_input_pp": -2.285714285714292,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 46.666666666666664,
+                "input_reach_pct": 46.0,
+                "observed_fail_n": 15,
+                "observed_input_n": 50,
+                "observed_pass_n": 35,
+                "pass_minus_fail_pp": -0.952380952380949,
+                "pass_reach_pct": 45.714285714285715,
+                "pass_uplift_vs_input_pp": -0.2857142857142847,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 40.0,
+                "input_reach_pct": 26.0,
+                "observed_fail_n": 15,
+                "observed_input_n": 50,
+                "observed_pass_n": 35,
+                "pass_minus_fail_pp": -20.0,
+                "pass_reach_pct": 20.0,
+                "pass_uplift_vs_input_pp": -6.0,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 40.0,
+                "input_reach_pct": 26.0,
+                "observed_fail_n": 15,
+                "observed_input_n": 50,
+                "observed_pass_n": 35,
+                "pass_minus_fail_pp": -20.0,
+                "pass_reach_pct": 20.0,
+                "pass_uplift_vs_input_pp": -6.0,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 26.666666666666668,
+                "input_reach_pct": 20.0,
+                "observed_fail_n": 15,
+                "observed_input_n": 50,
+                "observed_pass_n": 35,
+                "pass_minus_fail_pp": -9.523809523809526,
+                "pass_reach_pct": 17.142857142857142,
+                "pass_uplift_vs_input_pp": -2.8571428571428577,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 0.37499999999977796,
+            "fail_n": 1,
+            "funnel_group": "CONFIRMATION",
+            "input_n": 36,
+            "node_id": "C6_ENTRY_AVAILABLE",
+            "pass_downstream_expectancy_r": 2.715903286747617,
+            "pass_n": 35,
+            "pass_pct": 97.22222222222221,
+            "reason_counts": [
+              [
+                "RIGHT_CENSORED_DATA_BOUNDARY",
+                1
+              ]
+            ],
+            "sequence": 5,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": 0.0,
+                "input_reach_pct": 65.71428571428571,
+                "observed_fail_n": 1,
+                "observed_input_n": 35,
+                "observed_pass_n": 34,
+                "pass_minus_fail_pp": 67.64705882352942,
+                "pass_reach_pct": 67.64705882352942,
+                "pass_uplift_vs_input_pp": 1.932773109243712,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": 0.0,
+                "input_reach_pct": 45.714285714285715,
+                "observed_fail_n": 1,
+                "observed_input_n": 35,
+                "observed_pass_n": 34,
+                "pass_minus_fail_pp": 47.05882352941176,
+                "pass_reach_pct": 47.05882352941176,
+                "pass_uplift_vs_input_pp": 1.3445378151260456,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": 0.0,
+                "input_reach_pct": 20.0,
+                "observed_fail_n": 1,
+                "observed_input_n": 35,
+                "observed_pass_n": 34,
+                "pass_minus_fail_pp": 20.588235294117645,
+                "pass_reach_pct": 20.588235294117645,
+                "pass_uplift_vs_input_pp": 0.588235294117645,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": 0.0,
+                "input_reach_pct": 20.0,
+                "observed_fail_n": 1,
+                "observed_input_n": 35,
+                "observed_pass_n": 34,
+                "pass_minus_fail_pp": 20.588235294117645,
+                "pass_reach_pct": 20.588235294117645,
+                "pass_uplift_vs_input_pp": 0.588235294117645,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": 0.0,
+                "input_reach_pct": 17.142857142857142,
+                "observed_fail_n": 1,
+                "observed_input_n": 35,
+                "observed_pass_n": 34,
+                "pass_minus_fail_pp": 17.647058823529413,
+                "pass_reach_pct": 17.647058823529413,
+                "pass_uplift_vs_input_pp": 0.5042016806722707,
+                "target_r": 5.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "flow_pct": 0.0,
+        "funnel_group": "OUTCOME",
+        "input_n": 35,
+        "pass_n": 0,
+        "rules": [
+          {
+            "fail_downstream_expectancy_r": 2.7826906119197807,
+            "fail_n": 20,
+            "funnel_group": "OUTCOME",
+            "input_n": 35,
+            "node_id": "O1_1R",
+            "pass_downstream_expectancy_r": 2.6204928222159567,
+            "pass_n": 15,
+            "pass_pct": 42.857142857142854,
+            "reason_counts": [
+              [
+                "PASS",
+                20
+              ]
+            ],
+            "sequence": 0,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 3.0528813029325463,
+            "fail_n": 5,
+            "funnel_group": "OUTCOME",
+            "input_n": 15,
+            "node_id": "O2_2R",
+            "pass_downstream_expectancy_r": 2.4475374299293207,
+            "pass_n": 10,
+            "pass_pct": 66.66666666666666,
+            "reason_counts": [
+              [
+                "PASS",
+                5
+              ]
+            ],
+            "sequence": 1,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 2.1135531135529577,
+            "fail_n": 1,
+            "funnel_group": "OUTCOME",
+            "input_n": 10,
+            "node_id": "O3_3R",
+            "pass_downstream_expectancy_r": 2.4846467984155836,
+            "pass_n": 9,
+            "pass_pct": 90.0,
+            "reason_counts": [
+              [
+                "PASS",
+                1
+              ]
+            ],
+            "sequence": 2,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 2.0846557737862765,
+            "fail_n": 7,
+            "funnel_group": "OUTCOME",
+            "input_n": 9,
+            "node_id": "O4_4R",
+            "pass_downstream_expectancy_r": 3.884615384618157,
+            "pass_n": 2,
+            "pass_pct": 22.22222222222222,
+            "reason_counts": [
+              [
+                "PASS",
+                7
+              ]
+            ],
+            "sequence": 3,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          },
+          {
+            "fail_downstream_expectancy_r": 3.884615384618157,
+            "fail_n": 2,
+            "funnel_group": "OUTCOME",
+            "input_n": 2,
+            "node_id": "O5_5R",
+            "pass_downstream_expectancy_r": null,
+            "pass_n": 0,
+            "pass_pct": 0.0,
+            "reason_counts": [
+              [
+                "PASS",
+                2
+              ]
+            ],
+            "sequence": 4,
+            "target_boundaries": [
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 1.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 2.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 3.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 4.0
+              },
+              {
+                "fail_reach_pct": null,
+                "input_reach_pct": null,
+                "observed_fail_n": 0,
+                "observed_input_n": 0,
+                "observed_pass_n": 0,
+                "pass_minus_fail_pp": null,
+                "pass_reach_pct": null,
+                "pass_uplift_vs_input_pp": null,
+                "target_r": 5.0
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "median_mae_r": 1.066945606694497,
+    "median_mfe_r": 0.8688888888888565,
+    "status": "DEVELOPMENT_DIAGNOSTIC_ONLY",
+    "strategy_sha256": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "target_reachability": [
+      {
+        "reached_n": 15,
+        "reached_pct": 42.857142857142854,
+        "target_r": 1.0
+      },
+      {
+        "reached_n": 10,
+        "reached_pct": 28.57142857142857,
+        "target_r": 2.0
+      },
+      {
+        "reached_n": 9,
+        "reached_pct": 25.71428571428571,
+        "target_r": 3.0
+      },
+      {
+        "reached_n": 2,
+        "reached_pct": 5.714285714285714,
+        "target_r": 4.0
+      },
+      {
+        "reached_n": 0,
+        "reached_pct": 0.0,
+        "target_r": 5.0
+      }
+    ],
+    "weak_points": [
+      {
+        "evidence": "5R pass_uplift_vs_input_pp=1.82",
+        "label": "LOW_DISCRIMINATION",
+        "scope": "C1_DISPLACEMENT"
+      },
+      {
+        "evidence": "5R pass_uplift_vs_input_pp=-2.49",
+        "label": "LOW_DISCRIMINATION",
+        "scope": "C3_FRESH_FVG"
+      },
+      {
+        "evidence": "5R pass_uplift_vs_input_pp=2.67",
+        "label": "LOW_DISCRIMINATION",
+        "scope": "C4_FVG_RETRACE_AVAILABLE"
+      },
+      {
+        "evidence": "5R pass_uplift_vs_input_pp=-2.86",
+        "label": "LOW_DISCRIMINATION",
+        "scope": "C5_GEOMETRY_VALID"
+      },
+      {
+        "evidence": "5R pass_uplift_vs_input_pp=0.50",
+        "label": "LOW_DISCRIMINATION",
+        "scope": "C6_ENTRY_AVAILABLE"
+      },
+      {
+        "evidence": "input_n=15 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O2_2R"
+      },
+      {
+        "evidence": "input_n=10 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O3_3R"
+      },
+      {
+        "evidence": "input_n=9 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O4_4R"
+      },
+      {
+        "evidence": "input_n=2 < 30",
+        "label": "INSUFFICIENT_SAMPLE",
+        "scope": "O5_5R"
+      },
+      {
+        "evidence": "5R pass_reach_pct=16.33",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T1_ASIAN_REFERENCE_VALID"
+      },
+      {
+        "evidence": "5R pass_reach_pct=16.33",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T2_DIRECTION_DECIDED"
+      },
+      {
+        "evidence": "5R pass_reach_pct=16.33",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T3_DIRECTION_NON_NEUTRAL"
+      },
+      {
+        "evidence": "5R pass_reach_pct=10.42",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T4_ASIAN_SWEEP"
+      },
+      {
+        "evidence": "5R pass_reach_pct=12.61",
+        "label": "POOR_TRIGGER_QUALITY",
+        "scope": "T5_CLOSE_BACK_INSIDE"
+      },
+      {
+        "evidence": "reach_pct=0.00",
+        "label": "TP_TOO_AMBITIOUS_CANDIDATE",
+        "scope": "5R"
+      }
+    ]
+  },
+  "year_distribution": {
+    "rows": {
+      "2000": {
+        "CONFIRMATION_N": 0,
+        "DIRECTIONAL_N": 0,
+        "DIRECTION_DECIDABLE_N": 0,
+        "ENTRY_N": 0,
+        "GEOMETRY_VALID_N": 0,
+        "OPPORTUNITY_N": 432,
+        "TRIGGER_N": 0,
+        "entry_yield_per_1000_candidates": 0.0,
+        "fixed_r_capability": {
+          "1R": null,
+          "2R": null,
+          "3R": null,
+          "4R": null,
+          "5R": null
+        },
+        "natural_target_median_R": null,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 0.0
+      },
+      "2001": {
+        "CONFIRMATION_N": 0,
+        "DIRECTIONAL_N": 0,
+        "DIRECTION_DECIDABLE_N": 38,
+        "ENTRY_N": 0,
+        "GEOMETRY_VALID_N": 0,
+        "OPPORTUNITY_N": 1326,
+        "TRIGGER_N": 0,
+        "entry_yield_per_1000_candidates": 0.0,
+        "fixed_r_capability": {
+          "1R": null,
+          "2R": null,
+          "3R": null,
+          "4R": null,
+          "5R": null
+        },
+        "natural_target_median_R": null,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 0.0
+      },
+      "2002": {
+        "CONFIRMATION_N": 0,
+        "DIRECTIONAL_N": 4,
+        "DIRECTION_DECIDABLE_N": 88,
+        "ENTRY_N": 0,
+        "GEOMETRY_VALID_N": 0,
+        "OPPORTUNITY_N": 1320,
+        "TRIGGER_N": 0,
+        "entry_yield_per_1000_candidates": 0.0,
+        "fixed_r_capability": {
+          "1R": null,
+          "2R": null,
+          "3R": null,
+          "4R": null,
+          "5R": null
+        },
+        "natural_target_median_R": null,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 0.0
+      },
+      "2003": {
+        "CONFIRMATION_N": 0,
+        "DIRECTIONAL_N": 14,
+        "DIRECTION_DECIDABLE_N": 310,
+        "ENTRY_N": 0,
+        "GEOMETRY_VALID_N": 0,
+        "OPPORTUNITY_N": 1322,
+        "TRIGGER_N": 4,
+        "entry_yield_per_1000_candidates": 0.0,
+        "fixed_r_capability": {
+          "1R": null,
+          "2R": null,
+          "3R": null,
+          "4R": null,
+          "5R": null
+        },
+        "natural_target_median_R": null,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 3.025719
+      },
+      "2004": {
+        "CONFIRMATION_N": 0,
+        "DIRECTIONAL_N": 44,
+        "DIRECTION_DECIDABLE_N": 486,
+        "ENTRY_N": 0,
+        "GEOMETRY_VALID_N": 0,
+        "OPPORTUNITY_N": 1332,
+        "TRIGGER_N": 13,
+        "entry_yield_per_1000_candidates": 0.0,
+        "fixed_r_capability": {
+          "1R": null,
+          "2R": null,
+          "3R": null,
+          "4R": null,
+          "5R": null
+        },
+        "natural_target_median_R": null,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 9.75976
+      },
+      "2005": {
+        "CONFIRMATION_N": 0,
+        "DIRECTIONAL_N": 24,
+        "DIRECTION_DECIDABLE_N": 212,
+        "ENTRY_N": 0,
+        "GEOMETRY_VALID_N": 0,
+        "OPPORTUNITY_N": 1320,
+        "TRIGGER_N": 9,
+        "entry_yield_per_1000_candidates": 0.0,
+        "fixed_r_capability": {
+          "1R": null,
+          "2R": null,
+          "3R": null,
+          "4R": null,
+          "5R": null
+        },
+        "natural_target_median_R": null,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 6.818182
+      },
+      "2006": {
+        "CONFIRMATION_N": 1,
+        "DIRECTIONAL_N": 22,
+        "DIRECTION_DECIDABLE_N": 231,
+        "ENTRY_N": 0,
+        "GEOMETRY_VALID_N": 1,
+        "OPPORTUNITY_N": 1320,
+        "TRIGGER_N": 7,
+        "entry_yield_per_1000_candidates": 0.0,
+        "fixed_r_capability": {
+          "1R": null,
+          "2R": null,
+          "3R": null,
+          "4R": null,
+          "5R": null
+        },
+        "natural_target_median_R": null,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 5.30303
+      },
+      "2007": {
+        "CONFIRMATION_N": 0,
+        "DIRECTIONAL_N": 8,
+        "DIRECTION_DECIDABLE_N": 178,
+        "ENTRY_N": 0,
+        "GEOMETRY_VALID_N": 0,
+        "OPPORTUNITY_N": 1326,
+        "TRIGGER_N": 4,
+        "entry_yield_per_1000_candidates": 0.0,
+        "fixed_r_capability": {
+          "1R": null,
+          "2R": null,
+          "3R": null,
+          "4R": null,
+          "5R": null
+        },
+        "natural_target_median_R": null,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 3.016591
+      },
+      "2008": {
+        "CONFIRMATION_N": 1,
+        "DIRECTIONAL_N": 44,
+        "DIRECTION_DECIDABLE_N": 380,
+        "ENTRY_N": 1,
+        "GEOMETRY_VALID_N": 1,
+        "OPPORTUNITY_N": 1332,
+        "TRIGGER_N": 14,
+        "entry_yield_per_1000_candidates": 0.750751,
+        "fixed_r_capability": {
+          "1R": 1.0,
+          "2R": 1.0,
+          "3R": 1.0,
+          "4R": 0.0,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 0.025424,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY"
+        ],
+        "trigger_yield_per_1000_candidates": 10.510511
+      },
+      "2009": {
+        "CONFIRMATION_N": 2,
+        "DIRECTIONAL_N": 130,
+        "DIRECTION_DECIDABLE_N": 1096,
+        "ENTRY_N": 2,
+        "GEOMETRY_VALID_N": 2,
+        "OPPORTUNITY_N": 1624,
+        "TRIGGER_N": 34,
+        "entry_yield_per_1000_candidates": 1.231527,
+        "fixed_r_capability": {
+          "1R": 1.0,
+          "2R": 0.5,
+          "3R": 0.5,
+          "4R": 0.0,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 2.260478,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 20.935961
+      },
+      "2010": {
+        "CONFIRMATION_N": 8,
+        "DIRECTIONAL_N": 137,
+        "DIRECTION_DECIDABLE_N": 1072,
+        "ENTRY_N": 6,
+        "GEOMETRY_VALID_N": 6,
+        "OPPORTUNITY_N": 1760,
+        "TRIGGER_N": 52,
+        "entry_yield_per_1000_candidates": 3.409091,
+        "fixed_r_capability": {
+          "1R": 0.666667,
+          "2R": 0.5,
+          "3R": 0.5,
+          "4R": 0.166667,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 0.93765,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 29.545455
+      },
+      "2011": {
+        "CONFIRMATION_N": 5,
+        "DIRECTIONAL_N": 108,
+        "DIRECTION_DECIDABLE_N": 894,
+        "ENTRY_N": 5,
+        "GEOMETRY_VALID_N": 5,
+        "OPPORTUNITY_N": 1768,
+        "TRIGGER_N": 32,
+        "entry_yield_per_1000_candidates": 2.828054,
+        "fixed_r_capability": {
+          "1R": 0.4,
+          "2R": 0.2,
+          "3R": 0.2,
+          "4R": 0.0,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 0.678571,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 18.099548
+      },
+      "2012": {
+        "CONFIRMATION_N": 3,
+        "DIRECTIONAL_N": 143,
+        "DIRECTION_DECIDABLE_N": 1278,
+        "ENTRY_N": 2,
+        "GEOMETRY_VALID_N": 2,
+        "OPPORTUNITY_N": 1776,
+        "TRIGGER_N": 45,
+        "entry_yield_per_1000_candidates": 1.126126,
+        "fixed_r_capability": {
+          "1R": 0.0,
+          "2R": 0.0,
+          "3R": 0.0,
+          "4R": 0.0,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 5.311129,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 25.337838
+      },
+      "2013": {
+        "CONFIRMATION_N": 4,
+        "DIRECTIONAL_N": 150,
+        "DIRECTION_DECIDABLE_N": 1268,
+        "ENTRY_N": 3,
+        "GEOMETRY_VALID_N": 3,
+        "OPPORTUNITY_N": 1768,
+        "TRIGGER_N": 42,
+        "entry_yield_per_1000_candidates": 1.696833,
+        "fixed_r_capability": {
+          "1R": 0.666667,
+          "2R": 0.333333,
+          "3R": 0.333333,
+          "4R": 0.333333,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 2.354324,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 23.755656
+      },
+      "2014": {
+        "CONFIRMATION_N": 6,
+        "DIRECTIONAL_N": 131,
+        "DIRECTION_DECIDABLE_N": 1252,
+        "ENTRY_N": 6,
+        "GEOMETRY_VALID_N": 6,
+        "OPPORTUNITY_N": 1776,
+        "TRIGGER_N": 52,
+        "entry_yield_per_1000_candidates": 3.378378,
+        "fixed_r_capability": {
+          "1R": 0.166667,
+          "2R": 0.166667,
+          "3R": 0.166667,
+          "4R": 0.0,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 2.206234,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 29.279279
+      },
+      "2015": {
+        "CONFIRMATION_N": 10,
+        "DIRECTIONAL_N": 156,
+        "DIRECTION_DECIDABLE_N": 1262,
+        "ENTRY_N": 5,
+        "GEOMETRY_VALID_N": 5,
+        "OPPORTUNITY_N": 1776,
+        "TRIGGER_N": 57,
+        "entry_yield_per_1000_candidates": 2.815315,
+        "fixed_r_capability": {
+          "1R": 0.4,
+          "2R": 0.2,
+          "3R": 0.0,
+          "4R": 0.0,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 0.742818,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 32.094595
+      },
+      "2016": {
+        "CONFIRMATION_N": 5,
+        "DIRECTIONAL_N": 116,
+        "DIRECTION_DECIDABLE_N": 1262,
+        "ENTRY_N": 2,
+        "GEOMETRY_VALID_N": 2,
+        "OPPORTUNITY_N": 1768,
+        "TRIGGER_N": 34,
+        "entry_yield_per_1000_candidates": 1.131222,
+        "fixed_r_capability": {
+          "1R": 0.5,
+          "2R": 0.5,
+          "3R": 0.5,
+          "4R": 0.0,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 0.106614,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 19.230769
+      },
+      "2017": {
+        "CONFIRMATION_N": 6,
+        "DIRECTIONAL_N": 151,
+        "DIRECTION_DECIDABLE_N": 1270,
+        "ENTRY_N": 3,
+        "GEOMETRY_VALID_N": 3,
+        "OPPORTUNITY_N": 1768,
+        "TRIGGER_N": 42,
+        "entry_yield_per_1000_candidates": 1.696833,
+        "fixed_r_capability": {
+          "1R": 0.0,
+          "2R": 0.0,
+          "3R": 0.0,
+          "4R": 0.0,
+          "5R": 0.0
+        },
+        "natural_target_median_R": 1.276923,
+        "symbols_covered": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "trigger_yield_per_1000_candidates": 23.755656
+      }
+    },
+    "selection_authority": "NONE \u2014 years are reported, never ranked and never selected"
+  }
+}
