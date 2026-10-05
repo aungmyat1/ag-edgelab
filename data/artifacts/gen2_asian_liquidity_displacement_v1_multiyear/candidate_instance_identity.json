@@ -1,0 +1,58 @@
+{
+  "candidate_instance_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+  "experiment_identity_preregistered": {
+    "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+    "dataset_authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "dataset_manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+    "dev_partition_hash": "BOUND_AT_LOAD",
+    "experiment_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+    "experiment_identity_sha256": "5c7276b15844e1df125c823bea831f26854e9948885aa1f2bd6da744af1e7cba",
+    "experiment_version": "1.0.0",
+    "friction_contract_hash": "12d7f472a7630c024673129adedfa6aaaeb2d147fbbaae66a2565a392649dc6d",
+    "rule_version_bump": "NONE",
+    "session_contract_hash": "e8ea8e0ae660a2a866fd33c0dd90bca97a19913e1b4c75042f2445366445b590",
+    "strategy_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+    "strategy_version": "1.0.0-research",
+    "symbol_universe": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ],
+    "timeframes": [
+      "D1",
+      "H4",
+      "H1",
+      "M15",
+      "M5"
+    ],
+    "verifier_version": "EDGELAB_SYSTEM_READINESS_V1"
+  },
+  "note": "Strategy identity is UNCHANGED (no rule-version bump). This is a new EXPERIMENT instance because the dataset partition changed.",
+  "preregistration_hash": "a255e1d981522d0a8de5ea02fa9071a50a905dac223bd71b7f689990ed3aa52b",
+  "preregistration_sha256_of_file": "fc40dc8757a92158d2798fb926c246a968f30b93ee540a64ee6e81123cb2abee",
+  "strategy_identity": {
+    "EXPECTED_RULE_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "rule_identity_check": {
+      "EXPECTED_RULE_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+      "RULES_CHANGED": "NO",
+      "checks": {
+        "asian_reference_utc": true,
+        "displacement_threshold": true,
+        "london_entry_utc": true,
+        "new_york_entry_utc": true,
+        "session_widening_forbidden": true,
+        "strategy_hash": true,
+        "strategy_id": true,
+        "strategy_version": true,
+        "symbol_universe": true
+      },
+      "recomputed_strategy_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+      "state": "PASS"
+    },
+    "strategy_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+    "strategy_version": "1.0.0-research"
+  }
+}
