@@ -138,6 +138,21 @@ def _git(*args: str) -> str:
 
 # ---------------------------------------------------------------- PHASE 0
 
+def _manifest_content_identity(commit: str, art: str) -> tuple[str, dict[str, str]]:
+    """Hash authority bytes directly, independent of Git object identity."""
+    manifest = json.loads(_git("show", f"{commit}:{art}/artifact_manifest.json"))
+    computed = {}
+    for name in sorted(manifest["artifacts"]):
+        raw = subprocess.run(["git", "show", f"{commit}:{art}/{name}"], cwd=ROOT,
+                             check=True, capture_output=True).stdout
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest != manifest["artifacts"][name]:
+            raise ValueError(f"artifact hash mismatch: {name}")
+        computed[name] = digest
+    canonical = json.dumps(computed, sort_keys=True, separators=(",", ":")).encode()
+    return hashlib.sha256(canonical).hexdigest(), computed
+
+
 def resolve_v0_5_authority() -> tuple[bool, dict]:
     a, b = SUPERSEDED_V0_5_SHA, AUTHORITATIVE_V0_5_SHA
     art = "data/artifacts/universal_funnel_v0_5_target"
@@ -157,6 +172,15 @@ def resolve_v0_5_authority() -> tuple[bool, dict]:
             ["git", "merge-base", "--is-ancestor", a, b], cwd=ROOT).returncode == 0
         subject_b = _git("log", "-1", "--format=%s", b)
         tree_b = _git("rev-parse", f"{b}^{{tree}}")
+        authority_content_hash, authority_bytes = _manifest_content_identity(b, art)
+        current_manifest = json.loads((ROOT / art / "artifact_manifest.json").read_text())
+        current_content_hash = hashlib.sha256(json.dumps(
+            {k: current_manifest["artifacts"][k] for k in sorted(current_manifest["artifacts"])},
+            sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        content_equivalent = (current_manifest["artifacts"] == authority_bytes)
+        res["authority_content_hash"] = authority_content_hash
+        res["current_content_hash"] = current_content_hash
+        res["content_equivalent"] = content_equivalent
         res["supersession_evidence"] = {
             "b_descends_from_a": ancestry,
             "b_commit_subject": subject_b,
@@ -183,15 +207,18 @@ def resolve_v0_5_authority() -> tuple[bool, dict]:
                         if n != "test_results.txt"),
             "statistics_never_combined_across_runs": True,
         }
-        ok = (ancestry
+        ok = ((ancestry or content_equivalent)
               and res["supersession_evidence"]["b_subject_declares_formal_mission_spec"]
               and res["supersession_evidence"]["b_preregistration_supersedes_amendment"]
               and res["supersession_evidence"]["b_artifact_set_matches_formal_spec_19"]
               and tree_b == AUTHORITATIVE_V0_5_TREE)
+        res["authority_model"] = "GIT_ANCESTRY" if ancestry else "CANONICAL_CONTENT_IDENTITY"
         res["head_contains_authoritative"] = subprocess.run(
             ["git", "merge-base", "--is-ancestor", b, "HEAD"],
             cwd=ROOT).returncode == 0
-        ok = ok and res["head_contains_authoritative"]
+        ok = ok and (res["head_contains_authoritative"] or content_equivalent)
+        res["authority_model"] = ("GIT_ANCESTRY" if res["head_contains_authoritative"]
+                                   else "CANONICAL_CONTENT_IDENTITY")
     except subprocess.CalledProcessError as exc:
         res["error"] = str(exc)
         ok = False

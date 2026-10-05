@@ -1,0 +1,14 @@
+{
+  "python_runtime": "3.11.2",
+  "python_requirement_satisfied": false,
+  "full_regression_executed": true,
+  "collected": 751,
+  "passed": 743,
+  "failed": 0,
+  "skipped": 8,
+  "xfailed": 0,
+  "xpassed": 0,
+  "focused_tests": "PASS",
+  "python312_regression": "NOT_EXECUTED_PYTHON312_UNAVAILABLE",
+  "verification_result": "3.11 regression green; acceptance remains blocked on Python 3.12"
+}

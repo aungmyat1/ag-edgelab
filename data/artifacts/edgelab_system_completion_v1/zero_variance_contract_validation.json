@@ -1,0 +1,28 @@
+{
+  "contract": "CorrelationResult",
+  "cases": {
+    "x_constant": {
+      "value": null,
+      "reason": "ZERO_VARIANCE",
+      "interpretation": "NO_RAW_COSCALING"
+    },
+    "y_constant": {
+      "value": null,
+      "reason": "ZERO_VARIANCE",
+      "interpretation": "NO_RAW_COSCALING"
+    },
+    "both_constant": {
+      "value": null,
+      "reason": "ZERO_VARIANCE",
+      "interpretation": "NO_RAW_COSCALING"
+    },
+    "spearman_x_constant": {
+      "value": null,
+      "reason": "ZERO_VARIANCE",
+      "interpretation": "NO_RAW_COSCALING"
+    }
+  },
+  "higher_level_constant_target_interpretation": "NO_RAW_COSCALING",
+  "legacy_float_api_preserved": true,
+  "verification_result": "PASS"
+}
