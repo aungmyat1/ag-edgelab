@@ -1,0 +1,14 @@
+{
+  "COMMISSION_AUTHORITY": "MISSING",
+  "FRICTION_AUTHORITY_COMPLETE": false,
+  "SLIPPAGE_AUTHORITY": "MISSING",
+  "SPREAD_AUTHORITY": "MISSING",
+  "SWAP_AUTHORITY": "MISSING",
+  "missing_is_not_zero": true,
+  "rationale": {
+    "COMMISSION": "Requires the account specification, an MT5 deal history with a commission field, or a broker statement held locally. None is reachable from this environment. No industry default is substituted.",
+    "SLIPPAGE": "Requires executed fill evidence: requested price versus filled price on real deals. Quote history cannot establish it at any sampling rate, and this mission forbids placing a trade to manufacture one.",
+    "SPREAD": "no verified capture bundle; no quote evidence exists on this machine",
+    "SWAP": "swap_long / swap_short / swap_mode come from symbol_info, which requires the terminal."
+  }
+}

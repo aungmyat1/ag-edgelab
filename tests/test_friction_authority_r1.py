@@ -1077,9 +1077,14 @@ class TestCaptureToolIsReadOnly:
     def test_only_reader_functions_are_called(self):
         called = set(re.findall(r"mt5\s*\.\s*(\w+)\s*\(",
                                 _executable_source(self.PATH)))
+        # Every entry is a READER. symbols_get enumerates the published
+        # instrument list (needed to resolve broker names instead of
+        # guessing suffixes) and copy_ticks_range reads historical ticks.
+        # Neither can create, modify or cancel an order.
         allowed = {"initialize", "shutdown", "last_error", "account_info",
                    "terminal_info", "symbol_info", "symbol_info_tick",
-                   "symbol_select", "history_deals_get", "history_orders_get"}
+                   "symbol_select", "history_deals_get", "history_orders_get",
+                   "symbols_get", "copy_ticks_range"}
         assert called <= allowed, f"non-reader MT5 calls: {called - allowed}"
         assert called, "the guard must actually be seeing MT5 calls"
 
@@ -1563,8 +1568,12 @@ class TestGovernancePreserved:
         """No new third-party dependency can hide in this package."""
         import ast
 
-        stdlib_ok = {"csv", "dataclasses", "datetime", "enum", "hashlib",
-                     "json", "pathlib", "statistics", "typing"}
+        # Standard library only. The point of this guard is that no
+        # THIRD-PARTY dependency can hide in the authority package, so
+        # stdlib additions are listed here explicitly as they are used.
+        stdlib_ok = {"csv", "contextlib", "dataclasses", "datetime", "enum",
+                     "hashlib", "json", "pathlib", "re", "statistics",
+                     "typing"}
         pkg = ROOT / "src" / "ag_edgelab" / "friction" / "authority"
         seen: set[str] = set()
         for path in sorted(pkg.glob("*.py")):
