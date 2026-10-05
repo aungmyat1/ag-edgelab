@@ -1,0 +1,21 @@
+{
+  "ENTRY_AVAILABLE_N": 35,
+  "conditional_continuation": {
+    "P(2R|1R)": 0.666667,
+    "P(3R|2R)": 0.9,
+    "P(4R|3R)": 0.222222,
+    "P(5R|4R)": 0.0
+  },
+  "frozen_v0_3_floors": {
+    "reach_1R_min": 0.5,
+    "reach_3R_min": 0.25
+  },
+  "note": "conditional probabilities are undefined (null) when the conditioning event is empty",
+  "reached_n": {
+    "1R": 15,
+    "2R": 10,
+    "3R": 9,
+    "4R": 2,
+    "5R": 0
+  }
+}

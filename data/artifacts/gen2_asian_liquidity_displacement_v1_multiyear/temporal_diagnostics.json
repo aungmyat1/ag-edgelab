@@ -1,0 +1,24 @@
+{
+  "entry_window_m15_bars": {
+    "contract": "3 UTC hours = 12 M15 bars per entry window",
+    "median": 12
+  },
+  "interpretation_rule": "TEMPORAL_INCOMPATIBILITY is diagnosed when window-bounded failures dominate the post-trigger attrition AND the median M15 bars remaining after the reclaim bar is below the number of sequential events the contract still requires.",
+  "m15_bars_remaining_after_displacement": 5.0,
+  "m15_bars_remaining_after_reclaim": 8,
+  "m15_bars_remaining_after_sweep": 10,
+  "m5_bars_remaining_after_mss": 12,
+  "post_trigger_rejection_counts": {
+    "GEOMETRY_TP1_NOT_BEYOND_ENTRY": 15,
+    "NO_CAUSAL_RETRACE_INTO_FVG": 22,
+    "NO_DISPLACEMENT_BODY_RATIO": 147,
+    "NO_FRESH_FVG_AFTER_MSS": 43,
+    "NO_MSS_BOS_AFTER_DISPLACEMENT": 175,
+    "RETRACE_INVALIDATED_BY_STOP_FIRST": 3,
+    "RIGHT_CENSORED_DATA_BOUNDARY": 1
+  },
+  "right_censored_n": 1,
+  "sequential_events_still_required_after_reclaim": 4,
+  "window_bounded_rejection_n": 240,
+  "window_bounded_rejection_share_of_post_trigger": 59.1133
+}

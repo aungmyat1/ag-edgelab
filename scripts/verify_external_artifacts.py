@@ -10,6 +10,11 @@ config/governance/external_artifact_registry.json:
 - ``in_tree_pinned`` — bulky evidence retained in the tree because
   runtime tests require it (``tree:<path>`` storage locations).
 
+A third scheme, ``local:<path>``, pins regenerable bulk evidence that is
+gitignored by policy. It is verified when the bytes are present in the
+checkout and reported as ABSENT (not a failure) when they are not; a present
+copy that disagrees with the pin still fails closed.
+
 This script retrieves the bytes from each storage location, recomputes
 sha256, and fails closed on any mismatch, missing location, or byte-size
 disagreement. Run it whenever evidence is retrieved, re-pinned, or
@@ -55,17 +60,40 @@ def tree_bytes(location: str) -> bytes:
     return path.read_bytes()
 
 
+def local_bytes(location: str) -> bytes:
+    """Resolve a 'local:<path>' storage location to bytes.
+
+    ``local:`` evidence is deliberately NOT carried by the repository: it is
+    bulky, gitignored, and regenerable byte-for-byte by its producer script
+    from a hash-pinned source manifest. The pin is still mandatory — when the
+    bytes are present they must match, and a regenerated copy that disagrees
+    with the pin is a hard failure.
+    """
+    path = ROOT / location[len("local:"):].split(" (")[0].strip()
+    if not path.is_file():
+        raise FileNotFoundError(path)
+    return path.read_bytes()
+
+
 def verify_one(art: dict, section: str, failures: list) -> bool:
     art_id = art["artifact_id"]
     digest = art["sha256"]
     if not HEX64.match(digest):
         failures.append(f"[{section}] {art_id}: malformed sha256 pin")
         return False
+    location = art["storage_location"]
     try:
-        if art["storage_location"].startswith("tree:"):
-            data = tree_bytes(art["storage_location"])
+        if location.startswith("tree:"):
+            data = tree_bytes(location)
+        elif location.startswith("local:"):
+            data = local_bytes(location)
         else:
-            data = blob_bytes(art["storage_location"])
+            data = blob_bytes(location)
+    except FileNotFoundError as exc:
+        # regenerable evidence absent from this checkout: report, do not verify
+        print(f"ABSENT   [{section}] {art_id}  (regenerable; {exc}) "
+              f"-> {art.get('retrieval', 'see producer_script')}")
+        return False
     except (ValueError, OSError) as exc:
         failures.append(f"[{section}] {art_id}: {exc}")
         return False

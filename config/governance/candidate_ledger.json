@@ -207,6 +207,59 @@
         "PRE_OOS_RESULT": "NOT_REACHED"
       },
       "note": "PERMANENT DEVELOPMENT REJECTION of the V1 hypothesis. The funnel starved before it could be measured: 1270 direction-decidable candidates produced 151 non-neutral (11.89%), 42 TRIGGER_PASS, 6 CONFIRMATION_PASS and 3 ENTRY_AVAILABLE across four symbols and eight months \u2014 far below the preregistered eligibility floor of 100, so the robustness battery and the Pre-OOS gate were NEVER RUN (NOT_REACHED, never a PASS). The accepted Universal Funnel Analyzer independently returned POOR_TRIGGER_QUALITY on the trigger nodes (5R opportunity-basis reach 19.87%, selection uplift +1.56pp). No threshold, window or symbol was altered in response. Never edit this record to rescue the candidate."
+    },
+    {
+      "CANDIDATE_ID": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+      "CANDIDATE_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+      "STATUS": "MULTIYEAR_DEV_INSUFFICIENT_SAMPLE",
+      "EDGE_STATUS": "INSUFFICIENT_EVIDENCE",
+      "FAILURE_STAGE": "DEV_FUNNEL_STARVATION (confirmed on a multi-year corpus)",
+      "OOS_VERDICT": "NOT_RUN (PRE_OOS_RESULT = NOT_REACHED)",
+      "ECONOMIC_VERDICT": "NOT_ESTIMABLE",
+      "OOS_WINDOW": "not consumed for any year",
+      "OOS_ROLE": "NOT_CONSUMED",
+      "RELATED_MODEL_SELECTION_REUSE": "CAUTIONED \u2014 the annual DEV windows [YYYY-01-01, YYYY-09-01) for 2000-2017 are now DEVELOPMENT_KNOWN for the ASIAN_LIQUIDITY_DISPLACEMENT family (see candidate_contamination_registry.json). Sep-Dec of every year remains FRESH and unconsumed.",
+      "HOLDOUT_TOUCHED": "NO",
+      "lifecycle": "DEV_REJECTED",
+      "verification_stage": "DEVELOPMENT_EVIDENCE_EXPANSION (multi-year replay, rules frozen)",
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "strategy_identity": {
+        "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+        "strategy_version": "1.0.0-research",
+        "RULES_CHANGED": "NO",
+        "rule_version_bump": "NONE",
+        "EXPECTED_RULE_HASH_reproduced": true
+      },
+      "preregistration": "data/artifacts/gen2_asian_liquidity_displacement_v1_multiyear/preregistration.json (sha256 a255e1d981522d0a8de5ea02fa9071a50a905dac223bd71b7f689990ed3aa52b, committed BEFORE the multi-year replay)",
+      "evidence_bundle": "data/artifacts/gen2_asian_liquidity_displacement_v1_multiyear/",
+      "dataset": "HISTDATA_ASCII_M1_MULTIYEAR_R2 \u2014 63 symbol-years over 18 calendar years, DEVELOPMENT partitions only",
+      "final_report": "data/artifacts/gen2_asian_liquidity_displacement_v1_multiyear/final_report.json",
+      "key_results": {
+        "OPPORTUNITY_N": 26814,
+        "DIRECTIONAL_N": 1382,
+        "TRIGGER_PASS_N": 441,
+        "CONFIRMATION_PASS_N": 51,
+        "GEOMETRY_VALID_N": 36,
+        "ENTRY_AVAILABLE_N": 35,
+        "SAMPLE_CLASSIFICATION": "STRATEGY_STRUCTURAL_STARVATION",
+        "DECISION_CASE": "CASE_B",
+        "2017_ENTRY_N": 3,
+        "corpus_growth_x": 15.75,
+        "2017_representative": true,
+        "PRE_OOS_RESULT": "NOT_REACHED"
+      },
+      "governance_input_hash_semantics": "dataset_binding.json records governance_inputs_sha256 as consulted IMMEDIATELY BEFORE the replay, i.e. the state in which the multi-year DEV windows were still FRESH_DEVELOPMENT. Those pins deliberately do NOT match the files at this commit, because this record and the 17 contamination records below were appended AFTER the replay finished. Post-append hashes are pinned in governance_input_hashes_after_append so both states are verifiable.",
+      "governance_input_hashes_after_append": {
+        "candidate_contamination_registry_sha256": "b0ea16c07f43edd79db81acafdd7e6284a733b7979666ce491d0678f451843b0",
+        "data_authority_gap_sha256": "5169328cd47f60b5938868686af8d6e58cd58729fd313a0380fec8a889da6daa",
+        "oos_access_log_sha256": "316ec2b0839d4ffa077ee16ce463519642a9bfe42b6cb69ef52af69d03e44f01"
+      },
+      "note": "Dataset-expansion experiment on the UNCHANGED V1 rules. The corpus grew 15.75x (4 -> 63 symbol-years) and the entry population went from 3 to 35. SAMPLE_CLASSIFICATION = STRATEGY_STRUCTURAL_STARVATION. No rule, threshold, session window, symbol or year was selected or altered in response to any result. Never edit this record to rescue the candidate.",
+      "governance_input_hashes_before_replay": {
+        "contamination_registry_sha256": "539a193b92756b6c868ab90dd8fdffe07164f072bad674d445c0c02a24c11f8c",
+        "data_authority_gap_sha256": "d0ebeab33fe7f1aff260f07ca015f5146a8c6333df4ba1c1025ce12ccd446f71",
+        "oos_access_log_sha256": "44125ce16b2c2e93c5efe3138a9044e4bdca90edd192e527ea06f8e1271d4df4"
+      }
     }
   ]
 }

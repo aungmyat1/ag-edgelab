@@ -1,0 +1,131 @@
+{
+  "2017_representative": true,
+  "balanced_panel": {
+    "classification_on_panel_only": "STRATEGY_STRUCTURAL_STARVATION",
+    "counts": {
+      "CANDIDATE_N": 15784,
+      "CONFIRMATION_PASS_N": 49,
+      "DIRECTIONAL_N": 1222,
+      "ENTRY_AVAILABLE_N": 34,
+      "TRIGGER_PASS_N": 390
+    },
+    "declared_in": "preregistration.data_authority.balanced_panel_years (pre-result)",
+    "entries_per_symbol_year": 0.944444,
+    "fixed_r_capability": {
+      "1R": 0.411765,
+      "2R": 0.264706,
+      "3R": 0.235294,
+      "4R": 0.058824,
+      "5R": 0.0
+    },
+    "selection_authority": "NONE \u2014 reported alongside the pooled corpus, never instead of it",
+    "symbol_years": 36,
+    "years": [
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017"
+    ]
+  },
+  "classification": {
+    "SAMPLE_CLASSIFICATION": "STRATEGY_STRUCTURAL_STARVATION",
+    "applied_rule": "decision_order[4]",
+    "cell_entry_n": {
+      "EURUSD|ASIAN_LONDON": 2,
+      "EURUSD|LONDON_NEWYORK": 3,
+      "GBPUSD|ASIAN_LONDON": 6,
+      "GBPUSD|LONDON_NEWYORK": 4,
+      "USDJPY|ASIAN_LONDON": 1,
+      "USDJPY|LONDON_NEWYORK": 5,
+      "XAUUSD|ASIAN_LONDON": 7,
+      "XAUUSD|LONDON_NEWYORK": 7
+    },
+    "cell_floor": 30,
+    "contract_id": "MULTIYEAR_SAMPLE_CLASSIFICATION_V1",
+    "pooled_eligibility_required": 100,
+    "pooled_entry_n": 35,
+    "pre_oos_result": "NOT_REACHED",
+    "starved_cells": [
+      "EURUSD|ASIAN_LONDON",
+      "EURUSD|LONDON_NEWYORK",
+      "GBPUSD|ASIAN_LONDON",
+      "GBPUSD|LONDON_NEWYORK",
+      "USDJPY|ASIAN_LONDON",
+      "USDJPY|LONDON_NEWYORK",
+      "XAUUSD|ASIAN_LONDON",
+      "XAUUSD|LONDON_NEWYORK"
+    ],
+    "viable_cells": []
+  },
+  "corpus_growth_x": 15.75,
+  "entry_yield_per_1000_candidates_by_year": {
+    "2000": 0.0,
+    "2001": 0.0,
+    "2002": 0.0,
+    "2003": 0.0,
+    "2004": 0.0,
+    "2005": 0.0,
+    "2006": 0.0,
+    "2007": 0.0,
+    "2008": 0.750751,
+    "2009": 1.231527,
+    "2010": 3.409091,
+    "2011": 2.828054,
+    "2012": 1.126126,
+    "2013": 1.696833,
+    "2014": 3.378378,
+    "2015": 2.815315,
+    "2016": 1.131222,
+    "2017": 1.696833
+  },
+  "growth_x": {
+    "CANDIDATE_N": 15.1663,
+    "CONFIRMATION_PASS_N": 8.5,
+    "ENTRY_AVAILABLE_N": 11.6667,
+    "GEOMETRY_VALID_N": 12.0,
+    "TRIGGER_PASS_N": 10.5
+  },
+  "interpretation_rule": "if the 2017 entry yield sits inside the range spanned by the other years, the 2017 window was a representative sample of the rule's behaviour and the starvation is a property of the rules",
+  "multiyear": {
+    "CANDIDATE_N": 26814,
+    "CONFIRMATION_PASS_N": 51,
+    "ENTRY_AVAILABLE_N": 35,
+    "GEOMETRY_VALID_N": 36,
+    "TRIGGER_PASS_N": 441
+  },
+  "multiyear_symbol_years": 63,
+  "narrow_2017_dev": {
+    "CANDIDATE_N": 1768,
+    "CONFIRMATION_PASS_N": 6,
+    "ENTRY_AVAILABLE_N": 3,
+    "GEOMETRY_VALID_N": 3,
+    "TRIGGER_PASS_N": 42
+  },
+  "narrow_campaign_evidence": {
+    "PRE_OOS_RESULT": "NOT_REACHED",
+    "PRIMARY_FUNNEL_WEAKNESS": "INSUFFICIENT_SAMPLE",
+    "STATUS": "DEV_REJECTED",
+    "final_report": "data/artifacts/gen2_asian_liquidity_displacement_v1/final_report.json",
+    "sha256": "61a2e1b6c0ae005b08f7ae93b95060c088ccecac6a79d86de2cfa4642678ed97"
+  },
+  "narrow_symbol_years": 4,
+  "sufficiency_projection": {
+    "available_history": "HistData FX M1 begins in 2000 and gold in 2009; the DEV half of every year is already consumed by this experiment, so no further DEVELOPMENT evidence of this kind exists to collect",
+    "calendar_years_needed_at_4_symbols": 26.47,
+    "calendar_years_needed_for_full_cell_coverage_at_4_symbols": 63.53,
+    "method": "pure arithmetic on the observed entry yield; no extrapolation of performance, only of SAMPLE SIZE",
+    "observed_entries_per_symbol_year_balanced_panel": 0.944444,
+    "symbol_years_needed_for_every_cell_to_reach_the_30_entry_floor": 255,
+    "symbol_years_needed_for_pooled_eligibility": 106
+  },
+  "yield_2017": 1.696833,
+  "yield_other_years_range": [
+    0.0,
+    3.409091
+  ]
+}

@@ -34,6 +34,24 @@
       "storage_location": "git:65ba0ed:data/artifacts/universal_funnel_v0_5_target/target_ladders.jsonl (blob 1eb4f1af94e16f1accb37be9405a033028db7938; reachable on branches arena/01a105f9-ag-edgelab and arena/01a1073e-ag-edgelab)",
       "externalized_by_commit": "CONSOLIDATION_R1",
       "reason": "3.2 MB intermediate ladder ledger; not referenced by any runtime test; regenerable deterministically by the producer script"
+    },
+    {
+      "artifact_id": "GEN2_ALD_V1_MULTIYEAR_CANDIDATE_LEDGER",
+      "sha256": "58dbd55e20754f3b805374c88ce9513f46ec6b06f924cfd53e8933aa9541f8f9",
+      "byte_size": 625938,
+      "uncompressed_sha256": "c021d864054bb8816b392960817e90856b3478a06812d10db24e22dfc755f3cd",
+      "uncompressed_byte_size": 34220275,
+      "rows": 26878,
+      "schema_version": "GEN2_ALD_V1_CANDIDATE_LEDGER_ROWS_V1 (frozen, shared with the 2017 campaign: scripts/run_gen2_asian_liquidity_displacement_v1_dev.py:unit_row)",
+      "producer_commit": "69ad73a (+ this commit)",
+      "producer_script": "scripts/run_gen2_ald_v1_multiyear_dev.py",
+      "candidate_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+      "dataset_role": "DEVELOPMENT",
+      "dataset_window": "[YYYY-01-01T00:00:00+00:00, YYYY-09-01T00:00:00+00:00) for 63 symbol-years over 2000-2017",
+      "storage_location": "local: data/external/gen2_ald_v1_multiyear/candidate_ledger.jsonl.gz (gitignored; NOT committed)",
+      "externalized_by_commit": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+      "reason": "33 MB per-unit replay ledger (one row per candidate unit); no runtime test reads it \u2014 the tests read the aggregated artifacts \u2014 and it is regenerable byte-for-byte by the producer script (deterministic replay, gzip mtime=0) from the hash-pinned archive manifest.",
+      "retrieval": "re-run scripts/acquire_histdata_fx_multiyear.py then the producer script; verify sha256 == 58dbd55e20754f3b805374c88ce9513f46ec6b06f924cfd53e8933aa9541f8f9"
     }
   ],
   "in_tree_pinned": [
