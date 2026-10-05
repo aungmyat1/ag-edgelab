@@ -1,0 +1,258 @@
+{
+  "axes": {
+    "BOOTSTRAP": {
+      "ci_high_r": -0.14435146443515184,
+      "ci_low_r": -1.0,
+      "confidence": 0.95,
+      "estimate_r": -0.714783821478384,
+      "provisional_state_if_eligible": "FAIL",
+      "samples": 5000,
+      "seed": 20251005,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "MEAN_MEDIAN_DIVERGENCE": {
+      "divergence": 0.285216,
+      "mean_r": -0.714784,
+      "median_r": -1.0,
+      "provisional_state_if_eligible": "PASS",
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "PARAMETER_NEIGHBORHOOD": {
+      "provisional_state_if_eligible": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "reason": "the pooled entry population never reached the preregistered eligibility floor of 100; a neighborhood diagnostic on an empty/degenerate population would be noise, not evidence",
+      "selection_authority": "NONE \u2014 0.70 remains frozen",
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "REGIME_STABILITY": {
+      "classifier": "ag_edgelab.verification.regimes.classify_market_state (frozen v1) on the D1 bar last closed before the entry-window open",
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "RANGE": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "TREND": {
+          "expectancy_r": -0.5721757322175759,
+          "median_r": -0.572176,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -1.1443514644351518
+        }
+      }
+    },
+    "SESSION_STABILITY": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "ASIAN_LONDON": {
+          "expectancy_r": -0.14435146443515184,
+          "median_r": -0.144351,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -0.14435146443515184
+        },
+        "LONDON_NEWYORK": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -2.0
+        }
+      }
+    },
+    "SYMBOL_STABILITY": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "EURUSD": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "USDJPY": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "XAUUSD": {
+          "expectancy_r": -0.14435146443515184,
+          "median_r": -0.144351,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -0.14435146443515184
+        }
+      }
+    },
+    "TAIL_DEPENDENCE": {
+      "expectancy_r_all": -0.714783821478384,
+      "expectancy_r_drop_best_1": -1.0,
+      "expectancy_r_drop_best_5pct": -1.0,
+      "provisional_state_if_eligible": "FAIL",
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "WALK_FORWARD": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "2017-03": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2017-04": {
+          "expectancy_r": -0.14435146443515184,
+          "median_r": -0.144351,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -0.14435146443515184
+        },
+        "2017-07": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        }
+      }
+    },
+    "YEAR_STABILITY": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "standing_limitation": "YEAR_COVERAGE_LIMITED_SINGLE_CALENDAR_YEAR_2017",
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "2017Q1": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2017Q2": {
+          "expectancy_r": -0.14435146443515184,
+          "median_r": -0.144351,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -0.14435146443515184
+        },
+        "2017Q3": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        }
+      },
+      "substitution": "INTRA_YEAR_SEGMENT_STABILITY over DEV calendar quarters \u2014 the committed FX authority covers a single calendar year (2017)"
+    }
+  },
+  "basis": "structural R under the TP1/TP2 50/50 management diagnostic; no friction applied",
+  "eligibility": {
+    "eligible": false,
+    "pooled_entry_available_n": 3,
+    "preregistered_rule": "on ineligible -> PRE_OOS_RESULT = NOT_REACHED (never a PASS)",
+    "required": 100,
+    "stratum_min_n": 30
+  },
+  "preregistered_gate_contract": {
+    "axes": {
+      "BOOTSTRAP_UNCERTAINTY": {
+        "method": "ag_edgelab.statistics.bootstrap.bootstrap_expectancy_ci(samples=5000, seed=20251005, confidence=0.95)",
+        "pass_rule": "95% CI lower bound of management expectancy R strictly > 0"
+      },
+      "CANDIDATE_IDENTITY_VALIDATION": {
+        "pass_rule": "all contract hashes recomputed and equal; strategy identity collides with no historical candidate id"
+      },
+      "DATASET_ROLE_VALIDATION": {
+        "pass_rule": "every dataset read is role=DEVELOPMENT, recorded in the dataset ledger; OOS_OPENED=NO; HOLDOUT_TOUCHED=NO"
+      },
+      "FRICTION_READINESS": {
+        "mode": "STRUCTURAL_DISCLOSURE",
+        "note": "FRICTION_EDGE_VERIFICATION_READY = NO does not block STRUCTURAL research (mission section 13)",
+        "pass_rule": "the friction authority state is explicitly recorded, economic metrics are suppressed as NOT_ESTIMABLE_NO_FRICTION_AUTHORITY, and NO substitute value (generic spread, $7/lot, fixed slippage, industry default) appears anywhere in the evidence bundle"
+      },
+      "MEAN_MEDIAN_DIVERGENCE": {
+        "pass_rule": "NOT (mean management R > 0 AND median management R < 0) \u2014 a positive mean carried entirely by tails fails"
+      },
+      "PARAMETER_NEIGHBORHOOD": {
+        "method": "ag_edgelab.optimization.stability.assess_parameter_stability over displacement body/range in [0.6, 0.65, 0.7, 0.75, 0.8] centred on 0.7",
+        "pass_rule": "stable == True (positive_fraction >= 0.6 and relative_spike <= 2.0)",
+        "selection_authority": "NONE \u2014 diagnostic only; the V1 threshold 0.70 is frozen and is NOT changed by this mission under any outcome"
+      },
+      "REGIME_STABILITY": {
+        "classifier": "ag_edgelab.verification.regimes.classify_market_state (frozen v1) applied to the D1 bar last closed before the entry-window open",
+        "pass_rule": "fraction of qualifying regime slices with positive management expectancy >= 0.6"
+      },
+      "SESSION_STABILITY": {
+        "pass_rule": "fraction of qualifying session pairs with positive management expectancy >= 0.6"
+      },
+      "SYMBOL_STABILITY": {
+        "pass_rule": "fraction of qualifying symbols with positive management expectancy >= 0.6",
+        "universe": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ]
+      },
+      "TAIL_DEPENDENCE": {
+        "method": "remove the single best trade; separately remove the best 5% of trades",
+        "pass_rule": "pooled management expectancy stays strictly positive under BOTH removals"
+      },
+      "WALK_FORWARD": {
+        "method": "chronological non-overlapping DEV folds (monthly test windows)",
+        "min_fold_n": 30,
+        "pass_rule": "fraction of folds with positive management expectancy >= 0.6"
+      },
+      "YEAR_STABILITY": {
+        "method": "the committed FX authority covers ONE calendar year (2017); per config/governance/data_authority_gap.json no multi-year partition exists. Substitution declared in advance: INTRA_YEAR_SEGMENT_STABILITY over the DEV calendar quarters (2017Q1, 2017Q2, 2017Q3-partial).",
+        "pass_rule": "fraction of qualifying quarters with positive management expectancy >= 0.6",
+        "standing_limitation": "YEAR_COVERAGE_LIMITED_SINGLE_CALENDAR_YEAR_2017"
+      }
+    },
+    "eligibility": {
+      "on_ineligible": "PRE_OOS_RESULT = NOT_REACHED (never a PASS)",
+      "pooled_direction_n_min": 200,
+      "pooled_entry_available_n_min": 100,
+      "stratum_min_n": 30
+    },
+    "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+    "semantics": "FAIL_CLOSED \u2014 the gate PASSES only if every axis is PASS",
+    "structural_capability_floors": {
+      "entry_n_min": 30,
+      "reach_1R_min": 0.5,
+      "reach_3R_min": 0.25,
+      "source": "frozen V0.3 root-cause thresholds in ag_edgelab.universal.fx_dev_campaign"
+    },
+    "threshold_mutation_allowed": false
+  }
+}

@@ -1,0 +1,416 @@
+{
+  "BROKER_MUTATION": "NO",
+  "CANDIDATE_FAMILY_ID": "ASIAN_LIQUIDITY_DISPLACEMENT",
+  "CANDIDATE_IDENTITY_SHA256": null,
+  "CANDIDATE_N": 1768,
+  "CAPABILITY": {
+    "1R_CAPABILITY": 0.0,
+    "2R_CAPABILITY": 0.0,
+    "3R_CAPABILITY": 0.0,
+    "4R_CAPABILITY": 0.0,
+    "5R_CAPABILITY": 0.0
+  },
+  "CONFIRMATION_INPUT_N": 42,
+  "CONFIRMATION_PASS_N": 6,
+  "CONTINUATION": {
+    "P(2R|1R)": null,
+    "P(3R|2R)": null,
+    "P(4R|3R)": null,
+    "P(5R|4R)": null
+  },
+  "DATASET_AUTHORITY": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+  "DATASET_ROLE": "DEVELOPMENT",
+  "DEV_PARTITION_HASH": "50f0ca09d61ec14a10d12a1b8d7834a937d6361991d6c742279b79bb4b72f2ab",
+  "DEV_PARTITION_UTC": [
+    "2017-01-01T00:00:00+00:00",
+    "2017-09-01T00:00:00+00:00"
+  ],
+  "ECONOMIC_METRICS": "NOT_ESTIMABLE_NO_FRICTION_AUTHORITY",
+  "ENTRY_AVAILABLE_N": 3,
+  "FRICTION_EDGE_VERIFICATION_READY": "NO",
+  "FROZEN_CANDIDATE": "NO",
+  "GEOMETRY_VALID_N": 3,
+  "HOLDOUT_TOUCHED": "NO",
+  "IMPLEMENTATION_SHA": "8b9ef4e11929de6f0782839e1a4378bc445002d5",
+  "NATURAL_TARGET_MEDIAN_R": 1.276923,
+  "NEXT": "DESIGN_NEW_V2_HYPOTHESIS",
+  "OOS_OPENED": "NO",
+  "PREREGISTRATION_HASH": "6662c33f9b5b6d5b05bcabff889659ca522abe0a00d1e4dcce4dc89d9972f13b",
+  "PRE_OOS_RESULT": "NOT_REACHED",
+  "PRIMARY_FUNNEL_WEAKNESS": "INSUFFICIENT_SAMPLE",
+  "ROBUSTNESS": {
+    "BOOTSTRAP": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "MEAN_MEDIAN_DIVERGENCE": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "PARAMETER_NEIGHBORHOOD": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "REGIME_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "SESSION_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "SYMBOL_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "TAIL_DEPENDENCE": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "WALK_FORWARD": "NOT_RUN_INSUFFICIENT_SAMPLE",
+    "YEAR_STABILITY": "NOT_RUN_INSUFFICIENT_SAMPLE"
+  },
+  "SEARCH_LEDGER": {
+    "hypotheses_evaluated": 1,
+    "optimizer_runs": 0,
+    "post_hoc_selection": "NONE",
+    "threshold_mutations": 0,
+    "trial_count": 0
+  },
+  "SECONDARY_DIAGNOSES": [
+    "TRIGGER_FUNNEL_WEAKNESS"
+  ],
+  "SESSIONS": [
+    "ASIAN_LONDON",
+    "LONDON_NEWYORK",
+    "POOLED"
+  ],
+  "STATUS": "DEV_REJECTED",
+  "STRATEGY_EXECUTION_ADDED": "NO",
+  "STRATEGY_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+  "STRATEGY_ID": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+  "STRATEGY_VERSION": "1.0.0-research",
+  "SYMBOLS": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "TIMEFRAMES": [
+    "D1",
+    "H4",
+    "H1",
+    "M15",
+    "M5"
+  ],
+  "TREE_SHA": "e8eb9ba97cbb69c13607dba3a5d45743f3a31ed5",
+  "TRIGGER_INPUT_N": 1768,
+  "TRIGGER_PASS_N": 42,
+  "authority_gate": {
+    "evidence": "data/artifacts/edgelab_system_completion_v1/system_readiness.json",
+    "evidence_sha256": "62e8c305f527e36655c4c280db8721c68ed9302935d1e07d799a394b2f18c217",
+    "observed": {
+      "HOLDOUT_AUTHORIZED": "NO",
+      "LIVE_EXECUTION_AUTHORIZED": "NO",
+      "OOS_ECONOMIC_AUTHORIZED": "NO",
+      "RESEARCH_GENERATION_2_ALLOWED": "YES",
+      "SYSTEM_SOFTWARE_COMPLETE": "YES"
+    },
+    "required": {
+      "HOLDOUT_AUTHORIZED": "NO",
+      "LIVE_EXECUTION_AUTHORIZED": "NO",
+      "OOS_ECONOMIC_AUTHORIZED": "NO",
+      "RESEARCH_GENERATION_2_ALLOWED": "YES",
+      "SYSTEM_SOFTWARE_COMPLETE": "YES"
+    },
+    "state": "PASS"
+  },
+  "contamination_check": {
+    "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+    "candidate_ledger_sha256": "d87d4f80f8a4094a2a349d272d3125d2fe75c34109c83a080b6089d9e8b434c4",
+    "checked_window_utc": [
+      "2017-01-01T00:00:00+00:00",
+      "2017-09-01T00:00:00+00:00"
+    ],
+    "historical_identities_not_reused": [
+      "ST_ASIAN_SWEEP_5R_V1",
+      "SESSION_TRADE_V2",
+      "ST_MTF_CONTROL_SHIFT_V1",
+      "ST_MTF_CONTROL_SHIFT_V2",
+      "ST_MTF_CONTROL_SHIFT_V3",
+      "TARGET_POLICY_C3_V1"
+    ],
+    "identity_collision_with_existing_ledger": [],
+    "note": "DEVELOPMENT reads require a family-freshness check by contract; the family ASIAN_LIQUIDITY_DISPLACEMENT has no prior exposure record. DEV data is DEVELOPMENT_KNOWN after this mission and can never serve as OOS.",
+    "oos_access_log_sha256": "44125ce16b2c2e93c5efe3138a9044e4bdca90edd192e527ea06f8e1271d4df4",
+    "overlapping_exposure_records": [],
+    "registry_sha256": "38ed81f31aee45b6ca86020b4c8774198e4649b0018a4d9987a32bec9eab893d",
+    "state": "PASS"
+  },
+  "contract_hashes": {
+    "confirmation_contract_hash": "a4802f0d015820db131ab83af5efb376fa32006eff499cd45a20dbbc569edea6",
+    "entry_contract_hash": "01719a1559d4d02ab3076e9c0756ca64ab5db85d3438088378169d3a6293b9d4",
+    "friction_contract_hash": "12d7f472a7630c024673129adedfa6aaaeb2d147fbbaae66a2565a392649dc6d",
+    "parameter_hash": "2c3313ca8effb66d268179b41f223dacb6c0b879a5324bed52ca2d5b72c0160e",
+    "session_contract_hash": "e8ea8e0ae660a2a866fd33c0dd90bca97a19913e1b4c75042f2445366445b590",
+    "sl_contract_hash": "34c899349ac62715b33151d867174fea1c1223541819f0abaa74c4f32ddac4cd",
+    "strategy_code_hash": "fb495d51e3bcb6e2ecf10f5e5993b650dbcc4588695a451c8f2308a310b4f196",
+    "strategy_contract_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "target_contract_hash": "fad4e130fab35c6b34d8287abf41a91dd328fd549d419975427d436c4245cd39",
+    "trigger_contract_hash": "be90382f44c26482f9f4590ce97838015e1fd462f30e3503806cfbee6828121b"
+  },
+  "determinism": {
+    "double_pass": "BYTE_IDENTICAL",
+    "pass1_sha256": "57c0091869b6b8d9ee275fe04f7f1912b9c72642d5200ee69b2288b4549f0b76",
+    "pass2_sha256": "57c0091869b6b8d9ee275fe04f7f1912b9c72642d5200ee69b2288b4549f0b76"
+  },
+  "generated_at_utc": "2026-10-05T07:24:36+00:00",
+  "identity_recheck": {
+    "preregistration_binds_same_contract": true,
+    "strategy_contract_hash_preregistered": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "strategy_contract_hash_recomputed": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94"
+  },
+  "mission": "ARENA RESEARCH GENERATION 2 \u2014 FX SESSION CANDIDATE V1",
+  "root_cause": {
+    "PRIMARY_FUNNEL_WEAKNESS": "INSUFFICIENT_SAMPLE",
+    "SECONDARY_DIAGNOSES": [
+      "TRIGGER_FUNNEL_WEAKNESS"
+    ],
+    "decision_order": [
+      "INSUFFICIENT_SAMPLE",
+      "TEMPORAL_INCOMPATIBILITY",
+      "TRIGGER_FUNNEL_WEAKNESS",
+      "CONFIRMATION_FUNNEL_WEAKNESS",
+      "TARGET_MODEL_MISMATCH",
+      "TARGET_CONTINUATION_WEAKNESS"
+    ],
+    "findings": [
+      {
+        "evidence": "TRIGGER_INPUT=1768 (floor 200), ENTRY_AVAILABLE=3 (floor 30)",
+        "label": "INSUFFICIENT_SAMPLE",
+        "priority": 1
+      },
+      {
+        "evidence": "T1_ASIAN_REFERENCE_VALID: 5R pass_reach_pct=19.87; T2_DIRECTION_DECIDED: 5R pass_reach_pct=19.87; T3_DIRECTION_NON_NEUTRAL: 5R pass_reach_pct=19.87; T4_ASIAN_SWEEP: 5R pass_reach_pct=16.44",
+        "label": "TRIGGER_FUNNEL_WEAKNESS",
+        "priority": 3,
+        "scopes": [
+          "T1_ASIAN_REFERENCE_VALID",
+          "T2_DIRECTION_DECIDED",
+          "T3_DIRECTION_NON_NEUTRAL",
+          "T4_ASIAN_SWEEP"
+        ],
+        "source": "UNIVERSAL_FUNNEL_ANALYZER"
+      }
+    ],
+    "starvation_attribution": {
+      "largest_absolute_attrition": {
+        "absolute_loss": 1119,
+        "from": "T2_DIRECTION_DECIDED",
+        "input_n": 1270,
+        "output_n": 151,
+        "survival_pct": 11.889764,
+        "to": "T3_DIRECTION_NON_NEUTRAL"
+      },
+      "lowest_survival_step_with_sample": {
+        "absolute_loss": 1119,
+        "from": "T2_DIRECTION_DECIDED",
+        "input_n": 1270,
+        "output_n": 151,
+        "survival_pct": 11.889764,
+        "to": "T3_DIRECTION_NON_NEUTRAL"
+      },
+      "steps": [
+        {
+          "absolute_loss": 498,
+          "calendar_note": "498 rejects are ASIAN_REFERENCE_INSUFFICIENT_BARS, of which 496 fall on Saturday/Sunday (FX has no weekend session); this step is calendar structure, not a rule weakness",
+          "from": "CANDIDATE_N",
+          "input_n": 1768,
+          "output_n": 1270,
+          "survival_pct": 71.832579,
+          "to": "T1_ASIAN_REFERENCE_VALID"
+        },
+        {
+          "absolute_loss": 0,
+          "from": "T1_ASIAN_REFERENCE_VALID",
+          "input_n": 1270,
+          "output_n": 1270,
+          "survival_pct": 100.0,
+          "to": "T2_DIRECTION_DECIDED"
+        },
+        {
+          "absolute_loss": 1119,
+          "from": "T2_DIRECTION_DECIDED",
+          "input_n": 1270,
+          "output_n": 151,
+          "survival_pct": 11.889764,
+          "to": "T3_DIRECTION_NON_NEUTRAL"
+        },
+        {
+          "absolute_loss": 78,
+          "from": "T3_DIRECTION_NON_NEUTRAL",
+          "input_n": 151,
+          "output_n": 73,
+          "survival_pct": 48.344371,
+          "to": "T4_ASIAN_SWEEP"
+        },
+        {
+          "absolute_loss": 31,
+          "from": "T4_ASIAN_SWEEP",
+          "input_n": 73,
+          "output_n": 42,
+          "survival_pct": 57.534247,
+          "to": "T5_CLOSE_BACK_INSIDE"
+        },
+        {
+          "absolute_loss": 14,
+          "from": "T5_CLOSE_BACK_INSIDE",
+          "input_n": 42,
+          "output_n": 28,
+          "survival_pct": 66.666667,
+          "to": "C1_DISPLACEMENT"
+        },
+        {
+          "absolute_loss": 18,
+          "from": "C1_DISPLACEMENT",
+          "input_n": 28,
+          "output_n": 10,
+          "survival_pct": 35.714286,
+          "to": "C2_MSS_BOS"
+        },
+        {
+          "absolute_loss": 3,
+          "from": "C2_MSS_BOS",
+          "input_n": 10,
+          "output_n": 7,
+          "survival_pct": 70.0,
+          "to": "C3_FRESH_FVG"
+        },
+        {
+          "absolute_loss": 1,
+          "from": "C3_FRESH_FVG",
+          "input_n": 7,
+          "output_n": 6,
+          "survival_pct": 85.714286,
+          "to": "C4_FVG_RETRACE_AVAILABLE"
+        },
+        {
+          "absolute_loss": 3,
+          "from": "C4_FVG_RETRACE_AVAILABLE",
+          "input_n": 6,
+          "output_n": 3,
+          "survival_pct": 50.0,
+          "to": "C5_GEOMETRY_VALID"
+        },
+        {
+          "absolute_loss": 0,
+          "from": "C5_GEOMETRY_VALID",
+          "input_n": 3,
+          "output_n": 3,
+          "survival_pct": 100.0,
+          "to": "C6_ENTRY_AVAILABLE"
+        },
+        {
+          "absolute_loss": 3,
+          "from": "C6_ENTRY_AVAILABLE",
+          "input_n": 3,
+          "output_n": 0,
+          "survival_pct": 0.0,
+          "to": "O1_1R"
+        },
+        {
+          "absolute_loss": 0,
+          "from": "O1_1R",
+          "input_n": 0,
+          "output_n": 0,
+          "survival_pct": null,
+          "to": "O2_2R"
+        },
+        {
+          "absolute_loss": 0,
+          "from": "O2_2R",
+          "input_n": 0,
+          "output_n": 0,
+          "survival_pct": null,
+          "to": "O3_3R"
+        },
+        {
+          "absolute_loss": 0,
+          "from": "O3_3R",
+          "input_n": 0,
+          "output_n": 0,
+          "survival_pct": null,
+          "to": "O4_4R"
+        },
+        {
+          "absolute_loss": 0,
+          "from": "O4_4R",
+          "input_n": 0,
+          "output_n": 0,
+          "survival_pct": null,
+          "to": "O5_5R"
+        }
+      ]
+    },
+    "universal_funnel_analyzer_verdict": {
+      "analyzer": "ag_edgelab.analytics.diagnostic.analyze_three_funnel",
+      "mapped_mission_labels": [
+        "INSUFFICIENT_SAMPLE",
+        "TRIGGER_FUNNEL_WEAKNESS"
+      ],
+      "thresholds": "frozen DiagnosticPolicy defaults \u2014 unmodified by this mission",
+      "weak_points": [
+        {
+          "evidence": "input_n=28 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "C2_MSS_BOS"
+        },
+        {
+          "evidence": "input_n=10 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "C3_FRESH_FVG"
+        },
+        {
+          "evidence": "input_n=7 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "C4_FVG_RETRACE_AVAILABLE"
+        },
+        {
+          "evidence": "input_n=6 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "C5_GEOMETRY_VALID"
+        },
+        {
+          "evidence": "input_n=3 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "C6_ENTRY_AVAILABLE"
+        },
+        {
+          "evidence": "input_n=3 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O1_1R"
+        },
+        {
+          "evidence": "input_n=0 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O2_2R"
+        },
+        {
+          "evidence": "input_n=0 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O3_3R"
+        },
+        {
+          "evidence": "input_n=0 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O4_4R"
+        },
+        {
+          "evidence": "input_n=0 < 30",
+          "label": "INSUFFICIENT_SAMPLE",
+          "scope": "O5_5R"
+        },
+        {
+          "evidence": "5R pass_reach_pct=19.87",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T1_ASIAN_REFERENCE_VALID"
+        },
+        {
+          "evidence": "5R pass_reach_pct=19.87",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T2_DIRECTION_DECIDED"
+        },
+        {
+          "evidence": "5R pass_reach_pct=19.87",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T3_DIRECTION_NON_NEUTRAL"
+        },
+        {
+          "evidence": "5R pass_reach_pct=16.44",
+          "label": "POOR_TRIGGER_QUALITY",
+          "scope": "T4_ASIAN_SWEEP"
+        }
+      ]
+    },
+    "upstream_principle_applied": "No additional confirmation filter was designed or tested: the evidence names the first economically relevant weak point and the mission's search policy forbids adding filters in response to it."
+  }
+}

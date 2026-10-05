@@ -1,0 +1,94 @@
+{
+  "ASIAN_SWEEP": 73,
+  "DIRECTION_DECIDED": 1270,
+  "DIRECTION_NON_NEUTRAL": 151,
+  "TRIGGER_INPUT": 1768,
+  "TRIGGER_PASS": 42,
+  "basis": "TRIGGER evidence is recorded component-by-component; no opaque composite score exists",
+  "component_distributions": {
+    "d1_structure": {
+      "BEAR": 348,
+      "BULL": 464,
+      "NEUTRAL": 458
+    },
+    "h1_flow": {
+      "BEAR": 342,
+      "BULL": 378,
+      "NEUTRAL": 550
+    },
+    "h4_structure": {
+      "BEAR": 383,
+      "BULL": 402,
+      "NEUTRAL": 485
+    },
+    "premium_discount_state": {
+      "DISCOUNT": 596,
+      "PREMIUM": 671,
+      "UNAVAILABLE": 3
+    },
+    "prev_day_context": {
+      "ABOVE_PDH": 208,
+      "BELOW_PDL": 163,
+      "INSIDE_PREV_DAY_RANGE": 899
+    },
+    "regime": {
+      "RANGE": 630,
+      "TREND": 640
+    }
+  },
+  "direction_mix": {
+    "BEAR": 61,
+    "BULL": 90,
+    "NEUTRAL": 1119
+  },
+  "direction_not_equal_sweep_side": {
+    "contract": "BULL sweeps the Asian LOW, BEAR sweeps the Asian HIGH",
+    "violations": 0
+  },
+  "liquidity_context": {
+    "median_pools_above": 5.0,
+    "median_pools_below": 13.0
+  },
+  "neutral_cause_counts": {
+    "D1=BEAR;H4=BULL;H1=NEUTRAL": 50,
+    "D1=BEAR;H4=NEUTRAL;H1=BULL": 45,
+    "D1=BEAR;H4=NEUTRAL;H1=NEUTRAL": 52,
+    "D1=BULL;H4=BEAR;H1=BEAR": 48,
+    "D1=BULL;H4=BEAR;H1=NEUTRAL": 74,
+    "D1=BULL;H4=BULL;H1=NEUTRAL": 69,
+    "D1=BULL;H4=NEUTRAL;H1=BEAR": 47,
+    "D1=BULL;H4=NEUTRAL;H1=NEUTRAL": 68,
+    "D1=NEUTRAL;H4=BEAR;H1=NEUTRAL": 50,
+    "D1=NEUTRAL;H4=BULL;H1=NEUTRAL": 79,
+    "D1=NEUTRAL;H4=NEUTRAL;H1=BEAR": 54,
+    "D1=NEUTRAL;H4=NEUTRAL;H1=NEUTRAL": 75
+  },
+  "opportunity_basis_capability": {
+    "median_mfe_r_non_neutral": 1.309859,
+    "median_mfe_r_trigger_pass": 1.329562,
+    "non_neutral_n": 151,
+    "observation_policy_id": "OPP_BASIS_ALD_V1__anchor=last_closed_M15_at_entry_window_open;risk=12_bar_opposite_extreme;horizon=96_M15_bars;collision=STOP_FIRST",
+    "reach_by_target_non_neutral": {
+      "1R": 0.562914,
+      "2R": 0.403974,
+      "3R": 0.271523,
+      "4R": 0.231788,
+      "5R": 0.198675
+    },
+    "reach_by_target_trigger_pass": {
+      "1R": 0.595238,
+      "2R": 0.404762,
+      "3R": 0.261905,
+      "4R": 0.238095,
+      "5R": 0.214286
+    },
+    "selection_uplift_pp_5R": 1.5611,
+    "trigger_pass_n": 42
+  },
+  "rejection_counts": {
+    "ASIAN_REFERENCE_INSUFFICIENT_BARS": 498,
+    "DIRECTION_NEUTRAL": 1119,
+    "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE": 78,
+    "NO_CLOSE_BACK_INSIDE": 31
+  }
+}

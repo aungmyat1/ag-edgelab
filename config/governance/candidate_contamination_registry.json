@@ -1,5 +1,30 @@
 {
-  "schema_version": "CANDIDATE_CONTAMINATION_REGISTRY_V1",
-  "records": [],
-  "rule": "UNKNOWN exposure or reuse policy is not fresh and denies OOS"
+  "records": [
+    {
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "end": "2017-09-01T00:00:00Z",
+      "evidence_hash": "6662c33f9b5b6d5b05bcabff889659ca522abe0a00d1e4dcce4dc89d9972f13b",
+      "exposure_timestamp": "2025-10-05T00:00:00Z",
+      "exposure_type": "PRIOR_STRATEGY_DESIGN",
+      "knowledge_source": "GENERATION 2 DEVELOPMENT replay of the frozen V1 hypothesis on the HISTDATA_ASCII_M1_2017_PR10_PINNED DEVELOPMENT partition (data/artifacts/gen2_asian_liquidity_displacement_v1/)",
+      "notes": "DEVELOPMENT ONLY. The OOS window [2017-09-01, 2017-12-01) and the sealed holdout were NOT opened by this mission. This window is DEVELOPMENT_KNOWN for the family and may never serve as OOS for any ASIAN_LIQUIDITY_DISPLACEMENT candidate.",
+      "reuse_policy": "DEVELOPMENT_KNOWN",
+      "source_candidate_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+      "start": "2017-01-01T00:00:00Z"
+    },
+    {
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "end": "2017-09-01T00:00:00Z",
+      "evidence_hash": "",
+      "exposure_timestamp": "2025-01-01T00:00:00Z",
+      "exposure_type": "PRIOR_STRATEGY_DESIGN",
+      "knowledge_source": "R0-era exploratory DEVELOPMENT screen of an FX Asian-sweep lane on the same DEVELOPMENT partition; no committed verdict artifacts (candidate_ledger.json record 'DEV_SCREEN_LANES')",
+      "notes": "Disclosed conceptual lineage, not identity reuse. ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1 is a NEW identity with a new contract; the prior screen produced no promoted rule, threshold or symbol selection.",
+      "reuse_policy": "DEVELOPMENT_KNOWN",
+      "source_candidate_id": "DEV_SCREEN_LANES (FX Asian sweep, archived feat/fx-asian-sweep-candidate)",
+      "start": "2017-01-01T00:00:00Z"
+    }
+  ],
+  "rule": "UNKNOWN exposure or reuse policy is not fresh and denies OOS",
+  "schema_version": "CANDIDATE_CONTAMINATION_REGISTRY_V1"
 }

@@ -1,0 +1,110 @@
+{
+  "CONFIRMATION_PASS_N": 6,
+  "displacement_body_ratio_median": 0.770754,
+  "displacement_rule": {
+    "frozen": true,
+    "optimized_in_this_mission": false,
+    "threshold": 0.7
+  },
+  "mss_primitive_mix": {
+    "BOS": 2,
+    "MSS": 8
+  },
+  "note": "Steps 1-2 are the sweep/reclaim predicates that also constitute the TRIGGER contract; they are shown here in the mission's sequential confirmation ordering and are NOT double-counted in the funnel stage matrix.",
+  "population": "DIRECTION_NON_NEUTRAL candidates",
+  "population_n": 151,
+  "same_bar_displacement_mss_n": 6,
+  "same_bar_reclaim_displacement_n": 9,
+  "sequence": [
+    {
+      "fail_n": 78,
+      "input_n": 151,
+      "node_id": "T4_ASIAN_SWEEP",
+      "opportunity_reach_3R_input_pct": 27.152318,
+      "opportunity_reach_3R_pass_pct": 20.547945,
+      "pass_n": 73,
+      "pass_pct_of_input": 48.344371,
+      "pass_pct_of_previous_step": 48.344371,
+      "reason_counts": {
+        "NO_ASIAN_SWEEP_ON_DIRECTION_SIDE": 78
+      },
+      "selection_uplift_3R_pp": -6.604373,
+      "step": "1_SWEEP"
+    },
+    {
+      "fail_n": 31,
+      "input_n": 73,
+      "node_id": "T5_CLOSE_BACK_INSIDE",
+      "opportunity_reach_3R_input_pct": 20.547945,
+      "opportunity_reach_3R_pass_pct": 26.190476,
+      "pass_n": 42,
+      "pass_pct_of_input": 57.534247,
+      "pass_pct_of_previous_step": 57.534247,
+      "reason_counts": {
+        "NO_CLOSE_BACK_INSIDE": 31
+      },
+      "selection_uplift_3R_pp": 5.642531,
+      "step": "2_CLOSE_BACK_INSIDE"
+    },
+    {
+      "fail_n": 14,
+      "input_n": 42,
+      "node_id": "C1_DISPLACEMENT",
+      "opportunity_reach_3R_input_pct": 26.190476,
+      "opportunity_reach_3R_pass_pct": 32.142857,
+      "pass_n": 28,
+      "pass_pct_of_input": 66.666667,
+      "pass_pct_of_previous_step": 66.666667,
+      "reason_counts": {
+        "NO_DISPLACEMENT_BODY_RATIO": 14
+      },
+      "selection_uplift_3R_pp": 5.952381,
+      "step": "3_DISPLACEMENT"
+    },
+    {
+      "fail_n": 18,
+      "input_n": 28,
+      "node_id": "C2_MSS_BOS",
+      "opportunity_reach_3R_input_pct": 32.142857,
+      "opportunity_reach_3R_pass_pct": 40.0,
+      "pass_n": 10,
+      "pass_pct_of_input": 35.714286,
+      "pass_pct_of_previous_step": 35.714286,
+      "reason_counts": {
+        "NO_MSS_BOS_AFTER_DISPLACEMENT": 18
+      },
+      "selection_uplift_3R_pp": 7.857143,
+      "step": "4_MSS_BOS"
+    },
+    {
+      "fail_n": 3,
+      "input_n": 10,
+      "node_id": "C3_FRESH_FVG",
+      "opportunity_reach_3R_input_pct": 40.0,
+      "opportunity_reach_3R_pass_pct": 42.857143,
+      "pass_n": 7,
+      "pass_pct_of_input": 70.0,
+      "pass_pct_of_previous_step": 70.0,
+      "reason_counts": {
+        "NO_FRESH_FVG_AFTER_MSS": 3
+      },
+      "selection_uplift_3R_pp": 2.857143,
+      "step": "5_FRESH_FVG"
+    },
+    {
+      "fail_n": 1,
+      "input_n": 7,
+      "node_id": "C4_FVG_RETRACE_AVAILABLE",
+      "opportunity_reach_3R_input_pct": 42.857143,
+      "opportunity_reach_3R_pass_pct": 33.333333,
+      "pass_n": 6,
+      "pass_pct_of_input": 85.714286,
+      "pass_pct_of_previous_step": 85.714286,
+      "reason_counts": {
+        "NO_CAUSAL_RETRACE_INTO_FVG": 1
+      },
+      "selection_uplift_3R_pp": -9.52381,
+      "step": "6_FVG_RETRACE_AVAILABLE"
+    }
+  ]
+}
