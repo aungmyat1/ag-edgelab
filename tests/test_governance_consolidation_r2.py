@@ -29,6 +29,10 @@ def test_v2_ledger_record_preserves_failed_pre_oos_verdict():
     assert v2["PRE_OOS_RESULT"] == "FAIL"
     assert v2["OOS_ROLE"] == "NOT_CONSUMED"
     assert v2["HOLDOUT_TOUCHED"] == "NO"
+    assert v2["RELATED_MODEL_SELECTION_REUSE"] == (
+        "CAUTIONED (V2.1 is a disclosed post-hoc second look on the same DEV partition; "
+        "any further successor requires new preregistration and owner approval)"
+    )
 
 
 def test_v21_ledger_record_remains_blocked_without_replay():
@@ -36,9 +40,44 @@ def test_v21_ledger_record_remains_blocked_without_replay():
     v21 = next(record for record in ledger["records"]
                if record["CANDIDATE_ID"] == "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2@2.1.0-research")
     assert v21["STATUS"] == "BLOCKED_CONTRACT_AMBIGUITY"
+    assert v21["EDGE_STATUS"] == "UNVERIFIED"
+    assert v21["lifecycle"] == "RESEARCH_CANDIDATE"
     assert v21["OOS_ROLE"] == "NOT_CONSUMED"
     assert v21["HOLDOUT_TOUCHED"] == "NO"
     assert v21["REAL_HISTORICAL_REPLAY_EXECUTED"] is False
+    assert v21["DATASET_BINDING_HASH"] == "d030952440d2cfa34f541fff7cdfbf344fdc4959d0ee3826ba349636d566b483"
+    assert v21["PRE_OOS_RESULT"] == "NOT_REACHED"
+    assert "pre_oos_result" not in v21
+
+
+def test_every_ledger_lifecycle_is_in_vocabulary_including_r1_records():
+    ledger = _load(GOV / "candidate_ledger.json")
+    allowed = set(ledger["lifecycle_vocabulary"])
+    base = json.loads(subprocess.run(
+        ["git", "show", "062265cc1e773d1f6762c9ac64f2e7fdd9f7e86f:config/governance/candidate_ledger.json"],
+        cwd=ROOT, check=True, capture_output=True, text=True).stdout)
+    for record in ledger["records"]:
+        assert record.get("lifecycle") in allowed, record.get("CANDIDATE_ID")
+    for record in base["records"]:
+        assert record.get("lifecycle") in allowed, record.get("CANDIDATE_ID")
+
+
+def test_unreplayed_records_do_not_claim_edge_verdict():
+    ledger = _load(GOV / "candidate_ledger.json")
+    for record in ledger["records"]:
+        if record.get("REAL_HISTORICAL_REPLAY_EXECUTED") is False:
+            assert record["EDGE_STATUS"] not in {"NO_EDGE", "EDGE_VERIFIED"}, record["CANDIDATE_ID"]
+
+
+def test_each_owner_decision_has_unresolved_answer_contract():
+    owner = _load(GOV / "owner_decisions_r2.json")
+    assert len(owner["decisions"]) == 8
+    for decision in owner["decisions"]:
+        assert decision["status"] == "UNRESOLVED", decision["issue_id"]
+        assert len(decision["options"]) >= 2, decision["issue_id"]
+        assert len(decision["consequences"]) == len(decision["options"]), decision["issue_id"]
+        assert {item["option"] for item in decision["consequences"]} == set(decision["options"]), decision["issue_id"]
+        assert decision["owner_answer"] is None, decision["issue_id"]
 
 
 def test_r1_ledger_records_retain_semantic_identity_to_062265c():
@@ -88,7 +127,7 @@ def test_r2_evidence_and_owner_decision_package_are_present():
     assert owner["status"] == "UNRESOLVED"
     assert {item["issue_id"] for item in owner["decisions"]} == {
         "AMB_1", "AMB_2", "AMB_3", "AMB_4", "SESSION_AUTHORITY_CONFLICT",
-        "V2.1_KILL_RULE", "FRICTION_VENUE",
+        "V2.1_KILL_RULE", "FRICTION_VENUE", "CONTAMINATION_TIMESTAMP_CONFIRMATION",
     }
     assert all(item["status"] == "UNRESOLVED" for item in owner["decisions"])
 

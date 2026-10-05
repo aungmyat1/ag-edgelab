@@ -7,49 +7,122 @@
       "issue_id": "AMB_1",
       "title": "OPPORTUNITY_UNIT definition",
       "status": "UNRESOLVED",
-      "summary": "Clarify whether the opportunity unit is symbol-day-session or symbol-day-session-boundary.",
+      "question": "Is an OPPORTUNITY one `(symbol, trading_date, session)` or one `(symbol, trading_date, session, boundary)`?",
+      "summary": "Choose the denominator unit before replay.",
+      "options": ["(symbol, trading_date, session)", "(symbol, trading_date, session, boundary)"],
+      "consequences": [
+        {"option": "(symbol, trading_date, session)", "consequence": "Keeps one opportunity per session and aligns with the 2.0.0 prototype denominator; opposite boundaries share one unit."},
+        {"option": "(symbol, trading_date, session, boundary)", "consequence": "Counts each boundary independently and can produce up to two opportunities per symbol-day-session; prior funnel denominators are not directly comparable."}
+      ],
+      "owner_answer": null,
       "owner": "TBD"
     },
     {
       "issue_id": "AMB_2",
       "title": "CONTEXT_ELIGIBLE and LOCATION_ELIGIBLE predicate definitions",
       "status": "UNRESOLVED",
-      "summary": "State the exact eligibility predicates that determine context and location gating before replay.",
+      "question": "What predicate defines `CONTEXT_ELIGIBLE`, and what defines `LOCATION_ELIGIBLE`?",
+      "summary": "Freeze both stage predicates before replay.",
+      "options": ["Define separate deterministic context and location predicates in an owner-approved contract amendment.", "Retain the current predicates as unresolved and keep replay blocked."],
+      "consequences": [
+        {"option": "Define separate deterministic context and location predicates in an owner-approved contract amendment.", "consequence": "A replay may be considered only after the amended predicates are preregistered and tested."},
+        {"option": "Retain the current predicates as unresolved and keep replay blocked.", "consequence": "No V2.1 replay or funnel denominator is authorized."}
+      ],
+      "owner_answer": null,
       "owner": "TBD"
     },
     {
       "issue_id": "AMB_3",
       "title": "Initial branch selection and branch priority on a boundary interaction",
       "status": "UNRESOLVED",
-      "summary": "Resolve the initial branch assignment and priority rules for boundary interactions before any replay executes.",
+      "question": "Which branch is attempted first on a boundary interaction — decided by the interaction bar's close (prototype behaviour), by a fixed precedence, or are both run and the earlier `ENTRY_AVAILABLE` taken?",
+      "summary": "Resolve initial branch assignment before replay.",
+      "options": ["Select the branch from the interaction bar close.", "Use a fixed A/B precedence.", "Evaluate both and take the earlier ENTRY_AVAILABLE."],
+      "consequences": [
+        {"option": "Select the branch from the interaction bar close.", "consequence": "Branch assignment depends on close direction and must be fully specified for ties and handovers."},
+        {"option": "Use a fixed A/B precedence.", "consequence": "The preferred branch gets first claim on the event lock, potentially changing branch mix."},
+        {"option": "Evaluate both and take the earlier ENTRY_AVAILABLE.", "consequence": "Both branches compete for the lock; deterministic tie handling is required."}
+      ],
+      "owner_answer": null,
       "owner": "TBD"
     },
     {
       "issue_id": "AMB_4",
-      "title": "Additional contract ambiguities in the V2.1 audit brief",
+      "title": "Prior-day and swing-liquidity target authority",
       "status": "UNRESOLVED",
-      "summary": "All remaining contract ambiguities in the V2.1 audit brief require owner resolution before the replay gate may reopen.",
+      "question": "Define \"prior day\" (previous calendar day vs previous trading day; UTC vs session day) and define the swing-liquidity derivation (timeframe, and whether `SWING_ORDER = 2` applies).",
+      "summary": "Define both target authorities before replay.",
+      "options": ["Use previous calendar day in UTC and define swing liquidity on the contract's named timeframe with SWING_ORDER = 2.", "Use previous trading/session day and owner-specify the swing-liquidity timeframe and swing order."],
+      "consequences": [
+        {"option": "Use previous calendar day in UTC and define swing liquidity on the contract's named timeframe with SWING_ORDER = 2.", "consequence": "Produces calendar-day levels and a fixed swing derivation, which may differ at weekends and session boundaries."},
+        {"option": "Use previous trading/session day and owner-specify the swing-liquidity timeframe and swing order.", "consequence": "Requires an explicit session-day calendar and amended timeframe/order before any result can be generated."}
+      ],
+      "owner_answer": null,
       "owner": "TBD"
     },
     {
       "issue_id": "SESSION_AUTHORITY_CONFLICT",
       "title": "Canonical session authority",
       "status": "UNRESOLVED",
-      "summary": "Resolve the competing session-boundary authorities and specify the canonical timezone and session-day convention before replay.",
+      "question": "Which session authority controls: governed V0.3 (ASIAN/LONDON) or the R1 slicer (LONDON/OVERLAP), particularly at 07:00 and 12:00 UTC?",
+      "summary": "Choose the authority for session boundaries at 07:00 and 12:00 UTC.",
+      "options": ["Use governed V0.3 ASIAN/LONDON boundaries.", "Use the R1 slicer LONDON/OVERLAP boundaries.", "Keep the conflict unresolved and block replay."],
+      "consequences": [
+        {"option": "Use governed V0.3 ASIAN/LONDON boundaries.", "consequence": "Events at 07:00 and 12:00 UTC are classified using V0.3 boundaries; R1 slicer outputs are not the session authority."},
+        {"option": "Use the R1 slicer LONDON/OVERLAP boundaries.", "consequence": "Events at 07:00 and 12:00 UTC follow R1 session slices; V0.3 comparisons require an explicit mapping."},
+        {"option": "Keep the conflict unresolved and block replay.", "consequence": "No session-dependent V2.1 evaluation is authorized."}
+      ],
+      "owner_answer": null,
       "owner": "TBD"
     },
     {
       "issue_id": "V2.1_KILL_RULE",
       "title": "V2.1 termination rule",
       "status": "UNRESOLVED",
-      "summary": "Define the owner-approved kill or stop rule for V2.1, including which outcomes terminate the candidate and prohibit further evaluation.",
+      "question": "Should the ALD family be archived with no V2.2 under the proposed kill rule: DEV pooled expectancy <= 0 OR bootstrap CI95 includes 0 OR PRE_OOS gate FAIL?",
+      "proposed_rule": "archive the ALD family with no V2.2 if DEV pooled expectancy <= 0 OR bootstrap CI95 includes 0 OR PRE_OOS gate FAIL",
+      "summary": "Approve, edit, or reject the proposed termination rule.",
+      "options": ["Accept", "Edit", "Reject"],
+      "consequences": [
+        {"option": "Accept", "consequence": "Any listed condition archives the ALD family and prohibits V2.2."},
+        {"option": "Edit", "consequence": "The edited rule must be preregistered and approved before any replay or successor design."},
+        {"option": "Reject", "consequence": "No kill rule is established; the family remains blocked from replay or successor work until another rule is approved."}
+      ],
+      "owner_answer": null,
       "owner": "TBD"
     },
     {
       "issue_id": "FRICTION_VENUE",
       "title": "Friction measurement venue",
       "status": "UNRESOLVED",
-      "summary": "Select the execution venue and authoritative spread, commission, slippage, and swap evidence required before economic claims.",
+      "question": "Which broker, account type, and exact terminal symbol names will define the friction evidence venue?",
+      "summary": "Specify the venue identity and instrument mapping required for friction evidence.",
+      "options": ["Select one broker/account type and list exact terminal names for EURUSD, GBPUSD, USDJPY, and XAUUSD.", "Select a different explicitly named broker/account/symbol mapping and document its authoritative friction source.", "Keep friction venue unavailable and prohibit economic claims."],
+      "consequences": [
+        {"option": "Select one broker/account type and list exact terminal names for EURUSD, GBPUSD, USDJPY, and XAUUSD.", "consequence": "Friction capture can be specified against one venue once the exact names and evidence source are supplied."},
+        {"option": "Select a different explicitly named broker/account/symbol mapping and document its authoritative friction source.", "consequence": "The alternative venue becomes the sole approved friction authority after its mapping and measurement method are preregistered."},
+        {"option": "Keep friction venue unavailable and prohibit economic claims.", "consequence": "Economic edge remains NOT_ESTIMABLE and no friction values may be substituted."}
+      ],
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "issue_id": "CONTAMINATION_TIMESTAMP_CONFIRMATION",
+      "title": "Confirm legacy ALD exposure timestamps",
+      "status": "UNRESOLVED",
+      "question": "Are the 2025-10-05 and 2025-01-01 ALD exposure timestamps intended, or are they year typos for 2026?",
+      "summary": "Confirm the two historical exposure dates without changing the append-only registry until evidence is adjudicated.",
+      "evidence": [
+        "Commits 4f27640 and 705ec56 are dated 2026-10-05; 4f27640 is the V1 preregistration commit and 705ec56 contains the V1 development report.",
+        "origin/feat/fx-asian-sweep-candidate points to commit e5725c4 dated 2026-10-01; the archived screen has no committed verdict artifact."
+      ],
+      "options": ["Confirm the recorded 2025-10-05 and 2025-01-01 timestamps are intended historical exposure dates.", "Confirm both dates are year typos for 2026 and authorize a separately evidenced append-only correction.", "Leave both dates unresolved pending stronger timestamp evidence."],
+      "consequences": [
+        {"option": "Confirm the recorded 2025-10-05 and 2025-01-01 timestamps are intended historical exposure dates.", "consequence": "The existing registry entries remain unchanged and the dates are treated as owner-confirmed historical knowledge dates."},
+        {"option": "Confirm both dates are year typos for 2026 and authorize a separately evidenced append-only correction.", "consequence": "A new correction record may be added only with the owner decision and commit-backed date evidence; original entries remain immutable."},
+        {"option": "Leave both dates unresolved pending stronger timestamp evidence.", "consequence": "The registry remains unchanged and these dates cannot be used as precise exposure chronology."}
+      ],
+      "owner_answer": null,
       "owner": "TBD"
     }
   ]
