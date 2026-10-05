@@ -561,6 +561,14 @@ def main() -> None:
         render_markdown(final, attrition, years, cells, capability, survival, temporal,
                         robustness, pre_oos, comparison, classification), encoding="utf-8")
 
+    write_json(OUT / "final_return.json", {
+        "contract": "GEN2_ALD_V1_MULTIYEAR_DEV_FINAL_RETURN_V1",
+        "experiment_id": M.EXPERIMENT_ID,
+        "derivation": "projected from this run's final_report.json + v1_narrow_vs_multiyear.json "
+                      "by asian_liquidity_displacement_multiyear_analysis.final_return_block",
+        "FINAL_RETURN": MA.final_return_block(final, comparison),
+    })
+
     manifest_out = {
         "artifact_set": "GEN2_ASIAN_LIQUIDITY_DISPLACEMENT_V1_MULTIYEAR",
         "experiment_id": M.EXPERIMENT_ID,

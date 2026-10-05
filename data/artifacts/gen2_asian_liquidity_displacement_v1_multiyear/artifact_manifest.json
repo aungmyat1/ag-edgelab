@@ -20,71 +20,76 @@
   },
   "files": {
     "attrition_reasons.json": {
-      "bytes": 5255,
-      "sha256": "c4cce1aeaf165bcb0a3c73cf26d4879f92c4662eff2866029d6de7fd8d8b55ad"
+      "sha256": "c4cce1aeaf165bcb0a3c73cf26d4879f92c4662eff2866029d6de7fd8d8b55ad",
+      "bytes": 5255
     },
     "candidate_instance_identity.json": {
-      "bytes": 3748,
-      "sha256": "a70da6a6a7aafed98ccd60a3601a69047487b3bb1b172e2e7101a3a0b2fb46d5"
+      "sha256": "a70da6a6a7aafed98ccd60a3601a69047487b3bb1b172e2e7101a3a0b2fb46d5",
+      "bytes": 3748
     },
     "continuation_survival.json": {
-      "bytes": 426,
-      "sha256": "29e4b3d3fe07c79e704b3b873774e9325e51456ca814f156263240d9e39807c2"
+      "sha256": "29e4b3d3fe07c79e704b3b873774e9325e51456ca814f156263240d9e39807c2",
+      "bytes": 426
     },
     "dataset_binding.json": {
-      "bytes": 44241,
-      "sha256": "8b7507ff96d33b38b863c1e897e89845f745c1d6c42d4542e648c807d0c88ef9"
+      "sha256": "8b7507ff96d33b38b863c1e897e89845f745c1d6c42d4542e648c807d0c88ef9",
+      "bytes": 44241
     },
     "dataset_quality_report.json": {
-      "bytes": 31325,
-      "sha256": "e0786c29d3e40e558b4a9fc0b9913fa2e3afd902f644b95f40010503b0c6ba0a"
+      "sha256": "e0786c29d3e40e558b4a9fc0b9913fa2e3afd902f644b95f40010503b0c6ba0a",
+      "bytes": 31325
     },
     "final_report.json": {
-      "bytes": 39966,
-      "sha256": "46393c519c2d6a674b348b5796dc460bb6f074b47a5eb30cf717bb2aa6913235"
+      "sha256": "46393c519c2d6a674b348b5796dc460bb6f074b47a5eb30cf717bb2aa6913235",
+      "bytes": 39966
     },
     "final_report.md": {
-      "bytes": 8586,
-      "sha256": "41f87275ea6409c038f15685d2ad66722db5e53525d1dc02592b5a360dfe33a4"
+      "sha256": "41f87275ea6409c038f15685d2ad66722db5e53525d1dc02592b5a360dfe33a4",
+      "bytes": 8586
+    },
+    "final_return.json": {
+      "sha256": "1b1174b4cd2a6f3163a3fc14062b9d997b45be8d7f87a38e591425692db1ba50",
+      "bytes": 3485
     },
     "funnel_report.json": {
-      "bytes": 91508,
-      "sha256": "ab97ed61b71e4453d774d45f34685022361dbf08b903fb730f878bc976d8bdc1"
+      "sha256": "ab97ed61b71e4453d774d45f34685022361dbf08b903fb730f878bc976d8bdc1",
+      "bytes": 91508
     },
     "pre_oos_gate_result.json": {
-      "bytes": 2692,
-      "sha256": "205816c33e224bd13b2890e8da1b97f241bd46df53fc465245f705634861958e"
+      "sha256": "205816c33e224bd13b2890e8da1b97f241bd46df53fc465245f705634861958e",
+      "bytes": 2692
     },
     "preregistration.json": {
-      "bytes": 34213,
-      "sha256": "fc40dc8757a92158d2798fb926c246a968f30b93ee540a64ee6e81123cb2abee"
+      "sha256": "fc40dc8757a92158d2798fb926c246a968f30b93ee540a64ee6e81123cb2abee",
+      "bytes": 34213
     },
     "robustness_report.json": {
-      "bytes": 23161,
-      "sha256": "f2deff2c6cf19270f4a1ac07ef1340ba9f295b406b89ce51c47b3b99f1211784"
+      "sha256": "f2deff2c6cf19270f4a1ac07ef1340ba9f295b406b89ce51c47b3b99f1211784",
+      "bytes": 23161
     },
     "symbol_session_matrix.csv": {
-      "bytes": 1579,
-      "sha256": "269d1a69ad1b40a044d71bebfee504cf9a6bc94cebb77ba24c34563c94f6a3ef"
+      "sha256": "269d1a69ad1b40a044d71bebfee504cf9a6bc94cebb77ba24c34563c94f6a3ef",
+      "bytes": 1579
     },
     "target_capability.json": {
-      "bytes": 1197,
-      "sha256": "6384c999cc6c0efe6d631e7f5329554f20a59cc7f6a8148d80e8323e2ad9be84"
+      "sha256": "6384c999cc6c0efe6d631e7f5329554f20a59cc7f6a8148d80e8323e2ad9be84",
+      "bytes": 1197
     },
     "temporal_diagnostics.json": {
-      "bytes": 1035,
-      "sha256": "4aa354d18bb4ea1b0a08149f5ed4e3aa638e3923033d89ebe377bb1e4a1a7684"
+      "sha256": "4aa354d18bb4ea1b0a08149f5ed4e3aa638e3923033d89ebe377bb1e4a1a7684",
+      "bytes": 1035
     },
     "v1_narrow_vs_multiyear.json": {
-      "bytes": 4035,
-      "sha256": "b3c331b7de31e8e727d38d2a5c6018224c2e5a10091c572632044a02ab82b70e"
+      "sha256": "b3c331b7de31e8e727d38d2a5c6018224c2e5a10091c572632044a02ab82b70e",
+      "bytes": 4035
     },
     "year_matrix.csv": {
-      "bytes": 1383,
-      "sha256": "6c5a62103bcccd65c47dcbd557761eff078b2a0de0c543aea4598c547e1e4841"
+      "sha256": "6c5a62103bcccd65c47dcbd557761eff078b2a0de0c543aea4598c547e1e4841",
+      "bytes": 1383
     }
   },
   "generated_at_utc": "2026-10-05T08:31:34+00:00",
   "implementation_sha": "69ad73aea7c424750a743f319656ef33ea4ced16",
-  "tree_sha": "bfa908a1215846a17d0a34f28a2c3fad698ac0e3"
+  "tree_sha": "bfa908a1215846a17d0a34f28a2c3fad698ac0e3",
+  "final_return_contract": "final_return.json"
 }

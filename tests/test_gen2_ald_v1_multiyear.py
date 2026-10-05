@@ -43,7 +43,7 @@ REQUIRED_ARTIFACTS = (
     "attrition_reasons.json", "target_capability.json", "continuation_survival.json",
     "temporal_diagnostics.json", "v1_narrow_vs_multiyear.json", "robustness_report.json",
     "pre_oos_gate_result.json", "final_report.json", "final_report.md",
-    "dataset_quality_report.json", "artifact_manifest.json",
+    "dataset_quality_report.json", "final_return.json", "artifact_manifest.json",
 )
 
 needs_data = pytest.mark.skipif(
@@ -671,3 +671,71 @@ def test_sufficiency_projection_extrapolates_sample_size_only():
     blob = json.dumps(proj).lower()
     for forbidden in ("expectancy", "profit", "sharpe", "win_rate", "return"):
         assert forbidden not in blob
+
+
+# --------------------------------------------------------------------------
+# FINAL RETURN contract
+# --------------------------------------------------------------------------
+
+
+@needs_run
+def test_final_return_carries_every_contract_field():
+    block = json.loads((ART / "final_return.json").read_text())["FINAL_RETURN"]
+    assert list(block) == list(MA.FINAL_RETURN_FIELDS), "field order/coverage drifted"
+    assert not [k for k, v in block.items() if v is None or v == ""]
+
+
+@needs_run
+def test_final_return_values_are_copies_of_the_sealed_evidence():
+    """No hand-typed number may enter the contract block."""
+    final = json.loads((ART / "final_report.json").read_text())
+    comparison = json.loads((ART / "v1_narrow_vs_multiyear.json").read_text())
+    emitted = json.loads((ART / "final_return.json").read_text())["FINAL_RETURN"]
+    assert emitted == MA.final_return_block(final, comparison)
+    for key in ("OPPORTUNITY_N", "DIRECTIONAL_N", "TRIGGER_PASS_N", "CONFIRMATION_PASS_N",
+                "GEOMETRY_VALID_N", "ENTRY_AVAILABLE_N", "STATUS", "NEXT",
+                "SAMPLE_CLASSIFICATION", "PRE_OOS_RESULT"):
+        assert emitted[key] == final[key], key
+    assert emitted["2017_ENTRY_N"] == comparison["narrow_2017_dev"]["ENTRY_AVAILABLE_N"] == 3
+    assert emitted["MULTIYEAR_ENTRY_N"] == comparison["multiyear"]["ENTRY_AVAILABLE_N"]
+    assert emitted["MULTIYEAR_ENTRY_N"] == emitted["ENTRY_AVAILABLE_N"]
+    for key in ("1R", "2R", "3R", "4R", "5R"):
+        assert emitted[key] == final["CAPABILITY"][key], key
+
+
+@needs_run
+def test_final_return_prohibitions_are_hard_coded_not_observed():
+    block = json.loads((ART / "final_return.json").read_text())["FINAL_RETURN"]
+    for key, expected in MA.FINAL_RETURN_CONSTANTS.items():
+        assert block[key] == expected == "NO", key
+    # the block must refuse to be built if the evidence ever disagrees
+    final = json.loads((ART / "final_report.json").read_text())
+    comparison = json.loads((ART / "v1_narrow_vs_multiyear.json").read_text())
+    for key in MA.FINAL_RETURN_CONSTANTS:
+        tampered = dict(final, **{key: "YES"})
+        with pytest.raises(ValueError, match=key):
+            MA.final_return_block(tampered, comparison)
+
+
+@needs_run
+def test_final_return_funnel_is_monotonically_non_increasing():
+    block = json.loads((ART / "final_return.json").read_text())["FINAL_RETURN"]
+    ladder = [block[k] for k in ("OPPORTUNITY_N", "DIRECTION_DECIDABLE_N", "DIRECTIONAL_N",
+                                 "TRIGGER_PASS_N", "CONFIRMATION_PASS_N", "GEOMETRY_VALID_N",
+                                 "ENTRY_AVAILABLE_N")]
+    assert ladder == sorted(ladder, reverse=True), ladder
+    r = [block[k] for k in ("1R", "2R", "3R", "4R", "5R")]
+    assert r == sorted(r, reverse=True), "R-ladder reach must be non-increasing"
+    assert len(block["DEV_WINDOWS"]) == block["DEV_YEARS_N"]
+    for start, end in block["DEV_WINDOWS"]:
+        assert start.endswith("-01-01T00:00:00+00:00"), start
+        assert end.endswith("-09-01T00:00:00+00:00"), end  # OOS months never loaded
+
+
+@needs_run
+def test_final_return_is_covered_by_the_artifact_manifest():
+    from ag_edgelab.data.fingerprint import sha256_file
+    manifest = json.loads((ART / "artifact_manifest.json").read_text())
+    assert manifest["final_return_contract"] == "final_return.json"
+    assert manifest["files"]["final_return.json"]["sha256"] == sha256_file(
+        ART / "final_return.json")

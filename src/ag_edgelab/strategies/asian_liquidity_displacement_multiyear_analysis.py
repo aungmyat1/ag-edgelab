@@ -291,3 +291,73 @@ def cell_entry_counts(units: Sequence[CandidateUnit]) -> dict[str, int]:
             sub = [u for u in units if u.symbol == sym and u.session == ses]
             cells[f"{sym}|{ses}"] = A.stage_counts(sub)["ENTRY_AVAILABLE"]
     return cells
+
+
+# ---------------------------------------------------------------------------
+# FINAL RETURN contract
+# ---------------------------------------------------------------------------
+
+FINAL_RETURN_FIELDS: tuple[str, ...] = (
+    "STRATEGY_ID", "STRATEGY_HASH", "RULES_CHANGED", "EXPERIMENT_ID", "DATASET_AUTHORITY",
+    "DEV_WINDOWS", "DEV_YEARS_N", "OPPORTUNITY_N", "DIRECTION_DECIDABLE_N", "DIRECTIONAL_N",
+    "TRIGGER_PASS_N", "CONFIRMATION_PASS_N", "GEOMETRY_VALID_N", "ENTRY_AVAILABLE_N",
+    "1R", "2R", "3R", "4R", "5R", "NATURAL_TARGET_MEDIAN_R",
+    "2017_ENTRY_N", "MULTIYEAR_ENTRY_N", "SAMPLE_CLASSIFICATION", "PRIMARY_FUNNEL_WEAKNESS",
+    "SECONDARY_DIAGNOSES", "ROBUSTNESS_RUN", "PRE_OOS_RESULT", "FROZEN_CANDIDATE",
+    "OOS_OPENED", "HOLDOUT_TOUCHED", "PARAMETER_OPTIMIZATION", "STRATEGY_RULES_CHANGED",
+    "BROKER_MUTATION", "STATUS", "NEXT",
+)
+
+#: Fields the mission fixes in advance. A run may never report anything else here.
+FINAL_RETURN_CONSTANTS: dict[str, str] = {
+    "RULES_CHANGED": "NO",
+    "STRATEGY_RULES_CHANGED": "NO",
+    "OOS_OPENED": "NO",
+    "HOLDOUT_TOUCHED": "NO",
+    "PARAMETER_OPTIMIZATION": "NO",
+    "BROKER_MUTATION": "NO",
+}
+
+
+def final_return_block(final: dict, comparison: dict) -> dict:
+    """Project the committed evidence onto the mission's FINAL RETURN contract.
+
+    Every value is copied from an artifact; nothing is recomputed or retyped, so
+    the block cannot drift from the evidence it summarises.
+    """
+    capability = final["CAPABILITY"]
+    block = {
+        "STRATEGY_ID": final["STRATEGY_ID"],
+        "STRATEGY_HASH": final["STRATEGY_HASH"],
+        "EXPERIMENT_ID": final["EXPERIMENT_ID"],
+        "DATASET_AUTHORITY": final["DATASET_AUTHORITY"],
+        "DEV_WINDOWS": final["DEV_WINDOWS"],
+        "DEV_YEARS_N": final["DEV_YEARS_N"],
+        "OPPORTUNITY_N": final["OPPORTUNITY_N"],
+        "DIRECTION_DECIDABLE_N": final["DIRECTION_DECIDABLE_N"],
+        "DIRECTIONAL_N": final["DIRECTIONAL_N"],
+        "TRIGGER_PASS_N": final["TRIGGER_PASS_N"],
+        "CONFIRMATION_PASS_N": final["CONFIRMATION_PASS_N"],
+        "GEOMETRY_VALID_N": final["GEOMETRY_VALID_N"],
+        "ENTRY_AVAILABLE_N": final["ENTRY_AVAILABLE_N"],
+        "NATURAL_TARGET_MEDIAN_R": final["NATURAL_TARGET_MEDIAN_R"],
+        "2017_ENTRY_N": comparison["narrow_2017_dev"]["ENTRY_AVAILABLE_N"],
+        "MULTIYEAR_ENTRY_N": comparison["multiyear"]["ENTRY_AVAILABLE_N"],
+        "SAMPLE_CLASSIFICATION": final["SAMPLE_CLASSIFICATION"],
+        "PRIMARY_FUNNEL_WEAKNESS": final["PRIMARY_FUNNEL_WEAKNESS"],
+        "SECONDARY_DIAGNOSES": final["SECONDARY_DIAGNOSES"],
+        "ROBUSTNESS_RUN": final["ROBUSTNESS_RUN"],
+        "PRE_OOS_RESULT": final["PRE_OOS_RESULT"],
+        "FROZEN_CANDIDATE": final["FROZEN_CANDIDATE"],
+        "STATUS": final["STATUS"],
+        "NEXT": final["NEXT"],
+    }
+    block.update({k: capability[k] for k in ("1R", "2R", "3R", "4R", "5R")})
+    for key, value in FINAL_RETURN_CONSTANTS.items():
+        if final.get(key, value) != value:
+            raise ValueError(f"{key} must be {value}, evidence says {final[key]!r}")
+        block[key] = value
+    missing = [f for f in FINAL_RETURN_FIELDS if f not in block]
+    if missing:
+        raise ValueError(f"FINAL RETURN contract incomplete: {missing}")
+    return {f: block[f] for f in FINAL_RETURN_FIELDS}
