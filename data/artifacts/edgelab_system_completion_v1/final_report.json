@@ -1,0 +1,15 @@
+{
+  "status": "SYSTEM_SOFTWARE_COMPLETE",
+  "main_green": "YES",
+  "software_complete": "YES",
+  "operational_evidence_complete": "NO",
+  "research_generation_2_allowed": "YES",
+  "oos_opened": "NO",
+  "holdout_touched": "NO",
+  "execution_capability_added": "NO",
+  "external_blockers": [
+    "BROKER_FRICTION_VALUES_READY",
+    "RECENT_2019_2025_DATA_READY",
+    "REAL_CRYPTO_CORPUS_READY"
+  ]
+}

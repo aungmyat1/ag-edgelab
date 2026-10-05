@@ -1,0 +1,13 @@
+{
+  "opened": false,
+  "required": [
+    "candidate_frozen",
+    "candidate_hash_valid",
+    "pre_oos_pass",
+    "OOS_role",
+    "family_fresh",
+    "not_consumed",
+    "preregistration_hash"
+  ],
+  "state": "PASS"
+}

@@ -1,0 +1,175 @@
+{
+  "schema_version": "ARTIFACT_MANIFEST_V1",
+  "artifacts": [
+    {
+      "artifact_id": "canonical_subsystems.json",
+      "sha256": "1826c387612d95b98318278dbdc6433564688055ddac9372812cb6e33d467d34",
+      "byte_size": 344,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/canonical_subsystems.json"
+    },
+    {
+      "artifact_id": "contamination_registry_validation.json",
+      "sha256": "428275f9c8e3b259bf5398ead23af18d6df1680ff001514c81f56c688dd43c17",
+      "byte_size": 82,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/contamination_registry_validation.json"
+    },
+    {
+      "artifact_id": "end_to_end_lifecycle_test.json",
+      "sha256": "1aab972642459e40ba3bbea747cb159629c02847d7d76c76b4e0e9616750cae3",
+      "byte_size": 259,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/end_to_end_lifecycle_test.json"
+    },
+    {
+      "artifact_id": "execution_firewall_validation.json",
+      "sha256": "fe8424e60648ae6a539109e204a1a7e93e8de2ca78058e0760ecd4a4c977ca48",
+      "byte_size": 86,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/execution_firewall_validation.json"
+    },
+    {
+      "artifact_id": "external_blockers.json",
+      "sha256": "486374afdedfc39e956d6f8a3eaf0b9a00db5d271eae1dd28130e61782556b65",
+      "byte_size": 118,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/external_blockers.json"
+    },
+    {
+      "artifact_id": "final_report.json",
+      "sha256": "47bf7bfd25456a2e531559c3d9068e52927970a0465a7c3140196b56de7bd750",
+      "byte_size": 398,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/final_report.json"
+    },
+    {
+      "artifact_id": "final_report.md",
+      "sha256": "dd84f555b866598bb9093f0227caed0883bb355dedcbb920b6e7eff416acae71",
+      "byte_size": 246,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/final_report.md"
+    },
+    {
+      "artifact_id": "friction_taxonomy_validation.json",
+      "sha256": "6aaf6b9866767380979d2e53d1c822e5032ae4f5f54ac852f4c1fdec4064c1c6",
+      "byte_size": 264,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/friction_taxonomy_validation.json"
+    },
+    {
+      "artifact_id": "holdout_governance_validation.json",
+      "sha256": "3c0d802ca5d0e39805692eb01d38fd680433737b68f3a080ba7531327ca763f7",
+      "byte_size": 172,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/holdout_governance_validation.json"
+    },
+    {
+      "artifact_id": "oos_governance_validation.json",
+      "sha256": "47a05e1a8397b24dcfa07176c47e05ba39f1565c91d0450103ced618de33e9e6",
+      "byte_size": 217,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/oos_governance_validation.json"
+    },
+    {
+      "artifact_id": "pre_oos_gate_validation.json",
+      "sha256": "dee761a65cc2ad99d4a7f1dcbbadf25fa9b3a940ac04121e11762a6c3bb82478",
+      "byte_size": 344,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/pre_oos_gate_validation.json"
+    },
+    {
+      "artifact_id": "search_ledger_validation.json",
+      "sha256": "c5547852cad0c392198f75bc89fe022f65308ff741e9a032b4f40f9a6d75b216",
+      "byte_size": 87,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/search_ledger_validation.json"
+    },
+    {
+      "artifact_id": "system_completion_base.json",
+      "sha256": "f985923ed0ad49639f24ee826a738bd5a08a90507162411b495ad6255e1c7c29",
+      "byte_size": 654,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/system_completion_base.json"
+    },
+    {
+      "artifact_id": "system_readiness.json",
+      "sha256": "62e8c305f527e36655c4c280db8721c68ed9302935d1e07d799a394b2f18c217",
+      "byte_size": 779,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/system_readiness.json"
+    },
+    {
+      "artifact_id": "test_results.txt",
+      "sha256": "b48c0f24a6b58fa559f41ba6fb591b2e123eee7568812abfbc4da46dcd0304ed",
+      "byte_size": 149,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/test_results.txt"
+    },
+    {
+      "artifact_id": "ticket_contract_validation.json",
+      "sha256": "639d0fcce8834af9a7ec5c06d4fba028e27623a9c55433fe4e2cc3c2fcaf5d5d",
+      "byte_size": 341,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/ticket_contract_validation.json"
+    },
+    {
+      "artifact_id": "verification_contract_validation.json",
+      "sha256": "6c4d554650db1749eaf069790e6697ce95fbe33fc48c56cb3ba855b5355f2d23",
+      "byte_size": 114,
+      "schema_version": "EDGELAB_SYSTEM_COMPLETION_V1",
+      "producer_commit": "35723e504bd0b7509708a874ed74582a6579e0fb",
+      "candidate_id": "SYSTEM",
+      "dataset_role": "SYSTEM",
+      "storage_location": "data/artifacts/edgelab_system_completion_v1/verification_contract_validation.json"
+    }
+  ]
+}

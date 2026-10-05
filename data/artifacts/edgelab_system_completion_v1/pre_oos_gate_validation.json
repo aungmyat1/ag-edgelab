@@ -1,0 +1,16 @@
+{
+  "axes": [
+    "walk-forward",
+    "year stability",
+    "symbol stability",
+    "regime stability",
+    "tail dependence",
+    "mean/median divergence",
+    "bootstrap uncertainty",
+    "parameter-neighborhood stability",
+    "friction readiness",
+    "dataset-role validation",
+    "candidate identity validation"
+  ],
+  "state": "PASS"
+}

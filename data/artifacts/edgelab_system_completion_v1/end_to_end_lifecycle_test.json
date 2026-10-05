@@ -1,0 +1,12 @@
+{
+  "holdout_touched": false,
+  "negative_controls": [
+    "missing slippage denied",
+    "consumed OOS denied",
+    "contaminated holdout denied",
+    "candidate hash mutation denied"
+  ],
+  "oos_opened": false,
+  "state": "PASS",
+  "synthetic_only": true
+}

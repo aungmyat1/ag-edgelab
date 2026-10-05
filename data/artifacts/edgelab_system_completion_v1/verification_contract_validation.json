@@ -1,0 +1,5 @@
+{
+  "edge_verified_requires_all_authorities": true,
+  "missing_authority_fails_closed": true,
+  "state": "PASS"
+}
