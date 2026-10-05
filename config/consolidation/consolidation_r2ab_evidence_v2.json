@@ -1,0 +1,36 @@
+{
+  "mission_id": "EDGELAB_CONSOLIDATION_R2_AB",
+  "timestamp": "2026-10-05T00:00:00Z",
+  "supersedes": "config/consolidation/consolidation_r2ab_evidence_v1.json",
+  "reason": "v1 written before merge; stale.",
+  "merged_pr_reference": "https://github.com/aungmyat1/ag-edgelab/pull/19",
+  "merge_commit": "cc6e4a3",
+  "branch": "consolidation/r2-gen2",
+  "head_sha": "ad7b9230ff967d5e895862e5ee65915b1d2f6769",
+  "main_base_sha": "062265cc1e773d1f6762c9ac64f2e7fdd9f7e86f",
+  "infra_source_sha": "2b51bf23f85b7d6af5530346d0e5646e9404f07d",
+  "gen2_source_sha": "c2dd56023b3b990d8adb79937d21e2ec2a1f292b",
+  "test_counts": {
+    "collected": 1506,
+    "passed": 1490,
+    "failed": 0,
+    "skipped": 16
+  },
+  "validation_runtime": "Python 3.12.3",
+  "validation_command": "python3.12 -m pytest -o addopts='' -q -rs",
+  "r2c_verifier_summary": "8/10 VERIFIED, 2 ABSENT (regenerable), 0/64 CAS materialized",
+  "artifact_verification_summary": "8/10 VERIFIED, 2 ABSENT (regenerable), 0/64 CAS materialized",
+  "v2_candidate_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2@2.0.0-research",
+  "v2_status": "V2_DEV_SAMPLE_SUFFICIENT_PRE_OOS_FAILED",
+  "v2_pre_oos_result": "FAIL",
+  "v2_1_candidate_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2@2.1.0-research",
+  "v2_1_status": "BLOCKED_CONTRACT_AMBIGUITY",
+  "owner_decisions_status": "UNRESOLVED",
+  "notes": [
+    "PR #19 merged the infra and GEN2 sources into main at cc6e4a3; v1 was written before that merge and is stale.",
+    "The V2 result is a negative development finding: the strategy solved structural starvation but failed the unchanged pre-OOS robustness gate.",
+    "The V2.1 result remains blocked by AMB_1..AMB_4 and the additional owner decisions; the deployment and replay gate remains closed until all seven issues are resolved.",
+    "The R2C contamination review found insufficient committed evidence to correct either legacy timestamp; no existing registry records were changed and no correction records were appended."
+  ],
+  "mission_status": "APPEND_COMPLETE"
+}
