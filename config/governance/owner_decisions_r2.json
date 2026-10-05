@@ -1,0 +1,56 @@
+{
+  "mission_id": "EDGELAB_CONSOLIDATION_R2C",
+  "status": "UNRESOLVED",
+  "owner": "TBD",
+  "decisions": [
+    {
+      "issue_id": "AMB_1",
+      "title": "OPPORTUNITY_UNIT definition",
+      "status": "UNRESOLVED",
+      "summary": "Clarify whether the opportunity unit is symbol-day-session or symbol-day-session-boundary.",
+      "owner": "TBD"
+    },
+    {
+      "issue_id": "AMB_2",
+      "title": "CONTEXT_ELIGIBLE and LOCATION_ELIGIBLE predicate definitions",
+      "status": "UNRESOLVED",
+      "summary": "State the exact eligibility predicates that determine context and location gating before replay.",
+      "owner": "TBD"
+    },
+    {
+      "issue_id": "AMB_3",
+      "title": "Initial branch selection and branch priority on a boundary interaction",
+      "status": "UNRESOLVED",
+      "summary": "Resolve the initial branch assignment and priority rules for boundary interactions before any replay executes.",
+      "owner": "TBD"
+    },
+    {
+      "issue_id": "AMB_4",
+      "title": "Additional contract ambiguities in the V2.1 audit brief",
+      "status": "UNRESOLVED",
+      "summary": "All remaining contract ambiguities in the V2.1 audit brief require owner resolution before the replay gate may reopen.",
+      "owner": "TBD"
+    },
+    {
+      "issue_id": "SESSION_AUTHORITY_CONFLICT",
+      "title": "Canonical session authority",
+      "status": "UNRESOLVED",
+      "summary": "Resolve the competing session-boundary authorities and specify the canonical timezone and session-day convention before replay.",
+      "owner": "TBD"
+    },
+    {
+      "issue_id": "V2.1_KILL_RULE",
+      "title": "V2.1 termination rule",
+      "status": "UNRESOLVED",
+      "summary": "Define the owner-approved kill or stop rule for V2.1, including which outcomes terminate the candidate and prohibit further evaluation.",
+      "owner": "TBD"
+    },
+    {
+      "issue_id": "FRICTION_VENUE",
+      "title": "Friction measurement venue",
+      "status": "UNRESOLVED",
+      "summary": "Select the execution venue and authoritative spread, commission, slippage, and swap evidence required before economic claims.",
+      "owner": "TBD"
+    }
+  ]
+}
