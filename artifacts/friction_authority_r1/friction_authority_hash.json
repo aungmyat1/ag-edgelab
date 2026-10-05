@@ -1,0 +1,20 @@
+{
+  "FRICTION_AUTHORITY_SHA256": "66d803c797fa3d801b9b5ad4a542587224ca16c2f9547233e4dd1d10ba5a9c8e",
+  "friction_authority_id": "VT_MARKETS_FRICTION_AUTHORITY_V1",
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "hash_covers": [
+    "capture_window_utc",
+    "commission",
+    "cost_allocation_semantics",
+    "friction_authority_id",
+    "historical_applicability",
+    "scenario_contract",
+    "slippage",
+    "spread_evidence",
+    "status",
+    "swap",
+    "symbols",
+    "venue"
+  ],
+  "hash_method": "sha256 over the canonical JSON payload (sort_keys=True, separators=(',',':'))"
+}

@@ -18,3 +18,8 @@ data/external/
 # mtf control-shift lineage: deps + raw archives
 .deps/
 data/raw/fx_histdata/*.zip
+# DATA_AUTHORITY_R1: per-slice build scratch (large; artifacts are the deliverable)
+artifacts/data_authority_r1/_stage/
+# FRICTION_AUTHORITY_R1: captured venue evidence bundles (quote CSVs are large
+# and content-addressed; only their hashes and summaries enter git)
+capture_bundles/

@@ -1,0 +1,104 @@
+{
+  "all_passed": true,
+  "attack_count": 12,
+  "attacks": [
+    {
+      "attack_id": "A1",
+      "detail": "no earlier label changed when a later value was mutated",
+      "detected": true,
+      "expected_detection": true,
+      "name": "future-bar mutation",
+      "passed": true
+    },
+    {
+      "attack_id": "A2",
+      "detail": "resolved 300 -> 100 after truncation",
+      "detected": true,
+      "expected_detection": true,
+      "name": "truncation",
+      "passed": true
+    },
+    {
+      "attack_id": "A3",
+      "detail": "1 observations are out of chronological order; a robustness population must be orderable in time before fold, year or trailing-window logic can be trusted",
+      "detected": true,
+      "expected_detection": true,
+      "name": "shuffled future",
+      "passed": true
+    },
+    {
+      "attack_id": "A4",
+      "detail": "CANDIDATE_IDENTITY_INVALID: declared candidate_sha256 68bfc1b156185b26178ef43cb2b08912f414293d4a190c0d4641db6e38df40be does not reproduce from the supplied contract content (recomputed ee9a8380ecf236e",
+      "detected": true,
+      "expected_detection": true,
+      "name": "candidate-id mutation",
+      "passed": true
+    },
+    {
+      "attack_id": "A5",
+      "detail": "DATASET_ROLE_VIOLATION: 1 of 11 observations carry a role outside ['DEVELOPMENT', 'DEVELOPMENT_KNOWN'] (offending roles: ['OOS']). The gate fails closed rather than filtering them out, because silentl",
+      "detected": true,
+      "expected_detection": true,
+      "name": "dataset-role forgery",
+      "passed": true
+    },
+    {
+      "attack_id": "A6",
+      "detail": "content-addressed object d44d401be317c8a863e89a5f304b259dafdcb16879e43f3bb69e0420d1a54bad is corrupt: stored bytes hash to e7ca5bb5afeae515d2ecbfc968b55347f41e3d1813c345bd6b45b9c8f3f1a3ff; STATUS=BLOC",
+      "detected": true,
+      "expected_detection": true,
+      "name": "CAS hash mismatch",
+      "passed": true
+    },
+    {
+      "attack_id": "A7",
+      "detail": "DATASET_ROLE_VIOLATION: candidate 'C3_DESCENDANT' declares it was informed by a consumed OOS verdict, yet 5 of its evidence observations come from that same window. A descendant cannot use the outcome",
+      "detected": true,
+      "expected_detection": true,
+      "name": "consumed-OOS relabelled as DEV",
+      "passed": true
+    },
+    {
+      "attack_id": "A7b",
+      "detail": "DATASET_ROLE_VIOLATION: 3 observations fall inside a consumed-OOS window, but candidate 'UNKNOWN_DESCENDANT' has not declared whether its design was informed by that verdict. Role authority is ambiguo",
+      "detected": true,
+      "expected_detection": true,
+      "name": "ambiguous lineage",
+      "passed": true
+    },
+    {
+      "attack_id": "A8",
+      "detail": "same seed reproducible=True; seed actually used=True",
+      "detected": true,
+      "expected_detection": true,
+      "name": "bootstrap seed determinism",
+      "passed": true
+    },
+    {
+      "attack_id": "A9",
+      "detail": "prefix invariance held at cuts 35/50/70/89 (0 disagreements); probe non-vacuous=True",
+      "detected": true,
+      "expected_detection": true,
+      "name": "regime classifier future mutation (prefix invariance)",
+      "passed": true
+    },
+    {
+      "attack_id": "A10",
+      "detail": "contract hash changes when the perturbation grid is edited",
+      "detected": true,
+      "expected_detection": true,
+      "name": "parameter-grid post-result mutation",
+      "passed": true
+    },
+    {
+      "attack_id": "A11",
+      "detail": "walk-forward test windows overlap at F2: 2017-04-01 00:00:00+00:00 < previous end 2017-05-01 00:00:00+00:00. Overlapping test windows double-count outcomes and inflate stability.",
+      "detected": true,
+      "expected_detection": true,
+      "name": "walk-forward fold overlap",
+      "passed": true
+    }
+  ],
+  "failed": 0,
+  "passed": 12
+}

@@ -1,0 +1,195 @@
+{
+  "findings": [
+    {
+      "axis": "temporal_integrity",
+      "detail": "chronological and causally reproducible",
+      "diagnosis": null,
+      "evaluated": true,
+      "evidence": {
+        "n": 3183,
+        "problems": []
+      },
+      "fired": false
+    },
+    {
+      "axis": "sample_sufficiency",
+      "detail": "1 distinct year(s) < 3 required \u2014 leave-one-year-out cannot distinguish a structural effect from a single-period artefact below three years",
+      "diagnosis": "INSUFFICIENT_SAMPLE",
+      "evaluated": true,
+      "evidence": {
+        "distinct_symbols": 4,
+        "distinct_years": 1,
+        "offered": 3183,
+        "per_symbol_n": {
+          "EURUSD": 716,
+          "GBPUSD": 854,
+          "USDJPY": 715,
+          "XAUUSD": 807
+        },
+        "per_year_n": {
+          "2017": 3092
+        },
+        "resolved": 3092,
+        "symbols": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ],
+        "unresolved": 91,
+        "unresolved_policy": "excluded from metrics and counted; never coerced to zero R",
+        "years": [
+          2017
+        ]
+      },
+      "fired": true
+    },
+    {
+      "axis": "walk_forward",
+      "detail": "positive fold fraction 0.7142857142857143 vs required >= 0.6",
+      "diagnosis": null,
+      "evaluated": true,
+      "evidence": {
+        "positive_fold_fraction": 0.7142857142857143,
+        "qualifying_fold_count": 7
+      },
+      "fired": false
+    },
+    {
+      "axis": "leave_one_year_out",
+      "detail": "1 year(s) available; leave-one-out needs at least 3 to be a test rather than a tautology. Axis NOT EVALUATED.",
+      "diagnosis": null,
+      "evaluated": false,
+      "evidence": {
+        "group_count": 1
+      },
+      "fired": false
+    },
+    {
+      "axis": "leave_one_symbol_out",
+      "detail": "removing one symbol moves the metric by 120.2% > 50%; removing ['XAUUSD'] flips the sign of the metric",
+      "diagnosis": "SYMBOL_DEPENDENCY",
+      "evaluated": true,
+      "evidence": {
+        "any_sign_flip": true,
+        "group_count": 4,
+        "max_relative_delta": 1.201615935221984
+      },
+      "fired": true
+    },
+    {
+      "axis": "regime",
+      "detail": "effect is present across regimes",
+      "diagnosis": null,
+      "evaluated": true,
+      "evidence": {
+        "max_single_cell_positive_share": 0.31746996218924184,
+        "positive_cell_fraction": 0.6428571428571429,
+        "qualifying_cells": 14
+      },
+      "fired": false
+    },
+    {
+      "axis": "tail",
+      "detail": "upside is not concentrated in few outcomes",
+      "diagnosis": null,
+      "evaluated": true,
+      "evidence": {
+        "shares": {
+          "TOP_10_PCT_POSITIVE_R_SHARE": 0.5419986083644331,
+          "TOP_1_PCT_POSITIVE_R_SHARE": 0.10738002686304901,
+          "TOP_5_PCT_POSITIVE_R_SHARE": 0.3430153649867523
+        },
+        "winsorized": {
+          "WINSORIZED_95": 0.007513254302597286,
+          "WINSORIZED_99": 0.05013706791967219
+        }
+      },
+      "fired": false
+    },
+    {
+      "axis": "mean_median",
+      "detail": "mean 0.0603082142056087 vs median -0.33036254873943505; shape RARE_LARGE_WINNER",
+      "diagnosis": "ASYMMETRIC_TAIL_DEPENDENCE",
+      "evaluated": true,
+      "evidence": {
+        "MEAN_MINUS_MEDIAN_R": 0.39067076294504377,
+        "asymmetric": true,
+        "shape": "RARE_LARGE_WINNER"
+      },
+      "fired": true
+    },
+    {
+      "axis": "bootstrap",
+      "detail": "mean R 95% CI lower bound 0.020732 vs required floor 0.0",
+      "diagnosis": null,
+      "evaluated": true,
+      "evidence": {
+        "mean_r": {
+          "CI_HIGH": 0.10101115572690593,
+          "CI_LOW": 0.02073169202878625,
+          "bootstrap_n": 5000,
+          "estimate": 0.0603082142056087,
+          "seed": 20251005
+        }
+      },
+      "fired": false
+    },
+    {
+      "axis": "parameter_neighborhood",
+      "detail": "NOT_APPLICABLE \u2014 first_objective_pct: NOT_EVALUABLE_FROM_FROZEN_LEDGER \u2014 changing the split changes which path events fire; the DEV ledger stores resolved outcomes only, and replaying the engine to re-derive them would be a strategy re-run, which this mission forbids. No interpolation is substituted.; research_horizon_bars: NOT_EVALUABLE_FROM_FROZEN_LEDGER \u2014 the horizon determines the forced-close price, which is a path property absent from the resolved ledger.",
+      "diagnosis": null,
+      "evaluated": false,
+      "evidence": {
+        "parameters": [
+          {
+            "FROZEN_VALUE": 50.0,
+            "PARAMETER": "first_objective_pct",
+            "reason": "NOT_EVALUABLE_FROM_FROZEN_LEDGER \u2014 changing the split changes which path events fire; the DEV ledger stores resolved outcomes only, and replaying the engine to re-derive them would be a strategy re-run, which this mission forbids. No interpolation is substituted.",
+            "status": "NOT_APPLICABLE"
+          },
+          {
+            "FROZEN_VALUE": 96.0,
+            "PARAMETER": "research_horizon_bars",
+            "reason": "NOT_EVALUABLE_FROM_FROZEN_LEDGER \u2014 the horizon determines the forced-close price, which is a path property absent from the resolved ledger.",
+            "status": "NOT_APPLICABLE"
+          }
+        ],
+        "status": "NOT_APPLICABLE"
+      },
+      "fired": false
+    },
+    {
+      "axis": "friction_readiness",
+      "detail": "FRICTION_UNAVAILABLE: structural analysis proceeds, economic and edge claims are blocked",
+      "diagnosis": "FRICTION_AUTHORITY_INCOMPLETE",
+      "evaluated": true,
+      "evidence": {
+        "blocks_economic_claims": true,
+        "blocks_structural_analysis": false,
+        "readiness": "FRICTION_UNAVAILABLE"
+      },
+      "fired": true
+    }
+  ],
+  "generic_fail_used": false,
+  "precedence_applied": [
+    "CANDIDATE_IDENTITY_INVALID",
+    "DATASET_ROLE_VIOLATION",
+    "TEMPORAL_CAUSALITY_FAILURE",
+    "INSUFFICIENT_SAMPLE",
+    "WALK_FORWARD_INSTABILITY",
+    "YEAR_DEPENDENCY",
+    "SYMBOL_DEPENDENCY",
+    "REGIME_DEPENDENCY",
+    "TAIL_DEPENDENCY",
+    "STATISTICAL_UNCERTAINTY",
+    "PARAMETER_FRAGILITY"
+  ],
+  "primary_diagnosis": "INSUFFICIENT_SAMPLE",
+  "secondary_diagnoses": [
+    "SYMBOL_DEPENDENCY",
+    "ASYMMETRIC_TAIL_DEPENDENCE",
+    "FRICTION_AUTHORITY_INCOMPLETE"
+  ]
+}

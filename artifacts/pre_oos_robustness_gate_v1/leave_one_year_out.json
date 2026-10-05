@@ -1,0 +1,48 @@
+{
+  "any_sign_flip": false,
+  "baseline": {
+    "capability": {
+      "1R": 0.17884864165588615,
+      "2R": 0.06403622250970246,
+      "3R": 0.021021992238033634,
+      "4R": 0.009055627425614488,
+      "5R": 0.00258732212160414
+    },
+    "gross_r": 186.4729983237421,
+    "max_drawdown_r": 102.14538378287395,
+    "max_r": 6.969827586206437,
+    "mean_r": 0.0603082142056087,
+    "median_r": -0.33036254873943505,
+    "min_r": -1.0,
+    "n": 3092,
+    "percentiles": {
+      "P10": -1.0,
+      "P25": -1.0,
+      "P50": -0.33036254873943505,
+      "P75": 0.6591609371020932,
+      "P90": 1.5400135698848572,
+      "P95": 2.1353492647058347,
+      "P99": 3.976303317535443
+    },
+    "profit_factor": 1.1486621896039984,
+    "profit_factor_infinite": false,
+    "status": "POSITIVE",
+    "win_rate": 0.40685640362225095
+  },
+  "group_count": 1,
+  "max_relative_delta": null,
+  "metric": "mean_gross_r",
+  "results": [
+    {
+      "baseline_metric": 0.0603082142056087,
+      "delta": null,
+      "loo_metric": null,
+      "observation_n": 0,
+      "relative_delta": null,
+      "removed_gross_r": 186.4729983237421,
+      "removed_n": 3092,
+      "sign_flip": false,
+      "year_removed": "2017"
+    }
+  ]
+}

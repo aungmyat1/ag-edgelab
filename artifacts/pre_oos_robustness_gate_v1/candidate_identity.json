@@ -1,0 +1,20 @@
+{
+  "candidate_id": "TARGET_POLICY_C3_V1",
+  "candidate_sha256": "5a485308841d1c5d2096e348665ef3f9b1f689c1ed4ce4b30385eeaf2c828112",
+  "candidate_version": "1.0.0-frozen",
+  "complete": true,
+  "content_supplied": true,
+  "contract_hash_authority": "ag_edgelab.data.fingerprint.sha256_json",
+  "dataset_manifest_hash": "f7bc462a1fba8fde927676e3d2993981f7e7b8cfbbae17ccacb39ff4086d357b",
+  "engine_version": "V0_3_FAIL_CLOSED_COLLISION_RULE__AG_REFERENCE_REPLAY_V1_1_0",
+  "entry_contract_hash": "879393972b0bddc6e00cbaca3f86f990d6b7cc61a26462ffcbf55b376ee22299",
+  "hash_reproduced": true,
+  "malformed_hashes": [],
+  "missing_fields": [],
+  "preregistration_applicable": true,
+  "preregistration_hash": "c007e50175e52cde95d6dd241fc87f009d3d8e3a1b5134e1ca20623304cce589",
+  "reproduced_sha256": "5a485308841d1c5d2096e348665ef3f9b1f689c1ed4ce4b30385eeaf2c828112",
+  "sl_contract_hash": "f9541336de4534b79bbf64153b75f384c81829b462bb099a06dd2c07f1fbbdef",
+  "strategy_rule_hash": "9426f81c9c5f951c81c6209d687af592258328133cef22280275a1787fad5d72",
+  "target_contract_hash": "6a3fb73342f5cad77717b24ce0221d6fa0b4ee03c77701f862248d86bcb5c0ff"
+}

@@ -1,0 +1,8 @@
+{
+  "DETERMINISM": "PASS",
+  "bootstrap_samples": 5000,
+  "bootstrap_seed": 20251005,
+  "method": "full gate executed twice in-process; canonical JSON of the complete result compared",
+  "run_1_sha256": "f7676f1aaebcc72b92533632efd871b1d2e862140e1cb754e66cf4ba4f885fdf",
+  "run_2_sha256": "f7676f1aaebcc72b92533632efd871b1d2e862140e1cb754e66cf4ba4f885fdf"
+}

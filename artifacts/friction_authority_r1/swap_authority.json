@@ -1,0 +1,49 @@
+{
+  "applicability": "UNDETERMINED",
+  "applicability_reason": "no strategy contract supplied; swap remains active because rollover exposure has not been excluded",
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "not_applicable_requires": "a FROZEN strategy contract proving no position can be open at the venue rollover; absent that, swap stays active",
+  "per_symbol": {
+    "EURUSD": {
+      "complete": false,
+      "source": null,
+      "status": "MISSING",
+      "swap_long": null,
+      "swap_mode": "UNKNOWN",
+      "swap_rollover_3days": null,
+      "swap_short": null,
+      "symbol": "EURUSD"
+    },
+    "GBPUSD": {
+      "complete": false,
+      "source": null,
+      "status": "MISSING",
+      "swap_long": null,
+      "swap_mode": "UNKNOWN",
+      "swap_rollover_3days": null,
+      "swap_short": null,
+      "symbol": "GBPUSD"
+    },
+    "USDJPY": {
+      "complete": false,
+      "source": null,
+      "status": "MISSING",
+      "swap_long": null,
+      "swap_mode": "UNKNOWN",
+      "swap_rollover_3days": null,
+      "swap_short": null,
+      "symbol": "USDJPY"
+    },
+    "XAUUSD": {
+      "complete": false,
+      "source": null,
+      "status": "MISSING",
+      "swap_long": null,
+      "swap_mode": "UNKNOWN",
+      "swap_rollover_3days": null,
+      "swap_short": null,
+      "symbol": "XAUUSD"
+    }
+  },
+  "status": "MISSING"
+}

@@ -1,0 +1,62 @@
+{
+  "ECONOMIC_VERIFICATION_READY": false,
+  "FRICTION_AUTHORITY_COMPLETE": false,
+  "FRICTION_FRAMEWORK_READY": true,
+  "PARTIAL_EXIT_COST_READY": true,
+  "RUNNER_EXIT_COST_READY": true,
+  "blockers": [
+    "VENUE_IDENTITY incomplete (broker/server/account class/account currency required)",
+    "symbol contract EURUSD missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+    "symbol contract GBPUSD missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+    "symbol contract USDJPY missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+    "symbol contract XAUUSD missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+    "SPREAD_AUTHORITY=MISSING (no quote observations)",
+    "COMMISSION_AUTHORITY=MISSING",
+    "SLIPPAGE_AUTHORITY=MISSING (requires read-only fill history; not inferable from quotes)",
+    "SWAP_AUTHORITY=MISSING with applicability UNDETERMINED"
+  ],
+  "fail_closed": "assert_usable_for_economics() raises while any required component is MISSING; nothing defaults to zero",
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "per_symbol": {
+    "EURUSD": {
+      "blockers": [
+        "symbol contract incomplete: missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+        "no spread observations captured",
+        "commission authority MISSING: missing ['status', 'mode', 'value', 'currency', 'scales_linearly_with_closed_volume', 'source']",
+        "slippage authority MISSING",
+        "swap authority MISSING and applicability UNDETERMINED"
+      ],
+      "ready": false
+    },
+    "GBPUSD": {
+      "blockers": [
+        "symbol contract incomplete: missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+        "no spread observations captured",
+        "commission authority MISSING: missing ['status', 'mode', 'value', 'currency', 'scales_linearly_with_closed_volume', 'source']",
+        "slippage authority MISSING",
+        "swap authority MISSING and applicability UNDETERMINED"
+      ],
+      "ready": false
+    },
+    "USDJPY": {
+      "blockers": [
+        "symbol contract incomplete: missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+        "no spread observations captured",
+        "commission authority MISSING: missing ['status', 'mode', 'value', 'currency', 'scales_linearly_with_closed_volume', 'source']",
+        "slippage authority MISSING",
+        "swap authority MISSING and applicability UNDETERMINED"
+      ],
+      "ready": false
+    },
+    "XAUUSD": {
+      "blockers": [
+        "symbol contract incomplete: missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+        "no spread observations captured",
+        "commission authority MISSING: missing ['status', 'mode', 'value', 'currency', 'scales_linearly_with_closed_volume', 'source']",
+        "slippage authority MISSING",
+        "swap authority MISSING and applicability UNDETERMINED"
+      ],
+      "ready": false
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "complete": false,
+  "evidence_kind": "NONE",
+  "future_evidence_requirement": [
+    "Read-only MT5 deal history (order_get_deals / history_deals_get) covering executed fills, with requested price and achieved price per deal.",
+    "At least a few hundred fills per symbol spread across sessions, so the tail is observed and not just the quiet median.",
+    "Deal-level timestamps so each fill can be matched to the prevailing quote.",
+    "Explicit separation of market, limit and stop fills \u2014 limit orders cannot slip negatively in the same way market orders can.",
+    "If no live account history exists, slippage stays MISSING: this mission places no orders and will not manufacture fills to measure."
+  ],
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "median_points": null,
+  "no_default_policy": "no 0.1/0.2 pip allowance is invented; slippage without fill evidence is MISSING",
+  "p90_points": null,
+  "sample_size": null,
+  "separate_from_spread": true,
+  "source": null,
+  "source_hash": null,
+  "status": "MISSING",
+  "why_quotes_are_insufficient": "Slippage is the difference between the decision price and the achieved fill. Quote snapshots contain no fills, so slippage is not estimable from spread evidence at any sampling rate."
+}

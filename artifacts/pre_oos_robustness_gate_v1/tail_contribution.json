@@ -1,0 +1,66 @@
+{
+  "distribution": {
+    "capability": {
+      "1R": 0.17884864165588615,
+      "2R": 0.06403622250970246,
+      "3R": 0.021021992238033634,
+      "4R": 0.009055627425614488,
+      "5R": 0.00258732212160414
+    },
+    "gross_r": 186.4729983237421,
+    "max_drawdown_r": 102.14538378287395,
+    "max_r": 6.969827586206437,
+    "mean_r": 0.0603082142056087,
+    "median_r": -0.33036254873943505,
+    "min_r": -1.0,
+    "n": 3092,
+    "percentiles": {
+      "P10": -1.0,
+      "P25": -1.0,
+      "P50": -0.33036254873943505,
+      "P75": 0.6591609371020932,
+      "P90": 1.5400135698848572,
+      "P95": 2.1353492647058347,
+      "P99": 3.976303317535443
+    },
+    "profit_factor": 1.1486621896039984,
+    "profit_factor_infinite": false,
+    "status": "POSITIVE",
+    "win_rate": 0.40685640362225095
+  },
+  "n": 3092,
+  "shares": {
+    "TOP_10_PCT_POSITIVE_R_SHARE": {
+      "contributed_r": 780.9188857923309,
+      "k": 310,
+      "share": 0.5419986083644331
+    },
+    "TOP_1_PCT_POSITIVE_R_SHARE": {
+      "contributed_r": 154.714587159714,
+      "k": 31,
+      "share": 0.10738002686304901
+    },
+    "TOP_5_PCT_POSITIVE_R_SHARE": {
+      "contributed_r": 494.2211520495154,
+      "k": 155,
+      "share": 0.3430153649867523
+    }
+  },
+  "total_negative_r": -1254.340453483592,
+  "total_positive_r": 1440.813451807335,
+  "winsorization_policy": "DIAGNOSTIC ONLY \u2014 the canonical metric is never replaced by a winsorized value",
+  "winsorized": {
+    "WINSORIZED_95": {
+      "gross_r": 23.23098230363081,
+      "mean_r": 0.007513254302597286,
+      "median_r": -0.33036254873943505,
+      "sign_flip_vs_canonical": false
+    },
+    "WINSORIZED_99": {
+      "gross_r": 155.0238140076264,
+      "mean_r": 0.05013706791967219,
+      "median_r": -0.33036254873943505,
+      "sign_flip_vs_canonical": false
+    }
+  }
+}

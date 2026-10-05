@@ -1,0 +1,56 @@
+{
+  "conflict_detected": true,
+  "disagreeing_hours": [
+    7,
+    12
+  ],
+  "disagreement_count": 2,
+  "examples": [
+    {
+      "agree": false,
+      "friction_diagnostic": "LONDON",
+      "governed_v03": "ASIAN",
+      "utc_hour": 7
+    },
+    {
+      "agree": false,
+      "friction_diagnostic": "OVERLAP",
+      "governed_v03": "LONDON",
+      "utc_hour": 12
+    }
+  ],
+  "friction_diagnostic_authority": {
+    "id": "EDGELAB_SPREAD_OBSERVATION_V1 session slicer",
+    "implementation": "ag_edgelab.friction.authority.quotes.session_for",
+    "status": "DIAGNOSTIC \u2014 introduced by FRICTION_AUTHORITY_R1, self-documented as 'diagnostic only'",
+    "windows_utc": {
+      "ASIAN": "00-07",
+      "LONDON": "07-12",
+      "NEW_YORK": "16-21",
+      "OTHER": "21-24",
+      "OVERLAP": "12-16"
+    }
+  },
+  "governed_authority": {
+    "id": "SESSION_WINDOWS_UTC_V0_3_STRATIFICATION",
+    "implementation": "ag_edgelab.universal.trigger_v0_4.session_label",
+    "status": "GOVERNED \u2014 hashed into TARGET_POLICY_C3_V1's canonical contract as session_authority_id",
+    "windows_utc": {
+      "ASIAN": "00-08",
+      "LONDON": "08-13",
+      "LONDON_NEWYORK_OVERLAP": "13-16",
+      "NEW_YORK": "16-21",
+      "OFF_SESSION": "21-24"
+    }
+  },
+  "mission_prompt_requested": [
+    "ASIAN",
+    "LONDON",
+    "NEW_YORK",
+    "LONDON_NEWYORK_OVERLAP",
+    "OTHER"
+  ],
+  "note": "The prompt asked for LONDON_NEWYORK_OVERLAP (a V0.3 name) alongside OTHER (a friction-module name). That combination exists in neither authority. Inventing it would have created a third, ungoverned session definition.",
+  "prompt_matches_neither": true,
+  "resolution": "Both labels are recorded on every captured quote: 'session_governed_v03' from the governed V0.3 authority and 'session' from R1's diagnostic slicer. No third window scheme was invented to match the mission prompt's exact list, and neither existing authority was modified."
+}

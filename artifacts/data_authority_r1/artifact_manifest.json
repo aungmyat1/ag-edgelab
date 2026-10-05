@@ -1,0 +1,77 @@
+{
+  "artifacts": [
+    {
+      "byte_size": 7790,
+      "name": "cross_source_comparison.json",
+      "sha256": "038bf0ab0323e909012731cd5af40f118d013addfe4dba8dda640b81bc2a7ce4"
+    },
+    {
+      "byte_size": 5560,
+      "name": "crypto_data_adapter_review.json",
+      "sha256": "4857b36acc99c5dc0cba78de195598fef473ef37381324e0957b2fec679aa93d"
+    },
+    {
+      "byte_size": 12372,
+      "name": "data_authority_inventory.json",
+      "sha256": "2d4e4ba3c0f846ae8b4fca0f3a35eebfd78f5ba4ec6488c9d53774488b55353a"
+    },
+    {
+      "byte_size": 498426,
+      "name": "data_quality_report.json",
+      "sha256": "efbbfdf22b66b248a3efbfb9db4ea98acebc54e5ba8b0bbb9aa2995a70efb37b"
+    },
+    {
+      "byte_size": 7145,
+      "name": "dataset_partition_registry.json",
+      "sha256": "e04ae75a278ebf2142ace264aeaa65caf38dc5fe98211769e99cc6eb61aaeb41"
+    },
+    {
+      "byte_size": 6342,
+      "name": "final_report.json",
+      "sha256": "a1425854216bfd08b9d463b8007d285ec34e4098fa9a9d7892532a10b97ab76c"
+    },
+    {
+      "byte_size": 5504,
+      "name": "friction_authority_gap.json",
+      "sha256": "e11de2d4f1fa90983ea0d015a966f736fce3b0ada603a5653f229b320daea820"
+    },
+    {
+      "byte_size": 105632,
+      "name": "normalized_manifest.json",
+      "sha256": "5b8b3962814fcf4d97c8257441f7788495b2e1b782fea71c0b6dd9b56b56147f"
+    },
+    {
+      "byte_size": 34522,
+      "name": "raw_manifest.json",
+      "sha256": "96da373aaa43681c91a0f36c16c1351e73b7b371bbd23a7a83c005d12ec3bd3a"
+    },
+    {
+      "byte_size": 10345,
+      "name": "regime_readiness.json",
+      "sha256": "6b255a69d45836bee9ccd8c5600a6988edb0e758570a54bf6a1eccb96c750790"
+    },
+    {
+      "byte_size": 3240,
+      "name": "source_authority_matrix.json",
+      "sha256": "b75fdf819902b75fe3805ac0512936279efcdee2f0e2d0cdbfbfecac2556477f"
+    },
+    {
+      "byte_size": 217105,
+      "name": "timeframe_lineage.json",
+      "sha256": "924419a204eaa182aa292707a72571dc460653d053a1181f0f8ba88a9d26f405"
+    },
+    {
+      "byte_size": 15423,
+      "name": "timezone_authority.json",
+      "sha256": "5f0e7ddd208c7c4c6751eb066e43ab64a7172103a93f67454d5cc697696ad385"
+    },
+    {
+      "byte_size": 24644,
+      "name": "walk_forward_readiness.json",
+      "sha256": "dfd1d8a49167687f31cb11ddc6f26a0a44092965f34fadd9e12812961b4ab036"
+    }
+  ],
+  "external_holds": "raw tick archives, canonical bar datasets, raw member indexes \u2014 all content-addressed, none committed",
+  "git_holds": "manifests, hashes, schemas, small reports, code",
+  "manifest_version": "DATA_AUTHORITY_R1_ARTIFACT_MANIFEST_V1"
+}

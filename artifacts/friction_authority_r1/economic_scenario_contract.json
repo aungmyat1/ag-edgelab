@@ -1,0 +1,51 @@
+{
+  "contract_version": "EDGELAB_ECONOMIC_SCENARIO_CONTRACT_V1",
+  "forbidden_selection_inputs": [
+    "candidate PnL",
+    "candidate expectancy",
+    "candidate profit factor",
+    "OOS results",
+    "holdout results"
+  ],
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "historical_applicability": {
+    "capture_period": "NONE",
+    "dataset_period": "2011-06-01/2018-06-06",
+    "limitation": "Venue friction evidence is captured from a live 2026 VT Markets environment. The candidate datasets under data authority cover 2011-06-01 to 2018-06-06. Spreads, commission schedules and financing rates from 2026 are NOT evidence about 2012 or 2017 execution conditions: retail FX spreads compressed substantially over that period, commission-inclusive 'raw' accounts were not uniformly available, and the broker entity, liquidity providers and regulatory regime all differ. Any backtest over 2011-2018 priced with 2026 friction is therefore reporting VENUE_CURRENT_FRICTION_AUTHORITY applied counterfactually, not HISTORICAL_FRICTION_TRUTH. HISTORICAL_FRICTION_TRUTH for this period is UNAVAILABLE and cannot be manufactured from current captures.",
+    "research_policy": {
+      "anchor_quantile": "P95",
+      "applies_to_period": "2011-06-01/2018-06-06",
+      "falsifiable_by": "Period-contemporaneous broker statements, tick archives carrying the executing venue's own ask series, or an archived commission schedule.",
+      "is_measurement": false,
+      "justification": "Absent broker evidence for the dataset period, the research cost model anchors on the P95 of the current observed distribution and doubles it. The anchor is observed rather than assumed; the multiplier is a declared constant, not a fit. It is intended to be conservative (costs over-stated) so that a candidate surviving it is not surviving on an optimistic friction assumption. It is NOT a measurement of historical spreads and must never be reported as one.",
+      "multiplier": 2.0,
+      "regime": "RESEARCH_CONSERVATIVE_MODEL"
+    }
+  },
+  "preregistered_before_any_candidate_pnl": true,
+  "regime": "VENUE_CURRENT_FRICTION_AUTHORITY",
+  "rules": [
+    {
+      "name": "BASELINE",
+      "rationale": "Median observed spread for the symbol and session. Chosen as the central tendency of the evidence, fixed before any candidate PnL exists.",
+      "session_scope": "ALL",
+      "slippage_points": null,
+      "spread_multiplier": 1.0,
+      "spread_quantile": "P50"
+    },
+    {
+      "name": "STRESSED",
+      "rationale": "95th percentile of the same observed distribution. An observed quantile is preferred to an invented multiplier because it is falsifiable against the capture evidence.",
+      "session_scope": "ALL",
+      "slippage_points": null,
+      "spread_multiplier": 1.0,
+      "spread_quantile": "P95"
+    }
+  ],
+  "scenario_contract_sha256": "2682d435ea221d02808d02233ca17626ddedcc06aa5d911d7e7b5ccab25fc6be",
+  "scenarios_are_executable": false,
+  "selection_inputs": [
+    "spread distribution quantiles",
+    "symbol metadata"
+  ]
+}

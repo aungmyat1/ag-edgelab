@@ -1,0 +1,44 @@
+{
+  "base_seed": 20251005,
+  "capability_method": "mean of a 0/1 indicator, so the existing mean bootstrap covers proportions without a second implementation",
+  "confidence": 0.95,
+  "engine": "ag_edgelab.statistics.bootstrap.bootstrap_expectancy_ci",
+  "metrics": {
+    "capability_1R": {
+      "CI_HIGH": 0.1927554980595084,
+      "CI_LOW": 0.16526520051746443,
+      "bootstrap_n": 5000,
+      "estimate": 0.17884864165588615,
+      "seed": 20251007
+    },
+    "capability_2R": {
+      "CI_HIGH": 0.07309184993531695,
+      "CI_LOW": 0.05530401034928849,
+      "bootstrap_n": 5000,
+      "estimate": 0.06403622250970246,
+      "seed": 20251008
+    },
+    "capability_3R": {
+      "CI_HIGH": 0.026196636481241913,
+      "CI_LOW": 0.016170763260025874,
+      "bootstrap_n": 5000,
+      "estimate": 0.021021992238033634,
+      "seed": 20251009
+    },
+    "gross_r_per_trade": {
+      "CI_HIGH": 0.09973328151930609,
+      "CI_LOW": 0.021160797520715383,
+      "bootstrap_n": 5000,
+      "estimate": 0.0603082142056087,
+      "seed": 20251006
+    },
+    "mean_r": {
+      "CI_HIGH": 0.10101115572690593,
+      "CI_LOW": 0.02073169202878625,
+      "bootstrap_n": 5000,
+      "estimate": 0.0603082142056087,
+      "seed": 20251005
+    }
+  },
+  "samples": 5000
+}

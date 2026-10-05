@@ -1,0 +1,47 @@
+{
+  "access_mode": "READ_ONLY",
+  "any_live_source_available": false,
+  "checks": [
+    {
+      "available": false,
+      "detail": "No module named 'MetaTrader5'; the package ships Windows-only wheels and has no Linux distribution",
+      "source": "MetaTrader5 python package"
+    },
+    {
+      "available": false,
+      "detail": "absent",
+      "source": "terminal path /opt/mt5"
+    },
+    {
+      "available": false,
+      "detail": "absent",
+      "source": "terminal path /usr/lib/wine"
+    },
+    {
+      "available": false,
+      "detail": "http_status=000",
+      "source": "https://www.vtmarkets.com/"
+    },
+    {
+      "available": false,
+      "detail": "http_status=000",
+      "source": "https://api.vtmarkets.com/"
+    },
+    {
+      "available": false,
+      "detail": "http_status=000",
+      "source": "https://mt5.vtmarkets.com/"
+    },
+    {
+      "available": false,
+      "detail": "0 bundle directory(ies) under capture_bundles/",
+      "source": "local capture bundles"
+    }
+  ],
+  "credentials_policy": "This mission never requests, stores or transmits broker credentials. Capture runs on the user's own machine under their own logged-in terminal.",
+  "credentials_requested": false,
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "orders_placed": 0,
+  "purpose": "enumerate every path by which VT Markets account and terminal evidence could be obtained, and record which ones actually answered",
+  "venue": "VT_MARKETS"
+}

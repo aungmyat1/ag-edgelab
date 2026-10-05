@@ -1,0 +1,89 @@
+{
+  "artifact_count": 20,
+  "artifacts": {
+    "bootstrap_uncertainty.json": {
+      "bytes": 1260,
+      "sha256": "d0e3b3ca70c0083d062d16db7b9acedabb7f004b079ee86266f27bdff67a7144"
+    },
+    "c3_negative_control.json": {
+      "bytes": 6577,
+      "sha256": "8d2401ba12395371da923b770f20a1d88d0bf05fad737725db33c4b7d37cc0ca"
+    },
+    "candidate_identity.json": {
+      "bytes": 1140,
+      "sha256": "92a61b7a4138587951d6202e8dc0ecb4e74461ce14b5cf5498dbcc5a055dbffd"
+    },
+    "causality_attacks.json": {
+      "bytes": 3865,
+      "sha256": "853605cb085dd7259d2455aefc3de2d61c4683d34141cc52b7189ecc913edbfe"
+    },
+    "dataset_authority.json": {
+      "bytes": 415,
+      "sha256": "3b70794baa84b9707571bc54ea36b865c2c897df1a7de3f422e6de96f86f1c3d"
+    },
+    "determinism.json": {
+      "bytes": 358,
+      "sha256": "f1ed60a5b7ae3ee39ad48cbf47c7539e6dfd9331fcf24bd5a8874b103a3ef386"
+    },
+    "final_report.json": {
+      "bytes": 11861,
+      "sha256": "80c434649b4364c88d00908c4969e0789c032f0ed8e53e58ead9825e45cde475"
+    },
+    "final_report.md": {
+      "bytes": 4505,
+      "sha256": "b83829209f7c564cfc1f5c3eb1db0fb60424954eb470b1cc2e14747f6b67837e"
+    },
+    "friction_readiness.json": {
+      "bytes": 6382,
+      "sha256": "72bbca4af85ba4e813c558b595fb3b415d0c08b170a00269151ddadc0a2a66d7"
+    },
+    "leave_one_symbol_out.json": {
+      "bytes": 5812,
+      "sha256": "f49735642825e7319378c4add666e68b94ab8050e159b0afd9848dc12d7c98b8"
+    },
+    "leave_one_year_out.json": {
+      "bytes": 1210,
+      "sha256": "5cfedbeeb6c544431892c333d7235821d5448fa6f37c0a05420c34b041a18330"
+    },
+    "mean_median_analysis.json": {
+      "bytes": 780,
+      "sha256": "4f72eeb51bddd3d68c8371151a3a99163fa0366dee5af38705889832458bbc44"
+    },
+    "oos_authorization.json": {
+      "bytes": 455,
+      "sha256": "5a0210afcdfac9e50f6639d222b30db8e02f2d75afcff3acd077b9530e2f809c"
+    },
+    "parameter_neighborhood.json": {
+      "bytes": 899,
+      "sha256": "b8cb950441936ad902a966570a90839a44fa16029aa42b0d7c4a8a540ae4f5e1"
+    },
+    "preregistration.json": {
+      "bytes": 9021,
+      "sha256": "ac1efabf02a232b017c8e31e9a713bc6e67e2122e4059cb5bd53ecc320acb9f2"
+    },
+    "regime_robustness.json": {
+      "bytes": 15030,
+      "sha256": "46784ed310e7684f8a132714489597883204174d6cb3e8f72b9993eb6afe054a"
+    },
+    "root_cause_analysis.json": {
+      "bytes": 6310,
+      "sha256": "e5a4773ad78f40bb432893306fd9d9c1eb1faf7db6029e8f99927f1e3d8e337c"
+    },
+    "tail_contribution.json": {
+      "bytes": 1823,
+      "sha256": "f832f444568d6a024b4f17e743ed2703a66029896d6d172a5b2260ac979e842a"
+    },
+    "test_results.txt": {
+      "bytes": 1793,
+      "present": true,
+      "reason": "records the test run that produces this manifest; hashing it here would be circular",
+      "sha256": "EXEMPT_SELF_REFERENTIAL"
+    },
+    "walk_forward_report.json": {
+      "bytes": 35414,
+      "sha256": "8c35a1bffefe05388d07b4b70923e7eae12e1a6c8375a752c490387956779b82"
+    }
+  },
+  "large_ledgers_committed": false,
+  "note": "Per-observation ledgers stay out of git; this manifest pins the derived artifacts by content hash."
+}

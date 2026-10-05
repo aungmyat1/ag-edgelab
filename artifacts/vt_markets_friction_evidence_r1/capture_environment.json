@@ -1,0 +1,7 @@
+{
+  "capture_possible_here": false,
+  "metatrader5_importable": false,
+  "platform": "linux",
+  "reason": "MetaTrader5 is a Windows-only package with no Linux wheel, and no VT Markets terminal is present in this environment. Venue evidence cannot be captured here; it must be captured on the owner's Windows machine.",
+  "terminal_reachable": false
+}
