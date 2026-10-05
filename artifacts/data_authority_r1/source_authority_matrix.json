@@ -1,0 +1,86 @@
+{
+  "criteria": [
+    "PROVENANCE_PINNED",
+    "TIMEZONE_PROVEN",
+    "HASHABLE",
+    "TICK_OR_M1_NATIVE",
+    "BID_ASK",
+    "MULTI_YEAR",
+    "REACHABLE"
+  ],
+  "matrix_version": "DATA_AUTHORITY_R1_SOURCE_AUTHORITY_MATRIX_V1",
+  "rows": [
+    {
+      "AUTHORITY_STATUS": "CERTIFIED",
+      "BID_ASK": true,
+      "DECISION": "SELECTED as the multi-year FX authority: it is the only reachable source that is tick-native (so M1 is derived, not trusted), hash-pinnable to an immutable commit, and whose timezone frame could be PROVEN from the data.",
+      "HASHABLE": true,
+      "MULTI_YEAR": true,
+      "PROVENANCE_PINNED": true,
+      "REACHABLE": true,
+      "SOURCE_ID": "DUKASCOPY_TICK_FX31337_MIRROR_V1",
+      "TICK_OR_M1_NATIVE": true,
+      "TIMEZONE_PROVEN": true
+    },
+    {
+      "AUTHORITY_STATUS": "REFERENCE",
+      "BID_ASK": false,
+      "DECISION": "UNCHANGED. Used in this mission only as the independent comparator for the 2017 overlap. No byte, hash, partition or governance record of this authority was modified.",
+      "HASHABLE": true,
+      "MULTI_YEAR": false,
+      "PROVENANCE_PINNED": true,
+      "REACHABLE": true,
+      "SOURCE_ID": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "TICK_OR_M1_NATIVE": true,
+      "TIMEZONE_PROVEN": true
+    },
+    {
+      "AUTHORITY_STATUS": "REJECTED",
+      "BID_ASK": false,
+      "DECISION": "REJECTED despite having the LONGEST history (9.3 years). Section 2 forbids selecting a source for history alone, and section 16 makes ambiguous timezone authority a STOP condition. Adopting it would have required asserting a timezone the data refutes.",
+      "HASHABLE": true,
+      "MULTI_YEAR": true,
+      "PROVENANCE_PINNED": false,
+      "REACHABLE": true,
+      "SOURCE_ID": "EJTRADER_MT5_OHLC_MIRROR",
+      "TICK_OR_M1_NATIVE": false,
+      "TIMEZONE_PROVEN": false
+    },
+    {
+      "AUTHORITY_STATUS": "UNAVAILABLE",
+      "BID_ASK": true,
+      "DECISION": "NOT ACQUIRED. This is the blocker for FRICTION_AUTHORITY_COMPLETE: commission, swap and contract specifications are broker facts and cannot be derived from a price feed. The schema is prepared and left NULL.",
+      "HASHABLE": false,
+      "MULTI_YEAR": true,
+      "PROVENANCE_PINNED": false,
+      "REACHABLE": false,
+      "SOURCE_ID": "VT_MARKETS_MT5_HISTORY",
+      "TICK_OR_M1_NATIVE": false,
+      "TIMEZONE_PROVEN": false
+    },
+    {
+      "AUTHORITY_STATUS": "UNAVAILABLE",
+      "BID_ASK": false,
+      "DECISION": "NOT ACQUIRED. Section 12 is answered as a CONTRACT REVIEW only; see crypto_data_adapter_review.json.",
+      "HASHABLE": false,
+      "MULTI_YEAR": true,
+      "PROVENANCE_PINNED": false,
+      "REACHABLE": false,
+      "SOURCE_ID": "BINANCE_BYBIT_PUBLIC_ARCHIVES",
+      "TICK_OR_M1_NATIVE": true,
+      "TIMEZONE_PROVEN": false
+    },
+    {
+      "AUTHORITY_STATUS": "REJECTED",
+      "BID_ASK": false,
+      "DECISION": "EXCLUDED from the authority by construction. It remains a CI plumbing fixture and is never citable as edge evidence.",
+      "HASHABLE": true,
+      "MULTI_YEAR": false,
+      "PROVENANCE_PINNED": false,
+      "REACHABLE": true,
+      "SOURCE_ID": "SYNTHETIC_BTCUSDT_FIXTURE",
+      "TICK_OR_M1_NATIVE": false,
+      "TIMEZONE_PROVEN": false
+    }
+  ]
+}

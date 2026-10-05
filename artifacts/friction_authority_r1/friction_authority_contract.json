@@ -1,0 +1,382 @@
+{
+  "FRICTION_AUTHORITY_SHA256": "66d803c797fa3d801b9b5ad4a542587224ca16c2f9547233e4dd1d10ba5a9c8e",
+  "blockers": [
+    "VENUE_IDENTITY incomplete (broker/server/account class/account currency required)",
+    "symbol contract EURUSD missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+    "symbol contract GBPUSD missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+    "symbol contract USDJPY missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+    "symbol contract XAUUSD missing ['digits', 'point', 'trade_tick_size', 'trade_tick_value', 'contract_size', 'currency_base', 'currency_profit', 'currency_margin']",
+    "SPREAD_AUTHORITY=MISSING (no quote observations)",
+    "COMMISSION_AUTHORITY=MISSING",
+    "SLIPPAGE_AUTHORITY=MISSING (requires read-only fill history; not inferable from quotes)",
+    "SWAP_AUTHORITY=MISSING with applicability UNDETERMINED"
+  ],
+  "capture_window_utc": {
+    "ended": null,
+    "started": null
+  },
+  "commission": {
+    "EURUSD": {
+      "complete": false,
+      "currency": null,
+      "missing_fields": [
+        "status",
+        "mode",
+        "value",
+        "currency",
+        "scales_linearly_with_closed_volume",
+        "source"
+      ],
+      "mode": "UNKNOWN",
+      "note": "no VT Markets account evidence has been ingested; the commission schedule is unknown and no industry default is substituted",
+      "scales_linearly_with_closed_volume": null,
+      "source": null,
+      "source_hash": null,
+      "status": "MISSING",
+      "symbol": "EURUSD",
+      "value": null
+    },
+    "GBPUSD": {
+      "complete": false,
+      "currency": null,
+      "missing_fields": [
+        "status",
+        "mode",
+        "value",
+        "currency",
+        "scales_linearly_with_closed_volume",
+        "source"
+      ],
+      "mode": "UNKNOWN",
+      "note": "no VT Markets account evidence has been ingested; the commission schedule is unknown and no industry default is substituted",
+      "scales_linearly_with_closed_volume": null,
+      "source": null,
+      "source_hash": null,
+      "status": "MISSING",
+      "symbol": "GBPUSD",
+      "value": null
+    },
+    "USDJPY": {
+      "complete": false,
+      "currency": null,
+      "missing_fields": [
+        "status",
+        "mode",
+        "value",
+        "currency",
+        "scales_linearly_with_closed_volume",
+        "source"
+      ],
+      "mode": "UNKNOWN",
+      "note": "no VT Markets account evidence has been ingested; the commission schedule is unknown and no industry default is substituted",
+      "scales_linearly_with_closed_volume": null,
+      "source": null,
+      "source_hash": null,
+      "status": "MISSING",
+      "symbol": "USDJPY",
+      "value": null
+    },
+    "XAUUSD": {
+      "complete": false,
+      "currency": null,
+      "missing_fields": [
+        "status",
+        "mode",
+        "value",
+        "currency",
+        "scales_linearly_with_closed_volume",
+        "source"
+      ],
+      "mode": "UNKNOWN",
+      "note": "no VT Markets account evidence has been ingested; the commission schedule is unknown and no industry default is substituted",
+      "scales_linearly_with_closed_volume": null,
+      "source": null,
+      "source_hash": null,
+      "status": "MISSING",
+      "symbol": "XAUUSD",
+      "value": null
+    }
+  },
+  "cost_allocation_semantics": {
+    "commission_per_side": true,
+    "commission_scales_with_closed_volume": true,
+    "reference_price_basis": "BID",
+    "slippage_per_leg": true,
+    "spread_charged_per_round_trip": 1.0,
+    "spread_convention": "FULL_SPREAD_ON_ENTRY",
+    "spread_invariant": "total spread cost depends only on volume, never on the number of partial exits",
+    "swap_per_rollover_on_open_volume": true
+  },
+  "friction_authority_id": "VT_MARKETS_FRICTION_AUTHORITY_V1",
+  "historical_applicability": {
+    "limitation": "Venue friction evidence is captured from a live 2026 VT Markets environment. The candidate datasets under data authority cover 2011-06-01 to 2018-06-06. Spreads, commission schedules and financing rates from 2026 are NOT evidence about 2012 or 2017 execution conditions: retail FX spreads compressed substantially over that period, commission-inclusive 'raw' accounts were not uniformly available, and the broker entity, liquidity providers and regulatory regime all differ. Any backtest over 2011-2018 priced with 2026 friction is therefore reporting VENUE_CURRENT_FRICTION_AUTHORITY applied counterfactually, not HISTORICAL_FRICTION_TRUTH. HISTORICAL_FRICTION_TRUTH for this period is UNAVAILABLE and cannot be manufactured from current captures.",
+    "policy": {
+      "anchor_quantile": "P95",
+      "applies_to_period": "2011-06-01/2018-06-06",
+      "falsifiable_by": "Period-contemporaneous broker statements, tick archives carrying the executing venue's own ask series, or an archived commission schedule.",
+      "is_measurement": false,
+      "justification": "Absent broker evidence for the dataset period, the research cost model anchors on the P95 of the current observed distribution and doubles it. The anchor is observed rather than assumed; the multiplier is a declared constant, not a fit. It is intended to be conservative (costs over-stated) so that a candidate surviving it is not surviving on an optimistic friction assumption. It is NOT a measurement of historical spreads and must never be reported as one.",
+      "multiplier": 2.0,
+      "regime": "RESEARCH_CONSERVATIVE_MODEL"
+    }
+  },
+  "scenario_contract": {
+    "contract_version": "EDGELAB_ECONOMIC_SCENARIO_CONTRACT_V1",
+    "forbidden_selection_inputs": [
+      "candidate PnL",
+      "candidate expectancy",
+      "candidate profit factor",
+      "OOS results",
+      "holdout results"
+    ],
+    "preregistered_before_any_candidate_pnl": true,
+    "regime": "VENUE_CURRENT_FRICTION_AUTHORITY",
+    "rules": [
+      {
+        "name": "BASELINE",
+        "rationale": "Median observed spread for the symbol and session. Chosen as the central tendency of the evidence, fixed before any candidate PnL exists.",
+        "session_scope": "ALL",
+        "slippage_points": null,
+        "spread_multiplier": 1.0,
+        "spread_quantile": "P50"
+      },
+      {
+        "name": "STRESSED",
+        "rationale": "95th percentile of the same observed distribution. An observed quantile is preferred to an invented multiplier because it is falsifiable against the capture evidence.",
+        "session_scope": "ALL",
+        "slippage_points": null,
+        "spread_multiplier": 1.0,
+        "spread_quantile": "P95"
+      }
+    ],
+    "scenario_contract_sha256": "2682d435ea221d02808d02233ca17626ddedcc06aa5d911d7e7b5ccab25fc6be",
+    "selection_inputs": [
+      "spread distribution quantiles",
+      "symbol metadata"
+    ]
+  },
+  "slippage": {
+    "complete": false,
+    "evidence_kind": "NONE",
+    "future_evidence_requirement": [
+      "Read-only MT5 deal history (order_get_deals / history_deals_get) covering executed fills, with requested price and achieved price per deal.",
+      "At least a few hundred fills per symbol spread across sessions, so the tail is observed and not just the quiet median.",
+      "Deal-level timestamps so each fill can be matched to the prevailing quote.",
+      "Explicit separation of market, limit and stop fills \u2014 limit orders cannot slip negatively in the same way market orders can.",
+      "If no live account history exists, slippage stays MISSING: this mission places no orders and will not manufacture fills to measure."
+    ],
+    "median_points": null,
+    "p90_points": null,
+    "sample_size": null,
+    "source": null,
+    "source_hash": null,
+    "status": "MISSING",
+    "why_quotes_are_insufficient": "Slippage is the difference between the decision price and the achieved fill. Quote snapshots contain no fills, so slippage is not estimable from spread evidence at any sampling rate."
+  },
+  "spread_evidence": {
+    "EURUSD": {
+      "n": 0,
+      "status": "MISSING"
+    },
+    "GBPUSD": {
+      "n": 0,
+      "status": "MISSING"
+    },
+    "USDJPY": {
+      "n": 0,
+      "status": "MISSING"
+    },
+    "XAUUSD": {
+      "n": 0,
+      "status": "MISSING"
+    }
+  },
+  "status": {
+    "COMMISSION_AUTHORITY": "MISSING",
+    "FRICTION_AUTHORITY_COMPLETE": false,
+    "SLIPPAGE_AUTHORITY": "MISSING",
+    "SPREAD_AUTHORITY": "MISSING",
+    "SWAP_AUTHORITY": "MISSING"
+  },
+  "swap": {
+    "applicability": "UNDETERMINED",
+    "applicability_reason": "no strategy contract supplied; swap remains active because rollover exposure has not been excluded",
+    "per_symbol": {
+      "EURUSD": {
+        "complete": false,
+        "source": null,
+        "status": "MISSING",
+        "swap_long": null,
+        "swap_mode": "UNKNOWN",
+        "swap_rollover_3days": null,
+        "swap_short": null,
+        "symbol": "EURUSD"
+      },
+      "GBPUSD": {
+        "complete": false,
+        "source": null,
+        "status": "MISSING",
+        "swap_long": null,
+        "swap_mode": "UNKNOWN",
+        "swap_rollover_3days": null,
+        "swap_short": null,
+        "symbol": "GBPUSD"
+      },
+      "USDJPY": {
+        "complete": false,
+        "source": null,
+        "status": "MISSING",
+        "swap_long": null,
+        "swap_mode": "UNKNOWN",
+        "swap_rollover_3days": null,
+        "swap_short": null,
+        "symbol": "USDJPY"
+      },
+      "XAUUSD": {
+        "complete": false,
+        "source": null,
+        "status": "MISSING",
+        "swap_long": null,
+        "swap_mode": "UNKNOWN",
+        "swap_rollover_3days": null,
+        "swap_short": null,
+        "symbol": "XAUUSD"
+      }
+    }
+  },
+  "symbols": {
+    "EURUSD": {
+      "broker_symbol": null,
+      "captured_at": null,
+      "complete": false,
+      "contract_size": null,
+      "currency_base": null,
+      "currency_margin": null,
+      "currency_profit": null,
+      "digits": null,
+      "missing_fields": [
+        "digits",
+        "point",
+        "trade_tick_size",
+        "trade_tick_value",
+        "contract_size",
+        "currency_base",
+        "currency_profit",
+        "currency_margin"
+      ],
+      "pip_convention": "INSTRUMENT_UNITS",
+      "pip_size": null,
+      "point": null,
+      "quote_unit": "instrument_units",
+      "source": null,
+      "symbol": "EURUSD",
+      "trade_tick_size": null,
+      "trade_tick_value": null,
+      "volume_max": null,
+      "volume_min": null,
+      "volume_step": null
+    },
+    "GBPUSD": {
+      "broker_symbol": null,
+      "captured_at": null,
+      "complete": false,
+      "contract_size": null,
+      "currency_base": null,
+      "currency_margin": null,
+      "currency_profit": null,
+      "digits": null,
+      "missing_fields": [
+        "digits",
+        "point",
+        "trade_tick_size",
+        "trade_tick_value",
+        "contract_size",
+        "currency_base",
+        "currency_profit",
+        "currency_margin"
+      ],
+      "pip_convention": "INSTRUMENT_UNITS",
+      "pip_size": null,
+      "point": null,
+      "quote_unit": "instrument_units",
+      "source": null,
+      "symbol": "GBPUSD",
+      "trade_tick_size": null,
+      "trade_tick_value": null,
+      "volume_max": null,
+      "volume_min": null,
+      "volume_step": null
+    },
+    "USDJPY": {
+      "broker_symbol": null,
+      "captured_at": null,
+      "complete": false,
+      "contract_size": null,
+      "currency_base": null,
+      "currency_margin": null,
+      "currency_profit": null,
+      "digits": null,
+      "missing_fields": [
+        "digits",
+        "point",
+        "trade_tick_size",
+        "trade_tick_value",
+        "contract_size",
+        "currency_base",
+        "currency_profit",
+        "currency_margin"
+      ],
+      "pip_convention": "INSTRUMENT_UNITS",
+      "pip_size": null,
+      "point": null,
+      "quote_unit": "instrument_units",
+      "source": null,
+      "symbol": "USDJPY",
+      "trade_tick_size": null,
+      "trade_tick_value": null,
+      "volume_max": null,
+      "volume_min": null,
+      "volume_step": null
+    },
+    "XAUUSD": {
+      "broker_symbol": null,
+      "captured_at": null,
+      "complete": false,
+      "contract_size": null,
+      "currency_base": null,
+      "currency_margin": null,
+      "currency_profit": null,
+      "digits": null,
+      "missing_fields": [
+        "digits",
+        "point",
+        "trade_tick_size",
+        "trade_tick_value",
+        "contract_size",
+        "currency_base",
+        "currency_profit",
+        "currency_margin"
+      ],
+      "pip_convention": "INSTRUMENT_UNITS",
+      "pip_size": null,
+      "point": null,
+      "quote_unit": "instrument_units",
+      "source": null,
+      "symbol": "XAUUSD",
+      "trade_tick_size": null,
+      "trade_tick_value": null,
+      "volume_max": null,
+      "volume_min": null,
+      "volume_step": null
+    }
+  },
+  "venue": {
+    "account_class": "UNKNOWN",
+    "account_currency": null,
+    "account_type": null,
+    "broker": null,
+    "complete": false,
+    "server": null,
+    "terminal_build": null
+  }
+}

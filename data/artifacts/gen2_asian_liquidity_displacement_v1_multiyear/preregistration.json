@@ -1,0 +1,1041 @@
+{
+  "DATASET_BINDING_CHANGED": "YES",
+  "EXPECTED_RULE_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+  "RULES_CHANGED": "NO",
+  "data_authority": {
+    "annual_partitions_utc": {
+      "DEVELOPMENT": "[YYYY-01-01, YYYY-09-01)",
+      "OOS": "[YYYY-09-01, YYYY-12-01) \u2014 NOT LOADABLE under this authority",
+      "SEALED_HOLDOUT": "[YYYY-12-01, YYYY+1-01-01) \u2014 NOT LOADABLE, sealed"
+    },
+    "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "balanced_panel_years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017
+    ],
+    "bar_convention": "bar OPEN timestamp",
+    "coverage_years": {
+      "EURUSD": [
+        2000,
+        2017
+      ],
+      "GBPUSD": [
+        2000,
+        2017
+      ],
+      "USDJPY": [
+        2000,
+        2017
+      ],
+      "XAUUSD": [
+        2009,
+        2017
+      ]
+    },
+    "cross_source_identity_proof": "inner DAT_ASCII_{SYM}_M1_2017.csv sha256 == inner csv of the PR #10 pinned zip, 4/4 symbols",
+    "derivation_code": "ag_edgelab.data.fx_histdata_2017 (unmodified)",
+    "duplicate_policy": "zero tolerance \u2014 quality_gate_m1 raises; the symbol-year is excluded, never de-duplicated",
+    "extends": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+    "loadable_roles": [
+      "DEVELOPMENT"
+    ],
+    "m15_rule": ">= 13/15 M1 minutes per bucket; missing buckets never filled",
+    "mirror": "github.com/riknv/fx-m1-data",
+    "mtf_coverage_fraction": 0.75,
+    "normalized_timezone": "UTC",
+    "ohlc_policy": "zero tolerance \u2014 any OHLC-invalid M1 bar excludes the symbol-year",
+    "partition_policy_id": "FX_ANNUAL_PARTITION_POLICY_R2",
+    "product": "HistData.com Generic ASCII M1",
+    "source_timezone": "America/New_York",
+    "symbols": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ],
+    "transport": "GitHub contents API (raw media type)"
+  },
+  "data_authority_discovery": {
+    "AVAILABLE_CORPUS_END": "2018-01-01T00:00:00+00:00",
+    "AVAILABLE_CORPUS_START": "2000-01-01T00:00:00+00:00",
+    "EXCLUDED_WINDOWS": [
+      {
+        "EXCLUSION_REASON": "RESERVED_FRESH_OOS \u2014 the annual partition policy inherited from PR #10 reserves Sep-Nov of every year as out-of-sample. For 2017 that window is additionally ALREADY CONSUMED (OOS-001 SESSION_TRADE_V2, OOS-002 TARGET_POLICY_C3_V1, see oos_access_log.json). For every other year it is FRESH and must stay fresh: loading it here would permanently destroy the only multi-year out-of-sample evidence this repository can ever have. The loader fails closed on it.",
+        "role": "OOS",
+        "window": "[YYYY-09-01, YYYY-12-01) for every admitted year"
+      },
+      {
+        "EXCLUSION_REASON": "SEALED \u2014 never opened by any recorded event; unsealing requires an explicit governance mission that amends the holdout policy first.",
+        "role": "SEALED_HOLDOUT",
+        "window": "[YYYY-12-01, YYYY+1-01-01) for every admitted year"
+      },
+      {
+        "EXCLUSION_REASON": "NO_WHOLE_YEAR_ARCHIVE \u2014 the mirror publishes 2018 only as monthly fragments and stops in October 2018; an incomplete year would not carry the same calendar composition as the other DEV windows.",
+        "role": "NOT_ACQUIRED",
+        "window": "[2018-01-01, ...)"
+      },
+      {
+        "EXCLUSION_REASON": "PROVIDER_COVERAGE \u2014 HistData gold history begins in 2009, so the panel is unbalanced before then. Reported as a coverage limitation, never backfilled.",
+        "role": "NOT_PUBLISHED",
+        "window": "XAUUSD [2000-01-01, 2009-01-01)"
+      }
+    ],
+    "PERMITTED_DEV_WINDOWS": [
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2000-01-01T00:00:00+00:00",
+          "2000-09-01T00:00:00+00:00"
+        ],
+        "year": 2000
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2001-01-01T00:00:00+00:00",
+          "2001-09-01T00:00:00+00:00"
+        ],
+        "year": 2001
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2002-01-01T00:00:00+00:00",
+          "2002-09-01T00:00:00+00:00"
+        ],
+        "year": 2002
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2003-01-01T00:00:00+00:00",
+          "2003-09-01T00:00:00+00:00"
+        ],
+        "year": 2003
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2004-01-01T00:00:00+00:00",
+          "2004-09-01T00:00:00+00:00"
+        ],
+        "year": 2004
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2005-01-01T00:00:00+00:00",
+          "2005-09-01T00:00:00+00:00"
+        ],
+        "year": 2005
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2006-01-01T00:00:00+00:00",
+          "2006-09-01T00:00:00+00:00"
+        ],
+        "year": 2006
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2007-01-01T00:00:00+00:00",
+          "2007-09-01T00:00:00+00:00"
+        ],
+        "year": 2007
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2008-01-01T00:00:00+00:00",
+          "2008-09-01T00:00:00+00:00"
+        ],
+        "year": 2008
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2009-01-01T00:00:00+00:00",
+          "2009-09-01T00:00:00+00:00"
+        ],
+        "year": 2009
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2010-01-01T00:00:00+00:00",
+          "2010-09-01T00:00:00+00:00"
+        ],
+        "year": 2010
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2011-01-01T00:00:00+00:00",
+          "2011-09-01T00:00:00+00:00"
+        ],
+        "year": 2011
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2012-01-01T00:00:00+00:00",
+          "2012-09-01T00:00:00+00:00"
+        ],
+        "year": 2012
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2013-01-01T00:00:00+00:00",
+          "2013-09-01T00:00:00+00:00"
+        ],
+        "year": 2013
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2014-01-01T00:00:00+00:00",
+          "2014-09-01T00:00:00+00:00"
+        ],
+        "year": 2014
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "year": 2015
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "year": 2016
+      },
+      {
+        "family_status": "DEVELOPMENT_KNOWN",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "year": 2017
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2000-01-01T00:00:00+00:00",
+          "2000-09-01T00:00:00+00:00"
+        ],
+        "year": 2000
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2001-01-01T00:00:00+00:00",
+          "2001-09-01T00:00:00+00:00"
+        ],
+        "year": 2001
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2002-01-01T00:00:00+00:00",
+          "2002-09-01T00:00:00+00:00"
+        ],
+        "year": 2002
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2003-01-01T00:00:00+00:00",
+          "2003-09-01T00:00:00+00:00"
+        ],
+        "year": 2003
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2004-01-01T00:00:00+00:00",
+          "2004-09-01T00:00:00+00:00"
+        ],
+        "year": 2004
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2005-01-01T00:00:00+00:00",
+          "2005-09-01T00:00:00+00:00"
+        ],
+        "year": 2005
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2006-01-01T00:00:00+00:00",
+          "2006-09-01T00:00:00+00:00"
+        ],
+        "year": 2006
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2007-01-01T00:00:00+00:00",
+          "2007-09-01T00:00:00+00:00"
+        ],
+        "year": 2007
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2008-01-01T00:00:00+00:00",
+          "2008-09-01T00:00:00+00:00"
+        ],
+        "year": 2008
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2009-01-01T00:00:00+00:00",
+          "2009-09-01T00:00:00+00:00"
+        ],
+        "year": 2009
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2010-01-01T00:00:00+00:00",
+          "2010-09-01T00:00:00+00:00"
+        ],
+        "year": 2010
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2011-01-01T00:00:00+00:00",
+          "2011-09-01T00:00:00+00:00"
+        ],
+        "year": 2011
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2012-01-01T00:00:00+00:00",
+          "2012-09-01T00:00:00+00:00"
+        ],
+        "year": 2012
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2013-01-01T00:00:00+00:00",
+          "2013-09-01T00:00:00+00:00"
+        ],
+        "year": 2013
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2014-01-01T00:00:00+00:00",
+          "2014-09-01T00:00:00+00:00"
+        ],
+        "year": 2014
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "year": 2015
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "year": 2016
+      },
+      {
+        "family_status": "DEVELOPMENT_KNOWN",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "year": 2017
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2000-01-01T00:00:00+00:00",
+          "2000-09-01T00:00:00+00:00"
+        ],
+        "year": 2000
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2001-01-01T00:00:00+00:00",
+          "2001-09-01T00:00:00+00:00"
+        ],
+        "year": 2001
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2002-01-01T00:00:00+00:00",
+          "2002-09-01T00:00:00+00:00"
+        ],
+        "year": 2002
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2003-01-01T00:00:00+00:00",
+          "2003-09-01T00:00:00+00:00"
+        ],
+        "year": 2003
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2004-01-01T00:00:00+00:00",
+          "2004-09-01T00:00:00+00:00"
+        ],
+        "year": 2004
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2005-01-01T00:00:00+00:00",
+          "2005-09-01T00:00:00+00:00"
+        ],
+        "year": 2005
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2006-01-01T00:00:00+00:00",
+          "2006-09-01T00:00:00+00:00"
+        ],
+        "year": 2006
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2007-01-01T00:00:00+00:00",
+          "2007-09-01T00:00:00+00:00"
+        ],
+        "year": 2007
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2008-01-01T00:00:00+00:00",
+          "2008-09-01T00:00:00+00:00"
+        ],
+        "year": 2008
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2009-01-01T00:00:00+00:00",
+          "2009-09-01T00:00:00+00:00"
+        ],
+        "year": 2009
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2010-01-01T00:00:00+00:00",
+          "2010-09-01T00:00:00+00:00"
+        ],
+        "year": 2010
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2011-01-01T00:00:00+00:00",
+          "2011-09-01T00:00:00+00:00"
+        ],
+        "year": 2011
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2012-01-01T00:00:00+00:00",
+          "2012-09-01T00:00:00+00:00"
+        ],
+        "year": 2012
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2013-01-01T00:00:00+00:00",
+          "2013-09-01T00:00:00+00:00"
+        ],
+        "year": 2013
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2014-01-01T00:00:00+00:00",
+          "2014-09-01T00:00:00+00:00"
+        ],
+        "year": 2014
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "year": 2015
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "year": 2016
+      },
+      {
+        "family_status": "DEVELOPMENT_KNOWN",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "year": 2017
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2009-01-01T00:00:00+00:00",
+          "2009-09-01T00:00:00+00:00"
+        ],
+        "year": 2009
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2010-01-01T00:00:00+00:00",
+          "2010-09-01T00:00:00+00:00"
+        ],
+        "year": 2010
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2011-01-01T00:00:00+00:00",
+          "2011-09-01T00:00:00+00:00"
+        ],
+        "year": 2011
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2012-01-01T00:00:00+00:00",
+          "2012-09-01T00:00:00+00:00"
+        ],
+        "year": 2012
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2013-01-01T00:00:00+00:00",
+          "2013-09-01T00:00:00+00:00"
+        ],
+        "year": 2013
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2014-01-01T00:00:00+00:00",
+          "2014-09-01T00:00:00+00:00"
+        ],
+        "year": 2014
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "year": 2015
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "year": 2016
+      },
+      {
+        "family_status": "DEVELOPMENT_KNOWN",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "year": 2017
+      }
+    ],
+    "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "balanced_panel_years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017
+    ],
+    "contamination_position": "The 2017 DEV window is DEVELOPMENT_KNOWN for family ASIAN_LIQUIDITY_DISPLACEMENT (registered after the first campaign) and is RE-USED here deliberately and disclosed: it is the baseline the expansion is measured against. All other DEV windows are fresh DEVELOPMENT and become DEVELOPMENT_KNOWN for this family once this mission completes. No window is relabelled.",
+    "coverage_years": {
+      "EURUSD": [
+        2000,
+        2017
+      ],
+      "GBPUSD": [
+        2000,
+        2017
+      ],
+      "USDJPY": [
+        2000,
+        2017
+      ],
+      "XAUUSD": [
+        2009,
+        2017
+      ]
+    },
+    "partition_policy_id": "FX_ANNUAL_PARTITION_POLICY_R2",
+    "permitted_symbol_years_n": 63
+  },
+  "economic_policy": {
+    "ECONOMIC_EDGE": "NOT_ESTIMABLE",
+    "allowed": "structural target capability in R only",
+    "forbidden_substitutions": [
+      "generic spreads",
+      "fixed commission",
+      "invented slippage",
+      "industry defaults"
+    ],
+    "reason": "measured friction authority remains incomplete (config/governance/friction_authority_gap.json)"
+  },
+  "experiment_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+  "experiment_version": "1.0.0",
+  "frozen_contracts_restated": {
+    "displacement_body_range_min": 0.7,
+    "friction_contract": {
+      "FRICTION_EDGE_VERIFICATION_READY": "NO",
+      "authority_gap_record": "config/governance/friction_authority_gap.json",
+      "commission": "UNAVAILABLE",
+      "consequence": "ECONOMIC_METRICS = NOT_ESTIMABLE_NO_FRICTION_AUTHORITY; structural R only",
+      "contract_id": "FRICTION_ALD_V1_ABSENT_FAIL_CLOSED",
+      "funding": "NOT_APPLICABLE",
+      "slippage": "UNAVAILABLE",
+      "spread": "UNAVAILABLE",
+      "substitution_forbidden": [
+        "generic_spread",
+        "7_usd_per_lot",
+        "fixed_slippage",
+        "industry_defaults"
+      ],
+      "swap": "UNAVAILABLE"
+    },
+    "session_contract": {
+      "asian_reference_utc": {
+        "end_hour": 6,
+        "start_hour": 0
+      },
+      "contract_id": "SESSION_ALD_V1",
+      "evaluated_pairs": [
+        "ASIAN_LONDON",
+        "LONDON_NEWYORK"
+      ],
+      "london_entry_utc": {
+        "end_hour": 10,
+        "start_hour": 7
+      },
+      "min_asian_m15_bars": 16,
+      "new_york_entry_utc": {
+        "end_hour": 15,
+        "start_hour": 12
+      },
+      "note": "Both evaluated session pairs use the SAME Asian reference range (00:00-06:00 UTC) as the liquidity object, because the hypothesis is Asian-liquidity displacement. The pair label names the ENTRY window: ASIAN_LONDON = London entry window 07:00-10:00 UTC, LONDON_NEWYORK = New York entry window 12:00-15:00 UTC. Windows are frozen and are NEVER widened in response to observed results.",
+      "pooled": true,
+      "widening_allowed": false
+    },
+    "sl_contract": {
+      "buffer_pips": 0,
+      "buffer_points": 0,
+      "contract_id": "SL_ALD_V1",
+      "long": "SL = sweep bar LOW",
+      "note": "Structural stop ONLY: LONG SL = sweep bar low, SHORT SL = sweep bar high. No pip/point buffer is added. Execution/spread buffering belongs to the friction layer, which has no authority in this mission.",
+      "short": "SL = sweep bar HIGH"
+    },
+    "target_contract_id": "TARGET_ALD_V1",
+    "trigger_contract_id": "TRIG_ALD_V1"
+  },
+  "pre_oos_gate_contract": {
+    "axes": {
+      "BOOTSTRAP_UNCERTAINTY": {
+        "method": "ag_edgelab.statistics.bootstrap.bootstrap_expectancy_ci(samples=5000, seed=20251005, confidence=0.95)",
+        "pass_rule": "95% CI lower bound of management expectancy R strictly > 0"
+      },
+      "CANDIDATE_IDENTITY_VALIDATION": {
+        "pass_rule": "all contract hashes recomputed and equal; strategy identity collides with no historical candidate id"
+      },
+      "DATASET_ROLE_VALIDATION": {
+        "pass_rule": "every dataset read is role=DEVELOPMENT, recorded in the dataset ledger; OOS_OPENED=NO; HOLDOUT_TOUCHED=NO"
+      },
+      "FRICTION_READINESS": {
+        "mode": "STRUCTURAL_DISCLOSURE",
+        "note": "FRICTION_EDGE_VERIFICATION_READY = NO does not block STRUCTURAL research (mission section 13)",
+        "pass_rule": "the friction authority state is explicitly recorded, economic metrics are suppressed as NOT_ESTIMABLE_NO_FRICTION_AUTHORITY, and NO substitute value (generic spread, $7/lot, fixed slippage, industry default) appears anywhere in the evidence bundle"
+      },
+      "MEAN_MEDIAN_DIVERGENCE": {
+        "pass_rule": "NOT (mean management R > 0 AND median management R < 0) \u2014 a positive mean carried entirely by tails fails"
+      },
+      "PARAMETER_NEIGHBORHOOD": {
+        "method": "ag_edgelab.optimization.stability.assess_parameter_stability over displacement body/range in [0.6, 0.65, 0.7, 0.75, 0.8] centred on 0.7",
+        "pass_rule": "stable == True (positive_fraction >= 0.6 and relative_spike <= 2.0)",
+        "selection_authority": "NONE \u2014 diagnostic only; the V1 threshold 0.70 is frozen and is NOT changed by this mission under any outcome"
+      },
+      "REGIME_STABILITY": {
+        "classifier": "ag_edgelab.verification.regimes.classify_market_state (frozen v1) applied to the D1 bar last closed before the entry-window open",
+        "pass_rule": "fraction of qualifying regime slices with positive management expectancy >= 0.6"
+      },
+      "SESSION_STABILITY": {
+        "pass_rule": "fraction of qualifying session pairs with positive management expectancy >= 0.6"
+      },
+      "SYMBOL_STABILITY": {
+        "pass_rule": "fraction of qualifying symbols with positive management expectancy >= 0.6",
+        "universe": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ]
+      },
+      "TAIL_DEPENDENCE": {
+        "method": "remove the single best trade; separately remove the best 5% of trades",
+        "pass_rule": "pooled management expectancy stays strictly positive under BOTH removals"
+      },
+      "WALK_FORWARD": {
+        "method": "chronological non-overlapping DEV folds (monthly test windows)",
+        "min_fold_n": 30,
+        "pass_rule": "fraction of folds with positive management expectancy >= 0.6"
+      },
+      "YEAR_STABILITY": {
+        "method": "the committed FX authority covers ONE calendar year (2017); per config/governance/data_authority_gap.json no multi-year partition exists. Substitution declared in advance: INTRA_YEAR_SEGMENT_STABILITY over the DEV calendar quarters (2017Q1, 2017Q2, 2017Q3-partial).",
+        "pass_rule": "fraction of qualifying quarters with positive management expectancy >= 0.6",
+        "standing_limitation": "YEAR_COVERAGE_LIMITED_SINGLE_CALENDAR_YEAR_2017"
+      }
+    },
+    "eligibility": {
+      "on_ineligible": "PRE_OOS_RESULT = NOT_REACHED (never a PASS)",
+      "pooled_direction_n_min": 200,
+      "pooled_entry_available_n_min": 100,
+      "stratum_min_n": 30
+    },
+    "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+    "semantics": "FAIL_CLOSED \u2014 the gate PASSES only if every axis is PASS",
+    "structural_capability_floors": {
+      "entry_n_min": 30,
+      "reach_1R_min": 0.5,
+      "reach_3R_min": 0.25,
+      "source": "frozen V0.3 root-cause thresholds in ag_edgelab.universal.fx_dev_campaign"
+    },
+    "threshold_mutation_allowed": false
+  },
+  "preregistration_hash": "a255e1d981522d0a8de5ea02fa9071a50a905dac223bd71b7f689990ed3aa52b",
+  "preregistration_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1_PREREGISTRATION",
+  "primary_objective": "Determine whether the sample starvation observed in the first ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1 campaign is caused primarily by the narrow 2017 DEV window or by the frozen strategy rules themselves.",
+  "prohibitions": [
+    "DO NOT design V2",
+    "DO NOT change trigger/confirmation/target rules",
+    "DO NOT optimize parameters",
+    "DO NOT open OOS",
+    "DO NOT open holdout"
+  ],
+  "robustness_policy": {
+    "axes": [
+      "WALK_FORWARD",
+      "YEAR_STABILITY",
+      "LEAVE_ONE_YEAR_OUT",
+      "SYMBOL_STABILITY",
+      "LEAVE_ONE_SYMBOL_OUT",
+      "SESSION_STABILITY",
+      "REGIME_STABILITY",
+      "TAIL_DEPENDENCE",
+      "BOOTSTRAP",
+      "MEAN_MEDIAN_DIVERGENCE",
+      "PARAMETER_NEIGHBORHOOD"
+    ],
+    "bootstrap": {
+      "confidence": 0.95,
+      "samples": 5000,
+      "seed": 20251005
+    },
+    "gate": "PRE_OOS_ROBUSTNESS_GATE_V1",
+    "runs_only_if": "pooled ENTRY_AVAILABLE_N >= 100",
+    "threshold_mutation_allowed": false
+  },
+  "root_cause_contract": {
+    "decision_order": [
+      {
+        "label": "INSUFFICIENT_SAMPLE",
+        "note": "reported first as a measurement-capability statement, but the funnel stage that produced the starvation is still named",
+        "priority": 1,
+        "rule": "pooled TRIGGER_INPUT < 200 or pooled ENTRY_AVAILABLE_N < 30"
+      },
+      {
+        "label": "TEMPORAL_INCOMPATIBILITY",
+        "priority": 2,
+        "rule": "the dominant rejection reason among TRIGGER-passing candidates is a window-bounded failure (NO_MSS_BOS_AFTER_DISPLACEMENT, NO_FRESH_FVG_AFTER_MSS, NO_CAUSAL_RETRACE_INTO_FVG) AND the median number of M15 bars remaining in the entry window after the reclaim bar is below the number of sequential events the contract still requires"
+      },
+      {
+        "label": "TRIGGER_FUNNEL_WEAKNESS",
+        "priority": 3,
+        "rule": "opportunity-basis reach of the maximum measured target among TRIGGER-passing candidates <= 20.0 pct, i.e. the selected population never had the capability that confirmation is being asked to find"
+      },
+      {
+        "label": "CONFIRMATION_FUNNEL_WEAKNESS",
+        "priority": 4,
+        "rule": "a CONFIRMATION node passes <= 10.0 pct of its input while its target uplift vs input is <= 3.0 pp (attrition without selection value)"
+      },
+      {
+        "label": "TARGET_MODEL_MISMATCH",
+        "priority": 5,
+        "rule": "median natural_target_R < 1.0 or the TP1/TP2 structural model is unreachable for > 85.0 pct of entries while 1R capability is healthy (>= 0.5)"
+      },
+      {
+        "label": "TARGET_CONTINUATION_WEAKNESS",
+        "priority": 6,
+        "rule": "1R capability >= 0.5 but 3R capability < 0.25 (frozen V0.3 continuation-collapse rule)"
+      }
+    ],
+    "labels": [
+      "TRIGGER_FUNNEL_WEAKNESS",
+      "CONFIRMATION_FUNNEL_WEAKNESS",
+      "TARGET_MODEL_MISMATCH",
+      "TARGET_CONTINUATION_WEAKNESS",
+      "INSUFFICIENT_SAMPLE",
+      "TEMPORAL_INCOMPATIBILITY"
+    ],
+    "upstream_principle": "If confirmation optimization cannot produce viable target capability, the TRIGGER weakness is diagnosed FIRST and no further confirmation filters are added."
+  },
+  "sample_classification_contract": {
+    "contract_id": "MULTIYEAR_SAMPLE_CLASSIFICATION_V1",
+    "decision_order": [
+      "1. SUFFICIENT_SAMPLE_NOW  iff pooled_entry_n >= 100 AND PRE_OOS_RESULT == PASS",
+      "2. NARROW_DATA_STARVATION iff pooled_entry_n >= 100 (the corpus now yields an adequate entry population; 2017 was simply too small)",
+      "3. MIXED                  iff at least one symbol x session cell has cell_entry_n >= 30 while the pooled population is below 100 (heterogeneous viability)",
+      "4. STRATEGY_STRUCTURAL_STARVATION otherwise"
+    ],
+    "inputs": {
+      "cell_entry_n": "ENTRY_AVAILABLE_N per symbol x session cell (8 cells)",
+      "pooled_entry_n": "ENTRY_AVAILABLE_N over all permitted DEV windows, pooled"
+    },
+    "prohibited": [
+      "ranking years and selecting the best",
+      "removing weak symbol or session cells",
+      "cherry-picking a profitable subset",
+      "re-deriving any threshold from the observed multi-year result"
+    ],
+    "supporting_measure": {
+      "entry_yield_per_1000_candidates": "ENTRY_AVAILABLE_N / CANDIDATE_N * 1000, per year",
+      "representativeness_rule": "2017 is REPRESENTATIVE iff its per-year entry yield lies inside the [min, max] range of the other permitted years; if the yields are statistically indistinguishable the starvation is a property of the rules, not of the 2017 window"
+    },
+    "thresholds_bound_by_reference": {
+      "MIN_ENTERED_N": 30,
+      "POOLED_ENTRY_ELIGIBILITY_N": 100,
+      "STRATUM_MIN_N": 30,
+      "source": "ag_edgelab.strategies.asian_liquidity_displacement_prereg / ag_edgelab.universal.fx_dev_campaign \u2014 unmodified"
+    }
+  },
+  "sample_sufficiency": {
+    "MIN_DIRECTIONAL_N": 200,
+    "MIN_ENTERED_N": 30,
+    "POOLED_ENTRY_ELIGIBILITY_N": 100,
+    "STRATUM_MIN_N": 30,
+    "on_insufficient": "STATUS = MULTIYEAR_DEV_INSUFFICIENT_SAMPLE and the exact responsible funnel stage is named; V2 design is NOT performed in this mission and requires owner authorization",
+    "source": "existing EdgeLab thresholds, unmodified"
+  },
+  "search_policy": {
+    "hypotheses_evaluated": 1,
+    "note": "one frozen V1 hypothesis replayed on a wider DEV corpus; the only comparisons are those defined by the funnel analyzer and by the preregistered sample-classification contract",
+    "optimizer": "NONE",
+    "parameter_optimization": "NO",
+    "trial_count": 0
+  },
+  "sessions_evaluated": [
+    "ASIAN_LONDON",
+    "LONDON_NEWYORK",
+    "POOLED"
+  ],
+  "strategy_contract_hashes": {
+    "confirmation_contract_hash": "a4802f0d015820db131ab83af5efb376fa32006eff499cd45a20dbbc569edea6",
+    "entry_contract_hash": "01719a1559d4d02ab3076e9c0756ca64ab5db85d3438088378169d3a6293b9d4",
+    "friction_contract_hash": "12d7f472a7630c024673129adedfa6aaaeb2d147fbbaae66a2565a392649dc6d",
+    "parameter_hash": "2c3313ca8effb66d268179b41f223dacb6c0b879a5324bed52ca2d5b72c0160e",
+    "session_contract_hash": "e8ea8e0ae660a2a866fd33c0dd90bca97a19913e1b4c75042f2445366445b590",
+    "sl_contract_hash": "34c899349ac62715b33151d867174fea1c1223541819f0abaa74c4f32ddac4cd",
+    "strategy_code_hash": "fb495d51e3bcb6e2ecf10f5e5993b650dbcc4588695a451c8f2308a310b4f196",
+    "strategy_contract_hash": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "target_contract_hash": "fad4e130fab35c6b34d8287abf41a91dd328fd549d419975427d436c4245cd39",
+    "trigger_contract_hash": "be90382f44c26482f9f4590ce97838015e1fd462f30e3503806cfbee6828121b"
+  },
+  "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+  "strategy_version": "1.0.0-research",
+  "symbol_universe": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "task_class": "STRATEGY_RESEARCH / DEVELOPMENT_EVIDENCE_EXPANSION"
+}

@@ -1,0 +1,225 @@
+{
+  "CONTRACT_FIELDS_BLOCKED_BY_AMBIGUITY": 4,
+  "CONTRACT_FIELDS_IMPLEMENTED": 30,
+  "CONTRACT_FIELDS_TOTAL": 34,
+  "CONTRACT_MAPPING_COMPLETE": false,
+  "artifact": "v2_1_contract_implementation_matrix",
+  "blocked_by_contract_ambiguity": [
+    {
+      "ambiguity_id": "AMB_1_OPPORTUNITY_UNIT",
+      "contract_field": "funnel.stages[OPPORTUNITY]",
+      "implementation": "REQUIRED POLICY HOOK \u2014 policy.enumerate_opportunities (no default)",
+      "question_for_owner": "Is an OPPORTUNITY one (symbol, trading_date, session) or one (symbol, trading_date, session, boundary)?",
+      "replay_output": "BLOCKED_CONTRACT_AMBIGUITY",
+      "test": "test_engine_refuses_a_policy_that_does_not_resolve_every_ambiguity"
+    },
+    {
+      "ambiguity_id": "AMB_2_CONTEXT_AND_LOCATION_ELIGIBILITY",
+      "contract_field": "funnel.stages[CONTEXT_ELIGIBLE, LOCATION_ELIGIBLE]",
+      "implementation": "REQUIRED POLICY HOOK \u2014 policy.context_eligible / policy.location_eligible (no default)",
+      "question_for_owner": "What predicate defines CONTEXT_ELIGIBLE, and what defines LOCATION_ELIGIBLE?",
+      "replay_output": "BLOCKED_CONTRACT_AMBIGUITY",
+      "test": "test_engine_refuses_a_policy_that_does_not_resolve_every_ambiguity"
+    },
+    {
+      "ambiguity_id": "AMB_3_INITIAL_BRANCH_SELECTION",
+      "contract_field": "governance.permitted_handovers",
+      "implementation": "REQUIRED POLICY HOOK \u2014 policy.select_initial_branch (no default)",
+      "question_for_owner": "Which branch is attempted first on a boundary interaction \u2014 is it decided by the interaction bar's close (prototype behaviour), by a fixed precedence, or are both run and the earlier ENTRY_AVAILABLE taken?",
+      "replay_output": "BLOCKED_CONTRACT_AMBIGUITY",
+      "test": "test_engine_refuses_a_policy_that_does_not_resolve_every_ambiguity"
+    },
+    {
+      "ambiguity_id": "AMB_4_SECOND_AND_THIRD_TARGET_AUTHORITIES",
+      "contract_field": "target.authority_order[1], [2]",
+      "implementation": "REQUIRED POLICY HOOK \u2014 policy.prior_day_levels / policy.swing_liquidity_levels (no default)",
+      "question_for_owner": "Define 'prior day' (previous calendar day vs previous trading day; UTC vs session day) and define the swing-liquidity derivation (timeframe and whether SWING_ORDER = 2 applies).",
+      "replay_output": "BLOCKED_CONTRACT_AMBIGUITY",
+      "test": "test_engine_refuses_a_policy_that_does_not_resolve_every_ambiguity"
+    }
+  ],
+  "contract_hash": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+  "implemented": [
+    {
+      "contract_field": "branch_a.sweep_definition",
+      "implementation": "v2_1.run_branch_a (BOUNDARY_UNTOUCHED->SWEEP_DETECTED)",
+      "replay_output": "transition_ledger[to_state=SWEEP_DETECTED]",
+      "test": "test_branch_a_full_sequence_uses_three_distinct_increasing_bars"
+    },
+    {
+      "contract_field": "branch_a.min_sweep_geometry",
+      "implementation": "v2_1.run_branch_a MIN_SWEEP_TICKS * meta.tick_size",
+      "replay_output": "transition_ledger.reason_code=SWEEP_MIN_TICKS_MET",
+      "test": "test_branch_a_ignores_a_sub_tick_boundary_graze"
+    },
+    {
+      "contract_field": "branch_a.max_sweep_geometry",
+      "implementation": "v2_1.run_branch_a MAX_SWEEP_RANGE_FRACTION",
+      "replay_output": "reject_reason=SWEEP_GEOMETRY_EXCEEDED",
+      "test": "test_branch_a_rejects_a_sweep_deeper_than_the_reference_range"
+    },
+    {
+      "contract_field": "branch_a.reclaim_definition",
+      "implementation": "v2_1.run_branch_a (RECLAIM_PENDING->RECLAIM_CONFIRMED)",
+      "replay_output": "transition_ledger[to_state=RECLAIM_CONFIRMED]",
+      "test": "test_branch_a_sweep_candle_can_never_be_the_reclaim_candle"
+    },
+    {
+      "contract_field": "branch_a.reclaim_max_bars",
+      "implementation": "v2_1.run_branch_a budget_end = sweep+1+RECLAIM_MAX_BARS",
+      "replay_output": "reject_reason=RECLAIM_TIMEOUT",
+      "test": "test_branch_a_reclaim_timeout"
+    },
+    {
+      "contract_field": "branch_a.mss_definition",
+      "implementation": "injected mss_confirmed_at, driven by run_branch_a",
+      "replay_output": "transition_ledger[to_state=MSS_CONFIRMED]",
+      "test": "test_branch_a_reclaim_candle_can_never_be_the_mss_candle"
+    },
+    {
+      "contract_field": "branch_a.mss_lookback_bars",
+      "implementation": "v2_1.run_branch_a budget_end = reclaim+1+MSS_LOOKBACK_BARS",
+      "replay_output": "reject_reason=MSS_TIMEOUT",
+      "test": "test_branch_a_mss_timeout"
+    },
+    {
+      "contract_field": "branch_a.entry_definition",
+      "implementation": "v2_1.run_branch_a entry_price = confirming bar close",
+      "replay_output": "trade_ledger.entry_price / entry_timestamp",
+      "test": "test_branch_a_full_sequence_uses_three_distinct_increasing_bars"
+    },
+    {
+      "contract_field": "branch_a.stop_definition",
+      "implementation": "v2_1.run_branch_a sweep_extreme (no buffer)",
+      "replay_output": "trade_ledger.stop_price",
+      "test": "test_branch_a_stop_tracks_the_deepest_excursion_not_just_the_sweep_bar"
+    },
+    {
+      "contract_field": "branch_b.breakout_definition",
+      "implementation": "v2_1.run_branch_b (BOUNDARY_UNTOUCHED->BREAKOUT_DETECTED)",
+      "replay_output": "transition_ledger[to_state=BREAKOUT_DETECTED]",
+      "test": "test_branch_b_full_sequence_acceptance_precedes_retest"
+    },
+    {
+      "contract_field": "branch_b.acceptance_close_count",
+      "implementation": "v2_1.run_branch_b consecutive-close streak",
+      "replay_output": "transition_ledger[to_state=ACCEPTED_BREAKOUT]",
+      "test": "test_branch_b_requires_the_preregistered_number_of_acceptance_closes"
+    },
+    {
+      "contract_field": "branch_b.retest_definition",
+      "implementation": "v2_1.run_branch_b (RETEST_PENDING->RETEST_CONFIRMED)",
+      "replay_output": "transition_ledger[to_state=RETEST_CONFIRMED]",
+      "test": "test_branch_b_retest_must_be_strictly_after_acceptance"
+    },
+    {
+      "contract_field": "branch_b.retest_tolerance",
+      "implementation": "v2_1.run_branch_b RETEST_TOLERANCE == 0.0 (exact touch)",
+      "replay_output": "transition_ledger.reason_code=EXACT_TOUCH_HELD_ON_BREAKOUT_SIDE",
+      "test": "test_branch_b_retest_has_no_tolerance_parameter"
+    },
+    {
+      "contract_field": "branch_b.retest_max_bars",
+      "implementation": "v2_1.run_branch_b budget_end = accept+1+RETEST_MAX_BARS",
+      "replay_output": "reject_reason=RETEST_TIMEOUT",
+      "test": "test_branch_b_retest_timeout"
+    },
+    {
+      "contract_field": "branch_b.continuation_confirmation",
+      "implementation": "injected continuation_confirmed_at",
+      "replay_output": "transition_ledger[to_state=CONTINUATION_CONFIRMED]",
+      "test": "test_branch_b_confirmation_failure"
+    },
+    {
+      "contract_field": "branch_b.invalidation",
+      "implementation": "v2_1.run_branch_b close-back-inside check",
+      "replay_output": "reject_reason=BREAKOUT_REJECTED_CLOSE_BACK_INSIDE",
+      "test": "test_branch_b_close_back_inside_invalidates_the_breakout"
+    },
+    {
+      "contract_field": "branch_b.stop_definition",
+      "implementation": "v2_1.run_branch_b retest_extreme (no buffer)",
+      "replay_output": "trade_ledger.stop_price",
+      "test": "test_branch_b_full_sequence_acceptance_precedes_retest"
+    },
+    {
+      "contract_field": "session.reference_window_utc / london / new_york",
+      "implementation": "engine Opportunity.bars built from SESSION_PAIRS",
+      "replay_output": "trade_ledger.session",
+      "test": "test_session_windows_are_the_frozen_clocks"
+    },
+    {
+      "contract_field": "governance.event_id_inputs",
+      "implementation": "v2_1.event_id",
+      "replay_output": "event_ledger.EVENT_ID",
+      "test": "test_event_id_is_stable_and_discriminating"
+    },
+    {
+      "contract_field": "governance.duplicate_event_policy",
+      "implementation": "v2_1.EventRegistry.accept_signal",
+      "replay_output": "event_ledger.DUPLICATE_SUPPRESSED",
+      "test": "test_first_valid_signal_locks_the_tuple_and_suppresses_duplicates"
+    },
+    {
+      "contract_field": "governance.permitted_handovers / handover_max",
+      "implementation": "v2_1.EventRegistry.may_hand_over / record_handover",
+      "replay_output": "event_ledger.HANDOVERS",
+      "test": "test_handover_budget_is_enforced"
+    },
+    {
+      "contract_field": "governance.same_bar_collision_policy",
+      "implementation": "v2_1_engine.evaluate_outcome (stop checked first)",
+      "replay_output": "trade_ledger.outcome=STOP_REACHED",
+      "test": "test_same_bar_collision_resolves_to_the_stop"
+    },
+    {
+      "contract_field": "target.authority_order",
+      "implementation": "v2_1.resolve_natural_target + engine.build_target_candidates",
+      "replay_output": "trade_ledger.target_authority",
+      "test": "test_priority_order_wins_over_a_bigger_target"
+    },
+    {
+      "contract_field": "target.causality_rule",
+      "implementation": "v2_1.resolve_natural_target known_at guard",
+      "replay_output": "raises before any ledger row is written",
+      "test": "test_future_target_is_forbidden"
+    },
+    {
+      "contract_field": "target.min_natural_r",
+      "implementation": "v2_1.resolve_natural_target post-selection floor",
+      "replay_output": "reject_reason=NATURAL_R_BELOW_FLOOR",
+      "test": "test_r_floor_is_not_a_selection_criterion"
+    },
+    {
+      "contract_field": "target.synthetic_targets_forbidden",
+      "implementation": "no R-multiple fallback exists anywhere",
+      "replay_output": "reject_reason=NO_NATURAL_TARGET",
+      "test": "test_artificial_fixed_2r_target_is_absent_from_the_contract"
+    },
+    {
+      "contract_field": "symbol_metadata (tick_size / point / digits)",
+      "implementation": "symbol_metadata.metadata_for",
+      "replay_output": "symbol_normalization_audit.json",
+      "test": "test_symbol_normalization"
+    },
+    {
+      "contract_field": "friction (UNAVAILABLE / NOT_ESTIMABLE)",
+      "implementation": "v2_1.economic_claim",
+      "replay_output": "final_return.ECONOMIC_EDGE",
+      "test": "test_unknown_friction_is_not_zero"
+    },
+    {
+      "contract_field": "funnel.stages / report_axes",
+      "implementation": "v2_1_funnel.funnel_table / funnel_by_dimension",
+      "replay_output": "funnel_report.json",
+      "test": "test_funnel_table_reports_n_and_next_stage_percent"
+    },
+    {
+      "contract_field": "session.outcome_horizon_m5_bars",
+      "implementation": "v2_1_engine.evaluate_outcome horizon slice",
+      "replay_output": "trade_ledger.outcome=SESSION_EXPIRED",
+      "test": "test_outcome_horizon_is_respected"
+    }
+  ],
+  "semantics": "Every semantic field maps to an implementation, a test and a replay output field. Fields whose contract text does not determine behaviour are listed separately and fail closed; no interpretation was chosen by the implementing agent."
+}

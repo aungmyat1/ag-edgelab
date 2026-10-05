@@ -1,0 +1,587 @@
+{
+  "base_commit": "874ab7bec06154e30a92f003c82f2011ea2dc244",
+  "branches": [
+    "A_SWEEP_RECLAIM_REVERSAL",
+    "B_BREAKOUT_RETEST_CONTINUATION"
+  ],
+  "contamination_disclosure": {
+    "LOOK_INDEX": 2,
+    "does_not_apply_to": "The sample floor and robustness thresholds, which are inherited unchanged from V1 and predate both V2 looks.",
+    "mitigations": [
+      "Every magnitude is derived in PARAMETER_PROVENANCE from a mechanism, an existing clock, or a minimality argument.",
+      "No R1 artifact was read or scanned while choosing any value.",
+      "No value was varied to observe its effect.",
+      "R1 numbers are deliberately not quoted in this preregistration."
+    ],
+    "required_reporting": "LOOK_INDEX must appear in the final return of any replay run under this contract.",
+    "statement": "This contract was authored after a development replay of the 2.0.0 prototype on the same DEVELOPMENT partition had been observed. Any result produced under 2.1.0 is therefore a SECOND look at the same data by the same researcher and cannot carry the evidential weight of a first look."
+  },
+  "contract_hash": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+  "contract_section_hashes": {
+    "branch_a_hash": "6636fe10c5a9a80ab6cb6ec2e71d77682c8adf797cbc4b50491dc41ed81d020b",
+    "branch_b_hash": "9238ad1d8b4e6da569cbac6961022adb709ff62568beefb7794577e3aed63629",
+    "contract_hash": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+    "friction_hash": "2fa1432068ddeebe850e66284e1540a4be36c8dab09912351a96e764a27ac2f5",
+    "funnel_hash": "d31d6a49cb6cdd01453e3f4b9fe35e137c60f8eea865574075bf9092cf1b1d27",
+    "governance_hash": "5fada88a38571cdb3164444a9e83af35649b097491144efa4321bc3eb5160051",
+    "identity_hash": "b248d0ab42661f6ba2c71ca0694f73c7ce40955682ffbdb676503f0d6d2e5c78",
+    "parameters_hash": "5abd95e607e98a41edf13e396d48cfc8e861aa27e2dd0f068829eae609c468d3",
+    "session_hash": "31a05b1c1151b9a9bf4c9690c02d52c183ab50212ad069d13676aa5197afaa2f",
+    "symbol_metadata_hash": "bff2df9ee6e923f4d68ad2d3a4db5786ac329b0f3bd649dbd087e2e1d588d58b",
+    "target_hash": "4b6f950ac51b57a869708f6ed995078f3723799dd532fd651cbfb6df6755df16"
+  },
+  "dataset_binding": {
+    "HOLDOUT_TOUCHED": "NO",
+    "OOS_OPENED": "NO",
+    "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "dataset_manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+    "dev_partition_hash": "f3d4b4299a3e653430473d8f9578e1e8a62847cb08a80db87b04155d5020b1d1",
+    "dev_symbol_years_n": 63,
+    "dev_window": "[Y-01-01T00:00:00+00:00, Y-09-01T00:00:00+00:00)",
+    "dev_years": [
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017
+    ],
+    "reserved_fresh_oos": "[Y-09-01, Y-12-01) \u2014 untouched",
+    "role": "DEVELOPMENT",
+    "sealed_holdout": "[Y-12-01, Y+1-01-01) \u2014 sealed",
+    "symbol_universe": [
+      "EURUSD",
+      "GBPUSD",
+      "USDJPY",
+      "XAUUSD"
+    ]
+  },
+  "dataset_binding_hash": "d030952440d2cfa34f541fff7cdfbf344fdc4959d0ee3826ba349636d566b483",
+  "declaration": "Frozen before any replay under contract 2.1.0. Changing any frozen field changes contract_hash and invalidates this preregistration; a new one must then be written and committed before replay.",
+  "experiment_id": "GEN2_ALD_V2_1_DEV_R2",
+  "frozen_at_utc": "2026-10-05T12:05:49.024332+00:00",
+  "funnel_taxonomy": {
+    "per_transition_metrics": [
+      "N",
+      "PCT_OF_PREVIOUS_STAGE",
+      "PCT_OF_OPPORTUNITIES"
+    ],
+    "report_axes": [
+      "BRANCH_A",
+      "BRANCH_B",
+      "POOLED"
+    ],
+    "stages": [
+      "OPPORTUNITY",
+      "CONTEXT_ELIGIBLE",
+      "LOCATION_ELIGIBLE",
+      "SESSION_EVENT",
+      "SWEEP_OR_BREAKOUT",
+      "RECLAIM_OR_RETEST",
+      "STRUCTURE_CONFIRM",
+      "ENTRY_AVAILABLE",
+      "GEOMETRY_VALID",
+      "TRADE_COMPLETED"
+    ],
+    "taxonomy_version": "GEN2_ALD_V2_FUNNEL_V2"
+  },
+  "mission": "ARENA_EDGELAB_GEN2_MISSION_3A",
+  "prereg_id": "GEN2_ALD_V2_1_PREREGISTRATION",
+  "prohibitions": [
+    "DO NOT modify V1 \u2014 it is closed evidence.",
+    "DO NOT rewrite the GEN2_ALD_V2_DEV_R1 evidence bundle.",
+    "DO NOT tune any magnitude after observing a result.",
+    "DO NOT relax SAMPLE_FLOOR after observing a result.",
+    "DO NOT create a V2-specific robustness threshold.",
+    "DO NOT add a third branch.",
+    "DO NOT delete a losing branch, symbol, session, year or regime.",
+    "DO NOT choose the best symbol, session or branch after results.",
+    "DO NOT open OOS. DO NOT open the sealed holdout.",
+    "DO NOT assign unknown spread/slippage/commission/swap a value of 0.",
+    "DO NOT claim EDGE_VERIFIED or economic profitability.",
+    "DO NOT manufacture an R multiple when no natural target exists.",
+    "DO NOT add a pip/point/ATR buffer to a structural stop."
+  ],
+  "replay_started": false,
+  "research_question": "Does a dual session-liquidity mechanism solve the structural starvation of V1 without post-result threshold tuning?",
+  "results_present": false,
+  "robustness": {
+    "bootstrap_confidence": 0.95,
+    "bootstrap_samples": 5000,
+    "bootstrap_seed": 20251005,
+    "creation_of_a_v2_specific_threshold": "FORBIDDEN",
+    "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+    "stability_max_relative_spike": 2.0,
+    "stability_min_positive_fraction": 0.6,
+    "thresholds_unchanged": true,
+    "v1_gate_contract": {
+      "axes": {
+        "BOOTSTRAP_UNCERTAINTY": {
+          "method": "ag_edgelab.statistics.bootstrap.bootstrap_expectancy_ci(samples=5000, seed=20251005, confidence=0.95)",
+          "pass_rule": "95% CI lower bound of management expectancy R strictly > 0"
+        },
+        "CANDIDATE_IDENTITY_VALIDATION": {
+          "pass_rule": "all contract hashes recomputed and equal; strategy identity collides with no historical candidate id"
+        },
+        "DATASET_ROLE_VALIDATION": {
+          "pass_rule": "every dataset read is role=DEVELOPMENT, recorded in the dataset ledger; OOS_OPENED=NO; HOLDOUT_TOUCHED=NO"
+        },
+        "FRICTION_READINESS": {
+          "mode": "STRUCTURAL_DISCLOSURE",
+          "note": "FRICTION_EDGE_VERIFICATION_READY = NO does not block STRUCTURAL research (mission section 13)",
+          "pass_rule": "the friction authority state is explicitly recorded, economic metrics are suppressed as NOT_ESTIMABLE_NO_FRICTION_AUTHORITY, and NO substitute value (generic spread, $7/lot, fixed slippage, industry default) appears anywhere in the evidence bundle"
+        },
+        "MEAN_MEDIAN_DIVERGENCE": {
+          "pass_rule": "NOT (mean management R > 0 AND median management R < 0) \u2014 a positive mean carried entirely by tails fails"
+        },
+        "PARAMETER_NEIGHBORHOOD": {
+          "method": "ag_edgelab.optimization.stability.assess_parameter_stability over displacement body/range in [0.6, 0.65, 0.7, 0.75, 0.8] centred on 0.7",
+          "pass_rule": "stable == True (positive_fraction >= 0.6 and relative_spike <= 2.0)",
+          "selection_authority": "NONE \u2014 diagnostic only; the V1 threshold 0.70 is frozen and is NOT changed by this mission under any outcome"
+        },
+        "REGIME_STABILITY": {
+          "classifier": "ag_edgelab.verification.regimes.classify_market_state (frozen v1) applied to the D1 bar last closed before the entry-window open",
+          "pass_rule": "fraction of qualifying regime slices with positive management expectancy >= 0.6"
+        },
+        "SESSION_STABILITY": {
+          "pass_rule": "fraction of qualifying session pairs with positive management expectancy >= 0.6"
+        },
+        "SYMBOL_STABILITY": {
+          "pass_rule": "fraction of qualifying symbols with positive management expectancy >= 0.6",
+          "universe": [
+            "EURUSD",
+            "GBPUSD",
+            "USDJPY",
+            "XAUUSD"
+          ]
+        },
+        "TAIL_DEPENDENCE": {
+          "method": "remove the single best trade; separately remove the best 5% of trades",
+          "pass_rule": "pooled management expectancy stays strictly positive under BOTH removals"
+        },
+        "WALK_FORWARD": {
+          "method": "chronological non-overlapping DEV folds (monthly test windows)",
+          "min_fold_n": 30,
+          "pass_rule": "fraction of folds with positive management expectancy >= 0.6"
+        },
+        "YEAR_STABILITY": {
+          "method": "the committed FX authority covers ONE calendar year (2017); per config/governance/data_authority_gap.json no multi-year partition exists. Substitution declared in advance: INTRA_YEAR_SEGMENT_STABILITY over the DEV calendar quarters (2017Q1, 2017Q2, 2017Q3-partial).",
+          "pass_rule": "fraction of qualifying quarters with positive management expectancy >= 0.6",
+          "standing_limitation": "YEAR_COVERAGE_LIMITED_SINGLE_CALENDAR_YEAR_2017"
+        }
+      },
+      "eligibility": {
+        "on_ineligible": "PRE_OOS_RESULT = NOT_REACHED (never a PASS)",
+        "pooled_direction_n_min": 200,
+        "pooled_entry_available_n_min": 100,
+        "stratum_min_n": 30
+      },
+      "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+      "semantics": "FAIL_CLOSED \u2014 the gate PASSES only if every axis is PASS",
+      "structural_capability_floors": {
+        "entry_n_min": 30,
+        "reach_1R_min": 0.5,
+        "reach_3R_min": 0.25,
+        "source": "frozen V0.3 root-cause thresholds in ag_edgelab.universal.fx_dev_campaign"
+      },
+      "threshold_mutation_allowed": false
+    }
+  },
+  "sample_sufficiency": {
+    "branch_min_n": 30,
+    "note": "Branches below BRANCH_MIN_N are flagged BRANCH_UNDERPOWERED and reported. A branch is NEVER deleted for being unprofitable.",
+    "on_failure": "DEV_REJECTED_INSUFFICIENT_SAMPLE",
+    "pooled_entry_available_n_min": 100,
+    "relaxation_after_results": "FORBIDDEN",
+    "source": "V1 preregistration, re-exported UNCHANGED"
+  },
+  "strategy_contract": {
+    "branch_a": {
+      "branch_id": "A_SWEEP_RECLAIM_REVERSAL",
+      "entry_definition": "Close of the confirming MSS bar.",
+      "expiration": "min(bar budget of the pending state, end of the entry window). Timeout is INVALIDATION with a recorded reason.",
+      "max_sweep_geometry": {
+        "reference_range_fraction": 1.0,
+        "unit": "dimensionless fraction of the reference range"
+      },
+      "mechanism": "A boundary of the reference range is swept \u2014 liquidity resting beyond it is taken \u2014 and price then CLOSES back inside the range, evidencing a failed auction. The reversal is traded against the sweep, confirmed by a market-structure shift.",
+      "min_sweep_geometry": {
+        "ticks": 1,
+        "unit": "instrument TICK_SIZE"
+      },
+      "mss_definition": "The first closed-M5 market-structure shift / break of structure in the reversal direction, detected by the frozen universal confirmation library using only bars closed at or before it.",
+      "mss_lookback_bars": 12,
+      "reclaim_definition": "A STRICTLY LATER M5 bar CLOSES back inside the reference range (beyond the boundary in the returning direction).",
+      "reclaim_max_bars": 12,
+      "state_machine": [
+        [
+          "BOUNDARY_UNTOUCHED",
+          "SWEEP_DETECTED"
+        ],
+        [
+          "SWEEP_DETECTED",
+          "RECLAIM_PENDING"
+        ],
+        [
+          "RECLAIM_PENDING",
+          "RECLAIM_CONFIRMED"
+        ],
+        [
+          "RECLAIM_PENDING",
+          "INVALIDATED"
+        ],
+        [
+          "RECLAIM_CONFIRMED",
+          "MSS_PENDING"
+        ],
+        [
+          "MSS_PENDING",
+          "MSS_CONFIRMED"
+        ],
+        [
+          "MSS_PENDING",
+          "INVALIDATED"
+        ],
+        [
+          "MSS_CONFIRMED",
+          "ENTRY_AVAILABLE"
+        ]
+      ],
+      "stop_definition": "Sweep extreme \u2014 furthest excursion beyond the boundary. No buffer.",
+      "strict_order": [
+        [
+          "sweep_index",
+          "reclaim_index"
+        ],
+        [
+          "reclaim_index",
+          "mss_index"
+        ]
+      ],
+      "sweep_definition": "An M5 bar trades beyond the reference boundary by at least MIN_SWEEP_TICKS ticks. Wick-only penetration qualifies: the sweep is about liquidity taken, not about the close."
+    },
+    "branch_b": {
+      "acceptance_close_count": 2,
+      "acceptance_definition": "2 CONSECUTIVE M5 closes beyond the broken level. Acceptance must COMPLETE before any retest is considered.",
+      "branch_id": "B_BREAKOUT_RETEST_CONTINUATION",
+      "breakout_definition": "An M5 bar trades beyond the reference boundary by at least MIN_SWEEP_TICKS ticks.",
+      "continuation_confirmation": "The first closed-M5 market-structure shift / break of structure in the breakout direction after the retest.",
+      "continuation_lookback_bars": 12,
+      "entry_definition": "Close of the confirming continuation bar.",
+      "expiration": "min(bar budget of the pending state, end of the entry window).",
+      "invalidation": "A close back inside the range at any point after acceptance invalidates the branch (BREAKOUT_REJECTED_CLOSE_BACK_INSIDE).",
+      "mechanism": "A boundary of the reference range is broken and ACCEPTED \u2014 consecutive closes beyond it evidence that the level has flipped polarity. A pullback retests the broken level, holds, and the move continues.",
+      "retest_definition": "A STRICTLY LATER bar than acceptance whose extreme touches or crosses the broken level (EXACT touch \u2014 there is no tolerance parameter) while the bar still CLOSES on the breakout side.",
+      "retest_max_bars": 12,
+      "retest_tolerance": 0.0,
+      "retest_tolerance_note": "Zero by construction: the absolute price tolerance of the 2.0.0 prototype is removed, not re-scaled.",
+      "state_machine": [
+        [
+          "BOUNDARY_UNTOUCHED",
+          "BREAKOUT_DETECTED"
+        ],
+        [
+          "BREAKOUT_DETECTED",
+          "ACCEPTANCE_PENDING"
+        ],
+        [
+          "ACCEPTANCE_PENDING",
+          "ACCEPTED_BREAKOUT"
+        ],
+        [
+          "ACCEPTANCE_PENDING",
+          "INVALIDATED"
+        ],
+        [
+          "ACCEPTED_BREAKOUT",
+          "RETEST_PENDING"
+        ],
+        [
+          "RETEST_PENDING",
+          "RETEST_CONFIRMED"
+        ],
+        [
+          "RETEST_PENDING",
+          "INVALIDATED"
+        ],
+        [
+          "RETEST_CONFIRMED",
+          "CONTINUATION_CONFIRMED"
+        ],
+        [
+          "RETEST_CONFIRMED",
+          "INVALIDATED"
+        ],
+        [
+          "CONTINUATION_CONFIRMED",
+          "ENTRY_AVAILABLE"
+        ]
+      ],
+      "stop_definition": "Retest extreme \u2014 deepest point of the pullback that held. No buffer.",
+      "strict_order": [
+        [
+          "breakout_index",
+          "acceptance_index"
+        ],
+        [
+          "acceptance_index",
+          "retest_index"
+        ],
+        [
+          "retest_index",
+          "continuation_index"
+        ]
+      ]
+    },
+    "friction": {
+      "economic_edge": "NOT_ESTIMABLE",
+      "friction_type": "UNAVAILABLE",
+      "policy": "No measured broker friction authority exists for this corpus. Spread, slippage, commission and swap are UNKNOWN \u2014 and UNKNOWN IS NOT ZERO. No default, generic, broker-typical or per-lot-commission substitute may appear anywhere in the evidence bundle. Structural geometry is computed cost-independently so that it remains valid when an authority arrives. A SCENARIO friction overlay is permitted for sensitivity reporting but can NEVER establish EDGE_VERIFIED.",
+      "scenario_friction_can_verify_edge": false,
+      "unknown_is_not_zero": true
+    },
+    "funnel": {
+      "per_transition_metrics": [
+        "N",
+        "PCT_OF_PREVIOUS_STAGE",
+        "PCT_OF_OPPORTUNITIES"
+      ],
+      "report_axes": [
+        "BRANCH_A",
+        "BRANCH_B",
+        "POOLED"
+      ],
+      "stages": [
+        "OPPORTUNITY",
+        "CONTEXT_ELIGIBLE",
+        "LOCATION_ELIGIBLE",
+        "SESSION_EVENT",
+        "SWEEP_OR_BREAKOUT",
+        "RECLAIM_OR_RETEST",
+        "STRUCTURE_CONFIRM",
+        "ENTRY_AVAILABLE",
+        "GEOMETRY_VALID",
+        "TRADE_COMPLETED"
+      ],
+      "taxonomy_version": "GEN2_ALD_V2_FUNNEL_V2"
+    },
+    "governance": {
+      "censoring_policy": "A trade unresolved at the data boundary is RIGHT_CENSORED and reported as such. Outcomes are never imputed.",
+      "duplicate_event_policy": "One underlying session-boundary event may produce AT MOST ONE accepted trade. EVENT_ID = sha256(symbol, date, session, boundary, event_sequence). A branch handover (A invalidated -> B pending, or the reverse) is permitted at most HANDOVER_MAX times and only via the preregistered transitions. The instant a FIRST_VALID_SIGNAL exists the tuple (symbol, date, session, boundary) is LOCKED until window expiry; every later signal on that tuple is recorded as DUPLICATE_SUPPRESSED and contributes no observation.",
+      "entry_policy": "Entry is the CLOSE of the confirming M5 bar (branch A: the MSS bar; branch B: the continuation bar). entry_timestamp is that bar's close instant. No intrabar fill, no limit order, no improvement is modelled.",
+      "event_id_inputs": [
+        "symbol",
+        "date",
+        "session",
+        "boundary",
+        "event_sequence"
+      ],
+      "expiry_policy": "Every pending state is bounded by BOTH (a) its preregistered bar budget and (b) the end of the entry window, whichever comes FIRST. A state that times out is INVALIDATED with a recorded reason; it is never carried.",
+      "handover_max": 1,
+      "permitted_handovers": [
+        [
+          "A",
+          "B",
+          "RECLAIM_TIMEOUT"
+        ],
+        [
+          "A",
+          "B",
+          "SWEEP_GEOMETRY_EXCEEDED"
+        ],
+        [
+          "B",
+          "A",
+          "BREAKOUT_REJECTED_CLOSE_BACK_INSIDE"
+        ],
+        [
+          "B",
+          "A",
+          "ACCEPTANCE_TIMEOUT"
+        ]
+      ],
+      "same_bar_collision_policy": "STOP_FIRST_FAIL_CLOSED_V0_3",
+      "stop_policy": "Branch A: the SWEEP EXTREME (the furthest price reached beyond the boundary during the sweep). Branch B: the RETEST EXTREME (the deepest point of the pullback that held). NO pip/point/ATR buffer is added, in either branch, under any circumstance. Execution buffering is a broker concern and is out of research scope."
+    },
+    "identity": {
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "edge_verified": false,
+      "forbidden_identity_reuse": [
+        "ST_ASIAN_SWEEP_5R_V1",
+        "SESSION_TRADE_V2",
+        "ST_MTF_CONTROL_SHIFT_V1",
+        "ST_MTF_CONTROL_SHIFT_V2",
+        "TARGET_POLICY_C3_V1",
+        "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1"
+      ],
+      "look_index": 2,
+      "research_question": "Does a dual session-liquidity mechanism solve the structural starvation of V1 without post-result threshold tuning?",
+      "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+      "strategy_status": "RESEARCH_CANDIDATE",
+      "strategy_version": "2.1.0-research",
+      "superseded_evidence": "GEN2_ALD_V2_DEV_R1",
+      "supersedes": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2@2.0.0-research"
+    },
+    "parameters": {
+      "discretionary_magnitudes": [
+        "RECLAIM_MAX_BARS / MSS_LOOKBACK_BARS / RETEST_MAX_BARS (all = 1 H1)",
+        "ACCEPTANCE_CLOSE_COUNT (= 2)"
+      ],
+      "optimization_performed": false,
+      "provenance": {
+        "ACCEPTANCE_CLOSE_COUNT": "MINIMALITY, NOT TUNED. 1 close cannot distinguish acceptance from a single-print artifact, so it fails to express the concept. 2 is the smallest integer that does express it. Larger values would be preferences about conviction.",
+        "HANDOVER_MAX": "ANTI-PING-PONG, NOT TUNED. One handover permits the single mechanically meaningful transition (a failed sweep that becomes an accepted breakout, or the reverse). Allowing more would let one boundary event generate an unbounded search for any working branch, which is selection disguised as a state machine.",
+        "MAX_SWEEP_RANGE_FRACTION": "STRUCTURAL BOUNDARY, NOT TUNED. An excursion beyond the reference boundary that exceeds the ENTIRE reference range is, mechanically, no longer an interaction with that range \u2014 it is the establishment of a new one, and the reversal mechanism this branch claims does not apply. 1.0 is the natural changeover point of that argument. Dimensionless, so it is identical across all four instruments.",
+        "MIN_NATURAL_R": "ARITHMETIC FLOOR, NOT TUNED. A target closer than the stop cannot repay its own risk even at a 100% hit rate once any positive friction exists. 1.0 is where that arithmetic changes sign; it is not a preference about reward.",
+        "MIN_SWEEP_TICKS": "DEFINITIONAL, NOT TUNED. 1 tick is the smallest increment at which 'strictly beyond the boundary' is representable in the feed. Zero would admit float noise; anything above 1 would be a magnitude choice. The minimum non-degenerate integer is the only value that encodes the definition rather than a preference.",
+        "MSS_LOOKBACK_BARS": "CLOCK-DERIVED, NOT TUNED. One H1, same argument as RECLAIM_MAX_BARS: confirmation must belong to the same structural bar as the event it confirms.",
+        "RECLAIM_MAX_BARS": "CLOCK-DERIVED, NOT TUNED. Quoted as exactly one H1 (12 M5 bars). H1 is already an exogenous unit of this contract (it is the structural timeframe the target authority reads). A reclaim that takes longer than the governing structural bar is not a reclaim of the sweep, it is a separate later event.",
+        "RETEST_MAX_BARS": "CLOCK-DERIVED, NOT TUNED. One H1, same argument as above.",
+        "RETEST_TOLERANCE": "ELIMINATED, NOT TUNED. The prototype's absolute price tolerance is removed outright: a retest is an EXACT touch of the broken level (the bar trades to or through it) while still closing on the breakout side. Zero is not a chosen magnitude \u2014 it is the absence of a parameter, which is why no instrument normalization is needed here."
+      },
+      "selected_by_observing_outcome": false,
+      "values": {
+        "ACCEPTANCE_CLOSE_COUNT": 2,
+        "HANDOVER_MAX": 1,
+        "MAX_SWEEP_RANGE_FRACTION": 1.0,
+        "MIN_NATURAL_R": 1.0,
+        "MIN_SWEEP_TICKS": 1,
+        "MSS_LOOKBACK_BARS": 12,
+        "RECLAIM_MAX_BARS": 12,
+        "RETEST_MAX_BARS": 12,
+        "RETEST_TOLERANCE": 0.0
+      }
+    },
+    "session": {
+      "clock_note": "Exogenous institutional boundaries. Never widened, shifted or searched in response to an observed result.",
+      "london_entry_utc": [
+        7,
+        10
+      ],
+      "min_reference_m15_bars": 16,
+      "new_york_entry_utc": [
+        12,
+        15
+      ],
+      "outcome_horizon_m5_bars": 288,
+      "reference_window_utc": [
+        0,
+        6
+      ],
+      "session_pairs": {
+        "ASIAN_LONDON": [
+          7,
+          10
+        ],
+        "LONDON_NEWYORK": [
+          12,
+          15
+        ]
+      },
+      "swing_order": 2,
+      "warmup_days": 21
+    },
+    "symbol_metadata": {
+      "authority_id": "GEN2_SYMBOL_METADATA_AUTHORITY_V1",
+      "forbidden_field_rationale": "pip_size is ambiguous for XAUUSD; admitting it into a rule would make the rule venue-dependent.",
+      "inferred_from_performance": false,
+      "rule_admissible_fields": [
+        "tick_size",
+        "point"
+      ],
+      "rule_forbidden_fields": [
+        "pip_size"
+      ],
+      "source": "Instrument quoting convention of the HISTDATA_ASCII_M1 generic feed. Declared a priori; NEVER inferred from strategy performance.",
+      "symbols": {
+        "EURUSD": {
+          "digits": 5,
+          "pip_convention_note": "Standard 4th-decimal FX pip on a 5-digit feed.",
+          "pip_size_reporting_only": 0.0001,
+          "point": 1e-05,
+          "price_unit": "USD_PER_EUR",
+          "tick_size": 1e-05
+        },
+        "GBPUSD": {
+          "digits": 5,
+          "pip_convention_note": "Standard 4th-decimal FX pip on a 5-digit feed.",
+          "pip_size_reporting_only": 0.0001,
+          "point": 1e-05,
+          "price_unit": "USD_PER_GBP",
+          "tick_size": 1e-05
+        },
+        "USDJPY": {
+          "digits": 3,
+          "pip_convention_note": "JPY-quoted pair: the pip is the 2nd decimal, 100x the EURUSD pip in absolute price. This is precisely the assumption that a universal 0.0001 constant gets wrong by two orders of magnitude.",
+          "pip_size_reporting_only": 0.01,
+          "point": 0.001,
+          "price_unit": "JPY_PER_USD",
+          "tick_size": 0.001
+        },
+        "XAUUSD": {
+          "digits": 2,
+          "pip_convention_note": "AMBIGUOUS BY CONVENTION. Gold is variously dealt in $1.00, $0.10 and $0.01 'pips' depending on venue. We declare 0.1 for REPORTING ONLY and forbid any rule from consuming pip_size, so the ambiguity cannot reach a research result. Rules use tick_size (unambiguous) and reference-range fractions (dimensionless).",
+          "pip_size_reporting_only": 0.1,
+          "point": 0.01,
+          "price_unit": "USD_PER_TROY_OUNCE",
+          "tick_size": 0.01
+        }
+      }
+    },
+    "symbol_metadata_authority": "GEN2_SYMBOL_METADATA_AUTHORITY_V1",
+    "target": {
+      "authority_order": [
+        "OPPOSITE_SESSION_BOUNDARY",
+        "PRIOR_DAY_HIGH_LOW",
+        "CONFIRMED_PRE_ENTRY_SWING_LIQUIDITY"
+      ],
+      "causality_rule": "Every candidate level carries the instant it became known; a level known after entry_timestamp raises rather than resolves.",
+      "fixed_r_targets_are_diagnostic_only": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "min_natural_r": 1.0,
+      "natural_r_definition": "abs(target - entry) / abs(entry - stop)",
+      "policy": "DETERMINISTIC PRIORITY, CAUSALLY CLOSED. Authorities are consulted in TARGET_AUTHORITY_ORDER and the FIRST one that yields a level strictly beyond the entry in the direction of travel wins. Selection stops there: later authorities are never consulted, so a larger target can never be shopped for. Every authority is computed from information closed at or before entry_timestamp. If no authority yields a level, TARGET_STATUS = NO_NATURAL_TARGET and GEOMETRY_VALID = FALSE \u2014 an R multiple is NEVER manufactured. NATURAL_R = |target-entry| / |entry-stop|; if NATURAL_R < MIN_NATURAL_R the unit fails geometry with NATURAL_R_BELOW_FLOOR. Note the floor is applied AFTER the authority is selected, never as a selection criterion. 1R..5R are capability diagnostics with no authority over any decision.",
+      "synthetic_targets_forbidden": "No fixed R multiple may act as a target. The 2.0.0 prototype's branch-B fallback of entry +/- 2R is abolished; absence of a natural target is an outcome (NO_NATURAL_TARGET), not a case to be filled in."
+    }
+  },
+  "third_branch": "FORBIDDEN",
+  "v1_closed_evidence": {
+    "CONFIRMATION_PASS_N": 51,
+    "ENTRY_AVAILABLE_N": 35,
+    "HOLDOUT_TOUCHED": "NO",
+    "MEDIAN_NATURAL_TARGET_R": 1.004,
+    "OOS_OPENED": "NO",
+    "OPPORTUNITY_N": 26814,
+    "R1_REACH": 0.429,
+    "R5_REACH": 0.0,
+    "SAMPLE_FLOOR": 100,
+    "TRIGGER_PASS_N": 441,
+    "diagnosis": "STRATEGY_STRUCTURAL_STARVATION",
+    "note": "Quoted, never recomputed. V1 is closed and must not be modified.",
+    "status": "DEV_REJECTED"
+  },
+  "v2_prototype_closed_evidence": {
+    "contract_version": "2.0.0-research",
+    "experiment_id": "GEN2_ALD_V2_DEV_R1",
+    "note": "Its numbers are NOT quoted here. They are deliberately excluded so that no magnitude in the 2.1.0 contract can be traced to them.",
+    "status": "SUPERSEDED_BY_2.1.0",
+    "why_superseded": "Contract identity was incomplete (frozen fields could move without moving the hash), distances were not instrument-normalized, the branch sequences did not enforce strictly distinct bars, and duplicate governance was implicit. Those are identity and measurement defects, not unfavourable results."
+  }
+}

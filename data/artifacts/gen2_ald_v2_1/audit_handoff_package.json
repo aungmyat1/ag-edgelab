@@ -1,0 +1,131 @@
+{
+  "BROKER_MUTATION": "NO",
+  "CLAUDE_AUDIT_STATUS": "PENDING",
+  "CONTRACT_AMBIGUITY_FOUND": true,
+  "HOLDOUT_TOUCHED": "NO",
+  "OOS_OPENED": "NO",
+  "PARAMETER_OPTIMIZATION": "NO",
+  "REAL_DEV_READ": "NO",
+  "REAL_HISTORICAL_REPLAY_EXECUTED": "NO",
+  "STRATEGY_RULES_CHANGED": "NO",
+  "ambiguities": [
+    {
+      "contract_field": "funnel.stages[OPPORTUNITY]",
+      "finding": "OPPORTUNITY appears in the funnel taxonomy as a stage name and nowhere else in the contract. The denominator of every funnel percentage is therefore unfrozen.",
+      "hook": "policy.enumerate_opportunities",
+      "id": "AMB_1_OPPORTUNITY_UNIT",
+      "question_for_owner": "Is an OPPORTUNITY one (symbol, trading_date, session) or one (symbol, trading_date, session, boundary)?",
+      "why_it_matters": "EVENT_ID and the duplicate lock are keyed on (symbol, date, session, BOUNDARY), which admits one accepted trade PER BOUNDARY \u2014 up to two per symbol-day-session. The 2.0.0 prototype instead counted ONE unit per (symbol, day, session). The two readings give different OPPORTUNITY_N on identical data, so entry yield and every funnel percentage change meaning. This also determines whether the 2.1.0 funnel is comparable to V1's 26,814 denominator."
+    },
+    {
+      "contract_field": "funnel.stages[CONTEXT_ELIGIBLE, LOCATION_ELIGIBLE]",
+      "finding": "Both stages appear only as names. The contract freezes MIN_REFERENCE_M15_BARS and WARMUP_DAYS, which plausibly constitute CONTEXT eligibility, but never says so, and gives LOCATION eligibility no definition at all.",
+      "hook": "policy.context_eligible / policy.location_eligible",
+      "id": "AMB_2_CONTEXT_AND_LOCATION_ELIGIBILITY",
+      "question_for_owner": "What predicate defines CONTEXT_ELIGIBLE, and what defines LOCATION_ELIGIBLE?",
+      "why_it_matters": "These are the first two attrition stages. In the V1 evidence the equivalent stage absorbed 53% of all opportunities, so an unfrozen definition here dominates the funnel."
+    },
+    {
+      "contract_field": "governance.permitted_handovers",
+      "finding": "PERMITTED_HANDOVERS presupposes that one branch is attempted FIRST, but no rule selects it. The contract defines A and B mechanisms and the transitions between them, never the entry point into that graph.",
+      "hook": "policy.select_initial_branch",
+      "id": "AMB_3_INITIAL_BRANCH_SELECTION",
+      "question_for_owner": "Which branch is attempted first on a boundary interaction \u2014 is it decided by the interaction bar's close (prototype behaviour), by a fixed precedence, or are both run and the earlier ENTRY_AVAILABLE taken?",
+      "why_it_matters": "With HANDOVER_MAX = 1, the branch tried first gets first claim on the event lock. Branch mix, and therefore the branch stability axis, depends entirely on this unfrozen choice."
+    },
+    {
+      "contract_field": "target.authority_order[1], [2]",
+      "finding": "PRIOR_DAY_HIGH_LOW and CONFIRMED_PRE_ENTRY_SWING_LIQUIDITY are named and ordered but never operationally defined. No timeframe, no session-day convention, no swing derivation is frozen for either. (OPPOSITE_SESSION_BOUNDARY is unambiguous.)",
+      "hook": "policy.prior_day_levels / policy.swing_liquidity_levels",
+      "id": "AMB_4_SECOND_AND_THIRD_TARGET_AUTHORITIES",
+      "question_for_owner": "Define 'prior day' (previous calendar day vs previous trading day; UTC vs session day) and define the swing-liquidity derivation (timeframe and whether SWING_ORDER = 2 applies).",
+      "why_it_matters": "These two authorities set NATURAL_TARGET_R for every unit the first authority does not serve \u2014 which is most of branch B, since the opposite boundary lies behind a continuation entry. NATURAL_TARGET_R is the primary outcome metric."
+    }
+  ],
+  "ambiguity_handling": "Each unfrozen decision is an un-defaulted policy hook. ReplayPolicy refuses construction unless every ambiguity id is explicitly declared resolved, and the replay command terminates BLOCKED_CONTRACT_AMBIGUITY. No interpretation was chosen by the implementing agent.",
+  "artifact": "v2_1_audit_handoff_package",
+  "contract_mapping": {
+    "CONTRACT_FIELDS_BLOCKED_BY_AMBIGUITY": 4,
+    "CONTRACT_FIELDS_IMPLEMENTED": 30,
+    "CONTRACT_FIELDS_TOTAL": 34,
+    "CONTRACT_MAPPING_COMPLETE": false
+  },
+  "determinism": {
+    "DETERMINISTIC": true,
+    "SYNTHETIC_RUN_1_HASH": "7491361521425f8ef22175c7aafe2e7c45bf28b096bc17a9d5556aeae9fe6667",
+    "SYNTHETIC_RUN_2_HASH": "7491361521425f8ef22175c7aafe2e7c45bf28b096bc17a9d5556aeae9fe6667"
+  },
+  "engines_ready": {
+    "BRANCH_A_ENGINE_READY": true,
+    "BRANCH_B_ENGINE_READY": true,
+    "DATA_AUTHORIZATION_GATE_READY": true,
+    "EVENT_LOCK_READY": true,
+    "FUNNEL_ENGINE_READY": true,
+    "GEOMETRY_ENGINE_READY": true,
+    "HANDOVER_READY": true,
+    "NATURAL_TARGET_ENGINE_READY": true,
+    "OUTCOME_ENGINE_READY": true,
+    "REPLAY_COMMAND_READY": true,
+    "ROBUSTNESS_ENGINE_READY": true,
+    "SYMBOL_AUTHORITY_READY": true
+  },
+  "event_governance_cases": [
+    "A_SUCCEEDS",
+    "B_SUCCEEDS",
+    "A_FAILS_THEN_B_HANDOVER",
+    "B_FAILS_THEN_A_HANDOVER",
+    "A_SUCCEEDS_THEN_B_LATER_APPEARS",
+    "B_SUCCEEDS_THEN_A_LATER_APPEARS",
+    "DUPLICATE_REPEATED_CANDLE",
+    "DUPLICATE_BOUNDARY_TOUCH",
+    "SESSION_ROLLOVER"
+  ],
+  "evidence_artifacts": {
+    "candidate_instance_identity.json": "4f55544eb1746e67e49bdd62065981cc7ee52b123693259181d9e1ba997d765e",
+    "event_governance_validation.json": "5f739e8d766c04fe1a32fd0d9a7a146629d745cb22e5a0d9473233bf08fede90",
+    "infrastructure_build_summary.json": "0509b026f2fe055bbbe0e931e0c8f22bda92140a2f2c45a379738dde4a90f630",
+    "preregistration.json": "273ef3a078865159c383bc364f219c65079b0a0b632ebc8a044d89ac115fb3cb",
+    "symbol_normalization_audit.json": "1ce9be4c471644e348ca68fd02cab735c214080563ba9b02a8e63084a40847a2",
+    "synthetic_determinism_evidence.json": "8a5ee38a78e6717b82147481fd62ac879552115989606264dfa39be781ba6692",
+    "v2_1_contract_implementation_matrix.json": "4196920a78d440e0cbe0914ac51d1b567dfcf029dfc60c989bed3b6672cd2f55"
+  },
+  "identity": {
+    "contract_hash": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+    "dataset_binding_hash": "d030952440d2cfa34f541fff7cdfbf344fdc4959d0ee3826ba349636d566b483",
+    "implementation_sha": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+    "look_index": 2,
+    "preregistration_commit": "5b7d00041e1daa96ffec26db9677c2ffda9661c4",
+    "preregistration_hash": "3dac1c0c3bcf9cf3404218690e0caf6681be57a5c596f93adb144392dea669ba",
+    "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+    "strategy_version": "2.1.0-research"
+  },
+  "mission": "ARENA_EDGELAB_GEN2_MISSION_3B_A",
+  "replay_command": "python scripts/run_gen2_ald_v2_1_replay.py --execute-frozen-v2-1",
+  "replay_command_current_result": "BLOCKED_CONTRACT_AMBIGUITY",
+  "role": "implementation agent \u2014 Arena does NOT pre-empt the independent audit verdict",
+  "symbol_normalization": {
+    "NO_UNIVERSAL_FX_CONSTANT_GOVERNS_JPY_OR_GOLD": true,
+    "occurrences_classified": 37,
+    "violations": 0
+  },
+  "tests": {
+    "FULL_TESTS_COLLECTED": 1083,
+    "FULL_TESTS_FAILED": 7,
+    "FULL_TESTS_PASSED": 1060,
+    "FULL_TESTS_SKIPPED": 16,
+    "NEW_FAILURES": 0,
+    "PRE_EXISTING_FAILURES": 7,
+    "SYNTHETIC_TESTS_COLLECTED": 176,
+    "SYNTHETIC_TESTS_FAILED": 0,
+    "SYNTHETIC_TESTS_PASSED": 176,
+    "pre_existing_failure_ids": [
+      "test_governance_consolidation_r1::test_all_evidence_pointers_resolve_and_hash_match",
+      "test_stv2_funnel_guards::test_frozen_directory_is_untracked_by_this_change",
+      "test_stv2_funnel_guards::test_campaign_replay_and_friction_modules_are_unmodified",
+      "test_stv2_funnel_guards::test_no_new_third_party_dependency_was_added",
+      "test_target_policy_v0_6::TestAuthorityResolution::test_resolver_establishes_b_over_a",
+      "test_target_v0_5::TestStopTargetGeometry::test_yes_when_gradient_and_no_raw_coscaling",
+      "test_target_v0_5::TestZeroVarianceCorrelationContract::test_stop_target_constant_target_distance"
+    ]
+  }
+}

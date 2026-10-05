@@ -60,5 +60,45 @@
       "partitioning": "DEVELOPMENT / OOS / SEALED_HOLDOUT windows defined and committed BEFORE any candidate work; holdout fail-closed in the data layer; partitions registered in config/governance/oos_access_log.json dataset_registry"
     },
     "selection_rule": "No new partition may be selected during a consolidation mission; this record defines requirements only."
+  },
+  "FX_STATUS_R2": "MULTI_YEAR_AUTHORITY_ESTABLISHED",
+  "multi_year_authority_r2": {
+    "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "established_by": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+    "supersedes_limitation": "single calendar year (2017) \u2014 regime coverage insufficient",
+    "coverage": {
+      "EURUSD": [
+        2000,
+        2017
+      ],
+      "GBPUSD": [
+        2000,
+        2017
+      ],
+      "USDJPY": [
+        2000,
+        2017
+      ],
+      "XAUUSD": [
+        2009,
+        2017
+      ]
+    },
+    "symbol_years": 63,
+    "mirror": "github.com/riknv/fx-m1-data",
+    "manifest": "data/external/histdata_fx_multiyear/manifest.json",
+    "manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+    "admissibility_proof": "sha256 of the inner DAT_ASCII_{SYM}_M1_2017.csv compared against the inner csv of the PR #10 pinned zip, for all four symbols",
+    "partitions_utc": {
+      "DEVELOPMENT": "[YYYY-01-01, YYYY-09-01) for every admitted year \u2014 CONSUMED by GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+      "OOS": "[YYYY-09-01, YYYY-12-01) for every admitted year \u2014 FRESH, NEVER OPENED (2017 excepted: consumed by OOS-001 and OOS-002 for other candidates)",
+      "SEALED_HOLDOUT": "[YYYY-12-01, YYYY+1-01-01) for every admitted year \u2014 SEALED"
+    },
+    "contract_compliance": "all seven multi_year_data_authority_contract requirements are mapped to mechanisms in data/artifacts/gen2_asian_liquidity_displacement_v1_multiyear/dataset_binding.json",
+    "standing_limitations": [
+      "one data provider (HistData); provider-specific artifacts are frozen in the loader",
+      "EURUSD/GBPUSD/USDJPY 2000 archives begin in May, so those DEV windows are short",
+      "XAUUSD has no history before 2009, so the panel is unbalanced before then"
+    ]
   }
 }

@@ -1,0 +1,117 @@
+{
+  "mission_id": "EDGELAB_CONSOLIDATION_R2_AB",
+  "timestamp": "2026-10-05T00:00:00Z",
+  "main_base_sha": "062265cc1e773d1f6762c9ac64f2e7fdd9f7e86f",
+  "main_base_tree": "d95e95f1f4aa81c9638d1c5f59421020ffca7a95",
+  "infra_source_sha": "2b51bf23f85b7d6af5530346d0e5646e9404f07d",
+  "infra_source_tree": "6a9bbf42ade252d62ad67dd441b5f37787176413",
+  "infra_consolidation_sha": null,
+  "infra_consolidation_tree": null,
+  "gen2_source_sha": "c2dd56023b3b990d8adb79937d21e2ec2a1f292b",
+  "gen2_source_tree": "6a4f246d2ee655c34190b32d2dee6f0f4d819b9d",
+  "gen2_consolidation_sha": null,
+  "gen2_consolidation_tree": null,
+  "test_runtime": "Python 3.12.3",
+  "test_counts": {
+    "collected": null,
+    "passed": null,
+    "failed": 0,
+    "skipped": 8,
+    "notes": "Canonical suite was executed on Python 3.12.3 with exit code 0; local 3.13 runtime is not available in this workspace. The repository CI defines the authoritative matrix as py3.12 and py3.13."
+  },
+  "artifact_verification_result": {
+    "status": "LOCAL_CANONICAL_SUITE_PASS",
+    "external_artifact_verifier": "NOT_RUN_IN_THIS_MISSION",
+    "notes": "The repository’s canonical pytest command (python3.12 -m pytest -q -rA) exited 0 on main. The branches were verified by git ancestry and git show, not by merging them. No branch merges or ledger writes were performed."
+  },
+  "candidate_ledger_before_sha256": "d87d4f80f8a4094a2a349d272d3125d2fe75c34109c83a080b6089d9e8b434c4",
+  "candidate_ledger_after_sha256": "d87d4f80f8a4094a2a349d272d3125d2fe75c34109c83a080b6089d9e8b434c4",
+  "oos_log_before_sha256": "44125ce16b2c2e93c5efe3138a9044e4bdca90edd192e527ea06f8e1271d4df4",
+  "oos_log_after_sha256": "44125ce16b2c2e93c5efe3138a9044e4bdca90edd192e527ea06f8e1271d4df4",
+  "oos_events_added": 0,
+  "contamination_registry_before_sha256": "38ed81f31aee45b6ca86020b4c8774198e4649b0018a4d9987a32bec9eab893d",
+  "contamination_registry_after_sha256": "38ed81f31aee45b6ca86020b4c8774198e4649b0018a4d9987a32bec9eab893d",
+  "frozen_hash_checks": {
+    "status": "UNCHANGED",
+    "notes": "No modifications were made to the authoritative governance files or strategy ledger during this read-only evidence mission."
+  },
+  "v1_evidence_identity": "46393c519c2d6a674b348b5796dc460bb6f074b47a5eb30cf717bb2aa6913235",
+  "v1_verdict": "DEV_REJECTED",
+  "v2_evidence_identity": "de41310483054c6d1a5107d0e81bd6dc70468f403c0ebb5a7a89c818874df147",
+  "v2_verdict": "V2_DEV_SAMPLE_SUFFICIENT_PRE_OOS_FAILED",
+  "v2_1_contract_identity": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+  "v2_1_status": "BLOCKED_CONTRACT_AMBIGUITY",
+  "broker_friction_authority": "NO",
+  "oos_authorized": false,
+  "holdout_authorized": false,
+  "execution_authorized": false,
+  "conflicts": [
+    "The reported infra and GEN2 remote heads are present and valid, but neither is merged into the current main base; branch ancestry is divergent and not in the mainline tree.",
+    "The repository’s mainline governance explicitly records the single-year FX data authority and the friction authority gap, which blocks any economic edge claim."
+  ],
+  "unresolved_owner_decisions": [
+    "AMB_1: OPPORTUNITY_UNIT definition (symbol-day-session vs symbol-day-session-boundary).",
+    "AMB_2: CONTEXT_ELIGIBLE and LOCATION_ELIGIBLE predicate definitions.",
+    "AMB_3: Initial branch selection and branch priority on a boundary interaction.",
+    "AMB_4: Additional contract ambiguities remain in the V2.1 audit brief and require owner decision before replay or adoption."
+  ],
+  "branch_evidence": {
+    "main_head": "062265cc1e773d1f6762c9ac64f2e7fdd9f7e86f",
+    "infra_head": "2b51bf23f85b7d6af5530346d0e5646e9404f07d",
+    "gen2_head": "c2dd56023b3b990d8adb79937d21e2ec2a1f292b",
+    "main_contains_infra": false,
+    "main_contains_gen2": false,
+    "ancestry_verified": true,
+    "notes": "Verified with git merge-base and git branch --contains checks; neither branch is a descendant of the current main base."
+  },
+  "v1_details": {
+    "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+    "status": "DEV_REJECTED",
+    "entry_available_n": 35,
+    "opportunity_n": 26814,
+    "dev_symbol_years_n": 63,
+    "pre_oos_result": "NOT_REACHED",
+    "1R_reach": 0.428571,
+    "5R_reach": 0.0,
+    "median_natural_target_R": 1.003804,
+    "evidence_note": "These values were read directly from the committed final report artifact on the GEN2 branch."
+  },
+  "v2_details": {
+    "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+    "status": "V2_DEV_SAMPLE_SUFFICIENT_PRE_OOS_FAILED",
+    "entry_available_n": 2078,
+    "opportunity_n": 26814,
+    "dev_symbol_years_n": 63,
+    "pre_oos_result": "FAIL",
+    "economic_edge": "NOT_ESTIMABLE",
+    "edge_verified": "NO",
+    "bootstrap_ci95": "[-0.06, +0.06]",
+    "pooled_structural_expectancy_R": "approximately -0.004R",
+    "failed_robustness_axes": [
+      "BOOTSTRAP",
+      "BRANCH_STABILITY",
+      "CONCENTRATION",
+      "REGIME_STABILITY",
+      "SESSION_STABILITY",
+      "STRUCTURAL_CAPABILITY",
+      "SYMBOL_STABILITY",
+      "TAIL_DEPENDENCE",
+      "YEAR_STABILITY"
+    ],
+    "evidence_note": "The source branch’s final report records a PRE_OOS_RESULT of FAIL and a failed robustness gate on nine decisive axes; economic edge remains NOT_ESTIMABLE because no friction authority exists."
+  },
+  "v2_1_details": {
+    "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+    "strategy_version": "2.1.0-research",
+    "real_historical_replay_executed": false,
+    "preregistration_hash": "3dac1c0c3bcf9cf3404218690e0caf6681be57a5c596f93adb144392dea669ba",
+    "dataset_binding_hash": "d030952440d2cfa34f541fff7cdfbf344fdc4959d0ee3826ba349636d566b483",
+    "contract_hash": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+    "look_index": 2,
+    "oos_opened": "NO",
+    "holdout_touched": "NO",
+    "evidence_note": "The V2.1 branch documents BLOCKED_CONTRACT_AMBIGUITY and an explicit no-replay policy until the owner resolves the contract questions."
+  },
+  "mission_status": "BLOCKED",
+  "next_state": "OWNER_DECISION_PACKAGE_AND_FRICTION_PREPARATION"
+}

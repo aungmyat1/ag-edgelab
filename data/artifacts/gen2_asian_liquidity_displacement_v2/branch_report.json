@@ -1,0 +1,149 @@
+{
+  "A_SWEEP_RECLAIM_REVERSAL": {
+    "BRANCH_MIN_N": 30,
+    "ENTRY_AVAILABLE_N": 1378,
+    "GEOMETRY_VALID_N": 1306,
+    "OPPORTUNITY_N": 3148,
+    "RECLAIM_OR_RETEST_N": 3148,
+    "SESSION_EVENT_N": 3148,
+    "STRUCTURE_CONFIRM_N": 1378,
+    "SWEEP_OR_BREAKOUT_N": 3148,
+    "TRADE_COMPLETED_N": 1306,
+    "capability_detail": {
+      "ENTRY_AVAILABLE_N": 1378,
+      "MAE_R": {
+        "max": 10.833333,
+        "mean": 1.174443,
+        "median": 1.10596,
+        "min": 0.0,
+        "n": 1306
+      },
+      "MFE_R": {
+        "max": 41.793103,
+        "mean": 2.215068,
+        "median": 1.181818,
+        "min": 0.0,
+        "n": 1306
+      },
+      "TRADE_COMPLETED_N": 1306,
+      "economic_claim": "NOT_ESTIMABLE \u2014 structural R only, no measured friction",
+      "fixed_r_capability": {
+        "1R": 0.532925,
+        "2R": 0.344564,
+        "3R": 0.243492,
+        "4R": 0.174579,
+        "5R": 0.125574
+      },
+      "natural_target_R": {
+        "max": 15.058824,
+        "mean": 1.615567,
+        "median": 1.227091,
+        "min": 0.00303,
+        "n": 1306
+      },
+      "realised_R": {
+        "max": 5.368984,
+        "mean": 0.035819,
+        "median": 0.007726,
+        "min": -1.0,
+        "n": 1306
+      },
+      "resolution_mix": {
+        "HORIZON": 7,
+        "STOPPED_OUT": 652,
+        "TARGET_REACHED": 647
+      },
+      "stopped_same_bar_n": 0,
+      "target_reached_rate": 0.495406
+    },
+    "entry_yield_per_1000_opportunities": 437.738247,
+    "fixed_r_capability": {
+      "1R": 0.532925,
+      "2R": 0.344564,
+      "3R": 0.243492,
+      "4R": 0.174579,
+      "5R": 0.125574
+    },
+    "natural_target_R_median": 1.227091,
+    "retention_rule": "reported regardless of result; a branch may never be deleted, hidden or merged on the basis of its outcome",
+    "state": "BRANCH_POWERED",
+    "target_reached_rate": 0.495406
+  },
+  "B_BREAKOUT_RETEST_CONTINUATION": {
+    "BRANCH_MIN_N": 30,
+    "ENTRY_AVAILABLE_N": 700,
+    "GEOMETRY_VALID_N": 628,
+    "OPPORTUNITY_N": 8023,
+    "RECLAIM_OR_RETEST_N": 2582,
+    "SESSION_EVENT_N": 8023,
+    "STRUCTURE_CONFIRM_N": 700,
+    "SWEEP_OR_BREAKOUT_N": 8023,
+    "TRADE_COMPLETED_N": 628,
+    "capability_detail": {
+      "ENTRY_AVAILABLE_N": 700,
+      "MAE_R": {
+        "max": 14.88,
+        "mean": 1.230102,
+        "median": 1.111111,
+        "min": 0.0,
+        "n": 628
+      },
+      "MFE_R": {
+        "max": 28.428571,
+        "mean": 1.95938,
+        "median": 0.955824,
+        "min": 0.0,
+        "n": 628
+      },
+      "TRADE_COMPLETED_N": 628,
+      "economic_claim": "NOT_ESTIMABLE \u2014 structural R only, no measured friction",
+      "fixed_r_capability": {
+        "1R": 0.482484,
+        "2R": 0.307325,
+        "3R": 0.199045,
+        "4R": 0.132166,
+        "5R": 0.097134
+      },
+      "natural_target_R": {
+        "max": 116.019643,
+        "mean": 4.142072,
+        "median": 1.324849,
+        "min": 0.001185,
+        "n": 628
+      },
+      "realised_R": {
+        "max": 14.632653,
+        "mean": -0.087469,
+        "median": -1.0,
+        "min": -1.0,
+        "n": 628
+      },
+      "resolution_mix": {
+        "HORIZON": 29,
+        "STOPPED_OUT": 340,
+        "TARGET_REACHED": 259
+      },
+      "stopped_same_bar_n": 0,
+      "target_reached_rate": 0.41242
+    },
+    "entry_yield_per_1000_opportunities": 87.249159,
+    "fixed_r_capability": {
+      "1R": 0.482484,
+      "2R": 0.307325,
+      "3R": 0.199045,
+      "4R": 0.132166,
+      "5R": 0.097134
+    },
+    "natural_target_R_median": 1.324849,
+    "retention_rule": "reported regardless of result; a branch may never be deleted, hidden or merged on the basis of its outcome",
+    "state": "BRANCH_POWERED",
+    "target_reached_rate": 0.41242
+  },
+  "_branch_integrity": {
+    "disjoint_ok": true,
+    "note": "branches partition the event space by construction",
+    "total_units": 26814,
+    "units_assigned_to_a_branch": 11171,
+    "units_with_no_branch": 15643
+  }
+}

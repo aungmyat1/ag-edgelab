@@ -1,0 +1,93 @@
+{
+  "PRE_OOS_RESULT": "NOT_REACHED",
+  "checks": {
+    "BOOTSTRAP": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "CANDIDATE_IDENTITY_VALIDATION": {
+      "state": "PASS"
+    },
+    "DATASET_ROLE_VALIDATION": {
+      "HOLDOUT_TOUCHED": "NO",
+      "OOS_OPENED": "NO",
+      "state": "PASS"
+    },
+    "ENTRY_POPULATION": {
+      "observed": 3,
+      "required": 30,
+      "state": "NOT_REACHED_INSUFFICIENT_SAMPLE"
+    },
+    "FRICTION_READINESS": {
+      "FRICTION_EDGE_VERIFICATION_READY": "NO",
+      "mode": "STRUCTURAL_DISCLOSURE",
+      "state": "PASS",
+      "substituted_values_present": false
+    },
+    "MEAN_MEDIAN_DIVERGENCE": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "PARAMETER_NEIGHBORHOOD": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "REGIME_STABILITY": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "SAMPLE_ELIGIBILITY": {
+      "observed": 3,
+      "required": 100,
+      "state": "NOT_REACHED_INSUFFICIENT_SAMPLE"
+    },
+    "SESSION_STABILITY": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "STRUCTURAL_CAPABILITY_1R": {
+      "measured_on_n": 3,
+      "observed": 0.0,
+      "required": 0.5,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "STRUCTURAL_CAPABILITY_3R": {
+      "measured_on_n": 3,
+      "observed": 0.0,
+      "required": 0.25,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "SYMBOL_STABILITY": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "TAIL_DEPENDENCE": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "TRIGGER_POPULATION": {
+      "observed": 1768,
+      "required": 200,
+      "state": "PASS"
+    },
+    "WALK_FORWARD": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "YEAR_STABILITY": {
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    }
+  },
+  "eligible": false,
+  "failing_axes": [],
+  "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+  "semantics": "FAIL_CLOSED \u2014 PASS requires every axis PASS; thresholds are frozen",
+  "threshold_mutation_in_this_mission": "NONE",
+  "unevaluable_axes": [
+    "BOOTSTRAP",
+    "ENTRY_POPULATION",
+    "MEAN_MEDIAN_DIVERGENCE",
+    "PARAMETER_NEIGHBORHOOD",
+    "REGIME_STABILITY",
+    "SAMPLE_ELIGIBILITY",
+    "SESSION_STABILITY",
+    "STRUCTURAL_CAPABILITY_1R",
+    "STRUCTURAL_CAPABILITY_3R",
+    "SYMBOL_STABILITY",
+    "TAIL_DEPENDENCE",
+    "WALK_FORWARD",
+    "YEAR_STABILITY"
+  ]
+}

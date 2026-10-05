@@ -1,0 +1,84 @@
+{
+  "artifact_count": 15,
+  "artifacts": [
+    {
+      "bytes": 2729,
+      "name": "commission_authority.json",
+      "sha256": "d373e410e9a4e3bbed23a8127f67b0ca2697dacd5411b056e4c520f202491297"
+    },
+    {
+      "bytes": 3035,
+      "name": "economic_scenario_contract.json",
+      "sha256": "5a36df16f7a92ccf945b55fff56ef68955e5f6f63a87dd8e0c8071468fde467f"
+    },
+    {
+      "bytes": 3110,
+      "name": "final_report.json",
+      "sha256": "95025ef99822d84625819a34c86a659002bab41a46f4f598e05ca4dca86a4827"
+    },
+    {
+      "bytes": 2786,
+      "name": "final_report.md",
+      "sha256": "9b981d0a6f36fb79d982e5067b3ad7feb2603ff89ccc31286948cd12409ea216"
+    },
+    {
+      "bytes": 13227,
+      "name": "friction_authority_contract.json",
+      "sha256": "073c59106c9d2888fb7f5f446f425315e5935a52de51640b0b5767f52a59acde"
+    },
+    {
+      "bytes": 585,
+      "name": "friction_authority_hash.json",
+      "sha256": "bdf6211bacbff31e8819c7f1e2a96b7b7af5d2b0a39484f5dbab06bd358cd253"
+    },
+    {
+      "bytes": 3542,
+      "name": "friction_readiness.json",
+      "sha256": "75b54dc766e763c1c47c6294d33a797e3101198a0ceaeb82343bc25545f7a81a"
+    },
+    {
+      "bytes": 1451,
+      "name": "friction_source_inventory.json",
+      "sha256": "be65453cdcf4b95c35ecfb1bf73abe9f0d1d61b2355b1e77940a1d57c86d78e4"
+    },
+    {
+      "bytes": 9836,
+      "name": "partial_runner_cost_contract.json",
+      "sha256": "55954216e6ae454e822387d75b6484a987ff639ea95696333d70b9eb57578d5e"
+    },
+    {
+      "bytes": 1255,
+      "name": "slippage_authority.json",
+      "sha256": "621e79591b634dedf7ec661ad7a9c8cb51acd71b1e7a2c87326e33639accf6f5"
+    },
+    {
+      "bytes": 868,
+      "name": "spread_capture_manifest.json",
+      "sha256": "1ca35a19b667a23e9bff68bedbdbc42a7feacedc768a571ee86a8f69d46493c0"
+    },
+    {
+      "bytes": 1188,
+      "name": "spread_distribution.json",
+      "sha256": "461d8d92eedd19aaee3bb9b57191009cfb63705e41783b6ee1fe6451b624b08b"
+    },
+    {
+      "bytes": 1351,
+      "name": "swap_authority.json",
+      "sha256": "43064247c52e3b0ca9a3f1935ecb196471f42091ecde9adc017a0827b12ab7f8"
+    },
+    {
+      "bytes": 1647,
+      "name": "test_results.txt",
+      "sha256": "5c153a3bee24b9fe7b1a0f9d535cb3d4afc09dfcf3f950eac5756fb79c9e4f7c"
+    },
+    {
+      "bytes": 3639,
+      "name": "vtmarkets_symbol_metadata.json",
+      "sha256": "7b6ec0ca2d5bf09d858a0015f6dac8e9d7794985d9cc196330ce3ed31b3b434a"
+    }
+  ],
+  "external_evidence": [],
+  "external_evidence_policy": "raw quote CSVs are hash-pinned here but stored outside git",
+  "generated_utc": "2026-10-05T00:05:17Z",
+  "mission": "EDGELAB_FRICTION_AUTHORITY_R1"
+}

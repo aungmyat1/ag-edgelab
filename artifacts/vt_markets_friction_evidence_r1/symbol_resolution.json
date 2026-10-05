@@ -1,0 +1,14 @@
+{
+  "canonical_requested": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "XAUUSD"
+  ],
+  "crypto_requested": "owner's two crypto symbols, if present",
+  "mapping": {},
+  "reason": "MetaTrader5 is a Windows-only package with no Linux wheel, and no VT Markets terminal is present in this environment. Venue evidence cannot be captured here; it must be captured on the owner's Windows machine.",
+  "resolver": "ag_edgelab.friction.authority.resolution.resolve_all",
+  "status": "NOT_CAPTURED",
+  "suffix_policy": "Broker suffixes are never assumed. The resolver matches only against names the terminal publishes, records every candidate, and reports RESOLVED_AMBIGUOUS when more than one matches."
+}

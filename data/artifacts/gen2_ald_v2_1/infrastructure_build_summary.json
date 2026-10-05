@@ -1,0 +1,23 @@
+{
+  "CONTRACT_AMBIGUITIES": [
+    "AMB_1_OPPORTUNITY_UNIT",
+    "AMB_2_CONTEXT_AND_LOCATION_ELIGIBILITY",
+    "AMB_3_INITIAL_BRANCH_SELECTION",
+    "AMB_4_SECOND_AND_THIRD_TARGET_AUTHORITIES"
+  ],
+  "CONTRACT_FIELDS_IMPLEMENTED": 30,
+  "CONTRACT_FIELDS_TOTAL": 34,
+  "CONTRACT_MAPPING_COMPLETE": false,
+  "DETERMINISTIC": true,
+  "REAL_HISTORICAL_REPLAY_EXECUTED": "NO",
+  "SYNTHETIC_RUN_1_HASH": "7491361521425f8ef22175c7aafe2e7c45bf28b096bc17a9d5556aeae9fe6667",
+  "SYNTHETIC_RUN_2_HASH": "7491361521425f8ef22175c7aafe2e7c45bf28b096bc17a9d5556aeae9fe6667",
+  "artifacts": {
+    "event_governance_validation.json": "5f739e8d766c04fe1a32fd0d9a7a146629d745cb22e5a0d9473233bf08fede90",
+    "symbol_normalization_audit.json": "1ce9be4c471644e348ca68fd02cab735c214080563ba9b02a8e63084a40847a2",
+    "synthetic_determinism_evidence.json": "8a5ee38a78e6717b82147481fd62ac879552115989606264dfa39be781ba6692",
+    "v2_1_contract_implementation_matrix.json": "4196920a78d440e0cbe0914ac51d1b567dfcf029dfc60c989bed3b6672cd2f55"
+  },
+  "contract_hash": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+  "generated_at_utc": "2026-10-05T12:40:23.756095+00:00"
+}

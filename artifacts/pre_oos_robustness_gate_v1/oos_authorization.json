@@ -1,0 +1,13 @@
+{
+  "HOLDOUT_TOUCHED": false,
+  "OOS_OPENED": false,
+  "authorized_window_count": 0,
+  "candidate": "TARGET_POLICY_C3_V1",
+  "decision": "INSUFFICIENT_EVIDENCE",
+  "edge_status": "UNVERIFIED",
+  "implies_economic_verified": false,
+  "implies_edge_verified": false,
+  "implies_profitable": false,
+  "note": "PRE_OOS_PASS authorizes spending one fresh OOS window. It is not a result, a profit claim, or an edge verdict.",
+  "oos_window_authorized": false
+}

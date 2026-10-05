@@ -1,0 +1,41 @@
+{
+  "artifact_count": 9,
+  "artifacts": {
+    "capture_environment.json": {
+      "bytes": 351,
+      "sha256": "b6900fe5d1c56e35c68437549c38f3f4684c7137158af611557815e8f93e2e89"
+    },
+    "capture_registry_status.json": {
+      "bytes": 158,
+      "sha256": "075f3760ffa4e2348f6e364306705e735174ed30a8b73284bacbb64dcc95e8da"
+    },
+    "capture_runbook.md": {
+      "bytes": 4689,
+      "sha256": "48372ccf9495e21a2673aa1eed3781947f43edc7108d57f32656b3739bb1d109"
+    },
+    "final_report.json": {
+      "bytes": 2015,
+      "sha256": "52882fcf63c2b51f395aa0f6ae36a7308e4606828efa1d356224f58ccdbce1ae"
+    },
+    "final_report.md": {
+      "bytes": 1725,
+      "sha256": "8fcae99e227382513b51f7c04cba1dcfd891f8891304585ff6819c65c2ba10a8"
+    },
+    "friction_authority_status.json": {
+      "bytes": 854,
+      "sha256": "c08428482c348dcf3f47a84aaf719c64d94df5428f5bd88dc3c322b061fa1ece"
+    },
+    "session_authority_conflict.json": {
+      "bytes": 1929,
+      "sha256": "13775ccc689a289aac9c1eb517a4a2724bfc09b6deffa1b4022853bc11e892be"
+    },
+    "spread_distribution.json": {
+      "bytes": 378,
+      "sha256": "7fd5d6af4ca7333d6c6ff7f8b7f15a360bdbbc6885013c217d258194f133255f"
+    },
+    "symbol_resolution.json": {
+      "bytes": 699,
+      "sha256": "b65d7108f0702caa0fa3b456e1cc14bc37b6d101ca2648142ee2a519b18786e8"
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "generated_utc": "2026-10-04T23:59:14Z",
+  "no_default_policy": "if the schedule is unavailable the status is MISSING; no industry-typical figure is substituted",
+  "per_symbol": {
+    "EURUSD": {
+      "complete": false,
+      "currency": null,
+      "missing_fields": [
+        "status",
+        "mode",
+        "value",
+        "currency",
+        "scales_linearly_with_closed_volume",
+        "source"
+      ],
+      "mode": "UNKNOWN",
+      "note": "no VT Markets account evidence has been ingested; the commission schedule is unknown and no industry default is substituted",
+      "scales_linearly_with_closed_volume": null,
+      "source": null,
+      "source_hash": null,
+      "status": "MISSING",
+      "symbol": "EURUSD",
+      "value": null
+    },
+    "GBPUSD": {
+      "complete": false,
+      "currency": null,
+      "missing_fields": [
+        "status",
+        "mode",
+        "value",
+        "currency",
+        "scales_linearly_with_closed_volume",
+        "source"
+      ],
+      "mode": "UNKNOWN",
+      "note": "no VT Markets account evidence has been ingested; the commission schedule is unknown and no industry default is substituted",
+      "scales_linearly_with_closed_volume": null,
+      "source": null,
+      "source_hash": null,
+      "status": "MISSING",
+      "symbol": "GBPUSD",
+      "value": null
+    },
+    "USDJPY": {
+      "complete": false,
+      "currency": null,
+      "missing_fields": [
+        "status",
+        "mode",
+        "value",
+        "currency",
+        "scales_linearly_with_closed_volume",
+        "source"
+      ],
+      "mode": "UNKNOWN",
+      "note": "no VT Markets account evidence has been ingested; the commission schedule is unknown and no industry default is substituted",
+      "scales_linearly_with_closed_volume": null,
+      "source": null,
+      "source_hash": null,
+      "status": "MISSING",
+      "symbol": "USDJPY",
+      "value": null
+    },
+    "XAUUSD": {
+      "complete": false,
+      "currency": null,
+      "missing_fields": [
+        "status",
+        "mode",
+        "value",
+        "currency",
+        "scales_linearly_with_closed_volume",
+        "source"
+      ],
+      "mode": "UNKNOWN",
+      "note": "no VT Markets account evidence has been ingested; the commission schedule is unknown and no industry default is substituted",
+      "scales_linearly_with_closed_volume": null,
+      "source": null,
+      "source_hash": null,
+      "status": "MISSING",
+      "symbol": "XAUUSD",
+      "value": null
+    }
+  },
+  "questions_the_authority_must_answer": [
+    "per lot or per notional?",
+    "per side or round turn?",
+    "which currency?",
+    "does it scale linearly with closed volume on partial exits?"
+  ],
+  "status": "MISSING"
+}

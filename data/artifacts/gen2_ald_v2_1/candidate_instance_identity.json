@@ -1,0 +1,30 @@
+{
+  "contract_hash": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+  "contract_section_hashes": {
+    "branch_a_hash": "6636fe10c5a9a80ab6cb6ec2e71d77682c8adf797cbc4b50491dc41ed81d020b",
+    "branch_b_hash": "9238ad1d8b4e6da569cbac6961022adb709ff62568beefb7794577e3aed63629",
+    "contract_hash": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+    "friction_hash": "2fa1432068ddeebe850e66284e1540a4be36c8dab09912351a96e764a27ac2f5",
+    "funnel_hash": "d31d6a49cb6cdd01453e3f4b9fe35e137c60f8eea865574075bf9092cf1b1d27",
+    "governance_hash": "5fada88a38571cdb3164444a9e83af35649b097491144efa4321bc3eb5160051",
+    "identity_hash": "b248d0ab42661f6ba2c71ca0694f73c7ce40955682ffbdb676503f0d6d2e5c78",
+    "parameters_hash": "5abd95e607e98a41edf13e396d48cfc8e861aa27e2dd0f068829eae609c468d3",
+    "session_hash": "31a05b1c1151b9a9bf4c9690c02d52c183ab50212ad069d13676aa5197afaa2f",
+    "symbol_metadata_hash": "bff2df9ee6e923f4d68ad2d3a4db5786ac329b0f3bd649dbd087e2e1d588d58b",
+    "target_hash": "4b6f950ac51b57a869708f6ed995078f3723799dd532fd651cbfb6df6755df16"
+  },
+  "dataset_binding_hash": "d030952440d2cfa34f541fff7cdfbf344fdc4959d0ee3826ba349636d566b483",
+  "economic_edge": "NOT_ESTIMABLE",
+  "edge_verified": false,
+  "experiment_id": "GEN2_ALD_V2_1_DEV_R2",
+  "holdout_touched": "NO",
+  "implementation_sha": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+  "look_index": 2,
+  "oos_opened": "NO",
+  "preregistration_hash": "3dac1c0c3bcf9cf3404218690e0caf6681be57a5c596f93adb144392dea669ba",
+  "replay_started": false,
+  "strategy_id": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2",
+  "strategy_version": "2.1.0-research",
+  "superseded_evidence": "GEN2_ALD_V2_DEV_R1",
+  "supersedes": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2@2.0.0-research"
+}

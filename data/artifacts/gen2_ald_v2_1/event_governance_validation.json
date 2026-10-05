@@ -1,0 +1,334 @@
+{
+  "artifact": "event_governance_validation",
+  "cases": [
+    {
+      "accepted_n": 1,
+      "branches_selected": [
+        "A_SWEEP_RECLAIM_REVERSAL"
+      ],
+      "case": "A_SUCCEEDS",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "branch A reaches ENTRY_AVAILABLE and locks",
+      "suppressed_n": 0
+    },
+    {
+      "accepted_n": 1,
+      "branches_selected": [
+        "B_BREAKOUT_RETEST_CONTINUATION"
+      ],
+      "case": "B_SUCCEEDS",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "B_BREAKOUT_RETEST_CONTINUATION",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "B_BREAKOUT_RETEST_CONTINUATION",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "branch B reaches ENTRY_AVAILABLE and locks",
+      "suppressed_n": 0
+    },
+    {
+      "accepted_n": 1,
+      "branches_selected": [
+        "B_BREAKOUT_RETEST_CONTINUATION"
+      ],
+      "case": "A_FAILS_THEN_B_HANDOVER",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "BRANCH_INVALIDATION_REASON": {
+            "A_SWEEP_RECLAIM_REVERSAL": "RECLAIM_TIMEOUT"
+          },
+          "BRANCH_SELECTED": "B_BREAKOUT_RETEST_CONTINUATION",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [
+            {
+              "from": "A_SWEEP_RECLAIM_REVERSAL",
+              "reason": "RECLAIM_TIMEOUT",
+              "to": "B_BREAKOUT_RETEST_CONTINUATION"
+            }
+          ],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "A times out on reclaim, one permitted handover to B",
+      "suppressed_n": 0
+    },
+    {
+      "accepted_n": 1,
+      "branches_selected": [
+        "A_SWEEP_RECLAIM_REVERSAL"
+      ],
+      "case": "B_FAILS_THEN_A_HANDOVER",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "B_BREAKOUT_RETEST_CONTINUATION",
+          "BRANCH_INVALIDATION_REASON": {
+            "B_BREAKOUT_RETEST_CONTINUATION": "BREAKOUT_REJECTED_CLOSE_BACK_INSIDE"
+          },
+          "BRANCH_SELECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [
+            {
+              "from": "B_BREAKOUT_RETEST_CONTINUATION",
+              "reason": "BREAKOUT_REJECTED_CLOSE_BACK_INSIDE",
+              "to": "A_SWEEP_RECLAIM_REVERSAL"
+            }
+          ],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "B rejected by close back inside, one permitted handover to A",
+      "suppressed_n": 0
+    },
+    {
+      "accepted_n": 1,
+      "branches_selected": [
+        "A_SWEEP_RECLAIM_REVERSAL"
+      ],
+      "case": "A_SUCCEEDS_THEN_B_LATER_APPEARS",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        },
+        {
+          "BRANCH_FIRST_DETECTED": null,
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": null,
+          "DUPLICATE_SUPPRESSED": 1,
+          "EVENT_ID": "9fb035b46bbb6e2466e4dc2bb8b4507d",
+          "HANDOVERS": [],
+          "LOCKED": false,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 1,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "second event on a locked tuple is DUPLICATE_SUPPRESSED",
+      "suppressed_n": 1
+    },
+    {
+      "accepted_n": 1,
+      "branches_selected": [
+        "B_BREAKOUT_RETEST_CONTINUATION"
+      ],
+      "case": "B_SUCCEEDS_THEN_A_LATER_APPEARS",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "B_BREAKOUT_RETEST_CONTINUATION",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "B_BREAKOUT_RETEST_CONTINUATION",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        },
+        {
+          "BRANCH_FIRST_DETECTED": null,
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": null,
+          "DUPLICATE_SUPPRESSED": 1,
+          "EVENT_ID": "9fb035b46bbb6e2466e4dc2bb8b4507d",
+          "HANDOVERS": [],
+          "LOCKED": false,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 1,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "second event on a locked tuple is DUPLICATE_SUPPRESSED",
+      "suppressed_n": 1
+    },
+    {
+      "accepted_n": 1,
+      "branches_selected": [
+        "A_SWEEP_RECLAIM_REVERSAL"
+      ],
+      "case": "DUPLICATE_REPEATED_CANDLE",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "DUPLICATE_SUPPRESSED": 1,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "identical event replayed twice yields one accepted trade",
+      "suppressed_n": 1
+    },
+    {
+      "accepted_n": 2,
+      "branches_selected": [
+        "A_SWEEP_RECLAIM_REVERSAL"
+      ],
+      "case": "DUPLICATE_BOUNDARY_TOUCH",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        },
+        {
+          "BRANCH_FIRST_DETECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "8fb34ba2ebc2c15e0bb06a8fe200677b",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "LOW",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "the opposite boundary is a different lock key, not a duplicate",
+      "suppressed_n": 0
+    },
+    {
+      "accepted_n": 2,
+      "branches_selected": [
+        "A_SWEEP_RECLAIM_REVERSAL",
+        "B_BREAKOUT_RETEST_CONTINUATION"
+      ],
+      "case": "SESSION_ROLLOVER",
+      "events": [
+        {
+          "BRANCH_FIRST_DETECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "A_SWEEP_RECLAIM_REVERSAL",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "83722fa129bc3e3a4b55ee90a27e2099",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "ASIAN_LONDON",
+          "symbol": "USDJPY"
+        },
+        {
+          "BRANCH_FIRST_DETECTED": "B_BREAKOUT_RETEST_CONTINUATION",
+          "BRANCH_INVALIDATION_REASON": {},
+          "BRANCH_SELECTED": "B_BREAKOUT_RETEST_CONTINUATION",
+          "DUPLICATE_SUPPRESSED": 0,
+          "EVENT_ID": "fe98bf221dc6313bbf189346081741cf",
+          "HANDOVERS": [],
+          "LOCKED": true,
+          "boundary": "HIGH",
+          "date": "2016-03-01",
+          "event_sequence": 0,
+          "session": "LONDON_NEWYORK",
+          "symbol": "USDJPY"
+        }
+      ],
+      "expectation": "a new session on the same day is a fresh lock key",
+      "suppressed_n": 0
+    }
+  ],
+  "cases_n": 9,
+  "handover_max": 1,
+  "lock_key": [
+    "symbol",
+    "trading_date",
+    "session",
+    "boundary"
+  ],
+  "note": "Arena implements frozen semantics only. Whether HANDOVER_MAX = 1 is statistically desirable is for the independent audit.",
+  "permitted_handovers": [
+    [
+      "A",
+      "B",
+      "RECLAIM_TIMEOUT"
+    ],
+    [
+      "A",
+      "B",
+      "SWEEP_GEOMETRY_EXCEEDED"
+    ],
+    [
+      "B",
+      "A",
+      "BREAKOUT_REJECTED_CLOSE_BACK_INSIDE"
+    ],
+    [
+      "B",
+      "A",
+      "ACCEPTANCE_TIMEOUT"
+    ]
+  ]
+}

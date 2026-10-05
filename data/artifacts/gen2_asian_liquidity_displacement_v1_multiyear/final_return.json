@@ -1,0 +1,123 @@
+{
+  "contract": "GEN2_ALD_V1_MULTIYEAR_DEV_FINAL_RETURN_V1",
+  "experiment_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+  "derived_from": {
+    "final_report.json": "46393c519c2d6a674b348b5796dc460bb6f074b47a5eb30cf717bb2aa6913235",
+    "v1_narrow_vs_multiyear.json": "b3c331b7de31e8e727d38d2a5c6018224c2e5a10091c572632044a02ab82b70e"
+  },
+  "derivation": "every field is copied from the artifacts above by asian_liquidity_displacement_multiyear_analysis.final_return_block; no value is recomputed, rounded or retyped here",
+  "FINAL_RETURN": {
+    "STRATEGY_ID": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+    "STRATEGY_HASH": "28c4f52f2ef6b54977e407e0c5ce93ef4f9b41a7bced37327a4844d392669a94",
+    "RULES_CHANGED": "NO",
+    "EXPERIMENT_ID": "GEN2_ALD_V1_MULTIYEAR_DEV_R1",
+    "DATASET_AUTHORITY": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "DEV_WINDOWS": [
+      [
+        "2000-01-01T00:00:00+00:00",
+        "2000-09-01T00:00:00+00:00"
+      ],
+      [
+        "2001-01-01T00:00:00+00:00",
+        "2001-09-01T00:00:00+00:00"
+      ],
+      [
+        "2002-01-01T00:00:00+00:00",
+        "2002-09-01T00:00:00+00:00"
+      ],
+      [
+        "2003-01-01T00:00:00+00:00",
+        "2003-09-01T00:00:00+00:00"
+      ],
+      [
+        "2004-01-01T00:00:00+00:00",
+        "2004-09-01T00:00:00+00:00"
+      ],
+      [
+        "2005-01-01T00:00:00+00:00",
+        "2005-09-01T00:00:00+00:00"
+      ],
+      [
+        "2006-01-01T00:00:00+00:00",
+        "2006-09-01T00:00:00+00:00"
+      ],
+      [
+        "2007-01-01T00:00:00+00:00",
+        "2007-09-01T00:00:00+00:00"
+      ],
+      [
+        "2008-01-01T00:00:00+00:00",
+        "2008-09-01T00:00:00+00:00"
+      ],
+      [
+        "2009-01-01T00:00:00+00:00",
+        "2009-09-01T00:00:00+00:00"
+      ],
+      [
+        "2010-01-01T00:00:00+00:00",
+        "2010-09-01T00:00:00+00:00"
+      ],
+      [
+        "2011-01-01T00:00:00+00:00",
+        "2011-09-01T00:00:00+00:00"
+      ],
+      [
+        "2012-01-01T00:00:00+00:00",
+        "2012-09-01T00:00:00+00:00"
+      ],
+      [
+        "2013-01-01T00:00:00+00:00",
+        "2013-09-01T00:00:00+00:00"
+      ],
+      [
+        "2014-01-01T00:00:00+00:00",
+        "2014-09-01T00:00:00+00:00"
+      ],
+      [
+        "2015-01-01T00:00:00+00:00",
+        "2015-09-01T00:00:00+00:00"
+      ],
+      [
+        "2016-01-01T00:00:00+00:00",
+        "2016-09-01T00:00:00+00:00"
+      ],
+      [
+        "2017-01-01T00:00:00+00:00",
+        "2017-09-01T00:00:00+00:00"
+      ]
+    ],
+    "DEV_YEARS_N": 18,
+    "OPPORTUNITY_N": 26814,
+    "DIRECTION_DECIDABLE_N": 12577,
+    "DIRECTIONAL_N": 1382,
+    "TRIGGER_PASS_N": 441,
+    "CONFIRMATION_PASS_N": 51,
+    "GEOMETRY_VALID_N": 36,
+    "ENTRY_AVAILABLE_N": 35,
+    "1R": 0.428571,
+    "2R": 0.285714,
+    "3R": 0.257143,
+    "4R": 0.057143,
+    "5R": 0.0,
+    "NATURAL_TARGET_MEDIAN_R": 1.003804,
+    "2017_ENTRY_N": 3,
+    "MULTIYEAR_ENTRY_N": 35,
+    "SAMPLE_CLASSIFICATION": "STRATEGY_STRUCTURAL_STARVATION",
+    "PRIMARY_FUNNEL_WEAKNESS": "INSUFFICIENT_SAMPLE",
+    "SECONDARY_DIAGNOSES": [
+      "TRIGGER_FUNNEL_WEAKNESS",
+      "CONFIRMATION_FUNNEL_WEAKNESS",
+      "TARGET_MODEL_MISMATCH"
+    ],
+    "ROBUSTNESS_RUN": "NO",
+    "PRE_OOS_RESULT": "NOT_REACHED",
+    "FROZEN_CANDIDATE": "NO",
+    "OOS_OPENED": "NO",
+    "HOLDOUT_TOUCHED": "NO",
+    "PARAMETER_OPTIMIZATION": "NO",
+    "STRATEGY_RULES_CHANGED": "NO",
+    "BROKER_MUTATION": "NO",
+    "STATUS": "MULTIYEAR_DEV_INSUFFICIENT_SAMPLE",
+    "NEXT": "NEW_V2_HYPOTHESIS_DESIGN"
+  }
+}

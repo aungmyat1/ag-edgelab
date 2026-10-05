@@ -1,0 +1,1387 @@
+{
+  "DATASET_BINDING_CHANGED": "YES",
+  "HOLDOUT_TOUCHED": "NO",
+  "OOS_OPENED": "NO",
+  "RULES_CHANGED": "NO",
+  "binding_id": "GEN2_ALD_V1_MULTIYEAR_DEV_R1_DATASET_BINDING",
+  "cross_source_identity_proof": {
+    "claim": "the mirror carries the same HistData payload as the PR #10 authority",
+    "method": "sha256 of the inner DAT_ASCII_{SYM}_M1_2017.csv compared against the inner csv of the PR #10 pinned zip, for all four symbols",
+    "per_symbol": {
+      "EURUSD": {
+        "inner_csv": "DAT_ASCII_EURUSD_M1_2017.csv",
+        "inner_csv_bytes": "20068290",
+        "inner_csv_sha256": "d5d095207bcdbfc77b899e4ab69c2fd31cee09791a9ff4c74f9c066fb49a6ac4",
+        "pr10_zip_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57"
+      },
+      "GBPUSD": {
+        "inner_csv": "DAT_ASCII_GBPUSD_M1_2017.csv",
+        "inner_csv_bytes": "20045016",
+        "inner_csv_sha256": "04726017e04391b319cce1ad01b7146332c6cf6247890b9999dc7e106f8a2939",
+        "pr10_zip_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b"
+      },
+      "USDJPY": {
+        "inner_csv": "DAT_ASCII_USDJPY_M1_2017.csv",
+        "inner_csv_bytes": "23020476",
+        "inner_csv_sha256": "849f3c89d84f5db0150604306e45f07586865f40a33ca5d363f48df381b85a2b",
+        "pr10_zip_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f"
+      },
+      "XAUUSD": {
+        "inner_csv": "DAT_ASCII_XAUUSD_M1_2017.csv",
+        "inner_csv_bytes": "23255760",
+        "inner_csv_sha256": "b97c6ecb8dbc0fa11f8f32082498573b36f0a0276e51c843b5609b16fdeb0ad7",
+        "pr10_zip_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+      }
+    },
+    "result": "IDENTICAL_4_OF_4"
+  },
+  "data_authority_discovery": {
+    "AVAILABLE_CORPUS_END": "2018-01-01T00:00:00+00:00",
+    "AVAILABLE_CORPUS_START": "2000-01-01T00:00:00+00:00",
+    "EXCLUDED_WINDOWS": [
+      {
+        "EXCLUSION_REASON": "RESERVED_FRESH_OOS \u2014 the annual partition policy inherited from PR #10 reserves Sep-Nov of every year as out-of-sample. For 2017 that window is additionally ALREADY CONSUMED (OOS-001 SESSION_TRADE_V2, OOS-002 TARGET_POLICY_C3_V1, see oos_access_log.json). For every other year it is FRESH and must stay fresh: loading it here would permanently destroy the only multi-year out-of-sample evidence this repository can ever have. The loader fails closed on it.",
+        "role": "OOS",
+        "window": "[YYYY-09-01, YYYY-12-01) for every admitted year"
+      },
+      {
+        "EXCLUSION_REASON": "SEALED \u2014 never opened by any recorded event; unsealing requires an explicit governance mission that amends the holdout policy first.",
+        "role": "SEALED_HOLDOUT",
+        "window": "[YYYY-12-01, YYYY+1-01-01) for every admitted year"
+      },
+      {
+        "EXCLUSION_REASON": "NO_WHOLE_YEAR_ARCHIVE \u2014 the mirror publishes 2018 only as monthly fragments and stops in October 2018; an incomplete year would not carry the same calendar composition as the other DEV windows.",
+        "role": "NOT_ACQUIRED",
+        "window": "[2018-01-01, ...)"
+      },
+      {
+        "EXCLUSION_REASON": "PROVIDER_COVERAGE \u2014 HistData gold history begins in 2009, so the panel is unbalanced before then. Reported as a coverage limitation, never backfilled.",
+        "role": "NOT_PUBLISHED",
+        "window": "XAUUSD [2000-01-01, 2009-01-01)"
+      }
+    ],
+    "PERMITTED_DEV_WINDOWS": [
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2000-01-01T00:00:00+00:00",
+          "2000-09-01T00:00:00+00:00"
+        ],
+        "year": 2000
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2001-01-01T00:00:00+00:00",
+          "2001-09-01T00:00:00+00:00"
+        ],
+        "year": 2001
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2002-01-01T00:00:00+00:00",
+          "2002-09-01T00:00:00+00:00"
+        ],
+        "year": 2002
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2003-01-01T00:00:00+00:00",
+          "2003-09-01T00:00:00+00:00"
+        ],
+        "year": 2003
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2004-01-01T00:00:00+00:00",
+          "2004-09-01T00:00:00+00:00"
+        ],
+        "year": 2004
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2005-01-01T00:00:00+00:00",
+          "2005-09-01T00:00:00+00:00"
+        ],
+        "year": 2005
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2006-01-01T00:00:00+00:00",
+          "2006-09-01T00:00:00+00:00"
+        ],
+        "year": 2006
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2007-01-01T00:00:00+00:00",
+          "2007-09-01T00:00:00+00:00"
+        ],
+        "year": 2007
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2008-01-01T00:00:00+00:00",
+          "2008-09-01T00:00:00+00:00"
+        ],
+        "year": 2008
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2009-01-01T00:00:00+00:00",
+          "2009-09-01T00:00:00+00:00"
+        ],
+        "year": 2009
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2010-01-01T00:00:00+00:00",
+          "2010-09-01T00:00:00+00:00"
+        ],
+        "year": 2010
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2011-01-01T00:00:00+00:00",
+          "2011-09-01T00:00:00+00:00"
+        ],
+        "year": 2011
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2012-01-01T00:00:00+00:00",
+          "2012-09-01T00:00:00+00:00"
+        ],
+        "year": 2012
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2013-01-01T00:00:00+00:00",
+          "2013-09-01T00:00:00+00:00"
+        ],
+        "year": 2013
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2014-01-01T00:00:00+00:00",
+          "2014-09-01T00:00:00+00:00"
+        ],
+        "year": 2014
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "year": 2015
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "year": 2016
+      },
+      {
+        "family_status": "DEVELOPMENT_KNOWN",
+        "role": "DEVELOPMENT",
+        "symbol": "EURUSD",
+        "window_utc": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "year": 2017
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2000-01-01T00:00:00+00:00",
+          "2000-09-01T00:00:00+00:00"
+        ],
+        "year": 2000
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2001-01-01T00:00:00+00:00",
+          "2001-09-01T00:00:00+00:00"
+        ],
+        "year": 2001
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2002-01-01T00:00:00+00:00",
+          "2002-09-01T00:00:00+00:00"
+        ],
+        "year": 2002
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2003-01-01T00:00:00+00:00",
+          "2003-09-01T00:00:00+00:00"
+        ],
+        "year": 2003
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2004-01-01T00:00:00+00:00",
+          "2004-09-01T00:00:00+00:00"
+        ],
+        "year": 2004
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2005-01-01T00:00:00+00:00",
+          "2005-09-01T00:00:00+00:00"
+        ],
+        "year": 2005
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2006-01-01T00:00:00+00:00",
+          "2006-09-01T00:00:00+00:00"
+        ],
+        "year": 2006
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2007-01-01T00:00:00+00:00",
+          "2007-09-01T00:00:00+00:00"
+        ],
+        "year": 2007
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2008-01-01T00:00:00+00:00",
+          "2008-09-01T00:00:00+00:00"
+        ],
+        "year": 2008
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2009-01-01T00:00:00+00:00",
+          "2009-09-01T00:00:00+00:00"
+        ],
+        "year": 2009
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2010-01-01T00:00:00+00:00",
+          "2010-09-01T00:00:00+00:00"
+        ],
+        "year": 2010
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2011-01-01T00:00:00+00:00",
+          "2011-09-01T00:00:00+00:00"
+        ],
+        "year": 2011
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2012-01-01T00:00:00+00:00",
+          "2012-09-01T00:00:00+00:00"
+        ],
+        "year": 2012
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2013-01-01T00:00:00+00:00",
+          "2013-09-01T00:00:00+00:00"
+        ],
+        "year": 2013
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2014-01-01T00:00:00+00:00",
+          "2014-09-01T00:00:00+00:00"
+        ],
+        "year": 2014
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "year": 2015
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "year": 2016
+      },
+      {
+        "family_status": "DEVELOPMENT_KNOWN",
+        "role": "DEVELOPMENT",
+        "symbol": "GBPUSD",
+        "window_utc": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "year": 2017
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2000-01-01T00:00:00+00:00",
+          "2000-09-01T00:00:00+00:00"
+        ],
+        "year": 2000
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2001-01-01T00:00:00+00:00",
+          "2001-09-01T00:00:00+00:00"
+        ],
+        "year": 2001
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2002-01-01T00:00:00+00:00",
+          "2002-09-01T00:00:00+00:00"
+        ],
+        "year": 2002
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2003-01-01T00:00:00+00:00",
+          "2003-09-01T00:00:00+00:00"
+        ],
+        "year": 2003
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2004-01-01T00:00:00+00:00",
+          "2004-09-01T00:00:00+00:00"
+        ],
+        "year": 2004
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2005-01-01T00:00:00+00:00",
+          "2005-09-01T00:00:00+00:00"
+        ],
+        "year": 2005
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2006-01-01T00:00:00+00:00",
+          "2006-09-01T00:00:00+00:00"
+        ],
+        "year": 2006
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2007-01-01T00:00:00+00:00",
+          "2007-09-01T00:00:00+00:00"
+        ],
+        "year": 2007
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2008-01-01T00:00:00+00:00",
+          "2008-09-01T00:00:00+00:00"
+        ],
+        "year": 2008
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2009-01-01T00:00:00+00:00",
+          "2009-09-01T00:00:00+00:00"
+        ],
+        "year": 2009
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2010-01-01T00:00:00+00:00",
+          "2010-09-01T00:00:00+00:00"
+        ],
+        "year": 2010
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2011-01-01T00:00:00+00:00",
+          "2011-09-01T00:00:00+00:00"
+        ],
+        "year": 2011
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2012-01-01T00:00:00+00:00",
+          "2012-09-01T00:00:00+00:00"
+        ],
+        "year": 2012
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2013-01-01T00:00:00+00:00",
+          "2013-09-01T00:00:00+00:00"
+        ],
+        "year": 2013
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2014-01-01T00:00:00+00:00",
+          "2014-09-01T00:00:00+00:00"
+        ],
+        "year": 2014
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "year": 2015
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "year": 2016
+      },
+      {
+        "family_status": "DEVELOPMENT_KNOWN",
+        "role": "DEVELOPMENT",
+        "symbol": "USDJPY",
+        "window_utc": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "year": 2017
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2009-01-01T00:00:00+00:00",
+          "2009-09-01T00:00:00+00:00"
+        ],
+        "year": 2009
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2010-01-01T00:00:00+00:00",
+          "2010-09-01T00:00:00+00:00"
+        ],
+        "year": 2010
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2011-01-01T00:00:00+00:00",
+          "2011-09-01T00:00:00+00:00"
+        ],
+        "year": 2011
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2012-01-01T00:00:00+00:00",
+          "2012-09-01T00:00:00+00:00"
+        ],
+        "year": 2012
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2013-01-01T00:00:00+00:00",
+          "2013-09-01T00:00:00+00:00"
+        ],
+        "year": 2013
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2014-01-01T00:00:00+00:00",
+          "2014-09-01T00:00:00+00:00"
+        ],
+        "year": 2014
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "year": 2015
+      },
+      {
+        "family_status": "FRESH_DEVELOPMENT",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "year": 2016
+      },
+      {
+        "family_status": "DEVELOPMENT_KNOWN",
+        "role": "DEVELOPMENT",
+        "symbol": "XAUUSD",
+        "window_utc": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "year": 2017
+      }
+    ],
+    "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+    "balanced_panel_years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017
+    ],
+    "contamination_position": "The 2017 DEV window is DEVELOPMENT_KNOWN for family ASIAN_LIQUIDITY_DISPLACEMENT (registered after the first campaign) and is RE-USED here deliberately and disclosed: it is the baseline the expansion is measured against. All other DEV windows are fresh DEVELOPMENT and become DEVELOPMENT_KNOWN for this family once this mission completes. No window is relabelled.",
+    "coverage_years": {
+      "EURUSD": [
+        2000,
+        2017
+      ],
+      "GBPUSD": [
+        2000,
+        2017
+      ],
+      "USDJPY": [
+        2000,
+        2017
+      ],
+      "XAUUSD": [
+        2009,
+        2017
+      ]
+    },
+    "partition_policy_id": "FX_ANNUAL_PARTITION_POLICY_R2",
+    "permitted_symbol_years_n": 63
+  },
+  "governance_inputs": {
+    "contamination_registry_sha256": "539a193b92756b6c868ab90dd8fdffe07164f072bad674d445c0c02a24c11f8c",
+    "data_authority_gap_sha256": "d0ebeab33fe7f1aff260f07ca015f5146a8c6333df4ba1c1025ce12ccd446f71",
+    "oos_access_log_sha256": "44125ce16b2c2e93c5efe3138a9044e4bdca90edd192e527ea06f8e1271d4df4"
+  },
+  "multi_year_data_authority_contract_compliance": {
+    "duplicate_handling": "SATISFIED \u2014 zero tolerance; a failing symbol-year is excluded, never de-duplicated",
+    "gap_handling": "SATISFIED \u2014 frozen >=13/15 M15 rule and 0.75 MTF coverage; per-symbol-year gap inventory emitted by the runner",
+    "partitioning": "SATISFIED \u2014 annual DEVELOPMENT/OOS/SEALED_HOLDOUT policy committed in this file before any candidate work",
+    "raw_hashes": "SATISFIED \u2014 zip and inner-csv sha256 pinned for all 63 symbol-years before derivation",
+    "resampling": "SATISFIED \u2014 causal M1->M15->H1/H4/D1 via frozen code; per-frame hashes recorded",
+    "source_provenance": "SATISFIED \u2014 provider, mirror, transport and retrieval method recorded",
+    "timezone_normalization": "SATISFIED \u2014 inherited unchanged from the PR #10 loader contract"
+  },
+  "new_binding": {
+    "dataset_authority": {
+      "annual_partitions_utc": {
+        "DEVELOPMENT": "[YYYY-01-01, YYYY-09-01)",
+        "OOS": "[YYYY-09-01, YYYY-12-01) \u2014 NOT LOADABLE under this authority",
+        "SEALED_HOLDOUT": "[YYYY-12-01, YYYY+1-01-01) \u2014 NOT LOADABLE, sealed"
+      },
+      "authority_id": "HISTDATA_ASCII_M1_MULTIYEAR_R2",
+      "balanced_panel_years": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "bar_convention": "bar OPEN timestamp",
+      "coverage_years": {
+        "EURUSD": [
+          2000,
+          2017
+        ],
+        "GBPUSD": [
+          2000,
+          2017
+        ],
+        "USDJPY": [
+          2000,
+          2017
+        ],
+        "XAUUSD": [
+          2009,
+          2017
+        ]
+      },
+      "cross_source_identity_proof": "inner DAT_ASCII_{SYM}_M1_2017.csv sha256 == inner csv of the PR #10 pinned zip, 4/4 symbols",
+      "derivation_code": "ag_edgelab.data.fx_histdata_2017 (unmodified)",
+      "duplicate_policy": "zero tolerance \u2014 quality_gate_m1 raises; the symbol-year is excluded, never de-duplicated",
+      "extends": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+      "loadable_roles": [
+        "DEVELOPMENT"
+      ],
+      "m15_rule": ">= 13/15 M1 minutes per bucket; missing buckets never filled",
+      "mirror": "github.com/riknv/fx-m1-data",
+      "mtf_coverage_fraction": 0.75,
+      "normalized_timezone": "UTC",
+      "ohlc_policy": "zero tolerance \u2014 any OHLC-invalid M1 bar excludes the symbol-year",
+      "partition_policy_id": "FX_ANNUAL_PARTITION_POLICY_R2",
+      "product": "HistData.com Generic ASCII M1",
+      "source_timezone": "America/New_York",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDJPY",
+        "XAUUSD"
+      ],
+      "transport": "GitHub contents API (raw media type)"
+    },
+    "dataset_manifest": "data/external/histdata_fx_multiyear/manifest.json",
+    "dataset_manifest_sha256": "14a85f854acf8856c46c4f2abc5031feded848f3400855c32548d5b57d1f949f",
+    "per_archive_identity": {
+      "EURUSD_2000": {
+        "inner_csv_bytes": 7731018,
+        "inner_csv_sha256": "4076e3f83cdec0088a25d2cb602df1a6fe59f2ebe7ca8fff812c3b9c29a6c37f",
+        "zip_sha256": "e84f39dd0872353e944f6122667dd44fc5c4cd46638b7397ddaa23125669da53"
+      },
+      "EURUSD_2001": {
+        "inner_csv_bytes": 12461430,
+        "inner_csv_sha256": "d21fd56cc2f1df019abf8e6fe46cf52e5bfe8e0caa554b3110cf94564ac7905a",
+        "zip_sha256": "4b3203b855a3070e34a27ecd13a91c54bd43bd26b1d443d60e3d0b8e71a59028"
+      },
+      "EURUSD_2002": {
+        "inner_csv_bytes": 11502000,
+        "inner_csv_sha256": "7005bc49535bffb4a4dee3e8fb189cc44f9ac12c04bb1f327f5b512ea46a7b85",
+        "zip_sha256": "74b1c50fbc84a0beb9f563db8800431472f18d7ecdfa087b70757e43fab180b2"
+      },
+      "EURUSD_2003": {
+        "inner_csv_bytes": 17082954,
+        "inner_csv_sha256": "e21fd776e58bd97513ee0ecfc7df1651445a8ac89a4ab058bed71506ab283f15",
+        "zip_sha256": "60084e7b5147acb9df9ad0f4972507471e013928e48f2f5f2574814b4ebfdac4"
+      },
+      "EURUSD_2004": {
+        "inner_csv_bytes": 17897508,
+        "inner_csv_sha256": "834cbb13467921dc3fe5956fe4ee34b12818f8e748bec450767b5d070117b1cb",
+        "zip_sha256": "b9b16accec7f07ab74f776b9768a7e00fc2985c59277d0e7694e2531b7bbcc5c"
+      },
+      "EURUSD_2005": {
+        "inner_csv_bytes": 17044290,
+        "inner_csv_sha256": "f71eba6a3597c86371d44c75137297efbcfcd48ac65f6eee1810d28a4f3abf41",
+        "zip_sha256": "b84e098603bf58a889fe5faf9c8cc3b039096fc568f28579c28a412cd2df4d55"
+      },
+      "EURUSD_2006": {
+        "inner_csv_bytes": 16587504,
+        "inner_csv_sha256": "50d7e918bcf6b3117b0b9862400ad64ef4c90f40da7784d16566e68cc2ee778a",
+        "zip_sha256": "9e9a8c1c2e6b0df35433a38c20126ddfa9a89f7cab34b13b512c7a0fdc52a17c"
+      },
+      "EURUSD_2007": {
+        "inner_csv_bytes": 16188228,
+        "inner_csv_sha256": "e9f9e89341b60bd8d3e609810650fbfeaa8b3e971bc01aca09e7eb21b4dc72e0",
+        "zip_sha256": "99649efc0e5484cb35db7a55eada9b523f07d1cae4bec15439dd22f8d4ecbab6"
+      },
+      "EURUSD_2008": {
+        "inner_csv_bytes": 18757170,
+        "inner_csv_sha256": "74bf9d673c3065abe660ab141b08ba4b2d463a56108c97bf8cdaf62860091d24",
+        "zip_sha256": "9af1ec50c8f00a235a5d22a21f5e86938991538f6eea8bade4ea016f6ba70a2c"
+      },
+      "EURUSD_2009": {
+        "inner_csv_bytes": 19217520,
+        "inner_csv_sha256": "356095ae8e541c84288d2db525496177ad26833e5b3aa8bbf7cdfe52254101fc",
+        "zip_sha256": "f40c9ebde8cc92de59a12255b5d7b432766abecba79f02eeb5c821dff5078062"
+      },
+      "EURUSD_2010": {
+        "inner_csv_bytes": 19025280,
+        "inner_csv_sha256": "527f761a54bef058b2e8876aad62968627c71a4a78736b72e78ea093fa835e1c",
+        "zip_sha256": "df305f3747b65f63893277ece0116e77a0b33a50d2ed8e7f35642b3e6cffd6f5"
+      },
+      "EURUSD_2011": {
+        "inner_csv_bytes": 19351926,
+        "inner_csv_sha256": "de51dd1d9404ebf2dd8cbc091cf1f66427f8a51b9e786f87cc237f39e554259a",
+        "zip_sha256": "37ed350b0842bc0c7d6bef0528e8df4654194d73216cae341dbfdb40080374f2"
+      },
+      "EURUSD_2012": {
+        "inner_csv_bytes": 20096694,
+        "inner_csv_sha256": "7985d67946bad41b1cd0f2fc110538d19adf5a4ae6dffcdffee8a0d294605c9d",
+        "zip_sha256": "8420424955f34fe1615e0468a7e60e3c8f23ba30369b4e2d42889b6618f45754"
+      },
+      "EURUSD_2013": {
+        "inner_csv_bytes": 20012994,
+        "inner_csv_sha256": "293ec3e7f1f9a863e14d1be58aca5d5ca716b9c67eb4c33cbe58890eaf916787",
+        "zip_sha256": "e57a32dbfad5ac497964d7172cdb8fd566554940560a1ecd584e1bafdf169684"
+      },
+      "EURUSD_2014": {
+        "inner_csv_bytes": 19789758,
+        "inner_csv_sha256": "7f8a903a156c2e883ec5c389e555af6f340c634f414df69341c2b4fcfefdffab",
+        "zip_sha256": "4407d3228ed0c7174d2ff864fba8b04a87ddeed10cefbd170f6bf5203eeb33d9"
+      },
+      "EURUSD_2015": {
+        "inner_csv_bytes": 20099340,
+        "inner_csv_sha256": "6f3d88318899cf49797017466b88eb033ed0bd1e5d3c380eb197d669e6feab00",
+        "zip_sha256": "b6c015a65286b8e5712b4fc135bc2dbb75676a2ddb93c2b685c2dd52685a2dcd"
+      },
+      "EURUSD_2016": {
+        "inner_csv_bytes": 20124666,
+        "inner_csv_sha256": "9f1567957a0203f44c7e995a96fc0a7eca2bc0d0d2a4dee0a2c153a133aee2e6",
+        "zip_sha256": "231bf3a4562b729124bc8d2803a169f29c412bd03347ea25fe75abc9f79842ca"
+      },
+      "EURUSD_2017": {
+        "inner_csv_bytes": 20068290,
+        "inner_csv_sha256": "d5d095207bcdbfc77b899e4ab69c2fd31cee09791a9ff4c74f9c066fb49a6ac4",
+        "zip_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57"
+      },
+      "GBPUSD_2000": {
+        "inner_csv_bytes": 7142418,
+        "inner_csv_sha256": "cff6fc6abcf7f62d15a5a2b147cdfafcb83c9078d8dec5e6dc7db4b7c07ac210",
+        "zip_sha256": "1e7fd98e12ab2f36b890ae8eaf007d3d8149905cb225d4ac70b40e6463984f9d"
+      },
+      "GBPUSD_2001": {
+        "inner_csv_bytes": 10964052,
+        "inner_csv_sha256": "58383e8f40f7db726a7c9c18a18f6bb9ca7199dd6177f639cada3f41c461ef1f",
+        "zip_sha256": "b950881dc4f597948e077c835fdc76a4e866cf5a14cac90edf5575e9c9768b88"
+      },
+      "GBPUSD_2002": {
+        "inner_csv_bytes": 10513854,
+        "inner_csv_sha256": "485c534e10c21c8b839471a25caed50148ff85eac38f47c70aaa1fc2f30bafbc",
+        "zip_sha256": "9b09153d3f13075326b1426802a3a4abb1e5b353e475d4c9cae9abf87afbc22f"
+      },
+      "GBPUSD_2003": {
+        "inner_csv_bytes": 16006572,
+        "inner_csv_sha256": "b5dae6cf8b4a3f73e0f6d585276318b99c2dcae9d79832dfe120d871cea179f8",
+        "zip_sha256": "b7134671b7035e7337d5e54a42cfdc7ddb379a93dd9d99c4aee58bfa4b85f72f"
+      },
+      "GBPUSD_2004": {
+        "inner_csv_bytes": 17142632,
+        "inner_csv_sha256": "ba759d2ac2e179f512a0bd5bb52468f79f77d20fc1f1fe5ec9cec1950306d79d",
+        "zip_sha256": "23b350f903c990520307de5eb7c512cfafc0e7219e2769de381935405039e561"
+      },
+      "GBPUSD_2005": {
+        "inner_csv_bytes": 16809444,
+        "inner_csv_sha256": "2f53bdb30974a3ec984da3a0fcff328a73a76023527267c01659163f5846c6f5",
+        "zip_sha256": "f0ffd0af2b8560412e0d0dec0ba7ee98371d6558d0d2fcf8e688932cdbd2ced2"
+      },
+      "GBPUSD_2006": {
+        "inner_csv_bytes": 16681086,
+        "inner_csv_sha256": "6887985a46556fb79d9ab3c936095fe166da260c5dbb25106488712c2848c8dd",
+        "zip_sha256": "9174576633a332e4c446ce2606b55cde971ccfc8a3a9d00cca3c0eced1fefd1a"
+      },
+      "GBPUSD_2007": {
+        "inner_csv_bytes": 16564500,
+        "inner_csv_sha256": "42f1645498094649e721b8075aa78e82db78c76b7131f322d188eefb980fec3e",
+        "zip_sha256": "a75ac478da5dd6afc18e3785cc262f4a2cbd429f8fd039b86aa4da98616fdb88"
+      },
+      "GBPUSD_2008": {
+        "inner_csv_bytes": 17937018,
+        "inner_csv_sha256": "ce7f1e60fdd5ad51357de44e3486fc8b700e041aab500767ab95a2e210583d39",
+        "zip_sha256": "e1a66e79d6100d0eb5275d363da54a569e83508d963f519355cf78ad35812200"
+      },
+      "GBPUSD_2009": {
+        "inner_csv_bytes": 19125612,
+        "inner_csv_sha256": "c83b305a4d8995607fa0e76e4ed8d8f24fff4d8c98205bd8595d37b1ccd1dc2d",
+        "zip_sha256": "56a9a55df0594accc9d309a5f07c595a64647ba52a0126eb90ee8678bed3855c"
+      },
+      "GBPUSD_2010": {
+        "inner_csv_bytes": 18827802,
+        "inner_csv_sha256": "d260f21b93af269bbbbc7e6386ce04d2e733875d3e6895094ff0d317712268b0",
+        "zip_sha256": "f30e5e74ef66f429fe974ee5c1d2035757744559407e49a8ece0e4769135d7f1"
+      },
+      "GBPUSD_2011": {
+        "inner_csv_bytes": 18863442,
+        "inner_csv_sha256": "1b9e9d4bbf28182099236c943ca69988f2638739a97260f06661a18020c5d0b8",
+        "zip_sha256": "4ac875f049bdcf849997af4977f993d66081a9b88073b991599a1928f7b7b06b"
+      },
+      "GBPUSD_2012": {
+        "inner_csv_bytes": 20076984,
+        "inner_csv_sha256": "17b681a867d842be65eeb50aa12a4bb1c175c8652b41bc6448a3827d1a9fe25c",
+        "zip_sha256": "83a04818d50ce20b149f6ba7e70973cebe9dca77afeb291cf0cf369f67a551bb"
+      },
+      "GBPUSD_2013": {
+        "inner_csv_bytes": 20021148,
+        "inner_csv_sha256": "060fb998bd4cd5a9af97cab50d6b861a8ac331b9e3140d56d651ebb7189e4bd3",
+        "zip_sha256": "85bf830f3418e2b8fa521126894ba5510a033826aaeadd57eec3c13f9b7893eb"
+      },
+      "GBPUSD_2014": {
+        "inner_csv_bytes": 19921464,
+        "inner_csv_sha256": "1eebe9a2e219a72cbb36e76c5a8ca63fb4d74856ffb832517c578f2dcc1050c7",
+        "zip_sha256": "72b956ebd8acbcc1aaffc59fd0d39d0cf2a7f33bb4fa3a17d8c72faa8f41724b"
+      },
+      "GBPUSD_2015": {
+        "inner_csv_bytes": 20100474,
+        "inner_csv_sha256": "65afa3b15f72828157685a37521856dab0474d56f14d2816a3affa80effd2888",
+        "zip_sha256": "531514f5b3100be28d740b95ccf97662f6dcba3c6941cc465ac473b869b302eb"
+      },
+      "GBPUSD_2016": {
+        "inner_csv_bytes": 20113920,
+        "inner_csv_sha256": "5f29a0e2a8e24a720fa1d7d44c605605182eeaf685d2994e6bc0f7f655e80a28",
+        "zip_sha256": "39acbc0146e6ce82fc5327c56225623a0507e279534b8f2906dff19725c65838"
+      },
+      "GBPUSD_2017": {
+        "inner_csv_bytes": 20045016,
+        "inner_csv_sha256": "04726017e04391b319cce1ad01b7146332c6cf6247890b9999dc7e106f8a2939",
+        "zip_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b"
+      },
+      "USDJPY_2000": {
+        "inner_csv_bytes": 8136942,
+        "inner_csv_sha256": "2fb015e14f764d6d9866997c3934a446cfa610e66e109b658ebe9e3099781140",
+        "zip_sha256": "43ef5e79514502965ab014c48e437654eea622b477c122a753ef50aaf04d18eb"
+      },
+      "USDJPY_2001": {
+        "inner_csv_bytes": 15140400,
+        "inner_csv_sha256": "f2f6a433885493103397b7a1f92e577083be3895d464c53293c618b8f11b26f7",
+        "zip_sha256": "9d0d156eec970b3601995b918f037b8340375bcf94838dc14dbf32f61545fdca"
+      },
+      "USDJPY_2002": {
+        "inner_csv_bytes": 14793758,
+        "inner_csv_sha256": "2e0bbf6ef01e19fda43102d4c2d89554b5573cf8e1f5d5cfb012d369d1045465",
+        "zip_sha256": "45640e8692e50d68c8f3cf0916a77adcb0bcf757fc0ae72cae9168e03579ad87"
+      },
+      "USDJPY_2003": {
+        "inner_csv_bytes": 20492612,
+        "inner_csv_sha256": "3f91e51098e6b325d849e64746151289ba9c850ba4b2590b691b6dc5ef3286f7",
+        "zip_sha256": "fc6f7cde2268100cabe57df733bb9733ba6f150c466f9b65784caed191d70915"
+      },
+      "USDJPY_2004": {
+        "inner_csv_bytes": 19960342,
+        "inner_csv_sha256": "f12cfab5267908d1ae058e395ed505f075cdbe3655c07c227fec50ceda7eb900",
+        "zip_sha256": "227f9f69dc92c80022c0ba496a321b2ed13583ad6273fef9cdf2470382ee846f"
+      },
+      "USDJPY_2005": {
+        "inner_csv_bytes": 19403644,
+        "inner_csv_sha256": "b35122fe1446cd99ab4b7f1bd8674b275d8eb527cc31af1edf0df4c956739e06",
+        "zip_sha256": "6ccf772177457ddb33534583460090e41ccf9a98ce49d43169ba2867c263f54d"
+      },
+      "USDJPY_2006": {
+        "inner_csv_bytes": 19588900,
+        "inner_csv_sha256": "38dea6e3ccfd9c51a5ccec423a2ef6d821e830ad9ee62fce458961ae74d7d0ff",
+        "zip_sha256": "7bcca8c9a1f43ef5abba006e3773ff98f8be95445d3fc8138f6e85fa25af7164"
+      },
+      "USDJPY_2007": {
+        "inner_csv_bytes": 20012856,
+        "inner_csv_sha256": "5c00030bc43b9e4d8473b72e67b4e3b0e34489ab5935466fc1f1c369e239a011",
+        "zip_sha256": "39691093a8ca309f5897784ddb2432ce569dcc5765d5ad23f358e66af87d0ed4"
+      },
+      "USDJPY_2008": {
+        "inner_csv_bytes": 21259601,
+        "inner_csv_sha256": "7c13d5c4fb825853db03072aa2c89c38702f3b46de140037ddb20e0050b8c98e",
+        "zip_sha256": "7e586a2ccbae322da905326232089090404e10aa7550b35607cb6f6048a3474d"
+      },
+      "USDJPY_2009": {
+        "inner_csv_bytes": 19949645,
+        "inner_csv_sha256": "ed1351578737279f241d42af11ff01e6b4779016d2255260cc9da10d8d91888b",
+        "zip_sha256": "4c486e9dab25fd7934bc6aa536ef196873465b588d02bf89646ccef0ce7efe88"
+      },
+      "USDJPY_2010": {
+        "inner_csv_bytes": 19072488,
+        "inner_csv_sha256": "c052836101b81b4f553bb3120ef3b1843a126df19e087ab438e1f8e5c122c84d",
+        "zip_sha256": "207f3775d6d7a652586994a5fbe30e67e4cf138fe485f05cac8137671d647a7c"
+      },
+      "USDJPY_2011": {
+        "inner_csv_bytes": 17416588,
+        "inner_csv_sha256": "182b83b983fd0b1949e20182ca5f376933c9b73db658163fa1ce17fe4a2d60a7",
+        "zip_sha256": "f7cd7d1b45542f3cb29687558d067e08b8f2dca9fcd940e306f562bfa48b9c9f"
+      },
+      "USDJPY_2012": {
+        "inner_csv_bytes": 21209788,
+        "inner_csv_sha256": "ddf0ebcd73532732be39d2461d388ae1f2c75247122b31a8efe9b52a56c46c2c",
+        "zip_sha256": "390f2a394c43238251c8def63c7bafa14dbaa8cca95fb66c5eca1387b596a3ef"
+      },
+      "USDJPY_2013": {
+        "inner_csv_bytes": 21836721,
+        "inner_csv_sha256": "307df9ad24398acab024fe926b722c7172aa0484260c84e5bcb58e0b3ab660ce",
+        "zip_sha256": "ee13c99ccd29c19eed607bf5b6e23632c3e815d03a767b2e65270227ded00bd9"
+      },
+      "USDJPY_2014": {
+        "inner_csv_bytes": 22737942,
+        "inner_csv_sha256": "e73bb79acd7c5fe146d9553e367d11e1201ac4d46f2e877c7b19fe09db5af59d",
+        "zip_sha256": "09e1e49f4f00b4fcd029602dd548026fa9b2182e5c140385996a4f458f5cb234"
+      },
+      "USDJPY_2015": {
+        "inner_csv_bytes": 23057242,
+        "inner_csv_sha256": "bbf59d9ccf61c9eec30bb8c15f80cd95b5a19a496f1b17c27ba7c9ef8d0b0afa",
+        "zip_sha256": "3c108f737d2a1c221c24d8da5dbae4a8ee5eca640bfdb48cb69e286226db9b29"
+      },
+      "USDJPY_2016": {
+        "inner_csv_bytes": 23086522,
+        "inner_csv_sha256": "160d06f76ddf83603cd2ccf01d0499d466b7771a9a096e01dc48cd70602c1561",
+        "zip_sha256": "11706684d9f7ffdfb7bcd92bb4303f7e8ff5b7711bda75f6dcc875fd2235479c"
+      },
+      "USDJPY_2017": {
+        "inner_csv_bytes": 23020476,
+        "inner_csv_sha256": "849f3c89d84f5db0150604306e45f07586865f40a33ca5d363f48df381b85a2b",
+        "zip_sha256": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f"
+      },
+      "XAUUSD_2009": {
+        "inner_csv_bytes": 17515717,
+        "inner_csv_sha256": "b9ce35138a58104a23feaa9f6e0ac8f8a1afea9390cd579106bf1feea79b3763",
+        "zip_sha256": "60891e43b5cdb92834a0b582ee040f4d5a409fe5ffbb9f9d83190e020a559d6b"
+      },
+      "XAUUSD_2010": {
+        "inner_csv_bytes": 22848936,
+        "inner_csv_sha256": "f6f93434e4357cf18163f32a259a15f79edc03d87b8e551d6097a9ea04b13d2e",
+        "zip_sha256": "0c96454b792317999a918d7ae28123f89c740d315e1d0b6937e6e9ac36c83134"
+      },
+      "XAUUSD_2011": {
+        "inner_csv_bytes": 23249556,
+        "inner_csv_sha256": "8552745f8686a13ae1cd15ba44ba825f718e515e7e424bba98a511a5b9ec9700",
+        "zip_sha256": "6b48d5a23c6d702f0859fe26e78fe61dd66161240999c5b2a473ea3b713eb8f7"
+      },
+      "XAUUSD_2012": {
+        "inner_csv_bytes": 23416602,
+        "inner_csv_sha256": "557c8a6ff1bd24535446937359bc42c176e10077aeb7e7aa686c21249d6d463d",
+        "zip_sha256": "66954b906552f053b9815d38f69f9405b5f61da17ad75c297394ab30fdfd1cc0"
+      },
+      "XAUUSD_2013": {
+        "inner_csv_bytes": 23440560,
+        "inner_csv_sha256": "0d0e77e8222c222202b2f98966fd61d4e252858486c513916a4e34cc92c33814",
+        "zip_sha256": "805267a6100103d1a5d3618f62e6d5ed731d16ed2621302e8b4a9127b6c99da8"
+      },
+      "XAUUSD_2014": {
+        "inner_csv_bytes": 23205996,
+        "inner_csv_sha256": "c47302ead3008b728f64ed0e054c747476e4bfdab17aa08a0558b8bf21382a38",
+        "zip_sha256": "d342c8005382ec989532eb7f6314b9873aa8291491b1e15e5e04089e930f61e8"
+      },
+      "XAUUSD_2015": {
+        "inner_csv_bytes": 23209956,
+        "inner_csv_sha256": "364710198f34a8a2d0aafa75c5306dc2f21b29a4ce0fbc365c8fb837d7d86dfd",
+        "zip_sha256": "21ed022f1ee5377f37fe2f78288de40653a14173d29e589d35cf2a5a3cc22ef3"
+      },
+      "XAUUSD_2016": {
+        "inner_csv_bytes": 23325390,
+        "inner_csv_sha256": "1934015f50b6d4fefdef5734bc06efcdefcaf67f138f7dd391a6febb6b166524",
+        "zip_sha256": "a258029bc2f21581b19619edaec33d1df2cd98e03d7cf0ee76c101e9e5cd6a3f"
+      },
+      "XAUUSD_2017": {
+        "inner_csv_bytes": 23255760,
+        "inner_csv_sha256": "b97c6ecb8dbc0fa11f8f32082498573b36f0a0276e51c843b5609b16fdeb0ad7",
+        "zip_sha256": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+      }
+    },
+    "permitted_symbol_years": [
+      {
+        "symbol": "EURUSD",
+        "year": 2000
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2001
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2002
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2003
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2004
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2005
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2006
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2007
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2008
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2009
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2010
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2011
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2012
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2013
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2014
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2015
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2016
+      },
+      {
+        "symbol": "EURUSD",
+        "year": 2017
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2000
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2001
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2002
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2003
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2004
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2005
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2006
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2007
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2008
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2009
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2010
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2011
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2012
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2013
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2014
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2015
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2016
+      },
+      {
+        "symbol": "GBPUSD",
+        "year": 2017
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2000
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2001
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2002
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2003
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2004
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2005
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2006
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2007
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2008
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2009
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2010
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2011
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2012
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2013
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2014
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2015
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2016
+      },
+      {
+        "symbol": "USDJPY",
+        "year": 2017
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2009
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2010
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2011
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2012
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2013
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2014
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2015
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2016
+      },
+      {
+        "symbol": "XAUUSD",
+        "year": 2017
+      }
+    ],
+    "permitted_symbol_years_n": 63
+  },
+  "previous_binding": {
+    "dataset_authority": "HISTDATA_ASCII_M1_2017_PR10_PINNED",
+    "dev_window_utc": [
+      "2017-01-01T00:00:00+00:00",
+      "2017-09-01T00:00:00+00:00"
+    ],
+    "symbol_years": 4
+  }
+}

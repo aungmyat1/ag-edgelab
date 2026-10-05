@@ -1,0 +1,16 @@
+{
+  "no_assumption_chosen": "No strategy spread assumption is selected here. Choosing one is a separate, later decision that must be preregistered.",
+  "outlier_policy": "flagged by 1.5 IQR above P75, never removed",
+  "percentiles_reported": [
+    "MIN",
+    "P25",
+    "P50",
+    "P75",
+    "P90",
+    "P95",
+    "P99",
+    "MAX"
+  ],
+  "status": "MISSING",
+  "symbols": {}
+}

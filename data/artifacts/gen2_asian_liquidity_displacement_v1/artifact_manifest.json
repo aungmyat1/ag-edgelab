@@ -1,0 +1,78 @@
+{
+  "artifact_set": "GEN2_ASIAN_LIQUIDITY_DISPLACEMENT_V1",
+  "dataset_role": "DEVELOPMENT",
+  "external_evidence_pointer": {
+    "pinned_sha256": {
+      "EURUSD": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+      "GBPUSD": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+      "USDJPY": "477a1f515586f06d67cb75b3662260160e1e29e63c51804a30a5e7d69b09df5f",
+      "XAUUSD": "a39c1ccaaeb022c83309685107c9e619c2bcff8b2fd94fbd7405a721a4fe70ff"
+    },
+    "raw_dataset": "NOT COMMITTED \u2014 hash-pinned HistData zips fetched by scripts/acquire_histdata_fx_2017.sh into data/external/histdata_fx_2017"
+  },
+  "files": {
+    "candidate_freeze.json": {
+      "bytes": 1902,
+      "sha256": "39945a4b418eebb410b89156da2e2609714f4816a4eb649651fb91d00d714f70"
+    },
+    "candidate_ledger.jsonl": {
+      "bytes": 2276237,
+      "sha256": "5b6df7eb441aee7a17739389cda18c994c604c2e6e4a16013bc7ab17819a3269"
+    },
+    "confirmation_analysis.json": {
+      "bytes": 3276,
+      "sha256": "64162ffdd9205c5e89e6a1256e7738193e577267597ecab00dc7728014473328"
+    },
+    "continuation_survival.json": {
+      "bytes": 417,
+      "sha256": "d3fc5893db996e2bee8914e55af82a69c4ec60671813fee46e69b30e321c30e3"
+    },
+    "final_report.json": {
+      "bytes": 13688,
+      "sha256": "61a2e1b6c0ae005b08f7ae93b95060c088ccecac6a79d86de2cfa4642678ed97"
+    },
+    "final_report.md": {
+      "bytes": 7931,
+      "sha256": "cbbc46f2f510916ee20df20ac4799b17147a2b6c7ece5a4a536369a5c4687832"
+    },
+    "funnel_report.json": {
+      "bytes": 59319,
+      "sha256": "de9748293cbbcec048de9761bde0aa0453533d200f065ff64800e5b97fbcf0c4"
+    },
+    "per_symbol_session_matrix.csv": {
+      "bytes": 759,
+      "sha256": "cd81e3eb205d12f137829ce8d948c5e17e9e5852926e7b9a6e44204abdf1a3cd"
+    },
+    "pre_oos_gate_result.json": {
+      "bytes": 2386,
+      "sha256": "df03ab5773e0c2797fd3f835561840e61ce2e79c09169dd6d816d34a5a93e388"
+    },
+    "preregistration.json": {
+      "bytes": 18910,
+      "sha256": "c82a9f0cae9dce93c3417e349352ca7a48551c59c8e30bfdac82329b805d5087"
+    },
+    "robustness_report.json": {
+      "bytes": 9670,
+      "sha256": "33bab50ad344691495100429ca7df3cafa3d85c8a4688bfcb2fa217ac7e9d6a5"
+    },
+    "strategy_contract.json": {
+      "bytes": 9895,
+      "sha256": "bdda3f6207ad5aae3fd0657560b1c9e34ff3eeabc669f852d9e3bae3a480e456"
+    },
+    "target_capability.json": {
+      "bytes": 1117,
+      "sha256": "d14d236eca3310f4e5d36794877607d602f72d92ee5f9004dc74ffa060aafb0d"
+    },
+    "temporal_diagnostics.json": {
+      "bytes": 954,
+      "sha256": "03c2bbdb932179b76d5310aa51b6d334dcd20c2521e64615fd0a63616533f1a1"
+    },
+    "trigger_analysis.json": {
+      "bytes": 2490,
+      "sha256": "0cb8cc13b10277a9b87a835fe6d83af830238821060fb1791db48401b85b2b68"
+    }
+  },
+  "generated_at_utc": "2026-10-05T07:24:36+00:00",
+  "implementation_sha": "8b9ef4e11929de6f0782839e1a4378bc445002d5",
+  "tree_sha": "e8eb9ba97cbb69c13607dba3a5d45743f3a31ed5"
+}

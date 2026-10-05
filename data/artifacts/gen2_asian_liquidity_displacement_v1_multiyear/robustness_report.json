@@ -1,0 +1,772 @@
+{
+  "axes": {
+    "BOOTSTRAP": {
+      "ci_high_r": 0.1378895278069859,
+      "ci_low_r": -0.45943774543334653,
+      "confidence": 0.95,
+      "estimate_r": -0.1669593229120424,
+      "provisional_state_if_eligible": "FAIL",
+      "samples": 5000,
+      "seed": 20251005,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "INTRA_YEAR_SEGMENT_STABILITY": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "2008Q1": {
+          "expectancy_r": 1.186440677966114,
+          "median_r": 1.186441,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 1.186440677966114
+        },
+        "2009Q2": {
+          "expectancy_r": 0.8811556603773859,
+          "median_r": 0.881156,
+          "n": 2,
+          "qualifying": false,
+          "total_r": 1.7623113207547718
+        },
+        "2010Q1": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2010Q2": {
+          "expectancy_r": 0.020676988000807084,
+          "median_r": 0.208054,
+          "n": 3,
+          "qualifying": false,
+          "total_r": 0.06203096400242125
+        },
+        "2010Q3": {
+          "expectancy_r": 0.6651227678571583,
+          "median_r": 0.665123,
+          "n": 2,
+          "qualifying": false,
+          "total_r": 1.3302455357143166
+        },
+        "2011Q1": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2011Q2": {
+          "expectancy_r": 1.3489583333332957,
+          "median_r": 1.348958,
+          "n": 2,
+          "qualifying": false,
+          "total_r": 2.6979166666665915
+        },
+        "2011Q3": {
+          "expectancy_r": -0.34339241293532796,
+          "median_r": -0.343392,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -0.6867848258706559
+        },
+        "2012Q3": {
+          "expectancy_r": -0.6888801261829574,
+          "median_r": -0.68888,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -1.3777602523659147
+        },
+        "2013Q2": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2013Q3": {
+          "expectancy_r": 0.885679267995378,
+          "median_r": 0.885679,
+          "n": 2,
+          "qualifying": false,
+          "total_r": 1.771358535990756
+        },
+        "2014Q1": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2014Q2": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 5,
+          "qualifying": false,
+          "total_r": -5.0
+        },
+        "2015Q1": {
+          "expectancy_r": -0.23721719457013263,
+          "median_r": -0.237217,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -0.47443438914026526
+        },
+        "2015Q2": {
+          "expectancy_r": -0.0013181943384977617,
+          "median_r": 0.045779,
+          "n": 3,
+          "qualifying": false,
+          "total_r": -0.003954583015493285
+        },
+        "2016Q1": {
+          "expectancy_r": 0.03340551181102555,
+          "median_r": 0.033406,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 0.03340551181102555
+        },
+        "2016Q3": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2017Q1": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2017Q2": {
+          "expectancy_r": -0.14435146443515184,
+          "median_r": -0.144351,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -0.14435146443515184
+        },
+        "2017Q3": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        }
+      }
+    },
+    "LEAVE_ONE_SYMBOL_OUT": {
+      "folds": {
+        "WITHOUT_EURUSD": {
+          "expectancy_r": -0.17563,
+          "n": 30,
+          "qualifying": true
+        },
+        "WITHOUT_GBPUSD": {
+          "expectancy_r": -0.154475,
+          "n": 25,
+          "qualifying": false
+        },
+        "WITHOUT_USDJPY": {
+          "expectancy_r": -0.200047,
+          "n": 29,
+          "qualifying": false
+        },
+        "WITHOUT_XAUUSD": {
+          "expectancy_r": -0.123742,
+          "n": 21,
+          "qualifying": false
+        }
+      },
+      "min_fold_n": 30,
+      "positive_fraction": 0.0,
+      "provisional_state_if_eligible": "FAIL",
+      "qualifying_folds": 1,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "LEAVE_ONE_YEAR_OUT": {
+      "folds": {
+        "WITHOUT_2008": {
+          "expectancy_r": -0.206765,
+          "n": 34,
+          "qualifying": true
+        },
+        "WITHOUT_2009": {
+          "expectancy_r": -0.230481,
+          "n": 33,
+          "qualifying": true
+        },
+        "WITHOUT_2010": {
+          "expectancy_r": -0.215029,
+          "n": 29,
+          "qualifying": false
+        },
+        "WITHOUT_2011": {
+          "expectancy_r": -0.22849,
+          "n": 30,
+          "qualifying": true
+        },
+        "WITHOUT_2012": {
+          "expectancy_r": -0.135328,
+          "n": 33,
+          "qualifying": true
+        },
+        "WITHOUT_2013": {
+          "expectancy_r": -0.206717,
+          "n": 32,
+          "qualifying": true
+        },
+        "WITHOUT_2014": {
+          "expectancy_r": 0.005394,
+          "n": 29,
+          "qualifying": false
+        },
+        "WITHOUT_2015": {
+          "expectancy_r": -0.17884,
+          "n": 30,
+          "qualifying": true
+        },
+        "WITHOUT_2016": {
+          "expectancy_r": -0.147787,
+          "n": 33,
+          "qualifying": true
+        },
+        "WITHOUT_2017": {
+          "expectancy_r": -0.115601,
+          "n": 32,
+          "qualifying": true
+        }
+      },
+      "min_fold_n": 30,
+      "positive_fraction": 0.0,
+      "provisional_state_if_eligible": "FAIL",
+      "qualifying_folds": 8,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "MEAN_MEDIAN_DIVERGENCE": {
+      "divergence": 0.210801,
+      "mean_r": -0.166959,
+      "median_r": -0.37776,
+      "provisional_state_if_eligible": "PASS",
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "PARAMETER_NEIGHBORHOOD": {
+      "provisional_state_if_eligible": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "reason": "the pooled entry population never reached the preregistered eligibility floor of 100; a neighborhood diagnostic on an empty/degenerate population would be noise, not evidence",
+      "selection_authority": "NONE \u2014 0.70 remains frozen",
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "REGIME_STABILITY": {
+      "classifier": "ag_edgelab.verification.regimes.classify_market_state (frozen v1) on the D1 bar last closed before the entry-window open",
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "RANGE": {
+          "expectancy_r": -0.028203441057633956,
+          "median_r": 0.263325,
+          "n": 14,
+          "qualifying": false,
+          "total_r": -0.3948481748068754
+        },
+        "TREND": {
+          "expectancy_r": -0.25946324414831473,
+          "median_r": -0.478261,
+          "n": 21,
+          "qualifying": false,
+          "total_r": -5.4487281271146095
+        }
+      }
+    },
+    "SESSION_STABILITY": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "ASIAN_LONDON": {
+          "expectancy_r": -0.2700973663741356,
+          "median_r": -0.73913,
+          "n": 16,
+          "qualifying": false,
+          "total_r": -4.32155786198617
+        },
+        "LONDON_NEWYORK": {
+          "expectancy_r": -0.08010623368080598,
+          "median_r": 0.045779,
+          "n": 19,
+          "qualifying": false,
+          "total_r": -1.5220184399353136
+        }
+      }
+    },
+    "SYMBOL_STABILITY": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "EURUSD": {
+          "expectancy_r": -0.11493572152821226,
+          "median_r": 0.045779,
+          "n": 5,
+          "qualifying": false,
+          "total_r": -0.5746786076410613
+        },
+        "GBPUSD": {
+          "expectancy_r": -0.19817032631898862,
+          "median_r": -0.222428,
+          "n": 10,
+          "qualifying": false,
+          "total_r": -1.981703263189886
+        },
+        "USDJPY": {
+          "expectancy_r": -0.007033464340521656,
+          "median_r": -0.340702,
+          "n": 6,
+          "qualifying": false,
+          "total_r": -0.042200786043129934
+        },
+        "XAUUSD": {
+          "expectancy_r": -0.23178526036052913,
+          "median_r": -0.68888,
+          "n": 14,
+          "qualifying": false,
+          "total_r": -3.244993645047408
+        }
+      }
+    },
+    "TAIL_DEPENDENCE": {
+      "expectancy_r_all": -0.1669593229120424,
+      "expectancy_r_drop_best_1": -0.2379675803086131,
+      "expectancy_r_drop_best_5pct": -0.28920183902454516,
+      "provisional_state_if_eligible": "FAIL",
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE"
+    },
+    "WALK_FORWARD": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "2008-03": {
+          "expectancy_r": 1.186440677966114,
+          "median_r": 1.186441,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 1.186440677966114
+        },
+        "2009-04": {
+          "expectancy_r": 0.8811556603773859,
+          "median_r": 0.881156,
+          "n": 2,
+          "qualifying": false,
+          "total_r": 1.7623113207547718
+        },
+        "2010-02": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2010-04": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2010-05": {
+          "expectancy_r": 0.8539772727272532,
+          "median_r": 0.853977,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 0.8539772727272532
+        },
+        "2010-06": {
+          "expectancy_r": 0.20805369127516804,
+          "median_r": 0.208054,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 0.20805369127516804
+        },
+        "2010-07": {
+          "expectancy_r": 0.6651227678571583,
+          "median_r": 0.665123,
+          "n": 2,
+          "qualifying": false,
+          "total_r": 1.3302455357143166
+        },
+        "2011-01": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2011-04": {
+          "expectancy_r": 2.24732142857136,
+          "median_r": 2.247321,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 2.24732142857136
+        },
+        "2011-06": {
+          "expectancy_r": 0.4505952380952314,
+          "median_r": 0.450595,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 0.4505952380952314
+        },
+        "2011-08": {
+          "expectancy_r": -0.34339241293532796,
+          "median_r": -0.343392,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -0.6867848258706559
+        },
+        "2012-07": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2012-08": {
+          "expectancy_r": -0.3777602523659147,
+          "median_r": -0.37776,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -0.3777602523659147
+        },
+        "2013-04": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2013-08": {
+          "expectancy_r": 0.885679267995378,
+          "median_r": 0.885679,
+          "n": 2,
+          "qualifying": false,
+          "total_r": 1.771358535990756
+        },
+        "2014-03": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2014-04": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2014-05": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -2.0
+        },
+        "2014-06": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -2.0
+        },
+        "2015-01": {
+          "expectancy_r": 0.5255656108597347,
+          "median_r": 0.525566,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 0.5255656108597347
+        },
+        "2015-02": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2015-06": {
+          "expectancy_r": -0.0013181943384977617,
+          "median_r": 0.045779,
+          "n": 3,
+          "qualifying": false,
+          "total_r": -0.003954583015493285
+        },
+        "2016-03": {
+          "expectancy_r": 0.03340551181102555,
+          "median_r": 0.033406,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 0.03340551181102555
+        },
+        "2016-07": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2017-03": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        },
+        "2017-04": {
+          "expectancy_r": -0.14435146443515184,
+          "median_r": -0.144351,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -0.14435146443515184
+        },
+        "2017-07": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 1,
+          "qualifying": false,
+          "total_r": -1.0
+        }
+      }
+    },
+    "YEAR_STABILITY": {
+      "min_stratum_n": 30,
+      "positive_fraction": null,
+      "provisional_state_if_eligible": "INSUFFICIENT_SAMPLE",
+      "qualifying_strata": 0,
+      "required_positive_fraction": 0.6,
+      "standing_limitation": "RESOLVED_FOR_YEAR_COVERAGE \u2014 the single-year campaign's YEAR_COVERAGE_LIMITED_SINGLE_CALENDAR_YEAR_2017 limitation no longer applies; 18 calendar years are covered",
+      "state": "NOT_RUN_INSUFFICIENT_SAMPLE",
+      "strata": {
+        "2008": {
+          "expectancy_r": 1.186440677966114,
+          "median_r": 1.186441,
+          "n": 1,
+          "qualifying": false,
+          "total_r": 1.186440677966114
+        },
+        "2009": {
+          "expectancy_r": 0.8811556603773859,
+          "median_r": 0.881156,
+          "n": 2,
+          "qualifying": false,
+          "total_r": 1.7623113207547718
+        },
+        "2010": {
+          "expectancy_r": 0.0653794166194563,
+          "median_r": 0.330217,
+          "n": 6,
+          "qualifying": false,
+          "total_r": 0.39227649971673784
+        },
+        "2011": {
+          "expectancy_r": 0.2022263681591871,
+          "median_r": 0.313215,
+          "n": 5,
+          "qualifying": false,
+          "total_r": 1.0111318407959355
+        },
+        "2012": {
+          "expectancy_r": -0.6888801261829574,
+          "median_r": -0.68888,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -1.3777602523659147
+        },
+        "2013": {
+          "expectancy_r": 0.2571195119969187,
+          "median_r": 0.318596,
+          "n": 3,
+          "qualifying": false,
+          "total_r": 0.771358535990756
+        },
+        "2014": {
+          "expectancy_r": -1.0,
+          "median_r": -1.0,
+          "n": 6,
+          "qualifying": false,
+          "total_r": -6.0
+        },
+        "2015": {
+          "expectancy_r": -0.0956777944311517,
+          "median_r": 0.045779,
+          "n": 5,
+          "qualifying": false,
+          "total_r": -0.4783889721557585
+        },
+        "2016": {
+          "expectancy_r": -0.4832972440944872,
+          "median_r": -0.483297,
+          "n": 2,
+          "qualifying": false,
+          "total_r": -0.9665944881889744
+        },
+        "2017": {
+          "expectancy_r": -0.714783821478384,
+          "median_r": -1.0,
+          "n": 3,
+          "qualifying": false,
+          "total_r": -2.144351464435152
+        }
+      },
+      "substitution": "NONE \u2014 this is a true calendar-year axis",
+      "years_covered": [
+        "2000",
+        "2001",
+        "2002",
+        "2003",
+        "2004",
+        "2005",
+        "2006",
+        "2007",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017"
+      ]
+    }
+  },
+  "basis": "structural R under the TP1/TP2 50/50 management diagnostic; no friction applied",
+  "eligibility": {
+    "eligible": false,
+    "pooled_entry_available_n": 35,
+    "preregistered_rule": "on ineligible -> PRE_OOS_RESULT = NOT_REACHED (never a PASS)",
+    "required": 100,
+    "stratum_min_n": 30
+  },
+  "multi_year_extension": {
+    "added_axes": [
+      "LEAVE_ONE_YEAR_OUT",
+      "LEAVE_ONE_SYMBOL_OUT",
+      "INTRA_YEAR_SEGMENT_STABILITY"
+    ],
+    "eligibility_rule": "pooled ENTRY_AVAILABLE_N >= 100",
+    "year_axis": "calendar year (no longer substituted by intra-year quarters)",
+    "years_covered": [
+      "2000",
+      "2001",
+      "2002",
+      "2003",
+      "2004",
+      "2005",
+      "2006",
+      "2007",
+      "2008",
+      "2009",
+      "2010",
+      "2011",
+      "2012",
+      "2013",
+      "2014",
+      "2015",
+      "2016",
+      "2017"
+    ],
+    "years_n": 18
+  },
+  "preregistered_gate_contract": {
+    "axes": {
+      "BOOTSTRAP_UNCERTAINTY": {
+        "method": "ag_edgelab.statistics.bootstrap.bootstrap_expectancy_ci(samples=5000, seed=20251005, confidence=0.95)",
+        "pass_rule": "95% CI lower bound of management expectancy R strictly > 0"
+      },
+      "CANDIDATE_IDENTITY_VALIDATION": {
+        "pass_rule": "all contract hashes recomputed and equal; strategy identity collides with no historical candidate id"
+      },
+      "DATASET_ROLE_VALIDATION": {
+        "pass_rule": "every dataset read is role=DEVELOPMENT, recorded in the dataset ledger; OOS_OPENED=NO; HOLDOUT_TOUCHED=NO"
+      },
+      "FRICTION_READINESS": {
+        "mode": "STRUCTURAL_DISCLOSURE",
+        "note": "FRICTION_EDGE_VERIFICATION_READY = NO does not block STRUCTURAL research (mission section 13)",
+        "pass_rule": "the friction authority state is explicitly recorded, economic metrics are suppressed as NOT_ESTIMABLE_NO_FRICTION_AUTHORITY, and NO substitute value (generic spread, $7/lot, fixed slippage, industry default) appears anywhere in the evidence bundle"
+      },
+      "MEAN_MEDIAN_DIVERGENCE": {
+        "pass_rule": "NOT (mean management R > 0 AND median management R < 0) \u2014 a positive mean carried entirely by tails fails"
+      },
+      "PARAMETER_NEIGHBORHOOD": {
+        "method": "ag_edgelab.optimization.stability.assess_parameter_stability over displacement body/range in [0.6, 0.65, 0.7, 0.75, 0.8] centred on 0.7",
+        "pass_rule": "stable == True (positive_fraction >= 0.6 and relative_spike <= 2.0)",
+        "selection_authority": "NONE \u2014 diagnostic only; the V1 threshold 0.70 is frozen and is NOT changed by this mission under any outcome"
+      },
+      "REGIME_STABILITY": {
+        "classifier": "ag_edgelab.verification.regimes.classify_market_state (frozen v1) applied to the D1 bar last closed before the entry-window open",
+        "pass_rule": "fraction of qualifying regime slices with positive management expectancy >= 0.6"
+      },
+      "SESSION_STABILITY": {
+        "pass_rule": "fraction of qualifying session pairs with positive management expectancy >= 0.6"
+      },
+      "SYMBOL_STABILITY": {
+        "pass_rule": "fraction of qualifying symbols with positive management expectancy >= 0.6",
+        "universe": [
+          "EURUSD",
+          "GBPUSD",
+          "USDJPY",
+          "XAUUSD"
+        ]
+      },
+      "TAIL_DEPENDENCE": {
+        "method": "remove the single best trade; separately remove the best 5% of trades",
+        "pass_rule": "pooled management expectancy stays strictly positive under BOTH removals"
+      },
+      "WALK_FORWARD": {
+        "method": "chronological non-overlapping DEV folds (monthly test windows)",
+        "min_fold_n": 30,
+        "pass_rule": "fraction of folds with positive management expectancy >= 0.6"
+      },
+      "YEAR_STABILITY": {
+        "method": "the committed FX authority covers ONE calendar year (2017); per config/governance/data_authority_gap.json no multi-year partition exists. Substitution declared in advance: INTRA_YEAR_SEGMENT_STABILITY over the DEV calendar quarters (2017Q1, 2017Q2, 2017Q3-partial).",
+        "pass_rule": "fraction of qualifying quarters with positive management expectancy >= 0.6",
+        "standing_limitation": "YEAR_COVERAGE_LIMITED_SINGLE_CALENDAR_YEAR_2017"
+      }
+    },
+    "eligibility": {
+      "on_ineligible": "PRE_OOS_RESULT = NOT_REACHED (never a PASS)",
+      "pooled_direction_n_min": 200,
+      "pooled_entry_available_n_min": 100,
+      "stratum_min_n": 30
+    },
+    "gate_id": "PRE_OOS_ROBUSTNESS_GATE_V1",
+    "semantics": "FAIL_CLOSED \u2014 the gate PASSES only if every axis is PASS",
+    "structural_capability_floors": {
+      "entry_n_min": 30,
+      "reach_1R_min": 0.5,
+      "reach_3R_min": 0.25,
+      "source": "frozen V0.3 root-cause thresholds in ag_edgelab.universal.fx_dev_campaign"
+    },
+    "threshold_mutation_allowed": false
+  }
+}
