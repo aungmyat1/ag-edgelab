@@ -11,17 +11,15 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
-from ag_edgelab.contracts.market import MarketBar
 from ag_edgelab.data.fingerprint import canonical_json
 from ag_edgelab.strategies import asian_liquidity_displacement_v2_1 as V
 from ag_edgelab.strategies import symbol_metadata as SM
 from ag_edgelab.strategies import v2_1_engine as E
 from ag_edgelab.strategies import v2_1_funnel as F
 from tests.fixtures_v2_1 import (  # noqa: E402
-    SYNTHETIC_POLICY,
     build_scenarios,
     run_synthetic_engine,
 )
