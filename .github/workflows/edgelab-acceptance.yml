@@ -24,15 +24,9 @@ jobs:
       matrix:
         python-version: ["3.12", "3.13"]
         source:
-          - label: parent-84414f4
-            sha: 84414f489ea65d04d6fdab4496d8c59dccfc4faf
-            tree: fc14a400265a8d1f5806d0002ad0ea0e44cb760b
-          - label: original-129dd55
-            sha: 129dd55751430959c11272c983521babdf5a6fae
-            tree: a9ce57342f2d800fc5a1929974ffd8133370de50
-          - label: fix-3aae167
-            sha: 3aae1670453d92473daabe8d94400a442e07fdb5
-            tree: 69e63da9242130fbebc34901931db453e31a7535
+          - label: final-419f28b
+            sha: 419f28b1410b96249183aae87745fe700fb6da13
+            tree: c9ec486446c3215edb12bcc80442db5f7441fe41
     env:
       SOURCE_UNDER_TEST_SHA: ${{ matrix.source.sha }}
       EXPECTED_TREE_SHA: ${{ matrix.source.tree }}
