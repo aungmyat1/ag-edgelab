@@ -142,12 +142,12 @@ def local_bytes(location: str) -> bytes:
     return path.read_bytes()
 
 
-def verify_one(art: dict, section: str, failures: list) -> bool:
+def verify_one(art: dict, section: str, failures: list) -> str:
     art_id = art["artifact_id"]
     digest = art["sha256"]
     if not HEX64.match(digest):
         failures.append(f"[{section}] {art_id}: malformed sha256 pin")
-        return False
+        return "FAILED"
     location = art["storage_location"]
     try:
         if location.startswith("tree:"):
@@ -160,23 +160,23 @@ def verify_one(art: dict, section: str, failures: list) -> bool:
         # regenerable evidence absent from this checkout: report, do not verify
         print(f"ABSENT   [{section}] {art_id}  (regenerable; {exc}) "
               f"-> {art.get('retrieval', 'see producer_script')}")
-        return False
+        return "ABSENT"
     except (ValueError, OSError) as exc:
         failures.append(f"[{section}] {art_id}: {exc}")
-        return False
+        return "FAILED"
     got = hashlib.sha256(data).hexdigest()
     size = len(data)
     if got != digest:
         failures.append(f"[{section}] {art_id}: sha256 mismatch "
                         f"(pinned {digest[:16]}…, got {got[:16]}…)")
-        return False
+        return "FAILED"
     if size != art["byte_size"]:
         failures.append(f"[{section}] {art_id}: byte_size mismatch "
                         f"(pinned {art['byte_size']}, got {size})")
-        return False
+        return "FAILED"
     print(f"VERIFIED [{section}] {art_id}  sha256={digest[:16]}…  "
           f"{size} bytes")
-    return True
+    return "VERIFIED"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -186,12 +186,16 @@ def main(argv: list[str] | None = None) -> int:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     failures: list[str] = []
     verified = 0
+    absent_count = 0
     sections = [("externalized", registry["artifacts"]),
                 ("in_tree_pinned", registry.get("in_tree_pinned", []))]
     for section, arts in sections:
         for art in arts:
-            if verify_one(art, section, failures):
+            outcome = verify_one(art, section, failures)
+            if outcome == "VERIFIED":
                 verified += 1
+            elif outcome == "ABSENT":
+                absent_count += 1
 
     cas_entries = registry.get("content_addressed", [])
     cas_verified = 0
@@ -200,7 +204,6 @@ def main(argv: list[str] | None = None) -> int:
         outcome = verify_content_addressed(art, failures)
         if outcome == "VERIFIED":
             cas_verified += 1
-            verified += 1
         elif outcome == UNMATERIALIZED:
             cas_unmaterialized.append(art.get("artifact_id", "<unknown>"))
 
@@ -210,16 +213,16 @@ def main(argv: list[str] | None = None) -> int:
             f"{len(cas_unmaterialized)} content-addressed artifact(s) are not "
             f"present locally: {sorted(cas_unmaterialized)}")
 
+    total_pointers = len(registry["artifacts"]) + len(registry.get("in_tree_pinned", []))
+
     if failures:
         print("\nARTIFACT POINTER VERIFICATION FAILED (fail closed):",
               file=sys.stderr)
         for f in failures:
             print(f"  - {f}", file=sys.stderr)
         return 2
-    summary = (f"ALL {verified} ARTIFACT POINTERS VERIFIED "
-               f"({len(registry['artifacts'])} externalized, "
-               f"{len(registry.get('in_tree_pinned', []))} in-tree pinned, "
-               f"{cas_verified}/{len(cas_entries)} content-addressed materialized)")
+    summary = (f"{verified}/{total_pointers} VERIFIED, {absent_count} ABSENT "
+               f"(regenerable), {cas_verified}/{len(cas_entries)} CAS materialized")
     if cas_unmaterialized:
         summary += (f"\n  {len(cas_unmaterialized)} content-addressed artifact(s) "
                     "UNMATERIALIZED (not an error: a clean checkout has no external "
