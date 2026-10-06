@@ -1,0 +1,319 @@
+{
+  "mission_id": "AG_EDGELAB_R3_CLOSE",
+  "packet_version": "R3_CAUSAL_POLICY_DECISIONS_V2",
+  "status": "RULINGS_RECORDED_DECISIONS_PENDING",
+  "owner": "aungmyat1",
+  "recorded_from": "Mission resume instruction (R3-CLOSE Part A then SYSDEV-6H-01), 2026-10-06",
+  "policy_freeze_base": "252059ec84e76562e8ecb7115311f42bb62eac41",
+  "policy_hash": "69ba55e06b23f1ef5694ffdbb97b6a35983e6976ec0c8d6fe5d420c7a905dffa",
+  "owner_r3_policy_authorized": false,
+  "real_campaign_authorized": false,
+  "owner_ratified_decisions": 0,
+  "owner_rulings": {
+    "RULING_R3_01": {
+      "ruling": "For candidate_ledger.json, candidate_contamination_registry.json, oos_access_log.json, external_artifact_registry.json — compare against merge-base version; FAIL if any existing JSON path's value changed or was removed.",
+      "applies_to": [
+        "config/governance/candidate_ledger.json",
+        "config/governance/candidate_contamination_registry.json",
+        "config/governance/oos_access_log.json",
+        "config/governance/external_artifact_registry.json"
+      ],
+      "enforced_by": "tests/test_governance_append_only.py",
+      "source": "R3-CLOSE resume instruction, step A1 (RULING_R3_01)"
+    },
+    "RULING_R3_02": {
+      "ruling": "Tracked-file snapshot of artifacts/ + data/artifacts/ taken AFTER PR #24 merge.",
+      "applies_to": ["artifacts/", "data/artifacts/"],
+      "enforced_by": "tests/test_repo_layout.py",
+      "source": "R3-CLOSE resume instruction, step A4 (RULING_R3_02)"
+    },
+    "RULING_R3_03": {
+      "ruling": "Then run Part B (SYSDEV-6H-01) unchanged, using RULING_R3_03 for any conflict.",
+      "interpretation_proposed": "Part B conflicts are resolved in favor of the frozen R3 rulings and governance integrity (append-only records, committed-code evidence, merge-commit lineage, no authority manufacturing); a material conflict is reported to the owner rather than resolved unilaterally.",
+      "interpretation_status": "PROPOSED",
+      "source": "R3-CLOSE resume instruction, Part B preamble"
+    },
+    "CAUSAL_LIBRARY_MANDATE": {
+      "ruling": "PR #24's causal modules (causal_time, causal_entry_mask, execution_semantics, baseline_timing_policy, directional_null_policy, verdict_record) are now library: Parent Intake V1 and Eligibility Gate V2 MUST reuse them rather than reimplement.",
+      "applies_to": [
+        "src/ag_edgelab/optimization/causal_time.py",
+        "src/ag_edgelab/optimization/causal_entry_mask.py",
+        "src/ag_edgelab/optimization/execution_semantics.py",
+        "src/ag_edgelab/optimization/baseline_timing_policy.py",
+        "src/ag_edgelab/optimization/directional_null_policy.py",
+        "src/ag_edgelab/optimization/verdict_record.py"
+      ],
+      "source": "R3-CLOSE resume instruction, Part B preamble (owner directive)"
+    }
+  },
+  "thresholds": {
+    "REFERENCE_COVERAGE_MIN": 0.90,
+    "PARENT_PERCENTILE_MIN": 0.95,
+    "MIN_PARENT_N": 30,
+    "BOOTSTRAP_CLUSTER_UNIT": "OPPORTUNITY",
+    "BOOTSTRAP_REPLICATES": 2000,
+    "NULL_REPLICATES": 2000,
+    "NULL_MASTER_SEED": 4030341158,
+    "PRIMARY_DIRECTIONAL_NULL": "RANDOM_DIRECTION_ONE_LEG_PER_OPPORTUNITY",
+    "ROBUSTNESS_DIRECTIONAL_NULL": "MATCHED_DIRECTION_FREQUENCY_NULL",
+    "REFERENCE_ATR_PERIOD": 14,
+    "REFERENCE_ATR_MULTIPLE": 1.0,
+    "TARGET_R": 2.0,
+    "MAX_HOLDING_M5_BARS": 72,
+    "INTRABAR_TIE_POLICY": "CONSERVATIVE_STOP_FIRST",
+    "REFERENCE_ENTRY": "FIRST_M5_OPEN_AT_OR_AFTER_T2",
+    "T1_DIRECTION_AVAILABLE": "EVENT_M15_OPEN + 15 minutes",
+    "T2_DECISION_TIME": "CONFIRMATION_M5_CLOSE",
+    "PARENT_MASK": "CAUSAL_ENTRY_GEOMETRY_MASK_V1",
+    "MAX_CHILDREN_PER_PARENT": 100,
+    "BASELINE_T2_TIMING_POLICY": "UNRESOLVED_OWNER_DECISION",
+    "BASELINE_T2_TIMING_CANDIDATES": [
+      "EMPIRICAL_MATCHED_DELAY",
+      "STRATIFIED_EMPIRICAL_MATCHED_DELAY",
+      "FIXED_CAUSAL_DELAY_FROM_T1"
+    ],
+    "PASS_REQUIREMENT": "PARENT_PERCENTILE >= 0.95 AND DELTA_CLUSTER_CI95_LOW_R > 0 AND REFERENCE_COVERAGE >= 0.90 AND PARENT_N >= 30"
+  },
+  "decisions": [
+    {
+      "decision_id": "R3_OD_01",
+      "title": "OPPORTUNITY UNIT",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "What is the atomic opportunity unit for clustering, null sampling, and inference?",
+      "recommended_value": "ONE_SESSION_OPPORTUNITY_PER_SYMBOL_DAY_SESSION — one opportunity cluster per (symbol, day, session); LONG and SHORT reference legs attach to the same cluster and are never sampled as independent observations.",
+      "alternatives": [
+        "per-event-bar units",
+        "per-day units collapsing sessions"
+      ],
+      "evidence": "ALD V2 opportunity identity in the frozen replay; R3.1 clustered inference; R3.2 one-leg null membership audit (one leg per opportunity per draw).",
+      "risk_if_wrong": "Under-clustering inflates effective sample size and narrows confidence intervals; over-clustering discards information.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_02",
+      "title": "CAUSAL_ENTRY_GEOMETRY_MASK_V1",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Which selection mask defines the parent population?",
+      "recommended_value": "CAUSAL_ENTRY_GEOMETRY_MASK_V1 — S1–S6 plus entry/stop/target geometry, every input carrying available_at <= T2; S9, future-bar existence, right-censor status, MFE/MAE, realized outcome, and future fill knowledge are forbidden inputs.",
+      "alternatives": [
+        "historical row.all_rules_pass — REJECTED, embeds S9 outcome information",
+        "historical S7/S8 freeze — REJECTED as-is because S7 depends on the existence of forward M5 bars after confirmation"
+      ],
+      "evidence": "R3.2 selection-time audit (s8_entry_eligible_n = 294, s9_completed_n = 294, all-rules-pass requires S9); artifacts/funnel_optimizer_v1_r3_causal_policy_freeze/causal_mask_audit.json.",
+      "risk_if_wrong": "A leaking mask admits post-entry information into selection and manufactures eligibility (the R3.1 failure mode).",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_03",
+      "title": "T2_DECISION_TIME",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "When is the final parent decision deemed knowable?",
+      "recommended_value": "T2_DECISION_TIME = CONFIRMATION_M5_CLOSE (confirming M5 bar open + 5 minutes).",
+      "alternatives": [
+        "event open T0 — REJECTED, direction not yet known (R3.2: 294/294 noncausal)",
+        "T1 direction availability — insufficient, confirmation not yet observed"
+      ],
+      "evidence": "R3.2 timing ledger; m15_direction_available_time and t2_decision_time in ag_edgelab.optimization.causal_time.",
+      "risk_if_wrong": "An earlier T2 admits direction/confirmation lookahead into the parent estimand.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_04",
+      "title": "NEXT_BAR_EXECUTION_RULE",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "How is the executable reference entry timed?",
+      "recommended_value": "REFERENCE_EXECUTABLE_ENTRY = FIRST_M5_OPEN_AT_OR_AFTER_T2 — never the confirmation bar itself.",
+      "alternatives": [
+        "confirmation close price entry (same-bar) — rejected, not executable at decision",
+        "T2 + fixed offset — rejected, ignores the bar schedule"
+      ],
+      "evidence": "first_m5_open_at_or_after implementation; the R3.1 defect was entries preceding direction availability by 15 minutes.",
+      "risk_if_wrong": "Same-bar entry quietly credits the strategy with prices it could not transact.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_05",
+      "title": "BASELINE_T2_TIMING_POLICY",
+      "status": "UNRESOLVED_OWNER_CHOICE_REQUIRED",
+      "question": "How are non-parent baseline opportunities' reference entries timed in the causal T2 estimand?",
+      "recommended_value": "NONE — this is the explicitly unresolved decision.",
+      "alternatives": [
+        "A = EMPIRICAL_MATCHED_DELAY — deterministic hash-slot into the sorted parent T2−T0 lag distribution (R3.2 diagnostic semantics)",
+        "B = STRATIFIED_EMPIRICAL_MATCHED_DELAY — same, stratified by symbol + session, and by year where the stratum has >= 30 parents",
+        "C = FIXED_CAUSAL_DELAY_FROM_T1 — one preregistered clock (120 minutes from T1) that does not depend on whether the opportunity later qualifies"
+      ],
+      "evidence": "The three-policy sensitivity table in baseline_timing_sensitivity.json (POLICY_SENSITIVITY_ANALYSIS, not candidate optimization). The current R3.2 baseline (DETERMINISTIC_MATCHED_EMPIRICAL_T2_MINUS_T0_LAG_FOR_NONPARENT_UNIVERSE) was an adversarial diagnostic and is NOT yet owner authority.",
+      "risk_if_wrong": "A baseline timing choice that systematically over/under-credits the baseline shifts the percentile and delta CI and can flip an eligibility verdict; the choice must not be made by looking at which policy makes a strategy pass.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_06",
+      "title": "PRIMARY_DIRECTIONAL_NULL",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "What is the primary null for directional eligibility?",
+      "recommended_value": "RANDOM_DIRECTION_ONE_LEG_PER_OPPORTUNITY — one direction per opportunity per draw, deterministic preregistered RNG, never averaging LONG+SHORT into one null observation.",
+      "alternatives": [
+        "OLD_SYMMETRIC_TWO_LEG_AVERAGE — RETIRED as eligibility authority (R3.2: SD 0.039829R vs 0.083890R, materially understated variance); retained only as a historical diagnostic",
+        "Robustness null MATCHED_DIRECTION_FREQUENCY_NULL — kept as the secondary, direction-frequency-preserving check"
+      ],
+      "evidence": "R3.2 null audit; ag_edgelab.optimization.directional_null_policy.",
+      "risk_if_wrong": "An understated null variance inflates parent percentiles and manufactures passes.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_07",
+      "title": "REFERENCE_COVERAGE_MIN",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Minimum evaluable reference-outcome coverage?",
+      "recommended_value": "0.90",
+      "alternatives": [
+        "0.80 (looser)",
+        "0.95 (stricter)"
+      ],
+      "evidence": "Carried unchanged from the R3/R3.1 proposed policies; R3 historical coverage was 100%.",
+      "risk_if_wrong": "Too low permits selection-survivor coverage bias; too high blocks legitimate candidates near data boundaries.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_08",
+      "title": "PARENT_PERCENTILE_MIN",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Minimum parent percentile against the primary null?",
+      "recommended_value": "0.95",
+      "alternatives": [
+        "0.90",
+        "0.99"
+      ],
+      "evidence": "Carried unchanged from the R3/R3.1 proposed policies; pass additionally requires DELTA_CLUSTER_CI95_LOW_R > 0.",
+      "risk_if_wrong": "Lower thresholds admit weaker parents under multiple testing; higher thresholds reduce power.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_09",
+      "title": "BOOTSTRAP_CLUSTER_AND_REPLICATES",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Resampling unit and replicate count?",
+      "recommended_value": "BOOTSTRAP_CLUSTER_UNIT = OPPORTUNITY, BOOTSTRAP_REPLICATES = 2000, NULL_REPLICATES = 2000 (minimum 1000), NULL_MASTER_SEED = 4030341158 with deterministic per-campaign derivation, frozen BEFORE any GEN3 evaluation.",
+      "alternatives": [
+        "1000 replicates (the stated minimum)",
+        "larger counts only if preregistered runtime evidence demands"
+      ],
+      "evidence": "R3.1 clustered bootstrap; R3.2 used 2000 replicates; directional_null_policy.FrozenNullPolicy.",
+      "risk_if_wrong": "Leg-level resampling breaks clustering; too few replicates makes percentile/CI estimates noisy.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_10",
+      "title": "MIN_PARENT_N",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Minimum parent sample size?",
+      "recommended_value": "30",
+      "alternatives": [
+        "20",
+        "50"
+      ],
+      "evidence": "Carried unchanged from the R3/R3.1 proposed policies.",
+      "risk_if_wrong": "Too small enables small-sample percentile artifacts; too large starves legitimate parents.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_11",
+      "title": "REFERENCE_ATR_POLICY",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Reference stop distance authority?",
+      "recommended_value": "ATR(14) on completed M5 bars before entry × 1.0 (REFERENCE_ATR_PERIOD = 14, REFERENCE_ATR_MULTIPLE = 1.0).",
+      "alternatives": [
+        "other periods/multiples — none considered; changing them after seeing GEN3 performance is forbidden"
+      ],
+      "evidence": "reference_outcome_v2._atr_before (true ranges end strictly before the entry bar); carried unchanged from R3.",
+      "risk_if_wrong": "ATR computed including the entry bar leaks the entry candle into the stop distance.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_12",
+      "title": "REFERENCE_TARGET_R",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Reference target multiple?",
+      "recommended_value": "2.0R",
+      "alternatives": [
+        "1.5R",
+        "3.0R"
+      ],
+      "evidence": "Carried unchanged from R3; identical for candidate and null.",
+      "risk_if_wrong": "Asymmetric target/stop geometry changes the baseline path expectancy (the symmetric 2R/1R model is not algebraically zero).",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_13",
+      "title": "REFERENCE_TIMEOUT",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Reference outcome horizon?",
+      "recommended_value": "REFERENCE_MAX_HOLDING_M5_BARS = 72 (6 hours), timeout exit at horizon close.",
+      "alternatives": [
+        "288 bars (ALD V2 natural horizon — different model)",
+        "144 bars"
+      ],
+      "evidence": "Carried unchanged from R3; identical for candidate and null.",
+      "risk_if_wrong": "A horizon shorter than typical stop/target resolution converts geometric outcomes into unresolved timeouts.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_14",
+      "title": "INTRABAR_TIE_POLICY",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "When one bar touches both stop and target?",
+      "recommended_value": "CONSERVATIVE_STOP_FIRST",
+      "alternatives": [
+        "optimistic target-first — rejected",
+        "drop ambiguous rows selectively — rejected (R2 fixture fails closed with AMBIGUOUS_INTRABAR instead)"
+      ],
+      "evidence": "reference_outcome_v2._one_direction; R2 fixture AMBIGUOUS_INTRABAR fail-closed handling.",
+      "risk_if_wrong": "Optimistic tie resolution systematically overstates expectancy.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_15",
+      "title": "ALD_FAMILY_DISPOSITION",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "What happens to the ALD V2 family?",
+      "recommended_value": "ALD_V2_DEV_SELECTION_STATUS = DEV_REJECTED_CAUSAL_SELECTION, ALD_FAMILY_DISPOSITION = ARCHIVE_NO_V2_2 — no causal DEV selection evidence, no OOS conclusion, no claim of globally proven NO_EDGE, and no further ALD V2 optimization on this DEVELOPMENT evidence. All artifacts preserved immutably.",
+      "alternatives": [
+        "define V2.2 on the same DEV partition — rejected (post-hoc search on consumed evidence)",
+        "treat R3.1 PASS as valid — rejected (R3.2 classified it R3_1_PASS_EXPLAINED_BY_MULTIPLE_ARTIFACTS)"
+      ],
+      "evidence": "config/governance/ald_v2_disposition.json; appended clarifications in config/governance/candidate_ledger.json; frozen ALD V2 SHA256 883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920.",
+      "risk_if_wrong": "Continuing the family on this partition reuses direction-timing information already observed.",
+      "owner_answer": null,
+      "owner": "TBD"
+    },
+    {
+      "decision_id": "R3_OD_16",
+      "title": "MAX_CHILDREN_PER_PARENT",
+      "status": "RECOMMENDED_FROZEN_IN_PROPOSAL",
+      "question": "Multiple-testing search budget per parent?",
+      "recommended_value": "MAX_CHILDREN_PER_PARENT = 100, with counting rules: every tested child counts, rejected children count, failed code-valid trials count once evaluated, no reset between rounds. OWNER_AUTHORIZATION_REQUIRED = TRUE; optimization may begin only after PARENT_DEV_ACCEPTANCE = PASS AND OWNER_R3_POLICY_AUTHORIZED = TRUE; no rescue by OOS.",
+      "alternatives": [
+        "50 (stricter)",
+        "200 (looser)"
+      ],
+      "evidence": "Multiple-testing section of the policy proposal; GEN3 draft requires preregistered mutation budgets.",
+      "risk_if_wrong": "An uncounted or resettable budget silently inflates the family-wise false-pass rate.",
+      "owner_answer": null,
+      "owner": "TBD"
+    }
+  ]
+}
