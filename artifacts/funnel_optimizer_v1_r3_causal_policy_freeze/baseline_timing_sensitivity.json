@@ -34,17 +34,17 @@
       "VERDICT": "FAIL"
     },
     {
-      "BASELINE_MEAN_R": 0.028709832965284524,
+      "BASELINE_MEAN_R": 0.02626312480555166,
       "BASELINE_TIMING_POLICY": "STRATIFIED_EMPIRICAL_MATCHED_DELAY",
       "DELTA_CI95": [
-        -0.26497297114655705,
-        0.07139433913181344
+        -0.26197826165318233,
+        0.0719006384742142
       ],
       "PARENT_EXPECTANCY_R": -0.07142857142857142,
       "PARENT_N": 294,
-      "PARENT_PERCENTILE": 0.132,
+      "PARENT_PERCENTILE": 0.1275,
       "REFERENCE_COVERAGE": 1.0,
-      "SELECTION_DELTA_R": -0.10013840439385595,
+      "SELECTION_DELTA_R": -0.09769169623412308,
       "VERDICT": "FAIL"
     },
     {
@@ -67,5 +67,10 @@
   "primary_null": "RANDOM_DIRECTION_ONE_LEG_PER_OPPORTUNITY",
   "robustness_null": "MATCHED_DIRECTION_FREQUENCY_NULL",
   "schema_version": "R3_BASELINE_T2_TIMING_SENSITIVITY_V1",
-  "stratified_min_stratum_parent_n": 30
+  "stratified_min_stratum_parent_n": 30,
+  "stratified_year_eligibility": "per (symbol, session, year) stratum independently; sub-threshold years fall back to the (symbol, session) pool",
+  "stratified_year_pools": [
+    "EURUSD/ASIAN_LONDON/2015",
+    "GBPUSD/ASIAN_LONDON/2017"
+  ]
 }

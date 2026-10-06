@@ -88,8 +88,13 @@ def _session_window_end(unit: V2.V2Unit) -> datetime:
     return day + timedelta(hours=entry_to)
 
 
-def _knowable_pre_t2_state(unit: V2.V2Unit) -> tuple:
-    """Every fact the causal mask and the decision are allowed to consume."""
+def _knowable_pre_t2_state(unit: V2.V2Unit, frames) -> tuple:
+    """Every fact the causal mask and the decision are allowed to consume.
+
+    The mask derives geometry from bars closed at or before T2 using the
+    run's own visible frames, so RUN A and RUN B are each evaluated with
+    exactly the data visible to them.
+    """
     return (
         unit.stages.get("S1_CONTEXT_ELIGIBLE", False),
         unit.stages.get("S2_LOCATION_ELIGIBLE", False),
@@ -100,11 +105,15 @@ def _knowable_pre_t2_state(unit: V2.V2Unit) -> tuple:
         unit.event_time, unit.reclaim_or_retest_time, unit.confirm_time,
         unit.boundary_side, unit.branch, unit.direction,
         unit.reference_high, unit.reference_low,
-        unit.entry, unit.stop, unit.risk, unit.target, unit.target_authority,
         unit.confirm_primitive,
-        causal_mask_for_v2_unit(unit).eligible,
-        causal_mask_for_v2_unit(unit).reason_code,
+        _mask_state(unit, frames),
     )
+
+
+def _mask_state(unit: V2.V2Unit, frames) -> tuple:
+    result = causal_mask_for_v2_unit(
+        unit, m5=frames["M5"], m15=frames["M15"], h1=frames["H1"])
+    return (result.eligible, result.reason_code)
 
 
 @pytest.fixture(scope="module")
@@ -149,7 +158,8 @@ def test_prefix_invariance_of_event_state_on_real_development_data(full_run):
                     # Decision completed at/before t: full pre-T2 identity.
                     assert unit_a.passed("S6_STRUCTURE_CONFIRM"), unit_b.candidate_id
                     assert _t2(unit_a) == t2, unit_b.candidate_id
-                    assert _knowable_pre_t2_state(unit_a) == _knowable_pre_t2_state(unit_b)
+                    assert (_knowable_pre_t2_state(unit_a, frames_a)
+                            == _knowable_pre_t2_state(unit_b, frames_b))
                     compared_confirmed += 1
                     # Reference-entry timestamp, once the entry bar has closed.
                     entry_a = first_m5_open_at_or_after(m5_opens_a, t2)
@@ -161,7 +171,8 @@ def test_prefix_invariance_of_event_state_on_real_development_data(full_run):
                 # Unconfirmed: the pre-S6 outcome is fully determined once
                 # the session entry window has expired at/before t.
                 if _session_window_end(unit_b) <= t:
-                    assert _knowable_pre_t2_state(unit_a) == _knowable_pre_t2_state(unit_b)
+                    assert (_knowable_pre_t2_state(unit_a, frames_a)
+                            == _knowable_pre_t2_state(unit_b, frames_b))
                     assert unit_a.reject_node == unit_b.reject_node, unit_b.candidate_id
                     assert unit_a.reject_reason == unit_b.reject_reason, unit_b.candidate_id
                     compared_failed += 1

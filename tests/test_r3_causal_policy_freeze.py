@@ -15,11 +15,16 @@ from pathlib import Path
 import pytest
 
 from ag_edgelab.contracts.dataset import DatasetRole
+from ag_edgelab.contracts.market import MarketBar
 from ag_edgelab.data.fingerprint import sha256_file
 from ag_edgelab.data.fx_histdata_multiyear import NonDevelopmentAccessError
+from ag_edgelab.optimization.baseline_timing_policy import (
+    StratifiedDelayPools, empirical_matched_delay, fixed_causal_delay_from_t1,
+)
 from ag_edgelab.optimization.causal_entry_mask import (
     CAUSAL_MASK_ID, MaskInputForbidden, causal_mask_facts_from_v2_unit,
-    causal_mask_for_v2_unit, evaluate_causal_entry_geometry_mask,
+    causal_mask_for_v2_unit, derive_causal_geometry,
+    evaluate_causal_entry_geometry_mask,
 )
 from ag_edgelab.optimization.causal_normalization import (
     FrozenPartitionNormalizer, NormalizationLeak, assert_no_full_sample_fit,
@@ -43,7 +48,7 @@ from ag_edgelab.optimization.execution_semantics import (
 )
 from ag_edgelab.optimization.verdict_record import (
     VERDICT_RECORD_SCHEMA, VerdictChainError, VerdictRecord,
-    verify_verdict_chain,
+    verify_chain_manifest, verify_verdict_chain,
 )
 
 UTC = timezone.utc
@@ -130,8 +135,7 @@ def test_reference_entry_is_first_m5_open_at_or_after_t2():
 # ---------------------------------------------------------------------------
 
 def _mask_facts(t2: datetime, *, with_future_fact: CausalFact | None = None,
-                with_s9_fact: CausalFact | None = None,
-                confirm_time: str | None = None) -> dict[str, CausalFact]:
+                with_s9_fact: CausalFact | None = None) -> dict[str, CausalFact]:
     facts = {
         "S1_CONTEXT_ELIGIBLE": CausalFact("S1_CONTEXT_ELIGIBLE", True, T0),
         "S2_LOCATION_ELIGIBLE": CausalFact("S2_LOCATION_ELIGIBLE", True, T0),
@@ -185,23 +189,13 @@ def test_causal_mask_forbids_s9_and_outcome_inputs():
                     forbidden, 1.0, T2)), decision_ts=T2)
 
 
-def test_causal_mask_passes_without_touching_v2_outcome_fields():
-    class OutcomelessUnit:
-        """A confirmed unit whose outcome fields explode on access."""
-        def __init__(self, inner):
-            self._inner = inner
+def _branch_a_unit(**overrides):
+    """A confirmed branch-A unit whose S7-populated geometry fields are unset.
 
-        def passed(self, node):
-            return self._inner.passed(node)
-
-        def __getattr__(self, name):
-            forbidden = {"realised_r", "mfe_r", "mae_r", "resolution",
-                         "stopped_out", "stopped_same_bar", "forward_bars",
-                         "reached", "target_reached"}
-            if name in forbidden:
-                raise AssertionError(f"mask read forbidden outcome field {name}")
-            return getattr(self._inner, name)
-
+    This is exactly the data-boundary shape the frozen replay leaves behind
+    when a confirmation has no forward M5 bars: ``entry/stop/risk/target``
+    are never assigned.  The mask must still evaluate it from bars.
+    """
     from ag_edgelab.strategies.asian_liquidity_displacement_v2 import V2Unit
 
     unit = V2Unit(symbol="EURUSD", day="2016-06-01", session="ASIA",
@@ -215,21 +209,103 @@ def test_causal_mask_passes_without_touching_v2_outcome_fields():
     unit.reclaim_or_retest_time = (T0 + _minutes(30)).isoformat()
     unit.confirm_time = CONFIRM_OPEN.isoformat()
     unit.branch = "A_SWEEP_RECLAIM_REVERSAL"
-    unit.direction = "BULL"
-    unit.entry, unit.stop, unit.risk, unit.target = 1.10, 1.095, 0.005, 1.115
+    unit.direction = "BEAR"
+    unit.boundary_side = "UPPER"
+    unit.reference_high, unit.reference_low = 1.1060, 1.1000
+    for key, value in overrides.items():
+        setattr(unit, key, value)
+    return unit
 
-    result = causal_mask_for_v2_unit(OutcomelessUnit(unit))
+
+def _synthetic_bars():
+    """Bars closed at or before T2 reproducing valid branch-A geometry."""
+    event_m15 = MarketBar(timestamp=T0, open=1.1050, high=1.1070,
+                          low=1.1010, close=1.1040)
+    confirm_m5 = MarketBar(timestamp=CONFIRM_OPEN, open=1.1042, high=1.1045,
+                           low=1.1038, close=1.1040)
+    return [confirm_m5], [event_m15], []
+
+
+class _OutcomelessUnit:
+    """A confirmed unit whose outcome/S7 fields explode on access."""
+
+    FORBIDDEN = {"realised_r", "mfe_r", "mae_r", "resolution", "stopped_out",
+                 "stopped_same_bar", "forward_bars", "reached", "target_reached",
+                 "entry", "stop", "risk", "target", "natural_target_r"}
+
+    def __init__(self, inner):
+        self._inner = inner
+
+    def passed(self, node):
+        return self._inner.passed(node)
+
+    def __getattr__(self, name):
+        if name in _OutcomelessUnit.FORBIDDEN:
+            raise AssertionError(f"mask read forbidden S7/outcome field {name}")
+        return getattr(self._inner, name)
+
+
+def test_causal_mask_derives_geometry_without_touching_s7_or_outcome_fields():
+    m5, m15, h1 = _synthetic_bars()
+    unit = _branch_a_unit()  # entry/stop/risk/target are all None
+    result = causal_mask_for_v2_unit(_OutcomelessUnit(unit), m5=m5, m15=m15, h1=h1)
     assert result.mask_id == CAUSAL_MASK_ID
-    assert result.eligible is True
+    assert result.eligible is True, result.fact_audit
     assert result.decision_ts == T2
     assert result.mask_uses_s9 is False
     assert result.mask_uses_post_entry_data is False
+    # derived geometry: entry = confirm close, stop = event bar raid extreme,
+    # target = opposite reference boundary
+    geometry = derive_causal_geometry(unit, m5=m5, m15=m15, h1=h1)
+    assert geometry.entry == 1.1040
+    assert geometry.stop == 1.1070
+    assert geometry.target == 1.1000
 
-    # A unit without confirmation never becomes mask-eligible.
-    unconfirmed = V2Unit(symbol="EURUSD", day="2016-06-01", session="ASIA",
-                         candidate_id="EURUSD|2016-06-01|ASIA|V2")
-    unconfirmed.reject_reason, unconfirmed.reject_node = "NO_RETEST_BEFORE_EXPIRY", "S5_RECLAIM_OR_RETEST"
-    assert causal_mask_for_v2_unit(unconfirmed).eligible is False
+
+def test_causal_mask_boundary_unit_is_not_punished_for_missing_forward_bars():
+    """A confirmed unit with NO forward bars must be judged like any other.
+
+    The frozen replay leaves entry/stop unassigned only because S7's
+    forward-availability gate returned early; at T2 the geometry is knowable
+    from closed bars, so the mask must not encode that absence.
+    """
+    m5, m15, h1 = _synthetic_bars()
+    unit = _branch_a_unit(reject_reason="NO_FORWARD_BARS",
+                          reject_node="S7_ENTRY_AVAILABLE")
+    assert causal_mask_for_v2_unit(unit, m5=m5, m15=m15, h1=h1).eligible is True
+
+
+def test_causal_mask_branch_b_fails_closed_without_a_causal_target():
+    from ag_edgelab.strategies.asian_liquidity_displacement_v2 import V2Unit
+
+    unit = V2Unit(symbol="EURUSD", day="2016-06-01", session="ASIA",
+                  candidate_id="EURUSD|2016-06-01|ASIA|V2")
+    unit.stages.update({
+        "S1_CONTEXT_ELIGIBLE": True, "S2_LOCATION_ELIGIBLE": True,
+        "S3_SESSION_EVENT": True, "S4_SWEEP_OR_BREAKOUT": True,
+        "S5_RECLAIM_OR_RETEST": True, "S6_STRUCTURE_CONFIRM": True,
+    })
+    unit.event_time = T0.isoformat()
+    unit.reclaim_or_retest_time = (T0 + _minutes(30)).isoformat()
+    unit.confirm_time = CONFIRM_OPEN.isoformat()
+    unit.branch = "B_BREAKOUT_RETEST_CONTINUATION"
+    unit.direction = "BULL"
+    retest = MarketBar(timestamp=T0 + _minutes(30), open=1.1040, high=1.1044,
+                       low=1.1030, close=1.1038)
+    confirm = MarketBar(timestamp=CONFIRM_OPEN, open=1.1040, high=1.1052,
+                        low=1.1038, close=1.1050)
+    result = causal_mask_for_v2_unit(unit, m5=[retest, confirm], m15=[], h1=[])
+    assert result.eligible is False
+    assert result.reason_code == "MASK_GEOMETRY_FAILED:TARGET_PRICE_KNOWN"
+
+
+def test_causal_mask_fails_closed_when_the_confirm_bar_is_not_supplied():
+    # No M5 bar at the confirmation timestamp: geometry cannot be derived,
+    # so the mask fails closed rather than inventing values.
+    m5, m15, h1 = _synthetic_bars()
+    result = causal_mask_for_v2_unit(_branch_a_unit(), m5=[], m15=m15, h1=h1)
+    assert result.eligible is False
+    assert result.reason_code == "MASK_GEOMETRY_FAILED:ENTRY_PRICE_KNOWN"
 
 
 def test_causal_mask_fails_closed_on_missing_or_failed_facts():
@@ -237,13 +313,79 @@ def test_causal_mask_fails_closed_on_missing_or_failed_facts():
     del facts["S6_STRUCTURE_CONFIRM"]
     missing = evaluate_causal_entry_geometry_mask(opportunity_id="X", facts=facts, decision_ts=T2)
     assert missing.eligible is False and missing.reason_code == "MASK_MISSING_FACT:S6_STRUCTURE_CONFIRM"
-    failed = _mask_facts(T2)
-    failed = dict(failed, S6_STRUCTURE_CONFIRM=CausalFact("S6_STRUCTURE_CONFIRM", False, T2))
+    failed = dict(_mask_facts(T2), S6_STRUCTURE_CONFIRM=CausalFact("S6_STRUCTURE_CONFIRM", False, T2))
     result = evaluate_causal_entry_geometry_mask(opportunity_id="X", facts=failed, decision_ts=T2)
     assert result.eligible is False and result.reason_code == "MASK_STAGE_FAILED:S6_STRUCTURE_CONFIRM"
     geometry = dict(_mask_facts(T2), RISK_POSITIVE=CausalFact("RISK_POSITIVE", False, T2))
     result = evaluate_causal_entry_geometry_mask(opportunity_id="X", facts=geometry, decision_ts=T2)
     assert result.eligible is False and result.reason_code == "MASK_GEOMETRY_FAILED:RISK_POSITIVE"
+
+
+def test_causal_mask_unconfirmed_units_do_not_need_bars():
+    # unconfirmed units never reach geometry derivation
+    from ag_edgelab.strategies.asian_liquidity_displacement_v2 import V2Unit
+    unconfirmed = V2Unit(symbol="EURUSD", day="2016-06-01", session="ASIA",
+                         candidate_id="U1")
+    unconfirmed.reject_reason = "NO_RETEST_BEFORE_EXPIRY"
+    unconfirmed.reject_node = "S5_RECLAIM_OR_RETEST"
+    result = causal_mask_for_v2_unit(unconfirmed, m5=[], m15=[], h1=[])
+    assert result.eligible is False
+    assert result.reason_code == "NO_CONFIRMATION:NO_RETEST_BEFORE_EXPIRY"
+    with pytest.raises(ValueError):
+        causal_mask_facts_from_v2_unit(unconfirmed, m5=[], m15=[], h1=[])
+
+
+# ---------------------------------------------------------------------------
+# Baseline T2 timing policies (PHASE B6; review finding fix)
+# ---------------------------------------------------------------------------
+
+def _lag(minutes: int) -> timedelta:
+    return timedelta(minutes=minutes)
+
+
+def test_stratified_delay_decides_year_eligibility_per_year_not_per_session():
+    # Codex-review regression: (EURUSD, ASIAN_LONDON) year counts 36/25/24.
+    # Only the 36-parent year may use its own pool; 25 and 24 must fall back
+    # to the (symbol, session) pool.  The old implementation collapsed the
+    # decision onto whichever year iterated last.
+    rows = ([("e1", "EURUSD", "ASIAN_LONDON", 2015, _lag(60))] * 36
+            + [("e2", "EURUSD", "ASIAN_LONDON", 2016, _lag(90))] * 25
+            + [("e3", "EURUSD", "ASIAN_LONDON", 2017, _lag(120))] * 24)
+    pools = StratifiedDelayPools.build(rows, min_stratum_parent_n=30)
+    assert set(pools.year_pools) == {("EURUSD", "ASIAN_LONDON", 2015)}
+    # 2016 and 2017 rows draw from the session pool (all 85 parents)
+    session_pool = pools.session_pools[("EURUSD", "ASIAN_LONDON")]
+    assert len(session_pool) == 85
+    t0 = datetime(2016, 3, 1, tzinfo=UTC)
+    d2016 = pools.delay("x", t0, "EURUSD", "ASIAN_LONDON", 2016)
+    assert _lag(45) <= d2016 - t0 <= _lag(165)  # inside the session pool range
+    d2015 = pools.delay("x", t0, "EURUSD", "ASIAN_LONDON", 2015)
+    assert d2015 - t0 == _lag(60)               # year pool has only 60m lags
+
+    # GBPUSD/ASIAN_LONDON 29/24/35: only 2017 splits.
+    rows_b = ([("g1", "GBPUSD", "ASIAN_LONDON", 2015, _lag(30))] * 29
+              + [("g2", "GBPUSD", "ASIAN_LONDON", 2016, _lag(45))] * 24
+              + [("g3", "GBPUSD", "ASIAN_LONDON", 2017, _lag(75))] * 35)
+    pools_b = StratifiedDelayPools.build(rows_b, min_stratum_parent_n=30)
+    assert set(pools_b.year_pools) == {("GBPUSD", "ASIAN_LONDON", 2017)}
+    # a sub-threshold year of one session never borrows another session's pool
+    with pytest.raises(ValueError):
+        StratifiedDelayPools.build(rows_b).delay(
+            "x", t0, "EURUSD", "LONDON_NEWYORK", 2016)
+
+
+def test_empirical_and_fixed_delay_policies_are_deterministic():
+    lags = [_lag(30), _lag(60), _lag(90)]
+    t0 = datetime(2016, 3, 1, tzinfo=UTC)
+    assert empirical_matched_delay("E1", t0, lags) == empirical_matched_delay("E1", t0, lags)
+    assert empirical_matched_delay("E1", t0, lags) != empirical_matched_delay("E2", t0, lags) \
+        or True  # slot collision allowed; determinism is the contract
+    with pytest.raises(ValueError):
+        empirical_matched_delay("E1", t0, [])
+    t1 = t0 + _minutes(15)
+    assert fixed_causal_delay_from_t1(t1, minutes=120) == t1 + _minutes(120)
+    with pytest.raises(ValueError):
+        fixed_causal_delay_from_t1(t1, minutes=0)
 
 
 # ---------------------------------------------------------------------------
@@ -341,7 +483,7 @@ def test_null_policy_seeds_are_deterministic_and_frozen():
 
 
 # ---------------------------------------------------------------------------
-# 13. verdict record hash determinism
+# 13. verdict record hash determinism + hash-linked chain
 # ---------------------------------------------------------------------------
 
 def _record(**overrides) -> VerdictRecord:
@@ -349,7 +491,7 @@ def _record(**overrides) -> VerdictRecord:
         verdict_id="TEST_V1", policy_hash="p" * 64, dataset_hash="d" * 64,
         candidate_contract_hash="c" * 64, engine_code_sha="e" * 64,
         event_table_hash="t" * 64, friction_authority_hash="",
-        verdict="PASS", parent_verdict_id="")
+        verdict="PASS", parent_verdict_id="", parent_verdict_record_hash="")
     payload.update(overrides)
     return VerdictRecord(**payload)
 
@@ -360,38 +502,93 @@ def test_verdict_record_hash_is_deterministic_and_binds_inputs():
     assert one.verdict_record_hash != _record(verdict="FAIL").verdict_record_hash
     assert one.verdict_record_hash != _record(policy_hash="q" * 64).verdict_record_hash
     assert one.verdict_record_hash != _record(parent_verdict_id="PARENT").verdict_record_hash
+    assert one.verdict_record_hash != _record(parent_verdict_record_hash="z" * 64).verdict_record_hash
 
 
-def test_verdict_chain_verification_fails_closed():
-    parent, child = _record(verdict_id="PARENT"), _record(
-        verdict_id="CHILD", parent_verdict_id="PARENT")
-    verify_verdict_chain([parent, child])
+def test_verdict_chain_requires_embedded_parent_record_hash():
+    parent = _record(verdict_id="PARENT")
+    child_ok = _record(verdict_id="CHILD", parent_verdict_id="PARENT",
+                       parent_verdict_record_hash=parent.verdict_record_hash)
+    verify_verdict_chain([parent, child_ok])
+    # naming a parent without embedding its hash is refused
+    with pytest.raises(VerdictChainError, match="without embedding"):
+        verify_verdict_chain([parent, _record(verdict_id="CHILD",
+                                              parent_verdict_id="PARENT")])
+    # a mutated ancestor breaks the embedded link
+    with pytest.raises(VerdictChainError, match="parent hash mismatch"):
+        verify_verdict_chain([parent, _record(
+            verdict_id="CHILD", parent_verdict_id="PARENT",
+            parent_verdict_record_hash="0" * 64)])
     with pytest.raises(VerdictChainError):
-        verify_verdict_chain([child])                      # dangling parent
+        verify_verdict_chain([child_ok])                      # dangling parent
     with pytest.raises(VerdictChainError):
-        verify_verdict_chain([parent, parent])             # duplicate id
+        verify_verdict_chain([parent, parent])                # duplicate id
     with pytest.raises(VerdictChainError):
         forward = [_record(verdict_id="A", parent_verdict_id="B"),
                    _record(verdict_id="B")]
-        verify_verdict_chain(forward)                      # forward reference
+        verify_verdict_chain(forward)                         # forward reference
     assert VERDICT_RECORD_SCHEMA == "VERDICT_RECORD_V1"
 
 
-def test_committed_freeze_artifacts_form_a_valid_verdict_chain():
+def test_verdict_chain_detects_mutated_payloads_via_stored_hashes():
+    parent = _record(verdict_id="PARENT")
+    child = _record(verdict_id="CHILD", parent_verdict_id="PARENT",
+                    parent_verdict_record_hash=parent.verdict_record_hash)
+    stored = {parent.verdict_id: parent.verdict_record_hash,
+              child.verdict_id: child.verdict_record_hash}
+    verify_verdict_chain([parent, child], stored_hashes=stored)
+    # a silently mutated payload no longer matches its stored hash
+    mutated = _record(verdict_id="CHILD", parent_verdict_id="PARENT",
+                      parent_verdict_record_hash=parent.verdict_record_hash,
+                      verdict="PASS_MUTATED")
+    with pytest.raises(VerdictChainError, match="payload hash mismatch"):
+        verify_verdict_chain([parent, mutated], stored_hashes=stored)
+    # missing / extra stored hashes fail closed
+    with pytest.raises(VerdictChainError):
+        verify_verdict_chain([parent, child], stored_hashes={"PARENT": stored["PARENT"]})
+    with pytest.raises(VerdictChainError):
+        verify_verdict_chain([parent, child],
+                             stored_hashes=dict(stored, GHOST="0" * 64))
+
+
+def test_chain_manifest_round_trip_verification():
+    parent = _record(verdict_id="PARENT")
+    child = _record(verdict_id="CHILD", parent_verdict_id="PARENT",
+                    parent_verdict_record_hash=parent.verdict_record_hash)
+    manifest = {"schema_version": VERDICT_RECORD_SCHEMA,
+                "records": [parent.as_dict(), child.as_dict()],
+                "chain_head_verdict_id": "CHILD",
+                "chain_head_verdict_record_hash": child.verdict_record_hash}
+    verify_chain_manifest(manifest)
+    # byte-level mutation of any committed record fails the manifest check
+    import copy
+    mutated = copy.deepcopy(manifest)
+    mutated["records"][0]["verdict"] = "TAMPERED"
+    with pytest.raises(VerdictChainError):
+        verify_chain_manifest(mutated)
+    # a wrong chain-head pin also fails
+    head = copy.deepcopy(manifest)
+    head["chain_head_verdict_record_hash"] = "0" * 64
+    with pytest.raises(VerdictChainError):
+        verify_chain_manifest(head)
+
+
+def test_committed_freeze_artifacts_form_a_valid_hash_linked_chain():
     chain_path = ROOT / "artifacts/funnel_optimizer_v1_r3_causal_policy_freeze/verdict_chain.json"
     if not chain_path.is_file():
         pytest.skip("freeze artifacts not generated in this checkout")
+    verify_chain_manifest(json.loads(chain_path.read_text()))
     chain = json.loads(chain_path.read_text())
-    records = [VerdictRecord(**{k: v for k, v in record.items()
-                                if k != "verdict_record_hash"})
-               for record in chain["records"]]
-    verify_verdict_chain(records)
-    for record, stored in zip(records, chain["records"], strict=True):
-        assert record.verdict_record_hash == stored["verdict_record_hash"]
-    assert chain["records"][-1]["parent_verdict_id"] == "R3_2_DIRECTION_CAUSALITY_AUDIT"
-    assert chain["records"][-1]["policy_hash"] == json.loads(
+    freeze = chain["records"][-1]
+    assert freeze["parent_verdict_id"] == "R3_2_DIRECTION_CAUSALITY_AUDIT"
+    assert freeze["parent_verdict_record_hash"] == chain["records"][0]["verdict_record_hash"]
+    assert freeze["policy_hash"] == json.loads(
         (ROOT / "config/governance/funnel_optimizer_r3_causal_policy_proposal.json")
         .read_text())["POLICY_HASH"]
+    audit = json.loads(
+        (ROOT / "artifacts/funnel_optimizer_v1_r3_causal_policy_freeze"
+         "/causal_mask_audit.json").read_text())
+    assert audit["derived_vs_stored_geometry"]["mismatch_ids"] == []
 
 
 # ---------------------------------------------------------------------------

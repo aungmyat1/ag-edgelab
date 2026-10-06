@@ -27,22 +27,39 @@ Forbidden inputs — supplying them raises :class:`MaskInputForbidden`:
 * future fill knowledge
 * any post-entry outcome availability
 
+Implementation note (review finding, PR #24): the frozen ALD V2 replay
+assigns ``unit.entry/stop/risk/target`` only AFTER the S7 forward-bar
+availability gate, so those stored fields are absent for a confirmed unit
+at a data boundary and their presence otherwise encodes that forward bars
+existed.  This mask therefore NEVER reads those fields: geometry is
+re-derived from genuinely pre-T2 inputs — the confirmation bar close, the
+branch's protective extreme bar, the opposite reference boundary, and H1
+liquidity pools closed at or before T2 — using the frozen strategy's own
+helper functions.  For units that did pass S8 the derived values must
+equal the stored ones; the freeze audit asserts that equivalence.
+
 The historical ``row.all_rules_pass`` funnel flag is NOT this mask: it
-requires S9 completion, which is post-entry outcome information.  The
-historical S7 stage is also not blindly frozen because its pass state
-depends on the existence of forward M5 bars after the confirmation bar.
+requires S9 completion, which is post-entry outcome information.
 """
 
 from __future__ import annotations
 
+from bisect import bisect_left
 from dataclasses import dataclass, field
-from datetime import datetime
-from typing import Mapping
+from datetime import datetime, timedelta
+from typing import Mapping, Sequence
 
+from ag_edgelab.contracts.market import MarketBar
+from ag_edgelab.data.fx_histdata_2017 import bars_closed_at
 from ag_edgelab.optimization.causal_time import (
-    CausalFact, LookaheadViolation, assert_available_at_or_before, require_aware_utc,
-    t1_direction_available, t2_decision_time,
+    CausalFact, LookaheadViolation, M15_BAR_DURATION, M5_BAR_DURATION,
+    assert_available_at_or_before, require_aware_utc, t1_direction_available,
+    t2_decision_time,
 )
+from ag_edgelab.strategies.asian_liquidity_displacement_v2 import (
+    SWING_ORDER, liquidity_levels,
+)
+from ag_edgelab.universal.location import LocationSide
 
 CAUSAL_MASK_ID = "CAUSAL_ENTRY_GEOMETRY_MASK_V1"
 MASK_SCHEMA_VERSION = "CAUSAL_ENTRY_GEOMETRY_MASK_V1_SCHEMA"
@@ -88,6 +105,84 @@ FORBIDDEN_FACT_NAME_PATTERNS: tuple[str, ...] = (
 
 class MaskInputForbidden(RuntimeError):
     """The mask was offered a forbidden future/outcome input."""
+
+
+class CausalGeometryUnavailable(RuntimeError):
+    """The bars needed to derive causal geometry at T2 were not supplied."""
+
+
+@dataclass(frozen=True)
+class CausalGeometry:
+    """Entry geometry derived strictly from bars closed at or before T2."""
+
+    entry: float | None
+    stop: float | None
+    target: float | None
+    decision_ts: datetime
+
+
+def _bar_at(bars: Sequence[MarketBar], open_time: datetime) -> MarketBar | None:
+    index = bisect_left(bars, open_time, key=lambda bar: bar.timestamp)
+    if index < len(bars) and bars[index].timestamp == open_time:
+        return bars[index]
+    return None
+
+
+def derive_causal_geometry(unit, *, m5: Sequence[MarketBar],
+                           m15: Sequence[MarketBar],
+                           h1: Sequence[MarketBar]) -> CausalGeometry:
+    """Re-derive ALD V2 entry geometry from pre-T2 inputs only.
+
+    * entry   = close of the confirming M5 bar (known at T2);
+    * stop    = branch A: the interaction M15 bar's raid-side extreme;
+                branch B: the retest M5 bar's held-side extreme;
+    * target  = branch A: the opposite reference boundary; branch B: the
+                nearest closed-H1 liquidity pool beyond entry (H1 bars
+                closed at or before T2, exactly the frozen S8 rule).
+    """
+    if not unit.passed("S6_STRUCTURE_CONFIRM") or unit.confirm_time is None:
+        raise ValueError("causal geometry requires a confirmed unit")
+    confirm_open = datetime.fromisoformat(unit.confirm_time)
+    t2 = t2_decision_time(confirm_open)
+    confirm_bar = _bar_at(m5, confirm_open)
+    if confirm_bar is None:
+        return CausalGeometry(None, None, None, t2)
+    entry = confirm_bar.close
+
+    stop: float | None
+    if unit.branch == "A_SWEEP_RECLAIM_REVERSAL":
+        event_bar = _bar_at(m15, datetime.fromisoformat(unit.event_time)) \
+            if unit.event_time else None
+        if event_bar is None or unit.boundary_side not in ("UPPER", "LOWER"):
+            return CausalGeometry(entry, None, None, t2)
+        stop = event_bar.high if unit.boundary_side == "UPPER" else event_bar.low
+        target = (unit.reference_low if unit.direction == "BEAR"
+                  else unit.reference_high) if unit.reference_high is not None \
+            and unit.reference_low is not None else None
+    elif unit.branch == "B_BREAKOUT_RETEST_CONTINUATION":
+        retest_bar = _bar_at(m5, datetime.fromisoformat(unit.reclaim_or_retest_time)) \
+            if unit.reclaim_or_retest_time else None
+        if retest_bar is None or unit.direction not in ("BULL", "BEAR"):
+            return CausalGeometry(entry, None, None, t2)
+        stop = retest_bar.low if unit.direction == "BULL" else retest_bar.high
+        # Frozen S8 branch-B rule: pools from H1 bars CLOSED at or before T2.
+        h1_at_entry = bars_closed_at(tuple(h1), "H1", t2)
+        target = None
+        if h1_at_entry:
+            zones = liquidity_levels(h1_at_entry, "H1", SWING_ORDER)
+            if unit.direction == "BULL":
+                candidates = [zone.zone_low for zone in zones
+                              if zone.side is LocationSide.RESISTANCE
+                              and zone.zone_low > entry]
+                target = min(candidates) if candidates else None
+            else:
+                candidates = [zone.zone_high for zone in zones
+                              if zone.side is LocationSide.SUPPORT
+                              and zone.zone_high < entry]
+                target = max(candidates) if candidates else None
+    else:
+        return CausalGeometry(entry, None, None, t2)
+    return CausalGeometry(entry, stop, target, t2)
 
 
 @dataclass(frozen=True)
@@ -178,14 +273,17 @@ def evaluate_causal_entry_geometry_mask(
                             True, "CAUSAL_ENTRY_GEOMETRY_PASS", tuple(audit))
 
 
-def causal_mask_facts_from_v2_unit(unit) -> dict[str, CausalFact]:
-    """Build the mask fact set from a frozen ALD V2 ``V2Unit``.
+def causal_mask_facts_from_v2_unit(unit, *, m5: Sequence[MarketBar],
+                                   m15: Sequence[MarketBar],
+                                   h1: Sequence[MarketBar]) -> dict[str, CausalFact]:
+    """Build the mask fact set from a frozen ALD V2 ``V2Unit`` plus bars.
 
-    Only fields whose values are determined by bars closed at or before the
-    confirmation bar are read.  Outcome fields (realised_r, mfe_r, mae_r,
-    resolution, reached, stopped_out, stopped_same_bar, forward_bars) are
-    NEVER read; a unit object that raises on their access still produces a
-    mask, which is asserted by the focused test suite.
+    Stage facts come from the unit's recorded pre-T2 stage outcomes.
+    Geometry facts are DERIVED from bars closed at or before T2 (see
+    :func:`derive_causal_geometry`); the S7-populated ``entry/stop/risk/
+    target`` fields are never read, so a confirmed unit at a data boundary
+    (no forward M5 bars) is judged exactly like any other confirmed unit.
+    Outcome fields are likewise never read.
 
     Availability times (conservative upper bounds of true knowability):
 
@@ -201,31 +299,30 @@ def causal_mask_facts_from_v2_unit(unit) -> dict[str, CausalFact]:
         # opportunity carrying the frozen causal reject reason.
         raise ValueError("mask facts require a confirmed unit")
 
-    from datetime import datetime as _dt
-
-    from ag_edgelab.optimization.causal_time import M15_BAR_DURATION, M5_BAR_DURATION
-
-    event_open = _dt.fromisoformat(unit.event_time)
+    event_open = datetime.fromisoformat(unit.event_time)
     t1 = t1_direction_available(event_open)
-    t2 = t2_decision_time(_dt.fromisoformat(unit.confirm_time))
+    confirm_open = datetime.fromisoformat(unit.confirm_time)
+    t2 = t2_decision_time(confirm_open)
 
-    # Branch A reclaims on an M15 bar close (+15 min); branch B retests on an
-    # M5 bar close (+5 min).  Both bar families stamp OPEN times.
+    # Branch A reclaims on an M15 bar close (+15 min); branch B retests on
+    # an M5 bar close (+5 min).  Both bar families stamp OPEN times.
     reclaim_bar_duration = (M15_BAR_DURATION if unit.branch == "A_SWEEP_RECLAIM_REVERSAL"
                             else M5_BAR_DURATION)
     reclaim_available = (t1 if unit.reclaim_or_retest_time is None
-                         else _dt.fromisoformat(unit.reclaim_or_retest_time) + reclaim_bar_duration)
+                         else datetime.fromisoformat(unit.reclaim_or_retest_time) + reclaim_bar_duration)
     if reclaim_available > t2:
         reclaim_available = t2
 
-    entry_known = unit.entry is not None
-    stop_known = unit.stop is not None
-    risk_positive = (unit.risk is not None and unit.risk > 0)
-    target_known = unit.target is not None
+    geometry = derive_causal_geometry(unit, m5=m5, m15=m15, h1=h1)
+    entry_known = geometry.entry is not None
+    stop_known = geometry.stop is not None
+    risk_positive = (entry_known and stop_known
+                     and abs(geometry.entry - geometry.stop) > 0)  # type: ignore[operator]
+    target_known = geometry.target is not None
     beyond = False
     if entry_known and target_known and unit.direction in ("BULL", "BEAR"):
-        beyond = ((unit.target > unit.entry) if unit.direction == "BULL"
-                  else (unit.target < unit.entry))
+        beyond = ((geometry.target > geometry.entry) if unit.direction == "BULL"
+                  else (geometry.target < geometry.entry))
     order_ok = bool(unit.event_time and unit.reclaim_or_retest_time and unit.confirm_time
                     and unit.event_time <= unit.reclaim_or_retest_time <= unit.confirm_time)
 
@@ -245,7 +342,9 @@ def causal_mask_facts_from_v2_unit(unit) -> dict[str, CausalFact]:
     }
 
 
-def causal_mask_for_v2_unit(unit) -> CausalMaskResult:
+def causal_mask_for_v2_unit(unit, *, m5: Sequence[MarketBar],
+                            m15: Sequence[MarketBar],
+                            h1: Sequence[MarketBar]) -> CausalMaskResult:
     """Evaluate the frozen causal mask for one ALD V2 unit.
 
     Units without a confirmation are mask-ineligible with the frozen causal
@@ -255,8 +354,7 @@ def causal_mask_for_v2_unit(unit) -> CausalMaskResult:
         return CausalMaskResult(
             CAUSAL_MASK_ID, unit.candidate_id, None, False,
             f"NO_CONFIRMATION:{unit.reject_reason or unit.reject_node or 'PRE_S6'}")
-    facts = causal_mask_facts_from_v2_unit(unit)
-    from datetime import datetime as _dt
-    decision = t2_decision_time(_dt.fromisoformat(unit.confirm_time))
+    facts = causal_mask_facts_from_v2_unit(unit, m5=m5, m15=m15, h1=h1)
+    decision = t2_decision_time(datetime.fromisoformat(unit.confirm_time))
     return evaluate_causal_entry_geometry_mask(
         opportunity_id=unit.candidate_id, facts=facts, decision_ts=decision)

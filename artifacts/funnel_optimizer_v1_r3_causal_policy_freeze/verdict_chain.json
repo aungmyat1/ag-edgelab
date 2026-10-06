@@ -1,6 +1,6 @@
 {
   "chain_head_verdict_id": "R3_CAUSAL_POLICY_FREEZE_R1",
-  "chain_head_verdict_record_hash": "8011bd5010bc6bc31ffba847fa8fa390b09b0c88e6f1ad5834da820dc1132405",
+  "chain_head_verdict_record_hash": "879f88be64b8ba65724c5705dab3a15c1ae796dc913ece14b0259ab6e9bb64d8",
   "records": [
     {
       "candidate_contract_hash": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
@@ -13,17 +13,18 @@
         "authority": "PR #23 R3.2 audit; historical, hash-pinned"
       },
       "parent_verdict_id": "",
+      "parent_verdict_record_hash": "",
       "policy_hash": "",
       "schema_version": "VERDICT_RECORD_V1",
       "verdict": "R3_1_PASS_EXPLAINED_BY_MULTIPLE_ARTIFACTS",
       "verdict_id": "R3_2_DIRECTION_CAUSALITY_AUDIT",
-      "verdict_record_hash": "1153b1f43961563f397cc4c06fb4397f610228073e99be74b048f6c3f009e8cb"
+      "verdict_record_hash": "c761e8bf4c36a91acfe416dabc627b0955e25cac822562717514556365a2992e"
     },
     {
       "candidate_contract_hash": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
       "dataset_hash": "0b32d29474ea173c9cc34de0b7011f8856825ff76bfbb10699d7fb748b36f85e",
       "dataset_manifest_hash": "",
-      "engine_code_sha": "cd70f70ab1a297addadd9d08d63eba83a3c9fb28a664e989183154111db6f184",
+      "engine_code_sha": "e0b2c3914162ffb6bb62e16af839f682eeb2163dc8c4605e81952c0255dade08",
       "event_table_hash": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
       "friction_authority_hash": "",
       "notes": {
@@ -32,11 +33,12 @@
         "real_campaign_authorized": "false"
       },
       "parent_verdict_id": "R3_2_DIRECTION_CAUSALITY_AUDIT",
+      "parent_verdict_record_hash": "c761e8bf4c36a91acfe416dabc627b0955e25cac822562717514556365a2992e",
       "policy_hash": "69ba55e06b23f1ef5694ffdbb97b6a35983e6976ec0c8d6fe5d420c7a905dffa",
       "schema_version": "VERDICT_RECORD_V1",
       "verdict": "POLICY_PROPOSED_OWNER_UNRESOLVED_BASELINE_TIMING:ROBUST",
       "verdict_id": "R3_CAUSAL_POLICY_FREEZE_R1",
-      "verdict_record_hash": "8011bd5010bc6bc31ffba847fa8fa390b09b0c88e6f1ad5834da820dc1132405"
+      "verdict_record_hash": "879f88be64b8ba65724c5705dab3a15c1ae796dc913ece14b0259ab6e9bb64d8"
     }
   ],
   "schema_version": "VERDICT_RECORD_V1"

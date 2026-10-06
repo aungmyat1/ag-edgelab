@@ -5,7 +5,9 @@ This is POLICY INFRASTRUCTURE, not candidate optimization:
 
 * the frozen ALD V2 strategy is hash-verified, never rerun with new parameters;
 * only the DEVELOPMENT fixture partition is read (OOS/holdout stay closed);
-* the parent population is fixed by CAUSAL_ENTRY_GEOMETRY_MASK_V1;
+* the parent population is fixed by CAUSAL_ENTRY_GEOMETRY_MASK_V1, whose
+  geometry is DERIVED from bars closed at or before T2 (never from the
+  S7-populated unit fields) and is audited against the stored S8 geometry;
 * the three baseline T2 timing policies are compared WITHOUT tuning any of
   them — this is the PHASE B6 policy sensitivity analysis the owner must
   resolve before authorizing the final policy.
@@ -18,7 +20,6 @@ Outputs ``artifacts/funnel_optimizer_v1_r3_causal_policy_freeze/``:
 
 from __future__ import annotations
 
-import hashlib
 import json
 import sys
 from datetime import datetime, timedelta, timezone
@@ -28,8 +29,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from ag_edgelab.data.fingerprint import canonical_json, sha256_file, sha256_json  # noqa: E402
+from ag_edgelab.optimization.baseline_timing_policy import (  # noqa: E402
+    DEFAULT_FIXED_DELAY_FROM_T1_MINUTES, DEFAULT_MIN_STRATUM_PARENT_N,
+    StratifiedDelayPools, empirical_matched_delay, fixed_causal_delay_from_t1,
+)
 from ag_edgelab.optimization.causal_entry_mask import (  # noqa: E402
-    CAUSAL_MASK_ID, causal_mask_for_v2_unit,
+    CAUSAL_MASK_ID, causal_mask_for_v2_unit, derive_causal_geometry,
 )
 from ag_edgelab.optimization.causal_time import t2_decision_time  # noqa: E402
 from ag_edgelab.optimization.direction_causality_audit import (  # noqa: E402
@@ -58,7 +63,6 @@ UTC = timezone.utc
 POLICY_FREEZE_BASE = "252059ec84e76562e8ecb7115311f42bb62eac41"
 PREREG = ROOT / "config/governance/funnel_optimizer_v1_fixture_preregistration.json"
 POLICY_PROPOSAL = ROOT / "config/governance/funnel_optimizer_r3_causal_policy_proposal.json"
-ALD_DISPOSITION = ROOT / "config/governance/ald_v2_disposition.json"
 FROZEN = ROOT / "src/ag_edgelab/strategies/asian_liquidity_displacement_v2.py"
 FROZEN_SHA = "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920"
 OUT = ROOT / "artifacts/funnel_optimizer_v1_r3_causal_policy_freeze"
@@ -68,8 +72,8 @@ OUT = ROOT / "artifacts/funnel_optimizer_v1_r3_causal_policy_freeze"
 # round, scale-free constant chosen WITHOUT consulting any outcome statistic
 # under any of the compared policies; it is a policy parameter the owner may
 # revise (decision R3_OD_05).
-FIXED_CAUSAL_DELAY_FROM_T1_MINUTES = 120
-STRATIFIED_MIN_STRATUM_PARENT_N = 30
+FIXED_CAUSAL_DELAY_FROM_T1_MINUTES = DEFAULT_FIXED_DELAY_FROM_T1_MINUTES
+STRATIFIED_MIN_STRATUM_PARENT_N = DEFAULT_MIN_STRATUM_PARENT_N
 
 
 def _dt(value: str) -> datetime:
@@ -78,6 +82,17 @@ def _dt(value: str) -> datetime:
 
 def _direction(unit: V2.V2Unit) -> str | None:
     return {"BULL": "LONG", "BEAR": "SHORT"}.get(unit.direction)
+
+
+def _bars_for(production, row):
+    frames = production.frames[(row.symbol, row.timestamp_utc.year)].frames
+    return frames["M5"], frames["M15"], frames["H1"]
+
+
+def _mask(production, row):
+    m5, m15, h1 = _bars_for(production, row)
+    return causal_mask_for_v2_unit(production.parent_units[row.event_id],
+                                   m5=m5, m15=m15, h1=h1)
 
 
 def _reference(production, row, at: datetime, *, selected: bool, direction: str | None):
@@ -92,10 +107,6 @@ def _reference(production, row, at: datetime, *, selected: bool, direction: str 
         outcome.long_outcome_r, outcome.short_outcome_r,
         selected, direction if selected else None,
     )
-
-
-def _slot(value: str, modulo: int) -> int:
-    return int(hashlib.sha256(value.encode()).hexdigest()[:16], 16) % modulo
 
 
 def _experiment(records):
@@ -132,8 +143,7 @@ def main() -> int:
     # ------------------------------------------------------------------
     # PHASE B2 — CAUSAL_ENTRY_GEOMETRY_MASK_V1 audit
     # ------------------------------------------------------------------
-    mask_results = {row.event_id: causal_mask_for_v2_unit(units[row.event_id])
-                    for row in rows}
+    mask_results = {row.event_id: _mask(production, row) for row in rows}
     mask_eligible = [row for row in rows if mask_results[row.event_id].eligible]
     s8_rows = [row for row in rows if units[row.event_id].passed("S8_GEOMETRY_VALID")]
     s9_of_s8 = sum(units[row.event_id].passed("S9_TRADE_COMPLETED") for row in s8_rows)
@@ -141,11 +151,35 @@ def main() -> int:
                  if not units[row.event_id].passed("S8_GEOMETRY_VALID")]
     s8_only = [row for row in s8_rows if not mask_results[row.event_id].eligible]
 
+    # Confirmed units whose S7 failed only for missing forward bars: the
+    # boundary case the causal mask must NOT penalize.
+    confirmed = [row for row in rows if units[row.event_id].passed("S6_STRUCTURE_CONFIRM")]
+    boundary = [row for row in confirmed
+                if units[row.event_id].reject_reason == "NO_FORWARD_BARS"]
+
+    # Derived-vs-stored geometry equivalence over every S8-passing unit:
+    # the causal derivation must reproduce the frozen replay's stored
+    # geometry exactly, proving the mask reads no S7/S8-gated information.
+    geometry_checked = geometry_match = 0
+    geometry_mismatches: list[str] = []
+    for row in s8_rows:
+        unit = units[row.event_id]
+        m5, m15, h1 = _bars_for(production, row)
+        derived = derive_causal_geometry(unit, m5=m5, m15=m15, h1=h1)
+        geometry_checked += 1
+        if (derived.entry == unit.entry and derived.stop == unit.stop
+                and derived.target == unit.target):
+            geometry_match += 1
+        else:
+            geometry_mismatches.append(row.event_id)
+
     parent_ids = {row.event_id for row in mask_eligible}
-    parent_t2_lags = sorted(
-        (_dt(units[row.event_id].confirm_time) + timedelta(minutes=5) - row.timestamp_utc)
+    parent_rows = [
+        (row.event_id, row.symbol, row.session, row.timestamp_utc.year,
+         _dt(units[row.event_id].confirm_time) + timedelta(minutes=5) - row.timestamp_utc)
         for row in mask_eligible
-    )
+    ]
+    parent_t2_lags = sorted(lag for *_, lag in parent_rows)
 
     mask_audit = {
         "schema_version": "R3_CAUSAL_POLICY_FREEZE_MASK_AUDIT_V1",
@@ -153,12 +187,15 @@ def main() -> int:
         "policy_freeze_base": POLICY_FREEZE_BASE,
         "policy_hash": policy_hash,
         "decision_ts_rule": "T2_CONFIRMATION_M5_CLOSE",
+        "geometry_source": "DERIVED_FROM_BARS_CLOSED_AT_OR_BEFORE_T2 (S7-populated unit fields are never read)",
         "forbidden_inputs": [
             "FUTURE_BAR_EXISTENCE", "RIGHT_CENSOR_STATUS", "S9_COMPLETION",
             "MFE", "MAE", "REALIZED_OUTCOME", "FUTURE_FILL_KNOWLEDGE",
             "POST_ENTRY_OUTCOME_AVAILABILITY",
         ],
         "population_n": len(rows),
+        "confirmed_n": len(confirmed),
+        "boundary_no_forward_bars_n": len(boundary),
         "mask_eligible_n": len(mask_eligible),
         "s8_pass_n": len(s8_rows),
         "s9_completed_of_s8_n": s9_of_s8,
@@ -168,6 +205,11 @@ def main() -> int:
         "s8_pass_but_mask_fail_n": len(s8_only),
         "s8_pass_but_mask_fail_reasons": sorted(
             {mask_results[row.event_id].reason_code for row in s8_only}),
+        "derived_vs_stored_geometry": {
+            "checked_n": geometry_checked,
+            "match_n": geometry_match,
+            "mismatch_ids": geometry_mismatches[:20],
+        },
         "frozen_ald_v2_sha256": FROZEN_SHA,
         "event_table_sha256": production.table.sha256,
     }
@@ -178,6 +220,10 @@ def main() -> int:
         raise RuntimeError(
             "CAUSAL mask disagrees with historical S8 geometry on "
             f"{len(s8_only)} rows; investigate before freezing")
+    if geometry_mismatches:
+        raise RuntimeError(
+            f"derived causal geometry mismatched stored S8 geometry on "
+            f"{len(geometry_mismatches)} rows; investigate before freezing")
 
     # ------------------------------------------------------------------
     # PHASE B6 — baseline T2 timing policy sensitivity analysis
@@ -189,55 +235,32 @@ def main() -> int:
     # Policy A — EMPIRICAL_MATCHED_DELAY (R3.2 diagnostic semantics)
     records_a = []
     for row in rows:
-        unit = units[row.event_id]
         if row.event_id in parent_ids:
-            at = t2_decision_time(_dt(unit.confirm_time))
+            at = t2_decision_time(_dt(units[row.event_id].confirm_time))
             records_a.append(reference_at(row, at, True))
         else:
-            slot = _slot(row.event_id, len(parent_t2_lags))
-            records_a.append(reference_at(row, row.timestamp_utc + parent_t2_lags[slot], False))
+            at = empirical_matched_delay(row.event_id, row.timestamp_utc, parent_t2_lags)
+            records_a.append(reference_at(row, at, False))
     result_a = _experiment(records_a)
 
-    # Policy B — STRATIFIED_EMPIRICAL_MATCHED_DELAY (symbol + session; year
-    # subdivision where the stratum has >= 30 parents)
-    def stratum_key(row, unit, use_year: bool) -> tuple:
-        return (row.symbol, row.session, row.timestamp_utc.year) if use_year \
-            else (row.symbol, row.session)
-
-    parent_rows = [row for row in rows if row.event_id in parent_ids]
-    strat_parent_counts: dict[tuple, int] = {}
-    for row in parent_rows:
-        strat_parent_counts[(row.symbol, row.session, row.timestamp_utc.year)] = \
-            strat_parent_counts.get((row.symbol, row.session, row.timestamp_utc.year), 0) + 1
-    strata_use_year = {
-        (sym, sess): count >= STRATIFIED_MIN_STRATUM_PARENT_N
-        for (sym, sess, _yr), count in strat_parent_counts.items()
-    }
-
-    def stratum_lags(row, unit) -> list[timedelta]:
-        use_year = strata_use_year.get((row.symbol, row.session), False)
-        key = stratum_key(row, unit, use_year)
-        lags = [(_dt(units[r.event_id].confirm_time) + timedelta(minutes=5) - r.timestamp_utc)
-                for r in parent_rows
-                if stratum_key(r, units[r.event_id], use_year) == key]
-        return lags or parent_t2_lags
-
+    # Policy B — STRATIFIED_EMPIRICAL_MATCHED_DELAY: symbol + session, with
+    # year subdivision PER (symbol, session, year) stratum holding at least
+    # STRATIFIED_MIN_STRATUM_PARENT_N parents; sub-threshold years fall
+    # back to the (symbol, session) pool.
+    pools = StratifiedDelayPools.build(
+        parent_rows, min_stratum_parent_n=STRATIFIED_MIN_STRATUM_PARENT_N)
     records_b = []
     for row in rows:
-        unit = units[row.event_id]
         if row.event_id in parent_ids:
-            at = t2_decision_time(_dt(unit.confirm_time))
+            at = t2_decision_time(_dt(units[row.event_id].confirm_time))
             records_b.append(reference_at(row, at, True))
         else:
-            lags = stratum_lags(row, unit)
-            use_year = strata_use_year.get((row.symbol, row.session), False)
-            key = stratum_key(row, unit, use_year)
-            slot = _slot(f"{row.event_id}|{key}", len(lags))
-            records_b.append(reference_at(row, row.timestamp_utc + lags[slot], False))
+            at = pools.delay(row.event_id, row.timestamp_utc, row.symbol,
+                             row.session, row.timestamp_utc.year)
+            records_b.append(reference_at(row, at, False))
     result_b = _experiment(records_b)
 
     # Policy C — FIXED_CAUSAL_DELAY_FROM_T1 (preregistered constant clock)
-    fixed_delay = timedelta(minutes=FIXED_CAUSAL_DELAY_FROM_T1_MINUTES)
     records_c = []
     for row in rows:
         unit = units[row.event_id]
@@ -247,7 +270,9 @@ def main() -> int:
         else:
             t1 = (_dt(unit.event_time) + timedelta(minutes=15)
                   if unit.event_time else row.timestamp_utc + timedelta(minutes=15))
-            records_c.append(reference_at(row, t1 + fixed_delay, False))
+            at = fixed_causal_delay_from_t1(
+                t1, minutes=FIXED_CAUSAL_DELAY_FROM_T1_MINUTES)
+            records_c.append(reference_at(row, at, False))
     result_c = _experiment(records_c)
 
     rows_out = [
@@ -274,6 +299,11 @@ def main() -> int:
             "consulting outcome statistics under any compared policy; the owner "
             "may revise it as part of decision R3_OD_05"),
         "stratified_min_stratum_parent_n": STRATIFIED_MIN_STRATUM_PARENT_N,
+        "stratified_year_eligibility": (
+            "per (symbol, session, year) stratum independently; sub-threshold "
+            "years fall back to the (symbol, session) pool"),
+        "stratified_year_pools": sorted(
+            f"{sym}/{sess}/{year}" for (sym, sess, year) in pools.year_pools),
         "policies": rows_out,
         "BASELINE_TIMING_SENSITIVITY": sensitivity,
         "BASELINE_T2_TIMING_POLICY_STATUS": "UNRESOLVED_OWNER_DECISION",
@@ -304,37 +334,33 @@ def main() -> int:
         "src/ag_edgelab/optimization/directional_null_policy.py",
         "src/ag_edgelab/optimization/execution_semantics.py",
         "src/ag_edgelab/optimization/verdict_record.py",
+        "src/ag_edgelab/optimization/baseline_timing_policy.py",
     ])
     policy_code_sha = sha256_json({
         "modules": {name: sha256_file(ROOT / name) for name in code_modules}})
 
     r32_audit_record = VerdictRecord(
         verdict_id="R3_2_DIRECTION_CAUSALITY_AUDIT",
-        policy_hash="",
         dataset_hash=dataset_hash,
-        dataset_manifest_hash="",
         candidate_contract_hash=FROZEN_SHA,
         engine_code_sha=FROZEN_SHA,
         event_table_hash=sha256_file(
             ROOT / "artifacts/funnel_optimizer_v1_r3_2_direction_causality_audit"
             "/acceptance_evidence.json"),
-        friction_authority_hash="",
         verdict="R3_1_PASS_EXPLAINED_BY_MULTIPLE_ARTIFACTS",
-        parent_verdict_id="",
         notes={"authority": "PR #23 R3.2 audit; historical, hash-pinned"},
     )
     freeze_record = VerdictRecord(
         verdict_id="R3_CAUSAL_POLICY_FREEZE_R1",
         policy_hash=policy_hash,
         dataset_hash=dataset_hash,
-        dataset_manifest_hash="",
         candidate_contract_hash=FROZEN_SHA,
         engine_code_sha=policy_code_sha,
         event_table_hash=production.table.sha256,
-        friction_authority_hash="",
         verdict=f"POLICY_PROPOSED_OWNER_UNRESOLVED_BASELINE_TIMING:"
                 f"{sensitivity}",
-        parent_verdict_id="R3_2_DIRECTION_CAUSALITY_AUDIT",
+        parent_verdict_id=r32_audit_record.verdict_id,
+        parent_verdict_record_hash=r32_audit_record.verdict_record_hash,
         notes={
             "execution_semantics_hash": execution_semantics_hash(FROZEN_EXECUTION_SEMANTICS),
             "owner_r3_policy_authorized": "false",
@@ -360,6 +386,8 @@ def main() -> int:
         "POLICY_HASH": policy_hash,
         "CAUSAL_MASK_ID": CAUSAL_MASK_ID,
         "mask_eligible_n": len(mask_eligible),
+        "boundary_no_forward_bars_n": len(boundary),
+        "derived_vs_stored_geometry_match": f"{geometry_match}/{geometry_checked}",
         "s8_pass_n": len(s8_rows),
         "BASELINE_TIMING_SENSITIVITY": sensitivity,
         "policies": {item["BASELINE_TIMING_POLICY"]: item["VERDICT"]

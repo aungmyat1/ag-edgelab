@@ -1,6 +1,13 @@
 {
   "CAUSAL_MASK_ID": "CAUSAL_ENTRY_GEOMETRY_MASK_V1",
+  "boundary_no_forward_bars_n": 0,
+  "confirmed_n": 325,
   "decision_ts_rule": "T2_CONFIRMATION_M5_CLOSE",
+  "derived_vs_stored_geometry": {
+    "checked_n": 294,
+    "match_n": 294,
+    "mismatch_ids": []
+  },
   "event_table_sha256": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
   "forbidden_inputs": [
     "FUTURE_BAR_EXISTENCE",
@@ -13,6 +20,7 @@
     "POST_ENTRY_OUTCOME_AVAILABILITY"
   ],
   "frozen_ald_v2_sha256": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+  "geometry_source": "DERIVED_FROM_BARS_CLOSED_AT_OR_BEFORE_T2 (S7-populated unit fields are never read)",
   "mask_eligible_but_s8_fail_n": 0,
   "mask_eligible_but_s8_fail_reasons": [],
   "mask_eligible_n": 294,
