@@ -1,0 +1,6 @@
+{
+  "content_sha256": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
+  "dataset_role": "DEVELOPMENT",
+  "event_rows": 2656,
+  "schema_version": "FUNNEL_OPTIMIZER_EVENT_TABLE_CACHE_V1"
+}

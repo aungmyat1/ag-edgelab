@@ -1,0 +1,99 @@
+{
+  "authority_basis": [
+    "docs/MASTER_IMPLEMENTATION_PLAN.md",
+    "config/governance/data_authority_gap.json:FX_MULTIYEAR_AUTHORITY_R2",
+    "config/governance/external_artifact_registry.json:DUKASCOPY_M1_EURUSD_2015..2017 and DUKASCOPY_M1_GBPUSD_2015..2017",
+    "scripts/acquire_histdata_fx_multiyear.py"
+  ],
+  "candidate_fixture_id": "FUNNEL_OPTIMIZER_V1_FX_DEV_FIXTURE_R1",
+  "data_role": "DEVELOPMENT",
+  "dataset_status": "MATERIALIZED_NOT_YET_REPLAY_EVALUATED",
+  "forbidden_windows": [
+    "[YYYY-09-01T00:00:00Z, YYYY-12-01T00:00:00Z) OOS",
+    "[YYYY-12-01T00:00:00Z, next-year-01-01T00:00:00Z) SEALED_HOLDOUT"
+  ],
+  "materialization": {
+    "acquisition_seconds": 4.58467570199997,
+    "dataset_sha256": "0b32d29474ea173c9cc34de0b7011f8856825ff76bfbb10699d7fb748b36f85e",
+    "files": [
+      {
+        "bytes": 3558222,
+        "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_EURUSD_M1_2015.zip",
+        "sha256": "b6c015a65286b8e5712b4fc135bc2dbb75676a2ddb93c2b685c2dd52685a2dcd",
+        "symbol": "EURUSD",
+        "year": 2015
+      },
+      {
+        "bytes": 3442178,
+        "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_EURUSD_M1_2016.zip",
+        "sha256": "231bf3a4562b729124bc8d2803a169f29c412bd03347ea25fe75abc9f79842ca",
+        "symbol": "EURUSD",
+        "year": 2016
+      },
+      {
+        "bytes": 3365476,
+        "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_EURUSD_M1_2017.zip",
+        "sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "symbol": "EURUSD",
+        "year": 2017
+      },
+      {
+        "bytes": 3535353,
+        "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_GBPUSD_M1_2015.zip",
+        "sha256": "531514f5b3100be28d740b95ccf97662f6dcba3c6941cc465ac473b869b302eb",
+        "symbol": "GBPUSD",
+        "year": 2015
+      },
+      {
+        "bytes": 3627916,
+        "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_GBPUSD_M1_2016.zip",
+        "sha256": "39acbc0146e6ce82fc5327c56225623a0507e279534b8f2906dff19725c65838",
+        "symbol": "GBPUSD",
+        "year": 2016
+      },
+      {
+        "bytes": 3431978,
+        "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_GBPUSD_M1_2017.zip",
+        "sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "symbol": "GBPUSD",
+        "year": 2017
+      }
+    ],
+    "source": "HistData Generic ASCII M1; repository-pinned 2017 archive identity plus cross-source archive-byte identity proof for EURUSD and GBPUSD",
+    "verification": {
+      "EURUSD": {
+        "cross_source_2017_archive_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+        "pinned_2017_zip_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57"
+      },
+      "GBPUSD": {
+        "cross_source_2017_archive_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+        "pinned_2017_zip_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b"
+      }
+    }
+  },
+  "owner_policy_r2": {
+    "campaign_search_budget": 100,
+    "dev_friction_scenario": "UNRESOLVED",
+    "economic_ranking": "BLOCKED",
+    "eligibility_mode": "STRUCTURAL",
+    "random_baseline_count": 1000,
+    "reference_outcome_model": "FIXED_REFERENCE_2R_V1"
+  },
+  "owner_decisions_unresolved": [
+    "DEV_FRICTION_SCENARIO"
+  ],
+  "partition_contract": {
+    "development_windows": "[YYYY-01-01T00:00:00Z, YYYY-09-01T00:00:00Z) for 2015, 2016, 2017",
+    "oos_accessed": false,
+    "sealed_holdout_accessed": false
+  },
+  "symbols": [
+    "EURUSD",
+    "GBPUSD"
+  ],
+  "years": [
+    2015,
+    2016,
+    2017
+  ]
+}

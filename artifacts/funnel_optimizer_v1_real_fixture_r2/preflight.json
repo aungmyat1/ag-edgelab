@@ -1,0 +1,28 @@
+{
+  "base_pr": {
+    "head_sha": "909e1f7b71ead981370f2c8705ff65202404d009",
+    "number": 22,
+    "state_at_preflight": "OPEN_DRAFT",
+    "url": "https://github.com/aungmyat1/ag-edgelab/pull/22"
+  },
+  "branch": "arena/f020a01b-ag-edgelab",
+  "fixture_preregistration": {
+    "path": "config/governance/funnel_optimizer_v1_fixture_preregistration.json",
+    "sha256": "75aff1786fa51aee3c6d47473f2a032bd667f668c74fafbff0e8ea6693bd1334"
+  },
+  "frozen_ald_v2": {
+    "path": "src/ag_edgelab/strategies/asian_liquidity_displacement_v2.py",
+    "sha256": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920"
+  },
+  "main_at_preflight": {
+    "sha": "fdabc07d7260fc7e0586f19532b9f0c5a55f8073",
+    "tree": "867a6c4951b1f5c7946e15d2c3950fa430dffe27"
+  },
+  "pr_status_at_preflight": {
+    "20": "OPEN",
+    "21": "OPEN",
+    "22": "OPEN_DRAFT"
+  },
+  "preflight_schema_version": "FUNNEL_OPTIMIZER_V1_REAL_FIXTURE_R2_PREFLIGHT_V1",
+  "worktree_status_at_preflight": "CLEAN"
+}

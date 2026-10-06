@@ -1,0 +1,27 @@
+{
+  "base_sha": "fdabc07d7260fc7e0586f19532b9f0c5a55f8073",
+  "base_tree": "867a6c4951b1f5c7946e15d2c3950fa430dffe27",
+  "branch": "arena/f020a01b-ag-edgelab",
+  "dependency": {
+    "pr_20": {
+      "head_sha": "d9c5eeeb8c0a1613259dfc305b4f13705557d76d",
+      "state_at_preflight": "OPEN"
+    },
+    "pr_21": {
+      "head_sha": "fa7960935d0db92315e35f7822d25e2c8f5ab631",
+      "integration": "merged into implementation branch as plan-only dependency",
+      "state_at_preflight": "OPEN"
+    }
+  },
+  "frozen_strategy": {
+    "path": "src/ag_edgelab/strategies/asian_liquidity_displacement_v2.py",
+    "sha256": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920"
+  },
+  "governance_input_sha256": {
+    "candidate_ledger": "e2b3720e301a1874f16e6d867a85db701ea11baf9ddf50dd2d3aff21ae283cb5",
+    "contamination_registry": "b0ea16c07f43edd79db81acafdd7e6284a733b7979666ce491d0678f451843b0",
+    "oos_access_log": "316ec2b0839d4ffa077ee16ce463519642a9bfe42b6cb69ef52af69d03e44f01"
+  },
+  "preflight_schema_version": "FUNNEL_OPTIMIZER_V1_PREFLIGHT_V1",
+  "worktree_status_at_preflight": "CLEAN"
+}
