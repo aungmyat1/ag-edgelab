@@ -85,8 +85,9 @@ def test_reference_v2_is_causal_symmetric_and_strategy_independent():
     first = evaluate_reference_outcome_v2(bars, bars[20].timestamp, event_id="A", config=config)
     second = evaluate_reference_outcome_v2(bars, bars[20].timestamp, event_id="A", config=config)
     assert first == second
-    assert first.outcome_r is not None
-    assert first.outcome_r == (first.long_outcome_r + first.short_outcome_r) / 2
+    assert first.outcome_r is None  # symmetric legs must not collapse before inference
+    assert first.long_outcome_r is not None
+    assert first.short_outcome_r is not None
     # Mutating future data beyond the frozen horizon cannot alter the result.
     extra = MarketBar(timestamp=bars[-1].timestamp + timedelta(minutes=5), open=9, high=10, low=8, close=9)
     assert evaluate_reference_outcome_v2(bars + [extra], bars[20].timestamp,

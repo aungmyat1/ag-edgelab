@@ -109,8 +109,11 @@ def evaluate_reference_outcome_v2(
     long_r, long_reason = _one_direction(entry, distance, config.target_r, forward, long=True)
     short_r, short_reason = _one_direction(entry, distance, config.target_r, forward, long=False)
     if config.direction_mode is ReferenceDirectionMode.BOTH_DIRECTIONS_SYMMETRIC:
-        outcome = (long_r + short_r) / 2.0
-        reason = f"SYMMETRIC:{long_reason}+{short_reason}"
+        # R3.1 retains both directional legs as one opportunity cluster.  A
+        # scalar symmetric average would erase the parent's directional value
+        # and invite accidental leg-level resampling, so no scalar is emitted.
+        outcome = None
+        reason = f"SYMMETRIC_LEGS:{long_reason}+{short_reason}"
     elif config.direction_mode is ReferenceDirectionMode.RANDOM_DIRECTION:
         choose_long = random.Random(f"REFERENCE_V2:{config.rng_seed}:{event_id}").getrandbits(1) == 1
         outcome, reason = (long_r, f"RANDOM_LONG:{long_reason}") if choose_long else (short_r, f"RANDOM_SHORT:{short_reason}")

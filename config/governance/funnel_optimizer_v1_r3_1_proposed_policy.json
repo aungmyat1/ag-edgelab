@@ -1,0 +1,31 @@
+{
+  "data_role": "DEVELOPMENT_ONLY",
+  "eligibility": {
+    "minimum_baseline_universe_n": 100,
+    "minimum_parent_n": 30,
+    "minimum_reference_coverage": 0.9,
+    "parent_percentile_threshold": 0.95
+  },
+  "inference": {
+    "bootstrap_cluster_unit": "OPPORTUNITY",
+    "bootstrap_method": "CLUSTER_BOOTSTRAP",
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 4030341158,
+    "parent_estimand": "DECLARED_DIRECTION_REFERENCE_LEG",
+    "reference_legs": [
+      "REFERENCE_LEG_LONG",
+      "REFERENCE_LEG_SHORT"
+    ]
+  },
+  "null_controls": {
+    "planted_effect_r": 0.3,
+    "planted_signal_replicates": 100,
+    "planted_signal_required_power": 0.8,
+    "random_parent_max_pass_count": 17,
+    "random_parent_replicates": 200
+  },
+  "policy_status": "PROPOSED_OWNER_POLICY",
+  "reference_model": "REFERENCE_OUTCOME_MODEL_V2",
+  "reference_mode": "BOTH_DIRECTIONS_SYMMETRIC_PROVISIONAL",
+  "status": "PROVISIONAL_NOT_AUTHORIZED"
+}
