@@ -1,0 +1,144 @@
+{
+  "certification": {
+    "child_optimization_run": false,
+    "edge_verified_issued": false,
+    "independent_adversarial_review_required": true,
+    "r3_gate_trustworthy": false,
+    "r3_null_control_certification": "PASS",
+    "real_campaign_authorized": false,
+    "unexpected_ald_v2_pass": true
+  },
+  "directional_reference_table": {
+    "direction_legs": 5312,
+    "exit_reason_counts": {
+      "SYMMETRIC_LEGS:STOP+STOP": 721,
+      "SYMMETRIC_LEGS:STOP+STOP_FIRST": 20,
+      "SYMMETRIC_LEGS:STOP+TARGET": 805,
+      "SYMMETRIC_LEGS:STOP+TIMEOUT": 4,
+      "SYMMETRIC_LEGS:STOP_FIRST+STOP": 5,
+      "SYMMETRIC_LEGS:STOP_FIRST+STOP_FIRST": 5,
+      "SYMMETRIC_LEGS:TARGET+STOP": 1096
+    },
+    "legs_stored_separately": true,
+    "path": "artifacts/funnel_optimizer_v1_r3_1_statistical_certification/directional_reference_legs.jsonl",
+    "rows": 2656,
+    "sha256": "644af5f695a593bc35b422922aa5045d2d64373701fe4764254c493841f74a82"
+  },
+  "evidence_sha256": "7de467ef76e3aeca04d5048a1aac60a8529377c8cc933ad52d907f4344863629",
+  "frozen_ald_v2": {
+    "sha256": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+    "unchanged": true
+  },
+  "governance": {
+    "broker_mutation": false,
+    "data_role": "DEVELOPMENT_ONLY",
+    "holdout_accessed": false,
+    "oos_accessed": false,
+    "owner_policy_status": "PROVISIONAL_NOT_AUTHORIZED",
+    "reference_direction_authorized": false
+  },
+  "lineage": {
+    "R2": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
+    "R3_original_artifact_sha256": "03eb04242ea2429fc8309321f11cd65441cab59e9424029b3e318ceb6eea0317",
+    "R3_original_gate_status": "PARTIAL_PROVISIONAL_NOT_CERTIFIED",
+    "R3_original_verdict": "FAIL",
+    "original_pr23_head": "458b8fb13b21134ce26c247759e3544454fb712b",
+    "supersedes": "R3 eligibility statistical certification only"
+  },
+  "null_controls": {
+    "certification": "PASS",
+    "low_coverage_result": "BLOCKED_INSUFFICIENT_REFERENCE_COVERAGE",
+    "planted_effect_r": 0.3,
+    "planted_signal_estimated_power": 1.0,
+    "planted_signal_pass_count": 100,
+    "planted_signal_replicates": 100,
+    "random_parent_pass_count": 1,
+    "random_parent_pass_rate": 0.005,
+    "random_parent_replicates": 200,
+    "subsample_null_result": "FAIL"
+  },
+  "proposed_policy_sha256": "f7ee4e407b6db13f88a410fdfb28dcca94e78543b8bc3fd4c2eda966e11f19e5",
+  "r2_reproduction": {
+    "event_table_sha256": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
+    "match": true,
+    "rows": 2656
+  },
+  "r3_1_eligibility": {
+    "baseline_ci95_high_r": 0.10132844928224032,
+    "baseline_ci95_low_r": 0.050258022815613874,
+    "baseline_mean_r": 0.07512403958447646,
+    "baseline_median_r": -1.0,
+    "baseline_universe_not_subset_of_parent": true,
+    "bootstrap_cluster_unit": "OPPORTUNITY",
+    "bootstrap_method": "CLUSTER_BOOTSTRAP",
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 4030341158,
+    "delta_cluster_ci95_high_r": 0.6307608056268996,
+    "delta_cluster_ci95_low_r": 0.2798964722933045,
+    "direction_legs_stored_separately": true,
+    "evaluable_reference_opportunities": 2656,
+    "n_baseline_direction_legs": 5312,
+    "n_baseline_opportunities": 2656,
+    "n_parent": 294,
+    "parent_expectancy_r": 0.5408163265306123,
+    "parent_outcome_uses_declared_direction": true,
+    "parent_percentile": 1.0,
+    "reason_code": "R3_1_CLUSTERED_DIRECTIONAL_CERTIFICATION_PASS",
+    "reference_coverage": 1.0,
+    "selection_delta_r": 0.46569228694613585,
+    "stratum_diagnostics": {
+      "EURUSD": {
+        "baseline_mean_r": 0.08160801728965915,
+        "baseline_median_r": -1.0,
+        "n_direction_legs": 2656,
+        "n_opportunities": 1328
+      },
+      "EURUSD_2015": {
+        "baseline_mean_r": 0.09797297297297297,
+        "baseline_median_r": -1.0,
+        "n_direction_legs": 888,
+        "n_opportunities": 444
+      },
+      "EURUSD_2016": {
+        "baseline_mean_r": 0.01668653158522023,
+        "baseline_median_r": -1.0,
+        "n_direction_legs": 884,
+        "n_opportunities": 442
+      },
+      "EURUSD_2017": {
+        "baseline_mean_r": 0.13009049773755657,
+        "baseline_median_r": -1.0,
+        "n_direction_legs": 884,
+        "n_opportunities": 442
+      },
+      "GBPUSD": {
+        "baseline_mean_r": 0.06864006187929378,
+        "baseline_median_r": -1.0,
+        "n_direction_legs": 2656,
+        "n_opportunities": 1328
+      },
+      "GBPUSD_2015": {
+        "baseline_mean_r": -0.06756756756756757,
+        "baseline_median_r": -1.0,
+        "n_direction_legs": 888,
+        "n_opportunities": 444
+      },
+      "GBPUSD_2016": {
+        "baseline_mean_r": 0.1317908891988791,
+        "baseline_median_r": -1.0,
+        "n_direction_legs": 884,
+        "n_opportunities": 442
+      },
+      "GBPUSD_2017": {
+        "baseline_mean_r": 0.14231318812171395,
+        "baseline_median_r": -1.0,
+        "n_direction_legs": 884,
+        "n_opportunities": 442
+      }
+    },
+    "total_eligible_opportunities": 2656,
+    "verdict": "PASS"
+  },
+  "schema_version": "FUNNEL_OPTIMIZER_V1_R3_1_STATISTICAL_CERTIFICATION",
+  "status": "ADVERSARIAL_AUDIT_REQUIRED"
+}

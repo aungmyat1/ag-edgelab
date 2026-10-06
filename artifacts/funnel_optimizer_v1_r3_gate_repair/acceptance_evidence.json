@@ -1,0 +1,179 @@
+{
+  "archives": [
+    {
+      "byte_count": 3558222,
+      "dataset_role": "DEVELOPMENT_ONLY",
+      "expected_sha256": "b6c015a65286b8e5712b4fc135bc2dbb75676a2ddb93c2b685c2dd52685a2dcd",
+      "filename": "DAT_ASCII_EURUSD_M1_2015.zip",
+      "match": true,
+      "sha256": "b6c015a65286b8e5712b4fc135bc2dbb75676a2ddb93c2b685c2dd52685a2dcd",
+      "source": "HistData Generic ASCII M1; repository-pinned 2017 archive identity plus cross-source archive-byte identity proof for EURUSD and GBPUSD",
+      "symbol": "EURUSD",
+      "year": 2015
+    },
+    {
+      "byte_count": 3442178,
+      "dataset_role": "DEVELOPMENT_ONLY",
+      "expected_sha256": "231bf3a4562b729124bc8d2803a169f29c412bd03347ea25fe75abc9f79842ca",
+      "filename": "DAT_ASCII_EURUSD_M1_2016.zip",
+      "match": true,
+      "sha256": "231bf3a4562b729124bc8d2803a169f29c412bd03347ea25fe75abc9f79842ca",
+      "source": "HistData Generic ASCII M1; repository-pinned 2017 archive identity plus cross-source archive-byte identity proof for EURUSD and GBPUSD",
+      "symbol": "EURUSD",
+      "year": 2016
+    },
+    {
+      "byte_count": 3365476,
+      "dataset_role": "DEVELOPMENT_ONLY",
+      "expected_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+      "filename": "DAT_ASCII_EURUSD_M1_2017.zip",
+      "match": true,
+      "sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+      "source": "HistData Generic ASCII M1; repository-pinned 2017 archive identity plus cross-source archive-byte identity proof for EURUSD and GBPUSD",
+      "symbol": "EURUSD",
+      "year": 2017
+    },
+    {
+      "byte_count": 3535353,
+      "dataset_role": "DEVELOPMENT_ONLY",
+      "expected_sha256": "531514f5b3100be28d740b95ccf97662f6dcba3c6941cc465ac473b869b302eb",
+      "filename": "DAT_ASCII_GBPUSD_M1_2015.zip",
+      "match": true,
+      "sha256": "531514f5b3100be28d740b95ccf97662f6dcba3c6941cc465ac473b869b302eb",
+      "source": "HistData Generic ASCII M1; repository-pinned 2017 archive identity plus cross-source archive-byte identity proof for EURUSD and GBPUSD",
+      "symbol": "GBPUSD",
+      "year": 2015
+    },
+    {
+      "byte_count": 3627916,
+      "dataset_role": "DEVELOPMENT_ONLY",
+      "expected_sha256": "39acbc0146e6ce82fc5327c56225623a0507e279534b8f2906dff19725c65838",
+      "filename": "DAT_ASCII_GBPUSD_M1_2016.zip",
+      "match": true,
+      "sha256": "39acbc0146e6ce82fc5327c56225623a0507e279534b8f2906dff19725c65838",
+      "source": "HistData Generic ASCII M1; repository-pinned 2017 archive identity plus cross-source archive-byte identity proof for EURUSD and GBPUSD",
+      "symbol": "GBPUSD",
+      "year": 2016
+    },
+    {
+      "byte_count": 3431978,
+      "dataset_role": "DEVELOPMENT_ONLY",
+      "expected_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+      "filename": "DAT_ASCII_GBPUSD_M1_2017.zip",
+      "match": true,
+      "sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+      "source": "HistData Generic ASCII M1; repository-pinned 2017 archive identity plus cross-source archive-byte identity proof for EURUSD and GBPUSD",
+      "symbol": "GBPUSD",
+      "year": 2017
+    }
+  ],
+  "authority": {
+    "broker_mutation": false,
+    "child_optimization_run": false,
+    "edge_verified_issued": false,
+    "holdout_accessed": false,
+    "oos_accessed": false,
+    "r3_supersedes_r2_eligibility_authority": true,
+    "real_campaign_authorized": false,
+    "table_query_safe_ald_v2_children": 0
+  },
+  "baseline_nonzero_explanation": "The symmetric 2R/1R path model is not algebraically zero: a directional move commonly yields +2R on one side and -1R on the other (symmetric average +0.5R), while two stopped sides yield -1R. The observed gross baseline therefore reflects range/path and timeout geometry, not strategy edge.",
+  "evidence_sha256": "b35dc49497e159c002e4ab95acf600c8a2f8874133ab84d33a381986f9f08587",
+  "frozen_ald_v2": {
+    "sha256": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+    "unchanged": true
+  },
+  "historical_r2": {
+    "artifact_unchanged": true,
+    "eligibility_result": {
+      "baseline_count": 1000,
+      "baseline_mean_r": 0.20699444715285908,
+      "baseline_median_r": 0.2064974503062114,
+      "baseline_p05_r": 0.16511901438666757,
+      "baseline_p95_r": 0.24745308170552882,
+      "campaign_state": "STRUCTURAL_ELIGIBLE_NOT_EDGE",
+      "parent_expectancy_r": 0.21512900967937415,
+      "parent_percentile": 0.624,
+      "reason_code": "STRUCTURAL_MATCHED_RANDOM_BASELINE",
+      "sample_n": 293,
+      "selection_delta_r": 0.008134562526515066,
+      "verdict": "STRUCTURAL_ELIGIBILITY_PASS"
+    },
+    "eligibility_verdict": "STRUCTURAL_ELIGIBILITY_PASS",
+    "event_hash": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
+    "event_rows": 2656,
+    "limitation": "weak eligibility criterion + overlapping baseline universe + insufficient reference coverage",
+    "reproduction_verdict": "MATCH",
+    "rule_cells": {
+      "FAIL": 2362,
+      "NOT_EVALUABLE": 11951,
+      "PASS": 9591
+    }
+  },
+  "null_controls": {
+    "LOW_REFERENCE_COVERAGE_PARENT": "BLOCKED_INSUFFICIENT_REFERENCE_COVERAGE",
+    "PLANTED_SIGNAL_PARENT": "PASS",
+    "RANDOM_RULE_PARENT": {
+      "pass_count": 0,
+      "pass_rate": 0.0,
+      "replicates": 40
+    },
+    "SUBSAMPLE_NULL_PARENT": "FAIL"
+  },
+  "partition_boundary": {
+    "data_role": "DEVELOPMENT_ONLY",
+    "development_windows": "[YYYY-01-01T00:00:00Z, YYYY-09-01T00:00:00Z)",
+    "holdout_rows_parsed": 0,
+    "oos_rows_parsed": 0
+  },
+  "proposed_policy_sha256": "acee1001d010b39c0bff448a3a0826b638606326e5cd45798d1301ee777a5781",
+  "r3_eligibility": {
+    "baseline_ci95_high_r": 0.10006138191241773,
+    "baseline_ci95_low_r": 0.048273427508999676,
+    "baseline_mean_r": 0.07512403958447646,
+    "baseline_median_r": 0.5,
+    "baseline_universe_not_subset_of_parent": true,
+    "delta_bootstrap_ci95_high_r": 0.06843315754683386,
+    "delta_bootstrap_ci95_low_r": -0.09574211459623475,
+    "evaluable_reference_opportunities": 2656,
+    "n_baseline_universe": 2656,
+    "n_bootstrap": 2000,
+    "n_parent": 294,
+    "parent_expectancy_r": 0.061224489795918366,
+    "parent_percentile": 0.3645,
+    "reason_code": "R3_STATISTICAL_REQUIREMENTS_NOT_MET",
+    "reference_coverage": 1.0,
+    "rng_seed": 4030341158,
+    "selection_delta_r": -0.013899549788558091,
+    "total_eligible_opportunities": 2656,
+    "verdict": "FAIL"
+  },
+  "reference_model": {
+    "config": {
+      "atr_period": 14,
+      "direction_authorized": false,
+      "direction_mode": "BOTH_DIRECTIONS_SYMMETRIC",
+      "friction_status": "UNKNOWN_SEPARATE_NOT_APPLIED",
+      "max_holding_bars": 72,
+      "rng_seed": 4030341158,
+      "stop_atr_multiple": 1.0,
+      "target_r": 2.0
+    },
+    "direction_authorized": false,
+    "direction_mode": "BOTH_DIRECTIONS_SYMMETRIC_PROVISIONAL",
+    "exit_reason_counts": {
+      "SYMMETRIC:STOP+STOP": 721,
+      "SYMMETRIC:STOP+STOP_FIRST": 20,
+      "SYMMETRIC:STOP+TARGET": 805,
+      "SYMMETRIC:STOP+TIMEOUT": 4,
+      "SYMMETRIC:STOP_FIRST+STOP": 5,
+      "SYMMETRIC:STOP_FIRST+STOP_FIRST": 5,
+      "SYMMETRIC:TARGET+STOP": 1096
+    },
+    "friction": "UNKNOWN_SEPARATE_NOT_APPLIED",
+    "model_id": "REFERENCE_OUTCOME_MODEL_V2",
+    "status": "PROVISIONAL_NOT_AUTHORIZED"
+  },
+  "schema_version": "FUNNEL_OPTIMIZER_V1_R3_GATE_REPAIR",
+  "status": "SUPERSEDING_ELIGIBILITY_EVIDENCE"
+}
