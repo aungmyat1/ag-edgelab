@@ -1,0 +1,345 @@
+{
+  "attribution": {
+    "leave_one_out": [
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "S1_CONTEXT_ELIGIBLE",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "S2_LOCATION_ELIGIBLE",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "S3_SESSION_EVENT",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "S4_SWEEP_OR_BREAKOUT",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "S5_RECLAIM_OR_RETEST",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "S6_STRUCTURE_CONFIRM",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "S7_ENTRY_AVAILABLE",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "S8_GEOMETRY_VALID",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "PATH_DEPENDENT_OR_STRUCTURAL_RULE",
+        "rule_id": "S9_TRADE_COMPLETED",
+        "status": "REQUIRES_FULL_REPLAY"
+      }
+    ],
+    "requires_full_replay_count": 9,
+    "stage_diagnostics": [
+      {
+        "fail_expectancy_r": null,
+        "n_fail": 0,
+        "n_not_evaluable": 0,
+        "n_pass": 324,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.2114313362337035,
+        "rule_id": "S1_CONTEXT_ELIGIBLE",
+        "selection_delta_r": null
+      },
+      {
+        "fail_expectancy_r": null,
+        "n_fail": 0,
+        "n_not_evaluable": 756,
+        "n_pass": 324,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.2114313362337035,
+        "rule_id": "S2_LOCATION_ELIGIBLE",
+        "selection_delta_r": null
+      },
+      {
+        "fail_expectancy_r": null,
+        "n_fail": 0,
+        "n_not_evaluable": 760,
+        "n_pass": 324,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.2114313362337035,
+        "rule_id": "S3_SESSION_EVENT",
+        "selection_delta_r": null
+      },
+      {
+        "fail_expectancy_r": null,
+        "n_fail": 0,
+        "n_not_evaluable": 805,
+        "n_pass": 324,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.2114313362337035,
+        "rule_id": "S4_SWEEP_OR_BREAKOUT",
+        "selection_delta_r": null
+      },
+      {
+        "fail_expectancy_r": null,
+        "n_fail": 0,
+        "n_not_evaluable": 825,
+        "n_pass": 324,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.2114313362337035,
+        "rule_id": "S5_RECLAIM_OR_RETEST",
+        "selection_delta_r": null
+      },
+      {
+        "fail_expectancy_r": null,
+        "n_fail": 0,
+        "n_not_evaluable": 1781,
+        "n_pass": 324,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.2114313362337035,
+        "rule_id": "S6_STRUCTURE_CONFIRM",
+        "selection_delta_r": null
+      },
+      {
+        "fail_expectancy_r": null,
+        "n_fail": 0,
+        "n_not_evaluable": 2331,
+        "n_pass": 324,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.2114313362337035,
+        "rule_id": "S7_ENTRY_AVAILABLE",
+        "selection_delta_r": null
+      },
+      {
+        "fail_expectancy_r": 0.17648235818268765,
+        "n_fail": 31,
+        "n_not_evaluable": 2331,
+        "n_pass": 293,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.21512900967937415,
+        "rule_id": "S8_GEOMETRY_VALID",
+        "selection_delta_r": 0.0386466514966865
+      },
+      {
+        "fail_expectancy_r": null,
+        "n_fail": 0,
+        "n_not_evaluable": 2362,
+        "n_pass": 293,
+        "n_reference_not_evaluable": 2332,
+        "pass_expectancy_r": 0.21512900967937415,
+        "rule_id": "S9_TRADE_COMPLETED",
+        "selection_delta_r": null
+      }
+    ],
+    "valid_ablations": 0
+  },
+  "child_optimization": {
+    "real_trial_count": 0,
+    "reason": "NO_TABLE_QUERY_SAFE_ALD_V2_RULES",
+    "started": false
+  },
+  "determinism": {
+    "event_table_sha256": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
+    "event_table_sha256_match": true,
+    "independent_runs": 2
+  },
+  "eligibility": {
+    "baseline_count": 1000,
+    "baseline_mean_r": 0.20699444715285908,
+    "baseline_median_r": 0.2064974503062114,
+    "baseline_p05_r": 0.16511901438666757,
+    "baseline_p95_r": 0.24745308170552882,
+    "campaign_state": "STRUCTURAL_ELIGIBLE_NOT_EDGE",
+    "parent_expectancy_r": 0.21512900967937415,
+    "parent_percentile": 0.624,
+    "reason_code": "STRUCTURAL_MATCHED_RANDOM_BASELINE",
+    "sample_n": 293,
+    "selection_delta_r": 0.008134562526515066,
+    "verdict": "STRUCTURAL_ELIGIBILITY_PASS"
+  },
+  "event_table": {
+    "ambiguous_intrabar_rows": 1,
+    "event_table_jsonl": "artifacts/funnel_optimizer_v1_real_fixture_r2/real_development_event_table.jsonl",
+    "event_table_manifest": "artifacts/funnel_optimizer_v1_real_fixture_r2/real_development_event_table.jsonl.manifest.json",
+    "event_table_sha256": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
+    "frame_quality": {
+      "EURUSD_2015": {
+        "bars": {
+          "D1": 172,
+          "H1": 4128,
+          "H4": 1020,
+          "M15": 16505,
+          "M5": 49535
+        },
+        "dataset_role": "DEVELOPMENT",
+        "development_window": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 247495,
+        "oos_or_holdout_rows_parsed": 0
+      },
+      "EURUSD_2016": {
+        "bars": {
+          "D1": 173,
+          "H1": 4148,
+          "H4": 1020,
+          "M15": 16588,
+          "M5": 49805
+        },
+        "dataset_role": "DEVELOPMENT",
+        "development_window": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 248877,
+        "oos_or_holdout_rows_parsed": 0
+      },
+      "EURUSD_2017": {
+        "bars": {
+          "D1": 173,
+          "H1": 4168,
+          "H4": 1023,
+          "M15": 16661,
+          "M5": 50010
+        },
+        "dataset_role": "DEVELOPMENT",
+        "development_window": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 249805,
+        "oos_or_holdout_rows_parsed": 0
+      },
+      "GBPUSD_2015": {
+        "bars": {
+          "D1": 172,
+          "H1": 4129,
+          "H4": 1015,
+          "M15": 16507,
+          "M5": 49530
+        },
+        "dataset_role": "DEVELOPMENT",
+        "development_window": [
+          "2015-01-01T00:00:00+00:00",
+          "2015-09-01T00:00:00+00:00"
+        ],
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 247537,
+        "oos_or_holdout_rows_parsed": 0
+      },
+      "GBPUSD_2016": {
+        "bars": {
+          "D1": 173,
+          "H1": 4145,
+          "H4": 1016,
+          "M15": 16581,
+          "M5": 49784
+        },
+        "dataset_role": "DEVELOPMENT",
+        "development_window": [
+          "2016-01-01T00:00:00+00:00",
+          "2016-09-01T00:00:00+00:00"
+        ],
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 248774,
+        "oos_or_holdout_rows_parsed": 0
+      },
+      "GBPUSD_2017": {
+        "bars": {
+          "D1": 173,
+          "H1": 4161,
+          "H4": 1020,
+          "M15": 16632,
+          "M5": 49948
+        },
+        "dataset_role": "DEVELOPMENT",
+        "development_window": [
+          "2017-01-01T00:00:00+00:00",
+          "2017-09-01T00:00:00+00:00"
+        ],
+        "m1_duplicate_timestamps": 0,
+        "m1_ohlc_violations": 0,
+        "m1_rows": 249511,
+        "oos_or_holdout_rows_parsed": 0
+      }
+    },
+    "not_evaluable_outcomes": 2332,
+    "opportunities": 2656,
+    "reference_model": "FIXED_REFERENCE_2R_V1",
+    "reference_outcome_rows": 324,
+    "rows": 2656,
+    "rule_cells": {
+      "FAIL": 2362,
+      "NOT_EVALUABLE": 11951,
+      "PASS": 9591
+    },
+    "symbols": [
+      "EURUSD",
+      "GBPUSD"
+    ],
+    "years": [
+      2015,
+      2016,
+      2017
+    ]
+  },
+  "evidence_sha256": "b1685208744d9b146a693fdee2ad8488f56ac49adbffc39a9e09111c955e4915",
+  "fixture": {
+    "data_role": "DEVELOPMENT",
+    "dataset_sha256": "0b32d29474ea173c9cc34de0b7011f8856825ff76bfbb10699d7fb748b36f85e",
+    "preregistration_sha256": "75aff1786fa51aee3c6d47473f2a032bd667f668c74fafbff0e8ea6693bd1334",
+    "symbols": [
+      "EURUSD",
+      "GBPUSD"
+    ],
+    "years": [
+      2015,
+      2016,
+      2017
+    ]
+  },
+  "governance": {
+    "broker_mutation": false,
+    "edge_verified_issued": false,
+    "holdout_accessed": false,
+    "oos_accessed": false
+  },
+  "owner_policy": {
+    "baseline_seed": 12556930545555846041,
+    "baseline_seed_contract": "SHA256_PREFIX_64_V1 over immutable campaign inputs",
+    "campaign_search_budget": 100,
+    "economic_ranking": "BLOCKED",
+    "eligibility_mode": "STRUCTURAL",
+    "friction_scenario": "UNRESOLVED",
+    "random_baseline_count": 1000
+  },
+  "reference_model": "FIXED_REFERENCE_2R_V1",
+  "schema_version": "FUNNEL_OPTIMIZER_V1_REAL_FIXTURE_R2"
+}

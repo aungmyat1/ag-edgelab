@@ -130,6 +130,21 @@ def test_fast_children_are_limited_and_campaign_trials_never_reset(tmp_path):
     assert [line for line in ledger_path.read_text().splitlines() if line]
 
 
+def test_failed_parent_eligibility_gate_prevents_child_optimization():
+    table = build_fixture_table()
+    failed = structural_parent_eligibility(
+        table,
+        baseline=RandomBaselineConfig(count=16, seed=9, synthetic_test_only=True),
+        permit_synthetic_test=True,
+    )
+    assert failed.verdict is EligibilityVerdict.FAIL
+    engine = FastChildEngine(table, parent_id="PARENT-FAIL", campaign_id="CAMPAIGN-FAIL",
+                             strategy_funnel_identity="FUNNEL-ID-FAIL", parent_eligibility=failed)
+    child = engine.change_threshold(rule_id="BODY_RATIO", old_value=0.6, new_value=0.8)
+    assert child.status is ChildStatus.FAILED
+    assert child.reason_code == "PARENT_ELIGIBILITY_NOT_PASSED"
+
+
 def test_missing_friction_blocks_economic_ranking_instead_of_defaulting_to_zero():
     table = build_fixture_table()
     ranking = rank_child(selected_parent_rows(table))

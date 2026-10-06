@@ -1,0 +1,49 @@
+{
+  "base_sha_tested": "909e1f7b71ead981370f2c8705ff65202404d009",
+  "classification_schema_version": "FUNNEL_OPTIMIZER_V1_R2_FULL_SUITE_BASELINE_CLASSIFICATION_V1",
+  "corresponding_tests_run_on_base": true,
+  "failures": [
+    {
+      "classification": "ENVIRONMENTAL_MISSING_GIT_OBJECT",
+      "evidence": "Fails at base: external verifier cannot resolve historical git object 65ba0ed.",
+      "test": "tests/test_data_authority_r1.py::TestEvidenceVerifier::test_verifier_passes_on_a_clean_checkout"
+    },
+    {
+      "classification": "ENVIRONMENTAL_MISSING_GIT_OBJECT",
+      "evidence": "Fails at base: external verifier cannot resolve historical git object 65ba0ed.",
+      "test": "tests/test_governance_consolidation_r1.py::test_all_evidence_pointers_resolve_and_hash_match"
+    },
+    {
+      "classification": "ENVIRONMENTAL_MISSING_GIT_OBJECT",
+      "evidence": "Fails at base: frozen-directory guard calls git diff against unavailable 599c16b05d823c7c9be0ec1f35dff1b4b6c84670.",
+      "test": "tests/test_stv2_funnel_guards.py::test_frozen_directory_is_untracked_by_this_change"
+    },
+    {
+      "classification": "ENVIRONMENTAL_MISSING_GIT_OBJECT",
+      "evidence": "Fails at base: campaign guard calls git diff against unavailable 599c16b05d823c7c9be0ec1f35dff1b4b6c84670.",
+      "test": "tests/test_stv2_funnel_guards.py::test_campaign_replay_and_friction_modules_are_unmodified"
+    },
+    {
+      "classification": "ENVIRONMENTAL_MISSING_GIT_OBJECT",
+      "evidence": "Fails at base: dependency guard calls git show against unavailable 599c16b05d823c7c9be0ec1f35dff1b4b6c84670.",
+      "test": "tests/test_stv2_funnel_guards.py::test_no_new_third_party_dependency_was_added"
+    },
+    {
+      "classification": "PRE_EXISTING_CONFIRMED",
+      "evidence": "Fails identically at PR #22 head: resolve_v0_5_authority() returns ok=False.",
+      "test": "tests/test_target_policy_v0_6.py::TestAuthorityResolution::test_resolver_establishes_b_over_a"
+    },
+    {
+      "classification": "PRE_EXISTING_CONFIRMED",
+      "evidence": "Fails identically at PR #22 head: zero-variance target distance returns 1.7178681399886102e-16 rather than None.",
+      "test": "tests/test_target_v0_5.py::TestStopTargetGeometry::test_yes_when_gradient_and_no_raw_coscaling"
+    },
+    {
+      "classification": "PRE_EXISTING_CONFIRMED",
+      "evidence": "Fails identically at PR #22 head: zero-variance target distance returns 1.7178681399886102e-16 rather than None.",
+      "test": "tests/test_target_v0_5.py::TestZeroVarianceCorrelationContract::test_stop_target_constant_target_distance"
+    }
+  ],
+  "introduced_by_pr22": [],
+  "unknown": []
+}

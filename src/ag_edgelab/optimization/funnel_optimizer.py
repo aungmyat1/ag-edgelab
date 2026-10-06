@@ -180,6 +180,17 @@ class Opportunity:
     feature_values: Mapping[str, object] = field(default_factory=dict)
     reference_outcome_r: float | None = None
     actual_outcome_r: float | None = None
+    # FIXED_REFERENCE_2R_V1 provenance.  These fields remain null for older
+    # synthetic contract tests, but a real reference evaluator records every
+    # value it used rather than collapsing the result into a lone R number.
+    reference_entry_price: float | None = None
+    reference_entry_time: datetime | None = None
+    reference_stop_price: float | None = None
+    reference_target_price: float | None = None
+    reference_exit_price: float | None = None
+    reference_exit_time: datetime | None = None
+    reference_exit_reason: str | None = None
+    reference_ambiguity_code: str | None = None
 
     def __post_init__(self) -> None:
         if not all((self.event_id, self.candidate_id, self.symbol, self.session,
@@ -188,9 +199,17 @@ class Opportunity:
         if self.timestamp_utc.tzinfo is None or self.timestamp_utc.utcoffset() != timezone.utc.utcoffset(self.timestamp_utc):
             raise ValueError("timestamp_utc must be an aware UTC datetime")
         for name, value in (("reference_outcome_r", self.reference_outcome_r),
-                            ("actual_outcome_r", self.actual_outcome_r)):
+                            ("actual_outcome_r", self.actual_outcome_r),
+                            ("reference_entry_price", self.reference_entry_price),
+                            ("reference_stop_price", self.reference_stop_price),
+                            ("reference_target_price", self.reference_target_price),
+                            ("reference_exit_price", self.reference_exit_price)):
             if value is not None and not math.isfinite(float(value)):
                 raise ValueError(f"{name} must be finite when present")
+        for name, value in (("reference_entry_time", self.reference_entry_time),
+                            ("reference_exit_time", self.reference_exit_time)):
+            if value is not None and (value.tzinfo is None or value.utcoffset() != timezone.utc.utcoffset(value)):
+                raise ValueError(f"{name} must be an aware UTC datetime when present")
 
     def feature(self, name: str) -> object | None:
         return self.feature_values.get(name)
@@ -212,6 +231,14 @@ class EventRow:
     rule_cells: Mapping[str, RuleCell]
     reference_outcome_r: float | None
     reference_outcome_status: ReferenceOutcomeStatus
+    reference_entry_price: float | None
+    reference_entry_time: datetime | None
+    reference_stop_price: float | None
+    reference_target_price: float | None
+    reference_exit_price: float | None
+    reference_exit_time: datetime | None
+    reference_exit_reason: str | None
+    reference_ambiguity_code: str | None
     actual_outcome_r: float | None
     actual_trade: bool
     outcome_authority: OutcomeAuthority
@@ -229,8 +256,18 @@ class EventRow:
             "engine_id": self.engine_id,
             "event_id": self.event_id,
             "outcome_authority": self.outcome_authority.value,
+            "reference_ambiguity_code": self.reference_ambiguity_code,
+            "reference_entry_price": self.reference_entry_price,
+            "reference_entry_time": (self.reference_entry_time.astimezone(UTC).isoformat().replace("+00:00", "Z")
+                                     if self.reference_entry_time is not None else None),
+            "reference_exit_price": self.reference_exit_price,
+            "reference_exit_reason": self.reference_exit_reason,
+            "reference_exit_time": (self.reference_exit_time.astimezone(UTC).isoformat().replace("+00:00", "Z")
+                                    if self.reference_exit_time is not None else None),
             "reference_outcome_r": self.reference_outcome_r,
             "reference_outcome_status": self.reference_outcome_status.value,
+            "reference_stop_price": self.reference_stop_price,
+            "reference_target_price": self.reference_target_price,
             "rule_cells": {key: self.rule_cells[key].as_dict() for key in sorted(self.rule_cells)},
             "sequence_no": self.sequence_no,
             "session": self.session,
@@ -388,6 +425,14 @@ class RelaxedReplay:
                 rule_cells=cells,
                 reference_outcome_r=opportunity.reference_outcome_r,
                 reference_outcome_status=ref_status,
+                reference_entry_price=opportunity.reference_entry_price,
+                reference_entry_time=opportunity.reference_entry_time,
+                reference_stop_price=opportunity.reference_stop_price,
+                reference_target_price=opportunity.reference_target_price,
+                reference_exit_price=opportunity.reference_exit_price,
+                reference_exit_time=opportunity.reference_exit_time,
+                reference_exit_reason=opportunity.reference_exit_reason,
+                reference_ambiguity_code=opportunity.reference_ambiguity_code,
                 actual_outcome_r=actual_outcome,
                 actual_trade=all_pass,
                 outcome_authority=authority,
@@ -622,17 +667,22 @@ class FastChildEngine:
     """Evaluate only mutations exactly expressible over cached rule features."""
 
     def __init__(self, table: EventTable, *, parent_id: str, campaign_id: str,
-                 strategy_funnel_identity: str) -> None:
+                 strategy_funnel_identity: str,
+                 parent_eligibility: "EligibilityDecision | None" = None) -> None:
         self.table = table
         self.parent_id = parent_id
         self.campaign_id = campaign_id
         self.strategy_funnel_identity = strategy_funnel_identity
+        self.parent_eligibility = parent_eligibility
         self._rule_by_id = {rule.rule_id: rule for rule in table.rules}
 
     def change_threshold(self, *, rule_id: str, old_value: float, new_value: float,
                          comparator: str = ">=") -> ChildEvaluation:
         proposal = ChildProposal(self.parent_id, self.campaign_id, rule_id,
                                  "CHANGE_THRESHOLD", old_value, new_value, comparator)
+        gate = self._eligibility_gate(proposal)
+        if gate is not None:
+            return gate
         rule = self._rule_by_id.get(rule_id)
         if (rule is None or rule.semantics is not RuleSemantics.TABLE_QUERY_SAFE
                 or rule.query_feature is None or any(rule_id in other.depends_on for other in self.table.rules)):
@@ -663,6 +713,9 @@ class FastChildEngine:
     def remove_rule(self, *, rule_id: str) -> ChildEvaluation:
         proposal = ChildProposal(self.parent_id, self.campaign_id, rule_id,
                                  "REMOVE_RULE", None, None, None)
+        gate = self._eligibility_gate(proposal)
+        if gate is not None:
+            return gate
         rule = self._rule_by_id.get(rule_id)
         if (rule is None or rule.semantics is not RuleSemantics.TABLE_QUERY_SAFE
                 or any(rule_id in other.depends_on for other in self.table.rules)):
@@ -679,6 +732,21 @@ class FastChildEngine:
         child_table = EventTable(tuple(rows), self.table.rules, self.table.dataset_role)
         return ChildEvaluation(proposal, ChildStatus.EVALUATED, self.strategy_funnel_identity,
                                child_table, reference_metrics(selected_parent_rows(child_table)))
+
+    def _eligibility_gate(self, proposal: ChildProposal) -> ChildEvaluation | None:
+        """Stop a real campaign before child evaluation after a parent failure.
+
+        ``None`` retains the V1 mechanism-only API for synthetic contract tests.
+        Real runners pass their explicit eligibility decision and therefore
+        cannot accidentally optimize a rejected or blocked parent.
+        """
+        decision = self.parent_eligibility
+        if decision is None:
+            return None
+        if decision.verdict is EligibilityVerdict.PASS:
+            return None
+        return ChildEvaluation(proposal, ChildStatus.FAILED, self.strategy_funnel_identity,
+                               None, None, "PARENT_ELIGIBILITY_NOT_PASSED")
 
     def _requires_full_replay(self, proposal: ChildProposal, reason: str) -> ChildEvaluation:
         return ChildEvaluation(proposal, ChildStatus.REQUIRES_FULL_REPLAY,
@@ -868,6 +936,23 @@ class EligibilityDecision:
     selection_delta_r: float | None
     baseline_count: int | None
     reason_code: str
+    baseline_median_r: float | None = None
+    baseline_p05_r: float | None = None
+    baseline_p95_r: float | None = None
+    parent_percentile: float | None = None
+    sample_n: int = 0
+
+
+def _empirical_quantile(values: Sequence[float], probability: float) -> float | None:
+    """Deterministic linear quantile over a completed baseline distribution."""
+    if not values:
+        return None
+    ordered = sorted(float(value) for value in values)
+    point = (len(ordered) - 1) * probability
+    lower, upper = math.floor(point), math.ceil(point)
+    if lower == upper:
+        return ordered[lower]
+    return ordered[lower] + (ordered[upper] - ordered[lower]) * (point - lower)
 
 
 def structural_parent_eligibility(table: EventTable, *, baseline: RandomBaselineConfig | None,
@@ -944,6 +1029,8 @@ def structural_parent_eligibility(table: EventTable, *, baseline: RandomBaseline
     # own matched opportunity population.  It cannot establish tradability or
     # EDGE_VERIFIED even if it passes.
     passes = delta is not None and delta > 0.0
+    parent_percentile = (None if parent_metrics.reference_expectancy_r is None else
+                         sum(value <= parent_metrics.reference_expectancy_r for value in draws) / len(draws))
     return EligibilityDecision(
         EligibilityMode.STRUCTURAL,
         EligibilityVerdict.PASS if passes else EligibilityVerdict.FAIL,
@@ -951,4 +1038,9 @@ def structural_parent_eligibility(table: EventTable, *, baseline: RandomBaseline
         parent_metrics,
         tuple(draws), baseline_mean, delta, baseline.count,
         "STRUCTURAL_MATCHED_RANDOM_BASELINE",
+        baseline_median_r=_empirical_quantile(draws, 0.50),
+        baseline_p05_r=_empirical_quantile(draws, 0.05),
+        baseline_p95_r=_empirical_quantile(draws, 0.95),
+        parent_percentile=parent_percentile,
+        sample_n=parent_metrics.n,
     )

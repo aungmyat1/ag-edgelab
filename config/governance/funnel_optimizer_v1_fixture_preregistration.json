@@ -71,9 +71,15 @@
       }
     }
   },
+  "owner_policy_r2": {
+    "campaign_search_budget": 100,
+    "dev_friction_scenario": "UNRESOLVED",
+    "economic_ranking": "BLOCKED",
+    "eligibility_mode": "STRUCTURAL",
+    "random_baseline_count": 1000,
+    "reference_outcome_model": "FIXED_REFERENCE_2R_V1"
+  },
   "owner_decisions_unresolved": [
-    "REFERENCE_OUTCOME_MODEL",
-    "RANDOM_BASELINE_COUNT",
     "DEV_FRICTION_SCENARIO"
   ],
   "partition_contract": {
