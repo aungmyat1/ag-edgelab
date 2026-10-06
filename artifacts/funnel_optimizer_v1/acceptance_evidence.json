@@ -1,0 +1,209 @@
+{
+  "acceptance_schema_version": "FUNNEL_OPTIMIZER_V1_ACCEPTANCE_V1",
+  "artifacts": {
+    "event_table_jsonl": "artifacts/funnel_optimizer_v1/synthetic_negative_event_table.jsonl",
+    "event_table_manifest": "artifacts/funnel_optimizer_v1/synthetic_negative_event_table.jsonl.manifest.json",
+    "mechanism_campaign_ledger": "artifacts/funnel_optimizer_v1/mechanism_proof_campaign_ledger.jsonl",
+    "preflight": "artifacts/funnel_optimizer_v1/preflight.json"
+  },
+  "attribution": {
+    "leave_one_out": [
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "CONTEXT",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": null,
+        "reason_code": "RULE_HAS_SEMANTIC_DEPENDENTS",
+        "rule_id": "SWEEP",
+        "status": "REQUIRES_FULL_REPLAY"
+      },
+      {
+        "expectancy_delta_vs_full_r": 0.7500000000000001,
+        "reason_code": null,
+        "rule_id": "BODY_RATIO",
+        "status": "VALID"
+      }
+    ],
+    "stage_diagnostics": [
+      {
+        "fail_expectancy_r": 0.2,
+        "n_fail": 2,
+        "n_not_evaluable": 0,
+        "n_pass": 10,
+        "pass_expectancy_r": 2.2204460492503132e-17,
+        "rule_id": "CONTEXT",
+        "selection_delta_r": -0.19999999999999998
+      },
+      {
+        "fail_expectancy_r": 0.4,
+        "n_fail": 2,
+        "n_not_evaluable": 2,
+        "n_pass": 8,
+        "pass_expectancy_r": -0.09999999999999998,
+        "rule_id": "SWEEP",
+        "selection_delta_r": -0.5
+      },
+      {
+        "fail_expectancy_r": 0.8,
+        "n_fail": 2,
+        "n_not_evaluable": 6,
+        "n_pass": 4,
+        "pass_expectancy_r": -0.8500000000000001,
+        "rule_id": "BODY_RATIO",
+        "selection_delta_r": -1.6500000000000001
+      }
+    ]
+  },
+  "campaign": {
+    "child_statuses": [
+      "EVALUATED",
+      "REQUIRES_FULL_REPLAY"
+    ],
+    "mechanism_proof_only": true,
+    "trial_count": 2,
+    "trial_count_monotonic": true
+  },
+  "data_fixture": {
+    "event_table_fixture": "SYNTHETIC_FUNNEL_NEGATIVE_V1",
+    "event_table_is_market_evidence": false,
+    "materialized_fx_preregistration": {
+      "authority_basis": [
+        "docs/MASTER_IMPLEMENTATION_PLAN.md",
+        "config/governance/data_authority_gap.json:FX_MULTIYEAR_AUTHORITY_R2",
+        "config/governance/external_artifact_registry.json:DUKASCOPY_M1_EURUSD_2015..2017 and DUKASCOPY_M1_GBPUSD_2015..2017",
+        "scripts/acquire_histdata_fx_multiyear.py"
+      ],
+      "candidate_fixture_id": "FUNNEL_OPTIMIZER_V1_FX_DEV_FIXTURE_R1",
+      "data_role": "DEVELOPMENT",
+      "dataset_status": "MATERIALIZED_NOT_YET_REPLAY_EVALUATED",
+      "forbidden_windows": [
+        "[YYYY-09-01T00:00:00Z, YYYY-12-01T00:00:00Z) OOS",
+        "[YYYY-12-01T00:00:00Z, next-year-01-01T00:00:00Z) SEALED_HOLDOUT"
+      ],
+      "materialization": {
+        "acquisition_seconds": 4.58467570199997,
+        "dataset_sha256": "0b32d29474ea173c9cc34de0b7011f8856825ff76bfbb10699d7fb748b36f85e",
+        "files": [
+          {
+            "bytes": 3558222,
+            "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_EURUSD_M1_2015.zip",
+            "sha256": "b6c015a65286b8e5712b4fc135bc2dbb75676a2ddb93c2b685c2dd52685a2dcd",
+            "symbol": "EURUSD",
+            "year": 2015
+          },
+          {
+            "bytes": 3442178,
+            "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_EURUSD_M1_2016.zip",
+            "sha256": "231bf3a4562b729124bc8d2803a169f29c412bd03347ea25fe75abc9f79842ca",
+            "symbol": "EURUSD",
+            "year": 2016
+          },
+          {
+            "bytes": 3365476,
+            "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_EURUSD_M1_2017.zip",
+            "sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+            "symbol": "EURUSD",
+            "year": 2017
+          },
+          {
+            "bytes": 3535353,
+            "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_GBPUSD_M1_2015.zip",
+            "sha256": "531514f5b3100be28d740b95ccf97662f6dcba3c6941cc465ac473b869b302eb",
+            "symbol": "GBPUSD",
+            "year": 2015
+          },
+          {
+            "bytes": 3627916,
+            "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_GBPUSD_M1_2016.zip",
+            "sha256": "39acbc0146e6ce82fc5327c56225623a0507e279534b8f2906dff19725c65838",
+            "symbol": "GBPUSD",
+            "year": 2016
+          },
+          {
+            "bytes": 3431978,
+            "path": "data/external/funnel_optimizer_fx_fixture/DAT_ASCII_GBPUSD_M1_2017.zip",
+            "sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+            "symbol": "GBPUSD",
+            "year": 2017
+          }
+        ],
+        "source": "HistData Generic ASCII M1; repository-pinned 2017 archive identity plus cross-source archive-byte identity proof for EURUSD and GBPUSD",
+        "verification": {
+          "EURUSD": {
+            "cross_source_2017_archive_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57",
+            "pinned_2017_zip_sha256": "0dcd66dc67d7af4716404a5315d376ee1e7eaebe292afbda3c1003d2dfa16f57"
+          },
+          "GBPUSD": {
+            "cross_source_2017_archive_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b",
+            "pinned_2017_zip_sha256": "e5ba3800e37fae0e326dbaa234952ca04e8f378c08b036530a2811206110c10b"
+          }
+        }
+      },
+      "owner_decisions_unresolved": [
+        "REFERENCE_OUTCOME_MODEL",
+        "RANDOM_BASELINE_COUNT",
+        "DEV_FRICTION_SCENARIO"
+      ],
+      "partition_contract": {
+        "development_windows": "[YYYY-01-01T00:00:00Z, YYYY-09-01T00:00:00Z) for 2015, 2016, 2017",
+        "oos_accessed": false,
+        "sealed_holdout_accessed": false
+      },
+      "symbols": [
+        "EURUSD",
+        "GBPUSD"
+      ],
+      "years": [
+        2015,
+        2016,
+        2017
+      ]
+    },
+    "real_replay_blockers": [
+      "REFERENCE_OUTCOME_MODEL",
+      "RANDOM_BASELINE_COUNT",
+      "DEV_FRICTION_SCENARIO"
+    ]
+  },
+  "eligibility": {
+    "economic_ranking": "BLOCKED",
+    "eligibility_mode": "STRUCTURAL",
+    "real_fixture_gate": {
+      "reason_code": "RANDOM_BASELINE_COUNT_UNRESOLVED",
+      "verdict": "BLOCKED_RANDOM_BASELINE_COUNT"
+    },
+    "synthetic_negative_proof": {
+      "baseline_count": 32,
+      "campaign_state": "DEV_REJECTED_NO_SIGNAL",
+      "selection_delta_r": -0.8531250000000001,
+      "verdict": "FAIL"
+    }
+  },
+  "event_table": {
+    "actual_trade_rows": 6,
+    "event_rows": 14,
+    "reference_outcome_rows": 12,
+    "rule_cells": {
+      "FAIL": 6,
+      "NOT_EVALUABLE": 8,
+      "PASS": 28
+    },
+    "sha256": "096b1a7336fc38af9fa2c00f2f9055ff634f6ad2efaeb4b13dcc2d46e848eeb7"
+  },
+  "evidence_sha256": "612fb1010f610deb926df2aa7bff52c9a95a19e1d120ac314e1ff0de7cca9d41",
+  "frozen_strategy": {
+    "path": "src/ag_edgelab/strategies/asian_liquidity_displacement_v2.py",
+    "sha256": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+    "unchanged": true
+  },
+  "governance": {
+    "broker_mutation": false,
+    "edge_verified_issued": false,
+    "holdout_accessed": false,
+    "oos_accessed": false,
+    "outcome_models_separate": true
+  }
+}
