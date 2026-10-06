@@ -1,0 +1,33 @@
+name: Branch hygiene report
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch current remote branches
+        run: git fetch origin '+refs/heads/*:refs/remotes/origin/*' --prune
+      - name: Generate branch inventory
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/branch_hygiene_report.py
+      - name: Add report to workflow summary
+        run: cat docs/governance/branch_inventory.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: branch-inventory
+          path: docs/governance/branch_inventory.md
