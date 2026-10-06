@@ -1,0 +1,76 @@
+{
+  "ANALYSIS_CLASS": "POLICY_SENSITIVITY_ANALYSIS_NOT_CANDIDATE_OPTIMIZATION",
+  "BASELINE_T2_TIMING_POLICY_STATUS": "UNRESOLVED_OWNER_DECISION",
+  "BASELINE_TIMING_SENSITIVITY": "ROBUST",
+  "ald_v2_disposition": "DEV_REJECTED_CAUSAL_SELECTION / ARCHIVE_NO_V2_2",
+  "ald_v2_strategy_parameters_changed": false,
+  "candidate_optimization_performed": false,
+  "fixed_delay_from_t1_minutes": 120,
+  "fixed_delay_preregistration_note": "120 minutes is a round, scale-free constant preregistered without consulting outcome statistics under any compared policy; the owner may revise it as part of decision R3_OD_05",
+  "governance": {
+    "broker_mutation": false,
+    "edge_verified_issued": false,
+    "gen3_optimization_run": false,
+    "holdout_accessed": false,
+    "oos_accessed": false,
+    "real_campaign_authorized": false
+  },
+  "null_replicates": 2000,
+  "null_seed": 4030341158,
+  "parent_mask": "CAUSAL_ENTRY_GEOMETRY_MASK_V1",
+  "policies": [
+    {
+      "BASELINE_MEAN_R": 0.029660988373392306,
+      "BASELINE_TIMING_POLICY": "EMPIRICAL_MATCHED_DELAY",
+      "DELTA_CI95": [
+        -0.2654370367273058,
+        0.06919449169405821
+      ],
+      "PARENT_EXPECTANCY_R": -0.07142857142857142,
+      "PARENT_N": 294,
+      "PARENT_PERCENTILE": 0.1215,
+      "REFERENCE_COVERAGE": 1.0,
+      "SELECTION_DELTA_R": -0.10108955980196373,
+      "VERDICT": "FAIL"
+    },
+    {
+      "BASELINE_MEAN_R": 0.02626312480555166,
+      "BASELINE_TIMING_POLICY": "STRATIFIED_EMPIRICAL_MATCHED_DELAY",
+      "DELTA_CI95": [
+        -0.26197826165318233,
+        0.0719006384742142
+      ],
+      "PARENT_EXPECTANCY_R": -0.07142857142857142,
+      "PARENT_N": 294,
+      "PARENT_PERCENTILE": 0.1275,
+      "REFERENCE_COVERAGE": 1.0,
+      "SELECTION_DELTA_R": -0.09769169623412308,
+      "VERDICT": "FAIL"
+    },
+    {
+      "BASELINE_MEAN_R": 0.035784644275722303,
+      "BASELINE_TIMING_POLICY": "FIXED_CAUSAL_DELAY_FROM_T1",
+      "DELTA_CI95": [
+        -0.2747773331807332,
+        0.060181370587891574
+      ],
+      "PARENT_EXPECTANCY_R": -0.07142857142857142,
+      "PARENT_N": 294,
+      "PARENT_PERCENTILE": 0.1055,
+      "REFERENCE_COVERAGE": 1.0,
+      "SELECTION_DELTA_R": -0.10721321570429374,
+      "VERDICT": "FAIL"
+    }
+  ],
+  "policy_freeze_base": "252059ec84e76562e8ecb7115311f42bb62eac41",
+  "policy_hash": "69ba55e06b23f1ef5694ffdbb97b6a35983e6976ec0c8d6fe5d420c7a905dffa",
+  "primary_null": "RANDOM_DIRECTION_ONE_LEG_PER_OPPORTUNITY",
+  "robustness_null": "MATCHED_DIRECTION_FREQUENCY_NULL",
+  "schema_version": "R3_BASELINE_T2_TIMING_SENSITIVITY_V1",
+  "stratified_min_stratum_parent_n": 30,
+  "stratified_year_eligibility": "per (symbol, session, year) stratum independently; sub-threshold years fall back to the (symbol, session) pool",
+  "stratified_year_pools": [
+    "EURUSD/ASIAN_LONDON/2015",
+    "GBPUSD/ASIAN_LONDON/2017"
+  ]
+}

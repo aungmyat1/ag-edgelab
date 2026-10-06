@@ -297,7 +297,14 @@
           "YEAR_STABILITY"
         ]
       },
-      "note": "The V2 architecture solved structural starvation, then failed the unchanged V1 pre-OOS robustness gate on nine decisive axes. This is a negative development result, not a claim of edge or a permission to open OOS. Never edit this record to rescue the candidate."
+      "note": "The V2 architecture solved structural starvation, then failed the unchanged V1 pre-OOS robustness gate on nine decisive axes. This is a negative development result, not a claim of edge or a permission to open OOS. Never edit this record to rescue the candidate.",
+      "r3_causal_audit_disposition": {
+        "ALD_V2_DEV_SELECTION_STATUS": "DEV_REJECTED_CAUSAL_SELECTION",
+        "ALD_FAMILY_DISPOSITION": "ARCHIVE_NO_V2_2",
+        "disposition_record": "config/governance/ald_v2_disposition.json",
+        "policy_freeze_base": "252059ec84e76562e8ecb7115311f42bb62eac41",
+        "clarification": "The Funnel Optimizer R3.2 direction causality audit classified the R3.1 statistical PASS as R3_1_PASS_EXPLAINED_BY_MULTIPLE_ARTIFACTS (lookahead timing, understated symmetric null, S9 outcome leakage in all_rules_pass). No causal DEV selection evidence exists. The family is archived from optimization (no V2.2 on this DEVELOPMENT evidence). This is an appended clarification note; no verdict field was modified."
+      }
     },
     {
       "CANDIDATE_ID": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2@2.1.0-research",
@@ -327,7 +334,13 @@
         "REAL_HISTORICAL_REPLAY_EXECUTED": false,
         "owner_decision_issues": ["AMB_1", "AMB_2", "AMB_3", "AMB_4"]
       },
-      "note": "The V2.1 contract is the hardened successor to V2, but no historical replay is allowed until the owner resolves the four unresolved ambiguity items (AMB_1..AMB_4). This status is a governance block, not an evidence-backed edge claim."
+      "note": "The V2.1 contract is the hardened successor to V2, but no historical replay is allowed until the owner resolves the four unresolved ambiguity items (AMB_1..AMB_4). This status is a governance block, not an evidence-backed edge claim.",
+      "r3_causal_audit_disposition": {
+        "ALD_FAMILY_DISPOSITION": "ARCHIVE_NO_V2_2",
+        "disposition_record": "config/governance/ald_v2_disposition.json",
+        "policy_freeze_base": "252059ec84e76562e8ecb7115311f42bb62eac41",
+        "clarification": "The ALD family disposition ARCHIVE_NO_V2_2 means no V2.2 successor will be defined on this DEVELOPMENT partition/evidence. The V2.1 contract block (AMB_1..AMB_4) remains unresolved and no replay is authorized. Appended clarification only; no verdict field modified."
+      }
     }
   ]
 }
