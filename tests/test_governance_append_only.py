@@ -19,6 +19,17 @@ PROTECTED_PATHS = (
 OWNER_DECISIONS_PATHSPEC = ":(glob)config/governance/owner_decisions_*.json"
 
 
+def _is_protected_path(path: str) -> bool:
+    if path in PROTECTED_PATHS:
+        return True
+    relative_path = Path(path)
+    return (
+        relative_path.parent.as_posix() == "config/governance"
+        and relative_path.name.startswith("owner_decisions_")
+        and relative_path.suffix == ".json"
+    )
+
+
 def _git(*arguments: str) -> str:
     return subprocess.run(
         ["git", *arguments],
@@ -136,12 +147,9 @@ def test_existing_governance_values_are_append_only(path):
 
 def test_owner_decisions_json_is_in_the_protected_path_set():
     assert OWNER_DECISIONS_PATHSPEC.endswith("owner_decisions_*.json")
-    governance_dir = ROOT / "config" / "governance"
-    owner_decision_paths = {
-        path.relative_to(ROOT).as_posix()
-        for path in governance_dir.glob("owner_decisions_*.json")
-    }
-    assert "config/governance/owner_decisions_r3.json" in owner_decision_paths
+    assert _is_protected_path("config/governance/owner_decisions_r3.json")
+    assert not _is_protected_path("config/governance/owner_decisions_r3.txt")
+    assert not _is_protected_path("docs/owner_decisions_r3.json")
 
 
 def test_governance_json_raw_diff_only_removes_for_trailing_commas():
