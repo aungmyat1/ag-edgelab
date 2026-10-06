@@ -1,0 +1,43 @@
+{
+  "chain_head_verdict_id": "R3_CAUSAL_POLICY_FREEZE_R1",
+  "chain_head_verdict_record_hash": "8011bd5010bc6bc31ffba847fa8fa390b09b0c88e6f1ad5834da820dc1132405",
+  "records": [
+    {
+      "candidate_contract_hash": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+      "dataset_hash": "0b32d29474ea173c9cc34de0b7011f8856825ff76bfbb10699d7fb748b36f85e",
+      "dataset_manifest_hash": "",
+      "engine_code_sha": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+      "event_table_hash": "76abab360386fcaf85bb5c5bcd4ee2d1c1e22266afd3e13fd2c652c34284344f",
+      "friction_authority_hash": "",
+      "notes": {
+        "authority": "PR #23 R3.2 audit; historical, hash-pinned"
+      },
+      "parent_verdict_id": "",
+      "policy_hash": "",
+      "schema_version": "VERDICT_RECORD_V1",
+      "verdict": "R3_1_PASS_EXPLAINED_BY_MULTIPLE_ARTIFACTS",
+      "verdict_id": "R3_2_DIRECTION_CAUSALITY_AUDIT",
+      "verdict_record_hash": "1153b1f43961563f397cc4c06fb4397f610228073e99be74b048f6c3f009e8cb"
+    },
+    {
+      "candidate_contract_hash": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+      "dataset_hash": "0b32d29474ea173c9cc34de0b7011f8856825ff76bfbb10699d7fb748b36f85e",
+      "dataset_manifest_hash": "",
+      "engine_code_sha": "cd70f70ab1a297addadd9d08d63eba83a3c9fb28a664e989183154111db6f184",
+      "event_table_hash": "61827905eb50d36b4e7da978639cfdf0e4584d1917bb706807da421cfcf12357",
+      "friction_authority_hash": "",
+      "notes": {
+        "execution_semantics_hash": "eb80732c5525406ccd1d7fe8ab692faf3f0fc6ac6d5c797b2ce4c91894a40ffc",
+        "owner_r3_policy_authorized": "false",
+        "real_campaign_authorized": "false"
+      },
+      "parent_verdict_id": "R3_2_DIRECTION_CAUSALITY_AUDIT",
+      "policy_hash": "69ba55e06b23f1ef5694ffdbb97b6a35983e6976ec0c8d6fe5d420c7a905dffa",
+      "schema_version": "VERDICT_RECORD_V1",
+      "verdict": "POLICY_PROPOSED_OWNER_UNRESOLVED_BASELINE_TIMING:ROBUST",
+      "verdict_id": "R3_CAUSAL_POLICY_FREEZE_R1",
+      "verdict_record_hash": "8011bd5010bc6bc31ffba847fa8fa390b09b0c88e6f1ad5834da820dc1132405"
+    }
+  ],
+  "schema_version": "VERDICT_RECORD_V1"
+}

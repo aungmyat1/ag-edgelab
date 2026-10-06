@@ -1,0 +1,26 @@
+{
+  "BASELINE_TIMING_SENSITIVITY": "ROBUST",
+  "CAUSAL_MASK_ID": "CAUSAL_ENTRY_GEOMETRY_MASK_V1",
+  "GEN3": {
+    "GEN3_PERFORMANCE_EXECUTED_THIS_MISSION": false,
+    "GEN3_PRE_POLICY_EXPOSURE": false,
+    "HAS_GEN3_DEV_PERFORMANCE_ALREADY_BEEN_OBSERVED": false,
+    "evidence": "docs/GEN3_PRE_POLICY_EXPOSURE_DISCLOSURE.md"
+  },
+  "POLICY_FREEZE_BASE": "252059ec84e76562e8ecb7115311f42bb62eac41",
+  "POLICY_HASH": "69ba55e06b23f1ef5694ffdbb97b6a35983e6976ec0c8d6fe5d420c7a905dffa",
+  "VERDICT_RECORD_HASH": "8011bd5010bc6bc31ffba847fa8fa390b09b0c88e6f1ad5834da820dc1132405",
+  "artifacts": [
+    "artifacts/funnel_optimizer_v1_r3_causal_policy_freeze/causal_mask_audit.json",
+    "artifacts/funnel_optimizer_v1_r3_causal_policy_freeze/baseline_timing_sensitivity.json",
+    "artifacts/funnel_optimizer_v1_r3_causal_policy_freeze/verdict_chain.json"
+  ],
+  "frozen_ald_v2_sha256_unchanged": true,
+  "mask_eligible_n": 294,
+  "policies": {
+    "EMPIRICAL_MATCHED_DELAY": "FAIL",
+    "FIXED_CAUSAL_DELAY_FROM_T1": "FAIL",
+    "STRATIFIED_EMPIRICAL_MATCHED_DELAY": "FAIL"
+  },
+  "s8_pass_n": 294
+}

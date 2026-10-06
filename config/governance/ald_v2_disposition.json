@@ -1,0 +1,39 @@
+{
+  "schema_version": "ALD_V2_CAUSAL_DISPOSITION_V1",
+  "policy_freeze_base": "252059ec84e76562e8ecb7115311f42bb62eac41",
+  "authority_lineage": "R2 -> R3 -> R3.1 -> R3.2 (PR #23 merge commit 252059ec84e76562e8ecb7115311f42bb62eac41)",
+  "ALD_V2_DEV_SELECTION_STATUS": "DEV_REJECTED_CAUSAL_SELECTION",
+  "ALD_FAMILY_DISPOSITION": "ARCHIVE_NO_V2_2",
+  "meaning": {
+    "causal_dev_selection_evidence": "NONE — the R3.1 +0.5408R PASS was invalidated by the R3.2 direction causality audit (294/294 reference entries preceded direction availability; symmetric null understated directional variance; all_rules_pass embedded S9 outcome information)",
+    "oos_conclusion": "NONE — OOS was never opened for ALD V2; no OOS claim of any kind exists or is implied",
+    "globally_proven_no_edge": "NOT CLAIMED — the causal T2 diagnostic failure is a DEVELOPMENT-partition finding; it is not a claim of globally proven NO_EDGE",
+    "further_ald_v2_optimization": "FORBIDDEN on this DEVELOPMENT evidence — no reruns with adjusted parameters, no V2.2 successor on this partition"
+  },
+  "frozen_ald_v2": {
+    "strategy_file": "src/ag_edgelab/strategies/asian_liquidity_displacement_v2.py",
+    "sha256": "883e9095977cd25840201f5b2b3d5ce6e67b350c1157f30045654dbd13904920",
+    "modification": "FORBIDDEN — historical candidate code and evidence are preserved immutably"
+  },
+  "historical_r3_1_result": {
+    "parent_expectancy_r": 0.540816,
+    "classification": "INVALID_FOR_CAUSAL_ELIGIBILITY",
+    "edge_authority": "ZERO"
+  },
+  "current_authority": {
+    "ADVERSARIAL_CLASSIFICATION": "R3_1_PASS_EXPLAINED_BY_MULTIPLE_ARTIFACTS",
+    "R3_1_PASS_SURVIVES_CAUSAL_ADVERSARIAL_AUDIT": false,
+    "R3_GATE_TRUSTWORTHY": false,
+    "REAL_CAMPAIGN_AUTHORIZED": false,
+    "OOS_ACCESSED": false,
+    "HOLDOUT_ACCESSED": false,
+    "BROKER_MUTATION": false,
+    "EDGE_VERIFIED_ISSUED": false
+  },
+  "evidence_bundle": [
+    "artifacts/funnel_optimizer_v1_r3_gate_repair/acceptance_evidence.json",
+    "artifacts/funnel_optimizer_v1_r3_1_statistical_certification/acceptance_evidence.json",
+    "artifacts/funnel_optimizer_v1_r3_2_direction_causality_audit/acceptance_evidence.json"
+  ],
+  "note": "Disposition recorded by the R3 causal policy freeze mission (branch governance/r3-causal-policy-freeze-r1). The ALD family is archived from optimization. This record adds governance status; it does not alter any verdict in candidate_ledger.json, which remains append-only."
+}
