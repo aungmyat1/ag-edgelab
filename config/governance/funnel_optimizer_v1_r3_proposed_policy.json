@@ -1,0 +1,31 @@
+{
+  "data_role": "DEVELOPMENT_ONLY",
+  "eligibility": {
+    "minimum_baseline_universe_n": 100,
+    "minimum_parent_n": 30,
+    "minimum_reference_coverage": 0.9,
+    "parent_percentile_threshold": 0.95
+  },
+  "friction": {
+    "applied": false,
+    "status": "UNKNOWN_SEPARATE_NOT_APPLIED",
+    "use": "STRUCTURAL_DIAGNOSTIC_ONLY"
+  },
+  "policy_status": "PROPOSED_OWNER_POLICY",
+  "reference_model": {
+    "atr_period_m5_bars": 14,
+    "direction_authorized": false,
+    "direction_mode": "BOTH_DIRECTIONS_SYMMETRIC_PROVISIONAL",
+    "entry": "first M5 bar open at or after opportunity timestamp",
+    "intrabar_tie": "CONSERVATIVE_STOP_FIRST",
+    "max_holding_m5_bars": 72,
+    "model_id": "REFERENCE_OUTCOME_MODEL_V2",
+    "stop_atr_multiple": 1.0,
+    "target_r": 2.0
+  },
+  "resampling": {
+    "bootstrap_count": 2000,
+    "rng_seed": 4030341158
+  },
+  "status": "PROVISIONAL_NOT_AUTHORIZED"
+}
