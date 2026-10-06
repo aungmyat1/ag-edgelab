@@ -260,6 +260,74 @@
         "data_authority_gap_sha256": "d0ebeab33fe7f1aff260f07ca015f5146a8c6333df4ba1c1025ce12ccd446f71",
         "oos_access_log_sha256": "44125ce16b2c2e93c5efe3138a9044e4bdca90edd192e527ea06f8e1271d4df4"
       }
+    },
+    {
+      "CANDIDATE_ID": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2@2.0.0-research",
+      "CANDIDATE_HASH": "f4bef1cf7044138c7471261855836557f8a0dee1b213506883de19e2b7dded53",
+      "STATUS": "V2_DEV_SAMPLE_SUFFICIENT_PRE_OOS_FAILED",
+      "EDGE_STATUS": "NO_EDGE",
+      "FAILURE_STAGE": "PRE_OOS_ROBUSTNESS_GATE_V1",
+      "OOS_VERDICT": "NOT_RUN (development sample passed the floor but PRE_OOS_RESULT = FAIL)",
+      "ECONOMIC_VERDICT": "NOT_ESTIMABLE_NO_FRICTION_AUTHORITY",
+      "OOS_WINDOW": "not consumed",
+      "OOS_ROLE": "NOT_CONSUMED",
+      "RELATED_MODEL_SELECTION_REUSE": "CAUTIONED (V2.1 is a disclosed post-hoc second look on the same DEV partition; any further successor requires new preregistration and owner approval)",
+      "HOLDOUT_TOUCHED": "NO",
+      "lifecycle": "DEV_REJECTED",
+      "verification_stage": "RESEARCH_GENERATION_2_DEV_ONLY (preregistered 2026-10-05)",
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "PRE_OOS_RESULT": "FAIL",
+      "preregistration": "data/artifacts/gen2_asian_liquidity_displacement_v2/preregistration.json (sha256 c914c657097bb262c67ca119204ee6182cf7938b9176950643ee947d80349b9f, committed 6ae179a BEFORE the V2 replay)",
+      "evidence_bundle": "data/artifacts/gen2_asian_liquidity_displacement_v2/",
+      "dataset": "HISTDATA_ASCII_M1_MULTIYEAR_R2 — DEVELOPMENT partitions only, 63 symbol-years over 18 calendar years",
+      "final_report": "data/artifacts/gen2_asian_liquidity_displacement_v2/final_report.json",
+      "key_results": {
+        "ENTRY_AVAILABLE_N": 2078,
+        "OPPORTUNITY_N": 26814,
+        "PRE_OOS_RESULT": "FAIL",
+        "failed_robustness_axes": [
+          "BOOTSTRAP",
+          "BRANCH_STABILITY",
+          "CONCENTRATION",
+          "REGIME_STABILITY",
+          "SESSION_STABILITY",
+          "STRUCTURAL_CAPABILITY",
+          "SYMBOL_STABILITY",
+          "TAIL_DEPENDENCE",
+          "YEAR_STABILITY"
+        ]
+      },
+      "note": "The V2 architecture solved structural starvation, then failed the unchanged V1 pre-OOS robustness gate on nine decisive axes. This is a negative development result, not a claim of edge or a permission to open OOS. Never edit this record to rescue the candidate."
+    },
+    {
+      "CANDIDATE_ID": "ST_ASIAN_LIQUIDITY_DISPLACEMENT_V2@2.1.0-research",
+      "CANDIDATE_HASH": "2c5cfa8c1608cbed20d66606292bb90c6049310665afc59ee5079ce86bbb86d9",
+      "STATUS": "BLOCKED_CONTRACT_AMBIGUITY",
+      "EDGE_STATUS": "UNVERIFIED",
+      "FAILURE_STAGE": "CONTRACT_AMBIGUITY_BLOCK",
+      "OOS_VERDICT": "NOT_RUN (no replay is permitted while the contract ambiguities remain unresolved)",
+      "ECONOMIC_VERDICT": "NOT_ESTIMABLE_NO_FRICTION_AUTHORITY",
+      "OOS_WINDOW": "not consumed",
+      "OOS_ROLE": "NOT_CONSUMED",
+      "REAL_HISTORICAL_REPLAY_EXECUTED": false,
+      "RELATED_MODEL_SELECTION_REUSE": "FORBIDDEN (no historical replay or tuning before owner decision)",
+      "HOLDOUT_TOUCHED": "NO",
+      "lifecycle": "RESEARCH_CANDIDATE",
+      "verification_stage": "GEN2_ALD_V2_1_DATA_AUTHORIZATION_GATE_V1",
+      "candidate_family_id": "ASIAN_LIQUIDITY_DISPLACEMENT",
+      "PRE_OOS_RESULT": "NOT_REACHED",
+      "DATASET_BINDING_HASH": "d030952440d2cfa34f541fff7cdfbf344fdc4959d0ee3826ba349636d566b483",
+      "preregistration": "data/artifacts/gen2_ald_v2_1/preregistration.json (sha256 3dac1c0c3bcf9cf3404218690e0caf6681be57a5c596f93adb144392dea669ba, committed 5b7d000 BEFORE any 2.1.0 replay)",
+      "evidence_bundle": "data/artifacts/gen2_ald_v2_1/",
+      "dataset": "HISTDATA_ASCII_M1_MULTIYEAR_R2 — DEVELOPMENT only; OOS and sealed holdout remain closed",
+      "final_report": "data/artifacts/gen2_ald_v2_1/final_report.json (not generated: replay blocked before execution)",
+      "key_results": {
+        "LOOK_INDEX": 2,
+        "BLOCKED_CONTRACT_AMBIGUITY": true,
+        "REAL_HISTORICAL_REPLAY_EXECUTED": false,
+        "owner_decision_issues": ["AMB_1", "AMB_2", "AMB_3", "AMB_4"]
+      },
+      "note": "The V2.1 contract is the hardened successor to V2, but no historical replay is allowed until the owner resolves the four unresolved ambiguity items (AMB_1..AMB_4). This status is a governance block, not an evidence-backed edge claim."
     }
   ]
 }
