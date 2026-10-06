@@ -1,8 +1,10 @@
 # AG EdgeLab
 
-Standalone, strategy-agnostic research system for developing trading strategies as measurable funnels and independently validating frozen candidates for economic edge.
+Standalone, strategy-agnostic research system for rapidly checking, diagnosing, optimizing, and edge-verifying unverified trading strategies under fail-closed evidence governance.
 
-> **Canonical mental model:** market data flows through versioned strategy rules; Funnel Lab measures where candidate quality improves or deteriorates; researchers modify rules only on DEVELOPMENT data; a promising strategy is frozen; the Edge Validator then attempts to falsify that immutable candidate using authorized unseen evidence.
+> **Primary objective:** take an `UNVERIFIED` strategy with explicit rules, measure its funnel on DEVELOPMENT data, identify which rules improve or damage economic quality, run controlled rule experiments quickly, freeze the first candidate that satisfies the promotion gates, and move that immutable candidate through Edge Verification as efficiently as possible without weakening OOS, friction, provenance, or holdout controls.
+>
+> **Canonical mental model:** `UNVERIFIED STRATEGY -> CHECK RULES -> FUNNEL DIAGNOSIS -> CONTROLLED DEVELOPMENT OPTIMIZATION -> PROMOTION GATE -> FREEZE -> EDGE VERIFICATION -> EDGE_VERIFIED | NO_EDGE | INSUFFICIENT_EVIDENCE`. The system is optimized for fast falsification and fast promotion of genuine survivors, not for making every strategy pass.
 
 ## Start here — code agents
 
@@ -133,26 +135,37 @@ Initial labels:
 
 A weak-funnel label is a DEVELOPMENT diagnostic, not proof of causality and not an edge verdict. V0.2 adds expectancy/PF/DD so a lower win rate cannot by itself be treated as worse economics.
 
-## Development loop
+## Primary workflow — rapid edge verification
+
+The main operating workflow starts from an **unverified strategy**, not from an assumption that its current rules are correct:
 
 ```text
-MARKET DATA
- -> FUNNEL V1
- -> phase metrics
- -> rule metrics
- -> locate weak phase
- -> locate weak rule
- -> change one declared rule
- -> create child funnel version
- -> rerun same DEVELOPMENT population
- -> compare parent/child
- -> keep or reject experiment
- -> repeat
- -> promising candidate
- -> FREEZE
+UNVERIFIED STRATEGY
+ -> normalize explicit rule contract
+ -> run DEVELOPMENT funnel
+ -> measure phase/rule attrition + economics
+ -> identify weak or non-contributing rules
+ -> create a declared child experiment
+ -> change one rule or one preregistered rule bundle
+ -> rerun the same authorized DEVELOPMENT population
+ -> compare parent/child on expectancy, PF, DD, sample size and stability
+ -> reject regressions quickly
+ -> retain only improvements that survive the DEVELOPMENT promotion policy
+ -> repeat within a preregistered search budget
+ -> PROMOTION GATE
+ -> FREEZE EXACT CANDIDATE
+ -> PRE-OOS
+ -> authorized fresh OOS
+ -> measured friction/economic verification
+ -> stability / regime / independent parity as required
+ -> EDGE_VERIFIED | NO_EDGE | INSUFFICIENT_EVIDENCE
 ```
 
-Never mutate a parent strategy in place. A behavior-changing rule modification creates a new rule/funnel identity.
+**Speed objective:** minimize time from `UNVERIFIED` to a trustworthy terminal verdict. Cheap DEVELOPMENT diagnostics and batch experiments should reject weak rules early; expensive OOS and independent verification are reserved for frozen survivors.
+
+**Optimization boundary:** optimization is allowed only on authorized DEVELOPMENT evidence. Never mutate a parent strategy in place. Every behavior-changing rule modification creates a new rule/funnel identity and is recorded in the candidate/search ledger. Search pressure, tested variants, and failed children are evidence and must not be hidden.
+
+**No rescue-by-OOS:** OOS and sealed holdout are verification evidence, never optimization data. A failed OOS candidate is rejected under its frozen identity; it is not tuned against the same unseen window and resubmitted as though fresh.
 
 ## Verification boundary
 
@@ -204,9 +217,22 @@ External engines are evidence producers, never EdgeLab verification authority.
 
 ## Current direction
 
-The project should be implemented in the smallest useful vertical slices. The immediate Funnel Lab path is:
+The project is now **verification-throughput oriented**. Infrastructure exists to support rigorous falsification; the next priority is to shorten the safe path from an unverified strategy to an edge verdict.
 
-`MarketFrame -> Funnel contracts -> Candidate-flow runner -> Weak Funnel Diagnostic -> simulation adapter -> economic metrics -> version comparison -> branching funnels -> FrozenStrategy handoff`.
+The operating priority is:
+
+`UnverifiedStrategy -> RuleContract -> Funnel diagnostics -> DEVELOPMENT optimization/search -> economic + robustness promotion gate -> FrozenStrategy -> PRE-OOS -> fresh OOS -> measured friction -> final verification`.
+
+Development work should therefore prioritize:
+
+1. fast deterministic replay and cached reusable market/feature computation without changing strategy semantics;
+2. generic stage adapters so each strategy can expose detailed funnel stages without hard-coding strategy logic into the universal analyzer;
+3. batch DEVELOPMENT experiments with explicit search budgets and multiple-testing controls;
+4. automatic weak-rule diagnostics using expectancy/PF/DD/sample/stability evidence, not win rate alone;
+5. measured friction and authoritative real-data adapters needed to unblock economic verification;
+6. one-click generation of a frozen candidate/evidence manifest when promotion gates pass.
+
+The target is **not maximum backtest performance**. The target is the shortest governed route to a trustworthy `EDGE_VERIFIED`, `NO_EDGE`, or `INSUFFICIENT_EVIDENCE` verdict.
 
 See `docs/FUNNEL_DEVELOPMENT_AND_EDGE_VERIFICATION_ROADMAP.md` for detailed work packages and the Edge Validator upgrade sequence.
 
