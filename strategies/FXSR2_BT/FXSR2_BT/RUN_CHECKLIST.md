@@ -1,0 +1,15 @@
+# Signal-count run checklist (tick each with evidence path)
+- [ ] verify_package.py passes (source/.set hashes match)
+- [ ] Run mql5/ExportHistory.mq5 on the chosen terminal (copy script to MQL5/Scripts, compile, run); collect bars_*.csv + facts_*.txt from Common/Files
+- [ ] tools/check_bars.py report reviewed against manifest thresholds
+- [ ] Dataset manifest filled, hashed, owner-approved
+- [ ] Partition + exposure record filled (OOS & SEALED_HOLDOUT closed)
+- [ ] EURUSD-VIP present in terminal; bound to manifest; server/build recorded
+- [ ] Test contract filled and its SHA-256 recorded
+- [ ] Preregistration committed (timestamp BEFORE run)
+- [ ] MetaEditor compile done: log saved, .ex5 SHA-256 recorded
+- [ ] Tester INI filled from template (placeholders removed), hash recorded
+- [ ] Run executed once; journal copied from <terminal>\Tester\Agent-*\logs\ before anything is overwritten
+- [ ] parse_signals.py run, then tools/parity_check.py = PASS (FAIL = run invalid); signals.csv + summary.json hashed
+- [ ] Summary labeled SIGNAL_COUNT_DIAGNOSTIC / ECONOMIC_METRICS=NOT_ESTIMABLE / EDGE_CLAIM=NONE
+- [ ] No re-run with changed settings after viewing counts (new run = new preregistration)

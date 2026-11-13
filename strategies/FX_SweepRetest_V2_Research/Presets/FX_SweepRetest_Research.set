@@ -1,0 +1,11 @@
+InpEnableTesterOrders=false
+InpFixedLots=0.01
+InpStopPoints=300
+InpTargetPoints=450
+InpMaxSpreadPoints=30
+InpLookbackBars=24
+InpMagicNumber=114498511
+InpFastMAPeriod=12
+InpSlowMAPeriod=36
+InpRequireVerifiedNewsCalendar=true
+InpRequireApprovedDataAdmission=true

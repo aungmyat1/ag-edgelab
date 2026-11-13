@@ -1,0 +1,77 @@
+{
+  "status": "PROPOSED_UNREGISTERED",
+  "dataset_id": "MT5_EURUSD-VIP_M5_2025-11-13_2026-08-31_DEV",
+  "owner_approval": {
+    "approved": false,
+    "approver": "<<OWNER_FILL>>",
+    "date_utc": null
+  },
+  "terminal": {
+    "broker_entity": "VT Markets",
+    "server": "<<>>",
+    "account_type": "demo",
+    "build": "<<>>",
+    "credentials_recorded": false
+  },
+  "symbol": {
+    "terminal_symbol": "EURUSD-VIP",
+    "canonical_symbol": "EURUSD",
+    "equivalence_verified": false,
+    "digits": null,
+    "point": null,
+    "contract_size": null
+  },
+  "source": {
+    "method": "MT5 script mql5/ExportHistory.mq5 (CopyRates M5, warm-up from 2025-11-01) + facts file",
+    "retrieved_utc": null,
+    "license_retention_notes": "<<>>"
+  },
+  "time_convention": {
+    "bar_time": "bar_open",
+    "server_to_utc_rule": "<<offset + DST rule>>",
+    "dst_transitions_in_window": [
+      "<<>>"
+    ],
+    "note": "Tester/journal timestamps are broker server time. Owner must document server-to-UTC rule incl. DST; facts file gives only the CURRENT offset.",
+    "broker": "VT Markets (demo account) \u2014 owner statement",
+    "server_to_utc_rule_proposed": "PROPOSED per VT Markets published convention (GMT+2 winter / GMT+3 US-DST, NY-close aligned); NOT yet verified on this demo server",
+    "rule_detail": "bars with server open time < 2026-03-09 00:00 \u2192 UTC = server \u2212 2h; bars \u2265 2026-03-09 00:00 (through 2026-08-31) \u2192 UTC = server \u2212 3h; no other transition in window; warm-up bars from 2025-11-01 are all winter (+2)",
+    "verification_required": [
+      "facts file server_minus_gmt_seconds_now == 7200 (US winter now)",
+      "check_bars.py weekly_structure identical before/after 2026-03-08 weekend"
+    ]
+  },
+  "range": {
+    "first_bar": null,
+    "last_bar": null,
+    "timeframe": "M5",
+    "rows": null
+  },
+  "raw_files": [
+    {
+      "path": "bars_EURUSD-VIP_M5_DEV.csv",
+      "sha256": "<<tools/check_bars.py>>",
+      "rows": null
+    },
+    {
+      "path": "facts_EURUSD-VIP_M5_DEV.txt",
+      "sha256": "<<>>",
+      "rows": null
+    }
+  ],
+  "completeness": {
+    "missing_bars_by_day": "<<report path>>",
+    "duplicates": null,
+    "non_monotonic": null,
+    "holiday_weekend_gaps": "<<report path>>",
+    "tester_history_quality_pct": null,
+    "thresholds_proposed": {
+      "duplicates": 0,
+      "non_monotonic": 0,
+      "ohlc_invalid": 0,
+      "max_intra_week_gap_minutes": "<<OWNER_FILL; suggest 60>>",
+      "tester_history_quality_pct_min": "<<OWNER_FILL; suggest 99>>"
+    }
+  },
+  "partitions": "see partition_tpl.json"
+}

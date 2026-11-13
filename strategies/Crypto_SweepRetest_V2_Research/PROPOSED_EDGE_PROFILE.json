@@ -1,0 +1,20 @@
+{
+  "status": "PROPOSED_NOT_IMPLEMENTED",
+  "strategy": "Crypto SweepRetest",
+  "symbols": [
+    "BTCUSD",
+    "ETHUSD"
+  ],
+  "timezone": "UTC",
+  "entry_windows_utc_proposed": [],
+  "rollover_blackout_utc_proposed": "21:00-23:00",
+  "tier1_news_blackout_minutes_before_after": 15,
+  "news_calendar_required_for_gate": true,
+  "missing_news_calendar": "BLOCK_NEW_ENTRIES",
+  "fx_friday_flat_utc_proposed": null,
+  "per_trade_risk_pct_candidate": 0.25,
+  "risk_enforcement": "NOT_IMPLEMENTED_IN_PROTOTYPE",
+  "data_admission": "REQUIRED",
+  "oos": "PREREGISTERED_UNTOUCHED_ONLY",
+  "performance": "NOT_VERIFIED"
+}

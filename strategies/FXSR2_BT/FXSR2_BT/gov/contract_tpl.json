@@ -1,0 +1,52 @@
+{
+  "status": "PROPOSED_NOT_FROZEN_PENDING_OWNER_APPROVAL",
+  "scope": "SIGNAL_ONLY",
+  "strategy": {
+    "id": "FX_SweepRetest_V2_Research",
+    "version": "2.00",
+    "source_path": "Experts/FX_SweepRetest_Research.mq5",
+    "source_sha256": "be1695b387a7da825d1077f2a6adb63d7c9df5b1c8616f56e6e55207bf3639b1",
+    "set_path": "Presets/FX_SweepRetest_Research.set",
+    "set_sha256": "45ca412ee2275fb726bdff891a03883d4f3ac4f442e92fe259dc0ea559760d07",
+    "parameters_unchanged_from_v2": true,
+    "ex5_sha256": "<<after compile>>",
+    "compiler_version": "<<>>",
+    "compile_log_path": "<<>>"
+  },
+  "tester": {
+    "symbol": "EURUSD-VIP",
+    "timeframe": "M5",
+    "model": 1,
+    "execution_mode": "<<OWNER_FILL; record the value used>>",
+    "from_date": "2025.11.13",
+    "to_date": "2026.08.31",
+    "to_date_semantics": "<<verify: last journal timestamp must be on 2026.08.31>>",
+    "deposit": "<<OWNER_FILL>>",
+    "currency": "USD",
+    "leverage": "<<OWNER_FILL>>",
+    "optimization": 0,
+    "forward": 0,
+    "visual": 0,
+    "use_cloud": 0,
+    "terminal_build": "<<>>"
+  },
+  "dataset_manifest_sha256": "<<>>",
+  "expected_outputs": [
+    "tester_journal.log",
+    "signals.csv",
+    "summary.json",
+    "tester_ini_used.ini",
+    "report"
+  ],
+  "labels": {
+    "result": "SIGNAL_COUNT_DIAGNOSTIC",
+    "ECONOMIC_METRICS": "NOT_ESTIMABLE",
+    "EDGE_CLAIM": "NONE"
+  },
+  "oos_holdout_opened": false,
+  "partition_run": "DEVELOPMENT only (2025-11-13..2026-08-31)",
+  "parity": {
+    "tool": "tools/parity_check.py",
+    "required_verdict": "PASS"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "status": "PROPOSED_PENDING_OWNER_APPROVAL",
+  "requested_window": {
+    "from": "2025-11-13",
+    "to": "2026-11-12",
+    "requested_role": "DEVELOPMENT",
+    "role_approved": false,
+    "note": "end moved from 2026-11-13 (incomplete day) to last full day"
+  },
+  "partitions": {
+    "DEVELOPMENT": {
+      "from": "2025-11-13",
+      "to": "2026-08-31",
+      "this_run": true
+    },
+    "OOS": {
+      "from": "2026-09-01",
+      "to": "2026-09-30",
+      "opened": false
+    },
+    "SEALED_HOLDOUT": {
+      "from": "2026-10-01",
+      "to": "2026-11-12",
+      "opened": false
+    }
+  },
+  "prior_exposure_disclosure": "Draft INI named 2026-10-01..2026-10-31 (inside SEALED_HOLDOUT) as an unauthorized example; no tester run, history open or result is recorded. <<OWNER_CONFIRM: no other prior exposure to this window>>",
+  "candidate_identity": {
+    "id": "FX_SweepRetest_V2_Research",
+    "source_sha256": "be1695b387a7da825d1077f2a6adb63d7c9df5b1c8616f56e6e55207bf3639b1"
+  },
+  "append_only_record_ref": "<<governance record id>>",
+  "owner_approval": {
+    "approved": false,
+    "approver": "<<OWNER_FILL>>",
+    "date_utc": null
+  }
+}
